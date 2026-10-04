@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>DOZE OPO | Heavyweight Streetwear & Flexible OEM Customization</title>
+  <meta name="description" content="DOZE OPO specializes in premium oversized heavyweight t-shirts, hoodies, and vintage washed apparel. Offering 1-piece custom sample proofing, brand OEM manufacturing, screen printing, puff print, and precision embroidery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=25">
+</head>
+<body class="theme-light">
+  <!-- Dev Control Bar (Desktop Helper) -->
+  <aside class="dev-control-bar" id="devControlBar">
+    <div class="control-brand">
+      <span class="brand-badge">GLOBAL B2B / B2C</span>
+      <strong>DOZE OPO</strong> Mobile Independent Store Prototype
+    </div>
+    <div class="control-actions">
+      <div class="device-switchers">
+        <button type="button" class="btn-toggle active" id="btnPhoneView">📱 Phone Frame</button>
+        <button type="button" class="btn-toggle" id="btnFullView">🌐 Fullscreen View</button>
+      </div>
+      <div class="currency-lang-group">
+        <select id="currencySelector" aria-label="Select Settlement Currency">
+          <option value="USD" selected>USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="CNY">CNY (¥)</option>
+        </select>
+        <select id="langSelector" aria-label="Select Site Language">
+          <option value="en" selected>English (US)</option>
+          <option value="zh">中文 (CN)</option>
+        </select>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile Viewport Wrapper -->
+  <main class="mobile-viewport-wrapper" id="viewportWrapper">
+    <div class="iphone-bezel" id="iphoneFrame">
+      <!-- Dynamic Island -->
+      <div class="dynamic-island">
+        <div class="camera-lens"></div>
+        <div class="sensor-dot"></div>
+      </div>
+
+      <!-- Mobile Status Bar (12:26 Style) -->
+      <header class="status-bar">
+        <span class="status-time" id="liveTime">12:26</span>
+        <div class="status-icons">
+          <svg class="icon-signal" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.23C3.51 16.48 3 14.32 3 12c0-4.97 4.03-9 9-9s9 4.03 9 9c0 2.32-.51 4.48-1.35 6.23l-.62-.62C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"/><path fill="currentColor" d="M12 7c-2.76 0-5 2.24-5 5 0 1.25.46 2.39 1.21 3.28l.71-.71C8.36 13.93 8 13.01 8 12c0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.01-.36 1.93-.92 2.57l.71.71C16.54 14.39 17 13.25 17 12c0-2.76-2.24-5-5-5z"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+          <span class="status-5g">5G</span>
+          <div class="battery-pill">
+            <span class="battery-level">99</span>
+            <div class="battery-nub"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Mobile App Container -->
+      <div class="app-screen-container" id="appScrollContainer">
+
+        <!-- Top Header: Centered Brand Name + Capsule Action Icons -->
+        <div class="app-header">
+          <div class="header-left">
+            <span class="header-market-pill">GLOBAL B2B/B2C</span>
+          </div>
+          <div class="brand-title">DOZE OPO</div>
+          <div class="header-capsule-actions">
+            <button type="button" class="capsule-btn" id="btnShareModal" title="Share & Collaborate" onclick="openContactModal()">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+            </button>
+            <div class="capsule-divider"></div>
+            <button type="button" class="capsule-btn" id="btnMiniInfo" title="Factory & OEM Verification" onclick="openB2BModal()">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-wrapper">
+          <div class="search-inner">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#777" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="mainSearchInput" placeholder="Search heavyweight hoodies, boxy tees, acid wash, OEM..." autocomplete="off">
+            <button type="button" class="search-clear-btn" id="searchClearBtn" style="display:none;">✕</button>
+          </div>
+        </div>
+
+        <!-- Tab 1: Home Page -->
+        <div class="tab-page-content" id="homePage">
+
+          <!-- Hero Banner Section (Single Page, High-End Western Lookbook) -->
+          <section class="hero-banner-section">
+            <div class="banner-slide">
+              <img src="assets/hero_street_crew.jpg?v=20" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img">
+              <div class="banner-overlay-gradient"></div>
+              
+              <!-- Brand Watermark in Lookbook -->
+              <div class="banner-brand-watermark">
+                <div class="watermark-logo">DOZE OPO</div>
+                <div class="watermark-sub">A/W LOOKBOOK · STREETWEAR COLLECTION</div>
+              </div>
+
+              <!-- Main Tagline Box -->
+              <div class="banner-tagline-box">
+                <span class="sub-label">2026 A/W STREETWEAR DROP</span>
+                <h2 class="main-title">THE OVERSIZED REVOLUTION</h2>
+                <p class="desc">Heavy Cotton · Drop Shoulder · Flexible OEM · Custom Print</p>
+              </div>
+
+              <!-- Fabric & Craftsmanship Detail Circles -->
+              <div class="fabric-highlight-circles">
+                <div class="circle-item" data-tooltip="Reinforced bound neck and shoulder taping">
+                  <div class="circle-thumb fabric-pattern-1"></div>
+                  <span>Taped Seams</span>
+                </div>
+                <div class="circle-item" data-tooltip="Durable twin needle reinforced stitching">
+                  <div class="circle-thumb fabric-pattern-2"></div>
+                  <span>Twin Stitch</span>
+                </div>
+                <div class="circle-item" data-tooltip="Vintage acid wash and mineral dye finishing">
+                  <div class="circle-thumb fabric-pattern-3"></div>
+                  <span>Acid Wash</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Quick Category Navigation (5 Columns) -->
+          <nav class="category-quick-nav">
+            <div class="quick-nav-item" onclick="handleCategoryFilter('tee')">
+              <div class="nav-thumb-box">
+                <img src="assets/tee_item.jpg" alt="Heavy Tees">
+              </div>
+              <span class="nav-title">Heavy Tees</span>
+              <span class="nav-en">Boxy Fit</span>
+            </div>
+            <div class="quick-nav-item" onclick="handleCategoryFilter('crewneck')">
+              <div class="nav-thumb-box">
+                <img src="assets/crewneck_item.jpg" alt="Crewneck Sweatshirt">
+              </div>
+              <span class="nav-title">Crewneck Sweatshirt</span>
+              <span class="nav-en">Classic Cut</span>
+            </div>
+            <div class="quick-nav-item" onclick="handleCategoryFilter('hoodie')">
+              <div class="nav-thumb-box">
+                <img src="assets/hoodie_item.jpg" alt="Heavy Hoodies">
+              </div>
+              <span class="nav-title">Heavy Hoodies</span>
+              <span class="nav-en">Oversize Cut</span>
+            </div>
+            <div class="quick-nav-item" onclick="handleCategoryFilter('jacket')">
+              <div class="nav-thumb-box">
+                <img src="assets/zip_hoodie.jpg" alt="Zip Jackets">
+              </div>
+              <span class="nav-title">Zip Jackets</span>
+              <span class="nav-en">Metal Zippers</span>
+            </div>
+            <div class="quick-nav-item" onclick="handleCategoryFilter('pants')">
+              <div class="nav-thumb-box">
+                <img src="assets/pants_item.jpg" alt="Casual pants＆Jeans">
+              </div>
+              <span class="nav-title">Casual pants＆Jeans</span>
+              <span class="nav-en">Cargo &amp; Denim</span>
+            </div>
+          </nav>
+
+          <!-- Cross-border & OEM Trust Bar -->
+          <section class="trust-benefits-bar">
+            <div class="benefit-item">
+              <span class="benefit-icon">⚡</span>
+              <div class="benefit-text">
+                <strong>1 pc Sample Order</strong>
+                <small>48h Fast Sampling</small>
+              </div>
+            </div>
+            <div class="benefit-divider"></div>
+            <div class="benefit-item">
+              <span class="benefit-icon">🏷️</span>
+              <div class="benefit-text">
+                <strong>Custom Woven Tags</strong>
+                <small>Full Private Label</small>
+              </div>
+            </div>
+            <div class="benefit-divider"></div>
+            <div class="benefit-item">
+              <span class="benefit-icon">✈️</span>
+              <div class="benefit-text">
+                <strong>Worldwide Express</strong>
+                <small>FedEx / DHL Direct</small>
+              </div>
+            </div>
+          </section>
+
+          <!-- Curated Brand Philosophy & Quick Catalog Gateway -->
+          <section class="home-collection-showcase">
+            <div class="showcase-card">
+              <div class="showcase-tag">2026 A/W STREETWEAR CAPSULE</div>
+              <h3>Explore Oversized Heavyweight Collections</h3>
+              <div class="showcase-contact-info">
+                <p class="contact-lead-text">If you find any styles you like or need custom manufacturing, please contact us:</p>
+                <div class="contact-channels-box">
+                  <a href="https://wa.me/8618520682738" target="_blank" rel="noopener noreferrer" class="contact-pill-link wa-pill">
+                    <span class="pill-icon">💬</span>
+                    <span class="pill-label">WhatsApp:</span>
+                    <strong>+086 18520682738</strong>
+                  </a>
+                  <a href="mailto:kobebryant281563155@gmail.com" class="contact-pill-link mail-pill">
+                    <span class="pill-icon">✉️</span>
+                    <span class="pill-label">Email:</span>
+                    <strong>kobebryant281563155@gmail.com</strong>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Quick Bridge Banner to Custom OEM Tab -->
+          <section class="home-custom-bridge" onclick="switchTab('custom')">
+            <div class="bridge-left">
+              <span class="bridge-tag">PRIVATE LABEL &amp; OEM</span>
+              <h4>Looking for Custom Printing or Embroidery?</h4>
+              <p>1 PC Sample Proofing · DTG · Puff · Full Tech Pack</p>
+            </div>
+            <div class="bridge-btn">
+              <span>Open Custom Lab</span>
+              <span class="arrow-icon">➔</span>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <footer class="app-footer">
+            <div class="footer-logo">DOZE OPO</div>
+            <p class="footer-slogan">HEAVYWEIGHT OVERSIZED STREETWEAR &amp; FLEXIBLE OEM</p>
+            <div class="payment-badges">
+              <span class="pay-chip">WorldFirst</span>
+              <span class="pay-chip">Payoneer</span>
+              <span class="pay-chip">PayPal</span>
+              <span class="pay-chip">AliPay</span>
+              <span class="pay-chip">WeChat Pay</span>
+            </div>
+            <p class="copyright">© 2026 DOZE OPO. All Rights Reserved.</p>
+          </footer>
+        </div>
+
+        <!-- Tab 2: Catalog Page -->
+        <div class="tab-page-content" id="catalogPage" style="display: none;">
+          <div class="catalog-page-header">
+            <h3>Product Catalog</h3>
+            <p>Oversized Heavyweight Blanks &amp; Custom Streetwear</p>
+          </div>
+          <div class="catalog-layout">
+            <div class="catalog-sidebar">
+              <div class="cat-nav-item active" data-cat="all">All Items</div>
+              <div class="cat-nav-item" data-cat="tee">Heavy Tees</div>
+              <div class="cat-nav-item" data-cat="crewneck">Crewneck Sweatshirt</div>
+              <div class="cat-nav-item" data-cat="hoodie">Heavy Hoodies</div>
+              <div class="cat-nav-item" data-cat="jacket">Zip Jackets</div>
+              <div class="cat-nav-item" data-cat="pants">Pants &amp; Jeans</div>
+            </div>
+            <div class="catalog-content-list" id="catalogProductList">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Detail Page (PDP): T012 High-End Streetwear Raglan Tee -->
+        <div class="tab-page-content" id="productDetailPage" style="display: none;">
+          <!-- PDP Top Sticky Header -->
+          <div class="pdp-top-header">
+            <button type="button" class="pdp-back-btn" onclick="closeProductDetail()">
+              <span class="back-arrow">←</span>
+              <span>Back to Catalog</span>
+            </button>
+            <div class="pdp-header-actions">
+              <button type="button" class="pdp-action-icon" onclick="copyContactText(window.location.href)" title="Share Link">🔗</button>
+              <button type="button" class="pdp-action-icon" onclick="openWhatsAppModal()" title="WhatsApp Chat">💬</button>
+            </div>
+          </div>
+
+          <!-- Hero Media Swiper -->
+          <div class="pdp-media-swiper">
+            <div class="pdp-hero-img-wrap">
+              <img src="assets/t012/main/3.jpg" id="pdpMainImg" alt="T012 240G Raglan Tee">
+              <span class="pdp-img-counter" id="pdpImgCounter">1 / 4</span>
+              <span class="pdp-badge-moq">⚡ 1 PC Sample Proofing</span>
+            </div>
+            <div class="pdp-thumb-strip" id="pdpThumbStrip">
+              <div class="pdp-thumb active" onclick="switchPdpHero('assets/t012/main/3.jpg', 1)"><img src="assets/t012/main/3.jpg" alt="Gallery 1"></div>
+              <div class="pdp-thumb" onclick="switchPdpHero('assets/t012/main/1.jpg', 2)"><img src="assets/t012/main/1.jpg" alt="Gallery 2"></div>
+              <div class="pdp-thumb" onclick="switchPdpHero('assets/t012/main/2.jpg', 3)"><img src="assets/t012/main/2.jpg" alt="Gallery 3"></div>
+              <div class="pdp-thumb" onclick="switchPdpHero('assets/t012/main/4.jpg', 4)"><img src="assets/t012/main/4.jpg" alt="Gallery 4"></div>
+            </div>
+          </div>
+
+          <!-- Product Main Meta -->
+          <div class="pdp-meta-card">
+            <div class="pdp-price-row">
+              <div class="pdp-price-box">
+                <span class="currency-symbol">$</span>
+                <strong class="pdp-price-val">11.50</strong>
+                <span class="pdp-price-unit">/ pc</span>
+              </div>
+              <span class="pdp-sample-tag">1 PC Sample Proofing Ready</span>
+            </div>
+            <h2 class="pdp-title">T012 240G Raglan Sleeve Boxy Tee</h2>
+            <p class="pdp-desc">Double-Yarn Combed Cotton · 90s Streetwear Raglan Contrast Sleeves · 8 Vintage Colorways</p>
+            <div class="pdp-feature-tags">
+              <span class="pdp-ftag">240 GSM Combed Cotton</span>
+              <span class="pdp-ftag">Pre-Shrunk &lt; 2%</span>
+              <span class="pdp-ftag">Taped Bound Neck</span>
+              <span class="pdp-ftag">Flexible OEM Printing</span>
+            </div>
+          </div>
+
+          <!-- Color Swatch Selector (8 Colorways) -->
+          <div class="pdp-section-card">
+            <div class="pdp-section-title">
+              <span>Select Colorway:</span>
+              <strong id="pdpActiveColorName">White / Black</strong>
+            </div>
+            <div class="pdp-color-grid" id="pdpColorGrid">
+              <!-- Rendered dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Size Selector -->
+          <div class="pdp-section-card">
+            <div class="pdp-section-title">
+              <span>Select Size:</span>
+              <strong id="pdpActiveSizeName">XL (Oversized Street Fit)</strong>
+            </div>
+            <div class="pdp-size-row" id="pdpSizeRow">
+              <button type="button" class="pdp-size-btn" onclick="selectPdpSize('S', this)">S</button>
+              <button type="button" class="pdp-size-btn" onclick="selectPdpSize('M', this)">M</button>
+              <button type="button" class="pdp-size-btn" onclick="selectPdpSize('L', this)">L</button>
+              <button type="button" class="pdp-size-btn active" onclick="selectPdpSize('XL', this)">XL</button>
+              <button type="button" class="pdp-size-btn" onclick="selectPdpSize('2XL', this)">2XL</button>
+            </div>
+          </div>
+
+          <!-- Cross-Border & OEM Fast Perks -->
+          <div class="pdp-oem-benefits">
+            <div class="oem-perk">
+              <span class="perk-icon">⚡</span>
+              <div>
+                <strong>1 PC Sample Proofing</strong>
+                <small>48h Rapid Dispatch</small>
+              </div>
+            </div>
+            <div class="oem-perk">
+              <span class="perk-icon">🏷️</span>
+              <div>
+                <strong>Custom Woven Tags</strong>
+                <small>Full Private Labeling</small>
+              </div>
+            </div>
+            <div class="oem-perk">
+              <span class="perk-icon">🎨</span>
+              <div>
+                <strong>Screen / Puff / DTG</strong>
+                <small>All Print Crafts</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Designer Note (SETUP) Card -->
+          <div class="pdp-designer-card">
+            <div class="designer-badge">SETUP · DESIGNER'S NOTE</div>
+            <h4>Crafted for Streetwear Creators &amp; Private Brands</h4>
+            <ul class="designer-bullet-list">
+              <li><strong>Minimalist Boxy Cut:</strong> Authentic drop-shoulder skate silhouette with clean unembellished lines.</li>
+              <li><strong>240 GSM Combed Cotton:</strong> 32S/2 double-yarn knit with zero transparency, high breathability, and structured drape.</li>
+              <li><strong>Reinforced Bound Collar:</strong> 3.0cm 1x1 elastic rib neckband with shoulder-to-shoulder taping that retains structure.</li>
+              <li><strong>8 Versatile Contrast Colorways:</strong> Retro collegiate and vintage streetwear palette engineered for all seasons.</li>
+            </ul>
+          </div>
+
+          <!-- Product Info & Specs Graphic -->
+          <div class="pdp-lookbook-section">
+            <div class="pdp-lookbook-header">
+              <span class="lb-tag">SPECIFICATIONS</span>
+              <h3>Product Info &amp; Details</h3>
+            </div>
+            <img src="assets/t012/detail/0a129032703fd6aaab9b5b14c2710255.png" alt="Product Info" class="pdp-lb-img">
+          </div>
+
+          <!-- Color Selection Graphic -->
+          <div class="pdp-lookbook-section">
+            <div class="pdp-lookbook-header">
+              <span class="lb-tag">COLOR PALETTE</span>
+              <h3>8 Contrast Colorways</h3>
+            </div>
+            <img src="assets/t012/detail/f69a0f235605d6d8fd0bc33020b6cd85.png" alt="Product Color Selection" class="pdp-lb-img">
+          </div>
+
+          <!-- Model Try-On Showcase Card -->
+          <div class="pdp-model-tryon-card">
+            <div class="tryon-header">
+              <span class="tryon-pill">MODEL FIT &amp; TRY-ON</span>
+              <h4>Real Model Sizing Reference</h4>
+            </div>
+            <div class="model-cards-grid">
+              <div class="model-spec-item">
+                <div class="model-avatar">D</div>
+                <div class="model-info">
+                  <strong>Denis</strong>
+                  <span class="m-stats">188 cm · 77 kg</span>
+                  <span class="m-fit">Try-on: <strong>2XL</strong> · Loose Oversized</span>
+                </div>
+              </div>
+              <div class="model-spec-item">
+                <div class="model-avatar">K</div>
+                <div class="model-info">
+                  <strong>Karen</strong>
+                  <span class="m-stats">173 cm · 55 kg</span>
+                  <span class="m-fit">Try-on: <strong>XL</strong> · Street Boxy</span>
+                </div>
+              </div>
+              <div class="model-spec-item">
+                <div class="model-avatar">Z</div>
+                <div class="model-info">
+                  <strong>ZEE</strong>
+                  <span class="m-stats">186 cm · 77 kg</span>
+                  <span class="m-fit">Try-on: <strong>XL</strong> · Regular Fit</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Size Guide & Measurements Tables -->
+          <div class="pdp-size-tables-card">
+            <div class="table-header">
+              <span class="table-tag">SIZE GUIDE</span>
+              <h4>Recommended Size Guide (Height &amp; Weight)</h4>
+            </div>
+            <div class="pdp-table-wrap">
+              <table class="pdp-spec-table">
+                <thead>
+                  <tr>
+                    <th>Size</th>
+                    <th>Height (cm)</th>
+                    <th>Weight (kg)</th>
+                    <th>Suggested Fit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>S</strong></td>
+                    <td>165 - 170</td>
+                    <td>50 - 60 kg</td>
+                    <td>Fitted</td>
+                  </tr>
+                  <tr>
+                    <td><strong>M</strong></td>
+                    <td>170 - 175</td>
+                    <td>60 - 65 kg</td>
+                    <td>Relaxed</td>
+                  </tr>
+                  <tr>
+                    <td><strong>L</strong></td>
+                    <td>175 - 180</td>
+                    <td>65 - 75 kg</td>
+                    <td>Street Boxy</td>
+                  </tr>
+                  <tr class="highlight-row">
+                    <td><strong>XL</strong></td>
+                    <td>180 - 185</td>
+                    <td>75 - 85 kg</td>
+                    <td>Oversized</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2XL</strong></td>
+                    <td>185 - 190</td>
+                    <td>85 - 95 kg</td>
+                    <td>Extreme Baggy</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-header" style="margin-top: 18px;">
+              <span class="table-tag">MEASUREMENTS</span>
+              <h4>Garment Finished Dimensions (cm)</h4>
+            </div>
+            <div class="pdp-table-wrap">
+              <table class="pdp-spec-table">
+                <thead>
+                  <tr>
+                    <th>Size (尺码)</th>
+                    <th>Length (衣长)</th>
+                    <th>Chest (胸围)</th>
+                    <th>Raglan Sleeve (连肩袖长)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>S</strong></td>
+                    <td>70 cm</td>
+                    <td>110 cm</td>
+                    <td>38.5 cm</td>
+                  </tr>
+                  <tr>
+                    <td><strong>M</strong></td>
+                    <td>72 cm</td>
+                    <td>115 cm</td>
+                    <td>40.0 cm</td>
+                  </tr>
+                  <tr>
+                    <td><strong>L</strong></td>
+                    <td>74 cm</td>
+                    <td>120 cm</td>
+                    <td>41.5 cm</td>
+                  </tr>
+                  <tr class="highlight-row">
+                    <td><strong>XL</strong></td>
+                    <td>76 cm</td>
+                    <td>125 cm</td>
+                    <td>43.0 cm</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2XL</strong></td>
+                    <td>78 cm</td>
+                    <td>130 cm</td>
+                    <td>45.0 cm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <small class="pdp-table-tip">Note: Hand-measured specifications. Flat measurement tolerance within ±1-2cm is normal industry standard.</small>
+          </div>
+
+          <!-- Editorial Lookbook Gallery (All Model Photography Slices) -->
+          <div class="pdp-editorial-gallery">
+            <div class="gallery-title-box">
+              <span class="g-tag">LOOKBOOK GALLERY</span>
+              <h3>On-Model Editorial Showcase</h3>
+              <p>High-end streetwear lifestyle photography &amp; outfit styling</p>
+            </div>
+            <!-- Lookbook image sequence matching reference -->
+            <img src="assets/t012/detail/01cc0e866b32223730f1efe716572b66.png" class="pdp-gallery-img" alt="Lookbook 1">
+            <img src="assets/t012/detail/0270daf78aa4cb71840f60966bc55a15.png" class="pdp-gallery-img" alt="Lookbook 2">
+            <img src="assets/t012/detail/65799724a3e5ac65b38994b98c588596.png" class="pdp-gallery-img" alt="Lookbook 3">
+            <img src="assets/t012/detail/2935d8187433107aa843e913c53cf7e1.png" class="pdp-gallery-img" alt="Lookbook 4">
+            <img src="assets/t012/detail/2f38f4d877f665084a5d38f41983457c.png" class="pdp-gallery-img" alt="Lookbook 5">
+            <img src="assets/t012/detail/e3605f3f99641adf0242080604ffd994.png" class="pdp-gallery-img" alt="Lookbook 6">
+            <img src="assets/t012/detail/6aaf0cb7d46c975b66e4799dc2d062cf.png" class="pdp-gallery-img" alt="Lookbook 7">
+            <img src="assets/t012/detail/fce0e2d34fc28eca85a4a98c9dd7bb11.png" class="pdp-gallery-img" alt="Lookbook 8">
+            <img src="assets/t012/detail/adb2e7713f9e5360254fc7afa7661cef.png" class="pdp-gallery-img" alt="Lookbook 9">
+            <img src="assets/t012/detail/befd9890e7d1efc98a2288951cae4417.png" class="pdp-gallery-img" alt="Lookbook 10">
+            <img src="assets/t012/detail/0ce14b35ead6feedeb3194a72a6e5243.png" class="pdp-gallery-img" alt="Lookbook 11">
+            <img src="assets/t012/detail/89d552f73ea8de6fcf9e0e40ad2142cb.png" class="pdp-gallery-img" alt="Lookbook 12">
+            <img src="assets/t012/detail/9a1dda6e0215d0cd1e05cca190686f05.png" class="pdp-gallery-img" alt="Lookbook 13">
+            <img src="assets/t012/detail/f6369b0a304eef1a95656a5327c562e0.png" class="pdp-gallery-img" alt="Lookbook 14">
+          </div>
+
+          <!-- Sticky Bottom Action Footer for PDP -->
+          <div class="pdp-sticky-footer">
+            <button type="button" class="btn-pdp-wa" onclick="openWhatsAppModal()">
+              <span>💬</span>
+              <small>WhatsApp</small>
+            </button>
+            <button type="button" class="btn-pdp-techpack" onclick="openB2BModal()">
+              <span>📁</span>
+              <small>Tech Pack</small>
+            </button>
+            <button type="button" class="btn-pdp-order" onclick="addPdpToCart('T012')">
+              <span>Order 1-PC Sample ($11.50)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 3: Dedicated Custom OEM Lab Page (Now accessed directly via Custom OEM Tab) -->
+        <div class="tab-page-content" id="customPage" style="display: none;">
+          <div class="custom-page-header">
+            <span class="custom-super-badge">B2B &amp; CREATOR CUSTOM STUDIO</span>
+            <h3>DOZE OPO Custom Lab &amp; OEM</h3>
+            <p>From 1-Piece Sample Proofing to Full Tech Pack Mass Production</p>
+          </div>
+
+          <!-- Workshop Showcase Banner -->
+          <div class="custom-workshop-banner">
+            <img src="assets/custom_oem.jpg" alt="DOZE OPO OEM Workshop" class="workshop-img">
+            <div class="workshop-overlay">
+              <span class="workshop-tag">PRECISION CRAFTSMANSHIP</span>
+              <h4>Screen Printing · 3D Puff · Embroidery · Private Labels</h4>
+            </div>
+          </div>
+
+          <!-- Core Module: OEM Custom Lab & Instant Price Calculator -->
+          <section class="custom-lab-section" id="custom-section">
+            <div class="lab-card">
+              <div class="lab-header">
+                <div class="lab-title-box">
+                  <span class="lab-pill">OEM &amp; POD WORKSHOP</span>
+                  <h3>Sampling &amp; OEM Quote Calculator</h3>
+                  <p>1 PC Sample Proofing · Bulk Private Labeling · All Print Crafts</p>
+                </div>
+                <div class="lab-icon">🎨</div>
+              </div>
+
+              <!-- Calculator Form -->
+              <div class="calc-box">
+                <div class="calc-row">
+                  <label>1. Select Base Garment:</label>
+                  <div class="chip-group" id="garmentTypeChips">
+                    <button type="button" class="calc-chip active" data-type="tee" data-multiplier="1.0">TEE</button>
+                    <button type="button" class="calc-chip" data-type="crewneck" data-multiplier="1.5">CREWNECK SWEATSHIRT</button>
+                    <button type="button" class="calc-chip" data-type="hoodie" data-multiplier="2.0">HOODIES</button>
+                    <button type="button" class="calc-chip" data-type="jacket" data-multiplier="3.0">ZIP JACKETS</button>
+                    <button type="button" class="calc-chip" data-type="pants" data-multiplier="2.0">PANTS</button>
+                    <button type="button" class="calc-chip" data-type="jeans" data-multiplier="3.0">JEANS</button>
+                  </div>
+                </div>
+
+                <div class="calc-row">
+                  <label>2. Select Print &amp; Craft Technique:</label>
+                  <div class="chip-group" id="craftTypeChips">
+                    <button type="button" class="calc-chip active" data-craft="heat" data-tee-price="20.00">Heat transfer</button>
+                    <button type="button" class="calc-chip" data-craft="dtg" data-tee-price="50.00">Direct to Garment (DTG)</button>
+                    <button type="button" class="calc-chip" data-craft="screen" data-tee-price="40.00">Screen Print</button>
+                    <button type="button" class="calc-chip" data-craft="puff" data-tee-price="40.00">3D Puff Print</button>
+                    <button type="button" class="calc-chip" data-craft="embroidery" data-tee-price="50.00">3D Embroidery</button>
+                  </div>
+                </div>
+
+                <div class="calc-row">
+                  <label>3. Order Quantity (Pieces):</label>
+                  <div class="qty-stepper-box">
+                    <div class="qty-buttons">
+                      <button type="button" class="qty-btn" id="btnQtyMinus">-</button>
+                      <input type="number" id="customQtyInput" value="1" min="1" max="10000">
+                      <button type="button" class="qty-btn" id="btnQtyPlus">+</button>
+                    </div>
+                    <div class="qty-presets">
+                      <span class="preset-tag active" data-qty="1">1 pc (Sample)</span>
+                      <span class="preset-tag" data-qty="50">50 pcs (Wholesale)</span>
+                      <span class="preset-tag" data-qty="200">200 pcs (Bulk OEM)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="calc-result-panel">
+                  <div class="price-breakdown">
+                    <div class="calc-stat">
+                      <span class="stat-label">Estimated Unit Price (Garment + Craft)</span>
+                      <strong class="stat-price"><span class="currency-symbol">$</span><span id="unitPriceDisplay">20.00</span> / pc</strong>
+                    </div>
+                    <div class="calc-stat">
+                      <span class="stat-label">Estimated Total Order Value</span>
+                      <strong class="stat-total"><span class="currency-symbol">$</span><span id="totalPriceDisplay">20.00</span></strong>
+                    </div>
+                  </div>
+                  <div class="calc-buttons">
+                    <button type="button" class="btn-primary-action" id="btnSubmitCustomRFQ">
+                      <span>📤 Upload Tech Pack &amp; Inquire</span>
+                    </button>
+                    <button type="button" class="btn-whatsapp-action" onclick="openWhatsAppModal()">
+                      <span>💬 WhatsApp Live Chat</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Factory Manufacturing Capabilities Banner -->
+          <section class="factory-capabilities-banner">
+            <div class="banner-inner">
+              <div class="banner-text">
+                <span class="super-tag">FACTORY STRENGTH</span>
+                <h4>DOZE OPO Flexible Streetwear Manufacturing</h4>
+                <ul>
+                  <li>✓ <strong>Custom Trims</strong>: Jacquard woven neck labels, leather patches, metal zipper tags</li>
+                  <li>✓ <strong>Specialty Wash</strong>: Acid snow wash, mineral dye, vintage distress, pre-shrunk wash</li>
+                  <li>✓ <strong>Quality Assurance</strong>: 100% metal needle inspection, custom polybags &amp; barcode tags</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4-Step Production Workflow Card -->
+          <section class="workflow-card-section">
+            <div class="workflow-card">
+              <h4>Standard OEM Production Workflow</h4>
+              <div class="workflow-steps-grid">
+                <div class="wf-step">
+                  <span class="wf-badge">01</span>
+                  <strong>Tech Pack</strong>
+                  <small>Submit artwork</small>
+                </div>
+                <div class="wf-step">
+                  <span class="wf-badge">02</span>
+                  <strong>48h Sample</strong>
+                  <small>Sample proofing</small>
+                </div>
+                <div class="wf-step">
+                  <span class="wf-badge">03</span>
+                  <strong>Bulk OEM</strong>
+                  <small>MOQ 50+ pcs</small>
+                </div>
+                <div class="wf-step">
+                  <span class="wf-badge">04</span>
+                  <strong>Global Ship</strong>
+                  <small>FedEx / DHL</small>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <footer class="app-footer">
+            <div class="footer-logo">DOZE OPO</div>
+            <p class="footer-slogan">HEAVYWEIGHT OVERSIZED STREETWEAR &amp; FLEXIBLE OEM</p>
+            <p class="copyright">© 2026 DOZE OPO. All Rights Reserved.</p>
+          </footer>
+        </div>
+
+        <!-- Tab 3: Cart / RFQ Quote Page -->
+        <div class="tab-page-content" id="cartPage" style="display: none;">
+          <div class="cart-page-header">
+            <h3>Sample Cart &amp; RFQ Inquiry</h3>
+            <span class="item-count-text">Total <strong id="cartCountTitle">1</strong> sample item(s)</span>
+          </div>
+          <div class="cart-items-wrapper" id="cartItemsList">
+            <!-- Sample item -->
+            <div class="cart-item-card">
+              <img src="assets/hoodie_item.jpg" alt="Sample Garment" class="cart-thumb">
+              <div class="cart-item-details">
+                <h4>H01 Heavyweight Boxy Hoodie</h4>
+                <div class="cart-specs">Size: XL (US Oversize) · 460 GSM Terry</div>
+                <div class="cart-price-qty">
+                  <span class="cart-price"><span class="currency-symbol">$</span>24.50</span>
+                  <div class="cart-qty-ctrl">
+                    <button type="button" class="cq-btn">-</button>
+                    <span>1</span>
+                    <button type="button" class="cq-btn">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart-checkout-bar">
+            <div class="cart-total-info">
+              <span>Estimated Subtotal:</span>
+              <strong class="total-highlight"><span class="currency-symbol">$</span><span id="cartTotalSum">24.50</span></strong>
+            </div>
+            <button type="button" class="btn-checkout" onclick="openWhatsAppModal()">Submit RFQ / Order Sample</button>
+          </div>
+        </div>
+
+        <!-- Tab 4: B2B Merchant Portal -->
+        <div class="tab-page-content" id="profilePage" style="display: none;">
+          <div class="b2b-header-card">
+            <div class="b2b-avatar">DO</div>
+            <div class="b2b-info">
+              <h3>DOZE OPO OEM Portal</h3>
+              <p>For Global Brands, Creators &amp; Wholesalers</p>
+            </div>
+          </div>
+          <div class="b2b-menu-list">
+            <div class="b2b-menu-item" onclick="openB2BModal()">
+              <span class="menu-icon">📐</span>
+              <div class="menu-text">
+                <strong>Submit Tech Pack &amp; Artwork</strong>
+                <small>Accepts PDF, AI, PSD vector graphics &amp; size specs</small>
+              </div>
+              <span class="arrow">&gt;</span>
+            </div>
+            <div class="b2b-menu-item" onclick="openContactModal()">
+              <span class="menu-icon">🌍</span>
+              <div class="menu-text">
+                <strong>Bulk Wholesale &amp; Terms</strong>
+                <small>Dedicated 1-on-1 account manager for orders 50+ pcs</small>
+              </div>
+              <span class="arrow">&gt;</span>
+            </div>
+            <div class="b2b-menu-item" onclick="openWhatsAppModal()">
+              <span class="menu-icon">💬</span>
+              <div class="menu-text">
+                <strong>WhatsApp Priority Account Manager</strong>
+                <small>8:00 - 24:00 (GMT+8) Real-time English support</small>
+              </div>
+              <span class="arrow">&gt;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END of app-screen-container -->
+
+      <!-- Floating Action Button (Only Contact retained as requested) -->
+      <aside class="floating-contact-panel">
+        <button type="button" class="floating-bubble-btn" id="floatContactBtn" title="Contact Us" onclick="openContactModal()">
+          <div class="bubble-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+          </div>
+          <span class="bubble-label">Contact</span>
+        </button>
+      </aside>
+
+      <!-- Bottom Tab Navigation Bar (Permanently Fixed to Bottom with Custom OEM Center Icon) -->
+      <nav class="bottom-tab-bar">
+        <button type="button" class="tab-item active" data-tab="home" onclick="switchTab('home')">
+          <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="tab-label">Home</span>
+        </button>
+        <button type="button" class="tab-item" data-tab="catalog" onclick="switchTab('catalog')">
+          <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+          <span class="tab-label">Catalog</span>
+        </button>
+        <button type="button" class="tab-item custom-tab-item" data-tab="custom" onclick="switchTab('custom')">
+          <div class="custom-tab-icon-wrap">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="tab-label highlight">Custom OEM</span>
+        </button>
+        <button type="button" class="tab-item" data-tab="cart" onclick="switchTab('cart')">
+          <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" x2="21" y1="6" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="tab-label">Cart</span>
+        </button>
+        <button type="button" class="tab-item" data-tab="profile" onclick="switchTab('profile')">
+          <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="tab-label">B2B Portal</span>
+        </button>
+      </nav>
+
+      <!-- iOS Home Indicator -->
+      <div class="ios-home-indicator"></div>
+    </div>
+  </main>
+
+  <!-- Modal 1: Product Quick View & Sampling Modal -->
+  <div class="modal-backdrop" id="productModal">
+    <div class="modal-drawer">
+      <div class="modal-header">
+        <h4 id="modalProdTitle">H01 Heavyweight Boxy Pullover Hoodie</h4>
+        <button type="button" class="modal-close-btn" onclick="closeProductModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-media-wrap">
+          <img id="modalProdImg" src="assets/hoodie_item.jpg" alt="Product Image">
+        </div>
+        <div class="modal-price-strip">
+          <div class="mp-price">
+            <span class="currency-symbol">$</span>
+            <span id="modalProdPrice">24.50</span>
+          </div>
+          <span class="mp-moq">1 PC Sample Ready · Wholesale OEM Tiers Available</span>
+        </div>
+        <div class="modal-spec-block">
+          <h5>Fabric Specifications &amp; Fit</h5>
+          <ul class="spec-list" id="modalSpecList">
+            <li>• Fabric: 460 GSM Heavyweight Double-Yarn Combed Cotton Terry</li>
+            <li>• Cut: Authentic US Oversized Drop-Shoulder Boxy Silhouette</li>
+            <li>• Seams: Clean Bound Neckband &amp; Shoulder-to-Shoulder Taping</li>
+            <li>• Finishing: Eco-friendly Mineral Washed, Pre-shrunk (Shrinkage &lt; 2%)</li>
+          </ul>
+        </div>
+        <div class="modal-size-block">
+          <h5>Select Size (US Oversize Fit)</h5>
+          <div class="size-chips">
+            <button type="button" class="size-chip">S (165-175cm / 5'5"-5'9")</button>
+            <button type="button" class="size-chip">M (175-182cm / 5'9"-6'0")</button>
+            <button type="button" class="size-chip active">L (180-188cm / 5'11"-6'2")</button>
+            <button type="button" class="size-chip">XL (185-195cm / 6'1"-6'5")</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-sample-cart" onclick="addProductToCart()">Add to Sample Cart</button>
+        <button type="button" class="btn-direct-inquiry" onclick="openWhatsAppModal()">WhatsApp Direct Proofing</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: WhatsApp Live Inquiry Modal -->
+  <div class="modal-backdrop" id="whatsappModal">
+    <div class="modal-drawer modal-center">
+      <div class="modal-header">
+        <h4>DOZE OPO Dedicated Business WhatsApp</h4>
+        <button type="button" class="modal-close-btn" onclick="closeWhatsAppModal()">✕</button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="wa-qr-box">
+          <div class="wa-icon-large">📱</div>
+          <p><strong>Direct WhatsApp Line:</strong></p>
+          <p class="wa-number">+086 18520682738</p>
+          <small class="wa-tip">Direct 1-on-1 English consultation for overseas brand creators &amp; sample proofing</small>
+        </div>
+        <div class="wa-buttons-group">
+          <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO,%20I%20am%20interested%20in%20custom%20heavyweight%20hoodies%20and%20t-shirts." target="_blank" class="btn-wa-direct">
+            Open Chat in WhatsApp
+          </a>
+          <button type="button" class="btn-copy-wa" onclick="copyContactText('+086 18520682738')">Copy Phone Number</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Multi-channel Contact Modal -->
+  <div class="modal-backdrop" id="contactModal">
+    <div class="modal-drawer">
+      <div class="modal-header">
+        <h4>Connect with DOZE OPO Team</h4>
+        <button type="button" class="modal-close-btn" onclick="closeContactModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="contact-channel-item">
+          <span class="channel-icon">📧</span>
+          <div class="channel-info">
+            <strong>Official Business Inquiries</strong>
+            <span>281563155@qq.com</span>
+          </div>
+          <button type="button" class="btn-copy" onclick="copyContactText('281563155@qq.com')">Copy</button>
+        </div>
+        <div class="contact-channel-item">
+          <span class="channel-icon">💬</span>
+          <div class="channel-info">
+            <strong>WeChat / WhatsApp Channel</strong>
+            <span>281563155 / +086 18520682738</span>
+          </div>
+          <button type="button" class="btn-copy" onclick="copyContactText('+086 18520682738')">Copy</button>
+        </div>
+        <div class="contact-channel-item">
+          <span class="channel-icon">🏭</span>
+          <div class="channel-info">
+            <strong>Manufacturing Base &amp; Showroom</strong>
+            <span>Guangzhou Trendy Men's and Women's Clothing Co., Ltd &amp; Guangzhou China</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Tech Pack & OEM Proofing Request Modal -->
+  <div class="modal-backdrop" id="b2bModal">
+    <div class="modal-drawer">
+      <div class="modal-header">
+        <h4>Submit Tech Pack &amp; OEM Requirements</h4>
+        <button type="button" class="modal-close-btn" onclick="closeB2BModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="techPackForm" onsubmit="handleTechPackSubmit(event)">
+          <div class="form-group">
+            <label>Brand / Creator Name:</label>
+            <input type="text" placeholder="e.g. Streetwear Studio NY" required>
+          </div>
+          <div class="form-group">
+            <label>Contact Info (WhatsApp / Email):</label>
+            <input type="text" placeholder="+1 ... or email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Target Garment &amp; Fabric Weight:</label>
+            <input type="text" placeholder="Specify your desired garment, fit, fabric weight (GSM), etc." required>
+          </div>
+          <div class="form-group">
+            <label>Upload Artwork / Tech Pack (AI, PSD, PDF, PNG):</label>
+            <div class="file-drop-area">
+              <input type="file" id="fileUploadInput" accept=".ai,.psd,.pdf,.png,.jpg,.jpeg">
+              <span class="drop-text">📁 Click or drag file here (Max 50MB)</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Special Requests &amp; Print Technique:</label>
+            <textarea rows="3" placeholder="e.g. Front chest 3D puff print, back oversized DTG print, custom woven label inside neck..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit-form">🚀 Submit &amp; Receive Quotation</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification -->
+  <div class="app-toast" id="appToast">Notification</div>
+
+  <script src="app.js?v=24"></script>
+</body>
+</html>
