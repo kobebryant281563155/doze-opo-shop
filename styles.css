@@ -283,7 +283,7 @@ body {
    3. 页面顶部 Header（对标参考图：ABC UVW 居中 + 胶囊分享）
    ========================================================================== */
 .app-header {
-  padding: 6px 16px 8px;
+  padding: 16px 16px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -291,6 +291,10 @@ body {
   position: sticky;
   top: 0;
   z-index: 40;
+}
+
+.header-right-space {
+  width: 90px;
 }
 
 .header-market-pill {
