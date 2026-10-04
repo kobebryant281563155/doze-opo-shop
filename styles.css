@@ -58,114 +58,41 @@ body {
 }
 
 /* ==========================================================================
-   1. 电脑端开发辅助控制栏 (Dev Control Bar)
+   1. 原型开发辅助控制栏（完全隐藏，默认原生全屏发布）
    ========================================================================== */
 .dev-control-bar {
-  width: 100%;
-  max-width: 1200px;
-  background: #ffffff;
-  border-bottom: 1px solid var(--border-light);
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  z-index: 100;
-  box-shadow: var(--shadow-sm);
-}
-
-.control-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-}
-
-.brand-badge {
-  background: #000;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 800;
-  padding: 2px 6px;
-  border-radius: var(--radius-xs);
-  letter-spacing: 0.5px;
-}
-
-.control-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.device-switchers {
-  display: flex;
-  background: #f1f2f4;
-  padding: 3px;
-  border-radius: var(--radius-sm);
-}
-
-.btn-toggle {
-  background: transparent;
-  border: none;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  color: var(--text-muted);
-  transition: all 0.2s ease;
-}
-
-.btn-toggle.active {
-  background: #ffffff;
-  color: var(--text-main);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.currency-lang-group {
-  display: flex;
-  gap: 8px;
-}
-
-.currency-lang-group select {
-  padding: 6px 10px;
-  font-size: 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-light);
-  background: #ffffff;
-  font-weight: 600;
-  cursor: pointer;
+  display: none !important;
 }
 
 /* ==========================================================================
-   2. 移动端真机外框 (iPhone Bezel Simulation)
+   2. 移动端原生全屏容器 (Native Mobile Viewport - Default Fullscreen)
    ========================================================================== */
 .mobile-viewport-wrapper {
-  padding: 16px 0 30px;
+  padding: 0;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-phone);
 }
 
 .iphone-bezel {
-  width: var(--phone-width);
-  height: min(var(--phone-height), calc(100vh - 84px));
-  max-height: 870px;
-  min-height: 620px;
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  height: 100vh;
   background-color: var(--bg-phone);
-  border-radius: 46px;
-  box-shadow: var(--shadow-bezel);
+  border-radius: 0;
+  box-shadow: none;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 4px solid #1a1a1a;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
 }
 
-/* 全屏纯移动端展示模式 */
 .mobile-viewport-wrapper.fullscreen-mode {
   padding: 0;
 }

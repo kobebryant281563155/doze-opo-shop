@@ -8,37 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=26">
+  <link rel="stylesheet" href="styles.css?v=28">
 </head>
 <body class="theme-light">
-  <!-- Dev Control Bar (Desktop Helper) -->
-  <aside class="dev-control-bar" id="devControlBar">
-    <div class="control-brand">
-      <span class="brand-badge">GLOBAL B2B / B2C</span>
-      <strong>DOZE OPO</strong> Mobile Independent Store Prototype
-    </div>
-    <div class="control-actions">
-      <div class="device-switchers">
-        <button type="button" class="btn-toggle active" id="btnPhoneView">📱 Phone Frame</button>
-        <button type="button" class="btn-toggle" id="btnFullView">🌐 Fullscreen View</button>
-      </div>
-      <div class="currency-lang-group">
-        <select id="currencySelector" aria-label="Select Settlement Currency">
-          <option value="USD" selected>USD ($)</option>
-          <option value="EUR">EUR (€)</option>
-          <option value="GBP">GBP (£)</option>
-          <option value="CNY">CNY (¥)</option>
-        </select>
-        <select id="langSelector" aria-label="Select Site Language">
-          <option value="en" selected>English (US)</option>
-          <option value="zh">中文 (CN)</option>
-        </select>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Mobile Viewport Wrapper -->
-  <main class="mobile-viewport-wrapper" id="viewportWrapper">
+  <!-- Mobile Viewport Wrapper (Native Fullscreen Mobile View) -->
+  <main class="mobile-viewport-wrapper fullscreen-mode" id="viewportWrapper">
     <div class="iphone-bezel" id="iphoneFrame">
       <!-- Scrollable Mobile App Container -->
       <div class="app-screen-container" id="appScrollContainer">
