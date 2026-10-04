@@ -65,36 +65,6 @@ const PRODUCTS_DATA = {
       { name: 'Purple / Black', thumb: 'assets/t012/sku/sku_purple_black.jpg', hero: 'assets/t012/detail/89d552f73ea8de6fcf9e0e40ad2142cb.png' },
       { name: 'Wheat / Morandi Grey', thumb: 'assets/t012/sku/sku_wheat_morandigrey.jpg', hero: 'assets/t012/detail/9a1dda6e0215d0cd1e05cca190686f05.png' }
     ]
-  },
-  'T040': {
-    id: 'T040',
-    name: 'T040 245G Solid Color Boxy Tee',
-    category: 'tee',
-    priceUSD: 10.50,
-    gram: '245 GSM Combed Cotton',
-    img: 'assets/t040/sku/sku_pure_white.jpg',
-    color: '6 Solid Colorways',
-    specs: [
-      '245 GSM 100% Combed Compact Cotton · Ultra-Fine Knit',
-      'Clean Streetwear Boxy Silhouette, Drop Shoulder Fit',
-      'High-Density 1x1 Ribbed Neckline with Reinforcement',
-      'Pre-shrunk Vintage Treatment (< 2% Shrinkage)',
-      '6 Earth & Neutral Colorways · 1-Piece Custom Tech Pack Ready'
-    ],
-    gallery: [
-      'assets/t040/sku/sku_pure_white.jpg',
-      'assets/t040/sku/sku_sand_wheat.jpg',
-      'assets/t040/sku/sku_vintage_khaki.jpg',
-      'assets/t040/sku/sku_washed_black.jpg'
-    ],
-    skus: [
-      { name: 'Pure White', thumb: 'assets/t040/sku/sku_pure_white.jpg', hero: 'assets/t040/sku/sku_pure_white.jpg' },
-      { name: 'Off-White', thumb: 'assets/t040/sku/sku_off_white.jpg', hero: 'assets/t040/sku/sku_off_white.jpg' },
-      { name: 'Sand Wheat', thumb: 'assets/t040/sku/sku_sand_wheat.jpg', hero: 'assets/t040/sku/sku_sand_wheat.jpg' },
-      { name: 'Vintage Khaki', thumb: 'assets/t040/sku/sku_vintage_khaki.jpg', hero: 'assets/t040/sku/sku_vintage_khaki.jpg' },
-      { name: 'Navy Blue', thumb: 'assets/t040/sku/sku_navy_blue.jpg', hero: 'assets/t040/sku/sku_navy_blue.jpg' },
-      { name: 'Washed Black', thumb: 'assets/t040/sku/sku_washed_black.jpg', hero: 'assets/t040/sku/sku_washed_black.jpg' }
-    ]
   }
 };
 
