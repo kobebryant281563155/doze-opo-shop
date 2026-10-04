@@ -13,6 +13,7 @@ map_*.ps1
 prepare_*.ps1
 rename_*.ps1
 scan_*.ps1
+do_push.ps1
 init_*.ps1
 push_*.bat
 sync_*.ps1
