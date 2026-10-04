@@ -38,7 +38,7 @@ const PRODUCTS_DATA = {
     id: 'T012',
     name: 'T012 240G Raglan Sleeve Boxy Tee',
     category: 'tee',
-    priceUSD: 11.50,
+    priceUSD: 15.00,
     gram: '240 GSM Combed Cotton',
     img: 'assets/t012/main/3.jpg',
     color: '8 Contrast Colorways',
