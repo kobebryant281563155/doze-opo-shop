@@ -3,21 +3,9 @@
 !assets/**/*.png
 
 # Temporary scratch scripts (keep server.ps1)
-clean_*.ps1
-copy_*.ps1
-edit_*.ps1
-find_*.ps1
-fix_*.ps1
-inspect_*.ps1
-map_*.ps1
-prepare_*.ps1
-rename_*.ps1
-scan_*.ps1
-do_push.ps1
-init_*.ps1
-push_*.bat
-sync_*.ps1
-update_*.ps1
+*.ps1
+!server.ps1
+*.bat
 
 # OS & Editor
 .DS_Store

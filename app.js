@@ -32,7 +32,7 @@ const APP_STATE = {
   }
 };
 
-// 2. Product Database (Preserved categories, with T012 Heavy Tees uploaded)
+// 2. Product Database (Preserved categories, with T012 and T040 Heavy Tees uploaded)
 const PRODUCTS_DATA = {
   'T012': {
     id: 'T012',
@@ -49,6 +49,12 @@ const PRODUCTS_DATA = {
       '3.0cm 1x1 Elastic Ribbed Collar with Bound Taping',
       '8 Vintage Colorways · 1-Piece Custom Tech Pack Ready'
     ],
+    gallery: [
+      'assets/t012/main/3.jpg',
+      'assets/t012/main/1.jpg',
+      'assets/t012/main/2.jpg',
+      'assets/t012/main/4.jpg'
+    ],
     skus: [
       { name: 'White / Black', thumb: 'assets/t012/sku/sku_white_black.jpg', hero: 'assets/t012/main/3.jpg' },
       { name: 'Beige / Light Blue', thumb: 'assets/t012/sku/sku_beige_lightblue.jpg', hero: 'assets/t012/detail/01cc0e866b32223730f1efe716572b66.png' },
@@ -58,6 +64,36 @@ const PRODUCTS_DATA = {
       { name: 'Wheat / Jungle Green', thumb: 'assets/t012/sku/sku_wheat_junglegreen.jpg', hero: 'assets/t012/detail/2935d8187433107aa843e913c53cf7e1.png' },
       { name: 'Purple / Black', thumb: 'assets/t012/sku/sku_purple_black.jpg', hero: 'assets/t012/detail/89d552f73ea8de6fcf9e0e40ad2142cb.png' },
       { name: 'Wheat / Morandi Grey', thumb: 'assets/t012/sku/sku_wheat_morandigrey.jpg', hero: 'assets/t012/detail/9a1dda6e0215d0cd1e05cca190686f05.png' }
+    ]
+  },
+  'T040': {
+    id: 'T040',
+    name: 'T040 245G Solid Color Boxy Tee',
+    category: 'tee',
+    priceUSD: 10.50,
+    gram: '245 GSM Combed Cotton',
+    img: 'assets/t040/sku/sku_pure_white.jpg',
+    color: '6 Solid Colorways',
+    specs: [
+      '245 GSM 100% Combed Compact Cotton · Ultra-Fine Knit',
+      'Clean Streetwear Boxy Silhouette, Drop Shoulder Fit',
+      'High-Density 1x1 Ribbed Neckline with Reinforcement',
+      'Pre-shrunk Vintage Treatment (< 2% Shrinkage)',
+      '6 Earth & Neutral Colorways · 1-Piece Custom Tech Pack Ready'
+    ],
+    gallery: [
+      'assets/t040/sku/sku_pure_white.jpg',
+      'assets/t040/sku/sku_sand_wheat.jpg',
+      'assets/t040/sku/sku_vintage_khaki.jpg',
+      'assets/t040/sku/sku_washed_black.jpg'
+    ],
+    skus: [
+      { name: 'Pure White', thumb: 'assets/t040/sku/sku_pure_white.jpg', hero: 'assets/t040/sku/sku_pure_white.jpg' },
+      { name: 'Off-White', thumb: 'assets/t040/sku/sku_off_white.jpg', hero: 'assets/t040/sku/sku_off_white.jpg' },
+      { name: 'Sand Wheat', thumb: 'assets/t040/sku/sku_sand_wheat.jpg', hero: 'assets/t040/sku/sku_sand_wheat.jpg' },
+      { name: 'Vintage Khaki', thumb: 'assets/t040/sku/sku_vintage_khaki.jpg', hero: 'assets/t040/sku/sku_vintage_khaki.jpg' },
+      { name: 'Navy Blue', thumb: 'assets/t040/sku/sku_navy_blue.jpg', hero: 'assets/t040/sku/sku_navy_blue.jpg' },
+      { name: 'Washed Black', thumb: 'assets/t040/sku/sku_washed_black.jpg', hero: 'assets/t040/sku/sku_washed_black.jpg' }
     ]
   }
 };
@@ -368,7 +404,7 @@ function renderCatalogList(catFilter) {
       item.className = 'cart-item-card product-card';
       item.style.cursor = 'pointer';
       item.onclick = () => {
-        if (p.id === 'T012') {
+        if (p.id === 'T012' || p.id === 'T040') {
           openProductDetail(p.id);
         } else {
           openProductModal(p.id);
@@ -424,6 +460,30 @@ function openProductDetail(productId) {
   const container = document.getElementById('appScrollContainer');
   if (container) container.scrollTop = 0;
 
+  // Update Title & Meta
+  const titleElem = document.querySelector('.pdp-title');
+  if (titleElem) titleElem.textContent = prod.name;
+  
+  const priceVal = document.querySelector('.pdp-price-val');
+  if (priceVal) priceVal.textContent = formatCurrency(prod.priceUSD);
+  
+  const descElem = document.querySelector('.pdp-desc');
+  if (descElem) descElem.textContent = prod.specs ? prod.specs.slice(0, 2).join(' · ') : '';
+
+  // Gallery thumbs
+  const thumbStrip = document.getElementById('pdpThumbStrip');
+  const gallery = prod.gallery || (prod.skus ? prod.skus.map(s => s.hero).slice(0, 4) : [prod.img]);
+  if (thumbStrip) {
+    thumbStrip.innerHTML = '';
+    gallery.forEach((gImg, idx) => {
+      const tDiv = document.createElement('div');
+      tDiv.className = `pdp-thumb ${idx === 0 ? 'active' : ''}`;
+      tDiv.onclick = () => switchPdpHero(gImg, idx + 1);
+      tDiv.innerHTML = `<img src="${gImg}" alt="Gallery ${idx + 1}">`;
+      thumbStrip.appendChild(tDiv);
+    });
+  }
+
   // Render SKU color grid
   const colorGrid = document.getElementById('pdpColorGrid');
   if (colorGrid && prod.skus) {
@@ -443,7 +503,20 @@ function openProductDetail(productId) {
     activePdpColor = prod.skus[0].name;
     const colorLabel = document.getElementById('pdpActiveColorName');
     if (colorLabel) colorLabel.textContent = activePdpColor;
-    switchPdpHero('assets/t012/main/3.jpg', 1);
+    switchPdpHero(prod.skus[0].hero || gallery[0], 1);
+  }
+
+  // Switch lookbook detail graphics between T012 and T040
+  const t012Section = document.getElementById('pdpT012DetailSection');
+  const t040Section = document.getElementById('pdpT040DetailSection');
+  if (t012Section && t040Section) {
+    if (productId === 'T040') {
+      t012Section.style.display = 'none';
+      t040Section.style.display = 'block';
+    } else {
+      t012Section.style.display = 'block';
+      t040Section.style.display = 'none';
+    }
   }
 }
 
