@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=33">
+  <link rel="stylesheet" href="styles.css?v=34">
 </head>
 <body class="theme-light">
   <!-- Mobile Viewport Wrapper (Native Fullscreen Mobile View) -->
@@ -276,6 +276,86 @@
               <button type="button" class="pdp-size-btn" onclick="selectPdpSize('L', this)">L</button>
               <button type="button" class="pdp-size-btn active" onclick="selectPdpSize('XL', this)">XL</button>
               <button type="button" class="pdp-size-btn" onclick="selectPdpSize('2XL', this)">2XL</button>
+            </div>
+          </div>
+
+          <!-- Quantity & US Shipping Rate Section -->
+          <div class="pdp-section-card pdp-shipping-card">
+            <!-- Quantity Row -->
+            <div class="pdp-qty-row">
+              <div class="pdp-section-title">
+                <span>Quantity:</span>
+                <strong id="pdpQtyDisplay">1 pc (Sample)</strong>
+              </div>
+              <div class="pdp-qty-stepper">
+                <button type="button" class="pdp-qty-btn" onclick="changePdpQty(-1)">-</button>
+                <input type="number" id="pdpQtyInput" value="1" min="1" max="999" onchange="setPdpQty(this.value)">
+                <button type="button" class="pdp-qty-btn" onclick="changePdpQty(1)">+</button>
+              </div>
+            </div>
+
+            <!-- Quick Qty Presets -->
+            <div class="pdp-qty-presets">
+              <button type="button" class="pdp-qpreset active" onclick="setPdpQty(1)">1 PC (Sample)</button>
+              <button type="button" class="pdp-qpreset" onclick="setPdpQty(2)">2 PCS</button>
+              <button type="button" class="pdp-qpreset" onclick="setPdpQty(3)">3 PCS</button>
+              <button type="button" class="pdp-qpreset" onclick="setPdpQty(5)">5 PCS</button>
+              <button type="button" class="pdp-qpreset" onclick="setPdpQty(10)">10 PCS</button>
+            </div>
+
+            <!-- US Shipping Details Box -->
+            <div class="pdp-shipping-box">
+              <div class="shipping-header">
+                <div class="shipping-dest">
+                  <span class="flag-icon">🇺🇸</span>
+                  <div>
+                    <strong class="dest-title">Ship to United States</strong>
+                    <span class="dest-sub">USPS / DHL Direct Express</span>
+                  </div>
+                </div>
+                <div class="shipping-eta-badge">
+                  <span class="eta-icon">⏱️</span>
+                  <span>10–15 Days</span>
+                </div>
+              </div>
+
+              <!-- Shipping Pricing Rule Explanation -->
+              <div class="shipping-rule-banner">
+                <div class="rule-tag">US SHIPPING POLICY</div>
+                <div class="rule-text">
+                  First item: <strong>$8.00</strong> · Each additional item: <strong>+$0.50</strong>
+                </div>
+                <div class="rule-delivery-note">
+                  📦 Estimated delivery within <strong>10–15 days</strong> with real-time tracking.
+                </div>
+              </div>
+
+              <!-- Calculation Breakdown Panel -->
+              <div class="shipping-calc-breakdown">
+                <div class="calc-line">
+                  <span class="line-label">Garment Subtotal (<span id="pdpCalcQtyText">1 pc</span>)</span>
+                  <span class="line-val" id="pdpGarmentSubtotal">$15.00</span>
+                </div>
+                <div class="calc-line">
+                  <span class="line-label">
+                    US Direct Shipping 
+                    <small id="pdpShipFormulaNote">($8.00 base)</small>
+                  </span>
+                  <span class="line-val shipping-fee" id="pdpShippingFee">$8.00</span>
+                </div>
+                <div class="calc-divider"></div>
+                <div class="calc-line total-line">
+                  <span class="line-label">Estimated Total (Delivered)</span>
+                  <span class="line-val total-price" id="pdpDeliveredTotal">$23.00</span>
+                </div>
+              </div>
+
+              <!-- Delivery Trust Points -->
+              <div class="shipping-trust-points">
+                <span>✓ 10–15 Days Arrival</span>
+                <span>✓ Real-Time Tracking</span>
+                <span>✓ All 50 US States</span>
+              </div>
             </div>
           </div>
 
@@ -686,10 +766,23 @@
               </div>
             </div>
           </div>
+          
+          <!-- US Shipping Policy Banner in Cart -->
+          <div class="cart-shipping-notice">
+            <span class="cs-flag">🇺🇸</span>
+            <div class="cs-text">
+              <strong>US Direct Air Shipping (10–15 Days)</strong>
+              <small>$8.00 base for 1st item · +$0.50 for each additional item</small>
+            </div>
+          </div>
+
           <div class="cart-checkout-bar">
             <div class="cart-total-info">
-              <span>Estimated Subtotal:</span>
-              <strong class="total-highlight"><span class="currency-symbol">$</span><span id="cartTotalSum">24.50</span></strong>
+              <div class="cart-summary-lines">
+                <div class="cs-line"><span>Subtotal:</span> <strong id="cartSubtotalSum"><span class="currency-symbol">$</span>24.50</strong></div>
+                <div class="cs-line"><span>US Shipping (10–15d):</span> <strong class="cs-ship-highlight" id="cartShippingSum"><span class="currency-symbol">$</span>8.00</strong></div>
+                <div class="cs-line cs-total-line"><span>Delivered Total:</span> <strong class="total-highlight"><span class="currency-symbol">$</span><span id="cartTotalSum">32.50</span></strong></div>
+              </div>
             </div>
             <button type="button" class="btn-checkout" onclick="openWhatsAppModal()">Submit RFQ / Order Sample</button>
           </div>
@@ -794,6 +887,13 @@
           <span class="mp-moq">1 PC Sample Ready · Wholesale OEM Tiers Available</span>
         </div>
         <div class="modal-spec-block">
+          <div class="modal-shipping-banner">
+            <span class="ms-flag">🇺🇸</span>
+            <div class="ms-content">
+              <strong>US Direct Shipping: $8.00 (+$0.50/add'l)</strong>
+              <span>Estimated delivery within 10–15 days with tracking</span>
+            </div>
+          </div>
           <h5>Fabric Specifications &amp; Fit</h5>
           <ul class="spec-list" id="modalSpecList">
             <li>• Fabric: 460 GSM Heavyweight Double-Yarn Combed Cotton Terry</li>
@@ -919,7 +1019,7 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="products_data.js?v=33"></script>
-  <script src="app.js?v=33"></script>
+  <script src="products_data.js?v=34"></script>
+  <script src="app.js?v=34"></script>
 </body>
 </html>

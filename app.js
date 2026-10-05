@@ -164,6 +164,9 @@ function updateAllPrices() {
 
   recalcCustomQuote();
   updateCartTotal();
+  if (typeof updatePdpShippingCalc === 'function') {
+    updatePdpShippingCalc();
+  }
 }
 
 // 7. Banner Pagination
@@ -414,12 +417,101 @@ function handleCategoryFilter(cat) {
 let activePdpProductId = 'T012';
 let activePdpColor = 'White / Black';
 let activePdpSize = 'XL';
+let activePdpQty = 1;
+
+// US Shipping Rule: $8.00 base for 1st item, +$0.50 for each additional item
+function calculateUsShipping(qty) {
+  qty = Math.max(0, parseInt(qty) || 0);
+  if (qty <= 0) return 0;
+  return 8.00 + (qty - 1) * 0.50;
+}
+
+function changePdpQty(delta) {
+  setPdpQty(activePdpQty + delta);
+}
+
+function setPdpQty(val) {
+  activePdpQty = Math.max(1, parseInt(val) || 1);
+  const input = document.getElementById('pdpQtyInput');
+  if (input) input.value = activePdpQty;
+
+  const presets = document.querySelectorAll('.pdp-qpreset');
+  presets.forEach(p => {
+    const pQty = parseInt(p.textContent) || 0;
+    p.classList.toggle('active', pQty === activePdpQty);
+  });
+
+  updatePdpShippingCalc();
+}
+
+function updatePdpShippingCalc() {
+  const prod = PRODUCTS_DATA[activePdpProductId];
+  if (!prod) return;
+
+  const qty = activePdpQty;
+  const unitPriceUSD = prod.priceUSD;
+  const garmentSubtotalUSD = unitPriceUSD * qty;
+  const shippingFeeUSD = calculateUsShipping(qty);
+  const deliveredTotalUSD = garmentSubtotalUSD + shippingFeeUSD;
+
+  const sym = APP_STATE.currencyRates[APP_STATE.currentCurrency]?.symbol || '$';
+
+  const qtyDisplay = document.getElementById('pdpQtyDisplay');
+  if (qtyDisplay) {
+    qtyDisplay.textContent = `${qty} pc${qty > 1 ? 's' : ''}${qty === 1 ? ' (Sample)' : ''}`;
+  }
+
+  const calcQtyText = document.getElementById('pdpCalcQtyText');
+  if (calcQtyText) {
+    calcQtyText.textContent = `${qty} pc${qty > 1 ? 's' : ''}`;
+  }
+
+  const garmentSubtotalElem = document.getElementById('pdpGarmentSubtotal');
+  if (garmentSubtotalElem) {
+    garmentSubtotalElem.textContent = `${sym}${formatCurrency(garmentSubtotalUSD)}`;
+  }
+
+  const formulaNoteElem = document.getElementById('pdpShipFormulaNote');
+  if (formulaNoteElem) {
+    if (qty === 1) {
+      formulaNoteElem.textContent = '($8.00 base)';
+    } else {
+      formulaNoteElem.textContent = `($8.00 + ${qty - 1} × $0.50)`;
+    }
+  }
+
+  const shippingFeeElem = document.getElementById('pdpShippingFee');
+  if (shippingFeeElem) {
+    shippingFeeElem.textContent = `${sym}${formatCurrency(shippingFeeUSD)}`;
+  }
+
+  const deliveredTotalElem = document.getElementById('pdpDeliveredTotal');
+  if (deliveredTotalElem) {
+    deliveredTotalElem.textContent = `${sym}${formatCurrency(deliveredTotalUSD)}`;
+  }
+
+  // Update Bottom Sticky Order Button
+  const orderBtnText = document.getElementById('pdpOrderBtnText');
+  if (orderBtnText) {
+    orderBtnText.textContent = `Order ${qty}-PC Sample (${sym}${formatCurrency(deliveredTotalUSD)} Delivered)`;
+  }
+}
 
 function openProductDetail(productId) {
   const prod = PRODUCTS_DATA[productId];
   if (!prod) return;
 
   activePdpProductId = productId;
+  activePdpQty = 1;
+  const input = document.getElementById('pdpQtyInput');
+  if (input) input.value = 1;
+  const presets = document.querySelectorAll('.pdp-qpreset');
+  presets.forEach(p => {
+    const pQty = parseInt(p.textContent) || 0;
+    p.classList.toggle('active', pQty === 1);
+  });
+  updatePdpShippingCalc();
+
   document.querySelectorAll('.tab-page-content').forEach(p => p.style.display = 'none');
   const pdp = document.getElementById('productDetailPage');
   if (pdp) pdp.style.display = 'block';
@@ -494,15 +586,10 @@ function openProductDetail(productId) {
 
   // Update Bottom Sticky Order Button
   const orderBtn = document.getElementById('pdpOrderBtn');
-  const orderBtnText = document.getElementById('pdpOrderBtnText');
-  if (orderBtnText) {
-    const sym = APP_STATE.currencyRates[APP_STATE.currentCurrency].symbol;
-    const converted = formatCurrency(prod.priceUSD);
-    orderBtnText.textContent = `Order 1-PC Sample (${sym}${converted})`;
-  }
   if (orderBtn) {
     orderBtn.onclick = () => addPdpToCart(productId);
   }
+  updatePdpShippingCalc();
 }
 
 function renderDynamicLookbook(prod) {
@@ -646,14 +733,14 @@ function addPdpToCart(productId) {
     id: prod.id,
     name: prod.name,
     priceUSD: prod.priceUSD,
-    qty: 1,
+    qty: activePdpQty,
     size: activePdpSize,
     spec: `${prod.gram} · ${activePdpColor}`,
     img: prod.img
   });
 
   updateCartTotal();
-  showToast(`Added [${prod.name}] (${activePdpColor} · ${activePdpSize}) to Sample RFQ Cart!`);
+  showToast(`Added ${activePdpQty}× [${prod.name}] (${activePdpColor} · ${activePdpSize}) to Sample RFQ Cart!`);
 }
 
 // 13. Product Quick View Modal
@@ -716,13 +803,16 @@ function updateCartTotal() {
   if (floatBadge) floatBadge.textContent = count;
   if (cartTitle) cartTitle.textContent = count;
 
-  let totalUSD = 0;
+  let subtotalUSD = 0;
+  let totalPieces = 0;
   const listContainer = document.getElementById('cartItemsList');
 
   if (listContainer) {
     listContainer.innerHTML = '';
     APP_STATE.cartItems.forEach((item, idx) => {
-      totalUSD += item.priceUSD * item.qty;
+      const itemQty = parseInt(item.qty) || 1;
+      totalPieces += itemQty;
+      subtotalUSD += item.priceUSD * itemQty;
       const el = document.createElement('div');
       el.className = 'cart-item-card';
       el.innerHTML = `
@@ -744,9 +834,22 @@ function updateCartTotal() {
     });
   }
 
+  const shippingUSD = calculateUsShipping(totalPieces);
+  const deliveredTotalUSD = subtotalUSD + shippingUSD;
+
+  const subtotalDisplay = document.getElementById('cartSubtotalSum');
+  if (subtotalDisplay) {
+    subtotalDisplay.textContent = formatCurrency(subtotalUSD);
+  }
+
+  const shippingDisplay = document.getElementById('cartShippingSum');
+  if (shippingDisplay) {
+    shippingDisplay.textContent = formatCurrency(shippingUSD);
+  }
+
   const sumDisplay = document.getElementById('cartTotalSum');
   if (sumDisplay) {
-    sumDisplay.textContent = formatCurrency(totalUSD);
+    sumDisplay.textContent = formatCurrency(deliveredTotalUSD);
   }
 }
 

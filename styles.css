@@ -2615,6 +2615,354 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
+/* ==========================================================================
+   PDP Quantity & US Shipping Rate Section
+   ========================================================================== */
+.pdp-shipping-card {
+  background: #ffffff;
+  padding: 14px 14px 16px;
+  margin-top: 8px;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.pdp-qty-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.pdp-qty-stepper {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.pdp-qty-btn {
+  width: 34px;
+  height: 32px;
+  background: #f9fafb;
+  border: none;
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdp-qty-btn:active {
+  background: #e5e7eb;
+}
+
+#pdpQtyInput {
+  width: 44px;
+  height: 32px;
+  border: none;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #111827;
+  font-family: var(--font-family);
+  -moz-appearance: textfield;
+}
+
+#pdpQtyInput::-webkit-outer-spin-button,
+#pdpQtyInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pdp-qty-presets {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.pdp-qpreset {
+  padding: 5px 10px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4b5563;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.pdp-qpreset.active {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+}
+
+/* Shipping Box */
+.pdp-shipping-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.shipping-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.shipping-dest {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shipping-dest .flag-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.shipping-dest .dest-title {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.shipping-dest .dest-sub {
+  display: block;
+  font-size: 10px;
+  color: #64748b;
+  margin-top: 1px;
+}
+
+.shipping-eta-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #047857;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.2px;
+}
+
+.shipping-eta-badge .eta-icon {
+  font-size: 11px;
+}
+
+/* Rule Banner */
+.shipping-rule-banner {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 9px 11px;
+  margin-bottom: 10px;
+}
+
+.shipping-rule-banner .rule-tag {
+  font-size: 8px;
+  font-weight: 800;
+  color: #4f46e5;
+  letter-spacing: 0.6px;
+  margin-bottom: 2px;
+}
+
+.shipping-rule-banner .rule-text {
+  font-size: 11.5px;
+  color: #1e293b;
+  line-height: 1.35;
+}
+
+.shipping-rule-banner .rule-delivery-note {
+  font-size: 10.5px;
+  color: #059669;
+  font-weight: 600;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px dashed #f1f5f9;
+}
+
+/* Live Calc Breakdown */
+.shipping-calc-breakdown {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.calc-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.calc-line small {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-left: 2px;
+}
+
+.calc-line .line-val {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.calc-line .shipping-fee {
+  color: #059669;
+  font-weight: 800;
+}
+
+.calc-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 6px 0 8px;
+}
+
+.calc-line.total-line {
+  margin-bottom: 0;
+  font-size: 12.5px;
+  color: #0f172a;
+}
+
+.calc-line.total-line .line-label {
+  font-weight: 800;
+}
+
+.calc-line.total-line .total-price {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.shipping-trust-points {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #64748b;
+  margin-top: 10px;
+  padding: 0 4px;
+}
+
+/* Cart Shipping Notification & Totals */
+.cart-shipping-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 9px 12px;
+  margin: 10px 12px 12px;
+}
+
+.cart-shipping-notice .cs-flag {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.cart-shipping-notice .cs-text strong {
+  display: block;
+  font-size: 11.5px;
+  color: #166534;
+  font-weight: 800;
+}
+
+.cart-shipping-notice .cs-text small {
+  display: block;
+  font-size: 10px;
+  color: #15803d;
+  margin-top: 1px;
+}
+
+.cart-summary-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cs-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10.5px;
+  color: #64748b;
+  gap: 12px;
+}
+
+.cs-line strong {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.cs-ship-highlight {
+  color: #059669 !important;
+}
+
+.cs-total-line {
+  font-size: 12.5px;
+  color: #0f172a;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 4px;
+  margin-top: 2px;
+}
+
+.cs-total-line strong {
+  font-size: 15px;
+  color: #111827;
+}
+
+/* Modal Shipping Banner */
+.modal-shipping-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+}
+
+.modal-shipping-banner .ms-flag {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.modal-shipping-banner .ms-content strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.modal-shipping-banner .ms-content span {
+  display: block;
+  font-size: 9.5px;
+  color: #059669;
+  font-weight: 600;
+}
+
 .pdp-oem-benefits {
   display: flex;
   justify-content: space-around;
