@@ -32,8 +32,8 @@ const APP_STATE = {
   }
 };
 
-// 2. Product Database (Preserved categories, with T012 and T040 Heavy Tees uploaded)
-const PRODUCTS_DATA = {
+// 2. Product Database (Preserved categories, loaded from window.PRODUCTS_DATA)
+const PRODUCTS_DATA = (typeof window !== 'undefined' && window.PRODUCTS_DATA) ? window.PRODUCTS_DATA : {
   'T012': {
     id: 'T012',
     name: 'T012 240G Raglan Sleeve Boxy Tee',
@@ -374,11 +374,7 @@ function renderCatalogList(catFilter) {
       item.className = 'cart-item-card product-card';
       item.style.cursor = 'pointer';
       item.onclick = () => {
-        if (p.id === 'T012' || p.id === 'T040') {
-          openProductDetail(p.id);
-        } else {
-          openProductModal(p.id);
-        }
+        openProductDetail(p.id);
       };
       item.innerHTML = `
         <img src="${p.img}" alt="${p.name}" class="cart-thumb">
@@ -435,14 +431,17 @@ function openProductDetail(productId) {
   if (titleElem) titleElem.textContent = prod.name;
   
   const priceVal = document.querySelector('.pdp-price-val');
-  if (priceVal) priceVal.textContent = formatCurrency(prod.priceUSD);
+  if (priceVal) {
+    priceVal.textContent = formatCurrency(prod.priceUSD);
+    priceVal.setAttribute('data-base-usd', prod.priceUSD);
+  }
   
   const descElem = document.querySelector('.pdp-desc');
   if (descElem) descElem.textContent = prod.specs ? prod.specs.slice(0, 2).join(' · ') : '';
 
   // Gallery thumbs
   const thumbStrip = document.getElementById('pdpThumbStrip');
-  const gallery = prod.gallery || (prod.skus ? prod.skus.map(s => s.hero).slice(0, 4) : [prod.img]);
+  const gallery = (prod.gallery && prod.gallery.length > 0) ? prod.gallery : (prod.skus ? prod.skus.map(s => s.hero).slice(0, 4) : [prod.img]);
   if (thumbStrip) {
     thumbStrip.innerHTML = '';
     gallery.forEach((gImg, idx) => {
@@ -456,7 +455,7 @@ function openProductDetail(productId) {
 
   // Render SKU color grid
   const colorGrid = document.getElementById('pdpColorGrid');
-  if (colorGrid && prod.skus) {
+  if (colorGrid && prod.skus && prod.skus.length > 0) {
     colorGrid.innerHTML = '';
     prod.skus.forEach((sku, idx) => {
       const swatch = document.createElement('div');
@@ -474,20 +473,127 @@ function openProductDetail(productId) {
     const colorLabel = document.getElementById('pdpActiveColorName');
     if (colorLabel) colorLabel.textContent = activePdpColor;
     switchPdpHero(prod.skus[0].hero || gallery[0], 1);
+  } else if (gallery.length > 0) {
+    switchPdpHero(gallery[0], 1);
   }
 
-  // Switch lookbook detail graphics between T012 and T040
-  const t012Section = document.getElementById('pdpT012DetailSection');
-  const t040Section = document.getElementById('pdpT040DetailSection');
-  if (t012Section && t040Section) {
-    if (productId === 'T040') {
-      t012Section.style.display = 'none';
-      t040Section.style.display = 'block';
-    } else {
+  // Lookbook view: T012 dedicated graphics vs Dynamic Lookbook for all other 18 products
+  const t012Section = document.getElementById('pdpT012CustomLookbook');
+  const dynSection = document.getElementById('pdpDynamicLookbook');
+  if (t012Section && dynSection) {
+    if (productId === 'T012') {
       t012Section.style.display = 'block';
-      t040Section.style.display = 'none';
+      dynSection.style.display = 'none';
+    } else {
+      t012Section.style.display = 'none';
+      dynSection.style.display = 'block';
+      renderDynamicLookbook(prod);
     }
   }
+
+  // Update Bottom Sticky Order Button
+  const orderBtn = document.getElementById('pdpOrderBtn');
+  const orderBtnText = document.getElementById('pdpOrderBtnText');
+  if (orderBtnText) {
+    const sym = APP_STATE.currencyRates[APP_STATE.currentCurrency].symbol;
+    const converted = formatCurrency(prod.priceUSD);
+    orderBtnText.textContent = `Order 1-PC Sample (${sym}${converted})`;
+  }
+  if (orderBtn) {
+    orderBtn.onclick = () => addPdpToCart(productId);
+  }
+}
+
+function renderDynamicLookbook(prod) {
+  const container = document.getElementById('pdpDynamicLookbook');
+  if (!container) return;
+
+  const specListHtml = (prod.specs || []).map(s => {
+    const parts = s.split(' - ');
+    const title = parts[0] || s;
+    const detail = parts[1] || 'Streetwear Construction';
+    return `<li><strong>${title}:</strong> ${detail}</li>`;
+  }).join('');
+
+  // Category specific sizing chart
+  let sizeGuideHtml = '';
+  if (prod.category === 'pants') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card">
+        <div class="table-header">
+          <span class="table-tag">SIZE GUIDE</span>
+          <h4>Recommended Pants Sizing Guide</h4>
+        </div>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr><th>Size</th><th>Waist (cm)</th><th>Pants Length (cm)</th><th>Suggested Fit</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>M</strong></td><td>74 - 82</td><td>102 cm</td><td>Regular Street</td></tr>
+              <tr><td><strong>L</strong></td><td>78 - 88</td><td>104 cm</td><td>Loose Relaxed</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>84 - 94</td><td>106 cm</td><td>Baggy Skate</td></tr>
+              <tr><td><strong>2XL</strong></td><td>88 - 100</td><td>108 cm</td><td>Extreme Baggy</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <small class="pdp-table-tip">Note: Elastic waistband with interior drawstring. Tolerance within ±1-2cm.</small>
+      </div>
+    `;
+  } else {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card">
+        <div class="table-header">
+          <span class="table-tag">SIZE GUIDE</span>
+          <h4>Recommended Size Guide (Height &amp; Weight)</h4>
+        </div>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr><th>Size</th><th>Height (cm)</th><th>Weight (kg)</th><th>Suggested Fit</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>M</strong></td><td>170 - 175</td><td>60 - 68 kg</td><td>Relaxed Fit</td></tr>
+              <tr><td><strong>L</strong></td><td>175 - 180</td><td>68 - 78 kg</td><td>Street Boxy</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>180 - 186</td><td>78 - 88 kg</td><td>Oversized Drop</td></tr>
+              <tr><td><strong>2XL</strong></td><td>185 - 192</td><td>88 - 100 kg</td><td>Extreme Baggy</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <small class="pdp-table-tip">Note: Hand-measured specifications. Flat measurement tolerance within ±1-2cm.</small>
+      </div>
+    `;
+  }
+
+  // Lookbook images
+  const lookbookImages = (prod.detailImages && prod.detailImages.length > 0) ? prod.detailImages : prod.gallery;
+  const imagesHtml = lookbookImages.map((src, i) => `
+    <img src="${src}" class="pdp-gallery-img" alt="${prod.name} Lookbook ${i + 1}" loading="lazy">
+  `).join('');
+
+  container.innerHTML = `
+    <!-- Designer Note Card -->
+    <div class="pdp-designer-card">
+      <div class="designer-badge">SETUP · TECH SPECIFICATION</div>
+      <h4>${prod.name}</h4>
+      <ul class="designer-bullet-list">
+        ${specListHtml}
+      </ul>
+    </div>
+
+    <!-- Size Guide Card -->
+    ${sizeGuideHtml}
+
+    <!-- Editorial Lookbook Gallery -->
+    <div class="pdp-editorial-gallery">
+      <div class="gallery-title-box">
+        <span class="g-tag">LOOKBOOK GALLERY</span>
+        <h3>Product Details &amp; Macro Fabric Craft</h3>
+        <p>High-density weave, reinforced seams, and colorfast reactive dye detail</p>
+      </div>
+      ${imagesHtml}
+    </div>
+  `;
 }
 
 function closeProductDetail() {

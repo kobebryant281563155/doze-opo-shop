@@ -304,8 +304,10 @@
             </div>
           </div>
 
-          <!-- Designer Note (SETUP) Card -->
-          <div class="pdp-designer-card">
+          <!-- T012 Specific Lookbook Section -->
+          <div id="pdpT012CustomLookbook">
+            <!-- Designer Note (SETUP) Card -->
+            <div class="pdp-designer-card">
             <div class="designer-badge">SETUP · DESIGNER'S NOTE</div>
             <h4>Crafted for Streetwear Creators &amp; Private Brands</h4>
             <ul class="designer-bullet-list">
@@ -493,6 +495,10 @@
             <img src="assets/t012/detail/9a1dda6e0215d0cd1e05cca190686f05.png" class="pdp-gallery-img" alt="Lookbook 13">
             <img src="assets/t012/detail/f6369b0a304eef1a95656a5327c562e0.png" class="pdp-gallery-img" alt="Lookbook 14">
           </div>
+          </div>
+
+          <!-- Dynamic Lookbook Section for All Other Catalog Products -->
+          <div id="pdpDynamicLookbook" style="display: none;"></div>
 
           <!-- Sticky Bottom Action Footer for PDP -->
           <div class="pdp-sticky-footer">
@@ -504,8 +510,8 @@
               <span>📁</span>
               <small>Tech Pack</small>
             </button>
-            <button type="button" class="btn-pdp-order" onclick="addPdpToCart('T012')">
-              <span>Order 1-PC Sample ($15.00)</span>
+            <button type="button" class="btn-pdp-order" id="pdpOrderBtn" onclick="addPdpToCart()">
+              <span id="pdpOrderBtnText">Order 1-PC Sample ($15.00)</span>
             </button>
           </div>
         </div>
@@ -913,6 +919,7 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="app.js?v=30"></script>
+  <script src="products_data.js?v=31"></script>
+  <script src="app.js?v=31"></script>
 </body>
 </html>
