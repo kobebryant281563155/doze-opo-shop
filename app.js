@@ -371,19 +371,20 @@ function renderCatalogList(catFilter) {
   } else {
     products.forEach(p => {
       const item = document.createElement('div');
-      item.className = 'cart-item-card product-card';
-      item.style.cursor = 'pointer';
-      item.onclick = () => {
-        openProductDetail(p.id);
-      };
+      item.className = 'catalog-card';
+      item.onclick = () => openProductDetail(p.id);
       item.innerHTML = `
-        <img src="${p.img}" alt="${p.name}" class="cart-thumb">
-        <div class="cart-item-details">
-          <h4>${p.name}</h4>
-          <div class="cart-specs">${p.gram} · ${p.color}</div>
-          <div class="cart-price-qty">
-            <span class="cart-price"><span class="currency-symbol">$</span><span data-base-usd="${p.priceUSD}">${formatCurrency(p.priceUSD)}</span></span>
-            <span class="moq-tag">1 PC Sample</span>
+        <div class="catalog-thumb-box">
+          <img src="${p.img}" alt="${p.name}" class="catalog-thumb-img" loading="lazy">
+        </div>
+        <div class="catalog-info">
+          <h4 class="catalog-item-title">${p.name}</h4>
+          <div class="catalog-item-specs">${p.gram} · ${p.color}</div>
+          <div class="catalog-item-bottom">
+            <div class="catalog-item-price">
+              <span class="currency-symbol">$</span><span data-base-usd="${p.priceUSD}">${formatCurrency(p.priceUSD)}</span>
+            </div>
+            <span class="catalog-moq-tag">1 PC Sample</span>
           </div>
         </div>
       `;

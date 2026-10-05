@@ -1278,41 +1278,177 @@ body {
   color: var(--text-muted);
 }
 
+.catalog-page-header {
+  padding: 16px 14px 12px;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f2;
+}
+
+.catalog-page-header h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.3px;
+}
+
+.catalog-page-header p {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
 .catalog-layout {
   display: flex;
-  height: calc(var(--phone-height) - 180px);
+  min-height: calc(100vh - 140px);
+  background: #ffffff;
+  position: relative;
 }
 
 .catalog-sidebar {
-  width: 90px;
-  background: #f7f7f8;
+  width: 96px;
+  flex-shrink: 0;
+  background: #f9fafb;
   border-right: 1px solid var(--border-light);
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: sticky;
+  top: 56px;
+  align-self: flex-start;
+  max-height: calc(100vh - 130px);
   overflow-y: auto;
 }
 
 .cat-nav-item {
-  padding: 14px 10px;
+  padding: 14px 8px;
   font-size: 11px;
   font-weight: 700;
-  color: #555;
+  color: #6b7280;
   cursor: pointer;
   text-align: center;
   border-left: 3px solid transparent;
+  transition: all 0.15s ease;
+  line-height: 1.35;
+  user-select: none;
+}
+
+.cat-nav-item:hover {
+  color: #111827;
+  background: #f3f4f6;
 }
 
 .cat-nav-item.active {
   background: #ffffff;
-  color: #111;
-  border-left-color: #111;
+  color: #111827;
+  font-weight: 800;
+  border-left-color: #111827;
 }
 
 .catalog-content-list {
   flex: 1;
-  overflow-y: auto;
-  padding: 10px;
+  min-width: 0;
+  padding: 14px 12px 100px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
+}
+
+/* Redesigned High-End Spacious Catalog Card */
+.catalog-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border-color: #111827;
+}
+
+.catalog-card:active {
+  transform: scale(0.98);
+}
+
+.catalog-thumb-box {
+  width: 90px;
+  height: 125px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f7f7f8;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f0f0f2;
+}
+
+.catalog-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.catalog-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.catalog-item-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.catalog-item-specs {
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1.3;
+}
+
+.catalog-item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.catalog-item-price {
+  font-size: 14px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.catalog-moq-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #b45309;
+  background: #fef3c7;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid #fde68a;
+  white-space: nowrap;
 }
 
 .empty-catalog-box {
