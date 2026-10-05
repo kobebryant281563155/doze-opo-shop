@@ -309,16 +309,34 @@ function initCustomCalculator() {
 function recalcCustomQuote() {
   const { garmentMultiplier, craftTeePriceUSD, qty } = APP_STATE.customCalc;
 
-  // Formula: Unit Price (TEE Base * Multiplier) * Quantity = Final Total
+  // Formula: Unit Price (TEE Base * Multiplier) * Quantity = Subtotal
   const finalUnitUSD = (craftTeePriceUSD || 20.00) * (garmentMultiplier || 1.0);
-  const finalTotalUSD = finalUnitUSD * qty;
+  const finalSubtotalUSD = finalUnitUSD * qty;
+  const shippingUSD = calculateUsShipping(qty);
+  const deliveredTotalUSD = finalSubtotalUSD + shippingUSD;
 
   const unitDisplay = document.getElementById('unitPriceDisplay');
+  const subtotalDisplay = document.getElementById('customSubtotalDisplay');
+  const shippingDisplay = document.getElementById('customShippingDisplay');
+  const formulaDisplay = document.getElementById('customShipFormula');
   const totalDisplay = document.getElementById('totalPriceDisplay');
+  const qtyLabel = document.getElementById('customQtyLabel');
 
-  if (unitDisplay && totalDisplay) {
-    unitDisplay.textContent = formatCurrency(finalUnitUSD);
-    totalDisplay.textContent = formatCurrency(finalTotalUSD);
+  if (unitDisplay) unitDisplay.textContent = formatCurrency(finalUnitUSD);
+  if (subtotalDisplay) subtotalDisplay.textContent = formatCurrency(finalSubtotalUSD);
+  if (shippingDisplay) shippingDisplay.textContent = formatCurrency(shippingUSD);
+  if (totalDisplay) totalDisplay.textContent = formatCurrency(deliveredTotalUSD);
+
+  if (qtyLabel) {
+    qtyLabel.textContent = `${qty} pc${qty > 1 ? 's' : ''}`;
+  }
+
+  if (formulaDisplay) {
+    if (qty === 1) {
+      formulaDisplay.textContent = '($8.00 base · 10–15d)';
+    } else {
+      formulaDisplay.textContent = `($8.00 + ${qty - 1} × $0.50 · 10–15d)`;
+    }
   }
 }
 

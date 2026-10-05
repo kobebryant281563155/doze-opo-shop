@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=34">
+  <link rel="stylesheet" href="styles.css?v=35">
 </head>
 <body class="theme-light">
   <!-- Mobile Viewport Wrapper (Native Fullscreen Mobile View) -->
@@ -666,26 +666,57 @@
                   </div>
                 </div>
 
-                <div class="calc-result-panel">
-                  <div class="price-breakdown">
-                    <div class="calc-stat">
-                      <span class="stat-label">Estimated Unit Price (Garment + Craft)</span>
-                      <strong class="stat-price"><span class="currency-symbol">$</span><span id="unitPriceDisplay">20.00</span> / pc</strong>
-                    </div>
-                    <div class="calc-stat">
-                      <span class="stat-label">Estimated Total Order Value</span>
-                      <strong class="stat-total"><span class="currency-symbol">$</span><span id="totalPriceDisplay">20.00</span></strong>
+                  <div class="calc-row">
+                    <label>4. Shipping to United States (美国直邮专线):</label>
+                    <div class="custom-shipping-box">
+                      <div class="cship-header">
+                        <div class="cship-dest">
+                          <span class="cship-flag">🇺🇸</span>
+                          <div>
+                            <strong>Ship to United States</strong>
+                            <span>USPS / DHL Air Direct · All 50 States</span>
+                          </div>
+                        </div>
+                        <div class="cship-eta">
+                          <span>⏱️ 10–15 Days</span>
+                        </div>
+                      </div>
+                      <div class="cship-rule">
+                        <span class="cship-rule-tag">US POLICY</span>
+                        <span>1st item: <strong>$8.00</strong> · Add'l items: <strong>+$0.50 / pc</strong></span>
+                      </div>
                     </div>
                   </div>
-                  <div class="calc-buttons">
-                    <button type="button" class="btn-primary-action" id="btnSubmitCustomRFQ">
-                      <span>📤 Upload Tech Pack &amp; Inquire</span>
-                    </button>
-                    <button type="button" class="btn-whatsapp-action" onclick="openWhatsAppModal()">
-                      <span>💬 WhatsApp Live Chat</span>
-                    </button>
+
+                  <div class="calc-result-panel">
+                    <div class="custom-calc-breakdown">
+                      <div class="cc-line">
+                        <span class="cc-label">Garment + Craft Unit Price:</span>
+                        <strong class="cc-val cc-unit"><span class="currency-symbol">$</span><span id="unitPriceDisplay">20.00</span> / pc</strong>
+                      </div>
+                      <div class="cc-line">
+                        <span class="cc-label">Custom Subtotal (<span id="customQtyLabel">1 pc</span>):</span>
+                        <strong class="cc-val"><span class="currency-symbol">$</span><span id="customSubtotalDisplay">20.00</span></strong>
+                      </div>
+                      <div class="cc-line">
+                        <span class="cc-label">US Direct Shipping <small id="customShipFormula">($8.00 base · 10–15d)</small>:</span>
+                        <strong class="cc-val cc-ship"><span class="currency-symbol">$</span><span id="customShippingDisplay">8.00</span></strong>
+                      </div>
+                      <div class="cc-divider"></div>
+                      <div class="cc-line cc-total-line">
+                        <span class="cc-label">Estimated Delivered Total:</span>
+                        <strong class="cc-total"><span class="currency-symbol">$</span><span id="totalPriceDisplay">28.00</span></strong>
+                      </div>
+                    </div>
+                    <div class="calc-buttons">
+                      <button type="button" class="btn-primary-action" id="btnSubmitCustomRFQ">
+                        <span>📤 Upload Tech Pack &amp; Inquire</span>
+                      </button>
+                      <button type="button" class="btn-whatsapp-action" onclick="openWhatsAppModal()">
+                        <span>💬 WhatsApp Live Chat</span>
+                      </button>
+                    </div>
                   </div>
-                </div>
               </div>
             </div>
           </section>
@@ -1019,7 +1050,7 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="products_data.js?v=34"></script>
-  <script src="app.js?v=34"></script>
+  <script src="products_data.js?v=35"></script>
+  <script src="app.js?v=35"></script>
 </body>
 </html>
