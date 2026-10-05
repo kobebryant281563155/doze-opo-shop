@@ -1505,5 +1505,144 @@
                  "name":  "W514 510G Ultra-Heavy Button-Up Cardigan Jacket",
                  "img":  "assets/products/W514/main/1.jpg",
                  "gram":  "510 GSM Diagonal Heavy Terry"
+             },
+    "T230":  {
+                 "id":  "T230",
+                 "name":  "T230 230G Mineral-Washed Long-Sleeve Street Tee",
+                 "category":  "tee",
+                 "priceUSD":  17.5,
+                 "gram":  "230 GSM 100% Combed Cotton (Mineral Wash)",
+                 "img":  "assets/products/T230/main/1.jpg",
+                 "color":  "6 Mineral Wash Colorways",
+                 "specs":  [
+                               "230 GSM 100% Combed Cotton 21S Single Jersey Knit",
+                               "Artisanal Mineral Dye \u0026 Vintage Snow Acid Wash Technique",
+                               "Relaxed Drop-Shoulder Long-Sleeve Silhouette",
+                               "Double-Stitched Ribbed Collar \u0026 Pre-shrunk Fabric (\u003c 2%)",
+                               "6 Streetwear Colorways 路 1-Piece Sample Order Ready"
+                           ],
+                 "gallery":  [
+                                 "assets/products/T230/main/1.jpg",
+                                 "assets/products/T230/main/2.webp",
+                                 "assets/products/T230/main/3.webp",
+                                 "assets/products/T230/main/4.jpg"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Washed Black",
+                                  "thumb":  "assets/products/T230/sku/sku_1.webp",
+                                  "hero":  "assets/products/T230/sku/sku_1.webp"
+                              },
+                              {
+                                  "name":  "Sapphire Blue",
+                                  "thumb":  "assets/products/T230/sku/sku_2.webp",
+                                  "hero":  "assets/products/T230/sku/sku_2.webp"
+                              },
+                              {
+                                  "name":  "Tree Plum Purple",
+                                  "thumb":  "assets/products/T230/sku/sku_3.webp",
+                                  "hero":  "assets/products/T230/sku/sku_3.webp"
+                              },
+                              {
+                                  "name":  "Sky Blue",
+                                  "thumb":  "assets/products/T230/sku/sku_4.webp",
+                                  "hero":  "assets/products/T230/sku/sku_4.webp"
+                              },
+                              {
+                                  "name":  "Barbie Pink",
+                                  "thumb":  "assets/products/T230/sku/sku_5.webp",
+                                  "hero":  "assets/products/T230/sku/sku_5.webp"
+                              },
+                              {
+                                  "name":  "Apricot",
+                                  "thumb":  "assets/products/T230/sku/sku_6.webp",
+                                  "hero":  "assets/products/T230/sku/sku_6.webp"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/T230/detail/1.jpg",
+                                      "assets/products/T230/detail/2.jpg",
+                                      "assets/products/T230/detail/3.webp",
+                                      "assets/products/T230/detail/4.webp"
+                                  ]
+             },
+    "T250":  {
+                 "id":  "T250",
+                 "name":  "T250 250G Acid-Washed Snow Mineral Boxy Tee",
+                 "category":  "tee",
+                 "priceUSD":  15.5,
+                 "gram":  "250 GSM 32S/2 Combed Cotton (Snow Wash)",
+                 "img":  "assets/products/T250/main/1.jpg",
+                 "color":  "23 Vintage Acid Wash Colorways",
+                 "specs":  [
+                               "250 GSM 32S/2 Double Combed Cotton - High Density Knit",
+                               "Artisanal Garment Snow Dye \u0026 Heavy Acid Wash Processing",
+                               "Boxy Oversized 90s Streetwear Cut, Pre-shrunk (\u003c 2%)",
+                               "Wide High-Density Anti-Sag Ribbed Crew Collar",
+                               "23 Mineral Wash Colors 路 1-Piece Custom OEM Tech Pack Ready"
+                           ],
+                 "gallery":  [
+                                 "assets/products/T250/main/1.jpg",
+                                 "assets/products/T250/main/2.jpg",
+                                 "assets/products/T250/main/3.jpg",
+                                 "assets/products/T250/main/4.webp"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Washed Black",
+                                  "thumb":  "assets/products/T250/sku/sku_1.jpg",
+                                  "hero":  "assets/products/T250/sku/sku_1.jpg"
+                              },
+                              {
+                                  "name":  "Khaki Gray",
+                                  "thumb":  "assets/products/T250/sku/sku_2.webp",
+                                  "hero":  "assets/products/T250/sku/sku_2.webp"
+                              },
+                              {
+                                  "name":  "Water-Washed White",
+                                  "thumb":  "assets/products/T250/sku/sku_3.webp",
+                                  "hero":  "assets/products/T250/sku/sku_3.webp"
+                              },
+                              {
+                                  "name":  "Light Grey",
+                                  "thumb":  "assets/products/T250/sku/sku_4.webp",
+                                  "hero":  "assets/products/T250/sku/sku_4.webp"
+                              },
+                              {
+                                  "name":  "Bean Green",
+                                  "thumb":  "assets/products/T250/sku/sku_5.webp",
+                                  "hero":  "assets/products/T250/sku/sku_5.webp"
+                              },
+                              {
+                                  "name":  "Aqua Blue",
+                                  "thumb":  "assets/products/T250/sku/sku_6.webp",
+                                  "hero":  "assets/products/T250/sku/sku_6.webp"
+                              },
+                              {
+                                  "name":  "Sky Blue",
+                                  "thumb":  "assets/products/T250/sku/sku_7.webp",
+                                  "hero":  "assets/products/T250/sku/sku_7.webp"
+                              },
+                              {
+                                  "name":  "Mandarin Orange",
+                                  "thumb":  "assets/products/T250/sku/sku_8.webp",
+                                  "hero":  "assets/products/T250/sku/sku_8.webp"
+                              },
+                              {
+                                  "name":  "Fluorescent Yellow",
+                                  "thumb":  "assets/products/T250/sku/sku_9.webp",
+                                  "hero":  "assets/products/T250/sku/sku_9.webp"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/T250/detail/1.jpg",
+                                      "assets/products/T250/detail/2.jpg",
+                                      "assets/products/T250/detail/3.jpg",
+                                      "assets/products/T250/detail/4.jpg",
+                                      "assets/products/T250/detail/5.jpg",
+                                      "assets/products/T250/detail/6.jpg",
+                                      "assets/products/T250/detail/7.webp",
+                                      "assets/products/T250/detail/8.webp"
+                                  ]
              }
 };
