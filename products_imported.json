@@ -1519,51 +1519,51 @@
                                "Artisanal Mineral Dye \u0026 Vintage Snow Acid Wash Technique",
                                "Relaxed Drop-Shoulder Long-Sleeve Silhouette",
                                "Double-Stitched Ribbed Collar \u0026 Pre-shrunk Fabric (\u003c 2%)",
-                               "6 Streetwear Colorways 路 1-Piece Sample Order Ready"
+                               "6 Streetwear Colorways - 1-Piece Sample Order Ready"
                            ],
                  "gallery":  [
                                  "assets/products/T230/main/1.jpg",
-                                 "assets/products/T230/main/2.webp",
-                                 "assets/products/T230/main/3.webp",
+                                 "assets/products/T230/main/2.jpg",
+                                 "assets/products/T230/main/3.jpg",
                                  "assets/products/T230/main/4.jpg"
                              ],
                  "skus":  [
                               {
                                   "name":  "Washed Black",
-                                  "thumb":  "assets/products/T230/sku/sku_1.webp",
-                                  "hero":  "assets/products/T230/sku/sku_1.webp"
+                                  "thumb":  "assets/products/T230/sku/sku_1.jpg",
+                                  "hero":  "assets/products/T230/sku/sku_1.jpg"
                               },
                               {
                                   "name":  "Sapphire Blue",
-                                  "thumb":  "assets/products/T230/sku/sku_2.webp",
-                                  "hero":  "assets/products/T230/sku/sku_2.webp"
+                                  "thumb":  "assets/products/T230/sku/sku_2.jpg",
+                                  "hero":  "assets/products/T230/sku/sku_2.jpg"
                               },
                               {
                                   "name":  "Tree Plum Purple",
-                                  "thumb":  "assets/products/T230/sku/sku_3.webp",
-                                  "hero":  "assets/products/T230/sku/sku_3.webp"
+                                  "thumb":  "assets/products/T230/sku/sku_3.jpg",
+                                  "hero":  "assets/products/T230/sku/sku_3.jpg"
                               },
                               {
                                   "name":  "Sky Blue",
-                                  "thumb":  "assets/products/T230/sku/sku_4.webp",
-                                  "hero":  "assets/products/T230/sku/sku_4.webp"
+                                  "thumb":  "assets/products/T230/sku/sku_4.jpg",
+                                  "hero":  "assets/products/T230/sku/sku_4.jpg"
                               },
                               {
                                   "name":  "Barbie Pink",
-                                  "thumb":  "assets/products/T230/sku/sku_5.webp",
-                                  "hero":  "assets/products/T230/sku/sku_5.webp"
+                                  "thumb":  "assets/products/T230/sku/sku_5.jpg",
+                                  "hero":  "assets/products/T230/sku/sku_5.jpg"
                               },
                               {
                                   "name":  "Apricot",
-                                  "thumb":  "assets/products/T230/sku/sku_6.webp",
-                                  "hero":  "assets/products/T230/sku/sku_6.webp"
+                                  "thumb":  "assets/products/T230/sku/sku_6.jpg",
+                                  "hero":  "assets/products/T230/sku/sku_6.jpg"
                               }
                           ],
                  "detailImages":  [
                                       "assets/products/T230/detail/1.jpg",
                                       "assets/products/T230/detail/2.jpg",
-                                      "assets/products/T230/detail/3.webp",
-                                      "assets/products/T230/detail/4.webp"
+                                      "assets/products/T230/detail/3.jpg",
+                                      "assets/products/T230/detail/4.jpg"
                                   ]
              },
     "T250":  {
