@@ -484,15 +484,24 @@ body {
    6. 金刚区分类导航（对标参考图：棒球服、衬衫外套、T恤等）
    ========================================================================== */
 .category-quick-nav {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  padding: 12px 6px;
-  gap: 4px;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 12px 10px 10px;
+  gap: 10px;
   background: #ffffff;
   border-bottom: 1px solid var(--border-light);
+  scroll-behavior: smooth;
+}
+
+.category-quick-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .quick-nav-item {
+  flex: 0 0 62px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -500,10 +509,11 @@ body {
   cursor: pointer;
   transition: transform 0.15s ease;
   min-width: 0;
+  user-select: none;
 }
 
 .quick-nav-item:active {
-  transform: scale(0.96);
+  transform: scale(0.95);
 }
 
 .nav-thumb-box {
@@ -515,6 +525,12 @@ body {
   position: relative;
   box-shadow: 0 2px 5px rgba(0,0,0,0.06);
   border: 1px solid #ebecee;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quick-nav-item:hover .nav-thumb-box {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 
 .nav-thumb-box img {

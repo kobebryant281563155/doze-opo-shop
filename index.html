@@ -66,7 +66,7 @@
             </div>
           </section>
 
-          <!-- Quick Category Navigation (5 Columns) -->
+          <!-- Quick Category Navigation (7 Categories) -->
           <nav class="category-quick-nav">
             <div class="quick-nav-item" onclick="handleCategoryFilter('tee')">
               <div class="nav-thumb-box">
@@ -74,6 +74,13 @@
               </div>
               <span class="nav-title">Heavy Tees</span>
               <span class="nav-en">Boxy Fit</span>
+            </div>
+            <div class="quick-nav-item" onclick="handleCategoryFilter('tank')">
+              <div class="nav-thumb-box">
+                <img src="assets/tank_item.jpg" alt="Tank Tops">
+              </div>
+              <span class="nav-title">Tank Tops</span>
+              <span class="nav-en">Raw Cut / Vest</span>
             </div>
             <div class="quick-nav-item" onclick="handleCategoryFilter('crewneck')">
               <div class="nav-thumb-box">
@@ -102,6 +109,13 @@
               </div>
               <span class="nav-title">Casual pants＆Jeans</span>
               <span class="nav-en">Cargo &amp; Denim</span>
+            </div>
+            <div class="quick-nav-item" onclick="handleCategoryFilter('shorts')">
+              <div class="nav-thumb-box">
+                <img src="assets/shorts_item.jpg" alt="Street Shorts">
+              </div>
+              <span class="nav-title">Street Shorts</span>
+              <span class="nav-en">Sweat &amp; Cargo</span>
             </div>
           </nav>
 
@@ -193,10 +207,12 @@
             <div class="catalog-sidebar">
               <div class="cat-nav-item active" data-cat="all">All Items</div>
               <div class="cat-nav-item" data-cat="tee">Heavy Tees</div>
+              <div class="cat-nav-item" data-cat="tank">Tank Tops</div>
               <div class="cat-nav-item" data-cat="crewneck">Crewneck Sweatshirt</div>
               <div class="cat-nav-item" data-cat="hoodie">Heavy Hoodies</div>
               <div class="cat-nav-item" data-cat="jacket">Zip Jackets</div>
               <div class="cat-nav-item" data-cat="pants">Pants &amp; Jeans</div>
+              <div class="cat-nav-item" data-cat="shorts">Street Shorts</div>
             </div>
             <div class="catalog-content-list" id="catalogProductList">
               <!-- Rendered via JS -->
@@ -631,10 +647,12 @@
                   <label>1. Select Base Garment:</label>
                   <div class="chip-group" id="garmentTypeChips">
                     <button type="button" class="calc-chip active" data-type="tee" data-multiplier="1.0">TEE</button>
+                    <button type="button" class="calc-chip" data-type="tank" data-multiplier="0.9">TANK TOP</button>
                     <button type="button" class="calc-chip" data-type="crewneck" data-multiplier="1.5">CREWNECK SWEATSHIRT</button>
                     <button type="button" class="calc-chip" data-type="hoodie" data-multiplier="2.0">HOODIES</button>
                     <button type="button" class="calc-chip" data-type="jacket" data-multiplier="3.0">ZIP JACKETS</button>
                     <button type="button" class="calc-chip" data-type="pants" data-multiplier="2.0">PANTS</button>
+                    <button type="button" class="calc-chip" data-type="shorts" data-multiplier="1.4">SHORTS</button>
                     <button type="button" class="calc-chip" data-type="jeans" data-multiplier="3.0">JEANS</button>
                   </div>
                 </div>
