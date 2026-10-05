@@ -1644,5 +1644,137 @@
                                       "assets/products/T250/detail/7.webp",
                                       "assets/products/T250/detail/8.webp"
                                   ]
-             }
+             },
+    "01D":  {
+                "id":  "01D",
+                "name":  "01D 230G Heavyweight Combed Cotton Crewneck Tee",
+                "category":  "tee",
+                "priceUSD":  14.5,
+                "gram":  "230 GSM 100% Combed Cotton",
+                "img":  "assets/products/01D/main/1.jpg",
+                "color":  "19 Streetwear Colorways",
+                "specs":  [
+                              "230 GSM 100% Combed Cotton - 21S Single Jersey High-Density Knit",
+                              "Classic Ribbed Crewneck with Double-Stitched Reinforced Collar",
+                              "Structured Silhouette with Clean Drape, Pre-Shrunk Fabric (\u003c 2%)",
+                              "Durable Reactive Dyeing with Premium Colorfastness",
+                              "19 Streetwear Colorways - 1-Piece Sample \u0026 OEM Tech Pack Ready"
+                          ],
+                "gallery":  [
+                                "assets/products/01D/main/1.jpg",
+                                "assets/products/01D/main/2.jpg",
+                                "assets/products/01D/main/3.jpg",
+                                "assets/products/01D/main/4.jpg",
+                                "assets/products/01D/main/5.jpg",
+                                "assets/products/01D/main/6.jpg",
+                                "assets/products/01D/main/7.jpg"
+                            ],
+                "skus":  [
+                             {
+                                 "name":  "Pitch Black",
+                                 "thumb":  "assets/products/01D/sku/sku_1.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_1.jpg"
+                             },
+                             {
+                                 "name":  "Pure White",
+                                 "thumb":  "assets/products/01D/sku/sku_2.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_2.jpg"
+                             },
+                             {
+                                 "name":  "Heather Grey",
+                                 "thumb":  "assets/products/01D/sku/sku_3.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_3.jpg"
+                             },
+                             {
+                                 "name":  "Iron Grey",
+                                 "thumb":  "assets/products/01D/sku/sku_4.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_4.jpg"
+                             },
+                             {
+                                 "name":  "Seagull Grey",
+                                 "thumb":  "assets/products/01D/sku/sku_5.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_5.jpg"
+                             },
+                             {
+                                 "name":  "Navy Blue",
+                                 "thumb":  "assets/products/01D/sku/sku_6.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_6.jpg"
+                             },
+                             {
+                                 "name":  "Klein Blue",
+                                 "thumb":  "assets/products/01D/sku/sku_7.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_7.jpg"
+                             },
+                             {
+                                 "name":  "Haze Blue",
+                                 "thumb":  "assets/products/01D/sku/sku_8.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_8.jpg"
+                             },
+                             {
+                                 "name":  "Ice Blue",
+                                 "thumb":  "assets/products/01D/sku/sku_9.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_9.jpg"
+                             },
+                             {
+                                 "name":  "Coffee Brown",
+                                 "thumb":  "assets/products/01D/sku/sku_10.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_10.jpg"
+                             },
+                             {
+                                 "name":  "Wine Red",
+                                 "thumb":  "assets/products/01D/sku/sku_11.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_11.jpg"
+                             },
+                             {
+                                 "name":  "Rose Red",
+                                 "thumb":  "assets/products/01D/sku/sku_12.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_12.jpg"
+                             },
+                             {
+                                 "name":  "Sakura Pink",
+                                 "thumb":  "assets/products/01D/sku/sku_13.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_13.jpg"
+                             },
+                             {
+                                 "name":  "Apricot",
+                                 "thumb":  "assets/products/01D/sku/sku_14.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_14.jpg"
+                             },
+                             {
+                                 "name":  "Cream Apricot",
+                                 "thumb":  "assets/products/01D/sku/sku_15.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_15.jpg"
+                             },
+                             {
+                                 "name":  "Breeze Green",
+                                 "thumb":  "assets/products/01D/sku/sku_16.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_16.jpg"
+                             },
+                             {
+                                 "name":  "Mint Green",
+                                 "thumb":  "assets/products/01D/sku/sku_17.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_17.jpg"
+                             },
+                             {
+                                 "name":  "Emerald Green",
+                                 "thumb":  "assets/products/01D/sku/sku_18.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_18.jpg"
+                             },
+                             {
+                                 "name":  "Peacock Green",
+                                 "thumb":  "assets/products/01D/sku/sku_19.jpg",
+                                 "hero":  "assets/products/01D/sku/sku_19.jpg"
+                             }
+                         ],
+                "detailImages":  [
+                                     "assets/products/01D/detail/1.jpg",
+                                     "assets/products/01D/detail/2.jpg",
+                                     "assets/products/01D/detail/3.jpg",
+                                     "assets/products/01D/detail/4.jpg",
+                                     "assets/products/01D/detail/5.jpg",
+                                     "assets/products/01D/detail/6.jpg",
+                                     "assets/products/01D/detail/7.jpg",
+                                     "assets/products/01D/detail/8.jpg"
+                                 ]
+            }
 }
