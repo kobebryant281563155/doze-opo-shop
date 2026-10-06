@@ -768,82 +768,138 @@
                                  "assets/products/T276/main/1.jpg",
                                  "assets/products/T276/main/2.jpg",
                                  "assets/products/T276/main/3.jpg",
-                                 "assets/products/T276/main/4.jpg"
+                                 "assets/products/T276/main/4.jpg",
+                                 "assets/products/T276/main/5.jpg",
+                                 "assets/products/T276/main/6.jpg"
                              ],
                  "id":  "T276",
                  "specs":  [
-                               "275 GSM Ultra-Heavy Compact Cotton - Authentic Streetwear Heavyweight Knit",
-                               "Oversized 90s Vintage Drop-Shoulder Silhouette, Pre-Shrunk (\u003c 2%)",
-                               "High-Density Anti-Deformation Ribbing \u0026 Reinforced Twin-Needle Seams",
-                               "Durable Colorfast Reactive Dyeing - High Breathability \u0026 Structured Drape",
-                               "Full Colorway Stock - 1-Piece Sample Proofing \u0026 Flexible OEM Tech Pack Ready"
+                               "275 GSM Ultra-Heavy Compact Cotton - Authentic 90s Streetwear Long-Sleeve Knit",
+                               "3.2cm Heavyweight Anti-Deformation Rebound Ribbed Collar \u0026 1x1 Fitted Cuffs",
+                               "American Drop-Shoulder Relaxed Boxy Silhouette, Pre-Shrunk (\u003c 2%)",
+                               "17 Solid Vintage Reactive Dye Colorways - Zero Bleed \u0026 High Colorfastness",
+                               "1-Piece Custom Tech Pack Proofing Ready 路 Full Bulk Inventory"
                            ],
-                 "color":  "10 Colorways",
+                 "color":  "17 Solid Colorways",
                  "skus":  [
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_1.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_1.jpg",
-                                  "name":  "Heather Grey"
+                                  "name":  "Heather Mid Grey (宸村涓伆)",
+                                  "thumb":  "assets/products/T276/sku/sku_midgrey.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_midgrey.jpg",
+                                  "back":  "assets/products/T276/sku/sku_midgrey_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_2.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_2.jpg",
-                                  "name":  "Forest Green"
+                                  "name":  "Forest Dark Green (宸村澧ㄧ豢)",
+                                  "thumb":  "assets/products/T276/sku/sku_forestgreen.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_forestgreen.jpg",
+                                  "back":  "assets/products/T276/sku/sku_forestgreen_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_3.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_3.jpg",
-                                  "name":  "Sand Wheat"
+                                  "name":  "Sand Wheat (宸村灏忛害)",
+                                  "thumb":  "assets/products/T276/sku/sku_sandwheat.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_sandwheat.jpg",
+                                  "back":  "assets/products/T276/sku/sku_sandwheat_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_4.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_4.jpg",
-                                  "name":  "Charcoal Grey"
+                                  "name":  "Charcoal Deep Grey (宸村娣辩伆)",
+                                  "thumb":  "assets/products/T276/sku/sku_charcoal.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_charcoal.jpg",
+                                  "back":  "assets/products/T276/sku/sku_charcoal_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_5.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_5.jpg",
-                                  "name":  "Navy Blue"
+                                  "name":  "Navy Blue (宸村钘忚摑)",
+                                  "thumb":  "assets/products/T276/sku/sku_navy.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_navy.jpg",
+                                  "back":  "assets/products/T276/sku/sku_navy_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_6.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_6.jpg",
-                                  "name":  "Vintage Khaki"
+                                  "name":  "Mocha Earth Brown (宸村瑜愯壊)",
+                                  "thumb":  "assets/products/T276/sku/sku_mochabrown.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_mochabrown.jpg",
+                                  "back":  "assets/products/T276/sku/sku_mochabrown_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_7.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_7.jpg",
-                                  "name":  "Sage Green"
+                                  "name":  "Teal Pine Green (宸村闈掔豢)",
+                                  "thumb":  "assets/products/T276/sku/sku_tealgreen.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_tealgreen.jpg",
+                                  "back":  "assets/products/T276/sku/sku_tealgreen_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_8.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_8.jpg",
-                                  "name":  "Dusky Pink"
+                                  "name":  "Dusky Rose Pink (鏆楃矇鑹?",
+                                  "thumb":  "assets/products/T276/sku/sku_dustypink.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_dustypink.jpg",
+                                  "back":  "assets/products/T276/sku/sku_dustypink_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_9.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_9.jpg",
-                                  "name":  "Heather Grey"
+                                  "name":  "Ocean Slate Grey (娴锋磱鐏?",
+                                  "thumb":  "assets/products/T276/sku/sku_oceangrey.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_oceangrey.jpg",
+                                  "back":  "assets/products/T276/sku/sku_oceangrey_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T276/sku/sku_10.jpg",
-                                  "hero":  "assets/products/T276/sku/sku_10.jpg",
-                                  "name":  "Grey Blue"
+                                  "name":  "Muted Slate Blue (鐏拌摑)",
+                                  "thumb":  "assets/products/T276/sku/sku_mutedblue.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_mutedblue.jpg",
+                                  "back":  "assets/products/T276/sku/sku_mutedblue_back.jpg"
+                              },
+                              {
+                                  "name":  "Oatmeal Grey (鐕曢害鐏?",
+                                  "thumb":  "assets/products/T276/sku/sku_oatmeal.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_oatmeal.jpg",
+                                  "back":  "assets/products/T276/sku/sku_oatmeal_back.jpg"
+                              },
+                              {
+                                  "name":  "Pure White (鐧借壊)",
+                                  "thumb":  "assets/products/T276/sku/sku_white.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_white.jpg",
+                                  "back":  "assets/products/T276/sku/sku_white_back.jpg"
+                              },
+                              {
+                                  "name":  "Eggshell Raw White (铔嬪３鐧?",
+                                  "thumb":  "assets/products/T276/sku/sku_eggshell.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_eggshell.jpg",
+                                  "back":  "assets/products/T276/sku/sku_eggshell_back.jpg"
+                              },
+                              {
+                                  "name":  "Sports Grey (杩愬姩鐏?",
+                                  "thumb":  "assets/products/T276/sku/sku_sportsgrey.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_sportsgrey.jpg",
+                                  "back":  "assets/products/T276/sku/sku_sportsgrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Burgundy Wine Red (閰掔孩)",
+                                  "thumb":  "assets/products/T276/sku/sku_burgundy.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_burgundy.jpg",
+                                  "back":  "assets/products/T276/sku/sku_burgundy_back.jpg"
+                              },
+                              {
+                                  "name":  "Silver Grey (閾剁伆鑹?",
+                                  "thumb":  "assets/products/T276/sku/sku_silvergrey.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_silvergrey.jpg",
+                                  "back":  "assets/products/T276/sku/sku_silvergrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Solid Black (榛戣壊)",
+                                  "thumb":  "assets/products/T276/sku/sku_black.jpg",
+                                  "hero":  "assets/products/T276/sku/sku_black.jpg",
+                                  "back":  "assets/products/T276/sku/sku_black_back.jpg"
                               }
                           ],
                  "category":  "tee",
                  "detailImages":  [
-                                      "assets/products/T276/detail/1.jpg",
-                                      "assets/products/T276/detail/2.jpg",
-                                      "assets/products/T276/detail/3.jpg",
-                                      "assets/products/T276/detail/4.jpg",
-                                      "assets/products/T276/detail/5.jpg",
-                                      "assets/products/T276/detail/6.jpg"
+                                      "assets/products/T276/detail/detail_1.jpg",
+                                      "assets/products/T276/detail/detail_2.jpg",
+                                      "assets/products/T276/detail/detail_3.jpg",
+                                      "assets/products/T276/detail/detail_4.jpg",
+                                      "assets/products/T276/detail/detail_5.jpg",
+                                      "assets/products/T276/detail/detail_6.jpg",
+                                      "assets/products/T276/detail/detail_7.jpg",
+                                      "assets/products/T276/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  18.5,
                  "name":  "T276 275G Heavy Drop-Shoulder Long-Sleeve Tee",
                  "img":  "assets/products/T276/main/1.jpg",
-                 "gram":  "275 GSM Ultra-Heavy Compact Cotton"
+                 "gram":  "275 GSM Ultra-Heavy Combed Cotton"
              },
     "W350":  {
                  "gallery":  [
