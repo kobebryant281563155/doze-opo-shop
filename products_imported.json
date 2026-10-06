@@ -488,8 +488,7 @@
                                  "assets/products/T238/main/2.jpg",
                                  "assets/products/T238/main/3.jpg",
                                  "assets/products/T238/main/4.jpg",
-                                 "assets/products/T238/main/5.jpg",
-                                 "assets/products/T238/main/6.jpg"
+                                 "assets/products/T238/main/5.jpg"
                              ],
                  "id":  "T238",
                  "specs":  [

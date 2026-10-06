@@ -587,7 +587,7 @@ function openProductDetail(productId) {
     activePdpColor = prod.skus[0].name;
     const colorLabel = document.getElementById('pdpActiveColorName');
     if (colorLabel) colorLabel.textContent = activePdpColor;
-    switchPdpHero(prod.skus[0].hero || gallery[0], 1);
+    switchPdpHero(gallery[0] || prod.skus[0].hero, 1);
   } else if (gallery.length > 0) {
     switchPdpHero(gallery[0], 1);
   }
