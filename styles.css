@@ -499,16 +499,11 @@ body {
   width: 100%;
 }
 
-.quick-nav-row.nav-row-1 {
+.quick-nav-row.nav-row-1,
+.quick-nav-row.nav-row-2 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 6px;
-}
-
-.quick-nav-row.nav-row-2 {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
 }
 
 .quick-nav-item {
@@ -520,10 +515,6 @@ body {
   transition: transform 0.15s ease;
   min-width: 0;
   user-select: none;
-}
-
-.nav-row-2 .quick-nav-item {
-  width: 80px;
 }
 
 .quick-nav-item:active {

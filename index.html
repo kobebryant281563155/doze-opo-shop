@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="styles.css?v=38">
 </head>
 <body class="theme-light">
   <!-- Mobile Viewport Wrapper (Native Fullscreen Mobile View) -->
@@ -109,10 +109,17 @@
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('pants')">
                 <div class="nav-thumb-box">
-                  <img src="assets/pants_item.jpg" alt="Casual pants＆Jeans">
+                  <img src="assets/casual_pants_item.jpg" alt="Casual Pants">
                 </div>
-                <span class="nav-title">Casual pants＆Jeans</span>
-                <span class="nav-en">Cargo &amp; Denim</span>
+                <span class="nav-title">Casual Pants</span>
+                <span class="nav-en">Sweat &amp; Cargo</span>
+              </div>
+              <div class="quick-nav-item" onclick="handleCategoryFilter('jeans')">
+                <div class="nav-thumb-box">
+                  <img src="assets/jeans_item.jpg" alt="Jeans">
+                </div>
+                <span class="nav-title">Jeans</span>
+                <span class="nav-en">Denim &amp; Washed</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('shorts')">
                 <div class="nav-thumb-box">
@@ -216,7 +223,8 @@
               <div class="cat-nav-item" data-cat="crewneck">Crewneck Sweatshirt</div>
               <div class="cat-nav-item" data-cat="hoodie">Heavy Hoodies</div>
               <div class="cat-nav-item" data-cat="jacket">Zip Jackets</div>
-              <div class="cat-nav-item" data-cat="pants">Pants &amp; Jeans</div>
+              <div class="cat-nav-item" data-cat="pants">Casual Pants</div>
+              <div class="cat-nav-item" data-cat="jeans">Jeans</div>
               <div class="cat-nav-item" data-cat="shorts">Street Shorts</div>
             </div>
             <div class="catalog-content-list" id="catalogProductList">
@@ -656,9 +664,9 @@
                     <button type="button" class="calc-chip" data-type="crewneck" data-multiplier="1.5">CREWNECK SWEATSHIRT</button>
                     <button type="button" class="calc-chip" data-type="hoodie" data-multiplier="2.0">HOODIES</button>
                     <button type="button" class="calc-chip" data-type="jacket" data-multiplier="3.0">ZIP JACKETS</button>
-                    <button type="button" class="calc-chip" data-type="pants" data-multiplier="2.0">PANTS</button>
-                    <button type="button" class="calc-chip" data-type="shorts" data-multiplier="1.4">SHORTS</button>
+                    <button type="button" class="calc-chip" data-type="pants" data-multiplier="2.0">CASUAL PANTS</button>
                     <button type="button" class="calc-chip" data-type="jeans" data-multiplier="3.0">JEANS</button>
+                    <button type="button" class="calc-chip" data-type="shorts" data-multiplier="1.4">SHORTS</button>
                   </div>
                 </div>
 
@@ -1061,7 +1069,7 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="products_data.js?v=37"></script>
-  <script src="app.js?v=37"></script>
+  <script src="products_data.js?v=38"></script>
+  <script src="app.js?v=38"></script>
 </body>
 </html>

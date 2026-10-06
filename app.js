@@ -372,13 +372,27 @@ function renderCatalogList(catFilter) {
   });
 
   if (products.length === 0) {
-    container.innerHTML = `
-      <div class="empty-catalog-box">
-        <div class="empty-icon">📭</div>
-        <p class="empty-text">No Products in this Category</p>
-        <span class="empty-hint">1-Piece Custom Tech Pack proofing available via WhatsApp</span>
-      </div>
-    `;
+    if (catFilter === 'jeans') {
+      container.innerHTML = `
+        <div class="empty-catalog-box">
+          <div class="empty-icon">👖</div>
+          <p class="empty-text">Custom Denim &amp; Jeans Studio</p>
+          <span class="empty-hint">1-Piece Custom Denim Sample Proofing, Vintage Stone Wash, Distressing &amp; Private Label OEM Tech Pack ready.</span>
+          <button type="button" class="btn-empty-cart-action" style="margin-top: 14px;" onclick="openB2BModal()">
+            <span>Inquire Denim Tech Pack</span>
+            <span class="btn-arrow">➔</span>
+          </button>
+        </div>
+      `;
+    } else {
+      container.innerHTML = `
+        <div class="empty-catalog-box">
+          <div class="empty-icon">📭</div>
+          <p class="empty-text">No Products in this Category</p>
+          <span class="empty-hint">1-Piece Custom Tech Pack proofing available via WhatsApp</span>
+        </div>
+      `;
+    }
   } else {
     products.forEach(p => {
       const item = document.createElement('div');
@@ -618,7 +632,7 @@ function renderDynamicLookbook(prod) {
       <div class="pdp-size-tables-card">
         <div class="table-header">
           <span class="table-tag">SIZE GUIDE</span>
-          <h4>Recommended Pants Sizing Guide</h4>
+          <h4>Recommended Casual Pants &amp; Sweatpants Sizing Guide</h4>
         </div>
         <div class="pdp-table-wrap">
           <table class="pdp-spec-table">
@@ -634,6 +648,29 @@ function renderDynamicLookbook(prod) {
           </table>
         </div>
         <small class="pdp-table-tip">Note: Elastic waistband with interior drawstring. Tolerance within ±1-2cm.</small>
+      </div>
+    `;
+  } else if (prod.category === 'jeans') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card">
+        <div class="table-header">
+          <span class="table-tag">SIZE GUIDE</span>
+          <h4>Recommended Denim Jeans Sizing Guide</h4>
+        </div>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr><th>Waist Size</th><th>Waist (in/cm)</th><th>Pants Length (cm)</th><th>Suggested Fit</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>30</strong></td><td>30" / 76 cm</td><td>104 cm</td><td>Slim Straight</td></tr>
+              <tr><td><strong>32</strong></td><td>32" / 81 cm</td><td>106 cm</td><td>Classic Regular</td></tr>
+              <tr class="highlight-row"><td><strong>34</strong></td><td>34" / 86 cm</td><td>108 cm</td><td>Baggy Street</td></tr>
+              <tr><td><strong>36</strong></td><td>36" / 91 cm</td><td>110 cm</td><td>Extreme Loose</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <small class="pdp-table-tip">Note: Authentic 14oz rigid &amp; washed denim. Tolerance within ±1cm.</small>
       </div>
     `;
   } else if (prod.category === 'shorts') {
