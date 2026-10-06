@@ -487,77 +487,103 @@
                                  "assets/products/T238/main/1.jpg",
                                  "assets/products/T238/main/2.jpg",
                                  "assets/products/T238/main/3.jpg",
-                                 "assets/products/T238/main/4.jpg"
+                                 "assets/products/T238/main/4.jpg",
+                                 "assets/products/T238/main/5.jpg",
+                                 "assets/products/T238/main/6.jpg"
                              ],
                  "id":  "T238",
                  "specs":  [
-                               "235 GSM Combed Cotton - Authentic Streetwear Heavyweight Knit",
-                               "Oversized 90s Vintage Drop-Shoulder Silhouette, Pre-Shrunk (\u003c 2%)",
-                               "High-Density Anti-Deformation Ribbing \u0026 Reinforced Twin-Needle Seams",
-                               "Durable Colorfast Reactive Dyeing - High Breathability \u0026 Structured Drape",
-                               "Full Colorway Stock - 1-Piece Sample Proofing \u0026 Flexible OEM Tech Pack Ready"
+                               "235 GSM Combed Compact Double-Yarn Cotton (32S/2, Pre-Shrunk \u003c 2%)",
+                               "3.5cm High-Density Rebound Elastic Ribbed Collar - Anti-Bacon Neck",
+                               "90s Vintage Drop-Shoulder Oversized Silhouette with Ribbed Fitted Cuffs",
+                               "12 Vintage Solid Colorways - Pure Reactive Dyeing, Zero Color Bleed",
+                               "1-Piece Custom Tech Pack Ready · Full Bulk Inventory \u0026 Quick Turnaround"
                            ],
-                 "color":  "10 Colorways",
+                 "color":  "12 Vintage Colorways",
                  "skus":  [
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_1.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_1.jpg",
-                                  "name":  "Sky Blue"
+                                  "name":  "Sky Blue (天蓝)",
+                                  "thumb":  "assets/products/T238/sku/sku_skyblue.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_skyblue.jpg",
+                                  "back":  "assets/products/T238/sku/sku_skyblue_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_2.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_2.jpg",
-                                  "name":  "Vintage Khaki"
+                                  "name":  "Washed Black (黑色)",
+                                  "thumb":  "assets/products/T238/sku/sku_black.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_black.jpg",
+                                  "back":  "assets/products/T238/sku/sku_black_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_3.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_3.jpg",
-                                  "name":  "Sage Green"
+                                  "name":  "Pure White (白色)",
+                                  "thumb":  "assets/products/T238/sku/sku_white.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_white.jpg",
+                                  "back":  "assets/products/T238/sku/sku_white_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_4.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_4.jpg",
-                                  "name":  "Charcoal Grey"
+                                  "name":  "Off-White Cream (米白)",
+                                  "thumb":  "assets/products/T238/sku/sku_offwhite.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_offwhite.jpg",
+                                  "back":  "assets/products/T238/sku/sku_offwhite_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_5.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_5.jpg",
-                                  "name":  "Sage Green"
+                                  "name":  "Oatmeal Heather Grey (燕麦灰)",
+                                  "thumb":  "assets/products/T238/sku/sku_oatmeal.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_oatmeal.jpg",
+                                  "back":  "assets/products/T238/sku/sku_oatmeal_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_6.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_6.jpg",
-                                  "name":  "Heather Grey"
+                                  "name":  "Crimson Wine Red (深红)",
+                                  "thumb":  "assets/products/T238/sku/sku_crimson.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_crimson.jpg",
+                                  "back":  "assets/products/T238/sku/sku_crimson_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_7.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_7.jpg",
-                                  "name":  "Navy Blue"
+                                  "name":  "Charcoal Dark Grey (巴家深灰)",
+                                  "thumb":  "assets/products/T238/sku/sku_charcoal.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_charcoal.jpg",
+                                  "back":  "assets/products/T238/sku/sku_charcoal_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_8.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_8.jpg",
-                                  "name":  "Crimson Red"
+                                  "name":  "Navy Blue (巴家藏蓝)",
+                                  "thumb":  "assets/products/T238/sku/sku_navy.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_navy.jpg",
+                                  "back":  "assets/products/T238/sku/sku_navy_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_9.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_9.jpg",
-                                  "name":  "Oatmeal Grey"
+                                  "name":  "Vintage Khaki (巴家卡其)",
+                                  "thumb":  "assets/products/T238/sku/sku_khaki.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_khaki.jpg",
+                                  "back":  "assets/products/T238/sku/sku_khaki_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T238/sku/sku_10.jpg",
-                                  "hero":  "assets/products/T238/sku/sku_10.jpg",
-                                  "name":  "Off-White"
+                                  "name":  "Fog Grey-Apricot (巴家灰杏)",
+                                  "thumb":  "assets/products/T238/sku/sku_greytaupe.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_greytaupe.jpg",
+                                  "back":  "assets/products/T238/sku/sku_greytaupe_back.jpg"
+                              },
+                              {
+                                  "name":  "Mint Sage Green (巴家浅绿)",
+                                  "thumb":  "assets/products/T238/sku/sku_lightgreen.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_lightgreen.jpg",
+                                  "back":  "assets/products/T238/sku/sku_lightgreen_back.jpg"
+                              },
+                              {
+                                  "name":  "Forest Dark Green (巴家深绿)",
+                                  "thumb":  "assets/products/T238/sku/sku_darkgreen.jpg",
+                                  "hero":  "assets/products/T238/sku/sku_darkgreen.jpg",
+                                  "back":  "assets/products/T238/sku/sku_darkgreen_back.jpg"
                               }
                           ],
                  "category":  "tee",
                  "detailImages":  [
-                                      "assets/products/T238/detail/1.jpg",
-                                      "assets/products/T238/detail/2.jpg",
-                                      "assets/products/T238/detail/3.jpg",
-                                      "assets/products/T238/detail/4.jpg",
-                                      "assets/products/T238/detail/5.jpg",
-                                      "assets/products/T238/detail/6.jpg"
+                                      "assets/products/T238/detail/detail_1.jpg",
+                                      "assets/products/T238/detail/detail_2.jpg",
+                                      "assets/products/T238/detail/detail_3.jpg",
+                                      "assets/products/T238/detail/detail_4.jpg",
+                                      "assets/products/T238/detail/detail_5.jpg",
+                                      "assets/products/T238/detail/detail_6.jpg",
+                                      "assets/products/T238/detail/detail_7.jpg",
+                                      "assets/products/T238/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  17.5,
                  "name":  "T238 235G High-Ribbed Collar Long-Sleeve Tee",
