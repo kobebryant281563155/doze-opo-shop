@@ -1716,55 +1716,60 @@
                  "img":  "assets/products/T230/main/1.jpg",
                  "color":  "6 Mineral Wash Colorways",
                  "specs":  [
-                               "230 GSM 100% Combed Cotton 21S Single Jersey Knit",
-                               "Artisanal Mineral Dye \u0026 Vintage Snow Acid Wash Technique",
-                               "Relaxed Drop-Shoulder Long-Sleeve Silhouette",
-                               "Double-Stitched Ribbed Collar \u0026 Pre-shrunk Fabric (\u003c 2%)",
-                               "6 Streetwear Colorways - 1-Piece Sample Order Ready"
+                               "230 GSM 100% Combed Cotton 21S Single Jersey Knit (Pre-Shrunk \u003c 2%)",
+                               "Artisanal Mineral Dye \u0026 Vintage Snow Acid Tie-Dye Technique (碧纹染工艺)",
+                               "Relaxed Drop-Shoulder Long-Sleeve Boxy Silhouette (Factory Code: MT-2651)",
+                               "Double-Stitched Ribbed Collar \u0026 Clean Collar-to-Shoulder Bound Back Taping",
+                               "6 Authentic Washed Colorways · S-2XL Full Size Range · 1-PC Sample Order Ready"
                            ],
                  "gallery":  [
                                  "assets/products/T230/main/1.jpg",
                                  "assets/products/T230/main/2.jpg",
                                  "assets/products/T230/main/3.jpg",
-                                 "assets/products/T230/main/4.jpg"
+                                 "assets/products/T230/main/4.jpg",
+                                 "assets/products/T230/main/5.jpg",
+                                 "assets/products/T230/main/6.jpg"
                              ],
                  "skus":  [
                               {
-                                  "name":  "Washed Black",
+                                  "name":  "Washed Black (黑色)",
                                   "thumb":  "assets/products/T230/sku/sku_1.jpg",
                                   "hero":  "assets/products/T230/sku/sku_1.jpg"
                               },
                               {
-                                  "name":  "Sapphire Blue",
+                                  "name":  "Sapphire Blue (宝蓝)",
                                   "thumb":  "assets/products/T230/sku/sku_2.jpg",
                                   "hero":  "assets/products/T230/sku/sku_2.jpg"
                               },
                               {
-                                  "name":  "Tree Plum Purple",
+                                  "name":  "Tree Plum Purple (树莓紫)",
                                   "thumb":  "assets/products/T230/sku/sku_3.jpg",
                                   "hero":  "assets/products/T230/sku/sku_3.jpg"
                               },
                               {
-                                  "name":  "Sky Blue",
+                                  "name":  "Sky Blue (天蓝)",
                                   "thumb":  "assets/products/T230/sku/sku_4.jpg",
                                   "hero":  "assets/products/T230/sku/sku_4.jpg"
                               },
                               {
-                                  "name":  "Barbie Pink",
+                                  "name":  "Barbie Pink (芭比粉)",
                                   "thumb":  "assets/products/T230/sku/sku_5.jpg",
                                   "hero":  "assets/products/T230/sku/sku_5.jpg"
                               },
                               {
-                                  "name":  "Apricot",
+                                  "name":  "Apricot (浅杏色)",
                                   "thumb":  "assets/products/T230/sku/sku_6.jpg",
-                                  "hero":  "assets/products/T230/sku/sku_6.jpg"
+                                  "hero":  "assets/products/T230/sku/sku_6.jpg",
+                                  "back":  "assets/products/T230/sku/sku_6_back.jpg"
                               }
                           ],
                  "detailImages":  [
-                                      "assets/products/T230/detail/1.jpg",
-                                      "assets/products/T230/detail/2.jpg",
-                                      "assets/products/T230/detail/3.jpg",
-                                      "assets/products/T230/detail/4.jpg"
+                                      "assets/products/T230/detail/detail_1.jpg",
+                                      "assets/products/T230/detail/detail_2.jpg",
+                                      "assets/products/T230/detail/detail_3.jpg",
+                                      "assets/products/T230/detail/detail_4.jpg",
+                                      "assets/products/T230/detail/detail_5.jpg",
+                                      "assets/products/T230/detail/detail_6.jpg"
                                   ]
              },
     "T250":  {

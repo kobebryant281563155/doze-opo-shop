@@ -1055,6 +1055,96 @@ function renderDynamicLookbook(prod) {
         <small class="pdp-table-tip">Note: 3.2cm heavy ribbed collar &amp; 1x1 fitted cuffs. Pre-shrunk compact double-yarn cotton. Flat measurement tolerance ±1-2cm.</small>
       </div>
     `;
+  } else if (prod.id === 'T230') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card t040-size-card">
+        <div class="table-header">
+          <span class="table-tag">OFFICIAL TECH SIZING &amp; TRY-ON</span>
+          <h4>T230 230G Mineral-Washed Long-Sleeve Street Tee - Sizing &amp; Measurement Guide</h4>
+        </div>
+
+        <!-- Model Try-On Card -->
+        <div class="t040-models-badge-row">
+          <div class="model-stat-pill">
+            <span class="m-avatar">👨</span>
+            <div class="m-info">
+              <strong>Male Model (Washed Black)</strong>
+              <small>184cm / 74kg · Wearing XL · Relaxed Baggy Street Fit</small>
+            </div>
+          </div>
+          <div class="model-stat-pill">
+            <span class="m-avatar">👩</span>
+            <div class="m-info">
+              <strong>Female Model (Apricot)</strong>
+              <small>168cm / 50kg · Wearing L · Oversized Drop Fit</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Garment Measurements Table -->
+        <h5 class="sub-table-title">📏 Garment Dimensions (Flat Measurement / cm &amp; in)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Length (衣长)</th>
+                <th>Chest (胸围)</th>
+                <th>Shoulder (肩宽)</th>
+                <th>Sleeve (袖长)</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>62 cm (24.4")</td><td>122 cm (48.0")</td><td>51.5 cm (20.3")</td><td>59 cm (23.2")</td><td>Natural Drop Shoulder</td></tr>
+              <tr><td><strong>M</strong></td><td>64 cm (25.2")</td><td>126 cm (49.6")</td><td>53.0 cm (20.9")</td><td>60 cm (23.6")</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>66 cm (26.0")</td><td>130 cm (51.2")</td><td>54.5 cm (21.5")</td><td>61 cm (24.0")</td><td>Authentic Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>68 cm (26.8")</td><td>134 cm (52.8")</td><td>56.0 cm (22.0")</td><td>62 cm (24.4")</td><td>Vintage Baggy Streetwear (Featured)</td></tr>
+              <tr><td><strong>2XL</strong></td><td>70 cm (27.6")</td><td>138 cm (54.3")</td><td>57.5 cm (22.6")</td><td>63 cm (24.8")</td><td>Max Plus Size Loose</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Height & Weight Recommended Fit Table -->
+        <h5 class="sub-table-title">⚖️ Height &amp; Weight Recommendations (建议尺码)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Suggested Height</th>
+                <th>Suggested Weight</th>
+                <th>Fit Silhouette</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>160 - 165 cm</td><td>45 - 55 kg (99-121 lbs)</td><td>Natural Drop Shoulder</td></tr>
+              <tr><td><strong>M</strong></td><td>165 - 170 cm</td><td>55 - 65 kg (121-143 lbs)</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>170 - 175 cm</td><td>65 - 75 kg (143-165 lbs)</td><td>Authentic Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>175 - 180 cm</td><td>75 - 85 kg (165-187 lbs)</td><td>Vintage Baggy Drape (Featured)</td></tr>
+              <tr><td><strong>2XL</strong></td><td>180+ cm</td><td>85 - 100 kg (187-220 lbs)</td><td>Max Plus Size Loose</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Visual Size Chart Image Cards -->
+        <div class="t040-size-graphics-strip">
+          <a class="size-graphic-thumb" href="assets/products/T230/size/size_chart_garment.jpg" target="_blank">
+            <img src="assets/products/T230/size/size_chart_garment.jpg" alt="T230 Garment Size Chart &amp; Measurements" loading="lazy">
+            <span>🔍 View Original Measurement Chart</span>
+          </a>
+          <a class="size-graphic-thumb" href="assets/products/T230/size/size_chart_recommend.jpg" target="_blank">
+            <img src="assets/products/T230/size/size_chart_recommend.jpg" alt="T230 Height &amp; Weight Recommendations" loading="lazy">
+            <span>🔍 View Height &amp; Weight Guide</span>
+          </a>
+          <a class="size-graphic-thumb" href="assets/products/T230/size/size_chart_factory.jpg" target="_blank">
+            <img src="assets/products/T230/size/size_chart_factory.jpg" alt="T230 Factory MT-2651 Spec Card" loading="lazy">
+            <span>🔍 View Factory Spec Card</span>
+          </a>
+        </div>
+        <small class="pdp-table-tip">Note: Official factory MT-2651 specifications. Flat measurement tolerance within ±1-2cm. Pre-shrunk 100% combed cotton jersey.</small>
+      </div>
+    `;
   } else if (prod.category === 'pants') {
     sizeGuideHtml = `
       <div class="pdp-size-tables-card">
@@ -1414,6 +1504,45 @@ function renderDynamicLookbook(prod) {
       'assets/products/T276/editorial/model_15.jpg',
       'assets/products/T276/editorial/model_16.jpg'
     ];
+  } else if (prod.id === 'T230') {
+    const craftDetails = [
+      { img: 'assets/products/T230/detail/detail_1.jpg', title: '01 领口压条', desc: 'Double-Stitched Ribbed Collar & Bound Back Taping' },
+      { img: 'assets/products/T230/detail/detail_2.jpg', title: '02 袖口精密双针', desc: 'Precision Twin-Needle Hem & Cuff Lockstitching' },
+      { img: 'assets/products/T230/detail/detail_3.jpg', title: '03 炒雪花碧纹染', desc: '21S Artisanal Mineral Dye & Vintage Snow Acid Wash Technique' },
+      { img: 'assets/products/T230/detail/detail_4.jpg', title: '04 230G重磅纯棉', desc: '230 GSM 100% Combed Compact Cotton Jersey Weave' },
+      { img: 'assets/products/T230/detail/detail_5.jpg', title: '05 街头落肩剪裁', desc: 'Relaxed Drop-Shoulder Silhouette & Natural Drape' },
+      { img: 'assets/products/T230/detail/detail_6.jpg', title: '06 原厂技术规格', desc: 'Factory MT-2651 Production Spec & Certification Standard' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card t040-craft-card">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (6 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">230 GSM combed cotton, artisanal mineral acid snow wash, bound collar taping</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    lookbookImages = [
+      'assets/products/T230/main/1.jpg',
+      'assets/products/T230/main/2.jpg',
+      'assets/products/T230/main/3.jpg',
+      'assets/products/T230/main/4.jpg',
+      'assets/products/T230/main/5.jpg',
+      'assets/products/T230/main/6.jpg'
+    ];
   }
 
   const imagesHtml = lookbookImages.map((src, i) => `
@@ -1433,15 +1562,15 @@ function renderDynamicLookbook(prod) {
     <!-- Size Guide Card -->
     ${sizeGuideHtml}
 
-    <!-- Extra Craft Details for T040, T235, T238, T275 & T276 -->
+    <!-- Extra Craft Details for T040, T230, T235, T238, T275 & T276 -->
     ${extraCraftHtml}
 
     <!-- Editorial Lookbook Gallery -->
     <div class="pdp-editorial-gallery">
       <div class="gallery-title-box">
         <span class="g-tag">LOOKBOOK GALLERY</span>
-        <h3>${(prod.id === 'T040' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276') ? 'Editorial Street Lookbook (16 Shots)' : 'Product Details &amp; Macro Fabric Craft'}</h3>
-        <p>${(prod.id === 'T040' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276') ? 'Full Streetwear Outfit On-Model Demonstrations &amp; Colorway Silhouettes' : 'High-density weave, reinforced seams, and colorfast reactive dye detail'}</p>
+        <h3>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276') ? (prod.id === 'T230' ? 'Product Gallery &amp; Detail Overview' : 'Editorial Street Lookbook (16 Shots)') : 'Product Details &amp; Macro Fabric Craft'}</h3>
+        <p>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276') ? 'Full Streetwear Outfit On-Model Demonstrations &amp; Colorway Silhouettes' : 'High-density weave, reinforced seams, and colorfast reactive dye detail'}</p>
       </div>
       ${imagesHtml}
     </div>
