@@ -625,9 +625,94 @@ function renderDynamicLookbook(prod) {
     return `<li><strong>${title}:</strong> ${detail}</li>`;
   }).join('');
 
-  // Category specific sizing chart
+  // Category / Product specific sizing chart
   let sizeGuideHtml = '';
-  if (prod.category === 'pants') {
+  if (prod.id === 'T040') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card t040-size-card">
+        <div class="table-header">
+          <span class="table-tag">OFFICIAL TECH SIZING &amp; TRY-ON</span>
+          <h4>T040 245G Oversized Boxy Tee - Sizing &amp; Measurement Guide</h4>
+        </div>
+
+        <!-- Model Try-On Card -->
+        <div class="t040-models-badge-row">
+          <div class="model-stat-pill">
+            <span class="m-avatar">👨</span>
+            <div class="m-info">
+              <strong>Denis (Model)</strong>
+              <small>188cm / 77kg · Wearing XL · Loose Street Fit</small>
+            </div>
+          </div>
+          <div class="model-stat-pill">
+            <span class="m-avatar">👩</span>
+            <div class="m-info">
+              <strong>Karen (Model)</strong>
+              <small>173cm / 55kg · Wearing L · Loose Boxy Fit</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Garment Measurements Table -->
+        <h5 class="sub-table-title">📏 Garment Dimensions (Flat Measurement / cm &amp; in)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Length (衣长)</th>
+                <th>Chest (胸围)</th>
+                <th>Shoulder (肩宽)</th>
+                <th>Sleeve (袖长)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>71 cm (28.0")</td><td>110 cm (43.3")</td><td>51 cm (20.1")</td><td>20 cm (7.9")</td></tr>
+              <tr><td><strong>M</strong></td><td>74 cm (29.1")</td><td>120 cm (47.2")</td><td>54 cm (21.3")</td><td>21 cm (8.3")</td></tr>
+              <tr><td><strong>L</strong></td><td>77 cm (30.3")</td><td>126 cm (49.6")</td><td>57 cm (22.4")</td><td>22 cm (8.7")</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>80 cm (31.5")</td><td>136 cm (53.5")</td><td>61 cm (24.0")</td><td>23 cm (9.1")</td></tr>
+              <tr><td><strong>2XL</strong></td><td>82 cm (32.3")</td><td>146 cm (57.5")</td><td>65 cm (25.6")</td><td>24 cm (9.4")</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Height & Weight Recommended Fit Table -->
+        <h5 class="sub-table-title">⚖️ Height &amp; Weight Recommendations (建议尺码)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Suggested Height</th>
+                <th>Suggested Weight</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>160 - 170 cm</td><td>50 - 55 kg (100-110 lbs)</td><td>Relaxed Street</td></tr>
+              <tr><td><strong>M</strong></td><td>170 - 175 cm</td><td>60 - 65 kg (130-145 lbs)</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>175 - 180 cm</td><td>70 - 80 kg (155-175 lbs)</td><td>Authentic Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>180 - 190 cm</td><td>85 - 100 kg (185-220 lbs)</td><td>90s Heavyweight Baggy</td></tr>
+              <tr><td><strong>2XL</strong></td><td>200 - 210 cm</td><td>105 - 125 kg (230-275 lbs)</td><td>Max Plus Size Loose</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Visual Size Chart Image Cards -->
+        <div class="t040-size-graphics-strip">
+          <a class="size-graphic-thumb" href="assets/products/T040/size/size_chart_garment.jpg" target="_blank">
+            <img src="assets/products/T040/size/size_chart_garment.jpg" alt="T040 Garment Size Chart &amp; Model Measurements" loading="lazy">
+            <span>🔍 View Original Measurement Chart</span>
+          </a>
+          <a class="size-graphic-thumb" href="assets/products/T040/size/size_chart_recommend.jpg" target="_blank">
+            <img src="assets/products/T040/size/size_chart_recommend.jpg" alt="T040 Height &amp; Weight Recommendations" loading="lazy">
+            <span>🔍 View Height &amp; Weight Guide</span>
+          </a>
+        </div>
+        <small class="pdp-table-tip">Note: Hand-measured specifications. Flat measurement tolerance within ±1-2cm.</small>
+      </div>
+    `;
+  } else if (prod.category === 'pants') {
     sizeGuideHtml = `
       <div class="pdp-size-tables-card">
         <div class="table-header">
@@ -722,8 +807,64 @@ function renderDynamicLookbook(prod) {
     `;
   }
 
-  // Lookbook images
-  const lookbookImages = (prod.detailImages && prod.detailImages.length > 0) ? prod.detailImages : prod.gallery;
+  // Lookbook and Details
+  let extraCraftHtml = '';
+  let lookbookImages = (prod.detailImages && prod.detailImages.length > 0) ? prod.detailImages : prod.gallery;
+
+  if (prod.id === 'T040') {
+    const craftDetails = [
+      { img: 'assets/products/T040/detail/detail_1.jpg', title: '01 领口细节', desc: '3.0cm Anti-Deformation High Rebound Ribbed Collar' },
+      { img: 'assets/products/T040/detail/detail_2.jpg', title: '02 肩袖做工', desc: 'Reinforced Drop-Shoulder Structural Seams' },
+      { img: 'assets/products/T040/detail/detail_3.jpg', title: '03 下摆双针', desc: 'Twin-Needle Clean Edge Lockstitching' },
+      { img: 'assets/products/T040/detail/detail_4.jpg', title: '04 面料质感', desc: '245 GSM 100% Combed Compact Cotton Weave' },
+      { img: 'assets/products/T040/detail/detail_5.jpg', title: '05 内里压条', desc: 'Clean Collar-to-Shoulder Bound Taping & Overlock' },
+      { img: 'assets/products/T040/detail/detail_6.jpg', title: '06 高弹韧性', desc: 'Pre-Shrunk Ribbed Neckband - Anti-Bacon Collar' },
+      { img: 'assets/products/T040/detail/detail_7.jpg', title: '07 挺括垂坠', desc: 'Heavyweight Streetwear Boxy Natural Drape' },
+      { img: 'assets/products/T040/detail/detail_8.jpg', title: '08 双股织造', desc: 'Double-Yarn Combed Cotton Smooth Finish' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card t040-craft-card">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (8 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">High-density weave, reinforced seams, and colorfast reactive dye detail</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    // 16 full editorial lookbook shots
+    lookbookImages = [
+      'assets/products/T040/editorial/model_1.jpg',
+      'assets/products/T040/editorial/model_2.jpg',
+      'assets/products/T040/editorial/model_3.jpg',
+      'assets/products/T040/editorial/model_4.jpg',
+      'assets/products/T040/editorial/model_5.jpg',
+      'assets/products/T040/editorial/model_6.jpg',
+      'assets/products/T040/editorial/model_7.jpg',
+      'assets/products/T040/editorial/model_8.jpg',
+      'assets/products/T040/editorial/model_9.jpg',
+      'assets/products/T040/editorial/model_10.jpg',
+      'assets/products/T040/editorial/model_11.jpg',
+      'assets/products/T040/editorial/model_12.jpg',
+      'assets/products/T040/editorial/model_13.jpg',
+      'assets/products/T040/editorial/model_14.jpg',
+      'assets/products/T040/editorial/model_15.jpg',
+      'assets/products/T040/editorial/model_16.jpg'
+    ];
+  }
+
   const imagesHtml = lookbookImages.map((src, i) => `
     <img src="${src}" class="pdp-gallery-img" alt="${prod.name} Lookbook ${i + 1}" loading="lazy">
   `).join('');
@@ -741,12 +882,15 @@ function renderDynamicLookbook(prod) {
     <!-- Size Guide Card -->
     ${sizeGuideHtml}
 
+    <!-- Extra Craft Details for T040 -->
+    ${extraCraftHtml}
+
     <!-- Editorial Lookbook Gallery -->
     <div class="pdp-editorial-gallery">
       <div class="gallery-title-box">
         <span class="g-tag">LOOKBOOK GALLERY</span>
-        <h3>Product Details &amp; Macro Fabric Craft</h3>
-        <p>High-density weave, reinforced seams, and colorfast reactive dye detail</p>
+        <h3>${prod.id === 'T040' ? 'Editorial Street Lookbook (16 Shots)' : 'Product Details &amp; Macro Fabric Craft'}</h3>
+        <p>${prod.id === 'T040' ? 'Full Streetwear Outfit On-Model Demonstrations &amp; Colorway Silhouettes' : 'High-density weave, reinforced seams, and colorfast reactive dye detail'}</p>
       </div>
       ${imagesHtml}
     </div>

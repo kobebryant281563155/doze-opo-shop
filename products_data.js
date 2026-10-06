@@ -1,4 +1,4 @@
-﻿window.PRODUCTS_DATA = {
+window.PRODUCTS_DATA = {
     "T012":  {
                  "id":  "T012",
                  "name":  "T012 240G Raglan Sleeve Boxy Tee",
@@ -330,47 +330,62 @@
                                  "assets/products/T040/main/1.jpg",
                                  "assets/products/T040/main/2.jpg",
                                  "assets/products/T040/main/3.jpg",
-                                 "assets/products/T040/main/4.jpg"
+                                 "assets/products/T040/main/4.jpg",
+                                 "assets/products/T040/main/5.jpg",
+                                 "assets/products/T040/main/6.jpg"
                              ],
                  "id":  "T040",
                  "specs":  [
-                               "245 GSM Combed Compact Cotton - Authentic Streetwear Heavyweight Knit",
-                               "Oversized 90s Vintage Drop-Shoulder Silhouette, Pre-Shrunk (\u003c 2%)",
-                               "High-Density Anti-Deformation Ribbing \u0026 Reinforced Twin-Needle Seams",
-                               "Durable Colorfast Reactive Dyeing - High Breathability \u0026 Structured Drape",
-                               "Full Colorway Stock - 1-Piece Sample Proofing \u0026 Flexible OEM Tech Pack Ready"
+                               "245 GSM 100% Combed Compact Cotton - Authentic Streetwear Heavyweight Knit",
+                               "Oversized 90s Vintage Drop-Shoulder Boxy Silhouette, Pre-Shrunk (< 2%)",
+                               "High-Density 3.0cm Anti-Deformation Ribbed Crewneck & Internal Bound Taping",
+                               "Reinforced Twin-Needle Clean Stitching on Shoulders, Sleeves & Hem",
+                               "Reactive Colorfast Dyeing - High Breathability & Structured Natural Drape",
+                               "Full 6-Colorway Stock - 1-Piece Custom Tech Pack Sample & Flexible OEM Ready"
                            ],
-                 "color":  "4 Colorways",
+                 "color":  "6 Colorways",
                  "skus":  [
                               {
-                                  "thumb":  "assets/products/T040/sku/sku_1.jpg",
-                                  "hero":  "assets/products/T040/sku/sku_1.jpg",
+                                  "thumb":  "assets/products/T040/sku/sku_washed_black.jpg",
+                                  "hero":  "assets/products/T040/sku/sku_washed_black.jpg",
                                   "name":  "Washed Black"
                               },
                               {
-                                  "thumb":  "assets/products/T040/sku/sku_2.jpg",
-                                  "hero":  "assets/products/T040/sku/sku_2.jpg",
+                                  "thumb":  "assets/products/T040/sku/sku_pure_white.jpg",
+                                  "hero":  "assets/products/T040/sku/sku_pure_white.jpg",
                                   "name":  "Pure White"
                               },
                               {
-                                  "thumb":  "assets/products/T040/sku/sku_3.jpg",
-                                  "hero":  "assets/products/T040/sku/sku_3.jpg",
-                                  "name":  "Vintage Khaki"
+                                  "thumb":  "assets/products/T040/sku/sku_sand_khaki.jpg",
+                                  "hero":  "assets/products/T040/sku/sku_sand_khaki.jpg",
+                                  "name":  "Sand Khaki"
                               },
                               {
-                                  "thumb":  "assets/products/T040/sku/sku_4.jpg",
-                                  "hero":  "assets/products/T040/sku/sku_4.jpg",
-                                  "name":  "Heather Grey"
+                                  "thumb":  "assets/products/T040/sku/sku_cream_oatmeal.jpg",
+                                  "hero":  "assets/products/T040/sku/sku_cream_oatmeal.jpg",
+                                  "name":  "Cream Oatmeal"
+                              },
+                              {
+                                  "thumb":  "assets/products/T040/sku/sku_navy_blue.jpg",
+                                  "hero":  "assets/products/T040/sku/sku_navy_blue.jpg",
+                                  "name":  "Navy Blue"
+                              },
+                              {
+                                  "thumb":  "assets/products/T040/sku/sku_vintage_taupe.jpg",
+                                  "hero":  "assets/products/T040/sku/sku_vintage_taupe.jpg",
+                                  "name":  "Vintage Taupe"
                               }
                           ],
                  "category":  "tee",
                  "detailImages":  [
-                                      "assets/products/T040/detail/1.jpg",
-                                      "assets/products/T040/detail/2.jpg",
-                                      "assets/products/T040/detail/3.jpg",
-                                      "assets/products/T040/detail/4.jpg",
-                                      "assets/products/T040/detail/5.jpg",
-                                      "assets/products/T040/detail/6.jpg"
+                                      "assets/products/T040/detail/detail_1.jpg",
+                                      "assets/products/T040/detail/detail_2.jpg",
+                                      "assets/products/T040/detail/detail_3.jpg",
+                                      "assets/products/T040/detail/detail_4.jpg",
+                                      "assets/products/T040/detail/detail_5.jpg",
+                                      "assets/products/T040/detail/detail_6.jpg",
+                                      "assets/products/T040/detail/detail_7.jpg",
+                                      "assets/products/T040/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  15,
                  "name":  "T040 245G Oversized Solid Street Boxy Tee",
