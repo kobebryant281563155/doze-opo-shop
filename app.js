@@ -14,17 +14,7 @@ const APP_STATE = {
     CNY: { rate: 7.25, symbol: '¥' }
   },
   currentTab: 'home',
-  cartItems: [
-    {
-      id: 'H01',
-      name: 'H01 Heavyweight Boxy Hoodie',
-      priceUSD: 24.50,
-      qty: 1,
-      size: 'XL',
-      spec: '460 GSM Terry · Vintage Charcoal',
-      img: 'assets/hoodie_item.jpg'
-    }
-  ],
+  cartItems: [],
   customCalc: {
     garmentMultiplier: 1.0,
     craftTeePriceUSD: 20.00,
@@ -841,43 +831,69 @@ function updateCartTotal() {
   const count = APP_STATE.cartItems.length;
   const floatBadge = document.getElementById('floatBadgeCount');
   const cartTitle = document.getElementById('cartCountTitle');
+  const cartTabBadge = document.getElementById('cartTabBadge');
 
   if (floatBadge) floatBadge.textContent = count;
   if (cartTitle) cartTitle.textContent = count;
+  if (cartTabBadge) {
+    cartTabBadge.textContent = count;
+    cartTabBadge.style.display = count > 0 ? 'inline-block' : 'none';
+  }
 
   let subtotalUSD = 0;
   let totalPieces = 0;
   const listContainer = document.getElementById('cartItemsList');
+  const checkoutBtn = document.getElementById('cartCheckoutBtn') || document.querySelector('.btn-checkout');
 
   if (listContainer) {
     listContainer.innerHTML = '';
-    APP_STATE.cartItems.forEach((item, idx) => {
-      const itemQty = parseInt(item.qty) || 1;
-      totalPieces += itemQty;
-      subtotalUSD += item.priceUSD * itemQty;
-      const el = document.createElement('div');
-      el.className = 'cart-item-card';
-      el.innerHTML = `
-        <img src="${item.img}" alt="${item.name}" class="cart-thumb">
-        <div class="cart-item-details">
-          <h4>${item.name}</h4>
-          <div class="cart-specs">Size: ${item.size} · ${item.spec}</div>
-          <div class="cart-price-qty">
-            <span class="cart-price"><span class="currency-symbol">$</span>${formatCurrency(item.priceUSD)}</span>
-            <div class="cart-qty-ctrl">
-              <button type="button" class="cq-btn" onclick="modifyCartQty(${idx}, -1)">-</button>
-              <span>${item.qty}</span>
-              <button type="button" class="cq-btn" onclick="modifyCartQty(${idx}, 1)">+</button>
-            </div>
+    if (count === 0) {
+      listContainer.innerHTML = `
+        <div class="empty-cart-container">
+          <div class="empty-cart-icon-circle">
+            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" x2="21" y1="6" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
           </div>
+          <h4 class="empty-cart-title">Your Sample Cart is Empty</h4>
+          <p class="empty-cart-desc">No sample garments added yet. Explore our oversized heavyweight blanks &amp; custom streetwear catalog to start proofing.</p>
+          <button type="button" class="btn-empty-cart-action" onclick="switchTab('catalog')">
+            <span>Explore Product Catalog</span>
+            <span class="btn-arrow">➔</span>
+          </button>
         </div>
       `;
-      listContainer.appendChild(el);
-    });
+    } else {
+      APP_STATE.cartItems.forEach((item, idx) => {
+        const itemQty = parseInt(item.qty) || 1;
+        totalPieces += itemQty;
+        subtotalUSD += item.priceUSD * itemQty;
+        const el = document.createElement('div');
+        el.className = 'cart-item-card';
+        el.innerHTML = `
+          <img src="${item.img}" alt="${item.name}" class="cart-thumb">
+          <div class="cart-item-details">
+            <h4>${item.name}</h4>
+            <div class="cart-specs">Size: ${item.size} · ${item.spec}</div>
+            <div class="cart-price-qty">
+              <span class="cart-price"><span class="currency-symbol">$</span>${formatCurrency(item.priceUSD)}</span>
+              <div class="cart-qty-ctrl">
+                <button type="button" class="cq-btn" onclick="modifyCartQty(${idx}, -1)">-</button>
+                <span>${item.qty}</span>
+                <button type="button" class="cq-btn" onclick="modifyCartQty(${idx}, 1)">+</button>
+              </div>
+            </div>
+          </div>
+        `;
+        listContainer.appendChild(el);
+      });
+    }
   }
 
-  const shippingUSD = calculateUsShipping(totalPieces);
-  const deliveredTotalUSD = subtotalUSD + shippingUSD;
+  const shippingUSD = count > 0 ? calculateUsShipping(totalPieces) : 0;
+  const deliveredTotalUSD = count > 0 ? (subtotalUSD + shippingUSD) : 0;
 
   const subtotalDisplay = document.getElementById('cartSubtotalSum');
   if (subtotalDisplay) {
@@ -893,6 +909,27 @@ function updateCartTotal() {
   if (sumDisplay) {
     sumDisplay.textContent = formatCurrency(deliveredTotalUSD);
   }
+
+  if (checkoutBtn) {
+    if (count === 0) {
+      checkoutBtn.disabled = true;
+      checkoutBtn.classList.add('disabled');
+      checkoutBtn.textContent = 'Cart is Empty';
+    } else {
+      checkoutBtn.disabled = false;
+      checkoutBtn.classList.remove('disabled');
+      checkoutBtn.textContent = 'Submit RFQ / Order Sample';
+    }
+  }
+}
+
+function handleCartCheckout() {
+  if (APP_STATE.cartItems.length === 0) {
+    showToast('Your sample cart is empty. Please add garments from the catalog!');
+    switchTab('catalog');
+    return;
+  }
+  openWhatsAppModal();
 }
 
 function modifyCartQty(index, delta) {
@@ -907,7 +944,20 @@ function modifyCartQty(index, delta) {
 
 // 15. Modals Controls
 function openWhatsAppModal() {
-  document.getElementById('whatsappModal').classList.add('open');
+  const modal = document.getElementById('whatsappModal');
+  if (modal) {
+    modal.classList.add('open');
+    const waDirectBtn = modal.querySelector('.btn-wa-direct');
+    if (waDirectBtn) {
+      if (APP_STATE.cartItems.length > 0) {
+        const summary = APP_STATE.cartItems.map(i => `${i.qty}x ${i.name} (${i.size}, ${i.spec})`).join(', ');
+        const text = encodeURIComponent(`Hello DOZE OPO, I would like to inquire/order samples for: ${summary}.`);
+        waDirectBtn.href = `https://wa.me/8618520682738?text=${text}`;
+      } else {
+        waDirectBtn.href = `https://wa.me/8618520682738?text=Hello%20DOZE%20OPO,%20I%20am%20interested%20in%20custom%20heavyweight%20hoodies%20and%20t-shirts.`;
+      }
+    }
+  }
 }
 function closeWhatsAppModal() {
   document.getElementById('whatsappModal').classList.remove('open');

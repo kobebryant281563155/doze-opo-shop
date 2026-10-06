@@ -1752,7 +1752,108 @@ body {
   padding: 10px 18px;
   border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
+
+.btn-checkout.disabled {
+  background: #9ca3af;
+  color: #f3f4f6;
+  cursor: not-allowed;
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+/* 购物车默认空白 (Empty State) 样式 */
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 56px 20px 48px;
+  margin: 14px 0 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1.5px dashed #e5e7eb;
+}
+
+.empty-cart-icon-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.empty-cart-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+
+.empty-cart-desc {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.5;
+  max-width: 290px;
+  margin-bottom: 22px;
+}
+
+.btn-empty-cart-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 11px 22px;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  transition: all 0.2s ease;
+}
+
+.btn-empty-cart-action:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.22);
+}
+
+.btn-empty-cart-action .btn-arrow {
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.btn-empty-cart-action:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+.cart-tab-badge {
+  position: absolute;
+  top: -4px;
+  right: -9px;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 10px;
+  min-width: 15px;
+  text-align: center;
+  line-height: 13px;
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+}
+
 
 /* 品牌加工 / 商户页 */
 .b2b-header-card {
