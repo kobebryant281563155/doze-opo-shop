@@ -368,6 +368,8 @@ function renderCatalogList(catFilter) {
   container.innerHTML = '';
   const products = Object.values(PRODUCTS_DATA).filter(p => {
     if (catFilter === 'all') return true;
+    if (catFilter === 'hoodie' && (p.category === 'hoodie' || p.id === 'KB02')) return true;
+    if (catFilter === 'jacket' && (p.category === 'jacket' || p.id === 'KB02')) return true;
     return p.category === catFilter;
   });
 
@@ -590,6 +592,25 @@ function openProductDetail(productId) {
     switchPdpHero(gallery[0] || prod.skus[0].hero, 1);
   } else if (gallery.length > 0) {
     switchPdpHero(gallery[0], 1);
+  }
+
+  // Dynamic Size Selector Chips
+  const sizeRow = document.getElementById('pdpSizeRow');
+  if (sizeRow) {
+    const availableSizes = prod.sizes || ['S', 'M', 'L', 'XL', '2XL'];
+    sizeRow.innerHTML = '';
+    availableSizes.forEach(s => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      const isDefault = (availableSizes.includes('XL') && s === 'XL') || (!availableSizes.includes('XL') && s === availableSizes[0]);
+      btn.className = `pdp-size-btn ${isDefault ? 'active' : ''}`;
+      btn.textContent = s;
+      btn.onclick = () => selectPdpSize(s, btn);
+      sizeRow.appendChild(btn);
+    });
+    activePdpSize = availableSizes.includes('XL') ? 'XL' : availableSizes[0];
+    const activeSizeLabel = document.getElementById('pdpActiveSizeName');
+    if (activeSizeLabel) activeSizeLabel.textContent = `${activePdpSize} (Oversized Street Fit)`;
   }
 
   // Lookbook view: T012 dedicated graphics vs Dynamic Lookbook for all other 18 products
@@ -1215,6 +1236,146 @@ function renderDynamicLookbook(prod) {
         <small class="pdp-table-tip">Note: Elasticated waistband with contrast knitted drawstrings. Tolerance ±1-2cm.</small>
       </div>
     `;
+  } else if (prod.id === 'KB02') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card t040-size-card">
+        <div class="table-header">
+          <span class="table-tag">OFFICIAL TECH SIZING &amp; MEASUREMENTS</span>
+          <h4>KB02 380G Washed Knitted Denim Zip Hoodie - Sizing Guide</h4>
+        </div>
+
+        <div class="t040-models-badge-row">
+          <div class="model-stat-pill">
+            <span class="m-avatar">👨</span>
+            <div class="m-info">
+              <strong>Denis (Model)</strong>
+              <small>188cm / 77kg · Wearing XL · Relaxed Streetwear Oversized Fit</small>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="sub-table-title">📏 Garment Dimensions (Flat Measurement / cm &amp; in)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Length (衣长)</th>
+                <th>Chest (胸围)</th>
+                <th>Shoulder (肩宽)</th>
+                <th>Sleeve (袖长)</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>68.0 cm (26.8")</td><td>124 cm (48.8")</td><td>57.0 cm (22.4")</td><td>57.0 cm (22.4")</td><td>Relaxed Street</td></tr>
+              <tr><td><strong>M</strong></td><td>69.5 cm (27.4")</td><td>128 cm (50.4")</td><td>59.0 cm (23.2")</td><td>58.0 cm (22.8")</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>71.0 cm (28.0")</td><td>132 cm (52.0")</td><td>61.0 cm (24.0")</td><td>59.0 cm (23.2")</td><td>Authentic Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>72.5 cm (28.5")</td><td>136 cm (53.5")</td><td>63.0 cm (24.8")</td><td>60.0 cm (23.6")</td><td>90s Vintage Baggy (Denis Fit)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h5 class="sub-table-title">⚖️ Height &amp; Weight Recommendations (建议尺码)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Suggested Height</th>
+                <th>Suggested Weight</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>160 - 165 cm</td><td>45 - 55 kg (99-121 lbs)</td><td>Relaxed Street</td></tr>
+              <tr><td><strong>M</strong></td><td>165 - 170 cm</td><td>55 - 65 kg (121-143 lbs)</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>170 - 175 cm</td><td>65 - 77 kg (143-170 lbs)</td><td>Authentic Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>175 - 188 cm</td><td>77 - 88 kg (170-194 lbs)</td><td>Skatewear 90s Vintage Baggy</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="t040-size-graphics-strip">
+          <a class="size-graphic-thumb" href="assets/products/KB02/size/size_chart_garment.jpg" target="_blank">
+            <img src="assets/products/KB02/size/size_chart_garment.jpg" alt="KB02 Garment Size Chart &amp; Measurements" loading="lazy">
+            <span>🔍 View Original Tech Pack Size Sheet</span>
+          </a>
+        </div>
+        <small class="pdp-table-tip">Note: Hand-measured specifications. Flat measurement tolerance within ±1-2cm.</small>
+      </div>
+    `;
+  } else if (prod.id === 'WY18') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card t040-size-card">
+        <div class="table-header">
+          <span class="table-tag">OFFICIAL TECH SIZING &amp; MEASUREMENTS</span>
+          <h4>WY18 355G Vintage Snow-Washed Fleece Pullover Hoodie - Sizing Guide</h4>
+        </div>
+
+        <div class="t040-models-badge-row">
+          <div class="model-stat-pill">
+            <span class="m-avatar">👨</span>
+            <div class="m-info">
+              <strong>Denis (Model)</strong>
+              <small>188cm / 77kg · Wearing XL · Oversized Streetwear Fit</small>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="sub-table-title">📏 Garment Dimensions (Flat Measurement / cm &amp; in)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Length (衣长)</th>
+                <th>Chest (胸围)</th>
+                <th>Shoulder (肩宽)</th>
+                <th>Sleeve (袖长)</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>70.0 cm (27.6")</td><td>134 cm (52.8")</td><td>57.0 cm (22.4")</td><td>61.0 cm (24.0")</td><td>Relaxed Street</td></tr>
+              <tr><td><strong>M</strong></td><td>72.0 cm (28.3")</td><td>138 cm (54.3")</td><td>58.5 cm (23.0")</td><td>62.0 cm (24.4")</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>74.0 cm (29.1")</td><td>142 cm (55.9")</td><td>60.0 cm (23.6")</td><td>63.0 cm (24.8")</td><td>Authentic Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>76.0 cm (29.9")</td><td>146 cm (57.5")</td><td>61.5 cm (24.2")</td><td>64.0 cm (25.2")</td><td>90s Vintage Baggy (Denis Fit)</td></tr>
+              <tr><td><strong>2XL</strong></td><td>78.0 cm (30.7")</td><td>150 cm (59.1")</td><td>63.0 cm (24.8")</td><td>65.0 cm (25.6")</td><td>Max Plus Size Loose</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h5 class="sub-table-title">⚖️ Height &amp; Weight Recommendations (建议尺码)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Suggested Height</th>
+                <th>Suggested Weight</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>160 - 165 cm</td><td>45 - 55 kg (99-121 lbs)</td><td>Relaxed Street</td></tr>
+              <tr><td><strong>M</strong></td><td>165 - 170 cm</td><td>55 - 65 kg (121-143 lbs)</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>170 - 175 cm</td><td>65 - 77 kg (143-170 lbs)</td><td>Authentic Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>175 - 180 cm</td><td>77 - 88 kg (170-194 lbs)</td><td>Skatewear 90s Vintage Baggy</td></tr>
+              <tr><td><strong>2XL</strong></td><td>180 - 195 cm</td><td>88 - 95 kg (194-209 lbs)</td><td>Max Statement Oversized</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="t040-size-graphics-strip">
+          <a class="size-graphic-thumb" href="assets/products/WY18/size/size_chart_garment.jpg" target="_blank">
+            <img src="assets/products/WY18/size/size_chart_garment.jpg" alt="WY18 Garment Size Chart &amp; Measurements" loading="lazy">
+            <span>🔍 View Original Tech Pack Size Sheet</span>
+          </a>
+        </div>
+        <small class="pdp-table-tip">Note: Hand-measured specifications. Flat measurement tolerance within ±1-2cm.</small>
+      </div>
+    `;
   } else {
     sizeGuideHtml = `
       <div class="pdp-size-tables-card">
@@ -1543,6 +1704,86 @@ function renderDynamicLookbook(prod) {
       'assets/products/T230/main/5.jpg',
       'assets/products/T230/main/6.jpg'
     ];
+  } else if (prod.id === 'KB02') {
+    const craftDetails = [
+      { img: 'assets/products/KB02/detail/1.jpg', title: '01 重工金属拉链', desc: 'Heavy Antiqued Dual Metal Full-Zip Placket with Vintage Patina' },
+      { img: 'assets/products/KB02/detail/2.jpg', title: '02 双层连帽领口', desc: 'Architectural Double-Layer Structured Hood with Deep Neck Overlock' },
+      { img: 'assets/products/KB02/detail/3.jpg', title: '03 380G 针织牛仔', desc: '380 GSM Heavy Knitted Denim - 93.2% Cotton 6.8% Spandex Comfort Stretch' },
+      { img: 'assets/products/KB02/detail/4.jpg', title: '04 袋鼠分体插袋', desc: 'Symmetrical Deep Split Kangaroo Hand Pockets & Bar-Tack Stitches' },
+      { img: 'assets/products/KB02/detail/5.jpg', title: '05 美式落肩结构', desc: '90s Boxy Drop-Shoulder Silhouette & Relaxed Armhole Cut' },
+      { img: 'assets/products/KB02/detail/6.jpg', title: '06 高弹螺纹收口', desc: 'High-Density 2x2 Ribbed Cuffs & Waistband - Anti-Deformation Rebound' },
+      { img: 'assets/products/KB02/detail/7.jpg', title: '07 炒雪花洗水质感', desc: 'Artisanal Snow Dye & Vintage Mineral Stone Acid Wash' },
+      { img: 'assets/products/KB02/detail/8.jpg', title: '08 原厂版型标', desc: 'Factory Authentic Oversized Cut Tech Pack Standard Specification' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card t040-craft-card">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (8 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">380 GSM knitted denim, antiqued metal zipper, snow wash tie-dye detail</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    lookbookImages = [
+      'assets/products/KB02/main/1.jpg',
+      'assets/products/KB02/main/2.jpg',
+      'assets/products/KB02/main/3.jpg',
+      'assets/products/KB02/main/4.jpg',
+      'assets/products/KB02/main/5.jpg',
+      'assets/products/KB02/main/6.jpg'
+    ];
+  } else if (prod.id === 'WY18') {
+    const craftDetails = [
+      { img: 'assets/products/WY18/detail/3.jpg', title: '01 355G 世博绒保暖', desc: '355 GSM Brushed Thermal Expo Fleece - Supreme Softness & Warmth' },
+      { img: 'assets/products/WY18/detail/1.jpg', title: '02 袋鼠深插袋细节', desc: 'Seamless Double-Stitched Front Kangaroo Pocket for Daily Utility' },
+      { img: 'assets/products/WY18/detail/2.jpg', title: '03 弹力螺纹收口', desc: 'Heavyweight Elastic Ribbed Cuffs & Hem - Anti-Bacon Shape Retention' },
+      { img: 'assets/products/WY18/detail/4.jpg', title: '04 双层保暖无绳帽', desc: 'Clean Minimalist Double Hood Construction with Interior Neck Taping' },
+      { img: 'assets/products/WY18/detail/5.jpg', title: '05 加固落肩双线缝', desc: 'Reinforced Twin-Needle Armhole Seams for Vintage Boxy Drape' },
+      { img: 'assets/products/WY18/detail/6.jpg', title: '06 美式炒雪花水洗', desc: 'Artisanal Garment Snow Dye & Acid Mineral Tie-Wash Vintage Distress' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card t040-craft-card">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (6 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">355 GSM thermal expo fleece, artisanal snow acid tie-dye, seamless double hood</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    lookbookImages = [
+      'assets/products/WY18/main/1.jpg',
+      'assets/products/WY18/main/2.jpg',
+      'assets/products/WY18/main/3.jpg',
+      'assets/products/WY18/main/4.jpg',
+      'assets/products/WY18/main/5.jpg',
+      'assets/products/WY18/main/6.jpg'
+    ];
   }
 
   const imagesHtml = lookbookImages.map((src, i) => `
@@ -1562,15 +1803,15 @@ function renderDynamicLookbook(prod) {
     <!-- Size Guide Card -->
     ${sizeGuideHtml}
 
-    <!-- Extra Craft Details for T040, T230, T235, T238, T275 & T276 -->
+    <!-- Extra Craft Details for T040, T230, T235, T238, T275, T276, KB02 & WY18 -->
     ${extraCraftHtml}
 
     <!-- Editorial Lookbook Gallery -->
     <div class="pdp-editorial-gallery">
       <div class="gallery-title-box">
         <span class="g-tag">LOOKBOOK GALLERY</span>
-        <h3>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276') ? (prod.id === 'T230' ? 'Product Gallery &amp; Detail Overview' : 'Editorial Street Lookbook (16 Shots)') : 'Product Details &amp; Macro Fabric Craft'}</h3>
-        <p>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276') ? 'Full Streetwear Outfit On-Model Demonstrations &amp; Colorway Silhouettes' : 'High-density weave, reinforced seams, and colorfast reactive dye detail'}</p>
+        <h3>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276' || prod.id === 'KB02' || prod.id === 'WY18') ? (prod.id === 'KB02' || prod.id === 'WY18' || prod.id === 'T230' ? 'Product Gallery &amp; Lookbook Showcase' : 'Editorial Street Lookbook (16 Shots)') : 'Product Details &amp; Macro Fabric Craft'}</h3>
+        <p>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276' || prod.id === 'KB02' || prod.id === 'WY18') ? 'Full Streetwear Outfit On-Model Demonstrations &amp; Colorway Silhouettes' : 'High-density weave, reinforced seams, and colorfast reactive dye detail'}</p>
       </div>
       ${imagesHtml}
     </div>
