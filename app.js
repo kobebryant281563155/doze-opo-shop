@@ -556,6 +556,19 @@ function openProductDetail(productId) {
   const descElem = document.querySelector('.pdp-desc');
   if (descElem) descElem.textContent = prod.specs ? prod.specs.slice(0, 2).join(' · ') : '';
 
+  // Dynamic Feature Tags Update
+  const featureTags = document.querySelector('.pdp-feature-tags');
+  if (featureTags) {
+    const gramTag = prod.gram ? prod.gram.split(' (')[0] : 'Heavyweight Cotton';
+    const neckTag = prod.category === 'pants' ? 'Elastic Drawstring Waist' : (prod.category === 'hoodie' ? 'Double-Layer Warm Hood' : '3.0cm Bound Ribbed Collar');
+    featureTags.innerHTML = `
+      <span class="pdp-ftag">${gramTag}</span>
+      <span class="pdp-ftag">Pre-Shrunk &lt; 2%</span>
+      <span class="pdp-ftag">${neckTag}</span>
+      <span class="pdp-ftag">Flexible OEM Printing</span>
+    `;
+  }
+
   // Gallery thumbs
   const thumbStrip = document.getElementById('pdpThumbStrip');
   const gallery = (prod.gallery && prod.gallery.length > 0) ? prod.gallery : (prod.skus ? prod.skus.map(s => s.hero).slice(0, 4) : [prod.img]);
@@ -1376,6 +1389,84 @@ function renderDynamicLookbook(prod) {
         <small class="pdp-table-tip">Note: Hand-measured specifications. Flat measurement tolerance within ±1-2cm.</small>
       </div>
     `;
+  } else if (prod.id === 'W350') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card t040-size-card">
+        <div class="table-header">
+          <span class="table-tag">OFFICIAL TECH SIZING &amp; MEASUREMENTS</span>
+          <h4>W350 350G Fleece-Lined Oversized Crewneck - Sizing Guide</h4>
+        </div>
+
+        <div class="t040-models-badge-row">
+          <div class="model-stat-pill">
+            <span class="m-avatar">👨</span>
+            <div class="m-info">
+              <strong>Denis (Male Model)</strong>
+              <small>188cm / 77kg · Wearing XL · Oversized Streetwear Fit</small>
+            </div>
+          </div>
+          <div class="model-stat-pill">
+            <span class="m-avatar">👩</span>
+            <div class="m-info">
+              <strong>Karen (Female Model)</strong>
+              <small>173cm / 55kg · Wearing L · Loose Boxy Fit</small>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="sub-table-title">📏 Garment Dimensions (Flat Measurement / cm &amp; in)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Length (衣长)</th>
+                <th>Chest (胸围)</th>
+                <th>Shoulder (肩宽)</th>
+                <th>Sleeve (袖长)</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>70.0 cm (27.6")</td><td>120 cm (47.2")</td><td>55.0 cm (21.7")</td><td>59.0 cm (23.2")</td><td>Relaxed Street</td></tr>
+              <tr><td><strong>M</strong></td><td>72.0 cm (28.3")</td><td>126 cm (49.6")</td><td>57.0 cm (22.4")</td><td>60.0 cm (23.6")</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>74.0 cm (29.1")</td><td>132 cm (52.0")</td><td>59.0 cm (23.2")</td><td>61.0 cm (24.0")</td><td>Authentic Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>76.0 cm (29.9")</td><td>138 cm (54.3")</td><td>61.0 cm (24.0")</td><td>62.0 cm (24.4")</td><td>90s Vintage Baggy (Denis Fit)</td></tr>
+              <tr><td><strong>2XL</strong></td><td>78.0 cm (30.7")</td><td>144 cm (56.7")</td><td>63.0 cm (24.8")</td><td>63.0 cm (24.8")</td><td>Plus Size Loose</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h5 class="sub-table-title">⚖️ Height &amp; Weight Recommendations (建议尺码)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Suggested Height</th>
+                <th>Suggested Weight</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>160 - 168 cm</td><td>48 - 58 kg (105-128 lbs)</td><td>Comfortable Relaxed Street</td></tr>
+              <tr><td><strong>M</strong></td><td>168 - 175 cm</td><td>58 - 68 kg (128-150 lbs)</td><td>Structured Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>173 - 180 cm</td><td>68 - 78 kg (150-172 lbs)</td><td>Authentic Oversized Drape</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>178 - 188 cm</td><td>77 - 88 kg (170-194 lbs)</td><td>90s Heavyweight Baggy (Denis Fit)</td></tr>
+              <tr><td><strong>2XL</strong></td><td>182 - 195 cm</td><td>88 - 105 kg (194-230 lbs)</td><td>Max Plus Size Baggy Fit</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="t040-size-graphics-strip">
+          <a class="size-graphic-thumb" href="assets/products/W350/size/size_chart_garment.jpg" target="_blank">
+            <img src="assets/products/W350/size/size_chart_garment.jpg" alt="W350 Garment Size Chart &amp; Measurements" loading="lazy">
+            <span>🔍 View Original Tech Pack Size Sheet</span>
+          </a>
+        </div>
+        <small class="pdp-table-tip">Note: Hand-measured specifications. Flat measurement tolerance within ±1-2cm.</small>
+      </div>
+    `;
   } else {
     sizeGuideHtml = `
       <div class="pdp-size-tables-card">
@@ -1784,6 +1875,47 @@ function renderDynamicLookbook(prod) {
       'assets/products/WY18/main/5.jpg',
       'assets/products/WY18/main/6.jpg'
     ];
+  } else if (prod.id === 'W350') {
+    const craftDetails = [
+      { img: 'assets/products/W350/detail/1.jpg', title: '01 3.0cm高弹加厚领口', desc: '3.0cm Anti-Deformation Bound Ribbed Crewneck & Reinforced Neckband' },
+      { img: 'assets/products/W350/detail/2.jpg', title: '02 后领加固包条双线', desc: 'Interior Herringbone Back Collar Taping & Precision Dual Lockstitch' },
+      { img: 'assets/products/W350/detail/3.jpg', title: '03 1×1高密罗纹袖口', desc: 'High-Elasticity 1×1 Ribbed Wrist Cuffs - Shape-Retention Rebound' },
+      { img: 'assets/products/W350/detail/4.jpg', title: '04 复古落肩双针拼缝', desc: '90s Boxy Drop-Shoulder Silhouette with Twin-Needle Armhole Seams' },
+      { img: 'assets/products/W350/detail/5.jpg', title: '05 下摆加固罗纹收口', desc: 'Heavyweight Elastic Bottom Hem Ribbing - Anti-Flaring Structured Drape' },
+      { img: 'assets/products/W350/detail/6.jpg', title: '06 350G精梳棉紧密织造', desc: '350 GSM Combed Cotton Heavyweight Dense Knit - Crisp Surface Texture' },
+      { img: 'assets/products/W350/detail/7.jpg', title: '07 定制领标与折叠厚度', desc: 'Authentic Specification Neck Label & Substantial Heavyweight Thickness' },
+      { img: 'assets/products/W350/detail/8.jpg', title: '08 细腻磨毛加绒内里', desc: 'Ultra-Soft Brushed Thermal Fleece Lining - Premium Cold Weather Warmth' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card t040-craft-card">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (8 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">350 GSM brushed thermal fleece, 3.0cm bound collar, 1x1 elastic ribbing</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    lookbookImages = [
+      'assets/products/W350/main/1.jpg',
+      'assets/products/W350/main/2.jpg',
+      'assets/products/W350/main/3.jpg',
+      'assets/products/W350/main/4.jpg',
+      'assets/products/W350/main/5.jpg',
+      'assets/products/W350/main/6.jpg'
+    ];
   }
 
   const imagesHtml = lookbookImages.map((src, i) => `
@@ -1803,15 +1935,15 @@ function renderDynamicLookbook(prod) {
     <!-- Size Guide Card -->
     ${sizeGuideHtml}
 
-    <!-- Extra Craft Details for T040, T230, T235, T238, T275, T276, KB02 & WY18 -->
+    <!-- Extra Craft Details for T040, T230, T235, T238, T275, T276, KB02, WY18 & W350 -->
     ${extraCraftHtml}
 
     <!-- Editorial Lookbook Gallery -->
     <div class="pdp-editorial-gallery">
       <div class="gallery-title-box">
         <span class="g-tag">LOOKBOOK GALLERY</span>
-        <h3>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276' || prod.id === 'KB02' || prod.id === 'WY18') ? (prod.id === 'KB02' || prod.id === 'WY18' || prod.id === 'T230' ? 'Product Gallery &amp; Lookbook Showcase' : 'Editorial Street Lookbook (16 Shots)') : 'Product Details &amp; Macro Fabric Craft'}</h3>
-        <p>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276' || prod.id === 'KB02' || prod.id === 'WY18') ? 'Full Streetwear Outfit On-Model Demonstrations &amp; Colorway Silhouettes' : 'High-density weave, reinforced seams, and colorfast reactive dye detail'}</p>
+        <h3>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276' || prod.id === 'KB02' || prod.id === 'WY18' || prod.id === 'W350') ? (prod.id === 'KB02' || prod.id === 'WY18' || prod.id === 'T230' || prod.id === 'W350' ? 'Product Gallery &amp; Lookbook Showcase' : 'Editorial Street Lookbook (16 Shots)') : 'Product Details &amp; Macro Fabric Craft'}</h3>
+        <p>${(prod.id === 'T040' || prod.id === 'T230' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275' || prod.id === 'T276' || prod.id === 'KB02' || prod.id === 'WY18' || prod.id === 'W350') ? 'Full Streetwear Outfit On-Model Demonstrations &amp; Colorway Silhouettes' : 'High-density weave, reinforced seams, and colorfast reactive dye detail'}</p>
       </div>
       ${imagesHtml}
     </div>
