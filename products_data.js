@@ -1776,5 +1776,506 @@
                                      "assets/products/01D/detail/7.jpg",
                                      "assets/products/01D/detail/8.jpg"
                                  ]
-            }
+            },
+    "TH09":  {
+                 "id":  "TH09",
+                 "name":  "TH09 230G Minimalist Fitted V-Neck Street Tee",
+                 "category":  "tee",
+                 "priceUSD":  13.5,
+                 "gram":  "230 GSM 92% Combed Cotton 8% Spandex",
+                 "img":  "assets/products/TH09/main/1.jpg",
+                 "color":  "6 Essential Colorways",
+                 "specs":  [
+                               "230 GSM 92% Combed Cotton + 8% Spandex High-Elastic Compact Jersey",
+                               "Flattering Tailored V-Neck Collar with Clean Mitered Construction",
+                               "Fitted Streamlined Silhouette with Soft Stretch \u0026 High Recovery",
+                               "Anti-Pilling Enzyme Wash Treatment with Breathable Skin Comfort",
+                               "6 Essential Colorways - 1-Piece Sample \u0026 Custom OEM Ready"
+                           ],
+                 "gallery":  [
+                                 "assets/products/TH09/main/1.jpg",
+                                 "assets/products/TH09/main/2.jpg",
+                                 "assets/products/TH09/main/3.jpg",
+                                 "assets/products/TH09/main/4.jpg",
+                                 "assets/products/TH09/main/5.jpg"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Pitch Black",
+                                  "thumb":  "assets/products/TH09/sku/sku_1.jpg",
+                                  "hero":  "assets/products/TH09/sku/sku_1.jpg"
+                              },
+                              {
+                                  "name":  "Pure White",
+                                  "thumb":  "assets/products/TH09/sku/sku_2.jpg",
+                                  "hero":  "assets/products/TH09/sku/sku_2.jpg"
+                              },
+                              {
+                                  "name":  "Heather Grey",
+                                  "thumb":  "assets/products/TH09/sku/sku_3.jpg",
+                                  "hero":  "assets/products/TH09/sku/sku_3.jpg"
+                              },
+                              {
+                                  "name":  "Navy Blue",
+                                  "thumb":  "assets/products/TH09/sku/sku_4.jpg",
+                                  "hero":  "assets/products/TH09/sku/sku_4.jpg"
+                              },
+                              {
+                                  "name":  "Wine Red",
+                                  "thumb":  "assets/products/TH09/sku/sku_5.jpg",
+                                  "hero":  "assets/products/TH09/sku/sku_5.jpg"
+                              },
+                              {
+                                  "name":  "Magenta Rose",
+                                  "thumb":  "assets/products/TH09/sku/sku_6.jpg",
+                                  "hero":  "assets/products/TH09/sku/sku_6.jpg"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/TH09/detail/1.jpg",
+                                      "assets/products/TH09/detail/2.jpg",
+                                      "assets/products/TH09/detail/3.jpg",
+                                      "assets/products/TH09/detail/4.jpg",
+                                      "assets/products/TH09/detail/5.jpg"
+                                  ]
+             },
+    "TH03":  {
+                 "id":  "TH03",
+                 "name":  "TH03 230G Cropped Contrast Raglan Baby Tee",
+                 "category":  "tee",
+                 "priceUSD":  13.5,
+                 "gram":  "230 GSM 92% Cotton 8% Spandex",
+                 "img":  "assets/products/TH03/main/1.jpg",
+                 "color":  "12 Contrast Colorways",
+                 "specs":  [
+                               "230 GSM 92% Combed Cotton + 8% Spandex High-Elastic Ribbed Jersey",
+                               "Y2K Retro Cropped Baby Tee Silhouette with Contrast Raglan Sleeves",
+                               "Slim-Fit Body Hugging Pattern with Ultra-Soft Skin Touch",
+                               "Contrast Bound Ribbed Crewneck \u0026 Flatlock Reinforced Seams",
+                               "12 Aesthetic Contrast Colorways - 1-Piece Sample Ready"
+                           ],
+                 "gallery":  [
+                                 "assets/products/TH03/main/1.jpg",
+                                 "assets/products/TH03/main/2.jpg",
+                                 "assets/products/TH03/main/3.jpg",
+                                 "assets/products/TH03/main/4.jpg",
+                                 "assets/products/TH03/main/5.jpg"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Black / White",
+                                  "thumb":  "assets/products/TH03/sku/sku_1.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_1.jpg"
+                              },
+                              {
+                                  "name":  "Black / Heather Grey",
+                                  "thumb":  "assets/products/TH03/sku/sku_2.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_2.jpg"
+                              },
+                              {
+                                  "name":  "Ice Blue / Apricot",
+                                  "thumb":  "assets/products/TH03/sku/sku_3.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_3.jpg"
+                              },
+                              {
+                                  "name":  "Pink / White",
+                                  "thumb":  "assets/products/TH03/sku/sku_4.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_4.jpg"
+                              },
+                              {
+                                  "name":  "Pink / Apricot",
+                                  "thumb":  "assets/products/TH03/sku/sku_5.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_5.jpg"
+                              },
+                              {
+                                  "name":  "Black / Pink",
+                                  "thumb":  "assets/products/TH03/sku/sku_6.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_6.jpg"
+                              },
+                              {
+                                  "name":  "Coffee / Apricot",
+                                  "thumb":  "assets/products/TH03/sku/sku_7.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_7.jpg"
+                              },
+                              {
+                                  "name":  "Coffee / Ice Blue",
+                                  "thumb":  "assets/products/TH03/sku/sku_8.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_8.jpg"
+                              },
+                              {
+                                  "name":  "Charcoal / Pink",
+                                  "thumb":  "assets/products/TH03/sku/sku_9.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_9.jpg"
+                              },
+                              {
+                                  "name":  "Rose Red / Apricot",
+                                  "thumb":  "assets/products/TH03/sku/sku_10.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_10.jpg"
+                              },
+                              {
+                                  "name":  "Heather Grey / Navy",
+                                  "thumb":  "assets/products/TH03/sku/sku_11.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_11.jpg"
+                              },
+                              {
+                                  "name":  "Wine Red / White",
+                                  "thumb":  "assets/products/TH03/sku/sku_12.jpg",
+                                  "hero":  "assets/products/TH03/sku/sku_12.jpg"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/TH03/detail/1.jpg",
+                                      "assets/products/TH03/detail/2.jpg",
+                                      "assets/products/TH03/detail/3.jpg",
+                                      "assets/products/TH03/detail/4.jpg",
+                                      "assets/products/TH03/detail/5.jpg",
+                                      "assets/products/TH03/detail/6.jpg"
+                                  ]
+             },
+    "S360":  {
+                 "id":  "S360",
+                 "name":  "S360 360G Sorona Ultra-Heavyweight Premium Street Tee",
+                 "category":  "tee",
+                 "priceUSD":  18.5,
+                 "gram":  "360 GSM DuPont Sorona庐 Cotton Blend",
+                 "img":  "assets/products/S360/main/1.jpg",
+                 "color":  "12 Luxury Street Colorways",
+                 "specs":  [
+                               "360 GSM Ultra-Heavyweight DuPont Sorona庐 Bio-Based Cotton Composite Knit",
+                               "Superior Natural Stretch, Crease-Resistance \u0026 High Shape Retention",
+                               "Heavy Duty 3.2cm 1x1 High-Elastic Ribbed Collar - Zero Deformation",
+                               "Substantial Architectural Drape with Clean Minimalist Line Work",
+                               "12 Curated Contemporary Colorways - 1-Piece Sample Ready"
+                           ],
+                 "gallery":  [
+                                 "assets/products/S360/main/1.jpg",
+                                 "assets/products/S360/main/2.jpg",
+                                 "assets/products/S360/main/3.jpg",
+                                 "assets/products/S360/main/4.jpg",
+                                 "assets/products/S360/main/5.jpg"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Pitch Black",
+                                  "thumb":  "assets/products/S360/sku/sku_1.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_1.jpg"
+                              },
+                              {
+                                  "name":  "Pure White",
+                                  "thumb":  "assets/products/S360/sku/sku_2.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_2.jpg"
+                              },
+                              {
+                                  "name":  "Charcoal Grey",
+                                  "thumb":  "assets/products/S360/sku/sku_3.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_3.jpg"
+                              },
+                              {
+                                  "name":  "Navy Blue",
+                                  "thumb":  "assets/products/S360/sku/sku_4.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_4.jpg"
+                              },
+                              {
+                                  "name":  "Klein Blue",
+                                  "thumb":  "assets/products/S360/sku/sku_5.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_5.jpg"
+                              },
+                              {
+                                  "name":  "Coffee Brown",
+                                  "thumb":  "assets/products/S360/sku/sku_6.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_6.jpg"
+                              },
+                              {
+                                  "name":  "Dark Forest Green",
+                                  "thumb":  "assets/products/S360/sku/sku_7.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_7.jpg"
+                              },
+                              {
+                                  "name":  "Olive Green",
+                                  "thumb":  "assets/products/S360/sku/sku_8.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_8.jpg"
+                              },
+                              {
+                                  "name":  "Autumn Yellow",
+                                  "thumb":  "assets/products/S360/sku/sku_9.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_9.jpg"
+                              },
+                              {
+                                  "name":  "Egg Yellow",
+                                  "thumb":  "assets/products/S360/sku/sku_10.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_10.jpg"
+                              },
+                              {
+                                  "name":  "Lotus Pink",
+                                  "thumb":  "assets/products/S360/sku/sku_11.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_11.jpg"
+                              },
+                              {
+                                  "name":  "Ruby Red",
+                                  "thumb":  "assets/products/S360/sku/sku_12.jpg",
+                                  "hero":  "assets/products/S360/sku/sku_12.jpg"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/S360/detail/1.jpg",
+                                      "assets/products/S360/detail/2.jpg",
+                                      "assets/products/S360/detail/3.jpg",
+                                      "assets/products/S360/detail/4.jpg",
+                                      "assets/products/S360/detail/5.jpg"
+                                  ]
+             },
+    "T013":  {
+                 "id":  "T013",
+                 "name":  "T013 245G Combed Cotton Athletic Side-Split Tank Top",
+                 "category":  "tank",
+                 "priceUSD":  12.5,
+                 "gram":  "245 GSM 100% Combed Cotton",
+                 "img":  "assets/products/T013/main/1.jpg",
+                 "color":  "7 Streetwear Colorways",
+                 "specs":  [
+                               "245 GSM 100% Premium Combed Cotton - High-Density Single Jersey Knit",
+                               "Sleeveless Athletic Cut with Curved Drop-Hem and Side Vent Splits",
+                               "Reinforced Bound Armholes \u0026 Ribbed Collar for Zero Sagging",
+                               "Pre-Shrunk \u0026 Enzyme Washed (\u003c 2% Shrinkage) with Breathable Drape",
+                               "7 Minimalist Colorways - 1-Piece Sample \u0026 Custom Tech Pack Ready"
+                           ],
+                 "gallery":  [
+                                 "assets/products/T013/main/1.jpg",
+                                 "assets/products/T013/main/2.jpg",
+                                 "assets/products/T013/main/3.jpg",
+                                 "assets/products/T013/main/4.jpg",
+                                 "assets/products/T013/main/5.jpg"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Pitch Black",
+                                  "thumb":  "assets/products/T013/sku/sku_1.jpg",
+                                  "hero":  "assets/products/T013/sku/sku_1.jpg"
+                              },
+                              {
+                                  "name":  "Pure White",
+                                  "thumb":  "assets/products/T013/sku/sku_2.jpg",
+                                  "hero":  "assets/products/T013/sku/sku_2.jpg"
+                              },
+                              {
+                                  "name":  "Athletic Grey",
+                                  "thumb":  "assets/products/T013/sku/sku_3.jpg",
+                                  "hero":  "assets/products/T013/sku/sku_3.jpg"
+                              },
+                              {
+                                  "name":  "Charcoal Grey",
+                                  "thumb":  "assets/products/T013/sku/sku_4.jpg",
+                                  "hero":  "assets/products/T013/sku/sku_4.jpg"
+                              },
+                              {
+                                  "name":  "Navy Blue",
+                                  "thumb":  "assets/products/T013/sku/sku_5.jpg",
+                                  "hero":  "assets/products/T013/sku/sku_5.jpg"
+                              },
+                              {
+                                  "name":  "Cream Yellow",
+                                  "thumb":  "assets/products/T013/sku/sku_6.jpg",
+                                  "hero":  "assets/products/T013/sku/sku_6.jpg"
+                              },
+                              {
+                                  "name":  "Wheat Tan",
+                                  "thumb":  "assets/products/T013/sku/sku_7.jpg",
+                                  "hero":  "assets/products/T013/sku/sku_7.jpg"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/T013/detail/1.jpg",
+                                      "assets/products/T013/detail/2.jpg",
+                                      "assets/products/T013/detail/3.jpg",
+                                      "assets/products/T013/detail/4.jpg",
+                                      "assets/products/T013/detail/5.jpg",
+                                      "assets/products/T013/detail/6.jpg"
+                                  ]
+             },
+    "K055":  {
+                 "id":  "K055",
+                 "name":  "K055 275G Heavyweight Drawstring Street Shorts",
+                 "category":  "shorts",
+                 "priceUSD":  14,
+                 "gram":  "275 GSM Heavyweight Combed Cotton",
+                 "img":  "assets/products/K055/main/1.jpg",
+                 "color":  "12 Streetwear Colorways",
+                 "specs":  [
+                               "275 GSM High-Density Heavy Combed Cotton Single Jersey Fabric",
+                               "Relaxed Above-the-Knee Street Silhouette with Deep Side Pockets",
+                               "Heavy Encased Elastic Waistband with Contrast Knitted Drawstring",
+                               "Reinforced Crotch Gusset \u0026 Double-Needle Finished Hems",
+                               "12 Core \u0026 Earth-Tone Colorways - 1-Piece Custom Tech Pack Ready"
+                           ],
+                 "gallery":  [
+                                 "assets/products/K055/main/1.jpg",
+                                 "assets/products/K055/main/2.jpg",
+                                 "assets/products/K055/main/3.jpg",
+                                 "assets/products/K055/main/4.jpg",
+                                 "assets/products/K055/main/5.jpg"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Pitch Black",
+                                  "thumb":  "assets/products/K055/sku/sku_1.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_1.jpg"
+                              },
+                              {
+                                  "name":  "Pure White",
+                                  "thumb":  "assets/products/K055/sku/sku_2.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_2.jpg"
+                              },
+                              {
+                                  "name":  "Eggshell White",
+                                  "thumb":  "assets/products/K055/sku/sku_3.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_3.jpg"
+                              },
+                              {
+                                  "name":  "Navy Blue",
+                                  "thumb":  "assets/products/K055/sku/sku_4.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_4.jpg"
+                              },
+                              {
+                                  "name":  "Smoke Grey",
+                                  "thumb":  "assets/products/K055/sku/sku_5.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_5.jpg"
+                              },
+                              {
+                                  "name":  "Oatmeal Grey",
+                                  "thumb":  "assets/products/K055/sku/sku_6.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_6.jpg"
+                              },
+                              {
+                                  "name":  "Earth Grey",
+                                  "thumb":  "assets/products/K055/sku/sku_7.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_7.jpg"
+                              },
+                              {
+                                  "name":  "Taupe Brown",
+                                  "thumb":  "assets/products/K055/sku/sku_8.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_8.jpg"
+                              },
+                              {
+                                  "name":  "Dark Forest Green",
+                                  "thumb":  "assets/products/K055/sku/sku_9.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_9.jpg"
+                              },
+                              {
+                                  "name":  "Light Fruit Green",
+                                  "thumb":  "assets/products/K055/sku/sku_10.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_10.jpg"
+                              },
+                              {
+                                  "name":  "Lemon Yellow",
+                                  "thumb":  "assets/products/K055/sku/sku_11.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_11.jpg"
+                              },
+                              {
+                                  "name":  "Coral Red",
+                                  "thumb":  "assets/products/K055/sku/sku_12.jpg",
+                                  "hero":  "assets/products/K055/sku/sku_12.jpg"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/K055/detail/1.jpg",
+                                      "assets/products/K055/detail/2.jpg",
+                                      "assets/products/K055/detail/3.jpg",
+                                      "assets/products/K055/detail/4.jpg",
+                                      "assets/products/K055/detail/5.jpg",
+                                      "assets/products/K055/detail/6.jpg"
+                                  ]
+             },
+    "K6":  {
+               "id":  "K6",
+               "name":  "K6 330G Ultra-Heavy French Terry Sweat Shorts",
+               "category":  "shorts",
+               "priceUSD":  16.5,
+               "gram":  "330 GSM 100% Cotton French Terry",
+               "img":  "assets/products/K6/main/1.jpg",
+               "color":  "12 Streetwear Colorways",
+               "specs":  [
+                             "330 GSM Heavyweight 100% Cotton French Terry Loopback Fleece",
+                             "Structured Boxy Sweat Short Cut with Raw-Edge Aesthetic Option",
+                             "Chunky Elastic Waistband with Custom Flat-Weave Drawstrings",
+                             "Deep Front Slash Pockets plus Rear Patch Pocket Construction",
+                             "12 Vibrant \u0026 Earth Colorways - 1-Piece Sample \u0026 Private Label Ready"
+                         ],
+               "gallery":  [
+                               "assets/products/K6/main/1.jpg",
+                               "assets/products/K6/main/2.jpg",
+                               "assets/products/K6/main/3.jpg",
+                               "assets/products/K6/main/4.jpg",
+                               "assets/products/K6/main/5.jpg"
+                           ],
+               "skus":  [
+                            {
+                                "name":  "Pitch Black",
+                                "thumb":  "assets/products/K6/sku/sku_1.jpg",
+                                "hero":  "assets/products/K6/sku/sku_1.jpg"
+                            },
+                            {
+                                "name":  "Pure White",
+                                "thumb":  "assets/products/K6/sku/sku_2.jpg",
+                                "hero":  "assets/products/K6/sku/sku_2.jpg"
+                            },
+                            {
+                                "name":  "Eggshell White",
+                                "thumb":  "assets/products/K6/sku/sku_3.jpg",
+                                "hero":  "assets/products/K6/sku/sku_3.jpg"
+                            },
+                            {
+                                "name":  "Navy Blue",
+                                "thumb":  "assets/products/K6/sku/sku_4.jpg",
+                                "hero":  "assets/products/K6/sku/sku_4.jpg"
+                            },
+                            {
+                                "name":  "Smoke Grey",
+                                "thumb":  "assets/products/K6/sku/sku_5.jpg",
+                                "hero":  "assets/products/K6/sku/sku_5.jpg"
+                            },
+                            {
+                                "name":  "Oatmeal Grey",
+                                "thumb":  "assets/products/K6/sku/sku_6.jpg",
+                                "hero":  "assets/products/K6/sku/sku_6.jpg"
+                            },
+                            {
+                                "name":  "Earth Grey",
+                                "thumb":  "assets/products/K6/sku/sku_7.jpg",
+                                "hero":  "assets/products/K6/sku/sku_7.jpg"
+                            },
+                            {
+                                "name":  "Taupe Brown",
+                                "thumb":  "assets/products/K6/sku/sku_8.jpg",
+                                "hero":  "assets/products/K6/sku/sku_8.jpg"
+                            },
+                            {
+                                "name":  "Dark Violet",
+                                "thumb":  "assets/products/K6/sku/sku_9.jpg",
+                                "hero":  "assets/products/K6/sku/sku_9.jpg"
+                            },
+                            {
+                                "name":  "Light Fruit Green",
+                                "thumb":  "assets/products/K6/sku/sku_10.jpg",
+                                "hero":  "assets/products/K6/sku/sku_10.jpg"
+                            },
+                            {
+                                "name":  "Lemon Yellow",
+                                "thumb":  "assets/products/K6/sku/sku_11.jpg",
+                                "hero":  "assets/products/K6/sku/sku_11.jpg"
+                            },
+                            {
+                                "name":  "Coral Red",
+                                "thumb":  "assets/products/K6/sku/sku_12.jpg",
+                                "hero":  "assets/products/K6/sku/sku_12.jpg"
+                            }
+                        ],
+               "detailImages":  [
+                                    "assets/products/K6/detail/1.jpg",
+                                    "assets/products/K6/detail/2.jpg",
+                                    "assets/products/K6/detail/3.jpg",
+                                    "assets/products/K6/detail/4.jpg",
+                                    "assets/products/K6/detail/5.jpg",
+                                    "assets/products/K6/detail/6.jpg"
+                                ]
+           }
 };

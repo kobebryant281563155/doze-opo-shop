@@ -12,3 +12,6 @@
 Thumbs.db
 .vscode/
 .idea/
+
+# Scratch & temporary processing files
+scratch/

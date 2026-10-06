@@ -646,6 +646,30 @@ function renderDynamicLookbook(prod) {
         <small class="pdp-table-tip">Note: Elastic waistband with interior drawstring. Tolerance within ±1-2cm.</small>
       </div>
     `;
+  } else if (prod.category === 'shorts') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card">
+        <div class="table-header">
+          <span class="table-tag">SIZE GUIDE</span>
+          <h4>Recommended Street Shorts Sizing Guide</h4>
+        </div>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr><th>Size</th><th>Waist (cm)</th><th>Shorts Length (cm)</th><th>Suggested Fit</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>64 - 72</td><td>48 cm</td><td>Slim Street</td></tr>
+              <tr><td><strong>M</strong></td><td>68 - 78</td><td>49 cm</td><td>Regular Above Knee</td></tr>
+              <tr><td><strong>L</strong></td><td>72 - 84</td><td>50 cm</td><td>Relaxed Street</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>76 - 90</td><td>51 cm</td><td>Loose Drop Crotch</td></tr>
+              <tr><td><strong>2XL</strong></td><td>80 - 96</td><td>52 cm</td><td>Oversized Baggy</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <small class="pdp-table-tip">Note: Elasticated waistband with contrast knitted drawstrings. Tolerance ±1-2cm.</small>
+      </div>
+    `;
   } else {
     sizeGuideHtml = `
       <div class="pdp-size-tables-card">
