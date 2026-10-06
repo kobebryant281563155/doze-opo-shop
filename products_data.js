@@ -1,4 +1,4 @@
-window.PRODUCTS_DATA = {
+﻿window.PRODUCTS_DATA = {
     "T012":  {
                  "id":  "T012",
                  "name":  "T012 240G Raglan Sleeve Boxy Tee",
@@ -337,11 +337,11 @@ window.PRODUCTS_DATA = {
                  "id":  "T040",
                  "specs":  [
                                "245 GSM 100% Combed Compact Cotton - Authentic Streetwear Heavyweight Knit",
-                               "Oversized 90s Vintage Drop-Shoulder Boxy Silhouette, Pre-Shrunk (< 2%)",
-                               "High-Density 3.0cm Anti-Deformation Ribbed Crewneck & Internal Bound Taping",
-                               "Reinforced Twin-Needle Clean Stitching on Shoulders, Sleeves & Hem",
-                               "Reactive Colorfast Dyeing - High Breathability & Structured Natural Drape",
-                               "Full 6-Colorway Stock - 1-Piece Custom Tech Pack Sample & Flexible OEM Ready"
+                               "Oversized 90s Vintage Drop-Shoulder Boxy Silhouette, Pre-Shrunk (\u003c 2%)",
+                               "High-Density 3.0cm Anti-Deformation Ribbed Crewneck \u0026 Internal Bound Taping",
+                               "Reinforced Twin-Needle Clean Stitching on Shoulders, Sleeves \u0026 Hem",
+                               "Reactive Colorfast Dyeing - High Breathability \u0026 Structured Natural Drape",
+                               "Full 6-Colorway Stock - 1-Piece Custom Tech Pack Sample \u0026 Flexible OEM Ready"
                            ],
                  "color":  "6 Colorways",
                  "skus":  [
@@ -397,72 +397,85 @@ window.PRODUCTS_DATA = {
                                  "assets/products/T235/main/1.jpg",
                                  "assets/products/T235/main/2.jpg",
                                  "assets/products/T235/main/3.jpg",
-                                 "assets/products/T235/main/4.jpg"
+                                 "assets/products/T235/main/4.jpg",
+                                 "assets/products/T235/main/5.jpg",
+                                 "assets/products/T235/main/6.jpg"
                              ],
                  "id":  "T235",
                  "specs":  [
-                               "235 GSM Combed Cotton - Authentic Streetwear Heavyweight Knit",
-                               "Oversized 90s Vintage Drop-Shoulder Silhouette, Pre-Shrunk (\u003c 2%)",
-                               "High-Density Anti-Deformation Ribbing \u0026 Reinforced Twin-Needle Seams",
-                               "Durable Colorfast Reactive Dyeing - High Breathability \u0026 Structured Drape",
-                               "Full Colorway Stock - 1-Piece Sample Proofing \u0026 Flexible OEM Tech Pack Ready"
+                               "235 GSM Combed Compact Double-Yarn Cotton (32S/2, Pre-Shrunk \u003c 2%)",
+                               "90s Vintage Athletic Raglan Contrast Long-Sleeve Silhouette, Boxy Drop Cut",
+                               "High-Density Bound Back Collar Taping \u0026 Reinforced Twin-Needle Seams",
+                               "9 Two-Tone Vintage Contrast Colorways - Pure Reactive Dyeing, Zero Fade",
+                               "1-Piece Custom Tech Pack Ready · Full Bulk Inventory \u0026 Quick Turnaround"
                            ],
-                 "color":  "9 Colorways",
+                 "color":  "9 Two-Tone Contrast Colorways",
                  "skus":  [
                               {
-                                  "thumb":  "assets/products/T235/sku/sku_1.jpg",
-                                  "hero":  "assets/products/T235/sku/sku_1.jpg",
-                                  "name":  "Washed Black"
+                                  "name":  "White / Black (熊猫白黑)",
+                                  "thumb":  "assets/products/T235/sku/sku_white_black.jpg",
+                                  "hero":  "assets/products/T235/sku/sku_white_black.jpg",
+                                  "back":  "assets/products/T235/sku/sku_white_black_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T235/sku/sku_2.jpg",
-                                  "hero":  "assets/products/T235/sku/sku_2.jpg",
-                                  "name":  "Charcoal Grey"
+                                  "name":  "White / Periwinkle Blue (纯白长春花蓝)",
+                                  "thumb":  "assets/products/T235/sku/sku_white_periwinkle.jpg",
+                                  "hero":  "assets/products/T235/sku/sku_white_periwinkle.jpg",
+                                  "back":  "assets/products/T235/sku/sku_white_periwinkle_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T235/sku/sku_3.jpg",
-                                  "hero":  "assets/products/T235/sku/sku_3.jpg",
-                                  "name":  "Washed Black"
+                                  "name":  "Navy Blue / Crimson Red (藏蓝复古深红)",
+                                  "thumb":  "assets/products/T235/sku/sku_navy_crimson.jpg",
+                                  "hero":  "assets/products/T235/sku/sku_navy_crimson.jpg",
+                                  "back":  "assets/products/T235/sku/sku_navy_crimson_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T235/sku/sku_4.jpg",
-                                  "hero":  "assets/products/T235/sku/sku_4.jpg",
-                                  "name":  "Charcoal Grey"
+                                  "name":  "Oatmeal Grey / Navy Blue (燕麦灰藏蓝)",
+                                  "thumb":  "assets/products/T235/sku/sku_oatmeal_navy.jpg",
+                                  "hero":  "assets/products/T235/sku/sku_oatmeal_navy.jpg",
+                                  "back":  "assets/products/T235/sku/sku_oatmeal_navy_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T235/sku/sku_5.jpg",
-                                  "hero":  "assets/products/T235/sku/sku_5.jpg",
-                                  "name":  "Navy Blue"
+                                  "name":  "Oatmeal Grey / Crimson Red (燕麦灰深红)",
+                                  "thumb":  "assets/products/T235/sku/sku_oatmeal_crimson.jpg",
+                                  "hero":  "assets/products/T235/sku/sku_oatmeal_crimson.jpg",
+                                  "back":  "assets/products/T235/sku/sku_oatmeal_crimson_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T235/sku/sku_6.jpg",
-                                  "hero":  "assets/products/T235/sku/sku_6.jpg",
-                                  "name":  "Off-White"
+                                  "name":  "Off-White / Khaki (米白复古卡其)",
+                                  "thumb":  "assets/products/T235/sku/sku_offwhite_khaki.jpg",
+                                  "hero":  "assets/products/T235/sku/sku_offwhite_khaki.jpg",
+                                  "back":  "assets/products/T235/sku/sku_offwhite_khaki_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T235/sku/sku_7.jpg",
-                                  "hero":  "assets/products/T235/sku/sku_7.jpg",
-                                  "name":  "Washed Black"
+                                  "name":  "Khaki / Dark Grey (卡其炭深灰)",
+                                  "thumb":  "assets/products/T235/sku/sku_khaki_darkgrey.jpg",
+                                  "hero":  "assets/products/T235/sku/sku_khaki_darkgrey.jpg",
+                                  "back":  "assets/products/T235/sku/sku_khaki_darkgrey_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T235/sku/sku_8.jpg",
-                                  "hero":  "assets/products/T235/sku/sku_8.jpg",
-                                  "name":  "Off-White"
+                                  "name":  "Dark Grey / Black (深灰曜石黑)",
+                                  "thumb":  "assets/products/T235/sku/sku_darkgrey_black.jpg",
+                                  "hero":  "assets/products/T235/sku/sku_darkgrey_black.jpg",
+                                  "back":  "assets/products/T235/sku/sku_darkgrey_black_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T235/sku/sku_9.jpg",
-                                  "hero":  "assets/products/T235/sku/sku_9.jpg",
-                                  "name":  "Navy Blue"
+                                  "name":  "Dark Purple / Black (暗夜乌紫拼黑)",
+                                  "thumb":  "assets/products/T235/sku/sku_darkpurple_black.jpg",
+                                  "hero":  "assets/products/T235/sku/sku_darkpurple_black.jpg",
+                                  "back":  "assets/products/T235/sku/sku_darkpurple_black_back.jpg"
                               }
                           ],
                  "category":  "tee",
                  "detailImages":  [
-                                      "assets/products/T235/detail/1.jpg",
-                                      "assets/products/T235/detail/2.jpg",
-                                      "assets/products/T235/detail/3.jpg",
-                                      "assets/products/T235/detail/4.jpg",
-                                      "assets/products/T235/detail/5.jpg",
-                                      "assets/products/T235/detail/6.jpg"
+                                      "assets/products/T235/detail/detail_1.jpg",
+                                      "assets/products/T235/detail/detail_2.jpg",
+                                      "assets/products/T235/detail/detail_3.jpg",
+                                      "assets/products/T235/detail/detail_4.jpg",
+                                      "assets/products/T235/detail/detail_5.jpg",
+                                      "assets/products/T235/detail/detail_6.jpg",
+                                      "assets/products/T235/detail/detail_7.jpg",
+                                      "assets/products/T235/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  17.5,
                  "name":  "T235 235G Oversized Raglan Long-Sleeve Street Tee",
