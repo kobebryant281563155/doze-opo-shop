@@ -883,6 +883,92 @@ function renderDynamicLookbook(prod) {
         <small class="pdp-table-tip">Note: 3.5cm high-density rebound elastic collar. Flat measurement tolerance within ±1-2cm.</small>
       </div>
     `;
+  } else if (prod.id === 'T275') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card t040-size-card">
+        <div class="table-header">
+          <span class="table-tag">OFFICIAL TECH SIZING &amp; TRY-ON</span>
+          <h4>T275 275G Ultra-Heavy American Drop-Shoulder Tee - Sizing &amp; Measurement Guide</h4>
+        </div>
+
+        <!-- Model Try-On Card -->
+        <div class="t040-models-badge-row">
+          <div class="model-stat-pill">
+            <span class="m-avatar">👨</span>
+            <div class="m-info">
+              <strong>Male Model (White Tee)</strong>
+              <small>186cm / 75kg · Wearing XL · American Loose Fit</small>
+            </div>
+          </div>
+          <div class="model-stat-pill">
+            <span class="m-avatar">👩</span>
+            <div class="m-info">
+              <strong>Female Model (Purple Tee)</strong>
+              <small>170cm / 50kg · Wearing L · Oversized Drop Fit</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Garment Measurements Table -->
+        <h5 class="sub-table-title">📏 Garment Dimensions (Flat Measurement / cm &amp; in)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Length (衣长)</th>
+                <th>Chest (胸围)</th>
+                <th>Shoulder (肩宽)</th>
+                <th>Sleeve (袖长)</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>71 cm (28.0")</td><td>112 cm (44.1")</td><td>52 cm (20.5")</td><td>22 cm (8.7")</td><td>Natural Drop Shoulder</td></tr>
+              <tr><td><strong>M</strong></td><td>74 cm (29.1")</td><td>118 cm (46.5")</td><td>55 cm (21.7")</td><td>23 cm (9.1")</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>77 cm (30.3")</td><td>124 cm (48.8")</td><td>58 cm (22.8")</td><td>24 cm (9.4")</td><td>Authentic Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>80 cm (31.5")</td><td>132 cm (52.0")</td><td>61 cm (24.0")</td><td>25 cm (9.8")</td><td>90s Heavyweight Baggy (Featured)</td></tr>
+              <tr><td><strong>2XL</strong></td><td>83 cm (32.7")</td><td>140 cm (55.1")</td><td>64 cm (25.2")</td><td>26 cm (10.2")</td><td>Max Plus Size Loose</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Height & Weight Recommended Fit Table -->
+        <h5 class="sub-table-title">⚖️ Height &amp; Weight Recommendations (建议尺码)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Suggested Height</th>
+                <th>Suggested Weight</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>160 - 170 cm</td><td>50 - 60 kg (110-132 lbs)</td><td>Natural Drop Shoulder</td></tr>
+              <tr><td><strong>M</strong></td><td>170 - 176 cm</td><td>60 - 70 kg (132-154 lbs)</td><td>Boxy Drop Shoulder</td></tr>
+              <tr><td><strong>L</strong></td><td>175 - 182 cm</td><td>70 - 80 kg (154-176 lbs)</td><td>Authentic American Oversized</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>180 - 188 cm</td><td>80 - 95 kg (176-209 lbs)</td><td>Skatewear 90s Vintage Baggy</td></tr>
+              <tr><td><strong>2XL</strong></td><td>185 - 195 cm</td><td>95 - 115 kg (209-253 lbs)</td><td>Max Statement Oversized</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Visual Size Chart Image Cards -->
+        <div class="t040-size-graphics-strip">
+          <a class="size-graphic-thumb" href="assets/products/T275/size/size_chart_garment.jpg" target="_blank">
+            <img src="assets/products/T275/size/size_chart_garment.jpg" alt="T275 Garment Size Chart &amp; Measurements" loading="lazy">
+            <span>🔍 View Original Measurement Chart</span>
+          </a>
+          <a class="size-graphic-thumb" href="assets/products/T275/size/size_chart_recommend.jpg" target="_blank">
+            <img src="assets/products/T275/size/size_chart_recommend.jpg" alt="T275 Height &amp; Weight Recommendations" loading="lazy">
+            <span>🔍 View Height &amp; Weight Guide</span>
+          </a>
+        </div>
+        <small class="pdp-table-tip">Note: 3.2cm heavy ribbed collar. Pre-shrunk compact double-yarn cotton. Flat measurement tolerance ±1-2cm.</small>
+      </div>
+    `;
   } else if (prod.category === 'pants') {
     sizeGuideHtml = `
       <div class="pdp-size-tables-card">
@@ -1138,6 +1224,58 @@ function renderDynamicLookbook(prod) {
       'assets/products/T238/editorial/model_15.jpg',
       'assets/products/T238/editorial/model_16.jpg'
     ];
+  } else if (prod.id === 'T275') {
+    const craftDetails = [
+      { img: 'assets/products/T275/detail/detail_1.jpg', title: '01 加厚螺纹领口', desc: '3.2cm Heavyweight Anti-Deformation Rebound Ribbed Collar' },
+      { img: 'assets/products/T275/detail/detail_2.jpg', title: '02 通肩压条加固', desc: 'Collar-to-Shoulder Clean Bound Taping & Reinforced Overlock' },
+      { img: 'assets/products/T275/detail/detail_3.jpg', title: '03 美式落肩剪裁', desc: 'Authentic 90s American Drop-Shoulder Structural Silhouette' },
+      { img: 'assets/products/T275/detail/detail_4.jpg', title: '04 275G 重磅挺括', desc: '275 GSM Ultra-Heavy Combed Cotton - Structured Anti-Wrinkle Drape' },
+      { img: 'assets/products/T275/detail/detail_5.jpg', title: '05 纯棉科技规格标', desc: '100% Combed Cotton Factory Tech Pack Spec Label (< 2% Shrink)' },
+      { img: 'assets/products/T275/detail/detail_6.jpg', title: '06 下摆双针锁边', desc: 'Twin-Needle Clean Edge Lockstitching & Reinforced Side Seams' },
+      { img: 'assets/products/T275/detail/detail_7.jpg', title: '07 高密紧致纹理', desc: 'Heavy Gauge Compact Textile Weave - High Tensile Tear Resistance' },
+      { img: 'assets/products/T275/detail/detail_8.jpg', title: '08 双股紧密织造', desc: 'Compact Double-Yarn Combed Cotton Smooth Surface' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card t040-craft-card">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (8 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">275 GSM combed compact cotton, 3.2cm heavyweight ribbed collar, and reactive dye detail</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    // 16 full editorial lookbook shots (upright)
+    lookbookImages = [
+      'assets/products/T275/editorial/model_1.jpg',
+      'assets/products/T275/editorial/model_2.jpg',
+      'assets/products/T275/editorial/model_3.jpg',
+      'assets/products/T275/editorial/model_4.jpg',
+      'assets/products/T275/editorial/model_5.jpg',
+      'assets/products/T275/editorial/model_6.jpg',
+      'assets/products/T275/editorial/model_7.jpg',
+      'assets/products/T275/editorial/model_8.jpg',
+      'assets/products/T275/editorial/model_9.jpg',
+      'assets/products/T275/editorial/model_10.jpg',
+      'assets/products/T275/editorial/model_11.jpg',
+      'assets/products/T275/editorial/model_12.jpg',
+      'assets/products/T275/editorial/model_13.jpg',
+      'assets/products/T275/editorial/model_14.jpg',
+      'assets/products/T275/editorial/model_15.jpg',
+      'assets/products/T275/editorial/model_16.jpg'
+    ];
   }
 
   const imagesHtml = lookbookImages.map((src, i) => `
@@ -1157,15 +1295,15 @@ function renderDynamicLookbook(prod) {
     <!-- Size Guide Card -->
     ${sizeGuideHtml}
 
-    <!-- Extra Craft Details for T040, T235 & T238 -->
+    <!-- Extra Craft Details for T040, T235, T238 & T275 -->
     ${extraCraftHtml}
 
     <!-- Editorial Lookbook Gallery -->
     <div class="pdp-editorial-gallery">
       <div class="gallery-title-box">
         <span class="g-tag">LOOKBOOK GALLERY</span>
-        <h3>${(prod.id === 'T040' || prod.id === 'T235' || prod.id === 'T238') ? 'Editorial Street Lookbook (16 Shots)' : 'Product Details &amp; Macro Fabric Craft'}</h3>
-        <p>${(prod.id === 'T040' || prod.id === 'T235' || prod.id === 'T238') ? 'Full Streetwear Outfit On-Model Demonstrations &amp; Colorway Silhouettes' : 'High-density weave, reinforced seams, and colorfast reactive dye detail'}</p>
+        <h3>${(prod.id === 'T040' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275') ? 'Editorial Street Lookbook (16 Shots)' : 'Product Details &amp; Macro Fabric Craft'}</h3>
+        <p>${(prod.id === 'T040' || prod.id === 'T235' || prod.id === 'T238' || prod.id === 'T275') ? 'Full Streetwear Outfit On-Model Demonstrations &amp; Colorway Silhouettes' : 'High-density weave, reinforced seams, and colorfast reactive dye detail'}</p>
       </div>
       ${imagesHtml}
     </div>

@@ -594,82 +594,174 @@
                                  "assets/products/T275/main/1.jpg",
                                  "assets/products/T275/main/2.jpg",
                                  "assets/products/T275/main/3.jpg",
-                                 "assets/products/T275/main/4.jpg"
+                                 "assets/products/T275/main/4.jpg",
+                                 "assets/products/T275/main/5.jpg",
+                                 "assets/products/T275/main/6.jpg"
                              ],
                  "id":  "T275",
                  "specs":  [
-                               "275 GSM Ultra-Heavy Compact Cotton - Authentic Streetwear Heavyweight Knit",
-                               "Oversized 90s Vintage Drop-Shoulder Silhouette, Pre-Shrunk (\u003c 2%)",
-                               "High-Density Anti-Deformation Ribbing \u0026 Reinforced Twin-Needle Seams",
-                               "Durable Colorfast Reactive Dyeing - High Breathability \u0026 Structured Drape",
-                               "Full Colorway Stock - 1-Piece Sample Proofing \u0026 Flexible OEM Tech Pack Ready"
+                               "275 GSM Ultra-Heavy Compact Cotton - Authentic 90s Streetwear Knit",
+                               "3.2cm Heavyweight Anti-Deformation Rebound Ribbed Collar \u0026 Taped Seams",
+                               "American Drop-Shoulder Relaxed Boxy Silhouette, Pre-Shrunk (\u003c 2%)",
+                               "23 Solid Vintage Reactive Dye Colorways - Zero Bleed \u0026 High Colorfastness",
+                               "1-Piece Custom Tech Pack Proofing Ready · Full Bulk Inventory"
                            ],
-                 "color":  "10 Colorways",
+                 "color":  "23 Vintage Colorways",
                  "skus":  [
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_1.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_1.jpg",
-                                  "name":  "Vintage Purple"
+                                  "name":  "Vintage Purple (G家紫)",
+                                  "thumb":  "assets/products/T275/sku/sku_vintage_purple.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_vintage_purple.jpg",
+                                  "back":  "assets/products/T275/sku/sku_vintage_purple_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_2.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_2.jpg",
-                                  "name":  "Sky Blue"
+                                  "name":  "Pure White (白色)",
+                                  "thumb":  "assets/products/T275/sku/sku_white.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_white.jpg",
+                                  "back":  "assets/products/T275/sku/sku_white_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_3.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_3.jpg",
-                                  "name":  "Heather Grey"
+                                  "name":  "Washed Black (黑色)",
+                                  "thumb":  "assets/products/T275/sku/sku_black.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_black.jpg",
+                                  "back":  "assets/products/T275/sku/sku_black_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_4.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_4.jpg",
-                                  "name":  "Forest Green"
+                                  "name":  "Eggshell Cream (蛋壳白)",
+                                  "thumb":  "assets/products/T275/sku/sku_eggshell.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_eggshell.jpg",
+                                  "back":  "assets/products/T275/sku/sku_eggshell_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_5.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_5.jpg",
-                                  "name":  "Sand Wheat"
+                                  "name":  "Oatmeal Heather Grey (燕麦灰)",
+                                  "thumb":  "assets/products/T275/sku/sku_oatmeal.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_oatmeal.jpg",
+                                  "back":  "assets/products/T275/sku/sku_oatmeal_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_6.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_6.jpg",
-                                  "name":  "Warm Orange"
+                                  "name":  "Sports Grey (运动灰)",
+                                  "thumb":  "assets/products/T275/sku/sku_sportsgrey.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_sportsgrey.jpg",
+                                  "back":  "assets/products/T275/sku/sku_sportsgrey_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_7.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_7.jpg",
-                                  "name":  "Sage Green"
+                                  "name":  "Silver Light Grey (银灰色)",
+                                  "thumb":  "assets/products/T275/sku/sku_silvergrey.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_silvergrey.jpg",
+                                  "back":  "assets/products/T275/sku/sku_silvergrey_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_8.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_8.jpg",
-                                  "name":  "Charcoal Grey"
+                                  "name":  "Medium Heather Grey (巴家中灰)",
+                                  "thumb":  "assets/products/T275/sku/sku_midgrey.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_midgrey.jpg",
+                                  "back":  "assets/products/T275/sku/sku_midgrey_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_9.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_9.jpg",
-                                  "name":  "Crimson Red"
+                                  "name":  "Charcoal Grey (巴家深灰)",
+                                  "thumb":  "assets/products/T275/sku/sku_charcoal.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_charcoal.jpg",
+                                  "back":  "assets/products/T275/sku/sku_charcoal_back.jpg"
                               },
                               {
-                                  "thumb":  "assets/products/T275/sku/sku_10.jpg",
-                                  "hero":  "assets/products/T275/sku/sku_10.jpg",
-                                  "name":  "Navy Blue"
+                                  "name":  "Ocean Slate Grey (海洋灰)",
+                                  "thumb":  "assets/products/T275/sku/sku_oceangrey.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_oceangrey.jpg",
+                                  "back":  "assets/products/T275/sku/sku_oceangrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Muted Slate Blue (灰蓝色)",
+                                  "thumb":  "assets/products/T275/sku/sku_mutedblue.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_mutedblue.jpg",
+                                  "back":  "assets/products/T275/sku/sku_mutedblue_back.jpg"
+                              },
+                              {
+                                  "name":  "Sky Blue (天蓝)",
+                                  "thumb":  "assets/products/T275/sku/sku_skyblue.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_skyblue.jpg",
+                                  "back":  "assets/products/T275/sku/sku_skyblue_back.jpg"
+                              },
+                              {
+                                  "name":  "Navy Blue (巴家藏蓝)",
+                                  "thumb":  "assets/products/T275/sku/sku_navy.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_navy.jpg",
+                                  "back":  "assets/products/T275/sku/sku_navy_back.jpg"
+                              },
+                              {
+                                  "name":  "Mint Sage Green (巴家浅绿)",
+                                  "thumb":  "assets/products/T275/sku/sku_sagegreen.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_sagegreen.jpg",
+                                  "back":  "assets/products/T275/sku/sku_sagegreen_back.jpg"
+                              },
+                              {
+                                  "name":  "Forest Dark Green (巴家墨绿)",
+                                  "thumb":  "assets/products/T275/sku/sku_forestgreen.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_forestgreen.jpg",
+                                  "back":  "assets/products/T275/sku/sku_forestgreen_back.jpg"
+                              },
+                              {
+                                  "name":  "Teal Pine Green (巴家青绿)",
+                                  "thumb":  "assets/products/T275/sku/sku_tealgreen.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_tealgreen.jpg",
+                                  "back":  "assets/products/T275/sku/sku_tealgreen_back.jpg"
+                              },
+                              {
+                                  "name":  "Lime Citrus Yellow (青檬黄)",
+                                  "thumb":  "assets/products/T275/sku/sku_limeyellow.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_limeyellow.jpg",
+                                  "back":  "assets/products/T275/sku/sku_limeyellow_back.jpg"
+                              },
+                              {
+                                  "name":  "Warm Orange (巴家暖橙)",
+                                  "thumb":  "assets/products/T275/sku/sku_warmorange.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_warmorange.jpg",
+                                  "back":  "assets/products/T275/sku/sku_warmorange_back.jpg"
+                              },
+                              {
+                                  "name":  "Crimson Red (巴家红)",
+                                  "thumb":  "assets/products/T275/sku/sku_crimson.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_crimson.jpg",
+                                  "back":  "assets/products/T275/sku/sku_crimson_back.jpg"
+                              },
+                              {
+                                  "name":  "Burgundy Wine Red (酒红色)",
+                                  "thumb":  "assets/products/T275/sku/sku_burgundy.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_burgundy.jpg",
+                                  "back":  "assets/products/T275/sku/sku_burgundy_back.jpg"
+                              },
+                              {
+                                  "name":  "Dusty Rose Pink (暗粉色)",
+                                  "thumb":  "assets/products/T275/sku/sku_dustypink.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_dustypink.jpg",
+                                  "back":  "assets/products/T275/sku/sku_dustypink_back.jpg"
+                              },
+                              {
+                                  "name":  "Sand Wheat (巴家小麦)",
+                                  "thumb":  "assets/products/T275/sku/sku_sandwheat.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_sandwheat.jpg",
+                                  "back":  "assets/products/T275/sku/sku_sandwheat_back.jpg"
+                              },
+                              {
+                                  "name":  "Mocha Earth Brown (巴家褐色)",
+                                  "thumb":  "assets/products/T275/sku/sku_mochabrown.jpg",
+                                  "hero":  "assets/products/T275/sku/sku_mochabrown.jpg",
+                                  "back":  "assets/products/T275/sku/sku_mochabrown_back.jpg"
                               }
                           ],
                  "category":  "tee",
                  "detailImages":  [
-                                      "assets/products/T275/detail/1.jpg",
-                                      "assets/products/T275/detail/2.jpg",
-                                      "assets/products/T275/detail/3.jpg",
-                                      "assets/products/T275/detail/4.jpg",
-                                      "assets/products/T275/detail/5.jpg",
-                                      "assets/products/T275/detail/6.jpg"
+                                      "assets/products/T275/detail/detail_1.jpg",
+                                      "assets/products/T275/detail/detail_2.jpg",
+                                      "assets/products/T275/detail/detail_3.jpg",
+                                      "assets/products/T275/detail/detail_4.jpg",
+                                      "assets/products/T275/detail/detail_5.jpg",
+                                      "assets/products/T275/detail/detail_6.jpg",
+                                      "assets/products/T275/detail/detail_7.jpg",
+                                      "assets/products/T275/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  16.5,
                  "name":  "T275 275G Ultra-Heavy American Drop-Shoulder Tee",
                  "img":  "assets/products/T275/main/1.jpg",
-                 "gram":  "275 GSM Ultra-Heavy Compact Cotton"
+                 "gram":  "275 GSM Ultra-Heavy Combed Cotton"
              },
     "T276":  {
                  "gallery":  [
