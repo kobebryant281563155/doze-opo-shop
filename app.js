@@ -661,7 +661,98 @@ function renderDynamicLookbook(prod) {
 
   // Category / Product specific sizing chart
   let sizeGuideHtml = '';
-  if (prod.id === 'T040') {
+  if (prod.id === 'T012') {
+    sizeGuideHtml = `
+      <div class="pdp-size-tables-card t040-size-card">
+        <div class="table-header">
+          <span class="table-tag">OFFICIAL TECH SIZING &amp; TRY-ON</span>
+          <h4>T012 240G Raglan Sleeve Boxy Tee - Sizing &amp; Measurement Guide</h4>
+        </div>
+
+        <!-- Model Try-On Card -->
+        <div class="t040-models-badge-row">
+          <div class="model-stat-pill">
+            <span class="m-avatar">👨</span>
+            <div class="m-info">
+              <strong>Denis (Model)</strong>
+              <small>188cm / 77kg · Wearing 2XL · Loose Oversized</small>
+            </div>
+          </div>
+          <div class="model-stat-pill">
+            <span class="m-avatar">👩</span>
+            <div class="m-info">
+              <strong>Karen (Model)</strong>
+              <small>173cm / 55kg · Wearing XL · Street Boxy</small>
+            </div>
+          </div>
+          <div class="model-stat-pill">
+            <span class="m-avatar">👨</span>
+            <div class="m-info">
+              <strong>ZEE (Model)</strong>
+              <small>186cm / 77kg · Wearing XL · Regular Fit</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Garment Measurements Table -->
+        <h5 class="sub-table-title">📏 Garment Dimensions (Flat Measurement / cm)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size (尺码)</th>
+                <th>Length (衣长)</th>
+                <th>Chest (胸围)</th>
+                <th>Raglan Sleeve (连肩袖长)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>70 cm</td><td>110 cm</td><td>38.5 cm</td></tr>
+              <tr><td><strong>M</strong></td><td>72 cm</td><td>115 cm</td><td>40.0 cm</td></tr>
+              <tr><td><strong>L</strong></td><td>74 cm</td><td>120 cm</td><td>41.5 cm</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>76 cm</td><td>125 cm</td><td>43.0 cm</td></tr>
+              <tr><td><strong>2XL</strong></td><td>78 cm</td><td>130 cm</td><td>45.0 cm</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Height & Weight Recommended Fit Table -->
+        <h5 class="sub-table-title">⚖️ Height &amp; Weight Recommendations (建议尺码)</h5>
+        <div class="pdp-table-wrap">
+          <table class="pdp-spec-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Suggested Height</th>
+                <th>Suggested Weight</th>
+                <th>Fit Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>165 - 170 cm</td><td>50 - 60 kg (100-120斤)</td><td>Fitted</td></tr>
+              <tr><td><strong>M</strong></td><td>170 - 175 cm</td><td>60 - 65 kg (120-130斤)</td><td>Relaxed</td></tr>
+              <tr><td><strong>L</strong></td><td>175 - 180 cm</td><td>65 - 75 kg (130-150斤)</td><td>Street Boxy</td></tr>
+              <tr class="highlight-row"><td><strong>XL</strong></td><td>180 - 185 cm</td><td>75 - 85 kg (150-170斤)</td><td>Oversized</td></tr>
+              <tr><td><strong>2XL</strong></td><td>185 - 190 cm</td><td>85 - 95 kg (170-190斤)</td><td>Extreme Baggy</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Visual Size Chart Image Cards -->
+        <div class="t040-size-graphics-strip">
+          <a class="size-graphic-thumb" href="assets/t012/size/size_chart_garment.png" target="_blank">
+            <img src="assets/t012/size/size_chart_garment.png" alt="T012 Garment Size Chart &amp; Model Measurements" loading="lazy">
+            <span>🔍 View Original Measurement Chart</span>
+          </a>
+          <a class="size-graphic-thumb" href="assets/t012/size/size_chart_recommend.png" target="_blank">
+            <img src="assets/t012/size/size_chart_recommend.png" alt="T012 Height &amp; Weight Recommendations" loading="lazy">
+            <span>🔍 View Height &amp; Weight Guide</span>
+          </a>
+        </div>
+        <small class="pdp-table-tip">Note: Hand-measured specifications. Flat measurement tolerance within ±1-2cm.</small>
+      </div>
+    `;
+  } else if (prod.id === 'T040') {
     sizeGuideHtml = `
       <div class="pdp-size-tables-card t040-size-card">
         <div class="table-header">

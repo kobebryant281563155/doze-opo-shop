@@ -77,7 +77,16 @@
                                       "assets/t012/detail/89d552f73ea8de6fcf9e0e40ad2142cb.png",
                                       "assets/t012/detail/9a1dda6e0215d0cd1e05cca190686f05.png",
                                       "assets/t012/detail/f6369b0a304eef1a95656a5327c562e0.png"
-                                  ]
+                                  ],
+                 "sizeChart":  "assets/t012/size/size_chart_garment.png",
+                 "sizeRecommend":  "assets/t012/size/size_chart_recommend.png",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "K350":  {
                  "gallery":  [
