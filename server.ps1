@@ -21,7 +21,9 @@ while ($listener.IsListening) {
             elseif ($ext -eq '.png') { $res.ContentType = 'image/png' }
             elseif ($ext -eq '.svg') { $res.ContentType = 'image/svg+xml' }
             $res.ContentLength64 = $bytes.Length
-            $res.OutputStream.Write($bytes, 0, $bytes.Length)
+            if ($req.HttpMethod -ne 'HEAD') {
+                $res.OutputStream.Write($bytes, 0, $bytes.Length)
+            }
         } else {
             $res.StatusCode = 404
         }
