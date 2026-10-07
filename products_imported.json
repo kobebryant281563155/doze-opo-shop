@@ -1307,88 +1307,6 @@
                  "img":  "assets/products/W439/main/1.jpg",
                  "gram":  "430 GSM Heavy French Terry"
              },
-    "W510":  {
-                 "gallery":  [
-                                 "assets/products/W510/main/1.jpg",
-                                 "assets/products/W510/main/2.jpg",
-                                 "assets/products/W510/main/3.jpg",
-                                 "assets/products/W510/main/4.jpg"
-                             ],
-                 "id":  "W510",
-                 "specs":  [
-                               "510 GSM Diagonal Heavy Terry - Authentic Streetwear Heavyweight Knit",
-                               "Oversized 90s Vintage Drop-Shoulder Silhouette, Pre-Shrunk (\u003c 2%)",
-                               "High-Density Anti-Deformation Ribbing \u0026 Reinforced Twin-Needle Seams",
-                               "Durable Colorfast Reactive Dyeing - High Breathability \u0026 Structured Drape",
-                               "Full Colorway Stock - 1-Piece Sample Proofing \u0026 Flexible OEM Tech Pack Ready"
-                           ],
-                 "color":  "10 Colorways",
-                 "skus":  [
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_1.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_1.jpg",
-                                  "name":  "Wine Red"
-                              },
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_2.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_2.jpg",
-                                  "name":  "Jungle Green"
-                              },
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_3.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_3.jpg",
-                                  "name":  "Vintage Khaki"
-                              },
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_4.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_4.jpg",
-                                  "name":  "Vintage Khaki"
-                              },
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_5.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_5.jpg",
-                                  "name":  "Heather Grey"
-                              },
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_6.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_6.jpg",
-                                  "name":  "Off-White"
-                              },
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_7.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_7.jpg",
-                                  "name":  "Heather Grey"
-                              },
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_8.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_8.jpg",
-                                  "name":  "Heather Grey"
-                              },
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_9.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_9.jpg",
-                                  "name":  "Oatmeal Grey"
-                              },
-                              {
-                                  "thumb":  "assets/products/W510/sku/sku_10.jpg",
-                                  "hero":  "assets/products/W510/sku/sku_10.jpg",
-                                  "name":  "Navy Blue"
-                              }
-                          ],
-                 "category":  "crewneck",
-                 "detailImages":  [
-                                      "assets/products/W510/detail/1.jpg",
-                                      "assets/products/W510/detail/2.jpg",
-                                      "assets/products/W510/detail/3.jpg",
-                                      "assets/products/W510/detail/4.jpg",
-                                      "assets/products/W510/detail/5.jpg",
-                                      "assets/products/W510/detail/6.jpg"
-                                  ],
-                 "priceUSD":  28.5,
-                 "name":  "W510 510G Ultra-Heavy Mock-Neck Crewneck",
-                 "img":  "assets/products/W510/main/1.jpg",
-                 "gram":  "510 GSM Diagonal Heavy Terry"
-             },
     "W512":  {
                  "gallery":  [
                                  "assets/products/W512/main/1.jpg",
@@ -2791,6 +2709,122 @@
                                       "assets/products/W430/detail/8.jpg"
                                   ],
                  "sizeChart":  "assets/products/W430/size/size_chart_garment.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
+             },
+    "W510":  {
+                 "id":  "W510",
+                 "name":  "W510 510G Ultra-Heavy Mock-Neck Crewneck",
+                 "category":  "crewneck",
+                 "priceUSD":  28.5,
+                 "gram":  "510 GSM Heavy Diagonal Knit Terry",
+                 "img":  "assets/products/W510/main/1.jpg",
+                 "color":  "12 Core Streetwear Colorways",
+                 "specs":  [
+                               "510 GSM Diagonal Heavy Terry - Authentic Streetwear Ultra-Heavyweight Knit (淇濇殩鏂滅汗绾姣涘湀/缁掗潰)",
+                               "90s Vintage Oversized Boxy Drop-Shoulder Silhouette, Pre-Shrunk (\u003c 2%)",
+                               "3.5cm Ergonomic Anti-Deformation Mock-Neck Ribbed Collar \u0026 Bound Neck Taping",
+                               "Reinforced Twin-Needle Armhole, Side Ribbed Inserts \u0026 Hem Overlock Seaming",
+                               "12 Core Streetwear Colorways 路 1-Piece Custom Tech Pack Sample Ready"
+                           ],
+                 "gallery":  [
+                                 "assets/products/W510/main/1.jpg",
+                                 "assets/products/W510/main/2.jpg",
+                                 "assets/products/W510/main/3.jpg",
+                                 "assets/products/W510/main/4.jpg",
+                                 "assets/products/W510/main/5.jpg",
+                                 "assets/products/W510/main/6.jpg"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Wine Red",
+                                  "thumb":  "assets/products/W510/sku/sku_winered.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_winered.jpg",
+                                  "back":  "assets/products/W510/sku/sku_winered_back.jpg"
+                              },
+                              {
+                                  "name":  "Jungle Green",
+                                  "thumb":  "assets/products/W510/sku/sku_junglegreen.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_junglegreen.jpg",
+                                  "back":  "assets/products/W510/sku/sku_junglegreen_back.jpg"
+                              },
+                              {
+                                  "name":  "Coffee Brown",
+                                  "thumb":  "assets/products/W510/sku/sku_coffeebrown.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_coffeebrown.jpg",
+                                  "back":  "assets/products/W510/sku/sku_coffeebrown_back.jpg"
+                              },
+                              {
+                                  "name":  "Vintage Khaki",
+                                  "thumb":  "assets/products/W510/sku/sku_vintagekhaki.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_vintagekhaki.jpg",
+                                  "back":  "assets/products/W510/sku/sku_vintagekhaki_back.jpg"
+                              },
+                              {
+                                  "name":  "Charcoal Grey",
+                                  "thumb":  "assets/products/W510/sku/sku_charcoalgrey.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_charcoalgrey.jpg",
+                                  "back":  "assets/products/W510/sku/sku_charcoalgrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Crisp White",
+                                  "thumb":  "assets/products/W510/sku/sku_crispwhite.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_crispwhite.jpg",
+                                  "back":  "assets/products/W510/sku/sku_crispwhite_back.jpg"
+                              },
+                              {
+                                  "name":  "Ocean Slate Grey",
+                                  "thumb":  "assets/products/W510/sku/sku_oceangrey.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_oceangrey.jpg",
+                                  "back":  "assets/products/W510/sku/sku_oceangrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Dusty Purple",
+                                  "thumb":  "assets/products/W510/sku/sku_dustypurple.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_dustypurple.jpg",
+                                  "back":  "assets/products/W510/sku/sku_dustypurple_back.jpg"
+                              },
+                              {
+                                  "name":  "Oatmeal Grey",
+                                  "thumb":  "assets/products/W510/sku/sku_oatmealgrey.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_oatmealgrey.jpg",
+                                  "back":  "assets/products/W510/sku/sku_oatmealgrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Navy Blue",
+                                  "thumb":  "assets/products/W510/sku/sku_navy.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_navy.jpg",
+                                  "back":  "assets/products/W510/sku/sku_navy_back.jpg"
+                              },
+                              {
+                                  "name":  "Heather Grey",
+                                  "thumb":  "assets/products/W510/sku/sku_sportsgrey.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_sportsgrey.jpg",
+                                  "back":  "assets/products/W510/sku/sku_sportsgrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Solid Black",
+                                  "thumb":  "assets/products/W510/sku/sku_solidblack.jpg",
+                                  "hero":  "assets/products/W510/sku/sku_solidblack.jpg",
+                                  "back":  "assets/products/W510/sku/sku_solidblack_back.jpg"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/W510/detail/1.jpg",
+                                      "assets/products/W510/detail/2.jpg",
+                                      "assets/products/W510/detail/3.jpg",
+                                      "assets/products/W510/detail/4.jpg",
+                                      "assets/products/W510/detail/5.jpg",
+                                      "assets/products/W510/detail/6.jpg",
+                                      "assets/products/W510/detail/7.jpg",
+                                      "assets/products/W510/detail/8.jpg"
+                                  ],
+                 "sizeChart":  "assets/products/W510/size/size_chart_garment.jpg",
                  "sizes":  [
                                "S",
                                "M",
