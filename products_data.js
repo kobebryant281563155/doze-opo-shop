@@ -983,88 +983,6 @@
                  "img":  "assets/products/W354/main/1.jpg",
                  "gram":  "350 GSM Fleece-Lined Cotton"
              },
-    "W432":  {
-                 "gallery":  [
-                                 "assets/products/W432/main/1.jpg",
-                                 "assets/products/W432/main/2.jpg",
-                                 "assets/products/W432/main/3.jpg",
-                                 "assets/products/W432/main/4.jpg"
-                             ],
-                 "id":  "W432",
-                 "specs":  [
-                               "430 GSM Heavy French Terry - Authentic Streetwear Heavyweight Knit",
-                               "Oversized 90s Vintage Drop-Shoulder Silhouette, Pre-Shrunk (\u003c 2%)",
-                               "High-Density Anti-Deformation Ribbing \u0026 Reinforced Twin-Needle Seams",
-                               "Durable Colorfast Reactive Dyeing - High Breathability \u0026 Structured Drape",
-                               "Full Colorway Stock - 1-Piece Sample Proofing \u0026 Flexible OEM Tech Pack Ready"
-                           ],
-                 "color":  "10 Colorways",
-                 "skus":  [
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_1.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_1.jpg",
-                                  "name":  "Wine Red"
-                              },
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_2.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_2.jpg",
-                                  "name":  "Sage Green"
-                              },
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_3.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_3.jpg",
-                                  "name":  "Sky Blue"
-                              },
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_4.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_4.jpg",
-                                  "name":  "Royal Blue"
-                              },
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_5.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_5.jpg",
-                                  "name":  "Heather Grey"
-                              },
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_6.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_6.jpg",
-                                  "name":  "Sand Wheat"
-                              },
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_7.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_7.jpg",
-                                  "name":  "Wine Red"
-                              },
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_8.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_8.jpg",
-                                  "name":  "Sage Green"
-                              },
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_9.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_9.jpg",
-                                  "name":  "Charcoal Grey"
-                              },
-                              {
-                                  "thumb":  "assets/products/W432/sku/sku_10.jpg",
-                                  "hero":  "assets/products/W432/sku/sku_10.jpg",
-                                  "name":  "Crimson Red"
-                              }
-                          ],
-                 "category":  "hoodie",
-                 "detailImages":  [
-                                      "assets/products/W432/detail/1.jpg",
-                                      "assets/products/W432/detail/2.jpg",
-                                      "assets/products/W432/detail/3.jpg",
-                                      "assets/products/W432/detail/4.jpg",
-                                      "assets/products/W432/detail/5.jpg",
-                                      "assets/products/W432/detail/6.jpg"
-                                  ],
-                 "priceUSD":  28.5,
-                 "name":  "W432 430G French Terry Oversized Street Hoodie",
-                 "img":  "assets/products/W432/main/1.jpg",
-                 "gram":  "430 GSM Heavy French Terry"
-             },
     "W434":  {
                  "gallery":  [
                                  "assets/products/W434/main/1.jpg",
@@ -2919,6 +2837,176 @@
                                       "assets/products/W352/detail/8.jpg"
                                   ],
                  "sizeChart":  "assets/products/W352/size/size_chart_garment.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
+             },
+    "W432":  {
+                 "id":  "W432",
+                 "name":  "W432 430G French Terry Oversized Street Hoodie",
+                 "category":  "hoodie",
+                 "priceUSD":  28.5,
+                 "gram":  "430 GSM Heavy French Terry",
+                 "img":  "assets/products/W432/main/1.jpg",
+                 "color":  "21 Core Streetwear Colorways",
+                 "specs":  [
+                               "430 GSM Combed Cotton Heavy Diagonal French Terry - Authentic Streetwear Heavyweight Knit (430鍏嬮噸纾呯函妫夋枩绾规瘺鍦?",
+                               "90s Vintage Oversized Boxy Drop-Shoulder Relaxed Silhouette, Pre-Shrunk (\u003c 2%)",
+                               "Double-Layer Seamless Structured Hood with Ergonomic Crossover Neckline",
+                               "Twin-Needle Reinforced Kangaroo Pocket with Structural Bar-Tacking \u0026 1x1 High-Elastic Shape-Retentive Ribbing",
+                               "21 Core Streetwear Colorways 路 1-Piece Custom Tech Pack Sample Ready"
+                           ],
+                 "gallery":  [
+                                 "assets/products/W432/main/1.jpg",
+                                 "assets/products/W432/main/2.jpg",
+                                 "assets/products/W432/main/3.jpg",
+                                 "assets/products/W432/main/4.jpg",
+                                 "assets/products/W432/main/5.jpg",
+                                 "assets/products/W432/main/6.jpg"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Wine Red",
+                                  "thumb":  "assets/products/W432/sku/sku_winered.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_winered.jpg",
+                                  "back":  "assets/products/W432/sku/sku_winered_back.jpg"
+                              },
+                              {
+                                  "name":  "Palm Green",
+                                  "thumb":  "assets/products/W432/sku/sku_palmgreen.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_palmgreen.jpg",
+                                  "back":  "assets/products/W432/sku/sku_palmgreen_back.jpg"
+                              },
+                              {
+                                  "name":  "Sky Blue",
+                                  "thumb":  "assets/products/W432/sku/sku_skyblue.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_skyblue.jpg",
+                                  "back":  "assets/products/W432/sku/sku_skyblue_back.jpg"
+                              },
+                              {
+                                  "name":  "Royal Blue",
+                                  "thumb":  "assets/products/W432/sku/sku_royalblue.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_royalblue.jpg",
+                                  "back":  "assets/products/W432/sku/sku_royalblue_back.jpg"
+                              },
+                              {
+                                  "name":  "Medium Heather Grey",
+                                  "thumb":  "assets/products/W432/sku/sku_mediumgrey.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_mediumgrey.jpg",
+                                  "back":  "assets/products/W432/sku/sku_mediumgrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Sand Wheat",
+                                  "thumb":  "assets/products/W432/sku/sku_sandwheat.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_sandwheat.jpg",
+                                  "back":  "assets/products/W432/sku/sku_sandwheat_back.jpg"
+                              },
+                              {
+                                  "name":  "Electric Blue",
+                                  "thumb":  "assets/products/W432/sku/sku_electricblue.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_electricblue.jpg",
+                                  "back":  "assets/products/W432/sku/sku_electricblue_back.jpg"
+                              },
+                              {
+                                  "name":  "Sage Green",
+                                  "thumb":  "assets/products/W432/sku/sku_sagegreen.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_sagegreen.jpg",
+                                  "back":  "assets/products/W432/sku/sku_sagegreen_back.jpg"
+                              },
+                              {
+                                  "name":  "Charcoal Slate Grey",
+                                  "thumb":  "assets/products/W432/sku/sku_charcoalgrey.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_charcoalgrey.jpg",
+                                  "back":  "assets/products/W432/sku/sku_charcoalgrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Rose Fuchsia Pink",
+                                  "thumb":  "assets/products/W432/sku/sku_rosepink.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_rosepink.jpg",
+                                  "back":  "assets/products/W432/sku/sku_rosepink_back.jpg"
+                              },
+                              {
+                                  "name":  "Dusky Pink",
+                                  "thumb":  "assets/products/W432/sku/sku_duskypink.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_duskypink.jpg",
+                                  "back":  "assets/products/W432/sku/sku_duskypink_back.jpg"
+                              },
+                              {
+                                  "name":  "Vintage Purple",
+                                  "thumb":  "assets/products/W432/sku/sku_vintagepurple.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_vintagepurple.jpg",
+                                  "back":  "assets/products/W432/sku/sku_vintagepurple_back.jpg"
+                              },
+                              {
+                                  "name":  "Light Heather Grey",
+                                  "thumb":  "assets/products/W432/sku/sku_lightheathergrey.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_lightheathergrey.jpg",
+                                  "back":  "assets/products/W432/sku/sku_lightheathergrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Oatmeal Grey",
+                                  "thumb":  "assets/products/W432/sku/sku_oatmealgrey.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_oatmealgrey.jpg",
+                                  "back":  "assets/products/W432/sku/sku_oatmealgrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Pure White",
+                                  "thumb":  "assets/products/W432/sku/sku_purewhite.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_purewhite.jpg",
+                                  "back":  "assets/products/W432/sku/sku_purewhite_back.jpg"
+                              },
+                              {
+                                  "name":  "Crimson Red",
+                                  "thumb":  "assets/products/W432/sku/sku_crimsonred.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_crimsonred.jpg",
+                                  "back":  "assets/products/W432/sku/sku_crimsonred_back.jpg"
+                              },
+                              {
+                                  "name":  "Rusty Terracotta Orange",
+                                  "thumb":  "assets/products/W432/sku/sku_rustyorange.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_rustyorange.jpg",
+                                  "back":  "assets/products/W432/sku/sku_rustyorange_back.jpg"
+                              },
+                              {
+                                  "name":  "Moss Forest Green",
+                                  "thumb":  "assets/products/W432/sku/sku_mossgreen.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_mossgreen.jpg",
+                                  "back":  "assets/products/W432/sku/sku_mossgreen_back.jpg"
+                              },
+                              {
+                                  "name":  "Earth Mocha Brown",
+                                  "thumb":  "assets/products/W432/sku/sku_earthbrown.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_earthbrown.jpg",
+                                  "back":  "assets/products/W432/sku/sku_earthbrown_back.jpg"
+                              },
+                              {
+                                  "name":  "Heather Athletic Grey",
+                                  "thumb":  "assets/products/W432/sku/sku_sportsgrey.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_sportsgrey.jpg",
+                                  "back":  "assets/products/W432/sku/sku_sportsgrey_back.jpg"
+                              },
+                              {
+                                  "name":  "Solid Black",
+                                  "thumb":  "assets/products/W432/sku/sku_solidblack.jpg",
+                                  "hero":  "assets/products/W432/sku/sku_solidblack.jpg",
+                                  "back":  "assets/products/W432/sku/sku_solidblack_back.jpg"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/W432/detail/1.jpg",
+                                      "assets/products/W432/detail/2.jpg",
+                                      "assets/products/W432/detail/3.jpg",
+                                      "assets/products/W432/detail/4.jpg",
+                                      "assets/products/W432/detail/5.jpg",
+                                      "assets/products/W432/detail/6.jpg",
+                                      "assets/products/W432/detail/7.jpg",
+                                      "assets/products/W432/detail/8.jpg"
+                                  ],
+                 "sizeChart":  "assets/products/W432/size/size_chart_garment.jpg",
                  "sizes":  [
                                "S",
                                "M",
