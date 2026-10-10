@@ -1,4 +1,4 @@
-window.PRODUCTS_DATA = {
+﻿window.PRODUCTS_DATA = {
     "T012":  {
                  "id":  "T012",
                  "name":  "T012 240G Raglan Sleeve Boxy Tee",
@@ -1758,8 +1758,20 @@ window.PRODUCTS_DATA = {
                                       "assets/products/TH09/detail/2.jpg",
                                       "assets/products/TH09/detail/3.jpg",
                                       "assets/products/TH09/detail/4.jpg",
-                                      "assets/products/TH09/detail/5.jpg"
-                                  ]
+                                      "assets/products/TH09/detail/5.jpg",
+                                      "assets/products/TH09/detail/6.jpg",
+                                      "assets/products/TH09/detail/7.jpg",
+                                      "assets/products/TH09/detail/8.jpg",
+                                      "assets/products/TH09/detail/9.jpg"
+                                  ],
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL"
+                           ],
+                 "sizeChart":  "assets/products/TH09/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/TH09/size/size_chart_recommend.jpg"
              },
     "TH03":  {
                  "id":  "TH03",
@@ -1781,7 +1793,8 @@ window.PRODUCTS_DATA = {
                                  "assets/products/TH03/main/2.jpg",
                                  "assets/products/TH03/main/3.jpg",
                                  "assets/products/TH03/main/4.jpg",
-                                 "assets/products/TH03/main/5.jpg"
+                                 "assets/products/TH03/main/5.jpg",
+                                 "assets/products/TH03/main/6.jpg"
                              ],
                  "skus":  [
                               {
@@ -1851,8 +1864,17 @@ window.PRODUCTS_DATA = {
                                       "assets/products/TH03/detail/3.jpg",
                                       "assets/products/TH03/detail/4.jpg",
                                       "assets/products/TH03/detail/5.jpg",
-                                      "assets/products/TH03/detail/6.jpg"
-                                  ]
+                                      "assets/products/TH03/detail/6.jpg",
+                                      "assets/products/TH03/detail/7.jpg"
+                                  ],
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL"
+                           ],
+                 "sizeChart":  "assets/products/TH03/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/TH03/size/size_chart_recommend.jpg"
              },
     "S360":  {
                  "id":  "S360",
@@ -1943,8 +1965,24 @@ window.PRODUCTS_DATA = {
                                       "assets/products/S360/detail/2.jpg",
                                       "assets/products/S360/detail/3.jpg",
                                       "assets/products/S360/detail/4.jpg",
-                                      "assets/products/S360/detail/5.jpg"
-                                  ]
+                                      "assets/products/S360/detail/5.jpg",
+                                      "assets/products/S360/detail/6.jpg",
+                                      "assets/products/S360/detail/7.jpg",
+                                      "assets/products/S360/detail/8.jpg",
+                                      "assets/products/S360/detail/9.jpg"
+                                  ],
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL",
+                               "3XL",
+                               "4XL",
+                               "6XL"
+                           ],
+                 "sizeChart":  "assets/products/S360/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/S360/size/size_chart_recommend.jpg"
              },
     "T013":  {
                  "id":  "T013",
