@@ -84,7 +84,9 @@
                                "L",
                                "XL",
                                "2XL"
-                           ]
+                           ],
+                 "sizeChart":  "assets/t012/size/size_chart_garment.png",
+                 "sizeRecommend":  "assets/t012/size/size_chart_recommend.png"
              },
     "K350":  {
                  "gallery":  [
@@ -161,12 +163,29 @@
                                       "assets/products/K350/detail/3.jpg",
                                       "assets/products/K350/detail/4.jpg",
                                       "assets/products/K350/detail/5.jpg",
-                                      "assets/products/K350/detail/6.jpg"
+                                      "assets/products/K350/detail/6.jpg",
+                                      "assets/products/K350/detail/detail_1.jpg",
+                                      "assets/products/K350/detail/detail_2.jpg",
+                                      "assets/products/K350/detail/detail_3.jpg",
+                                      "assets/products/K350/detail/detail_4.jpg",
+                                      "assets/products/K350/detail/detail_5.jpg",
+                                      "assets/products/K350/detail/detail_6.jpg",
+                                      "assets/products/K350/detail/detail_7.jpg",
+                                      "assets/products/K350/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  22.5,
                  "name":  "K350 350G Fleece-Lined Straight-Leg Sweatpants",
                  "img":  "assets/products/K350/main/1.jpg",
-                 "gram":  "350 GSM Fleece-Lined Cotton"
+                 "gram":  "350 GSM Fleece-Lined Cotton",
+                 "sizeChart":  "assets/products/K350/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/K350/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "K430":  {
                  "gallery":  [
@@ -243,12 +262,29 @@
                                       "assets/products/K430/detail/3.jpg",
                                       "assets/products/K430/detail/4.jpg",
                                       "assets/products/K430/detail/5.jpg",
-                                      "assets/products/K430/detail/6.jpg"
+                                      "assets/products/K430/detail/6.jpg",
+                                      "assets/products/K430/detail/detail_1.jpg",
+                                      "assets/products/K430/detail/detail_2.jpg",
+                                      "assets/products/K430/detail/detail_3.jpg",
+                                      "assets/products/K430/detail/detail_4.jpg",
+                                      "assets/products/K430/detail/detail_5.jpg",
+                                      "assets/products/K430/detail/detail_6.jpg",
+                                      "assets/products/K430/detail/detail_7.jpg",
+                                      "assets/products/K430/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  24.5,
                  "name":  "K430 430G French Terry Cuffed Street Jogger Pants",
                  "img":  "assets/products/K430/main/1.jpg",
-                 "gram":  "430 GSM Heavy French Terry"
+                 "gram":  "430 GSM Heavy French Terry",
+                 "sizeChart":  "assets/products/K430/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/K430/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "K436":  {
                  "gallery":  [
@@ -330,7 +366,16 @@
                  "priceUSD":  24.5,
                  "name":  "K436 430G Heavy French Terry Wide-Leg Sweatpants",
                  "img":  "assets/products/K436/main/1.jpg",
-                 "gram":  "430 GSM Heavy French Terry"
+                 "gram":  "430 GSM Heavy French Terry",
+                 "sizeChart":  "assets/products/K436/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/K436/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "T040":  {
                  "gallery":  [
@@ -385,8 +430,6 @@
                           ],
                  "category":  "tee",
                  "detailImages":  [
-                                      "assets/products/T040/size/size_chart_garment.jpg",
-                                      "assets/products/T040/size/size_chart_recommend.jpg",
                                       "assets/products/T040/detail/detail_1.jpg",
                                       "assets/products/T040/detail/detail_2.jpg",
                                       "assets/products/T040/detail/detail_3.jpg",
@@ -406,7 +449,9 @@
                                "L",
                                "XL",
                                "2XL"
-                           ]
+                           ],
+                 "sizeChart":  "assets/products/T040/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/T040/size/size_chart_recommend.jpg"
              },
     "T235":  {
                  "gallery":  [
@@ -484,8 +529,14 @@
                           ],
                  "category":  "tee",
                  "detailImages":  [
-                                      "assets/products/T235/size/size_chart_garment.jpg",
-                                      "assets/products/T235/size/size_chart_recommend.jpg",
+                                      "assets/products/T235/detail/1.jpg",
+                                      "assets/products/T235/detail/2.jpg",
+                                      "assets/products/T235/detail/3.jpg",
+                                      "assets/products/T235/detail/4.jpg",
+                                      "assets/products/T235/detail/5.jpg",
+                                      "assets/products/T235/detail/6.jpg",
+                                      "assets/products/T235/detail/7.jpg",
+                                      "assets/products/T235/detail/8.jpg",
                                       "assets/products/T235/detail/detail_1.jpg",
                                       "assets/products/T235/detail/detail_2.jpg",
                                       "assets/products/T235/detail/detail_3.jpg",
@@ -505,7 +556,9 @@
                                "L",
                                "XL",
                                "2XL"
-                           ]
+                           ],
+                 "sizeChart":  "assets/products/T235/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/T235/size/size_chart_recommend.jpg"
              },
     "T238":  {
                  "gallery":  [
@@ -600,6 +653,14 @@
                           ],
                  "category":  "tee",
                  "detailImages":  [
+                                      "assets/products/T238/detail/1.jpg",
+                                      "assets/products/T238/detail/2.jpg",
+                                      "assets/products/T238/detail/3.jpg",
+                                      "assets/products/T238/detail/4.jpg",
+                                      "assets/products/T238/detail/5.jpg",
+                                      "assets/products/T238/detail/6.jpg",
+                                      "assets/products/T238/detail/7.jpg",
+                                      "assets/products/T238/detail/8.jpg",
                                       "assets/products/T238/detail/detail_1.jpg",
                                       "assets/products/T238/detail/detail_2.jpg",
                                       "assets/products/T238/detail/detail_3.jpg",
@@ -619,7 +680,9 @@
                                "L",
                                "XL",
                                "2XL"
-                           ]
+                           ],
+                 "sizeChart":  "assets/products/T238/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/T238/size/size_chart_recommend.jpg"
              },
     "T275":  {
                  "gallery":  [
@@ -781,6 +844,14 @@
                           ],
                  "category":  "tee",
                  "detailImages":  [
+                                      "assets/products/T275/detail/1.jpg",
+                                      "assets/products/T275/detail/2.jpg",
+                                      "assets/products/T275/detail/3.jpg",
+                                      "assets/products/T275/detail/4.jpg",
+                                      "assets/products/T275/detail/5.jpg",
+                                      "assets/products/T275/detail/6.jpg",
+                                      "assets/products/T275/detail/7.jpg",
+                                      "assets/products/T275/detail/8.jpg",
                                       "assets/products/T275/detail/detail_1.jpg",
                                       "assets/products/T275/detail/detail_2.jpg",
                                       "assets/products/T275/detail/detail_3.jpg",
@@ -793,7 +864,16 @@
                  "priceUSD":  16.5,
                  "name":  "T275 275G Ultra-Heavy American Drop-Shoulder Tee",
                  "img":  "assets/products/T275/main/1.jpg",
-                 "gram":  "275 GSM Ultra-Heavy Combed Cotton"
+                 "gram":  "275 GSM Ultra-Heavy Combed Cotton",
+                 "sizeChart":  "assets/products/T275/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/T275/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "T276":  {
                  "gallery":  [
@@ -919,6 +999,14 @@
                           ],
                  "category":  "tee",
                  "detailImages":  [
+                                      "assets/products/T276/detail/1.jpg",
+                                      "assets/products/T276/detail/2.jpg",
+                                      "assets/products/T276/detail/3.jpg",
+                                      "assets/products/T276/detail/4.jpg",
+                                      "assets/products/T276/detail/5.jpg",
+                                      "assets/products/T276/detail/6.jpg",
+                                      "assets/products/T276/detail/7.jpg",
+                                      "assets/products/T276/detail/8.jpg",
                                       "assets/products/T276/detail/detail_1.jpg",
                                       "assets/products/T276/detail/detail_2.jpg",
                                       "assets/products/T276/detail/detail_3.jpg",
@@ -931,7 +1019,16 @@
                  "priceUSD":  18.5,
                  "name":  "T276 275G Heavy Drop-Shoulder Long-Sleeve Tee",
                  "img":  "assets/products/T276/main/1.jpg",
-                 "gram":  "275 GSM Ultra-Heavy Combed Cotton"
+                 "gram":  "275 GSM Ultra-Heavy Combed Cotton",
+                 "sizeChart":  "assets/products/T276/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/T276/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "W354":  {
                  "gallery":  [
@@ -1008,12 +1105,29 @@
                                       "assets/products/W354/detail/3.jpg",
                                       "assets/products/W354/detail/4.jpg",
                                       "assets/products/W354/detail/5.jpg",
-                                      "assets/products/W354/detail/6.jpg"
+                                      "assets/products/W354/detail/6.jpg",
+                                      "assets/products/W354/detail/detail_1.jpg",
+                                      "assets/products/W354/detail/detail_2.jpg",
+                                      "assets/products/W354/detail/detail_3.jpg",
+                                      "assets/products/W354/detail/detail_4.jpg",
+                                      "assets/products/W354/detail/detail_5.jpg",
+                                      "assets/products/W354/detail/detail_6.jpg",
+                                      "assets/products/W354/detail/detail_7.jpg",
+                                      "assets/products/W354/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  27.5,
                  "name":  "W354 350G Fleece Heavyweight Full-Zip Street Jacket",
                  "img":  "assets/products/W354/main/1.jpg",
-                 "gram":  "350 GSM Fleece-Lined Cotton"
+                 "gram":  "350 GSM Fleece-Lined Cotton",
+                 "sizeChart":  "assets/products/W354/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W354/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "W434":  {
                  "gallery":  [
@@ -1085,15 +1199,28 @@
                           ],
                  "category":  "jacket",
                  "detailImages":  [
-                                      "assets/products/W434/main/1.jpg",
-                                      "assets/products/W434/main/2.jpg",
-                                      "assets/products/W434/main/3.jpg",
-                                      "assets/products/W434/main/4.jpg"
+                                      "assets/products/W434/detail/detail_1.jpg",
+                                      "assets/products/W434/detail/detail_2.jpg",
+                                      "assets/products/W434/detail/detail_3.jpg",
+                                      "assets/products/W434/detail/detail_4.jpg",
+                                      "assets/products/W434/detail/detail_5.jpg",
+                                      "assets/products/W434/detail/detail_6.jpg",
+                                      "assets/products/W434/detail/detail_7.jpg",
+                                      "assets/products/W434/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  29.5,
                  "name":  "W434 430G French Terry Heavy Metal-Zip Jacket",
                  "img":  "assets/products/W434/main/1.jpg",
-                 "gram":  "430 GSM Heavy French Terry"
+                 "gram":  "430 GSM Heavy French Terry",
+                 "sizeChart":  "assets/products/W434/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W434/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "W512":  {
                  "gallery":  [
@@ -1170,12 +1297,32 @@
                                       "assets/products/W512/detail/3.jpg",
                                       "assets/products/W512/detail/4.jpg",
                                       "assets/products/W512/detail/5.jpg",
-                                      "assets/products/W512/detail/6.jpg"
+                                      "assets/products/W512/detail/6.jpg",
+                                      "assets/products/W512/detail/detail_1.jpg",
+                                      "assets/products/W512/detail/detail_10.jpg",
+                                      "assets/products/W512/detail/detail_11.jpg",
+                                      "assets/products/W512/detail/detail_2.jpg",
+                                      "assets/products/W512/detail/detail_3.jpg",
+                                      "assets/products/W512/detail/detail_4.jpg",
+                                      "assets/products/W512/detail/detail_5.jpg",
+                                      "assets/products/W512/detail/detail_6.jpg",
+                                      "assets/products/W512/detail/detail_7.jpg",
+                                      "assets/products/W512/detail/detail_8.jpg",
+                                      "assets/products/W512/detail/detail_9.jpg"
                                   ],
                  "priceUSD":  32.5,
                  "name":  "W512 510G Ultra-Heavy Double-Snap Heavy Hoodie",
                  "img":  "assets/products/W512/main/1.jpg",
-                 "gram":  "510 GSM Diagonal Heavy Terry"
+                 "gram":  "510 GSM Diagonal Heavy Terry",
+                 "sizeChart":  "assets/products/W512/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W512/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "W514":  {
                  "gallery":  [
@@ -1242,12 +1389,29 @@
                                       "assets/products/W514/detail/3.jpg",
                                       "assets/products/W514/detail/4.jpg",
                                       "assets/products/W514/detail/5.jpg",
-                                      "assets/products/W514/detail/6.jpg"
+                                      "assets/products/W514/detail/6.jpg",
+                                      "assets/products/W514/detail/detail_1.jpg",
+                                      "assets/products/W514/detail/detail_2.jpg",
+                                      "assets/products/W514/detail/detail_3.jpg",
+                                      "assets/products/W514/detail/detail_4.jpg",
+                                      "assets/products/W514/detail/detail_5.jpg",
+                                      "assets/products/W514/detail/detail_6.jpg",
+                                      "assets/products/W514/detail/detail_7.jpg",
+                                      "assets/products/W514/detail/detail_8.jpg"
                                   ],
                  "priceUSD":  33.5,
                  "name":  "W514 510G Ultra-Heavy Button-Up Cardigan Jacket",
                  "img":  "assets/products/W514/main/1.jpg",
-                 "gram":  "510 GSM Diagonal Heavy Terry"
+                 "gram":  "510 GSM Diagonal Heavy Terry",
+                 "sizeChart":  "assets/products/W514/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W514/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "T230":  {
                  "id":  "T230",
@@ -1837,8 +2001,25 @@
                                       "assets/products/T013/detail/3.jpg",
                                       "assets/products/T013/detail/4.jpg",
                                       "assets/products/T013/detail/5.jpg",
-                                      "assets/products/T013/detail/6.jpg"
-                                  ]
+                                      "assets/products/T013/detail/6.jpg",
+                                      "assets/products/T013/detail/detail_1.jpg",
+                                      "assets/products/T013/detail/detail_2.jpg",
+                                      "assets/products/T013/detail/detail_3.jpg",
+                                      "assets/products/T013/detail/detail_4.jpg",
+                                      "assets/products/T013/detail/detail_5.jpg",
+                                      "assets/products/T013/detail/detail_6.jpg",
+                                      "assets/products/T013/detail/detail_7.jpg",
+                                      "assets/products/T013/detail/detail_8.jpg"
+                                  ],
+                 "sizeChart":  "assets/products/T013/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/T013/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "K055":  {
                  "id":  "K055",
@@ -1930,8 +2111,26 @@
                                       "assets/products/K055/detail/3.jpg",
                                       "assets/products/K055/detail/4.jpg",
                                       "assets/products/K055/detail/5.jpg",
-                                      "assets/products/K055/detail/6.jpg"
-                                  ]
+                                      "assets/products/K055/detail/6.jpg",
+                                      "assets/products/K055/detail/detail_1.jpg",
+                                      "assets/products/K055/detail/detail_2.jpg",
+                                      "assets/products/K055/detail/detail_3.jpg",
+                                      "assets/products/K055/detail/detail_4.jpg",
+                                      "assets/products/K055/detail/detail_5.jpg",
+                                      "assets/products/K055/detail/detail_6.jpg",
+                                      "assets/products/K055/detail/detail_7.jpg",
+                                      "assets/products/K055/detail/detail_8.jpg",
+                                      "assets/products/K055/detail/detail_9.jpg"
+                                  ],
+                 "sizeChart":  "assets/products/K055/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/K055/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "K6":  {
                "id":  "K6",
@@ -2023,8 +2222,25 @@
                                     "assets/products/K6/detail/3.jpg",
                                     "assets/products/K6/detail/4.jpg",
                                     "assets/products/K6/detail/5.jpg",
-                                    "assets/products/K6/detail/6.jpg"
-                                ]
+                                    "assets/products/K6/detail/6.jpg",
+                                    "assets/products/K6/detail/detail_1.jpg",
+                                    "assets/products/K6/detail/detail_2.jpg",
+                                    "assets/products/K6/detail/detail_3.jpg",
+                                    "assets/products/K6/detail/detail_4.jpg",
+                                    "assets/products/K6/detail/detail_5.jpg",
+                                    "assets/products/K6/detail/detail_6.jpg",
+                                    "assets/products/K6/detail/detail_7.jpg",
+                                    "assets/products/K6/detail/detail_8.jpg"
+                                ],
+               "sizeChart":  "assets/products/K6/size/size_chart_garment.jpg",
+               "sizeRecommend":  "assets/products/K6/size/size_chart_recommend.jpg",
+               "sizes":  [
+                             "S",
+                             "M",
+                             "L",
+                             "XL",
+                             "2XL"
+                         ]
            },
     "KB02":  {
                  "id":  "KB02",
@@ -2303,8 +2519,25 @@
                                       "assets/products/W350/detail/5.jpg",
                                       "assets/products/W350/detail/6.jpg",
                                       "assets/products/W350/detail/7.jpg",
-                                      "assets/products/W350/detail/8.jpg"
-                                  ]
+                                      "assets/products/W350/detail/8.jpg",
+                                      "assets/products/W350/detail/detail_1.jpg",
+                                      "assets/products/W350/detail/detail_2.jpg",
+                                      "assets/products/W350/detail/detail_3.jpg",
+                                      "assets/products/W350/detail/detail_4.jpg",
+                                      "assets/products/W350/detail/detail_5.jpg",
+                                      "assets/products/W350/detail/detail_6.jpg",
+                                      "assets/products/W350/detail/detail_7.jpg",
+                                      "assets/products/W350/detail/detail_8.jpg"
+                                  ],
+                 "sizeChart":  "assets/products/W350/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W350/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "W430":  {
                  "id":  "W430",
@@ -2471,8 +2704,25 @@
                                       "assets/products/W430/detail/5.jpg",
                                       "assets/products/W430/detail/6.jpg",
                                       "assets/products/W430/detail/7.jpg",
-                                      "assets/products/W430/detail/8.jpg"
-                                  ]
+                                      "assets/products/W430/detail/8.jpg",
+                                      "assets/products/W430/detail/detail_1.jpg",
+                                      "assets/products/W430/detail/detail_2.jpg",
+                                      "assets/products/W430/detail/detail_3.jpg",
+                                      "assets/products/W430/detail/detail_4.jpg",
+                                      "assets/products/W430/detail/detail_5.jpg",
+                                      "assets/products/W430/detail/detail_6.jpg",
+                                      "assets/products/W430/detail/detail_7.jpg",
+                                      "assets/products/W430/detail/detail_8.jpg"
+                                  ],
+                 "sizeChart":  "assets/products/W430/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W430/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "W510":  {
                  "id":  "W510",
@@ -2580,7 +2830,17 @@
                                       "assets/products/W510/detail/6.jpg",
                                       "assets/products/W510/detail/7.jpg",
                                       "assets/products/W510/detail/8.jpg"
-                                  ]
+                                  ],
+                 "sizeChart":  "assets/products/W510/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W510/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL",
+                               "3XL"
+                           ]
              },
     "W352":  {
                  "id":  "W352",
@@ -2747,8 +3007,25 @@
                                       "assets/products/W352/detail/5.jpg",
                                       "assets/products/W352/detail/6.jpg",
                                       "assets/products/W352/detail/7.jpg",
-                                      "assets/products/W352/detail/8.jpg"
-                                  ]
+                                      "assets/products/W352/detail/8.jpg",
+                                      "assets/products/W352/detail/detail_1.jpg",
+                                      "assets/products/W352/detail/detail_2.jpg",
+                                      "assets/products/W352/detail/detail_3.jpg",
+                                      "assets/products/W352/detail/detail_4.jpg",
+                                      "assets/products/W352/detail/detail_5.jpg",
+                                      "assets/products/W352/detail/detail_6.jpg",
+                                      "assets/products/W352/detail/detail_7.jpg",
+                                      "assets/products/W352/detail/detail_8.jpg"
+                                  ],
+                 "sizeChart":  "assets/products/W352/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W352/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "W432":  {
                  "id":  "W432",
@@ -2909,8 +3186,25 @@
                                       "assets/products/W432/detail/5.jpg",
                                       "assets/products/W432/detail/6.jpg",
                                       "assets/products/W432/detail/7.jpg",
-                                      "assets/products/W432/detail/8.jpg"
-                                  ]
+                                      "assets/products/W432/detail/8.jpg",
+                                      "assets/products/W432/detail/detail_1.jpg",
+                                      "assets/products/W432/detail/detail_2.jpg",
+                                      "assets/products/W432/detail/detail_3.jpg",
+                                      "assets/products/W432/detail/detail_4.jpg",
+                                      "assets/products/W432/detail/detail_5.jpg",
+                                      "assets/products/W432/detail/detail_6.jpg",
+                                      "assets/products/W432/detail/detail_7.jpg",
+                                      "assets/products/W432/detail/detail_8.jpg"
+                                  ],
+                 "sizeChart":  "assets/products/W432/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W432/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "W439":  {
                  "id":  "W439",
@@ -3024,6 +3318,15 @@
                                       "assets/products/W439/detail/6.jpg",
                                       "assets/products/W439/detail/7.jpg",
                                       "assets/products/W439/detail/8.jpg"
-                                  ]
+                                  ],
+                 "sizeChart":  "assets/products/W439/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W439/size/size_chart_recommend.jpg",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              }
 };

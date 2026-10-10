@@ -671,20 +671,23 @@ function renderDynamicLookbook(prod) {
 
   // Lookbook and Details
   let extraCraftHtml = '';
+  // Dynamically render size guide section if product has size charts configured
   let sizeGuideSectionHtml = '';
-  let lookbookImages = (prod.detailImages && prod.detailImages.length > 0) ? prod.detailImages : prod.gallery;
-
-  if (prod.id === 'T040') {
+  if (prod.sizeChart || prod.sizeRecommend) {
     sizeGuideSectionHtml = `
       <div class="pdp-lookbook-section">
         <div class="pdp-lookbook-header">
           <span class="lb-tag">SIZING GUIDE</span>
           <h3>Size Chart &amp; Fit Recommendations</h3>
         </div>
-        <img src="assets/products/T040/size/size_chart_garment.jpg" alt="T040 Size Chart &amp; Model Sizing" class="pdp-lb-img">
-        <img src="assets/products/T040/size/size_chart_recommend.jpg" alt="T040 Height &amp; Weight Size Recommendations" class="pdp-lb-img">
+        ${prod.sizeChart ? `<img src="${prod.sizeChart}" alt="${prod.name} Size Chart &amp; Model Sizing" class="pdp-lb-img">` : ''}
+        ${prod.sizeRecommend ? `<img src="${prod.sizeRecommend}" alt="${prod.name} Height &amp; Weight Size Recommendations" class="pdp-lb-img">` : ''}
       </div>
     `;
+  }
+  let lookbookImages = (prod.detailImages && prod.detailImages.length > 0) ? prod.detailImages : prod.gallery;
+
+  if (prod.id === 'T040') {
     const craftDetails = [
       { img: 'assets/products/T040/detail/detail_1.jpg', title: '01 领口细节', desc: '3.0cm Anti-Deformation High Rebound Ribbed Collar' },
       { img: 'assets/products/T040/detail/detail_2.jpg', title: '02 肩袖做工', desc: 'Reinforced Drop-Shoulder Structural Seams' },
@@ -737,16 +740,6 @@ function renderDynamicLookbook(prod) {
       'assets/products/T040/editorial/model_16.jpg'
     ];
   } else if (prod.id === 'T235') {
-    sizeGuideSectionHtml = `
-      <div class="pdp-lookbook-section">
-        <div class="pdp-lookbook-header">
-          <span class="lb-tag">SIZING GUIDE</span>
-          <h3>Size Chart &amp; Fit Recommendations</h3>
-        </div>
-        <img src="assets/products/T235/size/size_chart_garment.jpg" alt="T235 Size Chart &amp; Model Sizing" class="pdp-lb-img">
-        <img src="assets/products/T235/size/size_chart_recommend.jpg" alt="T235 Height &amp; Weight Size Recommendations" class="pdp-lb-img">
-      </div>
-    `;
     const craftDetails = [
       { img: 'assets/products/T235/detail/detail_1.jpg', title: '01 领口拼接', desc: 'Double-Stitched Contrast Ribbed Collar & Raglan Join' },
       { img: 'assets/products/T235/detail/detail_2.jpg', title: '02 后领压条', desc: 'Clean Back Collar Bound Taping & Reinforced Seams' },
@@ -799,16 +792,6 @@ function renderDynamicLookbook(prod) {
       'assets/products/T235/editorial/model_16.jpg'
     ];
   } else if (prod.id === 'T238') {
-    sizeGuideSectionHtml = `
-      <div class="pdp-lookbook-section">
-        <div class="pdp-lookbook-header">
-          <span class="lb-tag">SIZING GUIDE</span>
-          <h3>Size Chart &amp; Fit Recommendations</h3>
-        </div>
-        <img src="assets/products/T238/size/size_chart_garment.jpg" alt="T238 Size Chart &amp; Model Sizing" class="pdp-lb-img">
-        <img src="assets/products/T238/size/size_chart_recommend.jpg" alt="T238 Height &amp; Weight Size Recommendations" class="pdp-lb-img">
-      </div>
-    `;
     const craftDetails = [
       { img: 'assets/products/T238/detail/detail_1.jpg', title: '01 高螺纹领口', desc: '3.5cm High-Density Rebound Elastic Ribbed Collar' },
       { img: 'assets/products/T238/detail/detail_2.jpg', title: '02 通肩压条', desc: 'Collar-to-Shoulder Reinforced Bound Taping' },
