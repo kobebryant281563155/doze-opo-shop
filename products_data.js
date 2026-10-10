@@ -612,7 +612,14 @@
                  "priceUSD":  17.5,
                  "name":  "T238 235G High-Ribbed Collar Long-Sleeve Tee",
                  "img":  "assets/products/T238/main/1.jpg",
-                 "gram":  "235 GSM Combed Cotton"
+                 "gram":  "235 GSM Combed Cotton",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "T275":  {
                  "gallery":  [

@@ -799,6 +799,16 @@ function renderDynamicLookbook(prod) {
       'assets/products/T235/editorial/model_16.jpg'
     ];
   } else if (prod.id === 'T238') {
+    sizeGuideSectionHtml = `
+      <div class="pdp-lookbook-section">
+        <div class="pdp-lookbook-header">
+          <span class="lb-tag">SIZING GUIDE</span>
+          <h3>Size Chart &amp; Fit Recommendations</h3>
+        </div>
+        <img src="assets/products/T238/size/size_chart_garment.jpg" alt="T238 Size Chart &amp; Model Sizing" class="pdp-lb-img">
+        <img src="assets/products/T238/size/size_chart_recommend.jpg" alt="T238 Height &amp; Weight Size Recommendations" class="pdp-lb-img">
+      </div>
+    `;
     const craftDetails = [
       { img: 'assets/products/T238/detail/detail_1.jpg', title: '01 高螺纹领口', desc: '3.5cm High-Density Rebound Elastic Ribbed Collar' },
       { img: 'assets/products/T238/detail/detail_2.jpg', title: '02 通肩压条', desc: 'Collar-to-Shoulder Reinforced Bound Taping' },
