@@ -1,4 +1,4 @@
-﻿{
+{
     "T012":  {
                  "id":  "T012",
                  "name":  "T012 240G Raglan Sleeve Boxy Tee",
@@ -1565,6 +1565,16 @@
                 "gram":  "230 GSM 100% Combed Cotton",
                 "img":  "assets/products/01D/main/1.jpg",
                 "color":  "19 Streetwear Colorways",
+                "sizes":  [
+                              "S",
+                              "M",
+                              "L",
+                              "XL",
+                              "2XL",
+                              "3XL"
+                          ],
+                "sizeChart":  "assets/products/01D/size/size_chart_garment.jpg",
+                "sizeRecommend":  "assets/products/01D/size/size_chart_recommend.jpg",
                 "specs":  [
                               "230 GSM 100% Combed Cotton - 21S Single Jersey High-Density Knit",
                               "Classic Ribbed Crewneck with Double-Stitched Reinforced Collar",
