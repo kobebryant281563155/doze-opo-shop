@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=46">
+  <link rel="stylesheet" href="styles.css?v=47">
 </head>
 <body class="theme-light">
   <!-- Mobile Viewport Wrapper (Native Fullscreen Mobile View) -->
@@ -294,7 +294,7 @@
           </div>
 
           <!-- Size Selector -->
-          <div class="pdp-section-card">
+          <div class="pdp-section-card" id="pdpSizeSection">
             <div class="pdp-section-title">
               <span>Select Size:</span>
               <strong id="pdpActiveSizeName">XL (Oversized Street Fit)</strong>
@@ -427,6 +427,16 @@
             </ul>
           </div>
 
+          <!-- Sizing Guide Graphic -->
+          <div class="pdp-lookbook-section">
+            <div class="pdp-lookbook-header">
+              <span class="lb-tag">SIZING GUIDE</span>
+              <h3>Size Chart &amp; Fit Recommendations</h3>
+            </div>
+            <img src="assets/t012/size/size_chart_garment.png" alt="T012 Size Chart &amp; Model Sizing" class="pdp-lb-img">
+            <img src="assets/t012/size/size_chart_recommend.png" alt="T012 Height &amp; Weight Size Recommendations" class="pdp-lb-img">
+          </div>
+
           <!-- Product Info & Specs Graphic -->
           <div class="pdp-lookbook-section">
             <div class="pdp-lookbook-header">
@@ -445,151 +455,7 @@
             <img src="assets/t012/detail/f69a0f235605d6d8fd0bc33020b6cd85.png" alt="Product Color Selection" class="pdp-lb-img">
           </div>
 
-          <!-- Model Try-On Showcase Card -->
-          <div class="pdp-model-tryon-card">
-            <div class="tryon-header">
-              <span class="tryon-pill">MODEL FIT &amp; TRY-ON</span>
-              <h4>Real Model Sizing Reference</h4>
-            </div>
-            <div class="model-cards-grid">
-              <div class="model-spec-item">
-                <div class="model-avatar">D</div>
-                <div class="model-info">
-                  <strong>Denis</strong>
-                  <span class="m-stats">188 cm · 77 kg</span>
-                  <span class="m-fit">Try-on: <strong>2XL</strong> · Loose Oversized</span>
-                </div>
-              </div>
-              <div class="model-spec-item">
-                <div class="model-avatar">K</div>
-                <div class="model-info">
-                  <strong>Karen</strong>
-                  <span class="m-stats">173 cm · 55 kg</span>
-                  <span class="m-fit">Try-on: <strong>XL</strong> · Street Boxy</span>
-                </div>
-              </div>
-              <div class="model-spec-item">
-                <div class="model-avatar">Z</div>
-                <div class="model-info">
-                  <strong>ZEE</strong>
-                  <span class="m-stats">186 cm · 77 kg</span>
-                  <span class="m-fit">Try-on: <strong>XL</strong> · Regular Fit</span>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- Size Guide & Measurements Tables -->
-          <div class="pdp-size-tables-card">
-            <div class="table-header">
-              <span class="table-tag">SIZE GUIDE</span>
-              <h4>Recommended Size Guide (Height &amp; Weight)</h4>
-            </div>
-            <div class="pdp-table-wrap">
-              <table class="pdp-spec-table">
-                <thead>
-                  <tr>
-                    <th>Size</th>
-                    <th>Height (cm)</th>
-                    <th>Weight (kg)</th>
-                    <th>Suggested Fit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>S</strong></td>
-                    <td>165 - 170</td>
-                    <td>50 - 60 kg</td>
-                    <td>Fitted</td>
-                  </tr>
-                  <tr>
-                    <td><strong>M</strong></td>
-                    <td>170 - 175</td>
-                    <td>60 - 65 kg</td>
-                    <td>Relaxed</td>
-                  </tr>
-                  <tr>
-                    <td><strong>L</strong></td>
-                    <td>175 - 180</td>
-                    <td>65 - 75 kg</td>
-                    <td>Street Boxy</td>
-                  </tr>
-                  <tr class="highlight-row">
-                    <td><strong>XL</strong></td>
-                    <td>180 - 185</td>
-                    <td>75 - 85 kg</td>
-                    <td>Oversized</td>
-                  </tr>
-                  <tr>
-                    <td><strong>2XL</strong></td>
-                    <td>185 - 190</td>
-                    <td>85 - 95 kg</td>
-                    <td>Extreme Baggy</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="table-header" style="margin-top: 18px;">
-              <span class="table-tag">MEASUREMENTS</span>
-              <h4>Garment Finished Dimensions (cm)</h4>
-            </div>
-            <div class="pdp-table-wrap">
-              <table class="pdp-spec-table">
-                <thead>
-                  <tr>
-                    <th>Size (尺码)</th>
-                    <th>Length (衣长)</th>
-                    <th>Chest (胸围)</th>
-                    <th>Raglan Sleeve (连肩袖长)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>S</strong></td>
-                    <td>70 cm</td>
-                    <td>110 cm</td>
-                    <td>38.5 cm</td>
-                  </tr>
-                  <tr>
-                    <td><strong>M</strong></td>
-                    <td>72 cm</td>
-                    <td>115 cm</td>
-                    <td>40.0 cm</td>
-                  </tr>
-                  <tr>
-                    <td><strong>L</strong></td>
-                    <td>74 cm</td>
-                    <td>120 cm</td>
-                    <td>41.5 cm</td>
-                  </tr>
-                  <tr class="highlight-row">
-                    <td><strong>XL</strong></td>
-                    <td>76 cm</td>
-                    <td>125 cm</td>
-                    <td>43.0 cm</td>
-                  </tr>
-                  <tr>
-                    <td><strong>2XL</strong></td>
-                    <td>78 cm</td>
-                    <td>130 cm</td>
-                    <td>45.0 cm</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="t040-size-graphics-strip">
-              <a class="size-graphic-thumb" href="assets/t012/size/size_chart_garment.png" target="_blank">
-                <img src="assets/t012/size/size_chart_garment.png" alt="T012 Garment Size Chart &amp; Model Measurements" loading="lazy">
-                <span>🔍 View Original Measurement Chart</span>
-              </a>
-              <a class="size-graphic-thumb" href="assets/t012/size/size_chart_recommend.png" target="_blank">
-                <img src="assets/t012/size/size_chart_recommend.png" alt="T012 Height &amp; Weight Recommendations" loading="lazy">
-                <span>🔍 View Height &amp; Weight Guide</span>
-              </a>
-            </div>
-            <small class="pdp-table-tip">Note: Hand-measured specifications. Flat measurement tolerance within ±1-2cm is normal industry standard.</small>
-          </div>
 
           <!-- Editorial Lookbook Gallery (All Model Photography Slices) -->
           <div class="pdp-editorial-gallery">
@@ -1079,7 +945,7 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="products_data.js?v=54"></script>
-  <script src="app.js?v=54"></script>
+  <script src="products_data.js?v=70"></script>
+  <script src="app.js?v=70"></script>
 </body>
 </html>

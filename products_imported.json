@@ -78,8 +78,6 @@
                                       "assets/t012/detail/9a1dda6e0215d0cd1e05cca190686f05.png",
                                       "assets/t012/detail/f6369b0a304eef1a95656a5327c562e0.png"
                                   ],
-                 "sizeChart":  "assets/t012/size/size_chart_garment.png",
-                 "sizeRecommend":  "assets/t012/size/size_chart_recommend.png",
                  "sizes":  [
                                "S",
                                "M",
@@ -387,6 +385,8 @@
                           ],
                  "category":  "tee",
                  "detailImages":  [
+                                      "assets/products/T040/size/size_chart_garment.jpg",
+                                      "assets/products/T040/size/size_chart_recommend.jpg",
                                       "assets/products/T040/detail/detail_1.jpg",
                                       "assets/products/T040/detail/detail_2.jpg",
                                       "assets/products/T040/detail/detail_3.jpg",
@@ -399,7 +399,14 @@
                  "priceUSD":  15,
                  "name":  "T040 245G Oversized Solid Street Boxy Tee",
                  "img":  "assets/products/T040/main/1.jpg",
-                 "gram":  "245 GSM Combed Compact Cotton"
+                 "gram":  "245 GSM Combed Compact Cotton",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "T235":  {
                  "gallery":  [
@@ -477,6 +484,8 @@
                           ],
                  "category":  "tee",
                  "detailImages":  [
+                                      "assets/products/T235/size/size_chart_garment.jpg",
+                                      "assets/products/T235/size/size_chart_recommend.jpg",
                                       "assets/products/T235/detail/detail_1.jpg",
                                       "assets/products/T235/detail/detail_2.jpg",
                                       "assets/products/T235/detail/detail_3.jpg",
@@ -489,7 +498,14 @@
                  "priceUSD":  17.5,
                  "name":  "T235 235G Oversized Raglan Long-Sleeve Street Tee",
                  "img":  "assets/products/T235/main/1.jpg",
-                 "gram":  "235 GSM Combed Cotton"
+                 "gram":  "235 GSM Combed Cotton",
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ]
              },
     "T238":  {
                  "gallery":  [
@@ -2055,14 +2071,7 @@
                                       "assets/products/KB02/detail/6.jpg",
                                       "assets/products/KB02/detail/7.jpg",
                                       "assets/products/KB02/detail/8.jpg"
-                                  ],
-                 "sizeChart":  "assets/products/KB02/size/size_chart_garment.jpg",
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL"
-                           ]
+                                  ]
              },
     "WY18":  {
                  "id":  "WY18",
@@ -2138,15 +2147,7 @@
                                       "assets/products/WY18/detail/4.jpg",
                                       "assets/products/WY18/detail/5.jpg",
                                       "assets/products/WY18/detail/6.jpg"
-                                  ],
-                 "sizeChart":  "assets/products/WY18/size/size_chart_garment.jpg",
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL",
-                               "2XL"
-                           ]
+                                  ]
              },
     "W350":  {
                  "id":  "W350",
@@ -2296,15 +2297,7 @@
                                       "assets/products/W350/detail/6.jpg",
                                       "assets/products/W350/detail/7.jpg",
                                       "assets/products/W350/detail/8.jpg"
-                                  ],
-                 "sizeChart":  "assets/products/W350/size/size_chart_garment.jpg",
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL",
-                               "2XL"
-                           ]
+                                  ]
              },
     "W430":  {
                  "id":  "W430",
@@ -2472,15 +2465,7 @@
                                       "assets/products/W430/detail/6.jpg",
                                       "assets/products/W430/detail/7.jpg",
                                       "assets/products/W430/detail/8.jpg"
-                                  ],
-                 "sizeChart":  "assets/products/W430/size/size_chart_garment.jpg",
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL",
-                               "2XL"
-                           ]
+                                  ]
              },
     "W510":  {
                  "id":  "W510",
@@ -2588,15 +2573,7 @@
                                       "assets/products/W510/detail/6.jpg",
                                       "assets/products/W510/detail/7.jpg",
                                       "assets/products/W510/detail/8.jpg"
-                                  ],
-                 "sizeChart":  "assets/products/W510/size/size_chart_garment.jpg",
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL",
-                               "2XL"
-                           ]
+                                  ]
              },
     "W352":  {
                  "id":  "W352",
@@ -2764,15 +2741,7 @@
                                       "assets/products/W352/detail/6.jpg",
                                       "assets/products/W352/detail/7.jpg",
                                       "assets/products/W352/detail/8.jpg"
-                                  ],
-                 "sizeChart":  "assets/products/W352/size/size_chart_garment.jpg",
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL",
-                               "2XL"
-                           ]
+                                  ]
              },
     "W432":  {
                  "id":  "W432",
@@ -2934,15 +2903,7 @@
                                       "assets/products/W432/detail/6.jpg",
                                       "assets/products/W432/detail/7.jpg",
                                       "assets/products/W432/detail/8.jpg"
-                                  ],
-                 "sizeChart":  "assets/products/W432/size/size_chart_garment.jpg",
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL",
-                               "2XL"
-                           ]
+                                  ]
              },
     "W439":  {
                  "id":  "W439",
@@ -3056,14 +3017,6 @@
                                       "assets/products/W439/detail/6.jpg",
                                       "assets/products/W439/detail/7.jpg",
                                       "assets/products/W439/detail/8.jpg"
-                                  ],
-                 "sizeChart":  "assets/products/W439/size/size_chart_garment.jpg",
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL",
-                               "2XL"
-                           ]
+                                  ]
              }
 }
