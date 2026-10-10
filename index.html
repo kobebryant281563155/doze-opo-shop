@@ -295,9 +295,15 @@
 
           <!-- Size Selector -->
           <div class="pdp-section-card" id="pdpSizeSection">
-            <div class="pdp-section-title">
-              <span>Select Size:</span>
-              <strong id="pdpActiveSizeName">XL (Oversized Street Fit)</strong>
+            <div class="pdp-section-title pdp-size-header-title">
+              <div class="pdp-size-title-left">
+                <span>Select Size:</span>
+                <strong id="pdpActiveSizeName">XL (Oversized Street Fit)</strong>
+              </div>
+              <button type="button" class="pdp-size-guide-btn" id="pdpSizeGuideBtn" onclick="openSizeGuideModal()">
+                <span class="guide-icon">📏</span>
+                <span>Size Chart / 尺码表</span>
+              </button>
             </div>
             <div class="pdp-size-row" id="pdpSizeRow">
               <button type="button" class="pdp-size-btn" onclick="selectPdpSize('S', this)">S</button>
@@ -305,6 +311,10 @@
               <button type="button" class="pdp-size-btn" onclick="selectPdpSize('L', this)">L</button>
               <button type="button" class="pdp-size-btn active" onclick="selectPdpSize('XL', this)">XL</button>
               <button type="button" class="pdp-size-btn" onclick="selectPdpSize('2XL', this)">2XL</button>
+            </div>
+            <!-- In-place Quick Size Chart Visual Preview -->
+            <div class="pdp-size-preview-card" id="pdpSizePreviewBox">
+              <!-- Dynamically populated via JS -->
             </div>
           </div>
 
@@ -942,10 +952,40 @@
     </div>
   </div>
 
+  <!-- Modal 4: High-Definition Size Guide & Measurements Modal -->
+  <div class="modal-backdrop" id="sizeGuideModal" onclick="if(event.target === this) closeSizeGuideModal()">
+    <div class="modal-drawer modal-center size-modal-drawer">
+      <div class="modal-header">
+        <div class="size-modal-header-text">
+          <span class="size-badge-icon">📏</span>
+          <h4 id="sizeModalTitle">Authentic Size Chart &amp; Fit Recommendations</h4>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeSizeGuideModal()">✕</button>
+      </div>
+      <div class="modal-body size-modal-body">
+        <div class="size-modal-tabs">
+          <button type="button" class="size-tab-btn active" id="btnTabGarment" onclick="switchSizeModalTab('garment')">
+            📐 成衣精确尺寸表 (Garment Dimensions)
+          </button>
+          <button type="button" class="size-tab-btn" id="btnTabRecommend" onclick="switchSizeModalTab('recommend')">
+            👤 身高体重推荐表 (Recommended Fit)
+          </button>
+        </div>
+        <div class="size-modal-content-wrap">
+          <div class="size-modal-img-container">
+            <img id="sizeModalImgGarment" src="" alt="Garment Size Chart" class="size-modal-img" onclick="window.open(this.src, '_blank')">
+            <img id="sizeModalImgRecommend" src="" alt="Fit Recommendation Chart" class="size-modal-img" style="display: none;" onclick="window.open(this.src, '_blank')">
+          </div>
+          <p class="size-modal-hint">🔍 点击图片可全屏放大原图 · 纯手工实测误差在 ±1-2cm 属合理范围</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="products_data.js?v=75"></script>
-  <script src="app.js?v=75"></script>
+  <script src="products_data.js?v=76"></script>
+  <script src="app.js?v=76"></script>
 </body>
 </html>

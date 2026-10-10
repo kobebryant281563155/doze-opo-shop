@@ -572,16 +572,28 @@ function openProductDetail(productId) {
     `;
   }
 
-  // Gallery thumbs
+  // Gallery thumbs (Includes main photos PLUS authentic Size Chart & Recommendation if configured)
   const thumbStrip = document.getElementById('pdpThumbStrip');
-  const gallery = (prod.gallery && prod.gallery.length > 0) ? prod.gallery : (prod.skus ? prod.skus.map(s => s.hero).slice(0, 4) : [prod.img]);
+  const baseGallery = (prod.gallery && prod.gallery.length > 0) ? [...prod.gallery] : (prod.skus ? prod.skus.map(s => s.hero).slice(0, 4) : [prod.img]);
+  const galleryItems = baseGallery.map(img => ({ src: img, isChart: false, label: '' }));
+  if (prod.sizeChart) {
+    galleryItems.push({ src: prod.sizeChart, isChart: true, label: '📏 Size'});
+  }
+  if (prod.sizeRecommend) {
+    galleryItems.push({ src: prod.sizeRecommend, isChart: true, label: '📐 Guide'});
+  }
+  const gallery = galleryItems.map(g => g.src);
+
   if (thumbStrip) {
     thumbStrip.innerHTML = '';
-    gallery.forEach((gImg, idx) => {
+    galleryItems.forEach((item, idx) => {
       const tDiv = document.createElement('div');
       tDiv.className = `pdp-thumb ${idx === 0 ? 'active' : ''}`;
-      tDiv.onclick = () => switchPdpHero(gImg, idx + 1);
-      tDiv.innerHTML = `<img src="${gImg}" alt="Gallery ${idx + 1}">`;
+      tDiv.onclick = () => switchPdpHero(item.src, idx + 1);
+      tDiv.innerHTML = `
+        <img src="${item.src}" alt="Gallery ${idx + 1}">
+        ${item.isChart ? `<span class="pdp-thumb-size-badge">${item.label}</span>` : ''}
+      `;
       thumbStrip.appendChild(tDiv);
     });
   }
@@ -610,9 +622,12 @@ function openProductDetail(productId) {
     switchPdpHero(gallery[0], 1);
   }
 
-  // Dynamic Size Selector Chips (Only display if product explicitly has configured sizes)
+  // Dynamic Size Selector Chips & Prominent Size Guide UI
   const sizeSection = document.getElementById('pdpSizeSection');
   const sizeRow = document.getElementById('pdpSizeRow');
+  const sizeGuideBtn = document.getElementById('pdpSizeGuideBtn');
+  const sizePreviewBox = document.getElementById('pdpSizePreviewBox');
+
   if (prod.sizes && Array.isArray(prod.sizes) && prod.sizes.length > 0) {
     if (sizeSection) sizeSection.style.display = 'block';
     if (sizeRow) {
@@ -630,6 +645,38 @@ function openProductDetail(productId) {
       activePdpSize = availableSizes.includes('XL') ? 'XL' : availableSizes[0];
       const activeSizeLabel = document.getElementById('pdpActiveSizeName');
       if (activeSizeLabel) activeSizeLabel.textContent = `${activePdpSize} (Oversized Street Fit)`;
+    }
+
+    // Configure Size Guide Button & In-place Preview
+    if (prod.sizeChart || prod.sizeRecommend) {
+      if (sizeGuideBtn) sizeGuideBtn.style.display = 'inline-flex';
+      if (sizePreviewBox) {
+        sizePreviewBox.innerHTML = `
+          <div class="pdp-size-mini-box" onclick="openSizeGuideModal()">
+            <div class="pdp-size-mini-header">
+              <span class="pdp-size-mini-title">📏 官方实测尺寸表 &amp; 试穿建议</span>
+              <span class="pdp-size-mini-badge">点击放大原图 🔍</span>
+            </div>
+            <div class="pdp-size-mini-thumbs">
+              ${prod.sizeChart ? `
+                <div class="pdp-mini-thumb-item">
+                  <img src="${prod.sizeChart}" alt="成衣尺寸测量表">
+                  <span>📐 成衣精确尺寸表</span>
+                </div>` : ''}
+              ${prod.sizeRecommend ? `
+                <div class="pdp-mini-thumb-item">
+                  <img src="${prod.sizeRecommend}" alt="身高体重推荐表">
+                  <span>👤 身高体重推荐表</span>
+                </div>` : ''}
+            </div>
+            <div class="pdp-mini-zoom-hint">点击卡片任意处或右上角【尺码表】即可弹窗全屏查看高清大图</div>
+          </div>
+        `;
+        sizePreviewBox.style.display = 'block';
+      }
+    } else {
+      if (sizeGuideBtn) sizeGuideBtn.style.display = 'none';
+      if (sizePreviewBox) sizePreviewBox.style.display = 'none';
     }
   } else {
     if (sizeSection) sizeSection.style.display = 'none';
@@ -1634,4 +1681,56 @@ function showToast(msg) {
   toastTimer = setTimeout(() => {
     toast.classList.remove('show');
   }, 2400);
+}
+
+// 17. Size Guide Modal Controls
+function openSizeGuideModal() {
+  const prod = PRODUCTS_DATA[activePdpProductId];
+  if (!prod) return;
+
+  const modal = document.getElementById('sizeGuideModal');
+  const title = document.getElementById('sizeModalTitle');
+  const imgGarment = document.getElementById('sizeModalImgGarment');
+  const imgRecommend = document.getElementById('sizeModalImgRecommend');
+  const btnGarment = document.getElementById('btnTabGarment');
+  const btnRec = document.getElementById('btnTabRecommend');
+
+  if (title) title.textContent = prod.name + ' - 真实尺码与试穿指南 (Size Guide)';
+  if (imgGarment) imgGarment.src = prod.sizeChart || '';
+  if (imgRecommend) imgRecommend.src = prod.sizeRecommend || '';
+
+  if (btnGarment) btnGarment.style.display = prod.sizeChart ? 'block' : 'none';
+  if (btnRec) btnRec.style.display = prod.sizeRecommend ? 'block' : 'none';
+
+  if (prod.sizeChart) {
+    switchSizeModalTab('garment');
+  } else if (prod.sizeRecommend) {
+    switchSizeModalTab('recommend');
+  }
+
+  if (modal) modal.classList.add('open');
+}
+
+function closeSizeGuideModal() {
+  const modal = document.getElementById('sizeGuideModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function switchSizeModalTab(tab) {
+  const btnGarment = document.getElementById('btnTabGarment');
+  const btnRec = document.getElementById('btnTabRecommend');
+  const imgGarment = document.getElementById('sizeModalImgGarment');
+  const imgRecommend = document.getElementById('sizeModalImgRecommend');
+
+  if (tab === 'garment') {
+    if (btnGarment) btnGarment.classList.add('active');
+    if (btnRec) btnRec.classList.remove('active');
+    if (imgGarment) imgGarment.style.display = 'block';
+    if (imgRecommend) imgRecommend.style.display = 'none';
+  } else {
+    if (btnGarment) btnGarment.classList.remove('active');
+    if (btnRec) btnRec.classList.add('active');
+    if (imgGarment) imgGarment.style.display = 'none';
+    if (imgRecommend) imgRecommend.style.display = 'block';
+  }
 }
