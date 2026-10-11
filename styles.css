@@ -4321,42 +4321,33 @@ body {
   margin: 0;
 }
 
-/* Filter Navigation Bar */
-.print-filter-bar {
+/* All Styles Strip (Direct Showcase, No Categories) */
+.print-all-styles-strip {
   display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  padding: 10px 14px;
-  scrollbar-width: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
   background: #ffffff;
-  position: sticky;
-  top: 50px;
-  z-index: 25;
   border-bottom: 1px solid #f1f5f9;
 }
 
-.print-filter-bar::-webkit-scrollbar {
-  display: none;
-}
-
-.print-filter-chip {
-  flex-shrink: 0;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: #f1f5f9;
-  color: #475569;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  user-select: none;
-}
-
-.print-filter-chip.active {
+.all-styles-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: #0f172a;
   color: #ffffff;
-  border-color: #0f172a;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.all-styles-hint {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 600;
 }
 
 /* 2-Column Responsive Print Cards Grid */
@@ -4460,6 +4451,14 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.pci-tap-zoom-hint {
+  font-size: 9px;
+  font-weight: 700;
+  color: #64748b;
+  margin-top: auto;
+  padding-top: 4px;
 }
 
 .pci-craft-strip {

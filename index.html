@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=80">
+  <link rel="stylesheet" href="styles.css?v=85">
 </head>
 <body class="theme-light">
   <!-- Mobile Viewport Wrapper (Native Fullscreen Mobile View) -->
@@ -282,13 +282,13 @@
             <p>Original high-definition street graphics ready for 1-piece custom sample proofing and OEM mass production on our heavyweight blanks.</p>
           </div>
 
-          <!-- Filter Navigation Tabs -->
-          <div class="print-filter-bar">
-            <button type="button" class="print-filter-chip active" data-filter="all" onclick="filterPrints('all')">All Styles (44)</button>
-            <button type="button" class="print-filter-chip" data-filter="chest" onclick="filterPrints('chest')">Chest Micro (10-12cm)</button>
-            <button type="button" class="print-filter-chip" data-filter="oversized" onclick="filterPrints('oversized')">Oversized Street (28-32cm)</button>
-            <button type="button" class="print-filter-chip" data-filter="front" onclick="filterPrints('front')">Front Center (20-26cm)</button>
-            <button type="button" class="print-filter-chip" data-filter="back" onclick="filterPrints('back')">Back Pieces (30cm)</button>
+          <!-- Direct All Styles Bar (No Categories) -->
+          <div class="print-all-styles-strip">
+            <div class="all-styles-pill">
+              <span class="badge-dot"></span>
+              <strong>ALL 44 STYLES</strong>
+            </div>
+            <span class="all-styles-hint">Tap any graphic to zoom</span>
           </div>
 
           <!-- 2-Column Responsive Print Cards Grid -->
@@ -1217,8 +1217,8 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=81"></script>
-  <script src="products_data.js?v=81"></script>
-  <script src="app.js?v=81"></script>
+  <script src="prints_data.js?v=85"></script>
+  <script src="products_data.js?v=85"></script>
+  <script src="app.js?v=85"></script>
 </body>
 </html>

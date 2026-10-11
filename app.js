@@ -1765,79 +1765,36 @@ function closePrintGallery() {
 }
 
 function filterPrints(category) {
-  currentActivePrintFilter = category;
-  
-  document.querySelectorAll('.print-filter-chip').forEach(chip => {
-    if (chip.getAttribute('data-filter') === category) {
-      chip.classList.add('active');
-    } else {
-      chip.classList.remove('active');
-    }
-  });
-
-  renderPrintGallery(category);
+  renderPrintGallery();
 }
 
-function renderPrintGallery(categoryFilter) {
+function renderPrintGallery() {
   const grid = document.getElementById('printCardsGrid');
   if (!grid) return;
 
-  const archive = window.PRINTS_ARCHIVE_DATA || [];
-  
-  const filtered = archive.filter(item => {
-    if (!categoryFilter || categoryFilter === 'all') return true;
-    if (categoryFilter === 'chest') {
-      const num = parseInt(item.width);
-      return item.category === 'chest' || (!isNaN(num) && num <= 12);
-    }
-    if (categoryFilter === 'oversized') {
-      const num = parseInt(item.width);
-      return item.category === 'oversized' || (!isNaN(num) && num >= 28);
-    }
-    if (categoryFilter === 'front') {
-      return item.category === 'front' || item.position.includes('Front');
-    }
-    if (categoryFilter === 'back') {
-      return item.category === 'back' || item.position.includes('Back');
-    }
-    return true;
-  });
+  const archive = (window.PRINTS_ARCHIVE_DATA && window.PRINTS_ARCHIVE_DATA.length > 0)
+    ? window.PRINTS_ARCHIVE_DATA
+    : [];
 
   grid.innerHTML = '';
 
-  if (filtered.length === 0) {
-    grid.innerHTML = `
-      <div style="grid-column: span 2; text-align: center; padding: 40px 20px; color: #64748b;">
-        <div style="font-size: 32px; margin-bottom: 8px;">🎨</div>
-        <strong>No prints in this category</strong>
-        <p style="font-size: 11px; margin-top: 4px;">Explore our other graphic categories or inquire custom vector tech pack proofing.</p>
-      </div>
-    `;
-    return;
-  }
-
-  filtered.forEach(p => {
+  archive.forEach(p => {
     const card = document.createElement('div');
     card.className = 'print-card-item';
     card.onclick = () => openPrintDetail(p.id);
 
-    const craftsBadges = (p.crafts || ['Screen Print', 'DTG'])
-      .slice(0, 2)
-      .map(c => `<span class="craft-pill-mini">${c}</span>`)
-      .join('');
+    const displayName = p.name || p.title || ('Style #' + p.code);
+    const widthTag = p.width ? `<span class="pci-badge-width">${p.width}</span>` : '';
 
     card.innerHTML = `
       <div class="pci-thumb-box">
-        <span class="pci-badge-width">${p.width}</span>
-        <span class="pci-badge-category">${p.category}</span>
-        <img src="${p.img}" alt="${p.title}" loading="lazy">
+        ${widthTag}
+        <img src="${p.img}" alt="${displayName}" loading="lazy">
       </div>
       <div class="pci-info">
         <span class="pci-code-pill">STYLE #${p.code}</span>
-        <h4 class="pci-title">${p.title}</h4>
-        <div class="pci-craft-strip">
-          ${craftsBadges}
-        </div>
+        <h4 class="pci-title">${displayName}</h4>
+        <div class="pci-tap-zoom-hint">🔍 Tap to Zoom</div>
       </div>
     `;
 
@@ -1857,18 +1814,14 @@ function openPrintDetail(printId) {
   const codeEl = document.getElementById('printDetailCode');
   const widthEl = document.getElementById('printDetailWidth');
   const posEl = document.getElementById('printDetailPos');
-  const craftsEl = document.getElementById('printDetailCrafts');
   const imgEl = document.getElementById('printDetailImg');
 
-  if (titleEl) titleEl.textContent = item.title;
+  const displayName = item.name || item.title || ('Style #' + item.code);
+  if (titleEl) titleEl.textContent = displayName;
   if (codeEl) codeEl.textContent = 'Style #' + item.code;
-  if (widthEl) widthEl.textContent = item.width + ' Width';
-  if (posEl) posEl.textContent = item.position + (item.edition ? ' · ' + item.edition : '');
+  if (widthEl) widthEl.textContent = (item.width || 'Standard') + ' Width';
+  if (posEl) posEl.textContent = displayName;
   if (imgEl) imgEl.src = item.img;
-
-  if (craftsEl && item.crafts) {
-    craftsEl.innerHTML = item.crafts.map(c => `<span class="craft-pill">${c}</span>`).join('');
-  }
 
   setPrintPreviewBg('white');
 
