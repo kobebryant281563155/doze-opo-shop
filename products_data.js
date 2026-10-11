@@ -2350,7 +2350,14 @@
                                       "assets/products/KB02/detail/6.jpg",
                                       "assets/products/KB02/detail/7.jpg",
                                       "assets/products/KB02/detail/8.jpg"
-                                  ]
+                                  ],
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL"
+                           ],
+                 "sizeChart":  "assets/products/KB02/size/size_chart_garment.jpg"
              },
     "WY18":  {
                  "id":  "WY18",
