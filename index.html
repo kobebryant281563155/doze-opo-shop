@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=47">
+  <link rel="stylesheet" href="styles.css?v=80">
 </head>
 <body class="theme-light">
   <!-- Mobile Viewport Wrapper (Native Fullscreen Mobile View) -->
@@ -130,6 +130,55 @@
               </div>
             </div>
           </nav>
+
+          <!-- Print Design Showcase Entrance Card (High-Impact Streetwear Archive Banner) -->
+          <section class="home-print-showcase-entry" id="homePrintShowcaseEntry" onclick="openPrintShowcaseModal()">
+            <div class="print-entry-glass-card">
+              <!-- Top Row: Badge & Counter -->
+              <div class="entry-meta-row">
+                <div class="entry-badge-pill">
+                  <span class="badge-dot"></span>
+                  <span>GRAPHIC ARCHIVE</span>
+                </div>
+                <span class="entry-count-tag">35+ EXCLUSIVE STYLES</span>
+              </div>
+
+              <!-- Main Info -->
+              <div class="entry-main-info">
+                <h3 class="entry-headline">Print Design Showcase</h3>
+                <p class="entry-subtext">Original Streetwear Graphics · DTG, 3D Puff &amp; Screen Print Ready</p>
+              </div>
+
+              <!-- Graphic Preview Strip with Real Brand Samples -->
+              <div class="entry-graphics-preview">
+                <div class="graphic-preview-item" title="DOZE OPO Tape Graphic">
+                  <img src="assets/prints/002_sample.png" alt="Print Style 002">
+                </div>
+                <div class="graphic-preview-item" title="Y2K Orbital Orbit Graphic">
+                  <img src="assets/prints/006_sample.png" alt="Print Style 006">
+                </div>
+                <div class="graphic-preview-item" title="Cyber Neon Cube Graphic">
+                  <img src="assets/prints/004_sample.png" alt="Print Style 004">
+                </div>
+                <div class="graphic-preview-more">
+                  <span class="more-plus">+35</span>
+                  <span class="more-label">STYLES</span>
+                </div>
+              </div>
+
+              <!-- Bottom Action Strip -->
+              <div class="entry-action-strip">
+                <span class="entry-action-lead">1-Piece Custom Tech Pack Proofing</span>
+                <div class="entry-action-btn">
+                  <span>Explore Prints</span>
+                  <svg class="entry-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <!-- Cross-border & OEM Trust Bar -->
           <section class="trust-benefits-bar">
@@ -982,10 +1031,73 @@
     </div>
   </div>
 
+  <!-- Modal 5: Print Design Showcase Preview Modal -->
+  <div class="modal-backdrop" id="printShowcaseModal" onclick="if(event.target === this) closePrintShowcaseModal()">
+    <div class="modal-drawer modal-center print-showcase-drawer">
+      <div class="modal-header">
+        <div class="size-modal-header-text">
+          <span class="size-badge-icon">🎨</span>
+          <h4>Print Design Showcase</h4>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closePrintShowcaseModal()">✕</button>
+      </div>
+      <div class="modal-body print-modal-body">
+        <div class="print-modal-hero">
+          <div class="pmh-tag">2026 GRAPHIC ARCHIVE</div>
+          <h5>Authentic Streetwear Graphics &amp; OEM Printing</h5>
+          <p>Factory-direct tech pack graphics. Available for 1-piece sample proofing with DTG Direct Injection, 3D Puff Print, Screen Print &amp; Vintage Washed Blanks.</p>
+        </div>
+
+        <div class="print-sample-grid">
+          <div class="print-card-sample">
+            <div class="pcs-img-wrap">
+              <img src="assets/prints/002_sample.png" alt="DOZE OPO Tape Graphic">
+            </div>
+            <div class="pcs-info">
+              <div class="pcs-title">Style #002 · Industrial Tape</div>
+              <div class="pcs-spec">20cm Width · 3D Puff / Screen Print</div>
+            </div>
+          </div>
+          <div class="print-card-sample">
+            <div class="pcs-img-wrap">
+              <img src="assets/prints/006_sample.png" alt="Y2K Orbital Orbit Graphic">
+            </div>
+            <div class="pcs-info">
+              <div class="pcs-title">Style #006 · Orbital Starburst</div>
+              <div class="pcs-spec">20cm Width · High-Density Direct Print</div>
+            </div>
+          </div>
+          <div class="print-card-sample">
+            <div class="pcs-img-wrap">
+              <img src="assets/prints/004_sample.png" alt="Cyber Neon Cube Graphic">
+            </div>
+            <div class="pcs-info">
+              <div class="pcs-title">Style #004 · Cyber Glow Cube</div>
+              <div class="pcs-spec">20cm Width · Vibrant Multi-Color DTG</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="print-modal-cta-box">
+          <div class="pm-cta-badge">⚡ 35+ Production Print Series Available</div>
+          <p class="pm-cta-text">Looking to produce custom samples with these graphics or test your brand tech pack? Direct consultation available below.</p>
+          <div class="pm-cta-buttons">
+            <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO,%20I%20am%20interested%20in%20your%20Print%20Design%20Showcase%20graphics%20and%20sample%20proofing." target="_blank" class="btn-wa-direct">
+              💬 Inquire via WhatsApp (+086 18520682738)
+            </a>
+            <button type="button" class="btn-copy-wa" onclick="closePrintShowcaseModal(); switchTab('custom');">
+              🧮 Open Custom OEM Calculator
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="products_data.js?v=78"></script>
-  <script src="app.js?v=78"></script>
+  <script src="products_data.js?v=80"></script>
+  <script src="app.js?v=80"></script>
 </body>
 </html>

@@ -3915,4 +3915,332 @@ body {
   margin-top: 1px;
 }
 
+/* ==========================================================================
+   Print Design Showcase Entrance Card (Home Page Graphic Archive Banner)
+   ========================================================================== */
+.home-print-showcase-entry {
+  margin: 12px 14px 16px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.print-entry-glass-card {
+  position: relative;
+  background: linear-gradient(135deg, #0e1117 0%, #181d28 55%, #10141d 100%);
+  border-radius: 18px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 10px 28px -6px rgba(10, 15, 25, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.home-print-showcase-entry:hover .print-entry-glass-card {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -6px rgba(10, 15, 25, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.home-print-showcase-entry:active .print-entry-glass-card {
+  transform: scale(0.985);
+}
+
+/* Ambient glow accent behind card */
+.print-entry-glass-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(56, 189, 248, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.entry-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.entry-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseBadgeDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseBadgeDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.entry-count-tag {
+  font-size: 9px;
+  font-weight: 800;
+  color: #f59e0b;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.entry-main-info {
+  margin-bottom: 12px;
+}
+
+.entry-headline {
+  font-size: 18px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.4px;
+  line-height: 1.25;
+  margin: 0 0 5px;
+}
+
+.entry-subtext {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Graphics Preview Strip */
+.entry-graphics-preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.graphic-preview-item {
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.graphic-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.graphic-preview-more {
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.graphic-preview-more .more-plus {
+  font-size: 15px;
+  font-weight: 900;
+  color: #f8fafc;
+  line-height: 1;
+}
+
+.graphic-preview-more .more-label {
+  font-size: 8px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.6px;
+  margin-top: 3px;
+}
+
+/* Bottom Action Strip */
+.entry-action-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 11px;
+}
+
+.entry-action-lead {
+  font-size: 9.5px;
+  color: #cbd5e1;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.entry-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.home-print-showcase-entry:hover .entry-action-btn {
+  background: #f1f5f9;
+  transform: translateX(2px);
+}
+
+/* Modal 5 Styling */
+.print-showcase-drawer {
+  max-width: 480px;
+  width: 92%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.print-modal-body {
+  padding: 16px 16px 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.print-modal-hero {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.pmh-tag {
+  display: inline-block;
+  font-size: 8.5px;
+  font-weight: 800;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+
+.print-modal-hero h5 {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.print-modal-hero p {
+  font-size: 10.5px;
+  color: #64748b;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.print-sample-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.print-card-sample {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.pcs-img-wrap {
+  height: 95px;
+  background: #fdfdfd;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pcs-img-wrap img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.pcs-info {
+  padding: 8px 6px;
+  border-top: 1px solid #f1f5f9;
+  text-align: center;
+}
+
+.pcs-title {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+}
+
+.pcs-spec {
+  font-size: 8px;
+  color: #64748b;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.print-modal-cta-box {
+  background: #0f172a;
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.pm-cta-badge {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #f59e0b;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.pm-cta-text {
+  font-size: 11px;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin: 0 0 14px;
+}
+
+.pm-cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
 

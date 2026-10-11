@@ -1734,3 +1734,23 @@ function switchSizeModalTab(tab) {
     if (imgRecommend) imgRecommend.style.display = 'block';
   }
 }
+
+// 22. Print Design Showcase Modal Handlers
+function openPrintShowcaseModal() {
+  const modal = document.getElementById('printShowcaseModal');
+  if (modal) {
+    modal.classList.add('open');
+  }
+}
+
+function closePrintShowcaseModal() {
+  const modal = document.getElementById('printShowcaseModal');
+  if (modal) {
+    modal.classList.remove('open');
+  }
+}
+
+function inquirePrintWhatsApp() {
+  const url = 'https://wa.me/8618520682738?text=' + encodeURIComponent('Hello DOZE OPO, I am interested in your Print Design Showcase graphics and sample proofing on heavyweight blanks.');
+  window.open(url, '_blank');
+}
