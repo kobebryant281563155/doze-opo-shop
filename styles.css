@@ -2961,6 +2961,11 @@ body {
   gap: 8px;
 }
 
+.pdp-size-mini-thumbs .pdp-mini-thumb-item:only-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+
 .pdp-mini-thumb-item {
   position: relative;
   border-radius: 6px;

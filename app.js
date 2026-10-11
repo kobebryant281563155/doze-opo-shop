@@ -661,7 +661,7 @@ function openProductDetail(productId) {
               ${prod.sizeChart ? `
                 <div class="pdp-mini-thumb-item">
                   <img src="${prod.sizeChart}" alt="成衣尺寸测量表">
-                  <span>📐 成衣精确尺寸表</span>
+                  <span>📐 ${prod.sizeRecommend ? '成衣精确尺寸表' : '实测尺寸与推荐指南'}</span>
                 </div>` : ''}
               ${prod.sizeRecommend ? `
                 <div class="pdp-mini-thumb-item">
@@ -1699,7 +1699,10 @@ function openSizeGuideModal() {
   if (imgGarment) imgGarment.src = prod.sizeChart || '';
   if (imgRecommend) imgRecommend.src = prod.sizeRecommend || '';
 
-  if (btnGarment) btnGarment.style.display = prod.sizeChart ? 'block' : 'none';
+  if (btnGarment) {
+    btnGarment.style.display = prod.sizeChart ? 'block' : 'none';
+    btnGarment.innerHTML = prod.sizeRecommend ? '📐 成衣精确尺寸表 (Garment Dimensions)' : '📐 官方实测尺寸与推荐指南 (Size &amp; Fit Guide)';
+  }
   if (btnRec) btnRec.style.display = prod.sizeRecommend ? 'block' : 'none';
 
   if (prod.sizeChart) {

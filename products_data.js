@@ -1555,7 +1555,15 @@
                                       "assets/products/T250/detail/6.jpg",
                                       "assets/products/T250/detail/7.webp",
                                       "assets/products/T250/detail/8.webp"
-                                  ]
+                                  ],
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ],
+                 "sizeChart":  "assets/products/T250/size/size_chart_garment.jpg"
              },
     "01D":  {
                 "id":  "01D",
