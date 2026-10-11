@@ -1735,12 +1735,187 @@ function switchSizeModalTab(tab) {
   }
 }
 
-// 22. Print Design Showcase Modal Handlers
-function openPrintShowcaseModal() {
-  const modal = document.getElementById('printShowcaseModal');
+// 22. Print Design Showcase Gallery & Modal Controllers (44 Production Styles)
+let currentActivePrintFilter = 'all';
+let currentSelectedPrint = null;
+
+function openPrintGallery() {
+  // Hide all tab pages
+  document.querySelectorAll('.tab-page-content').forEach(p => p.style.display = 'none');
+  
+  // Show dedicated print gallery page
+  const galleryPage = document.getElementById('printGalleryPage');
+  if (galleryPage) {
+    galleryPage.style.display = 'block';
+  }
+  
+  // Clear active tab on bottom bar (so user knows they are inside sub-gallery)
+  document.querySelectorAll('.tab-item').forEach(b => b.classList.remove('active'));
+  const homeTabBtn = document.querySelector('.tab-item[data-tab="home"]');
+  if (homeTabBtn) homeTabBtn.classList.add('active');
+
+  const container = document.getElementById('appScrollContainer');
+  if (container) container.scrollTop = 0;
+
+  renderPrintGallery(currentActivePrintFilter);
+}
+
+function closePrintGallery() {
+  switchTab('home');
+}
+
+function filterPrints(category) {
+  currentActivePrintFilter = category;
+  
+  document.querySelectorAll('.print-filter-chip').forEach(chip => {
+    if (chip.getAttribute('data-filter') === category) {
+      chip.classList.add('active');
+    } else {
+      chip.classList.remove('active');
+    }
+  });
+
+  renderPrintGallery(category);
+}
+
+function renderPrintGallery(categoryFilter) {
+  const grid = document.getElementById('printCardsGrid');
+  if (!grid) return;
+
+  const archive = window.PRINTS_ARCHIVE_DATA || [];
+  
+  const filtered = archive.filter(item => {
+    if (!categoryFilter || categoryFilter === 'all') return true;
+    if (categoryFilter === 'chest') {
+      const num = parseInt(item.width);
+      return item.category === 'chest' || (!isNaN(num) && num <= 12);
+    }
+    if (categoryFilter === 'oversized') {
+      const num = parseInt(item.width);
+      return item.category === 'oversized' || (!isNaN(num) && num >= 28);
+    }
+    if (categoryFilter === 'front') {
+      return item.category === 'front' || item.position.includes('Front');
+    }
+    if (categoryFilter === 'back') {
+      return item.category === 'back' || item.position.includes('Back');
+    }
+    return true;
+  });
+
+  grid.innerHTML = '';
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: span 2; text-align: center; padding: 40px 20px; color: #64748b;">
+        <div style="font-size: 32px; margin-bottom: 8px;">🎨</div>
+        <strong>No prints in this category</strong>
+        <p style="font-size: 11px; margin-top: 4px;">Explore our other graphic categories or inquire custom vector tech pack proofing.</p>
+      </div>
+    `;
+    return;
+  }
+
+  filtered.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'print-card-item';
+    card.onclick = () => openPrintDetail(p.id);
+
+    const craftsBadges = (p.crafts || ['Screen Print', 'DTG'])
+      .slice(0, 2)
+      .map(c => `<span class="craft-pill-mini">${c}</span>`)
+      .join('');
+
+    card.innerHTML = `
+      <div class="pci-thumb-box">
+        <span class="pci-badge-width">${p.width}</span>
+        <span class="pci-badge-category">${p.category}</span>
+        <img src="${p.img}" alt="${p.title}" loading="lazy">
+      </div>
+      <div class="pci-info">
+        <span class="pci-code-pill">STYLE #${p.code}</span>
+        <h4 class="pci-title">${p.title}</h4>
+        <div class="pci-craft-strip">
+          ${craftsBadges}
+        </div>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+function openPrintDetail(printId) {
+  const archive = window.PRINTS_ARCHIVE_DATA || [];
+  const item = archive.find(p => p.id === printId) || archive[0];
+  if (!item) return;
+
+  currentSelectedPrint = item;
+
+  const modal = document.getElementById('printDetailModal');
+  const titleEl = document.getElementById('printDetailModalTitle');
+  const codeEl = document.getElementById('printDetailCode');
+  const widthEl = document.getElementById('printDetailWidth');
+  const posEl = document.getElementById('printDetailPos');
+  const craftsEl = document.getElementById('printDetailCrafts');
+  const imgEl = document.getElementById('printDetailImg');
+
+  if (titleEl) titleEl.textContent = item.title;
+  if (codeEl) codeEl.textContent = 'Style #' + item.code;
+  if (widthEl) widthEl.textContent = item.width + ' Width';
+  if (posEl) posEl.textContent = item.position + (item.edition ? ' · ' + item.edition : '');
+  if (imgEl) imgEl.src = item.img;
+
+  if (craftsEl && item.crafts) {
+    craftsEl.innerHTML = item.crafts.map(c => `<span class="craft-pill">${c}</span>`).join('');
+  }
+
+  setPrintPreviewBg('white');
+
   if (modal) {
     modal.classList.add('open');
   }
+}
+
+function closePrintDetailModal() {
+  const modal = document.getElementById('printDetailModal');
+  if (modal) {
+    modal.classList.remove('open');
+  }
+}
+
+function setPrintPreviewBg(mode) {
+  const stage = document.getElementById('printDetailStage');
+  const btnWhite = document.getElementById('bgToggleWhite');
+  const btnBlack = document.getElementById('bgToggleBlack');
+
+  if (!stage) return;
+
+  if (mode === 'black') {
+    stage.classList.remove('bg-white-preview');
+    stage.classList.add('bg-black-preview');
+    if (btnBlack) btnBlack.classList.add('active');
+    if (btnWhite) btnWhite.classList.remove('active');
+  } else {
+    stage.classList.remove('bg-black-preview');
+    stage.classList.add('bg-white-preview');
+    if (btnWhite) btnWhite.classList.add('active');
+    if (btnBlack) btnBlack.classList.remove('active');
+  }
+}
+
+function inquireSelectedPrint() {
+  if (!currentSelectedPrint) {
+    inquirePrintWhatsApp();
+    return;
+  }
+  const text = `Hello DOZE OPO, I am interested in 1-piece sample proofing with Print Graphic ${currentSelectedPrint.title} (${currentSelectedPrint.width}) on your heavyweight blanks.`;
+  const url = 'https://wa.me/8618520682738?text=' + encodeURIComponent(text);
+  window.open(url, '_blank');
+}
+
+function openPrintShowcaseModal() {
+  openPrintGallery();
 }
 
 function closePrintShowcaseModal() {
@@ -1751,6 +1926,6 @@ function closePrintShowcaseModal() {
 }
 
 function inquirePrintWhatsApp() {
-  const url = 'https://wa.me/8618520682738?text=' + encodeURIComponent('Hello DOZE OPO, I am interested in your Print Design Showcase graphics and sample proofing on heavyweight blanks.');
+  const url = 'https://wa.me/8618520682738?text=' + encodeURIComponent('Hello DOZE OPO, I am interested in your Print Design Showcase graphics and 1-piece sample proofing on heavyweight blanks.');
   window.open(url, '_blank');
 }

@@ -132,7 +132,7 @@
           </nav>
 
           <!-- Print Design Showcase Entrance Card (High-Impact Streetwear Archive Banner) -->
-          <section class="home-print-showcase-entry" id="homePrintShowcaseEntry" onclick="openPrintShowcaseModal()">
+          <section class="home-print-showcase-entry" id="homePrintShowcaseEntry" onclick="openPrintGallery()">
             <div class="print-entry-glass-card">
               <!-- Top Row: Badge & Counter -->
               <div class="entry-meta-row">
@@ -140,7 +140,7 @@
                   <span class="badge-dot"></span>
                   <span>GRAPHIC ARCHIVE</span>
                 </div>
-                <span class="entry-count-tag">35+ EXCLUSIVE STYLES</span>
+                <span class="entry-count-tag">44 EXCLUSIVE STYLES</span>
               </div>
 
               <!-- Main Info -->
@@ -161,7 +161,7 @@
                   <img src="assets/prints/004_sample.png" alt="Print Style 004">
                 </div>
                 <div class="graphic-preview-more">
-                  <span class="more-plus">+35</span>
+                  <span class="more-plus">+40</span>
                   <span class="more-label">STYLES</span>
                 </div>
               </div>
@@ -256,6 +256,61 @@
             </div>
             <p class="copyright">© 2026 DOZE OPO. All Rights Reserved.</p>
           </footer>
+        </div>
+
+        <!-- Dedicated View: Print Design Showcase Gallery (44 Styles) -->
+        <div class="tab-page-content" id="printGalleryPage" style="display: none;">
+          <!-- Top Sticky Header -->
+          <div class="pdp-top-header print-gallery-sticky-header">
+            <button type="button" class="pdp-back-btn" onclick="closePrintGallery()">
+              <span class="back-arrow">←</span>
+              <span>Back to Home</span>
+            </button>
+            <div class="print-gallery-badge-info">
+              <span class="gallery-badge-dot"></span>
+              <strong>GRAPHIC ARCHIVE</strong>
+            </div>
+          </div>
+
+          <!-- Hero Banner Section in Gallery -->
+          <div class="print-gallery-hero">
+            <div class="pgh-top-meta">
+              <span class="pgh-tag">2026 GUANGZHOU STUDIO</span>
+              <span class="pgh-count" id="printTotalCountBadge">44 Production Styles</span>
+            </div>
+            <h2>Print Design Showcase</h2>
+            <p>Original high-definition street graphics ready for 1-piece custom sample proofing and OEM mass production on our heavyweight blanks.</p>
+          </div>
+
+          <!-- Filter Navigation Tabs -->
+          <div class="print-filter-bar">
+            <button type="button" class="print-filter-chip active" data-filter="all" onclick="filterPrints('all')">All Styles (44)</button>
+            <button type="button" class="print-filter-chip" data-filter="chest" onclick="filterPrints('chest')">Chest Micro (10-12cm)</button>
+            <button type="button" class="print-filter-chip" data-filter="oversized" onclick="filterPrints('oversized')">Oversized Street (28-32cm)</button>
+            <button type="button" class="print-filter-chip" data-filter="front" onclick="filterPrints('front')">Front Center (20-26cm)</button>
+            <button type="button" class="print-filter-chip" data-filter="back" onclick="filterPrints('back')">Back Pieces (30cm)</button>
+          </div>
+
+          <!-- 2-Column Responsive Print Cards Grid -->
+          <div class="print-cards-grid" id="printCardsGrid">
+            <!-- Dynamically populated via JS from window.PRINTS_ARCHIVE_DATA -->
+          </div>
+
+          <!-- Bottom Inquiry Banner in Gallery -->
+          <div class="print-gallery-bottom-cta">
+            <div class="pg-cta-card">
+              <h4>Need Custom Tech Pack Proofing?</h4>
+              <p>Select any of our 44 studio graphics or upload your custom vector files. 1-piece physical sample proofing ready in 48 hours.</p>
+              <div class="pg-cta-btns">
+                <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO,%20I%20am%20interested%20in%20custom%20garment%20sample%20proofing%20with%20your%20graphic%20prints." target="_blank" class="btn-wa-direct">
+                  💬 WhatsApp Direct Inquiry (+086 18520682738)
+                </a>
+                <button type="button" class="btn-copy-wa" onclick="switchTab('custom')">
+                  🧮 Custom OEM Price Matrix Calculator
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Tab 2: Catalog Page -->
@@ -1094,10 +1149,76 @@
     </div>
   </div>
 
+  <!-- Modal 6: High-Definition Print Detail & Blank Mockup Modal -->
+  <div class="modal-backdrop" id="printDetailModal" onclick="if(event.target === this) closePrintDetailModal()">
+    <div class="modal-drawer modal-center print-detail-drawer">
+      <div class="modal-header">
+        <div class="size-modal-header-text">
+          <span class="size-badge-icon">🎨</span>
+          <h4 id="printDetailModalTitle">Style #001 · Graphic Specifications</h4>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closePrintDetailModal()">✕</button>
+      </div>
+      <div class="modal-body print-detail-modal-body">
+        <!-- Background Fabric Toggle (Light Blank vs Dark Blank Preview) -->
+        <div class="print-bg-toggle-bar">
+          <span class="bg-toggle-label">Garment Mockup Background:</span>
+          <div class="bg-toggle-chips">
+            <button type="button" class="bg-toggle-chip active" id="bgToggleWhite" onclick="setPrintPreviewBg('white')">⚪ White Blank</button>
+            <button type="button" class="bg-toggle-chip" id="bgToggleBlack" onclick="setPrintPreviewBg('black')">⚫ Black Blank</button>
+          </div>
+        </div>
+
+        <!-- High-res Graphic Stage -->
+        <div class="print-detail-stage bg-white-preview" id="printDetailStage">
+          <img id="printDetailImg" src="" alt="Print Graphic" class="print-detail-graphic-img">
+        </div>
+
+        <!-- Specs & Tech Pack Info -->
+        <div class="print-detail-meta-box">
+          <div class="pdm-row">
+            <span class="pdm-label">Style Code:</span>
+            <strong id="printDetailCode">Style #001</strong>
+          </div>
+          <div class="pdm-row">
+            <span class="pdm-label">Physical Width:</span>
+            <span class="pdm-badge" id="printDetailWidth">30cm Width</span>
+          </div>
+          <div class="pdm-row">
+            <span class="pdm-label">Position:</span>
+            <span id="printDetailPos">Back Oversized Graphic</span>
+          </div>
+          <div class="pdm-row">
+            <span class="pdm-label">Recommended Crafts:</span>
+            <div class="pdm-crafts" id="printDetailCrafts">
+              <span class="craft-pill">Screen Print</span>
+              <span class="craft-pill">3D Puff</span>
+            </div>
+          </div>
+          <div class="pdm-row">
+            <span class="pdm-label">Compatible Blanks:</span>
+            <span class="pdm-blanks">T012 240G Tee · T040 250G Heavy Tee · W432 430G Hoodie</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="print-detail-actions">
+          <button type="button" class="btn-wa-direct" id="btnInquireCurrentPrint" onclick="inquireSelectedPrint()">
+            💬 WhatsApp 1-PC Proofing Inquiry
+          </button>
+          <button type="button" class="btn-copy-wa" onclick="closePrintDetailModal(); switchTab('custom');">
+            🧮 Calculate OEM Costs for this Print
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="products_data.js?v=80"></script>
-  <script src="app.js?v=80"></script>
+  <script src="prints_data.js?v=81"></script>
+  <script src="products_data.js?v=81"></script>
+  <script src="app.js?v=81"></script>
 </body>
 </html>

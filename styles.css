@@ -4242,5 +4242,419 @@ body {
   gap: 8px;
 }
 
+/* ==========================================================================
+   Print Design Showcase Full Gallery View & Detail Modal (44 Styles)
+   ========================================================================== */
+.print-gallery-sticky-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 35;
+}
+
+.print-gallery-badge-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #0f172a;
+}
+
+.gallery-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseBadgeDot 2s infinite ease-in-out;
+}
+
+.print-gallery-hero {
+  padding: 16px 14px 14px;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.pgh-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.pgh-tag {
+  font-size: 8.5px;
+  font-weight: 800;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.8px;
+}
+
+.pgh-count {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #f59e0b;
+  letter-spacing: 0.5px;
+}
+
+.print-gallery-hero h2 {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+
+.print-gallery-hero p {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Filter Navigation Bar */
+.print-filter-bar {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 10px 14px;
+  scrollbar-width: none;
+  background: #ffffff;
+  position: sticky;
+  top: 50px;
+  z-index: 25;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.print-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.print-filter-chip {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.print-filter-chip.active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+/* 2-Column Responsive Print Cards Grid */
+.print-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 14px;
+  background: #f8fafc;
+  min-height: 300px;
+}
+
+.print-card-item {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.print-card-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.09);
+}
+
+.print-card-item:active {
+  transform: scale(0.975);
+}
+
+.pci-thumb-box {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: #fafafa;
+  padding: 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pci-thumb-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+}
+
+.pci-badge-width {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 8.5px;
+  font-weight: 800;
+  background: rgba(15, 23, 42, 0.88);
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.pci-badge-category {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 8px;
+  font-weight: 800;
+  background: rgba(245, 158, 11, 0.92);
+  color: #ffffff;
+  padding: 2px 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.pci-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-top: 1px solid #f1f5f9;
+}
+
+.pci-code-pill {
+  font-size: 9px;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.pci-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.35;
+  margin: 3px 0 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pci-craft-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.craft-pill-mini {
+  font-size: 8px;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* Bottom CTA inside Gallery */
+.print-gallery-bottom-cta {
+  padding: 14px 14px 30px;
+  background: #f8fafc;
+}
+
+.pg-cta-card {
+  background: #0f172a;
+  border-radius: 16px;
+  padding: 18px 16px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.pg-cta-card h4 {
+  font-size: 15px;
+  font-weight: 900;
+  margin: 0 0 6px;
+}
+
+.pg-cta-card p {
+  font-size: 11px;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin: 0 0 14px;
+}
+
+.pg-cta-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Print Detail Modal (Modal 6) */
+.print-detail-drawer {
+  max-width: 440px;
+  width: 94%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.print-detail-modal-body {
+  padding: 16px 16px 22px;
+  max-height: 82vh;
+  overflow-y: auto;
+}
+
+.print-bg-toggle-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.bg-toggle-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.bg-toggle-chips {
+  display: flex;
+  gap: 6px;
+}
+
+.bg-toggle-chip {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 14px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bg-toggle-chip.active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.print-detail-stage {
+  width: 100%;
+  height: 250px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  margin-bottom: 14px;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  transition: background-color 0.25s ease;
+}
+
+.print-detail-stage.bg-white-preview {
+  background-color: #ffffff;
+}
+
+.print-detail-stage.bg-black-preview {
+  background-color: #11141b;
+}
+
+.print-detail-graphic-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
+}
+
+.print-detail-meta-box {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+}
+
+.pdm-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 11px;
+}
+
+.pdm-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.pdm-label {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.pdm-badge {
+  font-size: 9.5px;
+  font-weight: 800;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.pdm-crafts {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.craft-pill {
+  font-size: 9px;
+  font-weight: 700;
+  background: #e2e8f0;
+  color: #1e293b;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.pdm-blanks {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #0f172a;
+  text-align: right;
+  max-width: 60%;
+}
+
+.print-detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
 
 
