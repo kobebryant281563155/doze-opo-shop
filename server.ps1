@@ -43,6 +43,9 @@ while ($listener.IsListening) {
         $res = $context.Response
 
         $res.Headers.Add("Access-Control-Allow-Origin", "*")
+        $res.Headers.Add("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+        $res.Headers.Add("Pragma", "no-cache")
+        $res.Headers.Add("Expires", "0")
 
         $rel = [System.Uri]::UnescapeDataString($req.Url.LocalPath).TrimStart('/')
         if ([string]::IsNullOrWhiteSpace($rel)) { $rel = 'index.html' }
