@@ -72,6 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCatalogList('all');
   updateAllPrices();
 
+  const archive = window.PRINTS_ARCHIVE_DATA || [];
+  const homeCount = document.getElementById('homePrintCountTag');
+  if (homeCount && archive.length > 0) homeCount.textContent = `${archive.length} EXCLUSIVE STYLES`;
+
   // Support deep links (e.g. ?tab=catalog, ?cat=tee, ?pdp=T012, or #catalog)
   const urlParams = new URLSearchParams(window.location.search);
   const hash = window.location.hash.replace('#', '');
@@ -1780,6 +1784,15 @@ function renderPrintGallery() {
     : [];
 
   grid.innerHTML = '';
+
+  const countBadge = document.getElementById('printTotalCountBadge');
+  if (countBadge) countBadge.textContent = `${archive.length} Production Styles`;
+  const filterAll = document.getElementById('printFilterAllTag');
+  if (filterAll) filterAll.textContent = `ALL ${archive.length} STYLES`;
+  const homeCount = document.getElementById('homePrintCountTag');
+  if (homeCount) homeCount.textContent = `${archive.length} EXCLUSIVE STYLES`;
+  const ctaDesc = document.getElementById('printGalleryCtaDesc');
+  if (ctaDesc) ctaDesc.textContent = `Select any of our ${archive.length} studio graphics or upload your custom vector files. 1-piece physical sample proofing ready in 48 hours.`;
 
   archive.forEach(p => {
     const card = document.createElement('div');

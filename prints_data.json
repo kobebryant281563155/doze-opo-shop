@@ -1,750 +1,996 @@
 ﻿[
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "30cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-001-1",
- 路  路  路  路  路  路  路  路 "index": 路  路 1,
- 路  路  路  路  路  路  路  路 "category": 路  路 "back",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Oversized 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Definition 路 DTG",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Vintage 路 Acid 路 Wash 路 Ready"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Back 路 Oversized 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "001反面宽度30cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_001_back_30cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "001",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #001 路 路 路 Back 路 Oversized 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "12cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-001-2",
- 路  路  路  路  路  路  路  路 "index": 路  路 2,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "001正面宽度12cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_001_front_12cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "001",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #001 路 路 路 Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-002-3",
- 路  路  路  路  路  路  路  路 "index": 路  路 3,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "002宽度20cm黄色印花配黑色T.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_002_front_20cm_yellow_black_tee.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "002",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #002 路 路 路 Front 路 Center 路 Graphic 路 (Yellow 路 Graphic 路 (for 路 Black 路 Tee))",
- 路  路  路  路  路  路  路  路 "edition": 路  路 "Yellow 路 Graphic 路 (for 路 Black 路 Tee)"
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-002-4",
- 路  路  路  路  路  路  路  路 "index": 路  路 4,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "002宽度20cm蓝色印花配白色T.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_002_front_20cm_blue_white_tee.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "002",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #002 路 路 路 Front 路 Center 路 Graphic 路 (Blue 路 Graphic 路 (for 路 White 路 Tee))",
- 路  路  路  路  路  路  路  路 "edition": 路  路 "Blue 路 Graphic 路 (for 路 White 路 Tee)"
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "30cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-003-5",
- 路  路  路  路  路  路  路  路 "index": 路  路 5,
- 路  路  路  路  路  路  路  路 "category": 路  路 "back",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Oversized 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Definition 路 DTG",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Vintage 路 Acid 路 Wash 路 Ready"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Back 路 Oversized 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "003反面宽度30cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_003_back_30cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "003",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #003 路 路 路 Back 路 Oversized 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "10cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-003-6",
- 路  路  路  路  路  路  路  路 "index": 路  路 6,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "003正面宽度10cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_003_front_10cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "003",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #003 路 路 路 Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-004-7",
- 路  路  路  路  路  路  路  路 "index": 路  路 7,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "004宽度20cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_004_front_20cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "004",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #004 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-005-8",
- 路  路  路  路  路  路  路  路 "index": 路  路 8,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "005宽度20cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_005_front_20cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "005",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #005 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-005-9",
- 路  路  路  路  路  路  路  路 "index": 路  路 9,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "005宽度20cm-1.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_005_front_20cm_alt.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "005",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #005 路 路 路 Front 路 Center 路 Graphic 路 (Alternative 路 Composition)",
- 路  路  路  路  路  路  路  路 "edition": 路  路 "Alternative 路 Composition"
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-006-10",
- 路  路  路  路  路  路  路  路 "index": 路  路 10,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "006宽度20cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_006_front_20cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "006",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #006 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "28cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-007-11",
- 路  路  路  路  路  路  路  路 "index": 路  路 11,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "007宽度28cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_007_front_28cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "007",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #007 路 路 路 Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-008-12",
- 路  路  路  路  路  路  路  路 "index": 路  路 12,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "008.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_008_front_20cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "008",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #008 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "25cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-008-13",
- 路  路  路  路  路  路  路  路 "index": 路  路 13,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "008宽度25cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_008_front_25cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "008",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #008 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "10cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-009-14",
- 路  路  路  路  路  路  路  路 "index": 路  路 14,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "009宽度10cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_009_front_10cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "009",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #009 路 路 路 Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "10cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-010-15",
- 路  路  路  路  路  路  路  路 "index": 路  路 15,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "010宽度10cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_010_front_10cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "010",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #010 路 路 路 Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "10cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-011-16",
- 路  路  路  路  路  路  路  路 "index": 路  路 16,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "011宽度10cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_011_front_10cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "011",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #011 路 路 路 Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "26cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-012-17",
- 路  路  路  路  路  路  路  路 "index": 路  路 17,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "012宽度26cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_012_front_26cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "012",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #012 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "26cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-013-18",
- 路  路  路  路  路  路  路  路 "index": 路  路 18,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "013宽度26cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_013_front_26cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "013",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #013 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "28cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-014-19",
- 路  路  路  路  路  路  路  路 "index": 路  路 19,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "014宽度28cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_014_front_28cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "014",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #014 路 路 路 Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "30cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-015-20",
- 路  路  路  路  路  路  路  路 "index": 路  路 20,
- 路  路  路  路  路  路  路  路 "category": 路  路 "back",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Oversized 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Definition 路 DTG",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Vintage 路 Acid 路 Wash 路 Ready"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Back 路 Oversized 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "015反面宽度30cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_015_back_30cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "015",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #015 路 路 路 Back 路 Oversized 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-015-21",
- 路  路  路  路  路  路  路  路 "index": 路  路 21,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "015正面宽度20cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_015_front_20cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "015",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #015 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "25cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-016-22",
- 路  路  路  路  路  路  路  路 "index": 路  路 22,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "016宽度25cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_016_front_25cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "016",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #016 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "26cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-017-23",
- 路  路  路  路  路  路  路  路 "index": 路  路 23,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "017宽度26cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_017_front_26cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "017",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #017 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "10cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-018-24",
- 路  路  路  路  路  路  路  路 "index": 路  路 24,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "018宽度10cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_018_front_10cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "018",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #018 路 路 路 Front 路 Chest 路 Accent 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "25cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-019-25",
- 路  路  路  路  路  路  路  路 "index": 路  路 25,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "019宽度25cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_019_front_25cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "019",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #019 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-020-26",
- 路  路  路  路  路  路  路  路 "index": 路  路 26,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "020宽度20cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_020_front_20cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "020",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #020 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "25cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-021-27",
- 路  路  路  路  路  路  路  路 "index": 路  路 27,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "021宽度25cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_021_front_25cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "021",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #021 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "10cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-022-28",
- 路  路  路  路  路  路  路  路 "index": 路  路 28,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Right 路 Chest 路 Micro 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "022右胸宽度10cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_022_right_chest_10cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "022",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #022 路 路 路 Right 路 Chest 路 Micro 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "10cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-022-29",
- 路  路  路  路  路  路  路  路 "index": 路  路 29,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Left 路 Chest 路 Micro 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "022左胸宽度10cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_022_left_chest_10cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "022",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #022 路 路 路 Left 路 Chest 路 Micro 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-023-30",
- 路  路  路  路  路  路  路  路 "index": 路  路 30,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "023宽度20cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_023_front_20cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "023",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #023 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "30cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-024-31",
- 路  路  路  路  路  路  路  路 "index": 路  路 31,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Oversized 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Definition 路 DTG",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Vintage 路 Acid 路 Wash 路 Ready"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "024宽度30cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_024_front_30cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "024",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #024 路 路 路 Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-025-32",
- 路  路  路  路  路  路  路  路 "index": 路  路 32,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "025宽度20cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_025_front_20cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "025",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #025 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "25cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-026-33",
- 路  路  路  路  路  路  路  路 "index": 路  路 33,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "026宽度25cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_026_front_25cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "026",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #026 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "20cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-027-34",
- 路  路  路  路  路  路  路  路 "index": 路  路 34,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "027宽度20cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_027_front_20cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "027",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #027 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "28cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-028-35",
- 路  路  路  路  路  路  路  路 "index": 路  路 35,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "028宽度28cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_028_front_28cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "028",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #028 路 路 路 Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "28cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-029-36",
- 路  路  路  路  路  路  路  路 "index": 路  路 36,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "029宽度28cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_029_front_28cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "029",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #029 路 路 路 Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "30cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-030-37",
- 路  路  路  路  路  路  路  路 "index": 路  路 37,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Oversized 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Definition 路 DTG",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Vintage 路 Acid 路 Wash 路 Ready"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "030宽度30cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_030_front_30cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "030",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #030 路 路 路 Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "28cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-031-38",
- 路  路  路  路  路  路  路  路 "index": 路  路 38,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "031宽度28cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_031_front_28cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "031",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #031 路 路 路 Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "10cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-032-39",
- 路  路  路  路  路  路  路  路 "index": 路  路 39,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Right 路 Chest 路 Micro 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "032右胸宽度10cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_032_right_chest_10cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "032",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #032 路 路 路 Right 路 Chest 路 Micro 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "10cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-032-40",
- 路  路  路  路  路  路  路  路 "index": 路  路 40,
- 路  路  路  路  路  路  路  路 "category": 路  路 "chest",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Density 路 3D 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Precision 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Embroidery 路 Available"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Left 路 Chest 路 Micro 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "032左胸宽度10cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_032_left_chest_10cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "032",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #032 路 路 路 Left 路 Chest 路 Micro 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "25cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-033-41",
- 路  路  路  路  路  路  路  路 "index": 路  路 41,
- 路  路  路  路  路  路  路  路 "category": 路  路 "front",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "3D 路 High-Density 路 Puff",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "DTG 路 Direct 路 Injection"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "033宽度25cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_033_front_25cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "033",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #033 路 路 路 Front 路 Center 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "30cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-034-42",
- 路  路  路  路  路  路  路  路 "index": 路  路 42,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Oversized 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Definition 路 DTG",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Vintage 路 Acid 路 Wash 路 Ready"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "034宽度30cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_034_front_30cm.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "034",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #034 路 路 路 Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "edition": 路  路 ""
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "32cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-035-43",
- 路  路  路  路  路  路  路  路 "index": 路  路 43,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Oversized 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Definition 路 DTG",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Vintage 路 Acid 路 Wash 路 Ready"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "035浅色宽度32cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_035_front_32cm_light_garment.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "035",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #035 路 路 路 Oversized 路 Street 路 Art 路 Graphic 路 (Light 路 Fabric 路 Contrast 路 Edition)",
- 路  路  路  路  路  路  路  路 "edition": 路  路 "Light 路 Fabric 路 Contrast 路 Edition"
- 路  路  路  路 },
- 路  路  路  路 {
- 路  路  路  路  路  路  路  路 "width": 路  路 "32cm",
- 路  路  路  路  路  路  路  路 "id": 路  路 "PRINT-035-44",
- 路  路  路  路  路  路  路  路 "index": 路  路 44,
- 路  路  路  路  路  路  路  路 "category": 路  路 "oversized",
- 路  路  路  路  路  路  路  路 "crafts": 路  路 [
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Oversized 路 Screen 路 Print",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "High-Definition 路 DTG",
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 "Vintage 路 Acid 路 Wash 路 Ready"
- 路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路  路 ],
- 路  路  路  路  路  路  路  路 "position": 路  路 "Oversized 路 Street 路 Art 路 Graphic",
- 路  路  路  路  路  路  路  路 "origFile": 路  路 "035深色宽度32cm.tif",
- 路  路  路  路  路  路  路  路 "img": 路  路 "assets/prints/print_035_front_32cm_dark_garment.png",
- 路  路  路  路  路  路  路  路 "code": 路  路 "035",
- 路  路  路  路  路  路  路  路 "title": 路  路 "Style 路 #035 路 路 路 Oversized 路 Street 路 Art 路 Graphic 路 (Dark 路 Fabric 路 Contrast 路 Edition)",
- 路  路  路  路  路  路  路  路 "edition": 路  路 "Dark 路 Fabric 路 Contrast 路 Edition"
- 路  路  路  路 }
+    {
+        "width":  "30cm",
+        "code":  "001",
+        "name":  "Style #001 (Multi-Color)",
+        "id":  "PRINT_2023_1",
+        "img":  "assets/prints/print_2023_001_multi.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "002",
+        "name":  "Style #002 (Black Edition)",
+        "id":  "PRINT_2023_2",
+        "img":  "assets/prints/print_2023_002_black.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "003",
+        "name":  "Style #003 (White Edition)",
+        "id":  "PRINT_2023_3",
+        "img":  "assets/prints/print_2023_003_white.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "004",
+        "name":  "Style #004 (Black Edition)",
+        "id":  "PRINT_2023_4",
+        "img":  "assets/prints/print_2023_004_black.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "005",
+        "name":  "Style #005 (White Edition)",
+        "id":  "PRINT_2023_5",
+        "img":  "assets/prints/print_2023_005_white.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "006",
+        "name":  "Style #006 (Black Edition)",
+        "id":  "PRINT_2023_6",
+        "img":  "assets/prints/print_2023_006_black.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "007",
+        "name":  "Style #007 (Black Edition)",
+        "id":  "PRINT_2023_7",
+        "img":  "assets/prints/print_2023_007_black.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "008",
+        "name":  "Style #008 (Apricot Edition)",
+        "id":  "PRINT_2023_8",
+        "img":  "assets/prints/print_2023_008_apricot.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "009",
+        "name":  "Style #009",
+        "id":  "PRINT_2023_9",
+        "img":  "assets/prints/print_2023_009.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "010",
+        "name":  "Style #010",
+        "id":  "PRINT_2023_10",
+        "img":  "assets/prints/print_2023_010.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "011",
+        "name":  "Style #011 (Black Edition)",
+        "id":  "PRINT_2023_11",
+        "img":  "assets/prints/print_2023_011_black.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "012",
+        "name":  "Style #012 (Black Edition)",
+        "id":  "PRINT_2023_12",
+        "img":  "assets/prints/print_2023_012_black.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "013",
+        "name":  "Style #013 (Black Edition)",
+        "id":  "PRINT_2023_13",
+        "img":  "assets/prints/print_2023_013_black.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "014",
+        "name":  "Style #014 (White Edition)",
+        "id":  "PRINT_2023_14",
+        "img":  "assets/prints/print_2023_014_white.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "015",
+        "name":  "Style #015 (Pink Edition)",
+        "id":  "PRINT_2023_15",
+        "img":  "assets/prints/print_2023_015_pink.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "016",
+        "name":  "Style #016 (Multi-Color)",
+        "id":  "PRINT_2023_16",
+        "img":  "assets/prints/print_2023_016_multi.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "017",
+        "name":  "Style #017 (Multi-Color)",
+        "id":  "PRINT_2023_17",
+        "img":  "assets/prints/print_2023_017_multi.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "018",
+        "name":  "Style #018 (Black Edition)",
+        "id":  "PRINT_2023_18",
+        "img":  "assets/prints/print_2023_018_black.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "019",
+        "name":  "Style #019 (Apricot Edition)",
+        "id":  "PRINT_2023_19",
+        "img":  "assets/prints/print_2023_019_apricot.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "020",
+        "name":  "Style #020 (Multi-Color)",
+        "id":  "PRINT_2023_20",
+        "img":  "assets/prints/print_2023_020_multi.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "021",
+        "name":  "Style #021 (Black Edition)",
+        "id":  "PRINT_2023_21",
+        "img":  "assets/prints/print_2023_021_black.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "022",
+        "name":  "Style #022 (Black Edition)",
+        "id":  "PRINT_2023_22",
+        "img":  "assets/prints/print_2023_022_black.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "023",
+        "name":  "Style #023 (White Edition)",
+        "id":  "PRINT_2023_23",
+        "img":  "assets/prints/print_2023_023_white.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "024",
+        "name":  "Style #024 (Apricot Edition)",
+        "id":  "PRINT_2023_24",
+        "img":  "assets/prints/print_2023_024_apricot.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "025",
+        "name":  "Style #025 (Pink Edition)",
+        "id":  "PRINT_2023_25",
+        "img":  "assets/prints/print_2023_025_pink.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "026",
+        "name":  "Style #026 (Multi-Color)",
+        "id":  "PRINT_2023_26",
+        "img":  "assets/prints/print_2023_026_multi.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "027",
+        "name":  "Style #027 (Apricot Edition)",
+        "id":  "PRINT_2023_27",
+        "img":  "assets/prints/print_2023_027_apricot.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "028",
+        "name":  "Style #028 (Black Edition)",
+        "id":  "PRINT_2023_28",
+        "img":  "assets/prints/print_2023_028_black.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "029",
+        "name":  "Style #029 (Multi-Color)",
+        "id":  "PRINT_2023_29",
+        "img":  "assets/prints/print_2023_029_multi.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "030",
+        "name":  "Style #030 (Multi-Color)",
+        "id":  "PRINT_2023_30",
+        "img":  "assets/prints/print_2023_030_multi.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "031",
+        "name":  "Style #031 (Multi-Color)",
+        "id":  "PRINT_2023_31",
+        "img":  "assets/prints/print_2023_031_multi.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "032",
+        "name":  "Style #032 (Black Edition)",
+        "id":  "PRINT_2023_32",
+        "img":  "assets/prints/print_2023_032_black.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "033",
+        "name":  "Style #033 (Multi-Color)",
+        "id":  "PRINT_2023_33",
+        "img":  "assets/prints/print_2023_033_multi.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "034",
+        "name":  "Style #034 (White Edition)",
+        "id":  "PRINT_2023_34",
+        "img":  "assets/prints/print_2023_034_white.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "035",
+        "name":  "Style #035 (Apricot Edition)",
+        "id":  "PRINT_2023_35",
+        "img":  "assets/prints/print_2023_035_apricot.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "036",
+        "name":  "Style #036 (White Edition)",
+        "id":  "PRINT_2023_36",
+        "img":  "assets/prints/print_2023_036_white.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "037",
+        "name":  "Style #037 (White Edition)",
+        "id":  "PRINT_2023_37",
+        "img":  "assets/prints/print_2023_037_white.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "038",
+        "name":  "Style #038 (Multi-Color)",
+        "id":  "PRINT_2023_38",
+        "img":  "assets/prints/print_2023_038_multi.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "039",
+        "name":  "Style #039 (Apricot Edition)",
+        "id":  "PRINT_2023_39",
+        "img":  "assets/prints/print_2023_039_apricot.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "040",
+        "name":  "Style #040 (White Edition)",
+        "id":  "PRINT_2023_40",
+        "img":  "assets/prints/print_2023_040_white.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "041",
+        "name":  "Style #041 (Apricot Edition)",
+        "id":  "PRINT_2023_41",
+        "img":  "assets/prints/print_2023_041_apricot.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "042",
+        "name":  "Style #042 (Black Edition)",
+        "id":  "PRINT_2023_42",
+        "img":  "assets/prints/print_2023_042_black.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "043",
+        "name":  "Style #043 (Seagull Gray)",
+        "id":  "PRINT_2023_43",
+        "img":  "assets/prints/print_2023_043_seagullgray.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "044",
+        "name":  "Style #044 (Ice Amber Blue)",
+        "id":  "PRINT_2023_44",
+        "img":  "assets/prints/print_2023_044_iceblue.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "046",
+        "name":  "Style #046 (Black Edition)",
+        "id":  "PRINT_2023_45",
+        "img":  "assets/prints/print_2023_046_black.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "060",
+        "name":  "Style #060",
+        "id":  "PRINT_2023_46",
+        "img":  "assets/prints/print_2023_060.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "061",
+        "name":  "Style #061",
+        "id":  "PRINT_2023_47",
+        "img":  "assets/prints/print_2023_061.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "062",
+        "name":  "Style #062",
+        "id":  "PRINT_2023_48",
+        "img":  "assets/prints/print_2023_062.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "063",
+        "name":  "Style #063",
+        "id":  "PRINT_2023_49",
+        "img":  "assets/prints/print_2023_063.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "064",
+        "name":  "Style #064",
+        "id":  "PRINT_2023_50",
+        "img":  "assets/prints/print_2023_064.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "065",
+        "name":  "Style #065",
+        "id":  "PRINT_2023_51",
+        "img":  "assets/prints/print_2023_065.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "066",
+        "name":  "Style #066",
+        "id":  "PRINT_2023_52",
+        "img":  "assets/prints/print_2023_066.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "080",
+        "name":  "Style #080 (Back Graphic)",
+        "id":  "PRINT_2023_53",
+        "img":  "assets/prints/print_2023_080_back.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "080",
+        "name":  "Style #080 (Front Graphic)",
+        "id":  "PRINT_2023_54",
+        "img":  "assets/prints/print_2023_080_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "100",
+        "name":  "Style #100 (Back Graphic / Apricot Edition)",
+        "id":  "PRINT_2023_55",
+        "img":  "assets/prints/print_2023_100_apricot_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "100",
+        "name":  "Style #100 (Front Graphic / Apricot Edition)",
+        "id":  "PRINT_2023_56",
+        "img":  "assets/prints/print_2023_100_apricot_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "101",
+        "name":  "Style #101 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_57",
+        "img":  "assets/prints/print_2023_101_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "101",
+        "name":  "Style #101 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_58",
+        "img":  "assets/prints/print_2023_101_black_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "105",
+        "name":  "Style #105 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_59",
+        "img":  "assets/prints/print_2023_105_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "105",
+        "name":  "Style #105 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_60",
+        "img":  "assets/prints/print_2023_105_multi_front.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "109",
+        "name":  "Style #109 (Front and Back / Apricot Edition)",
+        "id":  "PRINT_2023_61",
+        "img":  "assets/prints/print_2023_109_apricot_combo.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "110",
+        "name":  "Style #110 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_62",
+        "img":  "assets/prints/print_2023_110_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "110",
+        "name":  "Style #110 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_63",
+        "img":  "assets/prints/print_2023_110_multi_front.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "111",
+        "name":  "Style #111 (Front and Back / Multi-Color)",
+        "id":  "PRINT_2023_64",
+        "img":  "assets/prints/print_2023_111_multi_combo.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "112",
+        "name":  "Style #112 (Front and Back / White Edition)",
+        "id":  "PRINT_2023_65",
+        "img":  "assets/prints/print_2023_112_white_combo.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "113",
+        "name":  "Style #113 (Back Graphic / White Edition)",
+        "id":  "PRINT_2023_66",
+        "img":  "assets/prints/print_2023_113_white_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "113",
+        "name":  "Style #113 (Front Graphic / White Edition)",
+        "id":  "PRINT_2023_67",
+        "img":  "assets/prints/print_2023_113_white_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "114",
+        "name":  "Style #114 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_68",
+        "img":  "assets/prints/print_2023_114_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "114",
+        "name":  "Style #114 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_69",
+        "img":  "assets/prints/print_2023_114_black_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "117",
+        "name":  "Style #117 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_70",
+        "img":  "assets/prints/print_2023_117_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "117",
+        "name":  "Style #117 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_71",
+        "img":  "assets/prints/print_2023_117_black_front.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "118",
+        "name":  "Style #118 (Front and Back / Black Edition)",
+        "id":  "PRINT_2023_72",
+        "img":  "assets/prints/print_2023_118_black_combo.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "119",
+        "name":  "Style #119 (Back Graphic / Apricot Edition)",
+        "id":  "PRINT_2023_73",
+        "img":  "assets/prints/print_2023_119_apricot_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "119",
+        "name":  "Style #119 (Front Graphic / Apricot Edition)",
+        "id":  "PRINT_2023_74",
+        "img":  "assets/prints/print_2023_119_apricot_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "120",
+        "name":  "Style #120 (Back Graphic / White Edition)",
+        "id":  "PRINT_2023_75",
+        "img":  "assets/prints/print_2023_120_white_back.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "120",
+        "name":  "Style #120 (Front Graphic / White Edition)",
+        "id":  "PRINT_2023_76",
+        "img":  "assets/prints/print_2023_120_white_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "121",
+        "name":  "Style #121 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_77",
+        "img":  "assets/prints/print_2023_121_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "121",
+        "name":  "Style #121 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_78",
+        "img":  "assets/prints/print_2023_121_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "122",
+        "name":  "Style #122 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_79",
+        "img":  "assets/prints/print_2023_122_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "122",
+        "name":  "Style #122 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_80",
+        "img":  "assets/prints/print_2023_122_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "123",
+        "name":  "Style #123 (Back Graphic / Iron Gray Edition)",
+        "id":  "PRINT_2023_81",
+        "img":  "assets/prints/print_2023_123_irongray_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "123",
+        "name":  "Style #123 (Front Graphic / Iron Gray Edition)",
+        "id":  "PRINT_2023_82",
+        "img":  "assets/prints/print_2023_123_irongray_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "125",
+        "name":  "Style #125 (Front and Back / Black Edition)",
+        "id":  "PRINT_2023_83",
+        "img":  "assets/prints/print_2023_125_black_combo.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "126",
+        "name":  "Style #126 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_84",
+        "img":  "assets/prints/print_2023_126_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "126",
+        "name":  "Style #126 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_85",
+        "img":  "assets/prints/print_2023_126_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "127",
+        "name":  "Style #127 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_86",
+        "img":  "assets/prints/print_2023_127_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "127",
+        "name":  "Style #127 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_87",
+        "img":  "assets/prints/print_2023_127_black_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "128",
+        "name":  "Style #128 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_88",
+        "img":  "assets/prints/print_2023_128_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "128",
+        "name":  "Style #128 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_89",
+        "img":  "assets/prints/print_2023_128_black_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "129",
+        "name":  "Style #129 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_90",
+        "img":  "assets/prints/print_2023_129_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "129",
+        "name":  "Style #129 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_91",
+        "img":  "assets/prints/print_2023_129_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "130",
+        "name":  "Style #130 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_92",
+        "img":  "assets/prints/print_2023_130_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "130",
+        "name":  "Style #130 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_93",
+        "img":  "assets/prints/print_2023_130_black_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "131",
+        "name":  "Style #131 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_94",
+        "img":  "assets/prints/print_2023_131_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "131",
+        "name":  "Style #131 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_95",
+        "img":  "assets/prints/print_2023_131_black_front.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "132",
+        "name":  "Style #132 (Front and Back / Multi-Color)",
+        "id":  "PRINT_2023_96",
+        "img":  "assets/prints/print_2023_132_multi_combo.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "133",
+        "name":  "Style #133 (Back Graphic / White Edition)",
+        "id":  "PRINT_2023_97",
+        "img":  "assets/prints/print_2023_133_white_back.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "133",
+        "name":  "Style #133 (Front Graphic / White Edition)",
+        "id":  "PRINT_2023_98",
+        "img":  "assets/prints/print_2023_133_white_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "134",
+        "name":  "Style #134 (Back Graphic / White Edition)",
+        "id":  "PRINT_2023_99",
+        "img":  "assets/prints/print_2023_134_white_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "134",
+        "name":  "Style #134 (Front Graphic / White Edition)",
+        "id":  "PRINT_2023_100",
+        "img":  "assets/prints/print_2023_134_white_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "135",
+        "name":  "Style #135 (Back Graphic / White Edition)",
+        "id":  "PRINT_2023_101",
+        "img":  "assets/prints/print_2023_135_white_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "135",
+        "name":  "Style #135 (Front Graphic / White Edition)",
+        "id":  "PRINT_2023_102",
+        "img":  "assets/prints/print_2023_135_white_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "136",
+        "name":  "Style #136 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_103",
+        "img":  "assets/prints/print_2023_136_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "136",
+        "name":  "Style #136 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_104",
+        "img":  "assets/prints/print_2023_136_black_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "138",
+        "name":  "Style #138 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_105",
+        "img":  "assets/prints/print_2023_138_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "138",
+        "name":  "Style #138 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_106",
+        "img":  "assets/prints/print_2023_138_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "139",
+        "name":  "Style #139 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_107",
+        "img":  "assets/prints/print_2023_139_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "139",
+        "name":  "Style #139 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_108",
+        "img":  "assets/prints/print_2023_139_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "140",
+        "name":  "Style #140 (Back Graphic / Pink Edition)",
+        "id":  "PRINT_2023_109",
+        "img":  "assets/prints/print_2023_140_pink_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "140",
+        "name":  "Style #140 (Front Graphic / Pink Edition)",
+        "id":  "PRINT_2023_110",
+        "img":  "assets/prints/print_2023_140_pink_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "141",
+        "name":  "Style #141 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_111",
+        "img":  "assets/prints/print_2023_141_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "141",
+        "name":  "Style #141 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_112",
+        "img":  "assets/prints/print_2023_141_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "142",
+        "name":  "Style #142 (Back Graphic / Pink Edition)",
+        "id":  "PRINT_2023_113",
+        "img":  "assets/prints/print_2023_142_pink_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "142",
+        "name":  "Style #142 (Front Graphic / Pink Edition)",
+        "id":  "PRINT_2023_114",
+        "img":  "assets/prints/print_2023_142_pink_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "143",
+        "name":  "Style #143 (Back Graphic / Pink Edition)",
+        "id":  "PRINT_2023_115",
+        "img":  "assets/prints/print_2023_143_pink_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "143",
+        "name":  "Style #143 (Front Graphic / Pink Edition)",
+        "id":  "PRINT_2023_116",
+        "img":  "assets/prints/print_2023_143_pink_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "144",
+        "name":  "Style #144 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_117",
+        "img":  "assets/prints/print_2023_144_multi_back.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "144",
+        "name":  "Style #144 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_118",
+        "img":  "assets/prints/print_2023_144_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "145",
+        "name":  "Style #145 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_119",
+        "img":  "assets/prints/print_2023_145_black_back.png"
+    },
+    {
+        "width":  "28cm",
+        "code":  "145",
+        "name":  "Style #145 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_120",
+        "img":  "assets/prints/print_2023_145_black_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "146",
+        "name":  "Style #146 (Back Graphic / Apricot Edition)",
+        "id":  "PRINT_2023_121",
+        "img":  "assets/prints/print_2023_146_apricot_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "146",
+        "name":  "Style #146 (Front Graphic / Apricot Edition)",
+        "id":  "PRINT_2023_122",
+        "img":  "assets/prints/print_2023_146_apricot_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "147",
+        "name":  "Style #147 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_123",
+        "img":  "assets/prints/print_2023_147_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "147",
+        "name":  "Style #147 (Front Graphic)",
+        "id":  "PRINT_2023_124",
+        "img":  "assets/prints/print_2023_147_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "148",
+        "name":  "Style #148 (Back Graphic / Iron Gray Edition)",
+        "id":  "PRINT_2023_125",
+        "img":  "assets/prints/print_2023_148_irongray_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "148",
+        "name":  "Style #148 (Front Graphic / Iron Gray Edition)",
+        "id":  "PRINT_2023_126",
+        "img":  "assets/prints/print_2023_148_irongray_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "149",
+        "name":  "Style #149 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_127",
+        "img":  "assets/prints/print_2023_149_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "149",
+        "name":  "Style #149 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_128",
+        "img":  "assets/prints/print_2023_149_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "150",
+        "name":  "Style #150 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_129",
+        "img":  "assets/prints/print_2023_150_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "150",
+        "name":  "Style #150 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_130",
+        "img":  "assets/prints/print_2023_150_black_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "151",
+        "name":  "Style #151 (Back Graphic / Black Edition)",
+        "id":  "PRINT_2023_131",
+        "img":  "assets/prints/print_2023_151_black_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "151",
+        "name":  "Style #151 (Front Graphic / Black Edition)",
+        "id":  "PRINT_2023_132",
+        "img":  "assets/prints/print_2023_151_black_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "152",
+        "name":  "Style #152 (Back Graphic / Apricot Edition)",
+        "id":  "PRINT_2023_133",
+        "img":  "assets/prints/print_2023_152_apricot_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "152",
+        "name":  "Style #152 (Front Graphic / Apricot Edition)",
+        "id":  "PRINT_2023_134",
+        "img":  "assets/prints/print_2023_152_apricot_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "153",
+        "name":  "Style #153 (Back Graphic / Multi-Color)",
+        "id":  "PRINT_2023_135",
+        "img":  "assets/prints/print_2023_153_multi_back.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "153",
+        "name":  "Style #153 (Front Graphic / Multi-Color)",
+        "id":  "PRINT_2023_136",
+        "img":  "assets/prints/print_2023_153_multi_front.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "154",
+        "name":  "Style #154 (Front and Back / Black Edition)",
+        "id":  "PRINT_2023_137",
+        "img":  "assets/prints/print_2023_154_black_combo.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "200",
+        "name":  "DOZE OPO Logo #200",
+        "id":  "PRINT_2023_138",
+        "img":  "assets/prints/print_2023_200.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "201",
+        "name":  "DOZE OPO Logo #201",
+        "id":  "PRINT_2023_139",
+        "img":  "assets/prints/print_2023_201.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "202",
+        "name":  "DOZE OPO Logo #202",
+        "id":  "PRINT_2023_140",
+        "img":  "assets/prints/print_2023_202.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "204",
+        "name":  "DOZE OPO Logo #204",
+        "id":  "PRINT_2023_141",
+        "img":  "assets/prints/print_2023_204.png"
+    },
+    {
+        "width":  "30cm",
+        "code":  "299",
+        "name":  "Style #299",
+        "id":  "PRINT_2023_142",
+        "img":  "assets/prints/print_2023_299.png"
+    }
 ]
