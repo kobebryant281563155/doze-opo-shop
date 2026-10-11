@@ -2433,7 +2433,15 @@
                                       "assets/products/WY18/detail/4.jpg",
                                       "assets/products/WY18/detail/5.jpg",
                                       "assets/products/WY18/detail/6.jpg"
-                                  ]
+                                  ],
+                 "sizes":  [
+                               "S",
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ],
+                 "sizeChart":  "assets/products/WY18/size/size_chart_garment.jpg"
              },
     "W350":  {
                  "id":  "W350",
