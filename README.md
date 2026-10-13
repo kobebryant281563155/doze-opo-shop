@@ -20,7 +20,7 @@
 ### 2. 🧮 Flexible Custom OEM Calculator
 - **Instant Garment & Craft Matrix**:
   - Garment Type multipliers: `Tee` (1.0x), `Crewneck Sweatshirt` (1.5x), `Hoodies` (2.0x), `Zip Jackets` (3.0x), `Pants` (2.0x), `Jeans` (3.0x).
-  - Print/Embroidery Crafts: `Heat Transfer` ($20 base), `Screen Print` ($40 base), `3D Puff Print` ($40 base), `DTG Direct Injection` ($50 base), `3D High-Density Embroidery` ($50 base).
+  - Print/Embroidery Crafts: `Heat Transfer` ($20 base), `Flock Printing` ($20 base), `Screen Print` ($40 base), `3D Puff Print` ($40 base), `DTG Direct Injection` ($50 base), `3D High-Density Embroidery` ($50 base).
   - Dynamic interactive formula: `Final Price = (Craft Base Price × Garment Multiplier) × Quantity`.
   - Preset quantity quick-select tags (`1`, `20`, `50`, `100`, `300`).
 
