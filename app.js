@@ -252,7 +252,7 @@ function initCustomCalculator() {
     });
   });
 
-  // Craft Chips (TEE Craft Base Prices: Heat Transfer $20, Flock Printing $20, Screen $40, Puff $40, DTG $50, Embroidery $50)
+  // Craft Chips (TEE Craft Base Prices: Heat Transfer (DTF) $20, Flock Printing $20, Screen $40, Puff $40, DTG $50, Embroidery $50)
   const craftChips = document.querySelectorAll('#craftTypeChips .calc-chip');
   craftChips.forEach(chip => {
     chip.addEventListener('click', () => {
