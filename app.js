@@ -375,8 +375,8 @@ function renderCatalogList(catFilter) {
   container.innerHTML = '';
   const products = Object.values(PRODUCTS_DATA).filter(p => {
     if (catFilter === 'all') return true;
-    if (catFilter === 'hoodie' && (p.category === 'hoodie' || p.id === 'KB02')) return true;
-    if (catFilter === 'jacket' && (p.category === 'jacket' || p.id === 'KB02')) return true;
+    if (catFilter === 'hoodie' && p.category === 'hoodie') return true;
+    if (catFilter === 'jacket' && p.category === 'jacket') return true;
     return p.category === catFilter;
   });
 

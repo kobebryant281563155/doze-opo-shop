@@ -3,7 +3,7 @@
                  "id":  "W300",
                  "name":  "W300 420G Vintage Washed Heavyweight Pullover Hoodie",
                  "category":  "hoodie",
-                 "priceUSD":  28.5,
+                 "priceUSD":  999,
                  "gram":  "420 GSM 100% Cotton 26S Vintage Washed French Terry",
                  "img":  "assets/products/W300/main/1.jpg",
                  "color":  "6 Vintage Washed Colorways",
@@ -101,7 +101,7 @@
                  "id":  "T012",
                  "name":  "T012 240G Raglan Sleeve Boxy Tee",
                  "category":  "tee",
-                 "priceUSD":  15,
+                 "priceUSD":  999,
                  "gram":  "240 GSM Combed Cotton",
                  "img":  "assets/t012/main/3.jpg",
                  "color":  "8 Contrast Colorways",
@@ -271,7 +271,7 @@
                                       "assets/products/K350/detail/detail_7.jpg",
                                       "assets/products/K350/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  22.5,
+                 "priceUSD":  999,
                  "name":  "K350 350G Fleece-Lined Straight-Leg Sweatpants",
                  "img":  "assets/products/K350/main/1.jpg",
                  "gram":  "350 GSM Fleece-Lined Cotton",
@@ -370,7 +370,7 @@
                                       "assets/products/K430/detail/detail_7.jpg",
                                       "assets/products/K430/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  24.5,
+                 "priceUSD":  999,
                  "name":  "K430 430G French Terry Cuffed Street Jogger Pants",
                  "img":  "assets/products/K430/main/1.jpg",
                  "gram":  "430 GSM Heavy French Terry",
@@ -461,7 +461,7 @@
                                       "assets/products/K436/detail/5.jpg",
                                       "assets/products/K436/detail/6.jpg"
                                   ],
-                 "priceUSD":  24.5,
+                 "priceUSD":  999,
                  "name":  "K436 430G Heavy French Terry Wide-Leg Sweatpants",
                  "img":  "assets/products/K436/main/1.jpg",
                  "gram":  "430 GSM Heavy French Terry",
@@ -537,7 +537,7 @@
                                       "assets/products/T040/detail/detail_7.jpg",
                                       "assets/products/T040/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  15,
+                 "priceUSD":  999,
                  "name":  "T040 245G Oversized Solid Street Boxy Tee",
                  "img":  "assets/products/T040/main/1.jpg",
                  "gram":  "245 GSM Combed Compact Cotton",
@@ -644,7 +644,7 @@
                                       "assets/products/T235/detail/detail_7.jpg",
                                       "assets/products/T235/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  17.5,
+                 "priceUSD":  999,
                  "name":  "T235 235G Oversized Raglan Long-Sleeve Street Tee",
                  "img":  "assets/products/T235/main/1.jpg",
                  "gram":  "235 GSM Combed Cotton",
@@ -768,7 +768,7 @@
                                       "assets/products/T238/detail/detail_7.jpg",
                                       "assets/products/T238/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  17.5,
+                 "priceUSD":  999,
                  "name":  "T238 235G High-Ribbed Collar Long-Sleeve Tee",
                  "img":  "assets/products/T238/main/1.jpg",
                  "gram":  "235 GSM Combed Cotton",
@@ -959,7 +959,7 @@
                                       "assets/products/T275/detail/detail_7.jpg",
                                       "assets/products/T275/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  16.5,
+                 "priceUSD":  999,
                  "name":  "T275 275G Ultra-Heavy American Drop-Shoulder Tee",
                  "img":  "assets/products/T275/main/1.jpg",
                  "gram":  "275 GSM Ultra-Heavy Combed Cotton",
@@ -1114,7 +1114,7 @@
                                       "assets/products/T276/detail/detail_7.jpg",
                                       "assets/products/T276/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  18.5,
+                 "priceUSD":  999,
                  "name":  "T276 275G Heavy Drop-Shoulder Long-Sleeve Tee",
                  "img":  "assets/products/T276/main/1.jpg",
                  "gram":  "275 GSM Ultra-Heavy Combed Cotton",
@@ -1213,7 +1213,7 @@
                                       "assets/products/W354/detail/detail_7.jpg",
                                       "assets/products/W354/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  27.5,
+                 "priceUSD":  999,
                  "name":  "W354 350G Fleece Heavyweight Full-Zip Street Jacket",
                  "img":  "assets/products/W354/main/1.jpg",
                  "gram":  "350 GSM Fleece-Lined Cotton",
@@ -1306,7 +1306,7 @@
                                       "assets/products/W434/detail/detail_7.jpg",
                                       "assets/products/W434/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  29.5,
+                 "priceUSD":  999,
                  "name":  "W434 430G French Terry Heavy Metal-Zip Jacket",
                  "img":  "assets/products/W434/main/1.jpg",
                  "gram":  "430 GSM Heavy French Terry",
@@ -1408,7 +1408,7 @@
                                       "assets/products/W512/detail/detail_8.jpg",
                                       "assets/products/W512/detail/detail_9.jpg"
                                   ],
-                 "priceUSD":  32.5,
+                 "priceUSD":  999,
                  "name":  "W512 510G Ultra-Heavy Double-Snap Heavy Hoodie",
                  "img":  "assets/products/W512/main/1.jpg",
                  "gram":  "510 GSM Diagonal Heavy Terry",
@@ -1497,7 +1497,7 @@
                                       "assets/products/W514/detail/detail_7.jpg",
                                       "assets/products/W514/detail/detail_8.jpg"
                                   ],
-                 "priceUSD":  33.5,
+                 "priceUSD":  999,
                  "name":  "W514 510G Ultra-Heavy Button-Up Cardigan Jacket",
                  "img":  "assets/products/W514/main/1.jpg",
                  "gram":  "510 GSM Diagonal Heavy Terry",
@@ -1515,7 +1515,7 @@
                  "id":  "T230",
                  "name":  "T230 230G Mineral-Washed Long-Sleeve Street Tee",
                  "category":  "tee",
-                 "priceUSD":  17.5,
+                 "priceUSD":  999,
                  "gram":  "230 GSM 100% Combed Cotton (Mineral Wash)",
                  "img":  "assets/products/T230/main/1.jpg",
                  "color":  "6 Mineral Wash Colorways",
@@ -1580,7 +1580,7 @@
                  "id":  "T250",
                  "name":  "T250 250G Acid-Washed Snow Mineral Boxy Tee",
                  "category":  "tee",
-                 "priceUSD":  15.5,
+                 "priceUSD":  999,
                  "gram":  "250 GSM 32S/2 Combed Cotton (Snow Wash)",
                  "img":  "assets/products/T250/main/1.jpg",
                  "color":  "23 Vintage Acid Wash Colorways",
@@ -1667,7 +1667,7 @@
                 "id":  "01D",
                 "name":  "01D 230G Heavyweight Combed Cotton Crewneck Tee",
                 "category":  "tee",
-                "priceUSD":  14.5,
+                "priceUSD":  999,
                 "gram":  "230 GSM 100% Combed Cotton",
                 "img":  "assets/products/01D/main/1.jpg",
                 "color":  "19 Streetwear Colorways",
@@ -1809,7 +1809,7 @@
                  "id":  "TH09",
                  "name":  "TH09 230G Minimalist Fitted V-Neck Street Tee",
                  "category":  "tee",
-                 "priceUSD":  13.5,
+                 "priceUSD":  999,
                  "gram":  "230 GSM 92% Combed Cotton 8% Spandex",
                  "img":  "assets/products/TH09/main/1.jpg",
                  "color":  "6 Essential Colorways",
@@ -1883,7 +1883,7 @@
                  "id":  "TH03",
                  "name":  "TH03 230G Cropped Contrast Raglan Baby Tee",
                  "category":  "tee",
-                 "priceUSD":  13.5,
+                 "priceUSD":  999,
                  "gram":  "230 GSM 92% Cotton 8% Spandex",
                  "img":  "assets/products/TH03/main/1.jpg",
                  "color":  "12 Contrast Colorways",
@@ -1986,7 +1986,7 @@
                  "id":  "S360",
                  "name":  "S360 360G Sorona Ultra-Heavyweight Premium Street Tee",
                  "category":  "tee",
-                 "priceUSD":  18.5,
+                 "priceUSD":  999,
                  "gram":  "360 GSM DuPont Sorona庐 Cotton Blend",
                  "img":  "assets/products/S360/main/1.jpg",
                  "color":  "12 Luxury Street Colorways",
@@ -2094,7 +2094,7 @@
                  "id":  "T013",
                  "name":  "T013 245G Combed Cotton Athletic Side-Split Tank Top",
                  "category":  "tank",
-                 "priceUSD":  12.5,
+                 "priceUSD":  999,
                  "gram":  "245 GSM 100% Combed Cotton",
                  "img":  "assets/products/T013/main/1.jpg",
                  "color":  "7 Streetwear Colorways",
@@ -2179,7 +2179,7 @@
                  "id":  "K055",
                  "name":  "K055 275G Heavyweight Drawstring Street Shorts",
                  "category":  "shorts",
-                 "priceUSD":  14,
+                 "priceUSD":  999,
                  "gram":  "275 GSM Heavyweight Combed Cotton",
                  "img":  "assets/products/K055/main/1.jpg",
                  "color":  "12 Streetwear Colorways",
@@ -2290,7 +2290,7 @@
                "id":  "K6",
                "name":  "K6 330G Ultra-Heavy French Terry Sweat Shorts",
                "category":  "shorts",
-               "priceUSD":  16.5,
+               "priceUSD":  999,
                "gram":  "330 GSM 100% Cotton French Terry",
                "img":  "assets/products/K6/main/1.jpg",
                "color":  "12 Streetwear Colorways",
@@ -2396,156 +2396,11 @@
                              "2XL"
                          ]
            },
-    "KB02":  {
-                 "id":  "KB02",
-                 "name":  "KB02 380G Washed Knitted Denim Zip Hoodie",
-                 "category":  "hoodie",
-                 "priceUSD":  31.5,
-                 "gram":  "380 GSM Knitted Denim (93.2% Cotton)",
-                 "img":  "assets/products/KB02/main/1.jpg",
-                 "color":  "3 Acid Snow Wash Colorways",
-                 "specs":  [
-                               "380 GSM Heavyweight Knitted Denim - 93.2% Combed Cotton / 6.8% Spandex",
-                               "Artisanal Garment Snow Dye \u0026 Acid Mineral Tie-Wash Processing (浠舵煋鐐掗洩鑺?",
-                               "Oversized Streetwear Silhouette with Heavy Antique Metal Full-Zip Placket",
-                               "Reinforced Drop-Shoulder Structural Seams \u0026 Split Kangaroo Front Pockets",
-                               "3 Vintage Washed Colorways 路 S to XL Full Size Range 路 1-PC Sample Proofing Ready"
-                           ],
-                 "gallery":  [
-                                 "assets/products/KB02/main/1.jpg",
-                                 "assets/products/KB02/main/2.jpg",
-                                 "assets/products/KB02/main/3.jpg",
-                                 "assets/products/KB02/main/4.jpg",
-                                 "assets/products/KB02/main/5.jpg",
-                                 "assets/products/KB02/main/6.jpg"
-                             ],
-                 "skus":  [
-                              {
-                                  "name":  "Washed Black (鐐掗洩鑺遍粦)",
-                                  "thumb":  "assets/products/KB02/sku/sku_black.jpg",
-                                  "hero":  "assets/products/KB02/sku/sku_black.jpg",
-                                  "back":  "assets/products/KB02/sku/sku_black_back.jpg"
-                              },
-                              {
-                                  "name":  "Sapphire Blue (鐐掗洩鑺卞疂钃?",
-                                  "thumb":  "assets/products/KB02/sku/sku_sapphire.jpg",
-                                  "hero":  "assets/products/KB02/sku/sku_sapphire.jpg",
-                                  "back":  "assets/products/KB02/sku/sku_sapphire_back.jpg"
-                              },
-                              {
-                                  "name":  "Light Blue (鐐掗洩鑺辨祬钃?",
-                                  "thumb":  "assets/products/KB02/sku/sku_lightblue.jpg",
-                                  "hero":  "assets/products/KB02/sku/sku_lightblue.jpg",
-                                  "back":  "assets/products/KB02/sku/sku_lightblue_back.jpg"
-                              }
-                          ],
-                 "detailImages":  [
-                                      "assets/products/KB02/detail/1.jpg",
-                                      "assets/products/KB02/detail/2.jpg",
-                                      "assets/products/KB02/detail/3.jpg",
-                                      "assets/products/KB02/detail/4.jpg",
-                                      "assets/products/KB02/detail/5.jpg",
-                                      "assets/products/KB02/detail/6.jpg",
-                                      "assets/products/KB02/detail/7.jpg",
-                                      "assets/products/KB02/detail/8.jpg"
-                                  ],
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL"
-                           ],
-                 "sizeChart":  "assets/products/KB02/size/size_chart_garment.jpg"
-             },
-    "WY18":  {
-                 "id":  "WY18",
-                 "name":  "WY18 355G Vintage Snow-Washed Fleece Pullover Hoodie",
-                 "category":  "hoodie",
-                 "priceUSD":  27.5,
-                 "gram":  "355 GSM Expo Fleece (42% Cotton / 53% Poly)",
-                 "img":  "assets/products/WY18/main/1.jpg",
-                 "color":  "7 Snow Acid Wash Colorways",
-                 "specs":  [
-                               "355 GSM Heavyweight Thermal Expo Fleece - Brushed Interior for Superior Warmth",
-                               "Artisanal Garment Snow Dye \u0026 Acid Mineral Tie-Wash Processing (浠舵煋鐐掗洩鑺?",
-                               "Oversized 90s Vintage Streetwear Cut with Seamless Double-Layer Hood",
-                               "Deep Front Kangaroo Pocket, Elastic Ribbed Cuffs \u0026 Reinforced Hem Taping",
-                               "7 Mineral Snow Wash Colorways 路 S to 2XL Full Size Range 路 1-PC Sample Proofing Ready"
-                           ],
-                 "gallery":  [
-                                 "assets/products/WY18/main/1.jpg",
-                                 "assets/products/WY18/main/2.jpg",
-                                 "assets/products/WY18/main/3.jpg",
-                                 "assets/products/WY18/main/4.jpg",
-                                 "assets/products/WY18/main/5.jpg",
-                                 "assets/products/WY18/main/6.jpg"
-                             ],
-                 "skus":  [
-                              {
-                                  "name":  "Washed Black (鐐掗洩鑺遍粦)",
-                                  "thumb":  "assets/products/WY18/sku/sku_black.jpg",
-                                  "hero":  "assets/products/WY18/sku/sku_black.jpg",
-                                  "back":  "assets/products/WY18/sku/sku_black_back.jpg"
-                              },
-                              {
-                                  "name":  "Light Gray (鐐掗洩鑺辨祬鐏?",
-                                  "thumb":  "assets/products/WY18/sku/sku_lightgray.jpg",
-                                  "hero":  "assets/products/WY18/sku/sku_lightgray.jpg",
-                                  "back":  "assets/products/WY18/sku/sku_lightgray_back.jpg"
-                              },
-                              {
-                                  "name":  "Millet Apricot (鐐掗洩鑺辩背鏉?",
-                                  "thumb":  "assets/products/WY18/sku/sku_apricot.jpg",
-                                  "hero":  "assets/products/WY18/sku/sku_apricot.jpg",
-                                  "back":  "assets/products/WY18/sku/sku_apricot_back.jpg"
-                              },
-                              {
-                                  "name":  "Sapphire Blue (鐐掗洩鑺卞疂钃?",
-                                  "thumb":  "assets/products/WY18/sku/sku_sapphire.jpg",
-                                  "hero":  "assets/products/WY18/sku/sku_sapphire.jpg",
-                                  "back":  "assets/products/WY18/sku/sku_sapphire_back.jpg"
-                              },
-                              {
-                                  "name":  "Lake Blue (鐐掗洩鑺辨箹钃?",
-                                  "thumb":  "assets/products/WY18/sku/sku_lakeblue.jpg",
-                                  "hero":  "assets/products/WY18/sku/sku_lakeblue.jpg",
-                                  "back":  "assets/products/WY18/sku/sku_lakeblue_back.jpg"
-                              },
-                              {
-                                  "name":  "Dark Green (鐐掗洩鑺辨繁缁?",
-                                  "thumb":  "assets/products/WY18/sku/sku_darkgreen.jpg",
-                                  "hero":  "assets/products/WY18/sku/sku_darkgreen.jpg",
-                                  "back":  "assets/products/WY18/sku/sku_darkgreen_back.jpg"
-                              },
-                              {
-                                  "name":  "Crimson Red (鐐掗洩鑺卞ぇ绾?",
-                                  "thumb":  "assets/products/WY18/sku/sku_crimson.jpg",
-                                  "hero":  "assets/products/WY18/sku/sku_crimson.jpg",
-                                  "back":  "assets/products/WY18/sku/sku_crimson_back.jpg"
-                              }
-                          ],
-                 "detailImages":  [
-                                      "assets/products/WY18/detail/1.jpg",
-                                      "assets/products/WY18/detail/2.jpg",
-                                      "assets/products/WY18/detail/3.jpg",
-                                      "assets/products/WY18/detail/4.jpg",
-                                      "assets/products/WY18/detail/5.jpg",
-                                      "assets/products/WY18/detail/6.jpg"
-                                  ],
-                 "sizes":  [
-                               "S",
-                               "M",
-                               "L",
-                               "XL",
-                               "2XL"
-                           ],
-                 "sizeChart":  "assets/products/WY18/size/size_chart_garment.jpg"
-             },
     "W350":  {
                  "id":  "W350",
                  "name":  "W350 350G Fleece-Lined Oversized Crewneck",
                  "category":  "crewneck",
-                 "priceUSD":  23.5,
+                 "priceUSD":  999,
                  "gram":  "350 GSM Fleece-Lined Cotton",
                  "img":  "assets/products/W350/main/1.jpg",
                  "color":  "19 Core Streetwear Colorways",
@@ -2712,7 +2567,7 @@
                  "id":  "W430",
                  "name":  "W430 430G French Terry Premium Crewneck Sweatshirt",
                  "category":  "crewneck",
-                 "priceUSD":  25.5,
+                 "priceUSD":  999,
                  "gram":  "430 GSM Heavy French Terry",
                  "img":  "assets/products/W430/main/1.jpg",
                  "color":  "22 Core Streetwear Colorways",
@@ -2897,7 +2752,7 @@
                  "id":  "W510",
                  "name":  "W510 510G Ultra-Heavy Mock-Neck Crewneck",
                  "category":  "crewneck",
-                 "priceUSD":  28.5,
+                 "priceUSD":  999,
                  "gram":  "510 GSM Heavy Diagonal Knit Terry",
                  "img":  "assets/products/W510/main/1.jpg",
                  "color":  "12 Core Streetwear Colorways",
@@ -3015,7 +2870,7 @@
                  "id":  "W352",
                  "name":  "W352 350G Fleece-Lined Heavyweight Pullover Hoodie",
                  "category":  "hoodie",
-                 "priceUSD":  26.5,
+                 "priceUSD":  999,
                  "gram":  "350 GSM Fleece-Lined Cotton",
                  "img":  "assets/products/W352/main/1.jpg",
                  "color":  "22 Core Streetwear Colorways",
@@ -3200,7 +3055,7 @@
                  "id":  "W432",
                  "name":  "W432 430G French Terry Oversized Street Hoodie",
                  "category":  "hoodie",
-                 "priceUSD":  28.5,
+                 "priceUSD":  999,
                  "gram":  "430 GSM Heavy French Terry",
                  "img":  "assets/products/W432/main/1.jpg",
                  "color":  "21 Core Streetwear Colorways",
@@ -3379,7 +3234,7 @@
                  "id":  "W439",
                  "name":  "W439 430G Half-Zip Stand-Collar Heavy Hoodie",
                  "category":  "hoodie",
-                 "priceUSD":  29.5,
+                 "priceUSD":  999,
                  "gram":  "430 GSM Heavy French Terry",
                  "img":  "assets/products/W439/main/1.jpg",
                  "color":  "13 Core Streetwear Colorways",
