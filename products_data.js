@@ -1,4 +1,102 @@
 ﻿window.PRODUCTS_DATA = {
+    "W300":  {
+                 "id":  "W300",
+                 "name":  "W300 420G Vintage Washed Heavyweight Pullover Hoodie",
+                 "category":  "hoodie",
+                 "priceUSD":  28.5,
+                 "gram":  "420 GSM 100% Cotton 26S Vintage Washed French Terry",
+                 "img":  "assets/products/W300/main/1.jpg",
+                 "color":  "6 Vintage Washed Colorways",
+                 "specs":  [
+                               "420 GSM 100% Combed Cotton · 26S/2 High-Density Heavyweight French Terry",
+                               "Vintage Garment-Dyed Acid / Snow Mineral Wash Treatment",
+                               "Drop-Shoulder Relaxed Boxy Streetwear Silhouette, Pre-Shrunk (\u003c 2%)",
+                               "Double-Layer Structured Hood, Kangaroo Pocket \u0026 Twin-Needle Clean Seams",
+                               "6 Core Washed Colorways · Ready for 1-Piece Sample Proofing \u0026 Custom Tech Pack"
+                           ],
+                 "gallery":  [
+                                 "assets/products/W300/main/1.jpg",
+                                 "assets/products/W300/main/2.jpg",
+                                 "assets/products/W300/main/3.jpg",
+                                 "assets/products/W300/sku/sku_black.jpg",
+                                 "assets/products/W300/sku/sku_greywhite.jpg",
+                                 "assets/products/W300/sku/sku_greycoffee.jpg",
+                                 "assets/products/W300/sku/sku_winered.jpg",
+                                 "assets/products/W300/sku/sku_charcoal.jpg",
+                                 "assets/products/W300/sku/sku_mediumgrey.jpg"
+                             ],
+                 "skus":  [
+                              {
+                                  "name":  "Washed Black",
+                                  "thumb":  "assets/products/W300/sku/sku_black.jpg",
+                                  "hero":  "assets/products/W300/sku/sku_black.jpg",
+                                  "back":  "assets/products/W300/sku/sku_black_back.jpg"
+                              },
+                              {
+                                  "name":  "Washed Grey White",
+                                  "thumb":  "assets/products/W300/sku/sku_greywhite.jpg",
+                                  "hero":  "assets/products/W300/sku/sku_greywhite.jpg",
+                                  "back":  "assets/products/W300/sku/sku_greywhite_back.jpg"
+                              },
+                              {
+                                  "name":  "Washed Grey Coffee",
+                                  "thumb":  "assets/products/W300/sku/sku_greycoffee.jpg",
+                                  "hero":  "assets/products/W300/sku/sku_greycoffee.jpg",
+                                  "back":  "assets/products/W300/sku/sku_greycoffee_back.jpg"
+                              },
+                              {
+                                  "name":  "Washed Wine Red",
+                                  "thumb":  "assets/products/W300/sku/sku_winered.jpg",
+                                  "hero":  "assets/products/W300/sku/sku_winered.jpg",
+                                  "back":  "assets/products/W300/sku/sku_winered_back.jpg"
+                              },
+                              {
+                                  "name":  "Washed Charcoal",
+                                  "thumb":  "assets/products/W300/sku/sku_charcoal.jpg",
+                                  "hero":  "assets/products/W300/sku/sku_charcoal.jpg",
+                                  "back":  "assets/products/W300/sku/sku_charcoal_back.jpg"
+                              },
+                              {
+                                  "name":  "Washed Medium Grey",
+                                  "thumb":  "assets/products/W300/sku/sku_mediumgrey.jpg",
+                                  "hero":  "assets/products/W300/sku/sku_mediumgrey.jpg",
+                                  "back":  "assets/products/W300/sku/sku_mediumgrey_back.jpg"
+                              }
+                          ],
+                 "detailImages":  [
+                                      "assets/products/W300/detail/1.jpg",
+                                      "assets/products/W300/detail/2.jpg",
+                                      "assets/products/W300/detail/3.jpg",
+                                      "assets/products/W300/detail/4.jpg",
+                                      "assets/products/W300/detail/5.jpg",
+                                      "assets/products/W300/detail/6.jpg",
+                                      "assets/products/W300/detail/7.jpg",
+                                      "assets/products/W300/detail/8.jpg",
+                                      "assets/products/W300/detail/9.jpg",
+                                      "assets/products/W300/detail/10.jpg",
+                                      "assets/products/W300/detail/11.jpg",
+                                      "assets/products/W300/detail/12.jpg",
+                                      "assets/products/W300/detail/13.jpg",
+                                      "assets/products/W300/detail/14.jpg",
+                                      "assets/products/W300/detail/15.jpg",
+                                      "assets/products/W300/detail/16.jpg",
+                                      "assets/products/W300/detail/17.jpg",
+                                      "assets/products/W300/detail/18.jpg",
+                                      "assets/products/W300/detail/19.jpg",
+                                      "assets/products/W300/detail/20.jpg",
+                                      "assets/products/W300/detail/21.jpg",
+                                      "assets/products/W300/detail/22.jpg",
+                                      "assets/products/W300/detail/23.jpg"
+                                  ],
+                 "sizes":  [
+                               "M",
+                               "L",
+                               "XL",
+                               "2XL"
+                           ],
+                 "sizeChart":  "assets/products/W300/size/size_chart_garment.jpg",
+                 "sizeRecommend":  "assets/products/W300/size/size_chart_recommend.jpg"
+             },
     "T012":  {
                  "id":  "T012",
                  "name":  "T012 240G Raglan Sleeve Boxy Tee",
