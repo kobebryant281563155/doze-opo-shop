@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    DOZE OPO Mobile Independent Store Frontend Logic (English Version)
    Features: Dynamic Multi-Currency, Instant OEM Quote Calc, Tab Routing,
              Product Modals, Sample Cart, and WhatsApp/Tech Pack Flow
@@ -846,6 +846,45 @@ function renderDynamicLookbook(prod) {
       'assets/products/01D/main/4.jpg',
       'assets/products/01D/main/5.jpg',
       'assets/products/01D/main/6.jpg'
+    ];
+  } else if (prod.id === '360') {
+    const craftDetails = [
+      { img: 'assets/products/360/detail/detail_1.jpg', title: '01 Signature Studio Presentation', desc: 'Modern Relaxed Fit Silhouette on Natural Timber Hanger' },
+      { img: 'assets/products/360/detail/detail_2.jpg', title: '02 Duo-Colorway Styling', desc: 'Soft Lotus Pink & Bamboo Sage Green Studio Pairing' },
+      { img: 'assets/products/360/detail/detail_3.jpg', title: '03 Sorona® Agile Bio-Tech Collar', desc: 'Seamless Ergonomic Crewneck with Genuine Dupont Sorona® Agile Tag' },
+      { img: 'assets/products/360/detail/detail_4.jpg', title: '04 Precision Twin-Needle Cuff', desc: 'Clean-Cut Parallel Twin-Stitch Hem for Long-Lasting Durability' },
+      { img: 'assets/products/360/detail/detail_5.jpg', title: '05 Ice-Cool Combed Drape', desc: '32S Combed Cotton Blend with Instant Cool-Touch Sensation & Fluid Swirl Drape' },
+      { img: 'assets/products/360/detail/detail_6.jpg', title: '06 Heavy-Duty Hem Construction', desc: 'Wave-Fold Reinforced Double-Needle Bottom Hem Resists Rolling & Curling' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card craft-card-01d">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (6 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">210 GSM 32S Sorona® Cooling Combed Cotton · Bio-tech elastic recovery &amp; ice-cool touch</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    lookbookImages = [
+      'assets/products/360/main/1.jpg',
+      'assets/products/360/main/2.jpg',
+      'assets/products/360/main/3.jpg',
+      'assets/products/360/main/4.jpg',
+      'assets/products/360/detail/detail_1.jpg',
+      'assets/products/360/detail/detail_2.jpg'
     ];
   } else if (prod.id === 'T040') {
     const craftDetails = [

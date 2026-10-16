@@ -76,5 +76,71 @@ window.PRODUCTS_DATA = {
       "assets/products/01D/detail/11.jpg",
       "assets/products/01D/detail/12.jpg"
     ]
+  },
+  "360": {
+    "id": "360",
+    "name": "360 210G 32S Sorona® Combed Cotton Ice-Cool Crewneck Tee",
+    "category": "tee",
+    "priceUSD": 5.99,
+    "gram": "210 GSM 32S Sorona® Cooling Combed Cotton",
+    "img": "assets/products/360/main/1.jpg",
+    "color": "12 Vibrant Colorways",
+    "sizes": ["S", "M", "L", "XL", "2XL", "3XL"],
+    "specs": [
+      "210 GSM 32S Combed Cotton with Dupont Sorona® Bio-Based Fiber for Instant Ice-Cool Sensation",
+      "Silky Ultra-Smooth Print Face, High Elastic Recovery & Shape Retention (Grade 4+ Anti-Pilling)",
+      "3.0cm High-Density 1x1 Elastic Ribbed Neckband with Bound Collar-to-Shoulder Comfort Taping",
+      "Classic Unisex Fit, Moisture-Wicking & Breathable for Summer Heat, Pre-Shrunk (< 2% Shrinkage)",
+      "12 Vibrant Colorways · 1-Piece Custom Tech Pack Sample & Bulk OEM Ready"
+    ],
+    "sizeTable": {
+      "columns": [
+        { "key": "size", "label": "Size", "isSize": true },
+        { "key": "length", "label": "Length", "unit": true },
+        { "key": "chest", "label": "Bust (Circumference)", "unit": true },
+        { "key": "shoulder", "label": "Shoulder", "unit": true },
+        { "key": "sleeve", "label": "Sleeve", "unit": true },
+        { "key": "height", "label": "Rec. Height", "unit": false },
+        { "key": "weight", "label": "Rec. Weight", "unit": false }
+      ],
+      "rows": [
+        { "size": "S", "length": 65, "chest": 90, "shoulder": 39.5, "sleeve": 19.5, "height": "5'1\"-5'3\" (155-160cm)", "weight": "88-99 lbs (40-45kg)" },
+        { "size": "M", "length": 67, "chest": 95, "shoulder": 41, "sleeve": 20.5, "height": "5'3\"-5'5\" (160-165cm)", "weight": "99-110 lbs (45-50kg)" },
+        { "size": "L", "length": 69, "chest": 100, "shoulder": 42.5, "sleeve": 21.5, "height": "5'5\"-5'7\" (165-170cm)", "weight": "110-132 lbs (50-60kg)" },
+        { "size": "XL", "length": 72, "chest": 105, "shoulder": 44.5, "sleeve": 22.5, "height": "5'7\"-5'9\" (170-175cm)", "weight": "132-154 lbs (60-70kg)" },
+        { "size": "2XL", "length": 74, "chest": 110, "shoulder": 46.5, "sleeve": 23.5, "height": "5'9\"-5'11\" (175-180cm)", "weight": "154-165 lbs (70-75kg)" },
+        { "size": "3XL", "length": 76, "chest": 115, "shoulder": 48.5, "sleeve": 24.5, "height": "5'11\"-6'1\" (180-185cm)", "weight": "165-187 lbs (75-85kg)" }
+      ]
+    },
+    "gallery": [
+      "assets/products/360/main/1.jpg",
+      "assets/products/360/main/2.jpg",
+      "assets/products/360/main/3.jpg",
+      "assets/products/360/main/4.jpg",
+      "assets/products/360/detail/detail_1.jpg",
+      "assets/products/360/detail/detail_2.jpg"
+    ],
+    "skus": [
+      { "name": "Autumn Yellow", "thumb": "assets/products/360/sku/autumn_yellow.jpg", "hero": "assets/products/360/sku/autumn_yellow.jpg" },
+      { "name": "Classic Black", "thumb": "assets/products/360/sku/black.jpg", "hero": "assets/products/360/sku/black.jpg" },
+      { "name": "Charcoal Grey", "thumb": "assets/products/360/sku/charcoal.jpg", "hero": "assets/products/360/sku/charcoal.jpg" },
+      { "name": "Mocha Coffee", "thumb": "assets/products/360/sku/coffee.jpg", "hero": "assets/products/360/sku/coffee.jpg" },
+      { "name": "Forest Green", "thumb": "assets/products/360/sku/dark_green.jpg", "hero": "assets/products/360/sku/dark_green.jpg" },
+      { "name": "Custard Yellow", "thumb": "assets/products/360/sku/egg_yellow.jpg", "hero": "assets/products/360/sku/egg_yellow.jpg" },
+      { "name": "Klein Blue", "thumb": "assets/products/360/sku/klein_blue.jpg", "hero": "assets/products/360/sku/klein_blue.jpg" },
+      { "name": "Lotus Pink", "thumb": "assets/products/360/sku/lotus_pink.jpg", "hero": "assets/products/360/sku/lotus_pink.jpg" },
+      { "name": "Midnight Navy", "thumb": "assets/products/360/sku/navy.jpg", "hero": "assets/products/360/sku/navy.jpg" },
+      { "name": "Olive Green", "thumb": "assets/products/360/sku/olive_green.jpg", "hero": "assets/products/360/sku/olive_green.jpg" },
+      { "name": "Crimson Red", "thumb": "assets/products/360/sku/red.jpg", "hero": "assets/products/360/sku/red.jpg" },
+      { "name": "Pure White", "thumb": "assets/products/360/sku/white.jpg", "hero": "assets/products/360/sku/white.jpg" }
+    ],
+    "detailImages": [
+      "assets/products/360/detail/detail_1.jpg",
+      "assets/products/360/detail/detail_2.jpg",
+      "assets/products/360/detail/detail_3.jpg",
+      "assets/products/360/detail/detail_4.jpg",
+      "assets/products/360/detail/detail_5.jpg",
+      "assets/products/360/detail/detail_6.jpg"
+    ]
   }
 };
