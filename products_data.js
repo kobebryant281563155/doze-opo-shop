@@ -142,5 +142,64 @@ window.PRODUCTS_DATA = {
       "assets/products/360/detail/detail_5.jpg",
       "assets/products/360/detail/detail_6.jpg"
     ]
+  },
+  "T012": {
+    "id": "T012",
+    "name": "T012 240G Heavyweight Cotton Contrast Raglan Sleeve Tee",
+    "category": "tee",
+    "priceUSD": 9.99,
+    "gram": "240 GSM Double-Yarn Combed Cotton",
+    "img": "assets/products/T012/main/1.jpg",
+    "color": "8 Contrast Colorways",
+    "sizes": ["S", "M", "L", "XL", "2XL"],
+    "specs": [
+      "240 GSM 100% Combed Cotton · Double-Yarn 32S/2 Heavyweight Clean Knit",
+      "Athletic Contrast Raglan Sleeve Color-Block Construction with Ergonomic Arm Mobility",
+      "3.0cm High-Density 1x1 Elastic Ribbed Neckband with Bound Collar-to-Shoulder Taping",
+      "Boxy Streetwear Silhouette, Industrial Pre-Shrunk Wash (< 2% Shrinkage)",
+      "8 Contrast Colorways · 1-Piece Custom Tech Pack Sample & Bulk OEM Ready"
+    ],
+    "sizeTable": {
+      "columns": [
+        { "key": "size", "label": "Size", "isSize": true },
+        { "key": "length", "label": "Length", "unit": true },
+        { "key": "chest", "label": "Bust (Circumference)", "unit": true },
+        { "key": "sleeve", "label": "Raglan Sleeve (Collar to Cuff)", "unit": true },
+        { "key": "height", "label": "Rec. Height", "unit": false },
+        { "key": "weight", "label": "Rec. Weight", "unit": false }
+      ],
+      "rows": [
+        { "size": "S", "length": 70, "chest": 110, "sleeve": 38.5, "height": "5'5\"-5'7\" (165-170cm)", "weight": "110-132 lbs (50-60kg)" },
+        { "size": "M", "length": 72, "chest": 115, "sleeve": 40, "height": "5'7\"-5'9\" (170-175cm)", "weight": "132-143 lbs (60-65kg)" },
+        { "size": "L", "length": 74, "chest": 120, "sleeve": 41.5, "height": "5'9\"-5'11\" (175-180cm)", "weight": "143-165 lbs (65-75kg)" },
+        { "size": "XL", "length": 76, "chest": 125, "sleeve": 43, "height": "5'11\"-6'1\" (180-185cm)", "weight": "165-187 lbs (75-85kg)" },
+        { "size": "2XL", "length": 78, "chest": 130, "sleeve": 45, "height": "6'1\"-6'3\" (185-190cm)", "weight": "187-209 lbs (85-95kg)" }
+      ]
+    },
+    "gallery": [
+      "assets/products/T012/main/1.jpg",
+      "assets/products/T012/main/2.jpg",
+      "assets/products/T012/main/3.jpg",
+      "assets/products/T012/main/4.jpg"
+    ],
+    "skus": [
+      { "name": "White / Black", "thumb": "assets/products/T012/sku/white-black.jpg", "hero": "assets/products/T012/main/1.jpg" },
+      { "name": "Beige / Light Blue", "thumb": "assets/products/T012/sku/beige-lightblue.jpg", "hero": "assets/products/T012/sku/beige-lightblue.jpg" },
+      { "name": "Beige / Wheat", "thumb": "assets/products/T012/sku/beige-wheat.jpg", "hero": "assets/products/T012/sku/beige-wheat.jpg" },
+      { "name": "Sports Grey / Navy Blue", "thumb": "assets/products/T012/sku/sportsgrey-navyblue.jpg", "hero": "assets/products/T012/sku/sportsgrey-navyblue.jpg" },
+      { "name": "Navy Blue / Wine Red", "thumb": "assets/products/T012/sku/navyblue-winered.jpg", "hero": "assets/products/T012/sku/navyblue-winered.jpg" },
+      { "name": "Wheat / Jungle Green", "thumb": "assets/products/T012/sku/wheat-junglegreen.jpg", "hero": "assets/products/T012/sku/wheat-junglegreen.jpg" },
+      { "name": "Purple / Black", "thumb": "assets/products/T012/sku/purple-black.jpg", "hero": "assets/products/T012/sku/purple-black.jpg" },
+      { "name": "Wheat / Morandi Grey", "thumb": "assets/products/T012/sku/wheat-morandigrey.jpg", "hero": "assets/products/T012/sku/wheat-morandigrey.jpg" }
+    ],
+    "detailImages": [
+      "assets/products/T012/detail/detail_1.jpg",
+      "assets/products/T012/detail/detail_2.jpg",
+      "assets/products/T012/detail/detail_3.jpg",
+      "assets/products/T012/detail/detail_4.jpg",
+      "assets/products/T012/detail/detail_5.jpg",
+      "assets/products/T012/detail/detail_6.jpg",
+      "assets/products/T012/detail/detail_7.jpg"
+    ]
   }
 };

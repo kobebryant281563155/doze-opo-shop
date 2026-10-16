@@ -886,6 +886,44 @@ function renderDynamicLookbook(prod) {
       'assets/products/360/detail/detail_1.jpg',
       'assets/products/360/detail/detail_2.jpg'
     ];
+  } else if (prod.id === 'T012') {
+    const craftDetails = [
+      { img: 'assets/products/T012/detail/detail_1.jpg', title: '01 Contrast Raglan Neckline', desc: '3.0cm Bound Elastic Ribbed Collar with Contrast Sleeve Joining' },
+      { img: 'assets/products/T012/detail/detail_2.jpg', title: '02 High-Density Ribbed Neckband', desc: 'Pre-Shrunk Ribbed Neckband with Back Collar Clean Bound Taping' },
+      { img: 'assets/products/T012/detail/detail_3.jpg', title: '03 Precision Raglan Cuff Hem', desc: 'Twin-Needle Clean Edge Sleeve Cuffs with Contrast Overlock Stitching' },
+      { img: 'assets/products/T012/detail/detail_4.jpg', title: '04 Heavyweight Bottom Hem', desc: 'Reinforced Parallel Double-Needle Bottom Hem Resists Rolling' },
+      { img: 'assets/products/T012/detail/detail_5.jpg', title: '05 Contrast Raglan Shoulder Seam', desc: 'Ergonomic Diagonal Raglan Flatlock Seam for Mobility & Comfort' },
+      { img: 'assets/products/T012/detail/detail_6.jpg', title: '06 100% Combed Cotton 240G', desc: '240 GSM 32S/2 Double-Yarn Heavyweight Knit with Crisp Structured Drape' },
+      { img: 'assets/products/T012/detail/detail_7.jpg', title: '07 8 Contrast Colorways Selection', desc: 'Curated Streetwear Two-Tone Contrast Colorway Swatches' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card craft-card-01d">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (7 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">240 GSM 100% combed cotton · Double-stitched contrast raglan construction</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    lookbookImages = [
+      'assets/products/T012/main/1.jpg',
+      'assets/products/T012/main/2.jpg',
+      'assets/products/T012/main/3.jpg',
+      'assets/products/T012/main/4.jpg'
+    ];
   } else if (prod.id === 'T040') {
     const craftDetails = [
       { img: 'assets/products/T040/detail/detail_1.jpg', title: '01 Anti', desc: '3.0cm Anti-Deformation High Rebound Ribbed Collar' },
