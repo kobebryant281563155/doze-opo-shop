@@ -634,8 +634,9 @@ function openProductDetail(productId) {
     `;
   }
 
-  // Gallery thumbs (Includes main photos PLUS authentic Size Chart & Recommendation if configured)
+  // Gallery thumbs
   const thumbStrip = document.getElementById('pdpThumbStrip');
+  const baseGallery = prod.gallery || (prod.img ? [prod.img] : []);
   const galleryItems = baseGallery.map(img => ({ src: img, isChart: false, label: '' }));
   const gallery = baseGallery;
 
@@ -1521,6 +1522,27 @@ function renderDynamicLookbook(prod) {
       'assets/products/W439/main/5.jpg',
       'assets/products/W439/main/6.jpg'
     ];
+  } else if (prod.detailImages && prod.detailImages.length > 0) {
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card craft-card-01d">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (${prod.detailImages.length} Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">${prod.gram || 'Heavyweight Combed Cotton'} · Workshop Precision Construction</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${prod.detailImages.map((src, idx) => `
+            <div class="macro-craft-item">
+              <img src="${src}" alt="Detail ${idx + 1}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>Craft Spec ${String(idx + 1).padStart(2, '0')}</strong>
+                <small>Macro Fabric &amp; Workshop Finishing</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
   }
 
   const imagesHtml = lookbookImages.map((src, i) => `
