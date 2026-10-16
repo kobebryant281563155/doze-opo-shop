@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=101">
+  <link rel="stylesheet" href="styles.css?v=112">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -540,15 +540,15 @@
 
           <!-- Sticky Bottom Action Footer for PDP -->
           <div class="pdp-sticky-footer">
-            <button type="button" class="btn-pdp-wa" onclick="openWhatsAppModal()">
+            <button type="button" class="btn-pdp-wa" onclick="openWhatsAppModal()" title="WhatsApp Chat">
               <span>💬</span>
               <small>WhatsApp</small>
             </button>
-            <button type="button" class="btn-pdp-techpack" onclick="openB2BModal()">
-              <span>📁</span>
-              <small>Tech Pack</small>
+            <button type="button" class="btn-pdp-techpack" onclick="addPdpToCart()" title="Add to Sample Cart">
+              <span>🛒</span>
+              <small>Add Bag</small>
             </button>
-            <button type="button" class="btn-pdp-order" id="pdpOrderBtn" onclick="addPdpToCart()">
+            <button type="button" class="btn-pdp-order" id="pdpOrderBtn" onclick="openPdpCheckout()">
               <span id="pdpOrderBtnText">Order 1-PC Sample ($4.99)</span>
             </button>
           </div>
@@ -780,6 +780,14 @@
               <div class="menu-text">
                 <strong>Submit Tech Pack &amp; Artwork</strong>
                 <small>Accepts PDF, AI, PSD vector graphics &amp; size specs</small>
+              </div>
+              <span class="arrow">&gt;</span>
+            </div>
+            <div class="b2b-menu-item" onclick="openOrdersTrackingModal()">
+              <span class="menu-icon">📦</span>
+              <div class="menu-text">
+                <strong>My Sample Orders &amp; Delivery Tracking</strong>
+                <small>View paid PayPal sample orders and air express tracking</small>
               </div>
               <span class="arrow">&gt;</span>
             </div>
@@ -1154,11 +1162,126 @@
     </div>
   </div>
 
+  <!-- Modal 7: PayPal Express Checkout Modal -->
+  <div class="modal-backdrop" id="paypalCheckoutModal">
+    <div class="modal-drawer">
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <span class="checkout-super-tag">OFFICIAL PAYPAL DIRECT CHECKOUT</span>
+          <h4 id="checkoutModalTitle">Express Sample Order</h4>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closePaypalCheckoutModal()">✕</button>
+      </div>
+      <div class="modal-body checkout-modal-body">
+        <!-- Order Items Preview Container -->
+        <div class="checkout-items-preview" id="checkoutItemsPreview"></div>
+
+        <!-- Cost Breakdown Summary -->
+        <div class="checkout-cost-card">
+          <div class="cost-row">
+            <span>Garment Subtotal</span>
+            <span id="checkoutSubtotalDisplay">$0.00 USD</span>
+          </div>
+          <div class="cost-row">
+            <span>Direct Air Express (Global Door-to-Door)</span>
+            <span id="checkoutShippingDisplay">$8.00 USD</span>
+          </div>
+          <div class="cost-divider"></div>
+          <div class="cost-row total-row">
+            <span>Total Delivered Price</span>
+            <strong id="checkoutTotalDisplay">$0.00 USD</strong>
+          </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="checkout-trust-grid">
+          <div class="trust-item">
+            <span class="trust-icon">🛡️</span>
+            <div>
+              <strong>PayPal Buyer Protection</strong>
+              <small>100% Secure &amp; Full Refund Guarantee</small>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">✈️</span>
+            <div>
+              <strong>Direct Air Express</strong>
+              <small>Door-to-door delivery with tracking</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- PayPal Buttons Container -->
+        <div class="paypal-buttons-wrapper">
+          <div id="paypalButtonsContainer"></div>
+          <div id="paypalLoadingPlaceholder" class="paypal-loading-indicator">
+            <span>Loading PayPal Secure Payment...</span>
+          </div>
+        </div>
+
+        <!-- Alternate Action -->
+        <div class="checkout-alt-actions">
+          <button type="button" class="btn-checkout-alt-wa" onclick="inquireCheckoutViaWhatsApp()">
+            💬 Inquire Bulk Order / Custom Tech Pack on WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 8: Order Confirmation Receipt Modal -->
+  <div class="modal-backdrop" id="orderSuccessModal">
+    <div class="modal-drawer modal-center order-success-drawer">
+      <div class="modal-header">
+        <h4>Order Confirmed</h4>
+        <button type="button" class="modal-close-btn" onclick="closeOrderSuccessModal()">✕</button>
+      </div>
+      <div class="modal-body text-center order-success-body">
+        <div class="success-icon-badge">✓</div>
+        <h3>Payment Successful!</h3>
+        <p class="success-subtext">Your garment sample order has been successfully placed via PayPal.</p>
+
+        <div class="order-receipt-card" id="orderSuccessReceipt"></div>
+
+        <div class="delivery-notice-box">
+          <span class="notice-icon">📦</span>
+          <div>
+            <strong>Production &amp; Dispatch Timeline</strong>
+            <p>Dispatched in 24-48 hours. Tracking details will be emailed to your PayPal address.</p>
+          </div>
+        </div>
+
+        <div class="order-success-actions">
+          <a id="orderSuccessWaLink" href="https://wa.me/8618520682738" target="_blank" class="btn-wa-direct">
+            💬 WhatsApp Factory Concierge (Track Order)
+          </a>
+          <button type="button" class="btn-copy-wa" onclick="closeOrderSuccessModal(); switchTab('catalog');">
+            Continue Exploring Blanks
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 9: Sample Orders & Tracking Center -->
+  <div class="modal-backdrop" id="ordersTrackingModal">
+    <div class="modal-drawer">
+      <div class="modal-header">
+        <h4>Sample Orders &amp; Tracking</h4>
+        <button type="button" class="modal-close-btn" onclick="closeOrdersTrackingModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="ordersTrackingList" class="orders-tracking-list"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=111"></script>
-  <script src="products_data.js?v=111"></script>
-  <script src="app.js?v=111"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD"></script>
+  <script src="prints_data.js?v=112"></script>
+  <script src="products_data.js?v=112"></script>
+  <script src="app.js?v=112"></script>
 </body>
 </html>

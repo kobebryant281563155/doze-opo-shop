@@ -754,7 +754,7 @@ function openProductDetail(productId) {
   // Update Bottom Sticky Order Button
   const orderBtn = document.getElementById('pdpOrderBtn');
   if (orderBtn) {
-    orderBtn.onclick = () => addPdpToCart(productId);
+    orderBtn.onclick = () => openPdpCheckout(productId);
   }
   updatePdpShippingCalc();
 }
@@ -1790,12 +1790,12 @@ function updateCartTotal() {
 }
 
 function handleCartCheckout() {
-  if (APP_STATE.cartItems.length === 0) {
+  if (!APP_STATE.cartItems || APP_STATE.cartItems.length === 0) {
     showToast('Your sample cart is empty. Please add garments from the catalog!');
     switchTab('catalog');
     return;
   }
-  openWhatsAppModal();
+  openCartCheckout();
 }
 
 function modifyCartQty(index, delta) {
@@ -2101,5 +2101,407 @@ function closePrintShowcaseModal() {
 
 function inquirePrintWhatsApp() {
   const url = 'https://wa.me/8618520682738?text=' + encodeURIComponent('Hello DOZE OPO, I am interested in your Print Design Showcase graphics and 1-piece sample proofing on heavyweight blanks.');
+  window.open(url, '_blank');
+}
+
+// ==========================================================================
+// 19. PayPal Smart Payment Buttons & Direct Checkout System
+// ==========================================================================
+let CURRENT_CHECKOUT_CONFIG = null;
+
+function openPdpCheckout(productId) {
+  const prod = PRODUCTS_DATA[productId || activePdpProductId];
+  if (!prod) return;
+
+  const qty = Math.max(1, parseInt(activePdpQty) || 1);
+  const color = activePdpColor || (prod.skus && prod.skus[0] ? prod.skus[0].name : 'Default');
+  const size = activePdpSize || (prod.sizeTable && prod.sizeTable.rows && prod.sizeTable.rows[0] ? prod.sizeTable.rows[0].size : 'L');
+  
+  let thumb = prod.img;
+  if (prod.skus && prod.skus.length > 0) {
+    const matchedSku = prod.skus.find(s => s.name === color);
+    if (matchedSku && matchedSku.thumb) thumb = matchedSku.thumb;
+  }
+
+  const subtotalUSD = prod.priceUSD * qty;
+  const shippingUSD = calculateUsShipping(qty);
+
+  CURRENT_CHECKOUT_CONFIG = {
+    isCartCheckout: false,
+    productId: prod.id,
+    titleSummary: `${prod.name} (${color}, ${size})`,
+    items: [{
+      id: prod.id,
+      name: prod.name,
+      color: color,
+      size: size,
+      qty: qty,
+      priceUSD: prod.priceUSD,
+      thumb: thumb
+    }],
+    subtotalUSD: subtotalUSD,
+    shippingUSD: shippingUSD
+  };
+
+  updateCheckoutModalUI();
+  const modal = document.getElementById('paypalCheckoutModal');
+  if (modal) modal.classList.add('open');
+  renderPaypalButtons();
+}
+
+function openCartCheckout() {
+  if (!APP_STATE.cartItems || APP_STATE.cartItems.length === 0) {
+    showToast('Your sample cart is empty. Please add garments from the catalog!');
+    switchTab('catalog');
+    return;
+  }
+
+  let totalPieces = 0;
+  let subtotalUSD = 0;
+  const items = APP_STATE.cartItems.map(item => {
+    const q = Math.max(1, parseInt(item.qty) || 1);
+    totalPieces += q;
+    subtotalUSD += item.priceUSD * q;
+    return {
+      id: item.id,
+      name: item.name,
+      color: item.spec || 'Standard',
+      size: item.size || 'L',
+      qty: q,
+      priceUSD: item.priceUSD,
+      thumb: item.img
+    };
+  });
+
+  const shippingUSD = calculateUsShipping(totalPieces);
+
+  CURRENT_CHECKOUT_CONFIG = {
+    isCartCheckout: true,
+    titleSummary: `${items.length} Sample Styles (${totalPieces} pcs)`,
+    items: items,
+    subtotalUSD: subtotalUSD,
+    shippingUSD: shippingUSD
+  };
+
+  updateCheckoutModalUI();
+  const modal = document.getElementById('paypalCheckoutModal');
+  if (modal) modal.classList.add('open');
+  renderPaypalButtons();
+}
+
+function updateCheckoutModalUI() {
+  const cfg = CURRENT_CHECKOUT_CONFIG;
+  if (!cfg) return;
+
+  const container = document.getElementById('checkoutItemsPreview');
+  const subtotalElem = document.getElementById('checkoutSubtotalDisplay');
+  const shippingElem = document.getElementById('checkoutShippingDisplay');
+  const totalElem = document.getElementById('checkoutTotalDisplay');
+  const titleElem = document.getElementById('checkoutModalTitle');
+
+  if (titleElem) {
+    titleElem.textContent = cfg.isCartCheckout ? `Cart Sample Order (${cfg.items.length} Items)` : 'Express Sample Order';
+  }
+
+  if (container) {
+    container.innerHTML = cfg.items.map((it) => `
+      <div class="checkout-item-card">
+        <img src="${it.thumb}" alt="${it.name}" class="checkout-item-thumb">
+        <div class="checkout-item-info">
+          <div class="checkout-item-title">${it.name}</div>
+          <div class="checkout-item-meta">Size: <strong>${it.size}</strong> · Color: <strong>${it.color}</strong></div>
+          <div class="checkout-item-price-row">
+            <span class="checkout-item-price">$${it.priceUSD.toFixed(2)} USD</span>
+            ${!cfg.isCartCheckout ? `
+              <div class="checkout-qty-stepper">
+                <button type="button" class="cq-step-btn" onclick="modifyCheckoutSingleQty(-1)">−</button>
+                <span class="cq-step-num">${it.qty}</span>
+                <button type="button" class="cq-step-btn" onclick="modifyCheckoutSingleQty(1)">+</button>
+              </div>
+            ` : `
+              <span class="checkout-item-meta">Qty: <strong>${it.qty}</strong></span>
+            `}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
+  if (subtotalElem) subtotalElem.textContent = `$${cfg.subtotalUSD.toFixed(2)} USD`;
+  if (shippingElem) shippingElem.textContent = `$${cfg.shippingUSD.toFixed(2)} USD`;
+  if (totalElem) totalElem.textContent = `$${totalUSD.toFixed(2)} USD`;
+}
+
+function modifyCheckoutSingleQty(delta) {
+  if (!CURRENT_CHECKOUT_CONFIG || CURRENT_CHECKOUT_CONFIG.isCartCheckout) return;
+  const it = CURRENT_CHECKOUT_CONFIG.items[0];
+  if (!it) return;
+
+  const newQty = Math.max(1, it.qty + delta);
+  if (newQty === it.qty) return;
+
+  it.qty = newQty;
+  activePdpQty = newQty;
+  updatePdpShippingCalc();
+
+  CURRENT_CHECKOUT_CONFIG.subtotalUSD = it.priceUSD * newQty;
+  CURRENT_CHECKOUT_CONFIG.shippingUSD = calculateUsShipping(newQty);
+
+  updateCheckoutModalUI();
+  renderPaypalButtons();
+}
+
+function closePaypalCheckoutModal() {
+  const modal = document.getElementById('paypalCheckoutModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function renderPaypalButtons() {
+  const container = document.getElementById('paypalButtonsContainer');
+  const loading = document.getElementById('paypalLoadingPlaceholder');
+  if (!container) return;
+
+  container.innerHTML = '';
+  if (loading) {
+    loading.style.display = 'flex';
+    loading.innerHTML = '<span>Loading PayPal Secure Payment...</span>';
+  }
+
+  if (typeof paypal === 'undefined' || !paypal.Buttons) {
+    if (loading) {
+      loading.innerHTML = '<span>PayPal SDK connecting... If blocked, please check your network or WhatsApp us directly.</span>';
+    }
+    return;
+  }
+
+  try {
+    paypal.Buttons({
+      style: {
+        layout: 'vertical',
+        color: 'gold',
+        shape: 'rect',
+        label: 'checkout',
+        height: 48
+      },
+      createOrder: function(data, actions) {
+        const cfg = CURRENT_CHECKOUT_CONFIG;
+        const subtotal = parseFloat(cfg.subtotalUSD.toFixed(2));
+        const shipping = parseFloat(cfg.shippingUSD.toFixed(2));
+        const total = parseFloat((subtotal + shipping).toFixed(2));
+
+        return actions.order.create({
+          purchase_units: [{
+            description: `DOZE OPO Garment Sample: ${cfg.titleSummary}`.substring(0, 127),
+            amount: {
+              currency_code: 'USD',
+              value: total.toFixed(2),
+              breakdown: {
+                item_total: {
+                  currency_code: 'USD',
+                  value: subtotal.toFixed(2)
+                },
+                shipping: {
+                  currency_code: 'USD',
+                  value: shipping.toFixed(2)
+                }
+              }
+            },
+            items: cfg.items.map(it => ({
+              name: `${it.name} (${it.size}, ${it.color})`.substring(0, 127),
+              unit_amount: {
+                currency_code: 'USD',
+                value: parseFloat(it.priceUSD).toFixed(2)
+              },
+              quantity: it.qty.toString(),
+              category: 'PHYSICAL_GOODS'
+            }))
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          handleOrderSuccess(details, CURRENT_CHECKOUT_CONFIG);
+        });
+      },
+      onError: function(err) {
+        console.error('PayPal Checkout error:', err);
+        showToast('Payment processing was cancelled or encountered an error. Please try again.');
+      }
+    }).render('#paypalButtonsContainer').then(function() {
+      if (loading) loading.style.display = 'none';
+    }).catch(function(err) {
+      console.error('PayPal render error:', err);
+      if (loading) loading.innerHTML = '<span>Failed to render PayPal buttons. Please try again or WhatsApp us.</span>';
+    });
+  } catch (err) {
+    console.error('PayPal error:', err);
+    if (loading) loading.innerHTML = '<span>Error initializing PayPal buttons.</span>';
+  }
+}
+
+function handleOrderSuccess(details, cfg) {
+  closePaypalCheckoutModal();
+
+  const orderId = 'DOZE-' + Math.floor(100000 + Math.random() * 900000);
+  const paypalTxId = details.id || 'N/A';
+  const payerName = (details.payer && details.payer.name) 
+    ? `${details.payer.name.given_name || ''} ${details.payer.name.surname || ''}`.trim() 
+    : 'Valued Client';
+  const payerEmail = (details.payer && details.payer.email_address) ? details.payer.email_address : 'PayPal Checkout Account';
+  
+  let shippingAddr = 'Address recorded on PayPal receipt';
+  if (details.purchase_units && details.purchase_units[0] && details.purchase_units[0].shipping && details.purchase_units[0].shipping.address) {
+    const a = details.purchase_units[0].shipping.address;
+    shippingAddr = [a.address_line_1, a.address_line_2, a.admin_area_2, a.admin_area_1, a.postal_code, a.country_code].filter(Boolean).join(', ');
+  }
+
+  const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
+  const orderRecord = {
+    orderId: orderId,
+    paypalTxId: paypalTxId,
+    createdAt: new Date().toISOString(),
+    payerName: payerName,
+    payerEmail: payerEmail,
+    shippingAddress: shippingAddr,
+    items: cfg.items,
+    subtotalUSD: cfg.subtotalUSD,
+    shippingUSD: cfg.shippingUSD,
+    totalUSD: totalUSD,
+    status: 'Paid · In Production Queue'
+  };
+
+  try {
+    const saved = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
+    saved.unshift(orderRecord);
+    localStorage.setItem('DOZE_OPO_ORDERS', JSON.stringify(saved));
+  } catch (e) {
+    console.error('Failed to save order to localStorage', e);
+  }
+
+  if (cfg.isCartCheckout) {
+    APP_STATE.cartItems = [];
+    updateCartTotal();
+  }
+
+  const receipt = document.getElementById('orderSuccessReceipt');
+  if (receipt) {
+    receipt.innerHTML = `
+      <div class="receipt-row">
+        <span class="rc-label">Order Ref:</span>
+        <strong class="rc-val">${orderId}</strong>
+      </div>
+      <div class="receipt-row">
+        <span class="rc-label">PayPal TXID:</span>
+        <span class="rc-val">${paypalTxId}</span>
+      </div>
+      <div class="receipt-row">
+        <span class="rc-label">Recipient:</span>
+        <span class="rc-val">${payerName} (${payerEmail})</span>
+      </div>
+      <div class="receipt-row">
+        <span class="rc-label">Ship To:</span>
+        <span class="rc-val">${shippingAddr}</span>
+      </div>
+      <div class="receipt-divider"></div>
+      <div class="receipt-items-list">
+        ${cfg.items.map(it => `
+          <div class="receipt-item-row">
+            <span>${it.qty}× ${it.name} (${it.size}, ${it.color})</span>
+            <strong>$${(it.priceUSD * it.qty).toFixed(2)}</strong>
+          </div>
+        `).join('')}
+      </div>
+      <div class="receipt-divider"></div>
+      <div class="receipt-row receipt-total-row">
+        <span>Total Paid Delivered:</span>
+        <strong style="color: #c2410c; font-size: 14px;">$${totalUSD.toFixed(2)} USD</strong>
+      </div>
+    `;
+  }
+
+  const waBtn = document.getElementById('orderSuccessWaLink');
+  if (waBtn) {
+    const msg = encodeURIComponent(`Hello DOZE OPO! I have paid for Sample Order ${orderId} via PayPal (TX: ${paypalTxId}). Items: ${cfg.titleSummary}. Please confirm proofing and tracking.`);
+    waBtn.href = `https://wa.me/8618520682738?text=${msg}`;
+  }
+
+  openOrderSuccessModal();
+}
+
+function openOrderSuccessModal() {
+  const modal = document.getElementById('orderSuccessModal');
+  if (modal) modal.classList.add('open');
+}
+
+function closeOrderSuccessModal() {
+  const modal = document.getElementById('orderSuccessModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function openOrdersTrackingModal() {
+  const modal = document.getElementById('ordersTrackingModal');
+  const container = document.getElementById('ordersTrackingList');
+  if (!modal || !container) return;
+
+  let orders = [];
+  try {
+    orders = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
+  } catch (e) {
+    orders = [];
+  }
+
+  if (orders.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 30px 10px; color: #64748b;">
+        <div style="font-size: 32px; margin-bottom: 8px;">📦</div>
+        <h4 style="color: #0f172a; margin-bottom: 4px;">No Orders Placed Yet</h4>
+        <p style="font-size: 12px; margin-bottom: 16px;">When you place sample orders via PayPal, your tracking details and receipts will appear here.</p>
+        <button type="button" class="btn-wa-direct" onclick="closeOrdersTrackingModal(); switchTab('catalog');">
+          Browse Garment Catalog
+        </button>
+      </div>
+    `;
+  } else {
+    container.innerHTML = orders.map(ord => {
+      const dateStr = new Date(ord.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const itemsDesc = (ord.items || []).map(i => `${i.qty}× ${i.name} (${i.size}, ${i.color})`).join('; ');
+      const waTrackMsg = encodeURIComponent(`Hello DOZE OPO, I would like to check the express tracking status for Order ${ord.orderId} (PayPal: ${ord.paypalTxId}).`);
+      return `
+        <div class="order-track-card">
+          <div class="order-track-header">
+            <strong>${ord.orderId}</strong>
+            <span class="order-track-badge">${ord.status}</span>
+          </div>
+          <div style="font-size: 11px; color: #64748b;">Date: ${dateStr} · PayPal: ${ord.paypalTxId}</div>
+          <div style="font-size: 11.5px; color: #0f172a; margin: 4px 0;"><strong>Items:</strong> ${itemsDesc}</div>
+          <div style="font-size: 11px; color: #475569;"><strong>Deliver To:</strong> ${ord.shippingAddress}</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #e2e8f0;">
+            <strong style="color: #c2410c;">Total: $${parseFloat(ord.totalUSD).toFixed(2)} USD</strong>
+            <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" style="font-size: 11px; font-weight: 700; color: #0284c7; text-decoration: none;">
+              💬 Inquire Tracking ➔
+            </a>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  modal.classList.add('open');
+}
+
+function closeOrdersTrackingModal() {
+  const modal = document.getElementById('ordersTrackingModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function inquireCheckoutViaWhatsApp() {
+  if (!CURRENT_CHECKOUT_CONFIG) {
+    openWhatsAppModal();
+    return;
+  }
+  const cfg = CURRENT_CHECKOUT_CONFIG;
+  const text = `Hello DOZE OPO, I am inquiring about ordering samples for: ${cfg.titleSummary}. Total Delivered: $${(cfg.subtotalUSD + cfg.shippingUSD).toFixed(2)} USD. Could you please provide bulk OEM proofing details?`;
+  const url = 'https://wa.me/8618520682738?text=' + encodeURIComponent(text);
   window.open(url, '_blank');
 }
