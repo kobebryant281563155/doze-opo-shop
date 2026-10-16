@@ -636,15 +636,8 @@ function openProductDetail(productId) {
 
   // Gallery thumbs (Includes main photos PLUS authentic Size Chart & Recommendation if configured)
   const thumbStrip = document.getElementById('pdpThumbStrip');
-  const baseGallery = (prod.gallery && prod.gallery.length > 0) ? [...prod.gallery] : (prod.skus ? prod.skus.map(s => s.hero).slice(0, 4) : [prod.img]);
   const galleryItems = baseGallery.map(img => ({ src: img, isChart: false, label: '' }));
-  if (prod.sizeChart) {
-    galleryItems.push({ src: prod.sizeChart, isChart: true, label: '📏 Size'});
-  }
-  if (prod.sizeRecommend) {
-    galleryItems.push({ src: prod.sizeRecommend, isChart: true, label: '📐 Guide'});
-  }
-  const gallery = galleryItems.map(g => g.src);
+  const gallery = baseGallery;
 
   if (thumbStrip) {
     thumbStrip.innerHTML = '';
@@ -751,18 +744,10 @@ function openProductDetail(productId) {
     activePdpSize = '';
   }
 
-  // Lookbook view: T012 dedicated graphics vs Dynamic Lookbook for all other 18 products
-  const t012Section = document.getElementById('pdpT012CustomLookbook');
   const dynSection = document.getElementById('pdpDynamicLookbook');
-  if (t012Section && dynSection) {
-    if (productId === 'T012') {
-      t012Section.style.display = 'block';
-      dynSection.style.display = 'none';
-    } else {
-      t012Section.style.display = 'none';
-      dynSection.style.display = 'block';
-      renderDynamicLookbook(prod);
-    }
+  if (dynSection) {
+    dynSection.style.display = 'block';
+    renderDynamicLookbook(prod);
   }
 
   // Update Bottom Sticky Order Button
@@ -787,19 +772,6 @@ function renderDynamicLookbook(prod) {
   // Lookbook and Details
   let extraCraftHtml = '';
   // Dynamically render size guide section if product has size charts configured
-  let sizeGuideSectionHtml = '';
-  if (prod.sizeChart || prod.sizeRecommend) {
-    sizeGuideSectionHtml = `
-      <div class="pdp-lookbook-section">
-        <div class="pdp-lookbook-header">
-          <span class="lb-tag">SIZING GUIDE</span>
-          <h3>Size Chart &amp; Fit Recommendations</h3>
-        </div>
-        ${prod.sizeChart ? `<img src="${prod.sizeChart}" alt="${prod.name} Size Chart &amp; Model Sizing" class="pdp-lb-img">` : ''}
-        ${prod.sizeRecommend ? `<img src="${prod.sizeRecommend}" alt="${prod.name} Height &amp; Weight Size Recommendations" class="pdp-lb-img">` : ''}
-      </div>
-    `;
-  }
   let lookbookImages = (prod.detailImages && prod.detailImages.length > 0) ? prod.detailImages : prod.gallery;
 
   if (prod.id === '01D') {
@@ -1565,8 +1537,6 @@ function renderDynamicLookbook(prod) {
       </ul>
     </div>
 
-    <!-- Sizing Guide (Only for T040) -->
-    ${sizeGuideSectionHtml}
 
     <!-- Extra Craft Details for T040, T230, T235, T238, T275, T276, KB02, WY18, W350, W352, W430, W432, W439 & W510 -->
     ${extraCraftHtml}
