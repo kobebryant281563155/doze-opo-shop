@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=114">
+  <link rel="stylesheet" href="styles.css?v=115">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -31,7 +31,11 @@
             <span class="header-market-pill">GLOBAL B2B/B2C</span>
           </div>
           <div class="brand-title">DOZE OPO</div>
-          <div class="header-right-space"></div>
+          <div class="header-right-space">
+            <button type="button" class="header-orders-btn" onclick="openOrdersTrackingModal()" title="View Orders &amp; Delivery Tracking">
+              <span>📦 Orders</span>
+            </button>
+          </div>
         </div>
 
         <!-- Tab 1: Home Page -->
@@ -737,8 +741,13 @@
         <!-- Tab 3: Cart / RFQ Quote Page -->
         <div class="tab-page-content" id="cartPage" style="display: none;">
           <div class="cart-page-header">
-            <h3>Sample Cart &amp; RFQ Inquiry</h3>
-            <span class="item-count-text">Total <strong id="cartCountTitle">0</strong> sample item(s)</span>
+            <div>
+              <h3>Sample Cart &amp; RFQ Inquiry</h3>
+              <span class="item-count-text">Total <strong id="cartCountTitle">0</strong> sample item(s)</span>
+            </div>
+            <button type="button" class="btn-cart-track-orders" onclick="openOrdersTrackingModal()">
+              <span>📦 My Orders</span>
+            </button>
           </div>
           <div class="cart-items-wrapper" id="cartItemsList">
             <!-- Dynamically rendered via updateCartTotal() -->
@@ -783,7 +792,7 @@
               </div>
               <span class="arrow">&gt;</span>
             </div>
-            <div class="b2b-menu-item" onclick="openOrdersTrackingModal()">
+            <div class="b2b-menu-item highlight-order-menu" onclick="openOrdersTrackingModal()">
               <span class="menu-icon">📦</span>
               <div class="menu-text">
                 <strong>My Sample Orders &amp; Delivery Tracking</strong>
@@ -847,7 +856,7 @@
         </button>
         <button type="button" class="tab-item" data-tab="profile" onclick="switchTab('profile')">
           <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          <span class="tab-label">B2B Portal</span>
+          <span class="tab-label">Orders / B2B</span>
         </button>
       </nav>
 
@@ -1339,8 +1348,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=114"></script>
-  <script src="products_data.js?v=114"></script>
-  <script src="app.js?v=114"></script>
+  <script src="prints_data.js?v=115"></script>
+  <script src="products_data.js?v=115"></script>
+  <script src="app.js?v=115"></script>
 </body>
 </html>
