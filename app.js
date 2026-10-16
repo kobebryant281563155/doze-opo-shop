@@ -495,6 +495,97 @@ function updatePdpShippingCalc() {
   }
 }
 
+// --------------------------------------------------------------------------
+// TikTok Shop Interactive Size Chart Component & Live Unit Converter
+// --------------------------------------------------------------------------
+let CURRENT_SIZE_UNIT = 'cm';
+
+function setGlobalSizeUnit(unit) {
+  CURRENT_SIZE_UNIT = unit;
+  document.querySelectorAll('.unit-toggle-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === unit);
+  });
+  document.querySelectorAll('[data-unit-label]').forEach(el => {
+    el.textContent = unit;
+  });
+  document.querySelectorAll('.size-cell-val[data-cm]').forEach(el => {
+    const cm = parseFloat(el.getAttribute('data-cm'));
+    if (unit === 'in') {
+      const inch = (cm / 2.54).toFixed(1);
+      el.textContent = inch;
+    } else {
+      el.textContent = cm % 1 === 0 ? cm.toFixed(0) : cm.toFixed(1);
+    }
+  });
+}
+
+function selectPdpSizeFromTable(size) {
+  const sizeBtns = document.querySelectorAll('#pdpSizeRow .pdp-size-btn');
+  sizeBtns.forEach(btn => {
+    if (btn.textContent.trim() === size) {
+      btn.click();
+    }
+  });
+}
+
+function renderTikTokSizeTableHtml(tableData, activeSize) {
+  if (!tableData || !tableData.columns || !tableData.rows) return '';
+  const unit = CURRENT_SIZE_UNIT || 'cm';
+
+  const ths = tableData.columns.map(col => {
+    if (col.unit) {
+      return `<th>${col.label} <span class="unit-sub" data-unit-label>${unit}</span></th>`;
+    }
+    return `<th>${col.label}</th>`;
+  }).join('');
+
+  const trs = tableData.rows.map(row => {
+    const isRowActive = (row.size === activeSize);
+    const tds = tableData.columns.map(col => {
+      const val = row[col.key];
+      if (col.isSize) {
+        return `<td class="col-size">${val}</td>`;
+      }
+      if (col.unit && typeof val === 'number') {
+        const displayVal = unit === 'in' ? (val / 2.54).toFixed(1) : (val % 1 === 0 ? val.toFixed(0) : val.toFixed(1));
+        return `<td><span class="size-cell-val" data-cm="${val}">${displayVal}</span></td>`;
+      }
+      return `<td>${val || '-'}</td>`;
+    }).join('');
+
+    return `<tr class="tiktok-size-tr ${isRowActive ? 'active-size-row' : ''}" data-row-size="${row.size}" onclick="selectPdpSizeFromTable('${row.size}')">${tds}</tr>`;
+  }).join('');
+
+  return `
+    <div class="tiktok-size-card">
+      <div class="tiktok-size-header">
+        <div class="tiktok-size-title-group">
+          <span class="tiktok-size-icon">📐</span>
+          <span class="tiktok-size-title">Size Guide &amp; Measurements</span>
+          <span class="tiktok-size-badge">TikTok Shop Style</span>
+        </div>
+        <div class="tiktok-unit-switch" role="group" aria-label="Measurement Unit Switch">
+          <button type="button" class="unit-toggle-pill ${unit === 'cm' ? 'active' : ''}" onclick="setGlobalSizeUnit('cm')">cm</button>
+          <button type="button" class="unit-toggle-pill ${unit === 'in' ? 'active' : ''}" onclick="setGlobalSizeUnit('in')">in</button>
+        </div>
+      </div>
+      <div class="tiktok-table-scroll-wrap">
+        <table class="tiktok-size-table">
+          <thead>
+            <tr>${ths}</tr>
+          </thead>
+          <tbody>
+            ${trs}
+          </tbody>
+        </table>
+      </div>
+      <div class="tiktok-size-footer">
+        <span class="size-hint-item">💡 点击任意尺码行直接选中对应尺码 · 平铺实测公差 ±1-2cm (0.4-0.8in) 属正常</span>
+      </div>
+    </div>
+  `;
+}
+
 function openProductDetail(productId) {
   const prod = PRODUCTS_DATA[productId];
   if (!prod) return;
@@ -619,7 +710,13 @@ function openProductDetail(productId) {
     }
 
     // Configure Size Guide Button & In-place Preview
-    if (prod.sizeChart || prod.sizeRecommend) {
+    if (prod.sizeTable) {
+      if (sizeGuideBtn) sizeGuideBtn.style.display = 'inline-flex';
+      if (sizePreviewBox) {
+        sizePreviewBox.innerHTML = renderTikTokSizeTableHtml(prod.sizeTable, activePdpSize);
+        sizePreviewBox.style.display = 'block';
+      }
+    } else if (prod.sizeChart || prod.sizeRecommend) {
       if (sizeGuideBtn) sizeGuideBtn.style.display = 'inline-flex';
       if (sizePreviewBox) {
         sizePreviewBox.innerHTML = `
@@ -705,7 +802,52 @@ function renderDynamicLookbook(prod) {
   }
   let lookbookImages = (prod.detailImages && prod.detailImages.length > 0) ? prod.detailImages : prod.gallery;
 
-  if (prod.id === 'T040') {
+  if (prod.id === '01D') {
+    const craftDetails = [
+      { img: 'assets/products/01D/detail/1.jpg', title: '01 领口高弹罗纹', desc: '3.0cm Anti-Deformation High Rebound Ribbed Collar' },
+      { img: 'assets/products/01D/detail/2.jpg', title: '02 领后通肩压条', desc: 'Collar-to-Shoulder Clean Bound Comfort Taping' },
+      { img: 'assets/products/01D/detail/3.jpg', title: '03 连肩双针走线', desc: 'Reinforced Drop-Shoulder Structural Seams' },
+      { img: 'assets/products/01D/detail/4.jpg', title: '04 袖口平整锁边', desc: 'Precision Parallel Twin-Needle Cuff Overlock' },
+      { img: 'assets/products/01D/detail/5.jpg', title: '05 下摆防卷双针', desc: 'Heavyweight Anti-Curling Twin-Needle Hem' },
+      { img: 'assets/products/01D/detail/6.jpg', title: '06 紧密赛洛纺织造', desc: '20S Compact Siro-Spun Combed Cotton Weave' },
+      { img: 'assets/products/01D/detail/7.jpg', title: '07 街头挺括垂坠', desc: 'Authentic 90s Boxy Natural Clean Drape' },
+      { img: 'assets/products/01D/detail/8.jpg', title: '08 侧骨平整包缝', desc: 'Bar-Tacked Side Seam Structural Reinforcement' },
+      { img: 'assets/products/01D/detail/9.jpg', title: '09 环保活性染色', desc: 'Eco-Friendly Reactive Dyeing & High Colorfastness' },
+      { img: 'assets/products/01D/detail/10.jpg', title: '10 紧密抗起球处理', desc: 'Grade 4+ Anti-Pilling Low Surface Fuzz' },
+      { img: 'assets/products/01D/detail/11.jpg', title: '11 纯棉亲肤透气', desc: '100% Long-Staple Breathable Combed Cotton' },
+      { img: 'assets/products/01D/detail/12.jpg', title: '12 工业预缩定型', desc: 'High-Temp Industrial Pre-Shrunk (< 2% Shrink)' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card craft-card-01d">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (12 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">20S Compact Siro-Spun 230 GSM Combed Cotton · Double-stitched high durability</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    lookbookImages = [
+      'assets/products/01D/main/1.jpg',
+      'assets/products/01D/main/2.jpg',
+      'assets/products/01D/main/3.jpg',
+      'assets/products/01D/main/4.jpg',
+      'assets/products/01D/main/5.jpg',
+      'assets/products/01D/main/6.jpg'
+    ];
+  } else if (prod.id === 'T040') {
     const craftDetails = [
       { img: 'assets/products/T040/detail/detail_1.jpg', title: '01 领口细节', desc: '3.0cm Anti-Deformation High Rebound Ribbed Collar' },
       { img: 'assets/products/T040/detail/detail_2.jpg', title: '02 肩袖做工', desc: 'Reinforced Drop-Shoulder Structural Seams' },
@@ -1402,8 +1544,13 @@ function selectPdpSize(size, elem) {
   const sizeLabel = document.getElementById('pdpActiveSizeName');
   if (sizeLabel) sizeLabel.textContent = `${size} (Oversized Street Fit)`;
 
-  document.querySelectorAll('.pdp-size-btn').forEach(btn => btn.classList.remove('active'));
-  if (elem) elem.classList.add('active');
+  document.querySelectorAll('.pdp-size-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() === size);
+  });
+
+  document.querySelectorAll('.tiktok-size-tr').forEach(tr => {
+    tr.classList.toggle('active-size-row', tr.getAttribute('data-row-size') === size);
+  });
 }
 
 function addPdpToCart(productId) {
@@ -1667,19 +1814,41 @@ function openSizeGuideModal() {
   const btnRec = document.getElementById('btnTabRecommend');
 
   if (title) title.textContent = prod.name + ' - 真实尺码与试穿指南 (Size Guide)';
-  if (imgGarment) imgGarment.src = prod.sizeChart || '';
-  if (imgRecommend) imgRecommend.src = prod.sizeRecommend || '';
 
-  if (btnGarment) {
-    btnGarment.style.display = prod.sizeChart ? 'block' : 'none';
-    btnGarment.innerHTML = prod.sizeRecommend ? '📐 成衣精确尺寸表 (Garment Dimensions)' : '📐 官方实测尺寸与推荐指南 (Size &amp; Fit Guide)';
-  }
-  if (btnRec) btnRec.style.display = prod.sizeRecommend ? 'block' : 'none';
+  const container = document.querySelector('.size-modal-content-wrap');
+  let tableWrap = document.getElementById('sizeModalTableWrap');
 
-  if (prod.sizeChart) {
-    switchSizeModalTab('garment');
-  } else if (prod.sizeRecommend) {
-    switchSizeModalTab('recommend');
+  if (prod.sizeTable) {
+    if (btnGarment) btnGarment.style.display = 'none';
+    if (btnRec) btnRec.style.display = 'none';
+    if (!tableWrap && container) {
+      tableWrap = document.createElement('div');
+      tableWrap.id = 'sizeModalTableWrap';
+      tableWrap.className = 'size-modal-table-wrap';
+      container.insertBefore(tableWrap, container.firstChild);
+    }
+    if (tableWrap) {
+      tableWrap.innerHTML = renderTikTokSizeTableHtml(prod.sizeTable, activePdpSize);
+      tableWrap.style.display = 'block';
+    }
+    if (imgGarment) imgGarment.style.display = 'none';
+    if (imgRecommend) imgRecommend.style.display = 'none';
+  } else {
+    if (tableWrap) tableWrap.style.display = 'none';
+    if (imgGarment) imgGarment.src = prod.sizeChart || '';
+    if (imgRecommend) imgRecommend.src = prod.sizeRecommend || '';
+
+    if (btnGarment) {
+      btnGarment.style.display = prod.sizeChart ? 'block' : 'none';
+      btnGarment.innerHTML = prod.sizeRecommend ? '📐 成衣精确尺寸表 (Garment Dimensions)' : '📐 官方实测尺寸与推荐指南 (Size &amp; Fit Guide)';
+    }
+    if (btnRec) btnRec.style.display = prod.sizeRecommend ? 'block' : 'none';
+
+    if (prod.sizeChart) {
+      switchSizeModalTab('garment');
+    } else if (prod.sizeRecommend) {
+      switchSizeModalTab('recommend');
+    }
   }
 
   if (modal) modal.classList.add('open');
