@@ -414,7 +414,7 @@
               </div>
               <button type="button" class="pdp-size-guide-btn" id="pdpSizeGuideBtn" onclick="openSizeGuideModal()">
                 <span class="guide-icon">📏</span>
-                <span>Size Chart / 尺码表</span>
+                <span>Size Chart &amp; Fit Guide</span>
               </button>
             </div>
             <div class="pdp-size-row" id="pdpSizeRow">
@@ -697,7 +697,7 @@
                 </div>
 
                   <div class="calc-row">
-                    <label>4. Shipping to United States (美国直邮专线):</label>
+                    <label>4. Shipping to United States (US Priority Line):</label>
                     <div class="custom-shipping-box">
                       <div class="cship-header">
                         <div class="cship-dest">
@@ -1078,10 +1078,10 @@
       <div class="modal-body size-modal-body">
         <div class="size-modal-tabs">
           <button type="button" class="size-tab-btn active" id="btnTabGarment" onclick="switchSizeModalTab('garment')">
-            📐 成衣精确尺寸表 (Garment Dimensions)
+            📐 Garment Dimensions &amp; Measurements
           </button>
           <button type="button" class="size-tab-btn" id="btnTabRecommend" onclick="switchSizeModalTab('recommend')">
-            👤 身高体重推荐表 (Recommended Fit)
+            👤 Body Fit &amp; Size Recommendations
           </button>
         </div>
         <div class="size-modal-content-wrap">
@@ -1089,7 +1089,7 @@
             <img id="sizeModalImgGarment" src="" alt="Garment Size Chart" class="size-modal-img" onclick="window.open(this.src, '_blank')">
             <img id="sizeModalImgRecommend" src="" alt="Fit Recommendation Chart" class="size-modal-img" style="display: none;" onclick="window.open(this.src, '_blank')">
           </div>
-          <p class="size-modal-hint">🔍 点击图片可全屏放大原图 · 纯手工实测误差在 ±1-2cm 属合理范围</p>
+          <p class="size-modal-hint">🔍 Interactive live measurements · Manual flat tolerance within ±1-2cm (0.4-0.8 in) is standard</p>
         </div>
       </div>
     </div>
@@ -1226,8 +1226,8 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=101"></script>
-  <script src="products_data.js?v=101"></script>
-  <script src="app.js?v=101"></script>
+  <script src="prints_data.js?v=102"></script>
+  <script src="products_data.js?v=102"></script>
+  <script src="app.js?v=102"></script>
 </body>
 </html>

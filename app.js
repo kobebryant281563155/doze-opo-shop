@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    DOZE OPO Mobile Independent Store Frontend Logic (English Version)
    Features: Dynamic Multi-Currency, Instant OEM Quote Calc, Tab Routing,
              Product Modals, Sample Cart, and WhatsApp/Tech Pack Flow
@@ -580,7 +580,7 @@ function renderTikTokSizeTableHtml(tableData, activeSize) {
         </table>
       </div>
       <div class="tiktok-size-footer">
-        <span class="size-hint-item">💡 点击任意尺码行直接选中对应尺码 · 平铺实测公差 ±1-2cm (0.4-0.8in) 属正常</span>
+        <span class="size-hint-item">💡 Click any size row to select · Manual flat tolerance within ±1-2cm (0.4-0.8 in) is standard</span>
       </div>
     </div>
   `;
@@ -722,22 +722,22 @@ function openProductDetail(productId) {
         sizePreviewBox.innerHTML = `
           <div class="pdp-size-mini-box" onclick="openSizeGuideModal()">
             <div class="pdp-size-mini-header">
-              <span class="pdp-size-mini-title">📏 官方实测尺寸表 &amp; 试穿建议</span>
-              <span class="pdp-size-mini-badge">点击放大原图 🔍</span>
+              <span class="pdp-size-mini-title">📏 Official Size Guide & Fit Recommendations</span>
+              <span class="pdp-size-mini-badge">Full View 🔍</span>
             </div>
             <div class="pdp-size-mini-thumbs">
               ${prod.sizeChart ? `
                 <div class="pdp-mini-thumb-item">
-                  <img src="${prod.sizeChart}" alt="成衣尺寸测量表">
-                  <span>📐 ${prod.sizeRecommend ? '成衣精确尺寸表' : '实测尺寸与推荐指南'}</span>
+                  <img src="${prod.sizeChart}" alt="Garment Measurements Guide">
+                  <span>📐 ${prod.sizeRecommend ? 'Garment Dimensions' : 'Size & Fit Recommendations'}</span>
                 </div>` : ''}
               ${prod.sizeRecommend ? `
                 <div class="pdp-mini-thumb-item">
-                  <img src="${prod.sizeRecommend}" alt="身高体重推荐表">
-                  <span>👤 身高体重推荐表</span>
+                  <img src="${prod.sizeRecommend}" alt="Body Fit & Size Recommendations">
+                  <span>👤 Body Fit & Size Recommendations</span>
                 </div>` : ''}
             </div>
-            <div class="pdp-mini-zoom-hint">点击卡片任意处或右上角【尺码表】即可弹窗全屏查看高清大图</div>
+            <div class="pdp-mini-zoom-hint">Click card or tap [Size Chart] to view high-definition full guide</div>
           </div>
         `;
         sizePreviewBox.style.display = 'block';
@@ -804,18 +804,18 @@ function renderDynamicLookbook(prod) {
 
   if (prod.id === '01D') {
     const craftDetails = [
-      { img: 'assets/products/01D/detail/1.jpg', title: '01 领口高弹罗纹', desc: '3.0cm Anti-Deformation High Rebound Ribbed Collar' },
-      { img: 'assets/products/01D/detail/2.jpg', title: '02 领后通肩压条', desc: 'Collar-to-Shoulder Clean Bound Comfort Taping' },
-      { img: 'assets/products/01D/detail/3.jpg', title: '03 连肩双针走线', desc: 'Reinforced Drop-Shoulder Structural Seams' },
-      { img: 'assets/products/01D/detail/4.jpg', title: '04 袖口平整锁边', desc: 'Precision Parallel Twin-Needle Cuff Overlock' },
-      { img: 'assets/products/01D/detail/5.jpg', title: '05 下摆防卷双针', desc: 'Heavyweight Anti-Curling Twin-Needle Hem' },
-      { img: 'assets/products/01D/detail/6.jpg', title: '06 紧密赛洛纺织造', desc: '20S Compact Siro-Spun Combed Cotton Weave' },
-      { img: 'assets/products/01D/detail/7.jpg', title: '07 街头挺括垂坠', desc: 'Authentic 90s Boxy Natural Clean Drape' },
-      { img: 'assets/products/01D/detail/8.jpg', title: '08 侧骨平整包缝', desc: 'Bar-Tacked Side Seam Structural Reinforcement' },
-      { img: 'assets/products/01D/detail/9.jpg', title: '09 环保活性染色', desc: 'Eco-Friendly Reactive Dyeing & High Colorfastness' },
-      { img: 'assets/products/01D/detail/10.jpg', title: '10 紧密抗起球处理', desc: 'Grade 4+ Anti-Pilling Low Surface Fuzz' },
-      { img: 'assets/products/01D/detail/11.jpg', title: '11 纯棉亲肤透气', desc: '100% Long-Staple Breathable Combed Cotton' },
-      { img: 'assets/products/01D/detail/12.jpg', title: '12 工业预缩定型', desc: 'High-Temp Industrial Pre-Shrunk (< 2% Shrink)' }
+      { img: 'assets/products/01D/detail/1.jpg', title: '01 High-Elastic Ribbed Neckband', desc: '3.0cm Anti-Deformation High Rebound Ribbed Collar' },
+      { img: 'assets/products/01D/detail/2.jpg', title: '02 Bound Shoulder-to-Shoulder Taping', desc: 'Collar-to-Shoulder Clean Bound Comfort Taping' },
+      { img: 'assets/products/01D/detail/3.jpg', title: '03 Reinforced Drop-Shoulder Seams', desc: 'Reinforced Drop-Shoulder Structural Seams' },
+      { img: 'assets/products/01D/detail/4.jpg', title: '04 Precision Twin-Needle Cuff', desc: 'Precision Parallel Twin-Needle Cuff Overlock' },
+      { img: 'assets/products/01D/detail/5.jpg', title: '05 Anti-Curling Twin-Needle Hem', desc: 'Heavyweight Anti-Curling Twin-Needle Hem' },
+      { img: 'assets/products/01D/detail/6.jpg', title: '06 20S Compact Siro-Spun Weave', desc: '20S Compact Siro-Spun Combed Cotton Weave' },
+      { img: 'assets/products/01D/detail/7.jpg', title: '07 Boxy Streetwear Natural Drape', desc: 'Authentic 90s Boxy Natural Clean Drape' },
+      { img: 'assets/products/01D/detail/8.jpg', title: '08 Bar-Tacked Structural Overlock', desc: 'Bar-Tacked Side Seam Structural Reinforcement' },
+      { img: 'assets/products/01D/detail/9.jpg', title: '09 Eco-Friendly Reactive Dye', desc: 'Eco-Friendly Reactive Dyeing & High Colorfastness' },
+      { img: 'assets/products/01D/detail/10.jpg', title: '10 Grade 4+ Anti-Pilling Finish', desc: 'Grade 4+ Anti-Pilling Low Surface Fuzz' },
+      { img: 'assets/products/01D/detail/11.jpg', title: '11 100% Breathable Combed Cotton', desc: '100% Long-Staple Breathable Combed Cotton' },
+      { img: 'assets/products/01D/detail/12.jpg', title: '12 Pre-Shrunk Industrial Finish', desc: 'High-Temp Industrial Pre-Shrunk (< 2% Shrink)' }
     ];
 
     extraCraftHtml = `
@@ -849,14 +849,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'T040') {
     const craftDetails = [
-      { img: 'assets/products/T040/detail/detail_1.jpg', title: '01 领口细节', desc: '3.0cm Anti-Deformation High Rebound Ribbed Collar' },
-      { img: 'assets/products/T040/detail/detail_2.jpg', title: '02 肩袖做工', desc: 'Reinforced Drop-Shoulder Structural Seams' },
-      { img: 'assets/products/T040/detail/detail_3.jpg', title: '03 下摆双针', desc: 'Twin-Needle Clean Edge Lockstitching' },
-      { img: 'assets/products/T040/detail/detail_4.jpg', title: '04 面料质感', desc: '245 GSM 100% Combed Compact Cotton Weave' },
-      { img: 'assets/products/T040/detail/detail_5.jpg', title: '05 内里压条', desc: 'Clean Collar-to-Shoulder Bound Taping & Overlock' },
-      { img: 'assets/products/T040/detail/detail_6.jpg', title: '06 高弹韧性', desc: 'Pre-Shrunk Ribbed Neckband - Anti-Bacon Collar' },
-      { img: 'assets/products/T040/detail/detail_7.jpg', title: '07 挺括垂坠', desc: 'Heavyweight Streetwear Boxy Natural Drape' },
-      { img: 'assets/products/T040/detail/detail_8.jpg', title: '08 双股织造', desc: 'Double-Yarn Combed Cotton Smooth Finish' }
+      { img: 'assets/products/T040/detail/detail_1.jpg', title: '01 Anti', desc: '3.0cm Anti-Deformation High Rebound Ribbed Collar' },
+      { img: 'assets/products/T040/detail/detail_2.jpg', title: '02 Reinforced Drop', desc: 'Reinforced Drop-Shoulder Structural Seams' },
+      { img: 'assets/products/T040/detail/detail_3.jpg', title: '03 Twin', desc: 'Twin-Needle Clean Edge Lockstitching' },
+      { img: 'assets/products/T040/detail/detail_4.jpg', title: '04 100% Combed Compact Cotton Wea', desc: '245 GSM 100% Combed Compact Cotton Weave' },
+      { img: 'assets/products/T040/detail/detail_5.jpg', title: '05 Clean Collar', desc: 'Clean Collar-to-Shoulder Bound Taping & Overlock' },
+      { img: 'assets/products/T040/detail/detail_6.jpg', title: '06 Pre', desc: 'Pre-Shrunk Ribbed Neckband - Anti-Bacon Collar' },
+      { img: 'assets/products/T040/detail/detail_7.jpg', title: '07 Heavyweight Streetwear Boxy Na', desc: 'Heavyweight Streetwear Boxy Natural Drape' },
+      { img: 'assets/products/T040/detail/detail_8.jpg', title: '08 Double', desc: 'Double-Yarn Combed Cotton Smooth Finish' }
     ];
 
     extraCraftHtml = `
@@ -901,14 +901,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'T235') {
     const craftDetails = [
-      { img: 'assets/products/T235/detail/detail_1.jpg', title: '01 领口拼接', desc: 'Double-Stitched Contrast Ribbed Collar & Raglan Join' },
-      { img: 'assets/products/T235/detail/detail_2.jpg', title: '02 后领压条', desc: 'Clean Back Collar Bound Taping & Reinforced Seams' },
-      { img: 'assets/products/T235/detail/detail_3.jpg', title: '03 袖口做工', desc: 'Twin-Needle Clean Edge Sleeve Cuffs (Fitted Openings)' },
-      { img: 'assets/products/T235/detail/detail_4.jpg', title: '04 挺括垂坠', desc: '235 GSM Heavyweight Cotton - Structured Anti-Wrinkle Drape' },
-      { img: 'assets/products/T235/detail/detail_5.jpg', title: '05 领标质感', desc: '100% Combed Cotton Tech Pack Spec Label (Pre-Shrunk < 2%)' },
-      { img: 'assets/products/T235/detail/detail_6.jpg', title: '06 下摆双针', desc: 'Reinforced Bottom Hem Double-Needle Lockstitching' },
-      { img: 'assets/products/T235/detail/detail_7.jpg', title: '07 密实落差', desc: 'Heavy Fabric Gauge Wave & High Tensile Tear Resistance' },
-      { img: 'assets/products/T235/detail/detail_8.jpg', title: '08 紧密双纱', desc: '32S/2 Double-Yarn Compact Combed Cotton Textile Weave' }
+      { img: 'assets/products/T235/detail/detail_1.jpg', title: '01 Double', desc: 'Double-Stitched Contrast Ribbed Collar & Raglan Join' },
+      { img: 'assets/products/T235/detail/detail_2.jpg', title: '02 Clean Back Collar Bound Taping', desc: 'Clean Back Collar Bound Taping & Reinforced Seams' },
+      { img: 'assets/products/T235/detail/detail_3.jpg', title: '03 Twin', desc: 'Twin-Needle Clean Edge Sleeve Cuffs (Fitted Openings)' },
+      { img: 'assets/products/T235/detail/detail_4.jpg', title: '04 Heavyweight Cotton', desc: '235 GSM Heavyweight Cotton - Structured Anti-Wrinkle Drape' },
+      { img: 'assets/products/T235/detail/detail_5.jpg', title: '05 100% Combed Cotton Tech Pack S', desc: '100% Combed Cotton Tech Pack Spec Label (Pre-Shrunk < 2%)' },
+      { img: 'assets/products/T235/detail/detail_6.jpg', title: '06 Reinforced Bottom Hem Double', desc: 'Reinforced Bottom Hem Double-Needle Lockstitching' },
+      { img: 'assets/products/T235/detail/detail_7.jpg', title: '07 Heavy Fabric Gauge Wave', desc: 'Heavy Fabric Gauge Wave & High Tensile Tear Resistance' },
+      { img: 'assets/products/T235/detail/detail_8.jpg', title: '08 Double', desc: '32S/2 Double-Yarn Compact Combed Cotton Textile Weave' }
     ];
 
     extraCraftHtml = `
@@ -953,14 +953,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'T238') {
     const craftDetails = [
-      { img: 'assets/products/T238/detail/detail_1.jpg', title: '01 高螺纹领口', desc: '3.5cm High-Density Rebound Elastic Ribbed Collar' },
-      { img: 'assets/products/T238/detail/detail_2.jpg', title: '02 通肩压条', desc: 'Collar-to-Shoulder Reinforced Bound Taping' },
-      { img: 'assets/products/T238/detail/detail_3.jpg', title: '03 螺纹袖口', desc: 'Fitted 1x1 Ribbed Wrist Cuffs - Anti-Deformation' },
-      { img: 'assets/products/T238/detail/detail_4.jpg', title: '04 面料垂坠', desc: '235 GSM Combed Compact Cotton Heavyweight Drape' },
-      { img: 'assets/products/T238/detail/detail_5.jpg', title: '05 科技规格标', desc: '100% Combed Cotton Tech Pack Spec Label (< 2% Shrink)' },
-      { img: 'assets/products/T238/detail/detail_6.jpg', title: '06 下摆双针', desc: 'Twin-Needle Clean Edge Lockstitching & Side Seams' },
-      { img: 'assets/products/T238/detail/detail_7.jpg', title: '07 密实落差', desc: 'Heavy Fabric Gauge Wave & High Tensile Tear Resistance' },
-      { img: 'assets/products/T238/detail/detail_8.jpg', title: '08 紧密双纱', desc: '32S/2 Double-Yarn Compact Combed Cotton Textile Weave' }
+      { img: 'assets/products/T238/detail/detail_1.jpg', title: '01 High', desc: '3.5cm High-Density Rebound Elastic Ribbed Collar' },
+      { img: 'assets/products/T238/detail/detail_2.jpg', title: '02 Collar', desc: 'Collar-to-Shoulder Reinforced Bound Taping' },
+      { img: 'assets/products/T238/detail/detail_3.jpg', title: '03 Fitted 1x1 Ribbed Wrist Cuffs', desc: 'Fitted 1x1 Ribbed Wrist Cuffs - Anti-Deformation' },
+      { img: 'assets/products/T238/detail/detail_4.jpg', title: '04 Combed Compact Cotton Heavywei', desc: '235 GSM Combed Compact Cotton Heavyweight Drape' },
+      { img: 'assets/products/T238/detail/detail_5.jpg', title: '05 100% Combed Cotton Tech Pack S', desc: '100% Combed Cotton Tech Pack Spec Label (< 2% Shrink)' },
+      { img: 'assets/products/T238/detail/detail_6.jpg', title: '06 Twin', desc: 'Twin-Needle Clean Edge Lockstitching & Side Seams' },
+      { img: 'assets/products/T238/detail/detail_7.jpg', title: '07 Heavy Fabric Gauge Wave', desc: 'Heavy Fabric Gauge Wave & High Tensile Tear Resistance' },
+      { img: 'assets/products/T238/detail/detail_8.jpg', title: '08 Double', desc: '32S/2 Double-Yarn Compact Combed Cotton Textile Weave' }
     ];
 
     extraCraftHtml = `
@@ -1005,14 +1005,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'T275') {
     const craftDetails = [
-      { img: 'assets/products/T275/detail/detail_1.jpg', title: '01 加厚螺纹领口', desc: '3.2cm Heavyweight Anti-Deformation Rebound Ribbed Collar' },
-      { img: 'assets/products/T275/detail/detail_2.jpg', title: '02 通肩压条加固', desc: 'Collar-to-Shoulder Clean Bound Taping & Reinforced Overlock' },
-      { img: 'assets/products/T275/detail/detail_3.jpg', title: '03 美式落肩剪裁', desc: 'Authentic 90s American Drop-Shoulder Structural Silhouette' },
-      { img: 'assets/products/T275/detail/detail_4.jpg', title: '04 275G 重磅挺括', desc: '275 GSM Ultra-Heavy Combed Cotton - Structured Anti-Wrinkle Drape' },
-      { img: 'assets/products/T275/detail/detail_5.jpg', title: '05 纯棉科技规格标', desc: '100% Combed Cotton Factory Tech Pack Spec Label (< 2% Shrink)' },
-      { img: 'assets/products/T275/detail/detail_6.jpg', title: '06 下摆双针锁边', desc: 'Twin-Needle Clean Edge Lockstitching & Reinforced Side Seams' },
-      { img: 'assets/products/T275/detail/detail_7.jpg', title: '07 高密紧致纹理', desc: 'Heavy Gauge Compact Textile Weave - High Tensile Tear Resistance' },
-      { img: 'assets/products/T275/detail/detail_8.jpg', title: '08 双股紧密织造', desc: 'Compact Double-Yarn Combed Cotton Smooth Surface' }
+      { img: 'assets/products/T275/detail/detail_1.jpg', title: '01 Heavyweight Anti', desc: '3.2cm Heavyweight Anti-Deformation Rebound Ribbed Collar' },
+      { img: 'assets/products/T275/detail/detail_2.jpg', title: '02 Collar', desc: 'Collar-to-Shoulder Clean Bound Taping & Reinforced Overlock' },
+      { img: 'assets/products/T275/detail/detail_3.jpg', title: '03 Authentic 90s American Drop', desc: 'Authentic 90s American Drop-Shoulder Structural Silhouette' },
+      { img: 'assets/products/T275/detail/detail_4.jpg', title: '04 Ultra', desc: '275 GSM Ultra-Heavy Combed Cotton - Structured Anti-Wrinkle Drape' },
+      { img: 'assets/products/T275/detail/detail_5.jpg', title: '05 100% Combed Cotton Factory Tec', desc: '100% Combed Cotton Factory Tech Pack Spec Label (< 2% Shrink)' },
+      { img: 'assets/products/T275/detail/detail_6.jpg', title: '06 Twin', desc: 'Twin-Needle Clean Edge Lockstitching & Reinforced Side Seams' },
+      { img: 'assets/products/T275/detail/detail_7.jpg', title: '07 Heavy Gauge Compact Textile We', desc: 'Heavy Gauge Compact Textile Weave - High Tensile Tear Resistance' },
+      { img: 'assets/products/T275/detail/detail_8.jpg', title: '08 Compact Double', desc: 'Compact Double-Yarn Combed Cotton Smooth Surface' }
     ];
 
     extraCraftHtml = `
@@ -1057,14 +1057,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'T276') {
     const craftDetails = [
-      { img: 'assets/products/T276/detail/detail_1.jpg', title: '01 加厚螺纹领口', desc: '3.2cm Heavyweight Anti-Deformation Rebound Ribbed Collar' },
-      { img: 'assets/products/T276/detail/detail_2.jpg', title: '02 后领通肩压条', desc: 'Collar-to-Shoulder Clean Bound Taping & Reinforced Overlock' },
-      { img: 'assets/products/T276/detail/detail_3.jpg', title: '03 螺纹收口袖口', desc: 'Fitted 1x1 Elastic Ribbed Wrist Cuffs - Anti-Deformation' },
-      { img: 'assets/products/T276/detail/detail_4.jpg', title: '04 美式落肩剪裁', desc: 'Authentic 90s American Drop-Shoulder Structural Silhouette' },
-      { img: 'assets/products/T276/detail/detail_5.jpg', title: '05 下摆双针锁边', desc: 'Twin-Needle Clean Edge Lockstitching & Reinforced Side Seams' },
-      { img: 'assets/products/T276/detail/detail_6.jpg', title: '06 275G 重磅挺括', desc: '275 GSM Ultra-Heavy Combed Cotton - Structured Anti-Wrinkle Drape' },
-      { img: 'assets/products/T276/detail/detail_7.jpg', title: '07 高密紧致纹理', desc: 'Heavy Gauge Compact Textile Weave - High Tensile Tear Resistance' },
-      { img: 'assets/products/T276/detail/detail_8.jpg', title: '08 双股紧密织造', desc: 'Compact Double-Yarn Combed Cotton Smooth Surface' }
+      { img: 'assets/products/T276/detail/detail_1.jpg', title: '01 Heavyweight Anti', desc: '3.2cm Heavyweight Anti-Deformation Rebound Ribbed Collar' },
+      { img: 'assets/products/T276/detail/detail_2.jpg', title: '02 Collar', desc: 'Collar-to-Shoulder Clean Bound Taping & Reinforced Overlock' },
+      { img: 'assets/products/T276/detail/detail_3.jpg', title: '03 Fitted 1x1 Elastic Ribbed Wris', desc: 'Fitted 1x1 Elastic Ribbed Wrist Cuffs - Anti-Deformation' },
+      { img: 'assets/products/T276/detail/detail_4.jpg', title: '04 Authentic 90s American Drop', desc: 'Authentic 90s American Drop-Shoulder Structural Silhouette' },
+      { img: 'assets/products/T276/detail/detail_5.jpg', title: '05 Twin', desc: 'Twin-Needle Clean Edge Lockstitching & Reinforced Side Seams' },
+      { img: 'assets/products/T276/detail/detail_6.jpg', title: '06 Ultra', desc: '275 GSM Ultra-Heavy Combed Cotton - Structured Anti-Wrinkle Drape' },
+      { img: 'assets/products/T276/detail/detail_7.jpg', title: '07 Heavy Gauge Compact Textile We', desc: 'Heavy Gauge Compact Textile Weave - High Tensile Tear Resistance' },
+      { img: 'assets/products/T276/detail/detail_8.jpg', title: '08 Compact Double', desc: 'Compact Double-Yarn Combed Cotton Smooth Surface' }
     ];
 
     extraCraftHtml = `
@@ -1109,12 +1109,12 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'T230') {
     const craftDetails = [
-      { img: 'assets/products/T230/detail/detail_1.jpg', title: '01 领口压条', desc: 'Double-Stitched Ribbed Collar & Bound Back Taping' },
-      { img: 'assets/products/T230/detail/detail_2.jpg', title: '02 袖口精密双针', desc: 'Precision Twin-Needle Hem & Cuff Lockstitching' },
-      { img: 'assets/products/T230/detail/detail_3.jpg', title: '03 炒雪花碧纹染', desc: '21S Artisanal Mineral Dye & Vintage Snow Acid Wash Technique' },
-      { img: 'assets/products/T230/detail/detail_4.jpg', title: '04 230G重磅纯棉', desc: '230 GSM 100% Combed Compact Cotton Jersey Weave' },
-      { img: 'assets/products/T230/detail/detail_5.jpg', title: '05 街头落肩剪裁', desc: 'Relaxed Drop-Shoulder Silhouette & Natural Drape' },
-      { img: 'assets/products/T230/detail/detail_6.jpg', title: '06 原厂技术规格', desc: 'Factory MT-2651 Production Spec & Certification Standard' }
+      { img: 'assets/products/T230/detail/detail_1.jpg', title: '01 Double', desc: 'Double-Stitched Ribbed Collar & Bound Back Taping' },
+      { img: 'assets/products/T230/detail/detail_2.jpg', title: '02 Precision Twin', desc: 'Precision Twin-Needle Hem & Cuff Lockstitching' },
+      { img: 'assets/products/T230/detail/detail_3.jpg', title: '03 21S Artisanal Mineral Dye', desc: '21S Artisanal Mineral Dye & Vintage Snow Acid Wash Technique' },
+      { img: 'assets/products/T230/detail/detail_4.jpg', title: '04 100% Combed Compact Cotton Jer', desc: '230 GSM 100% Combed Compact Cotton Jersey Weave' },
+      { img: 'assets/products/T230/detail/detail_5.jpg', title: '05 Relaxed Drop', desc: 'Relaxed Drop-Shoulder Silhouette & Natural Drape' },
+      { img: 'assets/products/T230/detail/detail_6.jpg', title: '06 Factory MT', desc: 'Factory MT-2651 Production Spec & Certification Standard' }
     ];
 
     extraCraftHtml = `
@@ -1148,14 +1148,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'KB02') {
     const craftDetails = [
-      { img: 'assets/products/KB02/detail/1.jpg', title: '01 重工金属拉链', desc: 'Heavy Antiqued Dual Metal Full-Zip Placket with Vintage Patina' },
-      { img: 'assets/products/KB02/detail/2.jpg', title: '02 双层连帽领口', desc: 'Architectural Double-Layer Structured Hood with Deep Neck Overlock' },
-      { img: 'assets/products/KB02/detail/3.jpg', title: '03 380G 针织牛仔', desc: '380 GSM Heavy Knitted Denim - 93.2% Cotton 6.8% Spandex Comfort Stretch' },
-      { img: 'assets/products/KB02/detail/4.jpg', title: '04 袋鼠分体插袋', desc: 'Symmetrical Deep Split Kangaroo Hand Pockets & Bar-Tack Stitches' },
-      { img: 'assets/products/KB02/detail/5.jpg', title: '05 美式落肩结构', desc: '90s Boxy Drop-Shoulder Silhouette & Relaxed Armhole Cut' },
-      { img: 'assets/products/KB02/detail/6.jpg', title: '06 高弹螺纹收口', desc: 'High-Density 2x2 Ribbed Cuffs & Waistband - Anti-Deformation Rebound' },
-      { img: 'assets/products/KB02/detail/7.jpg', title: '07 炒雪花洗水质感', desc: 'Artisanal Snow Dye & Vintage Mineral Stone Acid Wash' },
-      { img: 'assets/products/KB02/detail/8.jpg', title: '08 原厂版型标', desc: 'Factory Authentic Oversized Cut Tech Pack Standard Specification' }
+      { img: 'assets/products/KB02/detail/1.jpg', title: '01 Heavy Antiqued Dual Metal Full', desc: 'Heavy Antiqued Dual Metal Full-Zip Placket with Vintage Patina' },
+      { img: 'assets/products/KB02/detail/2.jpg', title: '02 Architectural Double', desc: 'Architectural Double-Layer Structured Hood with Deep Neck Overlock' },
+      { img: 'assets/products/KB02/detail/3.jpg', title: '03 Heavy Knitted Denim', desc: '380 GSM Heavy Knitted Denim - 93.2% Cotton 6.8% Spandex Comfort Stretch' },
+      { img: 'assets/products/KB02/detail/4.jpg', title: '04 Symmetrical Deep Split Kangaro', desc: 'Symmetrical Deep Split Kangaroo Hand Pockets & Bar-Tack Stitches' },
+      { img: 'assets/products/KB02/detail/5.jpg', title: '05 90s Boxy Drop', desc: '90s Boxy Drop-Shoulder Silhouette & Relaxed Armhole Cut' },
+      { img: 'assets/products/KB02/detail/6.jpg', title: '06 High', desc: 'High-Density 2x2 Ribbed Cuffs & Waistband - Anti-Deformation Rebound' },
+      { img: 'assets/products/KB02/detail/7.jpg', title: '07 Artisanal Snow Dye', desc: 'Artisanal Snow Dye & Vintage Mineral Stone Acid Wash' },
+      { img: 'assets/products/KB02/detail/8.jpg', title: '08 Factory Authentic Oversized Cu', desc: 'Factory Authentic Oversized Cut Tech Pack Standard Specification' }
     ];
 
     extraCraftHtml = `
@@ -1189,12 +1189,12 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'WY18') {
     const craftDetails = [
-      { img: 'assets/products/WY18/detail/3.jpg', title: '01 355G 世博绒保暖', desc: '355 GSM Brushed Thermal Expo Fleece - Supreme Softness & Warmth' },
-      { img: 'assets/products/WY18/detail/1.jpg', title: '02 袋鼠深插袋细节', desc: 'Seamless Double-Stitched Front Kangaroo Pocket for Daily Utility' },
-      { img: 'assets/products/WY18/detail/2.jpg', title: '03 弹力螺纹收口', desc: 'Heavyweight Elastic Ribbed Cuffs & Hem - Anti-Bacon Shape Retention' },
-      { img: 'assets/products/WY18/detail/4.jpg', title: '04 双层保暖无绳帽', desc: 'Clean Minimalist Double Hood Construction with Interior Neck Taping' },
-      { img: 'assets/products/WY18/detail/5.jpg', title: '05 加固落肩双线缝', desc: 'Reinforced Twin-Needle Armhole Seams for Vintage Boxy Drape' },
-      { img: 'assets/products/WY18/detail/6.jpg', title: '06 美式炒雪花水洗', desc: 'Artisanal Garment Snow Dye & Acid Mineral Tie-Wash Vintage Distress' }
+      { img: 'assets/products/WY18/detail/3.jpg', title: '01 Brushed Thermal Expo Fleece', desc: '355 GSM Brushed Thermal Expo Fleece - Supreme Softness & Warmth' },
+      { img: 'assets/products/WY18/detail/1.jpg', title: '02 Seamless Double', desc: 'Seamless Double-Stitched Front Kangaroo Pocket for Daily Utility' },
+      { img: 'assets/products/WY18/detail/2.jpg', title: '03 Heavyweight Elastic Ribbed Cuf', desc: 'Heavyweight Elastic Ribbed Cuffs & Hem - Anti-Bacon Shape Retention' },
+      { img: 'assets/products/WY18/detail/4.jpg', title: '04 Clean Minimalist Double Hood C', desc: 'Clean Minimalist Double Hood Construction with Interior Neck Taping' },
+      { img: 'assets/products/WY18/detail/5.jpg', title: '05 Reinforced Twin', desc: 'Reinforced Twin-Needle Armhole Seams for Vintage Boxy Drape' },
+      { img: 'assets/products/WY18/detail/6.jpg', title: '06 Artisanal Garment Snow Dye', desc: 'Artisanal Garment Snow Dye & Acid Mineral Tie-Wash Vintage Distress' }
     ];
 
     extraCraftHtml = `
@@ -1228,14 +1228,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'W350') {
     const craftDetails = [
-      { img: 'assets/products/W350/detail/1.jpg', title: '01 3.0cm高弹加厚领口', desc: '3.0cm Anti-Deformation Bound Ribbed Crewneck & Reinforced Neckband' },
-      { img: 'assets/products/W350/detail/2.jpg', title: '02 后领加固包条双线', desc: 'Interior Herringbone Back Collar Taping & Precision Dual Lockstitch' },
-      { img: 'assets/products/W350/detail/3.jpg', title: '03 1×1高密罗纹袖口', desc: 'High-Elasticity 1×1 Ribbed Wrist Cuffs - Shape-Retention Rebound' },
-      { img: 'assets/products/W350/detail/4.jpg', title: '04 复古落肩双针拼缝', desc: '90s Boxy Drop-Shoulder Silhouette with Twin-Needle Armhole Seams' },
-      { img: 'assets/products/W350/detail/5.jpg', title: '05 下摆加固罗纹收口', desc: 'Heavyweight Elastic Bottom Hem Ribbing - Anti-Flaring Structured Drape' },
-      { img: 'assets/products/W350/detail/6.jpg', title: '06 350G精梳棉紧密织造', desc: '350 GSM Combed Cotton Heavyweight Dense Knit - Crisp Surface Texture' },
-      { img: 'assets/products/W350/detail/7.jpg', title: '07 定制领标与折叠厚度', desc: 'Authentic Specification Neck Label & Substantial Heavyweight Thickness' },
-      { img: 'assets/products/W350/detail/8.jpg', title: '08 细腻磨毛加绒内里', desc: 'Ultra-Soft Brushed Thermal Fleece Lining - Premium Cold Weather Warmth' }
+      { img: 'assets/products/W350/detail/1.jpg', title: '01 Anti', desc: '3.0cm Anti-Deformation Bound Ribbed Crewneck & Reinforced Neckband' },
+      { img: 'assets/products/W350/detail/2.jpg', title: '02 Interior Herringbone Back Coll', desc: 'Interior Herringbone Back Collar Taping & Precision Dual Lockstitch' },
+      { img: 'assets/products/W350/detail/3.jpg', title: '03 High', desc: 'High-Elasticity 1×1 Ribbed Wrist Cuffs - Shape-Retention Rebound' },
+      { img: 'assets/products/W350/detail/4.jpg', title: '04 90s Boxy Drop', desc: '90s Boxy Drop-Shoulder Silhouette with Twin-Needle Armhole Seams' },
+      { img: 'assets/products/W350/detail/5.jpg', title: '05 Heavyweight Elastic Bottom Hem', desc: 'Heavyweight Elastic Bottom Hem Ribbing - Anti-Flaring Structured Drape' },
+      { img: 'assets/products/W350/detail/6.jpg', title: '06 Combed Cotton Heavyweight Dens', desc: '350 GSM Combed Cotton Heavyweight Dense Knit - Crisp Surface Texture' },
+      { img: 'assets/products/W350/detail/7.jpg', title: '07 Authentic Specification Neck L', desc: 'Authentic Specification Neck Label & Substantial Heavyweight Thickness' },
+      { img: 'assets/products/W350/detail/8.jpg', title: '08 Ultra', desc: 'Ultra-Soft Brushed Thermal Fleece Lining - Premium Cold Weather Warmth' }
     ];
 
     extraCraftHtml = `
@@ -1269,14 +1269,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'W430') {
     const craftDetails = [
-      { img: 'assets/products/W430/detail/1.jpg', title: '01 3.0cm高弹加厚领口', desc: '3.0cm Anti-Deformation Bound Ribbed Crewneck & Internal Neck Taping' },
-      { img: 'assets/products/W430/detail/2.jpg', title: '02 双针落肩袖笼拼缝', desc: 'Precision Double-Needle Reinforced Drop-Shoulder Structural Seams' },
-      { img: 'assets/products/W430/detail/3.jpg', title: '03 1×1高密高弹罗纹袖口', desc: 'High-Elasticity 1×1 Ribbed Wrist Cuffs - Anti-Deformation Rebound' },
-      { img: 'assets/products/W430/detail/4.jpg', title: '04 符合人体工学平整后领', desc: 'Ergonomic Smooth Back Collar Seam & Clean Inside-Out Structure' },
-      { img: 'assets/products/W430/detail/5.jpg', title: '05 袖口精工拷边与内衬', desc: 'Clean Overlock Bound Edge Finish & Durable High-Tensile Stitching' },
-      { img: 'assets/products/W430/detail/6.jpg', title: '06 430G精梳紧密棉面层', desc: '430 GSM Combed Cotton Heavyweight Dense Knit - Smooth Silk-Touch Face' },
-      { img: 'assets/products/W430/detail/7.jpg', title: '07 下摆回弹罗纹与毛圈内里', desc: 'Retractable Bound Ribbed Hem & Breathable French Terry Loopback Knit' },
-      { img: 'assets/products/W430/detail/8.jpg', title: '08 挺括垂坠感重磅质感', desc: 'Substantial Heavyweight Streetwear Drape - Natural Boxy Silhouette' }
+      { img: 'assets/products/W430/detail/1.jpg', title: '01 Anti', desc: '3.0cm Anti-Deformation Bound Ribbed Crewneck & Internal Neck Taping' },
+      { img: 'assets/products/W430/detail/2.jpg', title: '02 Precision Double', desc: 'Precision Double-Needle Reinforced Drop-Shoulder Structural Seams' },
+      { img: 'assets/products/W430/detail/3.jpg', title: '03 High', desc: 'High-Elasticity 1×1 Ribbed Wrist Cuffs - Anti-Deformation Rebound' },
+      { img: 'assets/products/W430/detail/4.jpg', title: '04 Ergonomic Smooth Back Collar S', desc: 'Ergonomic Smooth Back Collar Seam & Clean Inside-Out Structure' },
+      { img: 'assets/products/W430/detail/5.jpg', title: '05 Clean Overlock Bound Edge Fini', desc: 'Clean Overlock Bound Edge Finish & Durable High-Tensile Stitching' },
+      { img: 'assets/products/W430/detail/6.jpg', title: '06 Combed Cotton Heavyweight Dens', desc: '430 GSM Combed Cotton Heavyweight Dense Knit - Smooth Silk-Touch Face' },
+      { img: 'assets/products/W430/detail/7.jpg', title: '07 Retractable Bound Ribbed Hem', desc: 'Retractable Bound Ribbed Hem & Breathable French Terry Loopback Knit' },
+      { img: 'assets/products/W430/detail/8.jpg', title: '08 Substantial Heavyweight Street', desc: 'Substantial Heavyweight Streetwear Drape - Natural Boxy Silhouette' }
     ];
 
     extraCraftHtml = `
@@ -1310,14 +1310,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'W510') {
     const craftDetails = [
-      { img: 'assets/products/W510/detail/1.jpg', title: '01 3.5cm微高领领口', desc: '3.5cm Ergonomic Anti-Deformation Mock-Neck Ribbed Collar & Bound Taping' },
-      { img: 'assets/products/W510/detail/2.jpg', title: '02 平整后领背线结构', desc: 'Ergonomic Smooth Back Collar Seam & Reinforced Drop-Shoulder Yoke' },
-      { img: 'assets/products/W510/detail/3.jpg', title: '03 侧缝加固受力结构', desc: 'Precision Double-Needle Side Ribbed Insert & Structural Bar-Tacking' },
-      { img: 'assets/products/W510/detail/4.jpg', title: '04 1×1高密抗变形袖口', desc: 'High-Density 1×1 Elastic Ribbed Cuffs with Maximum Shape Rebound' },
-      { img: 'assets/products/W510/detail/5.jpg', title: '05 袖口精工拷边收口', desc: 'Clean Overlock Bound Edge Finish & Tapered Sleeve Construction' },
-      { img: 'assets/products/W510/detail/6.jpg', title: '06 510G重磅斜纹面层', desc: '510 GSM Heavy Combed Cotton Diagonal Knit Face - Dense & Smooth' },
-      { img: 'assets/products/W510/detail/7.jpg', title: '07 细腻蓄热保暖内里', desc: 'Ultra-Dense Thermal Fleece / Brushed Heat-Retention Interior' },
-      { img: 'assets/products/W510/detail/8.jpg', title: '08 定制规格领标与厚度', desc: 'Authentic Factory Tech Spec Neck Label & Substantial Heavyweight Drape' }
+      { img: 'assets/products/W510/detail/1.jpg', title: '01 Ergonomic Anti', desc: '3.5cm Ergonomic Anti-Deformation Mock-Neck Ribbed Collar & Bound Taping' },
+      { img: 'assets/products/W510/detail/2.jpg', title: '02 Ergonomic Smooth Back Collar S', desc: 'Ergonomic Smooth Back Collar Seam & Reinforced Drop-Shoulder Yoke' },
+      { img: 'assets/products/W510/detail/3.jpg', title: '03 Precision Double', desc: 'Precision Double-Needle Side Ribbed Insert & Structural Bar-Tacking' },
+      { img: 'assets/products/W510/detail/4.jpg', title: '04 High', desc: 'High-Density 1×1 Elastic Ribbed Cuffs with Maximum Shape Rebound' },
+      { img: 'assets/products/W510/detail/5.jpg', title: '05 Clean Overlock Bound Edge Fini', desc: 'Clean Overlock Bound Edge Finish & Tapered Sleeve Construction' },
+      { img: 'assets/products/W510/detail/6.jpg', title: '06 Heavy Combed Cotton Diagonal K', desc: '510 GSM Heavy Combed Cotton Diagonal Knit Face - Dense & Smooth' },
+      { img: 'assets/products/W510/detail/7.jpg', title: '07 Ultra', desc: 'Ultra-Dense Thermal Fleece / Brushed Heat-Retention Interior' },
+      { img: 'assets/products/W510/detail/8.jpg', title: '08 Authentic Factory Tech Spec Ne', desc: 'Authentic Factory Tech Spec Neck Label & Substantial Heavyweight Drape' }
     ];
 
     extraCraftHtml = `
@@ -1351,14 +1351,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'W352') {
     const craftDetails = [
-      { img: 'assets/products/W352/detail/1.jpg', title: '01 双层加厚立体连帽', desc: 'Architectural Double-Layer Seamless Structured Hood & Crossover Neckline' },
-      { img: 'assets/products/W352/detail/2.jpg', title: '02 三片式立体帽型与后领拼缝', desc: 'Three-Piece Ergonomic Hood Construction & Reinforced Drop-Shoulder Yoke' },
-      { img: 'assets/products/W352/detail/3.jpg', title: '03 袋鼠插袋双针压线加固', desc: 'Twin-Needle Reinforced Kangaroo Pocket with Structural Bar-Tacking' },
-      { img: 'assets/products/W352/detail/4.jpg', title: '04 1×1高密抗变形紧致袖口', desc: '1×1 High-Density Elastic Ribbed Cuffs with Maximum Shape Retention' },
-      { img: 'assets/products/W352/detail/5.jpg', title: '05 弧形袋口细腻拷边做工', desc: 'Smooth Ergonomic Hand-Warmer Pocket Opening & Overlock Seams' },
-      { img: 'assets/products/W352/detail/6.jpg', title: '06 下摆高弹罗纹收紧防风', desc: 'Heavyweight Elastic Bottom Hem Ribbing - Anti-Flaring Windproof Fit' },
-      { img: 'assets/products/W352/detail/7.jpg', title: '07 350G精梳紧密棉平整面层', desc: '350 GSM Combed Cotton Heavyweight Dense Knit - Anti-Pilling Smooth Face' },
-      { img: 'assets/products/W352/detail/8.jpg', title: '08 细腻磨毛蓄热保暖加绒内里', desc: 'Ultra-Soft Brushed Thermal Fleece Lining - Premium Cold-Weather Warmth' }
+      { img: 'assets/products/W352/detail/1.jpg', title: '01 Architectural Double', desc: 'Architectural Double-Layer Seamless Structured Hood & Crossover Neckline' },
+      { img: 'assets/products/W352/detail/2.jpg', title: '02 Three', desc: 'Three-Piece Ergonomic Hood Construction & Reinforced Drop-Shoulder Yoke' },
+      { img: 'assets/products/W352/detail/3.jpg', title: '03 Twin', desc: 'Twin-Needle Reinforced Kangaroo Pocket with Structural Bar-Tacking' },
+      { img: 'assets/products/W352/detail/4.jpg', title: '04 1×1 High', desc: '1×1 High-Density Elastic Ribbed Cuffs with Maximum Shape Retention' },
+      { img: 'assets/products/W352/detail/5.jpg', title: '05 Smooth Ergonomic Hand', desc: 'Smooth Ergonomic Hand-Warmer Pocket Opening & Overlock Seams' },
+      { img: 'assets/products/W352/detail/6.jpg', title: '06 Heavyweight Elastic Bottom Hem', desc: 'Heavyweight Elastic Bottom Hem Ribbing - Anti-Flaring Windproof Fit' },
+      { img: 'assets/products/W352/detail/7.jpg', title: '07 Combed Cotton Heavyweight Dens', desc: '350 GSM Combed Cotton Heavyweight Dense Knit - Anti-Pilling Smooth Face' },
+      { img: 'assets/products/W352/detail/8.jpg', title: '08 Ultra', desc: 'Ultra-Soft Brushed Thermal Fleece Lining - Premium Cold-Weather Warmth' }
     ];
 
     extraCraftHtml = `
@@ -1392,14 +1392,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'W432') {
     const craftDetails = [
-      { img: 'assets/products/W432/detail/1.jpg', title: '01 双层加厚立体连帽', desc: 'Architectural Double-Layer Seamless Structured Hood & Crossover Neckline' },
-      { img: 'assets/products/W432/detail/2.jpg', title: '02 三片式立体帽型与后领拼缝', desc: 'Three-Piece Ergonomic Hood Construction & Reinforced Drop-Shoulder Yoke' },
-      { img: 'assets/products/W432/detail/3.jpg', title: '03 袋鼠插袋双针压线加固', desc: 'Twin-Needle Reinforced Kangaroo Pocket with Structural Bar-Tacking' },
-      { img: 'assets/products/W432/detail/4.jpg', title: '04 1×1高密抗变形紧致袖口', desc: '1×1 High-Density Elastic Ribbed Cuffs with Maximum Shape Retention' },
-      { img: 'assets/products/W432/detail/5.jpg', title: '05 弧形袋口细腻拷边做工', desc: 'Smooth Ergonomic Hand-Warmer Pocket Opening & Overlock Seams' },
-      { img: 'assets/products/W432/detail/6.jpg', title: '06 下摆高弹罗纹收紧防风', desc: 'Heavyweight Elastic Bottom Hem Ribbing - Anti-Flaring Windproof Fit' },
-      { img: 'assets/products/W432/detail/7.jpg', title: '07 430G精梳紧密棉平整面层', desc: '430 GSM Combed Cotton Heavyweight Dense Knit - Anti-Pilling Smooth Face' },
-      { img: 'assets/products/W432/detail/8.jpg', title: '08 细腻紧实斜纹毛圈内里', desc: 'High-Density Diagonal French Terry Loops - Breathable Structured Comfort' }
+      { img: 'assets/products/W432/detail/1.jpg', title: '01 Architectural Double', desc: 'Architectural Double-Layer Seamless Structured Hood & Crossover Neckline' },
+      { img: 'assets/products/W432/detail/2.jpg', title: '02 Three', desc: 'Three-Piece Ergonomic Hood Construction & Reinforced Drop-Shoulder Yoke' },
+      { img: 'assets/products/W432/detail/3.jpg', title: '03 Twin', desc: 'Twin-Needle Reinforced Kangaroo Pocket with Structural Bar-Tacking' },
+      { img: 'assets/products/W432/detail/4.jpg', title: '04 1×1 High', desc: '1×1 High-Density Elastic Ribbed Cuffs with Maximum Shape Retention' },
+      { img: 'assets/products/W432/detail/5.jpg', title: '05 Smooth Ergonomic Hand', desc: 'Smooth Ergonomic Hand-Warmer Pocket Opening & Overlock Seams' },
+      { img: 'assets/products/W432/detail/6.jpg', title: '06 Heavyweight Elastic Bottom Hem', desc: 'Heavyweight Elastic Bottom Hem Ribbing - Anti-Flaring Windproof Fit' },
+      { img: 'assets/products/W432/detail/7.jpg', title: '07 Combed Cotton Heavyweight Dens', desc: '430 GSM Combed Cotton Heavyweight Dense Knit - Anti-Pilling Smooth Face' },
+      { img: 'assets/products/W432/detail/8.jpg', title: '08 High', desc: 'High-Density Diagonal French Terry Loops - Breathable Structured Comfort' }
     ];
 
     extraCraftHtml = `
@@ -1433,14 +1433,14 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'W439') {
     const craftDetails = [
-      { img: 'assets/products/W439/detail/1.jpg', title: '01 立领半拉链金属拉链', desc: 'Ergonomic Stand-Collar Half-Zip Metallic Zipper & Seamless Hood Construction' },
-      { img: 'assets/products/W439/detail/2.jpg', title: '02 立体连帽与落肩拼接', desc: 'Architectural 3-Piece Structured Hood & Clean Drop-Shoulder Yoke' },
-      { img: 'assets/products/W439/detail/3.jpg', title: '03 1×1高弹抗变形紧致袖口', desc: '1×1 High-Density Elastic Ribbed Cuffs with Maximum Shape Rebound' },
-      { img: 'assets/products/W439/detail/4.jpg', title: '04 下摆高弹罗纹收口', desc: 'Heavyweight Elastic Bottom Ribbing - Anti-Flaring Windproof Fit' },
-      { img: 'assets/products/W439/detail/5.jpg', title: '05 双针压线加固落肩袖笼', desc: 'Precision Twin-Needle Reinforced Drop-Shoulder Armhole Seam' },
-      { img: 'assets/products/W439/detail/6.jpg', title: '06 袋鼠插袋双针加固拷边', desc: 'Ergonomic Hand-Warmer Kangaroo Pocket with Bar-Tack Reinforcement' },
-      { img: 'assets/products/W439/detail/7.jpg', title: '07 430G重磅紧密纯棉面层', desc: '430 GSM Combed Cotton Heavyweight Dense Knit - Smooth Face' },
-      { img: 'assets/products/W439/detail/8.jpg', title: '08 细腻轻刷毛圈舒适内里', desc: 'Gently Brushed French Terry Breathable Loop Interior' }
+      { img: 'assets/products/W439/detail/1.jpg', title: '01 Ergonomic Stand', desc: 'Ergonomic Stand-Collar Half-Zip Metallic Zipper & Seamless Hood Construction' },
+      { img: 'assets/products/W439/detail/2.jpg', title: '02 Architectural 3', desc: 'Architectural 3-Piece Structured Hood & Clean Drop-Shoulder Yoke' },
+      { img: 'assets/products/W439/detail/3.jpg', title: '03 1×1 High', desc: '1×1 High-Density Elastic Ribbed Cuffs with Maximum Shape Rebound' },
+      { img: 'assets/products/W439/detail/4.jpg', title: '04 Heavyweight Elastic Bottom Rib', desc: 'Heavyweight Elastic Bottom Ribbing - Anti-Flaring Windproof Fit' },
+      { img: 'assets/products/W439/detail/5.jpg', title: '05 Precision Twin', desc: 'Precision Twin-Needle Reinforced Drop-Shoulder Armhole Seam' },
+      { img: 'assets/products/W439/detail/6.jpg', title: '06 Ergonomic Hand', desc: 'Ergonomic Hand-Warmer Kangaroo Pocket with Bar-Tack Reinforcement' },
+      { img: 'assets/products/W439/detail/7.jpg', title: '07 Combed Cotton Heavyweight Dens', desc: '430 GSM Combed Cotton Heavyweight Dense Knit - Smooth Face' },
+      { img: 'assets/products/W439/detail/8.jpg', title: '08 Gently Brushed French Terry Br', desc: 'Gently Brushed French Terry Breathable Loop Interior' }
     ];
 
     extraCraftHtml = `
@@ -1813,7 +1813,7 @@ function openSizeGuideModal() {
   const btnGarment = document.getElementById('btnTabGarment');
   const btnRec = document.getElementById('btnTabRecommend');
 
-  if (title) title.textContent = prod.name + ' - 真实尺码与试穿指南 (Size Guide)';
+  if (title) title.textContent = prod.name + ' - Sizing & Fit Guide';
 
   const container = document.querySelector('.size-modal-content-wrap');
   let tableWrap = document.getElementById('sizeModalTableWrap');
@@ -1840,7 +1840,7 @@ function openSizeGuideModal() {
 
     if (btnGarment) {
       btnGarment.style.display = prod.sizeChart ? 'block' : 'none';
-      btnGarment.innerHTML = prod.sizeRecommend ? '📐 成衣精确尺寸表 (Garment Dimensions)' : '📐 官方实测尺寸与推荐指南 (Size &amp; Fit Guide)';
+      btnGarment.innerHTML = prod.sizeRecommend ? '📐 Garment Dimensions (Garment Dimensions)' : '📐 Size & Fit Recommendations (Size &amp; Fit Guide)';
     }
     if (btnRec) btnRec.style.display = prod.sizeRecommend ? 'block' : 'none';
 
