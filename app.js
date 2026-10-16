@@ -24,40 +24,7 @@ const APP_STATE = {
 
 // 2. Product Database (Preserved categories, loaded from window.PRODUCTS_DATA)
 if (typeof window.PRODUCTS_DATA === 'undefined') {
-  window.PRODUCTS_DATA = {
-  'T012': {
-    id: 'T012',
-    name: 'T012 240G Raglan Sleeve Boxy Tee',
-    category: 'tee',
-    priceUSD: 15.00,
-    gram: '240 GSM Combed Cotton',
-    img: 'assets/t012/main/3.jpg',
-    color: '8 Contrast Colorways',
-    specs: [
-      '240 GSM Combed Cotton · Double-Yarn 32S/2 Knit',
-      'Athletic Raglan Color-Block Sleeve Construction',
-      'Oversized Boxy Fit, Pre-shrunk Fabric (< 2%)',
-      '3.0cm 1x1 Elastic Ribbed Collar with Bound Taping',
-      '8 Vintage Colorways · 1-Piece Custom Tech Pack Ready'
-    ],
-    gallery: [
-      'assets/t012/main/3.jpg',
-      'assets/t012/main/1.jpg',
-      'assets/t012/main/2.jpg',
-      'assets/t012/main/4.jpg'
-    ],
-    skus: [
-      { name: 'White / Black', thumb: 'assets/t012/sku/sku_white_black.jpg', hero: 'assets/t012/main/3.jpg' },
-      { name: 'Beige / Light Blue', thumb: 'assets/t012/sku/sku_beige_lightblue.jpg', hero: 'assets/t012/detail/01cc0e866b32223730f1efe716572b66.png' },
-      { name: 'Beige / Wheat', thumb: 'assets/t012/sku/sku_beige_wheat.jpg', hero: 'assets/t012/detail/65799724a3e5ac65b38994b98c588596.png' },
-      { name: 'Sports Grey / Navy Blue', thumb: 'assets/t012/sku/sku_sportsgrey_navy.jpg', hero: 'assets/t012/detail/f6369b0a304eef1a95656a5327c562e0.png' },
-      { name: 'Navy Blue / Wine Red', thumb: 'assets/t012/sku/sku_navy_winered.jpg', hero: 'assets/t012/detail/e3605f3f99641adf0242080604ffd994.png' },
-      { name: 'Wheat / Jungle Green', thumb: 'assets/t012/sku/sku_wheat_junglegreen.jpg', hero: 'assets/t012/detail/2935d8187433107aa843e913c53cf7e1.png' },
-      { name: 'Purple / Black', thumb: 'assets/t012/sku/sku_purple_black.jpg', hero: 'assets/t012/detail/89d552f73ea8de6fcf9e0e40ad2142cb.png' },
-      { name: 'Wheat / Morandi Grey', thumb: 'assets/t012/sku/sku_wheat_morandigrey.jpg', hero: 'assets/t012/detail/9a1dda6e0215d0cd1e05cca190686f05.png' }
-    ]
-  }
-};
+  window.PRODUCTS_DATA = {};
 }
 var PRODUCTS_DATA = window.PRODUCTS_DATA;
 
@@ -396,9 +363,9 @@ function renderCatalogList(catFilter) {
     } else {
       container.innerHTML = `
         <div class="empty-catalog-box">
-          <div class="empty-icon">📭</div>
-          <p class="empty-text">No Products in this Category</p>
-          <span class="empty-hint">1-Piece Custom Tech Pack proofing available via WhatsApp</span>
+          <div class="empty-icon">✨</div>
+          <p class="empty-text">Catalog Updating</p>
+          <span class="empty-hint">New season collection is currently being uploaded. Contact us on WhatsApp for latest catalogs &amp; quotes.</span>
         </div>
       `;
     }
