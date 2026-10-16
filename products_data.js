@@ -3,7 +3,7 @@ window.PRODUCTS_DATA = {
     "id": "01D",
     "name": "01D 230G 20S Compact Siro-Spun Combed Cotton Crewneck Tee",
     "category": "tee",
-    "priceUSD": 999,
+    "priceUSD": 4.99,
     "gram": "230 GSM Compact Siro-Spun Combed Cotton",
     "img": "assets/products/01D/main/1.jpg",
     "color": "18 Streetwear Colorways",
