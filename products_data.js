@@ -210,7 +210,7 @@ window.PRODUCTS_DATA = {
     "priceUSD": 9.99,
     "gram": "245 GSM 100% Combed Compact Cotton",
     "img": "assets/products/T040/main/1.jpg",
-    "color": "12 Streetwear Colorways",
+    "color": "6 Streetwear Colorways",
     "sizes": ["S", "M", "L", "XL", "2XL"],
     "specs": [
       "245 GSM 100% Combed Compact Cotton · Ultra-Durable 21S/2 High-Density Weave",
@@ -245,18 +245,12 @@ window.PRODUCTS_DATA = {
       "assets/products/T040/main/5.jpg"
     ],
     "skus": [
-      { "name": "1f6352c74bbbc0cd1ec9ca02cdeaad8b", "thumb": "assets/products/T040/sku/sku_1.jpg", "hero": "assets/products/T040/sku/sku_1.jpg" },
-      { "name": "2aa2e6c9ed8c16e6016cd263e897526b", "thumb": "assets/products/T040/sku/sku_2.jpg", "hero": "assets/products/T040/sku/sku_2.jpg" },
-      { "name": "35ed4c7bb4cc369196060d897fa2be70", "thumb": "assets/products/T040/sku/sku_3.jpg", "hero": "assets/products/T040/sku/sku_3.jpg" },
-      { "name": "5b724f1408584161e550601b629aa9c9", "thumb": "assets/products/T040/sku/sku_4.jpg", "hero": "assets/products/T040/sku/sku_4.jpg" },
-      { "name": "61c48a95874fdf6880de80f902e28202", "thumb": "assets/products/T040/sku/sku_5.jpg", "hero": "assets/products/T040/sku/sku_5.jpg" },
-      { "name": "8e5c803ce137a86e14a789c203cb7a4d", "thumb": "assets/products/T040/sku/sku_6.jpg", "hero": "assets/products/T040/sku/sku_6.jpg" },
-      { "name": "A0e68ee0773b2761fc8891b3fe769c92", "thumb": "assets/products/T040/sku/sku_7.jpg", "hero": "assets/products/T040/sku/sku_7.jpg" },
-      { "name": "Ad1b4bc5110ad498c13b87fa82f6679f", "thumb": "assets/products/T040/sku/sku_8.jpg", "hero": "assets/products/T040/sku/sku_8.jpg" },
-      { "name": "Adc0a406a11328245ef339a9424206db", "thumb": "assets/products/T040/sku/sku_9.jpg", "hero": "assets/products/T040/sku/sku_9.jpg" },
-      { "name": "Aed433ca29dbcc89a3b7752d3ace7db3", "thumb": "assets/products/T040/sku/sku_10.jpg", "hero": "assets/products/T040/sku/sku_10.jpg" },
-      { "name": "D0997ba68b492b938a88893745fff7f8", "thumb": "assets/products/T040/sku/sku_11.jpg", "hero": "assets/products/T040/sku/sku_11.jpg" },
-      { "name": "E62b02c57919e0eca705a40b7a35eed7", "thumb": "assets/products/T040/sku/sku_12.jpg", "hero": "assets/products/T040/sku/sku_12.jpg" }
+      { "name": "Classic Black", "thumb": "assets/products/T040/sku/black.jpg", "hero": "assets/products/T040/sku/black.jpg" },
+      { "name": "Cream Khaki", "thumb": "assets/products/T040/sku/cream_khaki.jpg", "hero": "assets/products/T040/sku/cream_khaki.jpg" },
+      { "name": "Cream White", "thumb": "assets/products/T040/sku/cream_white.jpg", "hero": "assets/products/T040/sku/cream_white.jpg" },
+      { "name": "Earth Grey", "thumb": "assets/products/T040/sku/earth_grey.jpg", "hero": "assets/products/T040/sku/earth_grey.jpg" },
+      { "name": "Navy Blue", "thumb": "assets/products/T040/sku/navy.jpg", "hero": "assets/products/T040/sku/navy.jpg" },
+      { "name": "Clean White", "thumb": "assets/products/T040/sku/white.jpg", "hero": "assets/products/T040/sku/white.jpg" }
     ],
     "detailImages": [
       "assets/products/T040/detail/detail_1.jpg",
@@ -1585,18 +1579,18 @@ window.PRODUCTS_DATA = {
       "assets/products/W300/main/4.jpg"
     ],
     "skus": [
-      { "name": "245a86b9387da889a6549a5a1f19ee37", "thumb": "assets/products/W300/sku/sku_1.jpg", "hero": "assets/products/W300/sku/sku_1.jpg" },
-      { "name": "35f5378e29cce14247338c6532e74ed7", "thumb": "assets/products/W300/sku/sku_2.jpg", "hero": "assets/products/W300/sku/sku_2.jpg" },
-      { "name": "3a7a8cced98399a608653939e9d4abe3", "thumb": "assets/products/W300/sku/sku_3.jpg", "hero": "assets/products/W300/sku/sku_3.jpg" },
-      { "name": "3c88802bf68f871983d2b6382b0459a4", "thumb": "assets/products/W300/sku/sku_4.jpg", "hero": "assets/products/W300/sku/sku_4.jpg" },
-      { "name": "47c91b81bf7e2b29a89efead0d740f6c", "thumb": "assets/products/W300/sku/sku_5.jpg", "hero": "assets/products/W300/sku/sku_5.jpg" },
-      { "name": "48d8886ddbaed622b9fbd09a15dc3a7d", "thumb": "assets/products/W300/sku/sku_6.jpg", "hero": "assets/products/W300/sku/sku_6.jpg" },
-      { "name": "5188920e48cbd7f1a736aeabd86f3933", "thumb": "assets/products/W300/sku/sku_7.jpg", "hero": "assets/products/W300/sku/sku_7.jpg" },
-      { "name": "654d6946f3d1b03c3a480f8269228030", "thumb": "assets/products/W300/sku/sku_8.jpg", "hero": "assets/products/W300/sku/sku_8.jpg" },
-      { "name": "A784fb0c8fe41ca864488500ef3df3af", "thumb": "assets/products/W300/sku/sku_9.jpg", "hero": "assets/products/W300/sku/sku_9.jpg" },
-      { "name": "B2f3283d347bb3cb9de4d42b706c146d", "thumb": "assets/products/W300/sku/sku_10.jpg", "hero": "assets/products/W300/sku/sku_10.jpg" },
-      { "name": "Be5efc1feeddc29c851cffe6a571f8df", "thumb": "assets/products/W300/sku/sku_11.jpg", "hero": "assets/products/W300/sku/sku_11.jpg" },
-      { "name": "Defcd94a34bc0f9754332b9e4f0b6c6a", "thumb": "assets/products/W300/sku/sku_12.jpg", "hero": "assets/products/W300/sku/sku_12.jpg" }
+      { "name": "Colorway 1", "thumb": "assets/products/W300/sku/sku_1.jpg", "hero": "assets/products/W300/sku/sku_1.jpg" },
+      { "name": "Colorway 2", "thumb": "assets/products/W300/sku/sku_2.jpg", "hero": "assets/products/W300/sku/sku_2.jpg" },
+      { "name": "Colorway 3", "thumb": "assets/products/W300/sku/sku_3.jpg", "hero": "assets/products/W300/sku/sku_3.jpg" },
+      { "name": "Colorway 4", "thumb": "assets/products/W300/sku/sku_4.jpg", "hero": "assets/products/W300/sku/sku_4.jpg" },
+      { "name": "Colorway 5", "thumb": "assets/products/W300/sku/sku_5.jpg", "hero": "assets/products/W300/sku/sku_5.jpg" },
+      { "name": "Colorway 6", "thumb": "assets/products/W300/sku/sku_6.jpg", "hero": "assets/products/W300/sku/sku_6.jpg" },
+      { "name": "Colorway 7", "thumb": "assets/products/W300/sku/sku_7.jpg", "hero": "assets/products/W300/sku/sku_7.jpg" },
+      { "name": "Colorway 8", "thumb": "assets/products/W300/sku/sku_8.jpg", "hero": "assets/products/W300/sku/sku_8.jpg" },
+      { "name": "Colorway 9", "thumb": "assets/products/W300/sku/sku_9.jpg", "hero": "assets/products/W300/sku/sku_9.jpg" },
+      { "name": "Colorway 10", "thumb": "assets/products/W300/sku/sku_10.jpg", "hero": "assets/products/W300/sku/sku_10.jpg" },
+      { "name": "Colorway 11", "thumb": "assets/products/W300/sku/sku_11.jpg", "hero": "assets/products/W300/sku/sku_11.jpg" },
+      { "name": "Colorway 12", "thumb": "assets/products/W300/sku/sku_12.jpg", "hero": "assets/products/W300/sku/sku_12.jpg" }
     ],
     "detailImages": [
       "assets/products/W300/detail/detail_1.jpg",
