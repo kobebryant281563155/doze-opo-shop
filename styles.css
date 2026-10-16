@@ -4963,6 +4963,80 @@ body {
   color: #0f172a;
 }
 
+.checkout-shipping-form-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.csf-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.csf-tag {
+  font-size: 8.5px;
+  font-weight: 800;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.csf-header strong {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.csf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.csf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.csf-field.full-width {
+  grid-column: span 2;
+}
+
+.csf-field label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.csf-field input,
+.csf-field select {
+  width: 100%;
+  height: 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+  color: #0f172a;
+  background: #f8fafc;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.csf-field input:focus,
+.csf-field select:focus {
+  border-color: #0284c7;
+  background: #ffffff;
+}
+
 .checkout-cost-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;

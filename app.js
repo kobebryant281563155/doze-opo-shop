@@ -2144,6 +2144,7 @@ function openPdpCheckout(productId) {
   };
 
   updateCheckoutModalUI();
+  loadCustomerAddress();
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
   renderPaypalButtons();
@@ -2184,6 +2185,7 @@ function openCartCheckout() {
   };
 
   updateCheckoutModalUI();
+  loadCustomerAddress();
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
   renderPaypalButtons();
@@ -2290,33 +2292,52 @@ function renderPaypalButtons() {
         const shipping = parseFloat(cfg.shippingUSD.toFixed(2));
         const total = parseFloat((subtotal + shipping).toFixed(2));
 
-        return actions.order.create({
-          purchase_units: [{
-            description: `DOZE OPO Garment Sample: ${cfg.titleSummary}`.substring(0, 127),
-            amount: {
-              currency_code: 'USD',
-              value: total.toFixed(2),
-              breakdown: {
-                item_total: {
-                  currency_code: 'USD',
-                  value: subtotal.toFixed(2)
-                },
-                shipping: {
-                  currency_code: 'USD',
-                  value: shipping.toFixed(2)
-                }
-              }
-            },
-            items: cfg.items.map(it => ({
-              name: `${it.name} (${it.size}, ${it.color})`.substring(0, 127),
-              unit_amount: {
+        const addr = getCustomerAddress();
+        saveCustomerAddress();
+
+        const purchaseUnit = {
+          description: `DOZE OPO Garment Sample: ${cfg.titleSummary}`.substring(0, 127),
+          amount: {
+            currency_code: 'USD',
+            value: total.toFixed(2),
+            breakdown: {
+              item_total: {
                 currency_code: 'USD',
-                value: parseFloat(it.priceUSD).toFixed(2)
+                value: subtotal.toFixed(2)
               },
-              quantity: it.qty.toString(),
-              category: 'PHYSICAL_GOODS'
-            }))
-          }]
+              shipping: {
+                currency_code: 'USD',
+                value: shipping.toFixed(2)
+              }
+            }
+          },
+          items: cfg.items.map(it => ({
+            name: `${it.name} (${it.size}, ${it.color})`.substring(0, 127),
+            unit_amount: {
+              currency_code: 'USD',
+              value: parseFloat(it.priceUSD).toFixed(2)
+            },
+            quantity: it.qty.toString(),
+            category: 'PHYSICAL_GOODS'
+          }))
+        };
+
+        if (addr.name && addr.address && addr.city) {
+          purchaseUnit.shipping = {
+            name: { full_name: addr.name },
+            address: {
+              address_line_1: addr.address,
+              address_line_2: addr.address2 || undefined,
+              admin_area_2: addr.city,
+              admin_area_1: addr.state || '',
+              postal_code: addr.zip || '',
+              country_code: addr.country === 'GLOBAL' ? 'US' : addr.country
+            }
+          };
+        }
+
+        return actions.order.create({
+          purchase_units: [purchaseUnit]
         });
       },
       onApprove: function(data, actions) {
@@ -2343,17 +2364,24 @@ function renderPaypalButtons() {
 function handleOrderSuccess(details, cfg) {
   closePaypalCheckoutModal();
 
+  const addr = getCustomerAddress();
   const orderId = 'DOZE-' + Math.floor(100000 + Math.random() * 900000);
   const paypalTxId = details.id || 'N/A';
-  const payerName = (details.payer && details.payer.name) 
+  const payerName = addr.name || ((details.payer && details.payer.name) 
     ? `${details.payer.name.given_name || ''} ${details.payer.name.surname || ''}`.trim() 
-    : 'Valued Client';
-  const payerEmail = (details.payer && details.payer.email_address) ? details.payer.email_address : 'PayPal Checkout Account';
+    : 'Valued Client');
+  const payerEmail = addr.email || ((details.payer && details.payer.email_address) ? details.payer.email_address : 'PayPal Checkout Account');
+  const payerPhone = addr.phone || '';
   
-  let shippingAddr = 'Address recorded on PayPal receipt';
-  if (details.purchase_units && details.purchase_units[0] && details.purchase_units[0].shipping && details.purchase_units[0].shipping.address) {
+  let shippingAddr = '';
+  if (addr.address) {
+    shippingAddr = [addr.address, addr.address2, addr.city, addr.state, addr.zip, addr.country].filter(Boolean).join(', ');
+    if (payerPhone) shippingAddr += ` | Tel: ${payerPhone}`;
+  } else if (details.purchase_units && details.purchase_units[0] && details.purchase_units[0].shipping && details.purchase_units[0].shipping.address) {
     const a = details.purchase_units[0].shipping.address;
     shippingAddr = [a.address_line_1, a.address_line_2, a.admin_area_2, a.admin_area_1, a.postal_code, a.country_code].filter(Boolean).join(', ');
+  } else {
+    shippingAddr = 'Address recorded on PayPal receipt';
   }
 
   const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
@@ -2504,4 +2532,57 @@ function inquireCheckoutViaWhatsApp() {
   const text = `Hello DOZE OPO, I am inquiring about ordering samples for: ${cfg.titleSummary}. Total Delivered: $${(cfg.subtotalUSD + cfg.shippingUSD).toFixed(2)} USD. Could you please provide bulk OEM proofing details?`;
   const url = 'https://wa.me/8618520682738?text=' + encodeURIComponent(text);
   window.open(url, '_blank');
+}
+
+// 20. Customer Delivery Address Management & Persistence
+function loadCustomerAddress() {
+  try {
+    const raw = localStorage.getItem('DOZE_CUSTOMER_ADDRESS');
+    if (!raw) return;
+    const a = JSON.parse(raw);
+    if (a.name && document.getElementById('shipName')) document.getElementById('shipName').value = a.name;
+    if (a.email && document.getElementById('shipEmail')) document.getElementById('shipEmail').value = a.email;
+    if (a.phone && document.getElementById('shipPhone')) document.getElementById('shipPhone').value = a.phone;
+    if (a.address && document.getElementById('shipAddress')) document.getElementById('shipAddress').value = a.address;
+    if (a.address2 && document.getElementById('shipAddress2')) document.getElementById('shipAddress2').value = a.address2;
+    if (a.city && document.getElementById('shipCity')) document.getElementById('shipCity').value = a.city;
+    if (a.state && document.getElementById('shipState')) document.getElementById('shipState').value = a.state;
+    if (a.zip && document.getElementById('shipZip')) document.getElementById('shipZip').value = a.zip;
+    if (a.country && document.getElementById('shipCountry')) document.getElementById('shipCountry').value = a.country;
+  } catch (e) {
+    console.error('Failed to load address', e);
+  }
+}
+
+function saveCustomerAddress() {
+  try {
+    const a = {
+      name: document.getElementById('shipName')?.value.trim() || '',
+      email: document.getElementById('shipEmail')?.value.trim() || '',
+      phone: document.getElementById('shipPhone')?.value.trim() || '',
+      address: document.getElementById('shipAddress')?.value.trim() || '',
+      address2: document.getElementById('shipAddress2')?.value.trim() || '',
+      city: document.getElementById('shipCity')?.value.trim() || '',
+      state: document.getElementById('shipState')?.value.trim() || '',
+      zip: document.getElementById('shipZip')?.value.trim() || '',
+      country: document.getElementById('shipCountry')?.value || 'US'
+    };
+    localStorage.setItem('DOZE_CUSTOMER_ADDRESS', JSON.stringify(a));
+  } catch (e) {
+    console.error('Failed to save address', e);
+  }
+}
+
+function getCustomerAddress() {
+  return {
+    name: document.getElementById('shipName')?.value.trim() || '',
+    email: document.getElementById('shipEmail')?.value.trim() || '',
+    phone: document.getElementById('shipPhone')?.value.trim() || '',
+    address: document.getElementById('shipAddress')?.value.trim() || '',
+    address2: document.getElementById('shipAddress2')?.value.trim() || '',
+    city: document.getElementById('shipCity')?.value.trim() || '',
+    state: document.getElementById('shipState')?.value.trim() || '',
+    zip: document.getElementById('shipZip')?.value.trim() || '',
+    country: document.getElementById('shipCountry')?.value || 'US'
+  };
 }
