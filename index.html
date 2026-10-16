@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=115">
+  <link rel="stylesheet" href="styles.css?v=116">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -833,29 +833,29 @@
 
       <!-- Bottom Tab Navigation Bar (Permanently Fixed to Bottom with Custom OEM Center Icon) -->
       <nav class="bottom-tab-bar">
-        <button type="button" class="tab-item active" data-tab="home" onclick="switchTab('home')">
-          <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <button type="button" class="tab-item active" data-tab="home" onclick="switchTab('home')" aria-label="Home">
+          <svg class="tab-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span class="tab-label">Home</span>
         </button>
-        <button type="button" class="tab-item" data-tab="catalog" onclick="switchTab('catalog')">
-          <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+        <button type="button" class="tab-item" data-tab="catalog" onclick="switchTab('catalog')" aria-label="Catalog">
+          <svg class="tab-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
           <span class="tab-label">Catalog</span>
         </button>
-        <button type="button" class="tab-item custom-tab-item" data-tab="custom" onclick="switchTab('custom')">
+        <button type="button" class="tab-item custom-tab-item" data-tab="custom" onclick="switchTab('custom')" aria-label="Custom OEM">
           <div class="custom-tab-icon-wrap">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
           <span class="tab-label highlight">Custom OEM</span>
         </button>
-        <button type="button" class="tab-item" data-tab="cart" onclick="switchTab('cart')">
+        <button type="button" class="tab-item" data-tab="cart" onclick="switchTab('cart')" aria-label="Cart">
           <div class="cart-tab-icon-wrap" style="position: relative; display: inline-flex;">
-            <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" x2="21" y1="6" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <svg class="tab-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" x2="21" y1="6" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             <span class="cart-tab-badge" id="cartTabBadge" style="display: none;">0</span>
           </div>
           <span class="tab-label">Cart</span>
         </button>
-        <button type="button" class="tab-item" data-tab="profile" onclick="switchTab('profile')">
-          <svg class="tab-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <button type="button" class="tab-item" data-tab="profile" onclick="switchTab('profile')" aria-label="Orders & B2B">
+          <svg class="tab-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           <span class="tab-label">Orders / B2B</span>
         </button>
       </nav>
@@ -1348,8 +1348,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=115"></script>
-  <script src="products_data.js?v=115"></script>
-  <script src="app.js?v=115"></script>
+  <script src="prints_data.js?v=116"></script>
+  <script src="products_data.js?v=116"></script>
+  <script src="app.js?v=116"></script>
 </body>
 </html>

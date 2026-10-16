@@ -199,7 +199,7 @@ body {
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   background: #ffffff;
-  padding-bottom: 96px;
+  padding-bottom: calc(108px + env(safe-area-inset-bottom, 12px));
 }
 
 .app-screen-container::-webkit-scrollbar {
@@ -1226,7 +1226,7 @@ body {
 .floating-contact-panel {
   position: absolute;
   right: 12px;
-  bottom: 74px;
+  bottom: calc(82px + env(safe-area-inset-bottom, 10px));
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1296,17 +1296,20 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-  height: 58px;
+  min-height: 68px;
+  height: calc(68px + env(safe-area-inset-bottom, 0px));
   background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid #ededf0;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: env(safe-area-inset-bottom, 8px);
+  padding-top: 6px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom, 10px));
+  box-sizing: border-box;
   z-index: 100;
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .tab-item {
@@ -1320,22 +1323,41 @@ body {
   color: #9ca3af;
   flex: 1;
   height: 100%;
-  transition: color 0.15s ease;
+  min-height: 52px;
+  padding: 4px 2px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.tab-item:active {
+  transform: scale(0.92);
 }
 
 .tab-item.active {
   color: #111;
 }
 
+.tab-item .tab-icon {
+  width: 24px;
+  height: 24px;
+  stroke: #9ca3af;
+  transition: stroke 0.15s ease, transform 0.15s ease;
+}
+
 .tab-item.active .tab-icon {
   stroke: #111;
   color: #111;
+  transform: translateY(-1px);
 }
 
 .tab-label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  margin-top: 2px;
+  margin-top: 3px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
 }
 
 .custom-tab-item {
@@ -1348,18 +1370,18 @@ body {
 }
 
 .custom-tab-icon-wrap {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   background: #111827;
   color: #facc15;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-  border: 2px solid #ffffff;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: -18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  border: 2.5px solid #ffffff;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
 }
 
 .custom-tab-item:active .custom-tab-icon-wrap {
@@ -1369,8 +1391,8 @@ body {
 .tab-label.highlight {
   color: #111827;
   font-weight: 800;
-  font-size: 9.5px;
-  margin-top: 2px;
+  font-size: 10.5px;
+  margin-top: 3px;
 }
 
 .ios-home-indicator {
@@ -1395,13 +1417,15 @@ body {
   transform: translateX(-50%);
   max-width: 480px;
   width: 100%;
+  min-height: 68px;
+  height: calc(68px + env(safe-area-inset-bottom, 0px));
   z-index: 100;
 }
 
 .mobile-viewport-wrapper.fullscreen-mode .floating-contact-panel {
   position: fixed;
   right: max(12px, calc(50% - 240px + 12px));
-  bottom: 74px;
+  bottom: calc(82px + env(safe-area-inset-bottom, 10px));
   z-index: 95;
 }
 
