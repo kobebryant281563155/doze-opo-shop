@@ -1902,7 +1902,6 @@ window.PRODUCTS_DATA = {
     "category": "fb",
     "priceUSD": 1.00,
     "noDiscount": true,
-    "noPaypal": true,
     "noShipping": true,
     "gram": "VIP Custom Pricing ($1.00 USD / Unit)",
     "img": "assets/products/FB01/main/1.jpg",

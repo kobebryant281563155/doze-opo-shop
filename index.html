@@ -1466,22 +1466,49 @@
           <div class="alt-pay-instruction-card">
             <div class="api-badge-row">
               <span class="api-highlight-badge blue-theme">⚡ WORLDFIRST OFFICIAL B2B GATEWAY</span>
-              <span class="api-status-badge">VISA / MASTERCARD</span>
+              <span class="api-status-badge">VISA / MASTERCARD / ACH</span>
             </div>
             <div class="api-discount-pricing">
               <div class="api-price-col highlight">
-                <small>Direct Invoice Amount:</small>
+                <small>Direct Settlement Amount:</small>
                 <strong id="worldfirstTotalDisplay">$0.00 USD</strong>
               </div>
             </div>
+
+            <!-- Official Beneficiary Remittance Credentials -->
+            <div class="pay-credentials-card">
+              <div class="pcc-header">
+                <strong>WorldFirst USD Direct Receiving Account</strong>
+                <span class="pcc-tag">VERIFIED B2B</span>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Beneficiary / Account Name:</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">DOZE OPO</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('DOZE OPO', 'Account Name')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">USD Account Number:</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">20000044307836</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('20000044307836', 'Account Number')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Settlement Currency &amp; Country:</span>
+                <span class="pcc-sub-info">USD (United States Dollar) · WorldFirst Ant Group</span>
+              </div>
+            </div>
+
             <div class="api-steps-list">
               <div class="api-step-item">
                 <span class="step-num">1</span>
-                <div><strong>Request Official Payment Link</strong><p>We generate an authenticated WorldFirst (Ant Group) checkout invoice link for your order.</p></div>
+                <div><strong>Direct USD Wire / ACH Transfer</strong><p>Transfer directly to our official WorldFirst USD account above via ACH or wire remittance.</p></div>
               </div>
               <div class="api-step-item">
                 <span class="step-num">2</span>
-                <div><strong>Direct Credit Card Clearance</strong><p>Pay securely with Visa, MasterCard, or wire transfer without needing a PayPal account.</p></div>
+                <div><strong>Visa / MasterCard Credit Card Clearance</strong><p>Click below to request a personalized direct card link or notify our concierge with your order reference.</p></div>
               </div>
               <div class="api-step-item">
                 <span class="step-num">3</span>
@@ -1490,10 +1517,10 @@
             </div>
             <div class="alt-pay-btns">
               <button type="button" class="btn-alt-pay-action btn-wa-theme" onclick="submitAltPaymentOrder('worldfirst', 'whatsapp')">
-                <span>💬 Request WorldFirst Card Link on WhatsApp</span>
+                <span>💬 Complete WorldFirst Order on WhatsApp</span>
               </button>
               <button type="button" class="btn-alt-pay-action btn-tg-theme" onclick="submitAltPaymentOrder('worldfirst', 'telegram')">
-                <span>✈️ Request WorldFirst Card Link on Telegram</span>
+                <span>✈️ Complete WorldFirst Order on Telegram</span>
               </button>
             </div>
           </div>
@@ -1618,8 +1645,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=205"></script>
-  <script src="products_data.js?v=205"></script>
-  <script src="app.js?v=205"></script>
+  <script src="prints_data.js?v=206"></script>
+  <script src="products_data.js?v=206"></script>
+  <script src="app.js?v=206"></script>
 </body>
 </html>

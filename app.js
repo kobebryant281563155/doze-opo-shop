@@ -1834,7 +1834,7 @@ function addPdpToCart(productId) {
 
   const isNoShipping = !!prod.noShipping || prod.category === 'fb' || prod.id === 'FB01';
   const hasNoDiscount = !!prod.noDiscount || prod.category === 'fb' || prod.id === 'FB01';
-  const hasNoPaypal = !!prod.noPaypal || prod.category === 'fb' || prod.id === 'FB01';
+  const hasNoPaypal = !!prod.noPaypal;
 
   APP_STATE.cartItems.push({
     id: prod.id,
@@ -2364,7 +2364,7 @@ function openPdpCheckout(productId) {
 
   const isNoShipping = !!prod.noShipping || prod.category === 'fb' || prod.id === 'FB01';
   const hasNoDiscount = !!prod.noDiscount || prod.category === 'fb' || prod.id === 'FB01';
-  const hasNoPaypal = !!prod.noPaypal || prod.category === 'fb' || prod.id === 'FB01';
+  const hasNoPaypal = !!prod.noPaypal;
 
   const subtotalUSD = unitPriceUSD * qty;
   const shippingUSD = isNoShipping ? 0 : calculateProductShipping(prod, qty);
@@ -2434,7 +2434,7 @@ function openCartCheckout() {
 
   const shippingUSD = calculateCartShipping(items);
   const hasNoDiscount = items.some(it => it.noDiscount || it.category === 'fb' || it.id === 'FB01');
-  const hasNoPaypal = items.some(it => it.noPaypal || it.category === 'fb' || it.id === 'FB01');
+  const hasNoPaypal = items.some(it => it.noPaypal);
   const hasNoShipping = items.every(it => it.noShipping || it.category === 'fb' || it.id === 'FB01');
 
   CURRENT_CHECKOUT_CONFIG = {
@@ -2503,7 +2503,7 @@ function updateCheckoutModalUI() {
 
   const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
   const hasNoDiscount = !!cfg.noDiscount || (cfg.items && cfg.items.some(it => it.noDiscount || it.category === 'fb' || it.id === 'FB01'));
-  const hasNoPaypal = !!cfg.noPaypal || (cfg.items && cfg.items.some(it => it.noPaypal || it.category === 'fb' || it.id === 'FB01'));
+  const hasNoPaypal = !!cfg.noPaypal || (cfg.items && cfg.items.some(it => it.noPaypal));
   const discountedTotalUSD = hasNoDiscount ? totalUSD : (totalUSD * 0.92);
 
   if (subtotalElem) subtotalElem.textContent = `$${cfg.subtotalUSD.toFixed(2)} USD`;
@@ -2569,7 +2569,7 @@ let currentCheckoutPayMethod = 'paypal';
 
 function switchCheckoutPaymentMethod(method) {
   const cfg = CURRENT_CHECKOUT_CONFIG;
-  const hasNoPaypal = cfg && (!!cfg.noPaypal || (cfg.items && cfg.items.some(it => it.noPaypal || it.category === 'fb' || it.id === 'FB01')));
+  const hasNoPaypal = cfg && (!!cfg.noPaypal || (cfg.items && cfg.items.some(it => it.noPaypal)));
   if (hasNoPaypal && method === 'paypal') {
     method = 'wise';
   }
