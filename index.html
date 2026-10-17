@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=116">
+  <link rel="stylesheet" href="styles.css?v=117">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -231,6 +231,11 @@
                     <span class="pill-icon">💬</span>
                     <span class="pill-label">WhatsApp:</span>
                     <strong>+086 18520682738</strong>
+                  </a>
+                  <a href="https://t.me/jack65651130" target="_blank" rel="noopener noreferrer" class="contact-pill-link tg-pill">
+                    <span class="pill-icon">✈️</span>
+                    <span class="pill-label">Telegram:</span>
+                    <strong>@jack65651130</strong>
                   </a>
                   <a href="mailto:kobebryant281563155@gmail.com" class="contact-pill-link mail-pill">
                     <span class="pill-icon">✉️</span>
@@ -816,6 +821,14 @@
               </div>
               <span class="arrow">&gt;</span>
             </div>
+            <div class="b2b-menu-item" onclick="window.open('https://t.me/jack65651130', '_blank')">
+              <span class="menu-icon">✈️</span>
+              <div class="menu-text">
+                <strong>Telegram VIP Concierge (@jack65651130)</strong>
+                <small>Encrypted direct chat &amp; fast sample proofing quotes</small>
+              </div>
+              <span class="arrow">&gt;</span>
+            </div>
           </div>
         </div>
       </div>
@@ -916,25 +929,40 @@
     </div>
   </div>
 
-  <!-- Modal 2: WhatsApp Live Inquiry Modal -->
+  <!-- Modal 2: VIP Instant Messaging Modal (WhatsApp & Telegram) -->
   <div class="modal-backdrop" id="whatsappModal">
     <div class="modal-drawer modal-center">
       <div class="modal-header">
-        <h4>DOZE OPO Dedicated Business WhatsApp</h4>
+        <h4>Direct VIP Live Chat</h4>
         <button type="button" class="modal-close-btn" onclick="closeWhatsAppModal()">✕</button>
       </div>
       <div class="modal-body text-center">
+        <!-- WhatsApp Option -->
         <div class="wa-qr-box">
-          <div class="wa-icon-large">📱</div>
+          <div class="wa-icon-large">💬</div>
           <p><strong>Direct WhatsApp Line:</strong></p>
           <p class="wa-number">+086 18520682738</p>
           <small class="wa-tip">Direct 1-on-1 English consultation for overseas brand creators &amp; sample proofing</small>
+          <div class="wa-buttons-group">
+            <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO,%20I%20am%20interested%20in%20custom%20heavyweight%20hoodies%20and%20t-shirts." target="_blank" class="btn-wa-direct">
+              Open Chat in WhatsApp
+            </a>
+            <button type="button" class="btn-copy-wa" onclick="copyContactText('+086 18520682738')">Copy WhatsApp Number</button>
+          </div>
         </div>
-        <div class="wa-buttons-group">
-          <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO,%20I%20am%20interested%20in%20custom%20heavyweight%20hoodies%20and%20t-shirts." target="_blank" class="btn-wa-direct">
-            Open Chat in WhatsApp
-          </a>
-          <button type="button" class="btn-copy-wa" onclick="copyContactText('+086 18520682738')">Copy Phone Number</button>
+
+        <!-- Telegram Option -->
+        <div class="tg-qr-box" style="margin-top: 14px; padding: 16px 10px; background: #f0f9ff; border-radius: 12px; border: 1px dashed #7dd3fc;">
+          <div class="wa-icon-large" style="font-size: 32px; margin-bottom: 4px;">✈️</div>
+          <p><strong>Official Telegram Channel:</strong></p>
+          <p class="wa-number" style="color: #0284c7;">@jack65651130</p>
+          <small class="wa-tip">Direct encrypted chat with Zhijian Zhang (+86 185 2068 2738)</small>
+          <div class="wa-buttons-group">
+            <a href="https://t.me/jack65651130" target="_blank" rel="noopener noreferrer" class="btn-tg-direct">
+              Open Chat in Telegram
+            </a>
+            <button type="button" class="btn-copy-wa" onclick="copyContactText('@jack65651130')">Copy Telegram ID</button>
+          </div>
         </div>
       </div>
     </div>
@@ -955,6 +983,17 @@
             <span>281563155@qq.com</span>
           </div>
           <button type="button" class="btn-copy" onclick="copyContactText('281563155@qq.com')">Copy</button>
+        </div>
+        <div class="contact-channel-item">
+          <span class="channel-icon">✈️</span>
+          <div class="channel-info">
+            <strong>Telegram Direct Channel</strong>
+            <span>@jack65651130 (+86 185 2068 2738)</span>
+          </div>
+          <div style="display: flex; gap: 4px;">
+            <a href="https://t.me/jack65651130" target="_blank" rel="noopener noreferrer" class="btn-copy" style="background: #0088cc; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 10px; display: inline-flex; align-items: center;">Chat</a>
+            <button type="button" class="btn-copy" onclick="copyContactText('@jack65651130')">Copy</button>
+          </div>
         </div>
         <div class="contact-channel-item">
           <span class="channel-icon">💬</span>
@@ -1348,8 +1387,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=116"></script>
-  <script src="products_data.js?v=116"></script>
-  <script src="app.js?v=116"></script>
+  <script src="prints_data.js?v=117"></script>
+  <script src="products_data.js?v=117"></script>
+  <script src="app.js?v=117"></script>
 </body>
 </html>

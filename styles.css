@@ -2173,6 +2173,23 @@ body {
   cursor: pointer;
 }
 
+.btn-tg-direct {
+  background: #0088cc;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 10px;
+  border-radius: 8px;
+  display: block;
+  text-align: center;
+  transition: background 0.15s ease;
+}
+
+.btn-tg-direct:hover {
+  background: #0077b5;
+}
+
 .contact-channel-item {
   display: flex;
   align-items: center;
@@ -2394,6 +2411,16 @@ body {
 
 .contact-pill-link.mail-pill:hover {
   background: #f1f5f9;
+}
+
+.contact-pill-link.tg-pill {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  color: #0369a1;
+}
+
+.contact-pill-link.tg-pill:hover {
+  background: #e0f2fe;
 }
 
 .home-custom-bridge {
