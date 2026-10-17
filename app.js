@@ -482,6 +482,15 @@ function isHeavyweightGarment(itemOrCategory) {
 function calculateProductShipping(productOrCategory, qty) {
   qty = Math.max(0, parseInt(qty) || 0);
   if (qty <= 0) return 0;
+  if (typeof productOrCategory === 'object' && productOrCategory !== null) {
+    if (productOrCategory.noShipping || productOrCategory.category === 'fb' || productOrCategory.id === 'FB01') return 0;
+  } else if (typeof productOrCategory === 'string') {
+    if (productOrCategory === 'fb' || productOrCategory === 'FB01') return 0;
+    if (window.PRODUCTS_DATA && window.PRODUCTS_DATA[productOrCategory]) {
+      const p = window.PRODUCTS_DATA[productOrCategory];
+      if (p.noShipping || p.category === 'fb' || p.id === 'FB01') return 0;
+    }
+  }
   const isHeavy = isHeavyweightGarment(productOrCategory);
   if (isHeavy) {
     return 9.00 + (qty - 1) * 1.00;
@@ -495,6 +504,7 @@ function calculateCartShipping(cartItems) {
   let qtyLight = 0;
   let qtyHeavy = 0;
   cartItems.forEach(item => {
+    if (item.noShipping || item.category === 'fb' || item.id === 'FB01') return;
     const q = Math.max(1, parseInt(item.qty) || 1);
     if (isHeavyweightGarment(item)) {
       qtyHeavy += q;
@@ -523,7 +533,9 @@ function changePdpQty(delta) {
 function setPdpQty(val) {
   activePdpQty = Math.max(1, parseInt(val) || 1);
   const input = document.getElementById('pdpQtyInput');
-  if (input) input.value = activePdpQty;
+  if (input && input.value !== String(activePdpQty)) {
+    input.value = activePdpQty;
+  }
 
   const presets = document.querySelectorAll('.pdp-qpreset');
   presets.forEach(p => {
@@ -540,6 +552,7 @@ function updatePdpShippingCalc() {
 
   const qty = activePdpQty;
   const isHeavy = isHeavyweightGarment(prod.category || prod.id);
+  const isNoShipping = !!prod.noShipping || prod.category === 'fb' || prod.id === 'FB01';
 
   let unitPriceUSD = prod.priceUSD;
   if (prod.skus && prod.skus.length > 0) {
@@ -550,67 +563,102 @@ function updatePdpShippingCalc() {
   }
 
   const garmentSubtotalUSD = unitPriceUSD * qty;
-  const shippingFeeUSD = calculateProductShipping(prod, qty);
+  const shippingFeeUSD = isNoShipping ? 0 : calculateProductShipping(prod, qty);
   const deliveredTotalUSD = garmentSubtotalUSD + shippingFeeUSD;
 
   const sym = APP_STATE.currencyRates[APP_STATE.currentCurrency]?.symbol || '$';
 
   const qtyDisplay = document.getElementById('pdpQtyDisplay');
   if (qtyDisplay) {
-    qtyDisplay.textContent = `${qty} pc${qty > 1 ? 's' : ''}${qty === 1 ? ' (Sample)' : ''}`;
-  }
-
-  const calcQtyText = document.getElementById('pdpCalcQtyText');
-  if (calcQtyText) {
-    calcQtyText.textContent = `${qty} pc${qty > 1 ? 's' : ''}`;
-  }
-
-  const garmentSubtotalElem = document.getElementById('pdpGarmentSubtotal');
-  if (garmentSubtotalElem) {
-    garmentSubtotalElem.textContent = `${sym}${formatCurrency(garmentSubtotalUSD)}`;
-  }
-
-  // Update policy banner text
-  const ruleTextElem = document.getElementById('pdpShipRuleText');
-  if (ruleTextElem) {
-    if (isHeavy) {
-      ruleTextElem.innerHTML = 'First item: <strong>$9.00</strong> · Each additional item: <strong>+$1.00</strong>';
+    if (isNoShipping) {
+      qtyDisplay.textContent = `${qty} unit${qty > 1 ? 's' : ''} (${sym}${formatCurrency(garmentSubtotalUSD)})`;
     } else {
-      ruleTextElem.innerHTML = 'First item: <strong>$8.00</strong> · Each additional item: <strong>+$0.50</strong>';
+      qtyDisplay.textContent = `${qty} pc${qty > 1 ? 's' : ''}${qty === 1 ? ' (Sample)' : ''}`;
     }
   }
 
-  const formulaNoteElem = document.getElementById('pdpShipFormulaNote');
-  if (formulaNoteElem) {
-    if (isHeavy) {
-      if (qty === 1) {
-        formulaNoteElem.textContent = '($9.00 base)';
+  const shippingBox = document.getElementById('pdpShippingBox');
+  const customSummary = document.getElementById('pdpCustomPriceSummary');
+  const qtyPresets = document.getElementById('pdpQtyPresets');
+
+  if (isNoShipping) {
+    if (shippingBox) shippingBox.style.display = 'none';
+    if (qtyPresets) qtyPresets.style.display = 'none';
+    if (customSummary) {
+      customSummary.style.display = 'block';
+      customSummary.innerHTML = `
+        <div class="custom-pricing-card">
+          <div class="cpc-header">
+            <span class="cpc-badge">CUSTOM AGREED PRICING</span>
+            <div class="cpc-total-val">${sym}${formatCurrency(deliveredTotalUSD)} USD</div>
+          </div>
+          <div class="cpc-desc">
+            Direct VIP checkout calculated at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Units</strong>. Priority air delivery &amp; tracking included.
+          </div>
+        </div>
+      `;
+    }
+  } else {
+    if (shippingBox) shippingBox.style.display = 'block';
+    if (qtyPresets) qtyPresets.style.display = 'flex';
+    if (customSummary) customSummary.style.display = 'none';
+
+    const calcQtyText = document.getElementById('pdpCalcQtyText');
+    if (calcQtyText) {
+      calcQtyText.textContent = `${qty} pc${qty > 1 ? 's' : ''}`;
+    }
+
+    const garmentSubtotalElem = document.getElementById('pdpGarmentSubtotal');
+    if (garmentSubtotalElem) {
+      garmentSubtotalElem.textContent = `${sym}${formatCurrency(garmentSubtotalUSD)}`;
+    }
+
+    // Update policy banner text
+    const ruleTextElem = document.getElementById('pdpShipRuleText');
+    if (ruleTextElem) {
+      if (isHeavy) {
+        ruleTextElem.innerHTML = 'First item: <strong>$9.00</strong> · Each additional item: <strong>+$1.00</strong>';
       } else {
-        formulaNoteElem.textContent = `($9.00 + ${qty - 1} × $1.00)`;
-      }
-    } else {
-      if (qty === 1) {
-        formulaNoteElem.textContent = '($8.00 base)';
-      } else {
-        formulaNoteElem.textContent = `($8.00 + ${qty - 1} × $0.50)`;
+        ruleTextElem.innerHTML = 'First item: <strong>$8.00</strong> · Each additional item: <strong>+$0.50</strong>';
       }
     }
-  }
 
-  const shippingFeeElem = document.getElementById('pdpShippingFee');
-  if (shippingFeeElem) {
-    shippingFeeElem.textContent = `${sym}${formatCurrency(shippingFeeUSD)}`;
-  }
+    const formulaNoteElem = document.getElementById('pdpShipFormulaNote');
+    if (formulaNoteElem) {
+      if (isHeavy) {
+        if (qty === 1) {
+          formulaNoteElem.textContent = '($9.00 base)';
+        } else {
+          formulaNoteElem.textContent = `($9.00 + ${qty - 1} × $1.00)`;
+        }
+      } else {
+        if (qty === 1) {
+          formulaNoteElem.textContent = '($8.00 base)';
+        } else {
+          formulaNoteElem.textContent = `($8.00 + ${qty - 1} × $0.50)`;
+        }
+      }
+    }
 
-  const deliveredTotalElem = document.getElementById('pdpDeliveredTotal');
-  if (deliveredTotalElem) {
-    deliveredTotalElem.textContent = `${sym}${formatCurrency(deliveredTotalUSD)}`;
+    const shippingFeeElem = document.getElementById('pdpShippingFee');
+    if (shippingFeeElem) {
+      shippingFeeElem.textContent = `${sym}${formatCurrency(shippingFeeUSD)}`;
+    }
+
+    const deliveredTotalElem = document.getElementById('pdpDeliveredTotal');
+    if (deliveredTotalElem) {
+      deliveredTotalElem.textContent = `${sym}${formatCurrency(deliveredTotalUSD)}`;
+    }
   }
 
   // Update Bottom Sticky Order Button
   const orderBtnText = document.getElementById('pdpOrderBtnText');
   if (orderBtnText) {
-    orderBtnText.textContent = `Order ${qty}-PC Sample (${sym}${formatCurrency(deliveredTotalUSD)} Delivered)`;
+    if (isNoShipping) {
+      orderBtnText.textContent = `Checkout Custom Order (${sym}${formatCurrency(deliveredTotalUSD)})`;
+    } else {
+      orderBtnText.textContent = `Order ${qty}-PC Sample (${sym}${formatCurrency(deliveredTotalUSD)} Delivered)`;
+    }
   }
 }
 
@@ -774,7 +822,9 @@ function openProductDetail(productId) {
 
   // Render SKU color grid
   const colorGrid = document.getElementById('pdpColorGrid');
+  const colorSection = document.getElementById('pdpColorSection');
   if (colorGrid && prod.skus && prod.skus.length > 0) {
+    if (colorSection) colorSection.style.display = 'block';
     colorGrid.innerHTML = '';
     prod.skus.forEach((sku, idx) => {
       const swatch = document.createElement('div');
@@ -803,8 +853,12 @@ function openProductDetail(productId) {
       }
     }
     switchPdpHero(gallery[0] || prod.skus[0].hero, 1);
-  } else if (gallery.length > 0) {
-    switchPdpHero(gallery[0], 1);
+  } else {
+    if (colorSection) colorSection.style.display = 'none';
+    activePdpColor = prod.color || 'Custom Agreed Order';
+    if (gallery.length > 0) {
+      switchPdpHero(gallery[0], 1);
+    }
   }
 
   // Dynamic Size Selector Chips & Prominent Size Guide UI
@@ -1778,21 +1832,27 @@ function addPdpToCart(productId) {
     }
   }
 
+  const isNoShipping = !!prod.noShipping || prod.category === 'fb' || prod.id === 'FB01';
+  const hasNoDiscount = !!prod.noDiscount || prod.category === 'fb' || prod.id === 'FB01';
+  const hasNoPaypal = !!prod.noPaypal || prod.category === 'fb' || prod.id === 'FB01';
+
   APP_STATE.cartItems.push({
     id: prod.id,
     name: prod.name,
     category: prod.category || 'tee',
-    noDiscount: !!prod.noDiscount,
+    noDiscount: hasNoDiscount,
+    noPaypal: hasNoPaypal,
+    noShipping: isNoShipping,
     priceUSD: unitPriceUSD,
     qty: activePdpQty,
-    size: activePdpSize || 'Standard',
-    spec: `${prod.gram} · ${activePdpColor}`,
+    size: activePdpSize || (prod.category === 'fb' ? 'Custom' : 'Standard'),
+    spec: (prod.category === 'fb' || prod.id === 'FB01') ? 'VIP Custom Pricing ($1.00 USD/Unit)' : `${prod.gram} · ${activePdpColor}`,
     img: prod.img
   });
 
   updateCartTotal();
   const sizeDesc = activePdpSize ? ` · ${activePdpSize}` : '';
-  showToast(`Added ${activePdpQty}× [${prod.name}] (${activePdpColor}${sizeDesc}) to Sample RFQ Cart!`);
+  showToast(`Added ${activePdpQty}× [${prod.name}] to Sample RFQ Cart!`);
 }
 
 // 13. Product Quick View Modal
@@ -2302,19 +2362,27 @@ function openPdpCheckout(productId) {
     }
   }
 
+  const isNoShipping = !!prod.noShipping || prod.category === 'fb' || prod.id === 'FB01';
+  const hasNoDiscount = !!prod.noDiscount || prod.category === 'fb' || prod.id === 'FB01';
+  const hasNoPaypal = !!prod.noPaypal || prod.category === 'fb' || prod.id === 'FB01';
+
   const subtotalUSD = unitPriceUSD * qty;
-  const shippingUSD = calculateProductShipping(prod, qty);
+  const shippingUSD = isNoShipping ? 0 : calculateProductShipping(prod, qty);
 
   CURRENT_CHECKOUT_CONFIG = {
     isCartCheckout: false,
     productId: prod.id,
-    noDiscount: !!prod.noDiscount,
-    titleSummary: `${prod.name} (${color}, ${size})`,
+    noDiscount: hasNoDiscount,
+    noPaypal: hasNoPaypal,
+    noShipping: isNoShipping,
+    titleSummary: (prod.category === 'fb' || prod.id === 'FB01') ? `${prod.name} (${qty} Units)` : `${prod.name} (${color}, ${size})`,
     items: [{
       id: prod.id,
       name: prod.name,
       category: prod.category || 'tee',
-      noDiscount: !!prod.noDiscount,
+      noDiscount: hasNoDiscount,
+      noPaypal: hasNoPaypal,
+      noShipping: isNoShipping,
       color: color,
       size: size,
       qty: qty,
@@ -2327,10 +2395,13 @@ function openPdpCheckout(productId) {
 
   updateCheckoutModalUI();
   loadCustomerAddress();
-  switchCheckoutPaymentMethod('paypal');
+  const defaultMethod = hasNoPaypal ? 'wise' : 'paypal';
+  switchCheckoutPaymentMethod(defaultMethod);
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
-  renderPaypalButtons();
+  if (defaultMethod === 'paypal') {
+    renderPaypalButtons();
+  }
 }
 
 function openCartCheckout() {
@@ -2351,6 +2422,8 @@ function openCartCheckout() {
       name: item.name,
       category: item.category || (PRODUCTS_DATA[item.id] ? PRODUCTS_DATA[item.id].category : 'tee'),
       noDiscount: !!item.noDiscount,
+      noPaypal: !!item.noPaypal,
+      noShipping: !!item.noShipping,
       color: item.spec || 'Standard',
       size: item.size || 'L',
       qty: q,
@@ -2360,11 +2433,15 @@ function openCartCheckout() {
   });
 
   const shippingUSD = calculateCartShipping(items);
-  const hasNoDiscount = items.some(it => it.noDiscount);
+  const hasNoDiscount = items.some(it => it.noDiscount || it.category === 'fb' || it.id === 'FB01');
+  const hasNoPaypal = items.some(it => it.noPaypal || it.category === 'fb' || it.id === 'FB01');
+  const hasNoShipping = items.every(it => it.noShipping || it.category === 'fb' || it.id === 'FB01');
 
   CURRENT_CHECKOUT_CONFIG = {
     isCartCheckout: true,
     noDiscount: hasNoDiscount,
+    noPaypal: hasNoPaypal,
+    noShipping: hasNoShipping,
     titleSummary: `${items.length} Sample Styles (${totalPieces} pcs)`,
     items: items,
     subtotalUSD: subtotalUSD,
@@ -2373,10 +2450,13 @@ function openCartCheckout() {
 
   updateCheckoutModalUI();
   loadCustomerAddress();
-  switchCheckoutPaymentMethod('paypal');
+  const defaultMethod = hasNoPaypal ? 'wise' : 'paypal';
+  switchCheckoutPaymentMethod(defaultMethod);
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
-  renderPaypalButtons();
+  if (defaultMethod === 'paypal') {
+    renderPaypalButtons();
+  }
 }
 
 function updateCheckoutModalUI() {
@@ -2399,7 +2479,11 @@ function updateCheckoutModalUI() {
         <img src="${it.thumb}" alt="${it.name}" class="checkout-item-thumb">
         <div class="checkout-item-info">
           <div class="checkout-item-title">${it.name}</div>
-          <div class="checkout-item-meta">Size: <strong>${it.size}</strong> · Color: <strong>${it.color}</strong></div>
+          <div class="checkout-item-meta">
+            ${(it.category === 'fb' || it.id === 'FB01')
+              ? `VIP Custom Pricing ($${it.priceUSD.toFixed(2)} USD / Unit)`
+              : `Size: <strong>${it.size}</strong> · Color: <strong>${it.color}</strong>`}
+          </div>
           <div class="checkout-item-price-row">
             <span class="checkout-item-price">$${it.priceUSD.toFixed(2)} USD</span>
             ${!cfg.isCartCheckout ? `
@@ -2419,11 +2503,23 @@ function updateCheckoutModalUI() {
 
   const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
   const hasNoDiscount = !!cfg.noDiscount || (cfg.items && cfg.items.some(it => it.noDiscount || it.category === 'fb' || it.id === 'FB01'));
+  const hasNoPaypal = !!cfg.noPaypal || (cfg.items && cfg.items.some(it => it.noPaypal || it.category === 'fb' || it.id === 'FB01'));
   const discountedTotalUSD = hasNoDiscount ? totalUSD : (totalUSD * 0.92);
 
   if (subtotalElem) subtotalElem.textContent = `$${cfg.subtotalUSD.toFixed(2)} USD`;
-  if (shippingElem) shippingElem.textContent = `$${cfg.shippingUSD.toFixed(2)} USD`;
+  if (shippingElem) {
+    if (cfg.shippingUSD === 0) {
+      shippingElem.textContent = '$0.00 USD (Included)';
+    } else {
+      shippingElem.textContent = `$${cfg.shippingUSD.toFixed(2)} USD`;
+    }
+  }
   if (totalElem) totalElem.textContent = `$${totalUSD.toFixed(2)} USD`;
+
+  const paypalTab = document.getElementById('payMethodTab_paypal');
+  if (paypalTab) {
+    paypalTab.style.display = hasNoPaypal ? 'none' : '';
+  }
 
   const wiseOrig = document.getElementById('wiseOriginalTotalDisplay');
   const wiseDisc = document.getElementById('wiseDiscountTotalDisplay');
@@ -2472,7 +2568,12 @@ function updateCheckoutModalUI() {
 let currentCheckoutPayMethod = 'paypal';
 
 function switchCheckoutPaymentMethod(method) {
-  currentCheckoutPayMethod = method || 'paypal';
+  const cfg = CURRENT_CHECKOUT_CONFIG;
+  const hasNoPaypal = cfg && (!!cfg.noPaypal || (cfg.items && cfg.items.some(it => it.noPaypal || it.category === 'fb' || it.id === 'FB01')));
+  if (hasNoPaypal && method === 'paypal') {
+    method = 'wise';
+  }
+  currentCheckoutPayMethod = method || (hasNoPaypal ? 'wise' : 'paypal');
 
   const tabs = document.querySelectorAll('.pay-method-tab');
   tabs.forEach(tab => {

@@ -1900,65 +1900,27 @@ window.PRODUCTS_DATA = {
     "id": "FB01",
     "name": "FB VIP Exclusive Custom Order Link - Private Checkout",
     "category": "fb",
-    "priceUSD": 9.99,
+    "priceUSD": 1.00,
     "noDiscount": true,
-    "gram": "VIP Custom Order - 19 Tier Rates ($9.99 - $99.99)",
+    "noPaypal": true,
+    "noShipping": true,
+    "gram": "VIP Custom Pricing ($1.00 USD / Unit)",
     "img": "assets/products/FB01/main/1.jpg",
-    "color": "19 VIP Price Tiers ($9.99 - $99.99)",
-    "sizes": ["Standard", "S", "M", "L", "XL", "2XL", "3XL"],
+    "color": "Custom Agreed Order",
+    "sizes": [],
     "specs": [
-      "FB Exclusive VIP Custom Order Link - Dedicated Checkout for Live Stream & Private Clients",
-      "Select Assigned Tier ($9.99 - $99.99) & Set Quantity to Match Your Confirmed Order Total",
-      "Streetwear Drops & Premium Blanks (Hype Aesthetics, Vintage Washed, Heavy Cotton)",
-      "Direct Priority Air Delivery with Full Tracking Number & Expedited Customs Clearance",
-      "Fixed Agreed Rate - No Surcharge, Direct Settlement via PayPal, Card, Wise or Crypto"
+      "FB Exclusive VIP Custom Order Link - Dedicated Private Checkout for Live Stream & VIP Clients",
+      "Direct Unit Pricing ($1.00 USD / Unit) - Input Your Agreed Order Total into Quantity Field",
+      "For Example: Input Quantity 50 for a $50.00 USD Order, 120 for a $120.00 USD Order",
+      "Direct Priority Air Delivery with Full Tracking Number & Expedited Customs Clearance Included",
+      "Fixed Agreed Settlement Rate - Direct Clearance via Wise, Direct Bank Transfer, Card or Crypto"
     ],
-    "sizeTable": {
-      "columns": [
-        { "key": "size", "label": "Size", "isSize": true },
-        { "key": "length", "label": "Length", "unit": true },
-        { "key": "chest", "label": "Bust (Flat)", "unit": true },
-        { "key": "shoulder", "label": "Shoulder", "unit": true },
-        { "key": "sleeve", "label": "Sleeve", "unit": true },
-        { "key": "height", "label": "Rec. Height", "unit": false },
-        { "key": "weight", "label": "Rec. Weight", "unit": false }
-      ],
-      "rows": [
-        { "size": "Standard", "length": 72, "chest": 56, "shoulder": 52, "sleeve": 22, "height": "Universal Oversize Fit", "weight": "Custom VIP Spec" },
-        { "size": "S", "length": 66, "chest": 50, "shoulder": 48, "sleeve": 21, "height": "5'1\"-5'5\" (155-165cm)", "weight": "95-120 lbs (43-55kg)" },
-        { "size": "M", "length": 69, "chest": 53, "shoulder": 51, "sleeve": 22, "height": "5'5\"-5'9\" (165-175cm)", "weight": "120-150 lbs (55-68kg)" },
-        { "size": "L", "length": 72, "chest": 56, "shoulder": 54, "sleeve": 23, "height": "5'9\"-6'0\" (175-183cm)", "weight": "150-180 lbs (68-82kg)" },
-        { "size": "XL", "length": 75, "chest": 59, "shoulder": 57, "sleeve": 24, "height": "6'0\"-6'3\" (183-190cm)", "weight": "180-210 lbs (82-95kg)" },
-        { "size": "2XL", "length": 78, "chest": 62, "shoulder": 60, "sleeve": 25, "height": "6'2\"-6'5\" (188-195cm)", "weight": "210-240 lbs (95-110kg)" },
-        { "size": "3XL", "length": 81, "chest": 65, "shoulder": 63, "sleeve": 26, "height": "6'4\"-6'7\" (193-200cm)", "weight": "240-270 lbs (110-125kg)" }
-      ]
-    },
     "gallery": [
       "assets/products/FB01/main/1.jpg",
       "assets/products/FB01/main/2.jpg",
       "assets/products/FB01/main/3.jpg"
     ],
-    "skus": [
-      { "name": "$9.99 Tier", "priceUSD": 9.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$14.99 Tier", "priceUSD": 14.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$19.99 Tier", "priceUSD": 19.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$24.99 Tier", "priceUSD": 24.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$29.99 Tier", "priceUSD": 29.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$34.99 Tier", "priceUSD": 34.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$39.99 Tier", "priceUSD": 39.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$44.99 Tier", "priceUSD": 44.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$49.99 Tier", "priceUSD": 49.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$54.99 Tier", "priceUSD": 54.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$59.99 Tier", "priceUSD": 59.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$64.99 Tier", "priceUSD": 64.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$69.99 Tier", "priceUSD": 69.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$74.99 Tier", "priceUSD": 74.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$79.99 Tier", "priceUSD": 79.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$84.99 Tier", "priceUSD": 84.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$89.99 Tier", "priceUSD": 89.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$94.99 Tier", "priceUSD": 94.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" },
-      { "name": "$99.99 Tier", "priceUSD": 99.99, "thumb": "assets/products/FB01/main/1.jpg", "hero": "assets/products/FB01/main/1.jpg" }
-    ],
+    "skus": [],
     "detailImages": [
       "assets/products/FB01/detail/1.jpg",
       "assets/products/FB01/detail/2.jpg"

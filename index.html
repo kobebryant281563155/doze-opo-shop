@@ -417,7 +417,7 @@
           </div>
 
           <!-- Color Swatch Selector (8 Colorways) -->
-          <div class="pdp-section-card">
+          <div class="pdp-section-card" id="pdpColorSection">
             <div class="pdp-section-title">
               <span id="pdpColorSectionLabel">Select Colorway:</span>
               <strong id="pdpActiveColorName">White / Black</strong>
@@ -462,13 +462,13 @@
               </div>
               <div class="pdp-qty-stepper">
                 <button type="button" class="pdp-qty-btn" onclick="changePdpQty(-1)">-</button>
-                <input type="number" id="pdpQtyInput" value="1" min="1" max="999" onchange="setPdpQty(this.value)">
+                <input type="number" id="pdpQtyInput" value="1" min="1" max="99999" oninput="setPdpQty(this.value)" onchange="setPdpQty(this.value)">
                 <button type="button" class="pdp-qty-btn" onclick="changePdpQty(1)">+</button>
               </div>
             </div>
 
             <!-- Quick Qty Presets -->
-            <div class="pdp-qty-presets">
+            <div class="pdp-qty-presets" id="pdpQtyPresets">
               <button type="button" class="pdp-qpreset active" onclick="setPdpQty(1)">1 PC (Sample)</button>
               <button type="button" class="pdp-qpreset" onclick="setPdpQty(2)">2 PCS</button>
               <button type="button" class="pdp-qpreset" onclick="setPdpQty(3)">3 PCS</button>
@@ -476,8 +476,11 @@
               <button type="button" class="pdp-qpreset" onclick="setPdpQty(10)">10 PCS</button>
             </div>
 
+            <!-- VIP Custom Agreed Pricing Summary (Shown when shipping template is omitted) -->
+            <div id="pdpCustomPriceSummary" style="display: none;"></div>
+
             <!-- US Shipping Details Box -->
-            <div class="pdp-shipping-box">
+            <div class="pdp-shipping-box" id="pdpShippingBox">
               <div class="shipping-header">
                 <div class="shipping-dest">
                   <span class="flag-icon">🇺🇸</span>
@@ -1321,7 +1324,7 @@
           </div>
           
           <div class="pay-method-tabs" id="payMethodTabs">
-            <button type="button" class="pay-method-tab active" data-method="paypal" onclick="switchCheckoutPaymentMethod('paypal')">
+            <button type="button" class="pay-method-tab active" data-method="paypal" id="payMethodTab_paypal" onclick="switchCheckoutPaymentMethod('paypal')">
               <span class="pm-icon">🅿️</span>
               <div class="pm-text">
                 <div class="pm-title">PayPal Direct <span class="pm-badge neutral">INSTANT</span></div>
@@ -1611,8 +1614,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=203"></script>
-  <script src="products_data.js?v=203"></script>
-  <script src="app.js?v=203"></script>
+  <script src="prints_data.js?v=204"></script>
+  <script src="products_data.js?v=204"></script>
+  <script src="app.js?v=204"></script>
 </body>
 </html>
