@@ -1345,10 +1345,10 @@
             </button>
 
             <button type="button" class="pay-method-tab" data-method="worldfirst" onclick="switchCheckoutPaymentMethod('worldfirst')">
-              <span class="pm-icon">💳</span>
+              <span class="pm-icon">🏦</span>
               <div class="pm-text">
-                <div class="pm-title">WorldFirst Direct Card <span class="pm-badge b2b">0% SURCHARGE</span></div>
-                <div class="pm-sub">Visa / MasterCard direct invoice link</div>
+                <div class="pm-title">US Bank ACH / Wire (Chase) <span class="pm-badge b2b">0% FEE</span></div>
+                <div class="pm-sub">JPMorgan Chase Bank &amp; WorldFirst ACH</div>
               </div>
             </button>
 
@@ -1461,12 +1461,12 @@
           </div>
         </div>
 
-        <!-- Panel 3: WorldFirst Direct Invoice -->
+        <!-- Panel 3: WorldFirst Direct Invoice & US Bank ACH -->
         <div class="payment-panel" id="payPanel_worldfirst" style="display: none;">
           <div class="alt-pay-instruction-card">
             <div class="api-badge-row">
-              <span class="api-highlight-badge blue-theme">⚡ WORLDFIRST OFFICIAL B2B GATEWAY</span>
-              <span class="api-status-badge">VISA / MASTERCARD / ACH</span>
+              <span class="api-highlight-badge blue-theme">⚡ JPMORGAN CHASE BANK · US DOMESTIC &amp; WIRE</span>
+              <span class="api-status-badge">ACH / WIRE / WORLDFIRST</span>
             </div>
             <div class="api-discount-pricing">
               <div class="api-price-col highlight">
@@ -1478,14 +1478,14 @@
             <!-- Official Beneficiary Remittance Credentials -->
             <div class="pay-credentials-card">
               <div class="pcc-header">
-                <strong>WorldFirst USD Direct Receiving Account</strong>
+                <strong>Official US Bank Remittance Credentials (Chase)</strong>
                 <span class="pcc-tag">VERIFIED B2B</span>
               </div>
               <div class="pcc-row">
-                <span class="pcc-label">Beneficiary / Account Name:</span>
+                <span class="pcc-label">Bank Name:</span>
                 <div class="pcc-val-box">
-                  <strong class="pcc-val">DOZE OPO</strong>
-                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('DOZE OPO', 'Account Name')">Copy</button>
+                  <strong class="pcc-val">JPMORGAN CHASE BANK, N.A.</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('JPMORGAN CHASE BANK, N.A.', 'Bank Name')">Copy</button>
                 </div>
               </div>
               <div class="pcc-row">
@@ -1496,31 +1496,59 @@
                 </div>
               </div>
               <div class="pcc-row">
-                <span class="pcc-label">Settlement Currency &amp; Country:</span>
-                <span class="pcc-sub-info">USD (United States Dollar) · WorldFirst Ant Group</span>
+                <span class="pcc-label">Beneficiary / Account Name:</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">DOZE OPO</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('DOZE OPO', 'Account Name')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">ACH Routing Number (US Domestic):</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">028000024</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('028000024', 'ACH Routing Number')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Wire Routing Number (US Domestic):</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">021000021</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('021000021', 'Wire Routing Number')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">SWIFT / BIC Code (International Wire):</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">CHASUS33</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('CHASUS33', 'SWIFT Code')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Bank Address:</span>
+                <span class="pcc-sub-info">383 Madison Avenue, New York, NY 10179, USA</span>
               </div>
             </div>
 
             <div class="api-steps-list">
               <div class="api-step-item">
                 <span class="step-num">1</span>
-                <div><strong>Direct USD Wire / ACH Transfer</strong><p>Transfer directly to our official WorldFirst USD account above via ACH or wire remittance.</p></div>
+                <div><strong>US Domestic ACH / Wire Remittance</strong><p>Transfer USD directly from any US banking app (Chase, BoA, Wells Fargo, Citi) via ACH or wire with 0% fee.</p></div>
               </div>
               <div class="api-step-item">
                 <span class="step-num">2</span>
-                <div><strong>Visa / MasterCard Credit Card Clearance</strong><p>Click below to request a personalized direct card link or notify our concierge with your order reference.</p></div>
+                <div><strong>Visa / MasterCard Credit Card Option</strong><p>Prefer to pay with Visa/MasterCard card directly? Switch to the PayPal/Card tab above to checkout instantly.</p></div>
               </div>
               <div class="api-step-item">
                 <span class="step-num">3</span>
-                <div><strong>Automated Receipt &amp; Airway Bill</strong><p>Tracking number and export receipt sent automatically to your courier contact.</p></div>
+                <div><strong>Instant Dispatch Confirmation</strong><p>Click below to notify our concierge with your transfer receipt for immediate expedited dispatch.</p></div>
               </div>
             </div>
             <div class="alt-pay-btns">
               <button type="button" class="btn-alt-pay-action btn-wa-theme" onclick="submitAltPaymentOrder('worldfirst', 'whatsapp')">
-                <span>💬 Complete WorldFirst Order on WhatsApp</span>
+                <span>💬 Complete US Bank Order on WhatsApp</span>
               </button>
               <button type="button" class="btn-alt-pay-action btn-tg-theme" onclick="submitAltPaymentOrder('worldfirst', 'telegram')">
-                <span>✈️ Complete WorldFirst Order on Telegram</span>
+                <span>✈️ Complete US Bank Order on Telegram</span>
               </button>
             </div>
           </div>
@@ -1645,8 +1673,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=206"></script>
-  <script src="products_data.js?v=206"></script>
-  <script src="app.js?v=206"></script>
+  <script src="prints_data.js?v=207"></script>
+  <script src="products_data.js?v=207"></script>
+  <script src="app.js?v=207"></script>
 </body>
 </html>
