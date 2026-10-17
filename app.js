@@ -2369,6 +2369,34 @@ function submitAltPaymentOrder(method, platform) {
   }
 }
 
+function copyPaymentField(text, label) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast(`Copied ${label} to clipboard!`);
+    }).catch(() => {
+      copyFallback(text, label);
+    });
+  } else {
+    copyFallback(text, label);
+  }
+}
+
+function copyFallback(text, label) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    showToast(`Copied ${label} to clipboard!`);
+  } catch (e) {
+    showToast(`Please copy: ${text}`);
+  }
+  document.body.removeChild(ta);
+}
+
 function modifyCheckoutSingleQty(delta) {
   if (!CURRENT_CHECKOUT_CONFIG || CURRENT_CHECKOUT_CONFIG.isCartCheckout) return;
   const it = CURRENT_CHECKOUT_CONFIG.items[0];

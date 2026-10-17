@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=119">
+  <link rel="stylesheet" href="styles.css?v=120">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1389,6 +1389,33 @@
                 <strong id="wiseDiscountTotalDisplay">$0.00 USD</strong>
               </div>
             </div>
+
+            <!-- Official Beneficiary Remittance Credentials -->
+            <div class="pay-credentials-card">
+              <div class="pcc-header">
+                <strong>Wise / Remitly Remittance Credentials</strong>
+                <span class="pcc-tag">VERIFIED</span>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Recipient Name (Full Pinyin):</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">ZHANG ZHIJIAN</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('ZHANG ZHIJIAN', 'Recipient Name')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Alipay Account (Phone / ID):</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">18520682738</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('18520682738', 'Alipay Account')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Destination Country / Target:</span>
+                <span class="pcc-sub-info">China · Alipay / Bank Card</span>
+              </div>
+            </div>
+
             <div class="api-steps-list">
               <div class="api-step-item">
                 <span class="step-num">1</span>
@@ -1396,7 +1423,7 @@
               </div>
               <div class="api-step-item">
                 <span class="step-num">2</span>
-                <div><strong>Direct Remittance via Wise</strong><p>Transfer USD to our registered Alipay or Bank account with zero intermediary markup.</p></div>
+                <div><strong>Send Remittance via Wise / Paysend</strong><p>Transfer USD to our registered Alipay credentials above with zero intermediary markup.</p></div>
               </div>
               <div class="api-step-item">
                 <span class="step-num">3</span>
@@ -1469,14 +1496,34 @@
                 <strong id="usdtDiscountTotalDisplay">$0.00 USD</strong>
               </div>
             </div>
+
+            <!-- Official USDT Deposit Card -->
+            <div class="pay-credentials-card crypto-card">
+              <div class="pcc-header">
+                <strong>USDT (TRC-20) Binance Official Deposit</strong>
+                <span class="pcc-tag crypto-tag">TRON NETWORK</span>
+              </div>
+              <div class="crypto-qr-container">
+                <img src="assets/usdt_trc20_qr.png" alt="USDT TRC20 QR Code" class="crypto-qr-img">
+                <div class="crypto-qr-hint">Scan with Binance, OKX, TrustWallet, or TronLink</div>
+              </div>
+              <div class="pcc-row full-col">
+                <span class="pcc-label">Deposit Address (TRC-20):</span>
+                <div class="pcc-val-box address-box">
+                  <span class="pcc-val code-val">TJqRG21RC3orWRiyEoxPQfJJXwWGrZ11Uu</span>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('TJqRG21RC3orWRiyEoxPQfJJXwWGrZ11Uu', 'USDT Address')">Copy Address</button>
+                </div>
+              </div>
+            </div>
+
             <div class="api-steps-list">
               <div class="api-step-item">
                 <span class="step-num">1</span>
-                <div><strong>Zero Bank Holds or Chargebacks</strong><p>Pay via USDT on Tron network (TRC-20) with minimal $1 network gas fee.</p></div>
+                <div><strong>Zero Bank Holds or Chargebacks</strong><p>Send USDT via Tron network (TRC-20) with minimal network gas fee.</p></div>
               </div>
               <div class="api-step-item">
                 <span class="step-num">2</span>
-                <div><strong>Instant On-Chain Verification</strong><p>Contact concierge to receive verified deposit address / QR code and confirm TXID.</p></div>
+                <div><strong>Instant On-Chain Verification</strong><p>Forward order details to WhatsApp/Telegram below with your TXID for instant sample priority dispatch.</p></div>
               </div>
             </div>
             <div class="alt-pay-btns">
@@ -1551,8 +1598,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=119"></script>
-  <script src="products_data.js?v=119"></script>
-  <script src="app.js?v=119"></script>
+  <script src="prints_data.js?v=120"></script>
+  <script src="products_data.js?v=120"></script>
+  <script src="app.js?v=120"></script>
 </body>
 </html>
