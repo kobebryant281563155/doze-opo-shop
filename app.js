@@ -2630,7 +2630,7 @@ function submitAltPaymentOrder(method, platform) {
   const prefix = method === 'wise' ? 'WISE' : (method === 'worldfirst' ? 'WF' : 'USDT');
   const orderId = 'DOZE-' + prefix + '-' + Math.floor(100000 + Math.random() * 900000);
 
-  const fullAddress = `${addr.name}, ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}. Tel: ${addr.phone}, Email: ${addr.email}`;
+  const fullAddress = `${addr.name}, ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}. Tel: ${addr.phone}, Email: ${addr.email}${addr.remark ? ` | Remark: ${addr.remark}` : ''}`;
 
   let methodLabel = isDiscounted ? 'Wise / Direct Remittance (8% OFF)' : 'Wise / Direct Remittance (Standard Rate)';
   let gatewayTag = 'Wise / Bank Remittance Pending';
@@ -2649,6 +2649,7 @@ function submitAltPaymentOrder(method, platform) {
     payerName: addr.name,
     payerEmail: addr.email || 'N/A',
     shippingAddress: fullAddress,
+    remark: addr.remark || '',
     items: cfg.items,
     subtotalUSD: cfg.subtotalUSD,
     shippingUSD: cfg.shippingUSD,
@@ -2677,7 +2678,8 @@ function submitAltPaymentOrder(method, platform) {
     `• Delivered Total: $${finalTotalUSD.toFixed(2)} USD ${isDiscounted ? '(8% Discount Applied)' : ''}\n` +
     `• Recipient: ${addr.name}\n` +
     `• Phone: ${addr.phone}\n` +
-    `• Address: ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}\n\n` +
+    `• Address: ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}\n` +
+    (addr.remark ? `• Remark: ${addr.remark}\n\n` : '\n') +
     `Please send me your ${method === 'worldfirst' ? 'WorldFirst direct credit card checkout link' : (method === 'wise' ? 'Alipay / Bank remittance info' : 'USDT TRC-20 wallet address')} so I can complete payment!`;
 
   if (platform === 'telegram') {
@@ -2861,6 +2863,7 @@ function handleOrderSuccess(details, cfg) {
   if (addr.address) {
     shippingAddr = [addr.address, addr.address2, addr.city, addr.state, addr.zip, addr.country].filter(Boolean).join(', ');
     if (payerPhone) shippingAddr += ` | Tel: ${payerPhone}`;
+    if (addr.remark) shippingAddr += ` | Remark: ${addr.remark}`;
   } else if (details.purchase_units && details.purchase_units[0] && details.purchase_units[0].shipping && details.purchase_units[0].shipping.address) {
     const a = details.purchase_units[0].shipping.address;
     shippingAddr = [a.address_line_1, a.address_line_2, a.admin_area_2, a.admin_area_1, a.postal_code, a.country_code].filter(Boolean).join(', ');
@@ -2876,6 +2879,7 @@ function handleOrderSuccess(details, cfg) {
     payerName: payerName,
     payerEmail: payerEmail,
     shippingAddress: shippingAddr,
+    remark: addr.remark || '',
     items: cfg.items,
     subtotalUSD: cfg.subtotalUSD,
     shippingUSD: cfg.shippingUSD,
@@ -2915,6 +2919,11 @@ function handleOrderSuccess(details, cfg) {
         <span class="rc-label">Ship To:</span>
         <span class="rc-val">${shippingAddr}</span>
       </div>
+      ${addr.remark ? `
+      <div class="receipt-row">
+        <span class="rc-label">Remark:</span>
+        <span class="rc-val">${addr.remark}</span>
+      </div>` : ''}
       <div class="receipt-divider"></div>
       <div class="receipt-items-list">
         ${cfg.items.map(it => `
@@ -2934,7 +2943,8 @@ function handleOrderSuccess(details, cfg) {
 
   const waBtn = document.getElementById('orderSuccessWaLink');
   if (waBtn) {
-    const msg = encodeURIComponent(`Hello DOZE OPO! I have paid for Sample Order ${orderId} via PayPal (TX: ${paypalTxId}). Items: ${cfg.titleSummary}. Please confirm proofing and tracking.`);
+    const remarkNote = addr.remark ? ` (Remark: ${addr.remark})` : '';
+    const msg = encodeURIComponent(`Hello DOZE OPO! I have paid for Sample Order ${orderId} via PayPal (TX: ${paypalTxId}). Items: ${cfg.titleSummary}.${remarkNote} Please confirm proofing and tracking.`);
     waBtn.href = `https://wa.me/8618520682738?text=${msg}`;
   }
 
@@ -2988,6 +2998,7 @@ function openOrdersTrackingModal() {
           <div style="font-size: 11px; color: #64748b;">Date: ${dateStr} · PayPal: ${ord.paypalTxId}</div>
           <div style="font-size: 11.5px; color: #0f172a; margin: 4px 0;"><strong>Items:</strong> ${itemsDesc}</div>
           <div style="font-size: 11px; color: #475569;"><strong>Deliver To:</strong> ${ord.shippingAddress}</div>
+          ${ord.remark ? `<div style="font-size: 11px; color: #475569; margin-top: 2px;"><strong>Remark:</strong> ${ord.remark}</div>` : ''}
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #e2e8f0;">
             <strong style="color: #c2410c;">Total: $${parseFloat(ord.totalUSD).toFixed(2)} USD</strong>
             <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" style="font-size: 11px; font-weight: 700; color: #0284c7; text-decoration: none;">
@@ -3033,6 +3044,7 @@ function loadCustomerAddress() {
     if (a.state && document.getElementById('shipState')) document.getElementById('shipState').value = a.state;
     if (a.zip && document.getElementById('shipZip')) document.getElementById('shipZip').value = a.zip;
     if (a.country && document.getElementById('shipCountry')) document.getElementById('shipCountry').value = a.country;
+    if (a.remark && document.getElementById('shipRemark')) document.getElementById('shipRemark').value = a.remark;
   } catch (e) {
     console.error('Failed to load address', e);
   }
@@ -3049,7 +3061,8 @@ function saveCustomerAddress() {
       city: document.getElementById('shipCity')?.value.trim() || '',
       state: document.getElementById('shipState')?.value.trim() || '',
       zip: document.getElementById('shipZip')?.value.trim() || '',
-      country: document.getElementById('shipCountry')?.value || 'US'
+      country: document.getElementById('shipCountry')?.value || 'US',
+      remark: document.getElementById('shipRemark')?.value.trim() || ''
     };
     localStorage.setItem('DOZE_CUSTOMER_ADDRESS', JSON.stringify(a));
   } catch (e) {
@@ -3067,6 +3080,7 @@ function getCustomerAddress() {
     city: document.getElementById('shipCity')?.value.trim() || '',
     state: document.getElementById('shipState')?.value.trim() || '',
     zip: document.getElementById('shipZip')?.value.trim() || '',
-    country: document.getElementById('shipCountry')?.value || 'US'
+    country: document.getElementById('shipCountry')?.value || 'US',
+    remark: document.getElementById('shipRemark')?.value.trim() || ''
   };
 }
