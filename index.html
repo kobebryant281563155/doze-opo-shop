@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=117">
+  <link rel="stylesheet" href="styles.css?v=118">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1215,7 +1215,7 @@
     <div class="modal-drawer">
       <div class="modal-header">
         <div class="modal-title-box">
-          <span class="checkout-super-tag">OFFICIAL PAYPAL DIRECT CHECKOUT</span>
+          <span class="checkout-super-tag">MULTI-GATEWAY EXPRESS CHECKOUT</span>
           <h4 id="checkoutModalTitle">Express Sample Order</h4>
         </div>
         <button type="button" class="modal-close-btn" onclick="closePaypalCheckoutModal()">✕</button>
@@ -1300,29 +1300,193 @@
           </div>
         </div>
 
-        <!-- Trust Badges -->
-        <div class="checkout-trust-grid">
-          <div class="trust-item">
-            <span class="trust-icon">🛡️</span>
-            <div>
-              <strong>PayPal Buyer Protection</strong>
-              <small>100% Secure &amp; Full Refund Guarantee</small>
+        <!-- Payment Method Selector -->
+        <div class="checkout-payment-section">
+          <div class="csf-header">
+            <span class="csf-tag">PAYMENT METHOD</span>
+            <strong>Select Checkout &amp; Settlement Option</strong>
+          </div>
+          
+          <div class="pay-method-tabs" id="payMethodTabs">
+            <button type="button" class="pay-method-tab active" data-method="paypal" onclick="switchCheckoutPaymentMethod('paypal')">
+              <span class="pm-icon">🅿️</span>
+              <div class="pm-text">
+                <div class="pm-title">PayPal Direct <span class="pm-badge neutral">INSTANT</span></div>
+                <div class="pm-sub">Auto web checkout &amp; Buyer Protection</div>
+              </div>
+            </button>
+
+            <button type="button" class="pay-method-tab" data-method="wise" onclick="switchCheckoutPaymentMethod('wise')">
+              <span class="pm-icon">💸</span>
+              <div class="pm-text">
+                <div class="pm-title">Wise / Bank Direct <span class="pm-badge save">SAVE 10%</span></div>
+                <div class="pm-sub">Wise, Remitly, Alipay &amp; Bank Transfer</div>
+              </div>
+            </button>
+
+            <button type="button" class="pay-method-tab" data-method="worldfirst" onclick="switchCheckoutPaymentMethod('worldfirst')">
+              <span class="pm-icon">💳</span>
+              <div class="pm-text">
+                <div class="pm-title">WorldFirst Direct Card <span class="pm-badge b2b">0% SURCHARGE</span></div>
+                <div class="pm-sub">Visa / MasterCard direct invoice link</div>
+              </div>
+            </button>
+
+            <button type="button" class="pay-method-tab" data-method="usdt" onclick="switchCheckoutPaymentMethod('usdt')">
+              <span class="pm-icon">🪙</span>
+              <div class="pm-text">
+                <div class="pm-title">USDT / Crypto <span class="pm-badge save">SAVE 10%</span></div>
+                <div class="pm-sub">TRC-20 instant clearance &amp; no chargebacks</div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Payment Content Panels -->
+        <!-- Panel 1: PayPal Direct -->
+        <div class="payment-panel active" id="payPanel_paypal">
+          <!-- Trust Badges -->
+          <div class="checkout-trust-grid">
+            <div class="trust-item">
+              <span class="trust-icon">🛡️</span>
+              <div>
+                <strong>PayPal Buyer Protection</strong>
+                <small>100% Secure &amp; Full Refund Guarantee</small>
+              </div>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">✈️</span>
+              <div>
+                <strong>Direct Air Express</strong>
+                <small>Door-to-door delivery with tracking</small>
+              </div>
             </div>
           </div>
-          <div class="trust-item">
-            <span class="trust-icon">✈️</span>
-            <div>
-              <strong>Direct Air Express</strong>
-              <small>Door-to-door delivery with tracking</small>
+
+          <!-- PayPal Buttons Container -->
+          <div class="paypal-buttons-wrapper">
+            <div id="paypalButtonsContainer"></div>
+            <div id="paypalLoadingPlaceholder" class="paypal-loading-indicator">
+              <span>Loading PayPal Secure Payment...</span>
             </div>
           </div>
         </div>
 
-        <!-- PayPal Buttons Container -->
-        <div class="paypal-buttons-wrapper">
-          <div id="paypalButtonsContainer"></div>
-          <div id="paypalLoadingPlaceholder" class="paypal-loading-indicator">
-            <span>Loading PayPal Secure Payment...</span>
+        <!-- Panel 2: Wise / Direct Transfer -->
+        <div class="payment-panel" id="payPanel_wise" style="display: none;">
+          <div class="alt-pay-instruction-card">
+            <div class="api-badge-row">
+              <span class="api-highlight-badge">🔥 10% OFF DISCOUNT APPLIED</span>
+              <span class="api-status-badge">DIRECT CLEARANCE</span>
+            </div>
+            <div class="api-discount-pricing">
+              <div class="api-price-col">
+                <small>Standard Total:</small>
+                <del id="wiseOriginalTotalDisplay">$0.00 USD</del>
+              </div>
+              <div class="api-price-col highlight">
+                <small>Discounted Total (10% OFF):</small>
+                <strong id="wiseDiscountTotalDisplay">$0.00 USD</strong>
+              </div>
+            </div>
+            <div class="api-steps-list">
+              <div class="api-step-item">
+                <span class="step-num">1</span>
+                <div><strong>Verify Delivery Address</strong><p>Ensure your contact details and shipping address above are accurate.</p></div>
+              </div>
+              <div class="api-step-item">
+                <span class="step-num">2</span>
+                <div><strong>Direct Remittance via Wise</strong><p>Transfer USD to our registered Alipay or Bank account with zero intermediary markup.</p></div>
+              </div>
+              <div class="api-step-item">
+                <span class="step-num">3</span>
+                <div><strong>Instant Dispatch Confirmation</strong><p>Click below to forward your order details directly to our concierge for immediate priority dispatch.</p></div>
+              </div>
+            </div>
+            <div class="alt-pay-btns">
+              <button type="button" class="btn-alt-pay-action btn-wa-theme" onclick="submitAltPaymentOrder('wise', 'whatsapp')">
+                <span>💬 Complete Wise Order on WhatsApp (10% OFF)</span>
+              </button>
+              <button type="button" class="btn-alt-pay-action btn-tg-theme" onclick="submitAltPaymentOrder('wise', 'telegram')">
+                <span>✈️ Complete Wise Order on Telegram (10% OFF)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: WorldFirst Direct Invoice -->
+        <div class="payment-panel" id="payPanel_worldfirst" style="display: none;">
+          <div class="alt-pay-instruction-card">
+            <div class="api-badge-row">
+              <span class="api-highlight-badge blue-theme">⚡ WORLDFIRST OFFICIAL B2B GATEWAY</span>
+              <span class="api-status-badge">VISA / MASTERCARD</span>
+            </div>
+            <div class="api-discount-pricing">
+              <div class="api-price-col highlight">
+                <small>Direct Invoice Amount:</small>
+                <strong id="worldfirstTotalDisplay">$0.00 USD</strong>
+              </div>
+            </div>
+            <div class="api-steps-list">
+              <div class="api-step-item">
+                <span class="step-num">1</span>
+                <div><strong>Request Official Payment Link</strong><p>We generate an authenticated WorldFirst (Ant Group) checkout invoice link for your order.</p></div>
+              </div>
+              <div class="api-step-item">
+                <span class="step-num">2</span>
+                <div><strong>Direct Credit Card Clearance</strong><p>Pay securely with Visa, MasterCard, or wire transfer without needing a PayPal account.</p></div>
+              </div>
+              <div class="api-step-item">
+                <span class="step-num">3</span>
+                <div><strong>Automated Receipt &amp; Airway Bill</strong><p>Tracking number and export receipt sent automatically to your courier contact.</p></div>
+              </div>
+            </div>
+            <div class="alt-pay-btns">
+              <button type="button" class="btn-alt-pay-action btn-wa-theme" onclick="submitAltPaymentOrder('worldfirst', 'whatsapp')">
+                <span>💬 Request WorldFirst Card Link on WhatsApp</span>
+              </button>
+              <button type="button" class="btn-alt-pay-action btn-tg-theme" onclick="submitAltPaymentOrder('worldfirst', 'telegram')">
+                <span>✈️ Request WorldFirst Card Link on Telegram</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: USDT / Crypto -->
+        <div class="payment-panel" id="payPanel_usdt" style="display: none;">
+          <div class="alt-pay-instruction-card">
+            <div class="api-badge-row">
+              <span class="api-highlight-badge">🛡️ 10% OFF DISCOUNT APPLIED</span>
+              <span class="api-status-badge">USDT (TRC-20)</span>
+            </div>
+            <div class="api-discount-pricing">
+              <div class="api-price-col">
+                <small>Standard Total:</small>
+                <del id="usdtOriginalTotalDisplay">$0.00 USD</del>
+              </div>
+              <div class="api-price-col highlight">
+                <small>Crypto Discount Total (10% OFF):</small>
+                <strong id="usdtDiscountTotalDisplay">$0.00 USD</strong>
+              </div>
+            </div>
+            <div class="api-steps-list">
+              <div class="api-step-item">
+                <span class="step-num">1</span>
+                <div><strong>Zero Bank Holds or Chargebacks</strong><p>Pay via USDT on Tron network (TRC-20) with minimal $1 network gas fee.</p></div>
+              </div>
+              <div class="api-step-item">
+                <span class="step-num">2</span>
+                <div><strong>Instant On-Chain Verification</strong><p>Contact concierge to receive verified deposit address / QR code and confirm TXID.</p></div>
+              </div>
+            </div>
+            <div class="alt-pay-btns">
+              <button type="button" class="btn-alt-pay-action btn-wa-theme" onclick="submitAltPaymentOrder('usdt', 'whatsapp')">
+                <span>💬 Pay with USDT on WhatsApp (10% OFF)</span>
+              </button>
+              <button type="button" class="btn-alt-pay-action btn-tg-theme" onclick="submitAltPaymentOrder('usdt', 'telegram')">
+                <span>✈️ Pay with USDT on Telegram (10% OFF)</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -1387,8 +1551,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=117"></script>
-  <script src="products_data.js?v=117"></script>
-  <script src="app.js?v=117"></script>
+  <script src="prints_data.js?v=118"></script>
+  <script src="products_data.js?v=118"></script>
+  <script src="app.js?v=118"></script>
 </body>
 </html>

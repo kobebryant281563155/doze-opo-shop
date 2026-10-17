@@ -2145,6 +2145,7 @@ function openPdpCheckout(productId) {
 
   updateCheckoutModalUI();
   loadCustomerAddress();
+  switchCheckoutPaymentMethod('paypal');
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
   renderPaypalButtons();
@@ -2186,6 +2187,7 @@ function openCartCheckout() {
 
   updateCheckoutModalUI();
   loadCustomerAddress();
+  switchCheckoutPaymentMethod('paypal');
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
   renderPaypalButtons();
@@ -2230,9 +2232,150 @@ function updateCheckoutModalUI() {
   }
 
   const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
+  const discountedTotalUSD = totalUSD * 0.90;
+
   if (subtotalElem) subtotalElem.textContent = `$${cfg.subtotalUSD.toFixed(2)} USD`;
   if (shippingElem) shippingElem.textContent = `$${cfg.shippingUSD.toFixed(2)} USD`;
   if (totalElem) totalElem.textContent = `$${totalUSD.toFixed(2)} USD`;
+
+  const wiseOrig = document.getElementById('wiseOriginalTotalDisplay');
+  const wiseDisc = document.getElementById('wiseDiscountTotalDisplay');
+  const wfTotal = document.getElementById('worldfirstTotalDisplay');
+  const usdtOrig = document.getElementById('usdtOriginalTotalDisplay');
+  const usdtDisc = document.getElementById('usdtDiscountTotalDisplay');
+
+  if (wiseOrig) wiseOrig.textContent = `$${totalUSD.toFixed(2)} USD`;
+  if (wiseDisc) wiseDisc.textContent = `$${discountedTotalUSD.toFixed(2)} USD`;
+  if (wfTotal) wfTotal.textContent = `$${totalUSD.toFixed(2)} USD`;
+  if (usdtOrig) usdtOrig.textContent = `$${totalUSD.toFixed(2)} USD`;
+  if (usdtDisc) usdtDisc.textContent = `$${discountedTotalUSD.toFixed(2)} USD`;
+}
+
+let currentCheckoutPayMethod = 'paypal';
+
+function switchCheckoutPaymentMethod(method) {
+  currentCheckoutPayMethod = method || 'paypal';
+
+  const tabs = document.querySelectorAll('.pay-method-tab');
+  tabs.forEach(tab => {
+    if (tab.dataset.method === currentCheckoutPayMethod) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  const panels = document.querySelectorAll('.payment-panel');
+  panels.forEach(p => {
+    p.style.display = 'none';
+    p.classList.remove('active');
+  });
+
+  const activePanel = document.getElementById('payPanel_' + currentCheckoutPayMethod);
+  if (activePanel) {
+    activePanel.style.display = 'block';
+    activePanel.classList.add('active');
+  }
+
+  if (currentCheckoutPayMethod === 'paypal') {
+    renderPaypalButtons();
+  }
+}
+
+function submitAltPaymentOrder(method, platform) {
+  if (!CURRENT_CHECKOUT_CONFIG) {
+    showToast('No active checkout session. Please re-open your cart.');
+    return;
+  }
+
+  saveCustomerAddress();
+  const addr = getCustomerAddress();
+
+  if (!addr.name || !addr.phone || !addr.address) {
+    showToast('Please fill in Name, Phone, and Street Address above.');
+    const formElem = document.getElementById('checkoutShippingForm');
+    if (formElem) {
+      formElem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      formElem.style.outline = '2px solid #ef4444';
+      setTimeout(() => { formElem.style.outline = ''; }, 3000);
+    }
+    return;
+  }
+
+  const cfg = CURRENT_CHECKOUT_CONFIG;
+  const regularTotal = cfg.subtotalUSD + cfg.shippingUSD;
+  const isDiscounted = (method === 'wise' || method === 'usdt');
+  const finalTotalUSD = isDiscounted ? parseFloat((regularTotal * 0.90).toFixed(2)) : regularTotal;
+
+  const prefix = method === 'wise' ? 'WISE' : (method === 'worldfirst' ? 'WF' : 'USDT');
+  const orderId = 'DOZE-' + prefix + '-' + Math.floor(100000 + Math.random() * 900000);
+
+  const fullAddress = `${addr.name}, ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}. Tel: ${addr.phone}, Email: ${addr.email}`;
+
+  let methodLabel = 'Wise / Direct Remittance (10% OFF)';
+  let gatewayTag = 'Wise / Bank Remittance Pending';
+  if (method === 'worldfirst') {
+    methodLabel = 'WorldFirst Direct Credit Card Invoice (0% Surcharge)';
+    gatewayTag = 'WorldFirst Card Invoice Pending';
+  } else if (method === 'usdt') {
+    methodLabel = 'USDT TRC-20 Crypto (10% OFF)';
+    gatewayTag = 'USDT TRC-20 Pending';
+  }
+
+  const orderRecord = {
+    orderId: orderId,
+    date: new Date().toISOString(),
+    itemsSummary: cfg.titleSummary,
+    items: cfg.items,
+    totalUSD: finalTotalUSD,
+    shippingAddress: fullAddress,
+    paypalTxId: gatewayTag,
+    paymentMethod: method.toUpperCase(),
+  const orderRecord = {
+    orderId: orderId,
+    paypalTxId: gatewayTag,
+    createdAt: new Date().toISOString(),
+    payerName: addr.name,
+    payerEmail: addr.email || 'N/A',
+    shippingAddress: fullAddress,
+    items: cfg.items,
+    subtotalUSD: cfg.subtotalUSD,
+    shippingUSD: cfg.shippingUSD,
+    totalUSD: finalTotalUSD,
+    status: 'Pending Concierge Confirmation'
+  };
+
+  try {
+    const saved = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
+    saved.unshift(orderRecord);
+    localStorage.setItem('DOZE_OPO_ORDERS', JSON.stringify(saved));
+  } catch (e) {
+    console.error('Failed to store order', e);
+  }
+
+  if (cfg.isCartCheckout) {
+    APP_STATE.cartItems = [];
+    updateCartTotal();
+  }
+
+  closePaypalCheckoutModal();
+  showToast(`Order draft ${orderId} created! Forwarding to concierge...`);
+
+  const msgText = `Hello DOZE OPO! I would like to pay for Sample Order ${orderId} via ${methodLabel}.\n\n` +
+    `• Items: ${cfg.titleSummary}\n` +
+    `• Delivered Total: $${finalTotalUSD.toFixed(2)} USD ${isDiscounted ? '(10% Discount Applied)' : ''}\n` +
+    `• Recipient: ${addr.name}\n` +
+    `• Phone: ${addr.phone}\n` +
+    `• Address: ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}\n\n` +
+    `Please send me your ${method === 'worldfirst' ? 'WorldFirst direct credit card checkout link' : (method === 'wise' ? 'Alipay / Bank remittance info' : 'USDT TRC-20 wallet address')} so I can complete payment!`;
+
+  if (platform === 'telegram') {
+    const tgUrl = 'https://t.me/jack65651130?text=' + encodeURIComponent(msgText);
+    window.open(tgUrl, '_blank');
+  } else {
+    const waUrl = 'https://wa.me/8618520682738?text=' + encodeURIComponent(msgText);
+    window.open(waUrl, '_blank');
+  }
 }
 
 function modifyCheckoutSingleQty(delta) {
@@ -2251,7 +2394,9 @@ function modifyCheckoutSingleQty(delta) {
   CURRENT_CHECKOUT_CONFIG.shippingUSD = calculateUsShipping(newQty);
 
   updateCheckoutModalUI();
-  renderPaypalButtons();
+  if (currentCheckoutPayMethod === 'paypal') {
+    renderPaypalButtons();
+  }
 }
 
 function closePaypalCheckoutModal() {
