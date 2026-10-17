@@ -540,7 +540,15 @@ function updatePdpShippingCalc() {
 
   const qty = activePdpQty;
   const isHeavy = isHeavyweightGarment(prod.category || prod.id);
-  const unitPriceUSD = prod.priceUSD;
+
+  let unitPriceUSD = prod.priceUSD;
+  if (prod.skus && prod.skus.length > 0) {
+    const matched = prod.skus.find(s => s.name === activePdpColor);
+    if (matched && typeof matched.priceUSD === 'number') {
+      unitPriceUSD = matched.priceUSD;
+    }
+  }
+
   const garmentSubtotalUSD = unitPriceUSD * qty;
   const shippingFeeUSD = calculateProductShipping(prod, qty);
   const deliveredTotalUSD = garmentSubtotalUSD + shippingFeeUSD;
@@ -780,9 +788,20 @@ function openProductDetail(productId) {
       `;
       colorGrid.appendChild(swatch);
     });
+    const colorLabelHeader = document.getElementById('pdpColorSectionLabel');
+    if (colorLabelHeader) {
+      colorLabelHeader.textContent = (prod.category === 'fb' || prod.id === 'FB01') ? 'Select VIP Price Tier:' : 'Select Colorway:';
+    }
+
     activePdpColor = prod.skus[0].name;
     const colorLabel = document.getElementById('pdpActiveColorName');
     if (colorLabel) colorLabel.textContent = activePdpColor;
+    if (typeof prod.skus[0].priceUSD === 'number') {
+      if (priceVal) {
+        priceVal.textContent = formatCurrency(prod.skus[0].priceUSD);
+        priceVal.setAttribute('data-base-usd', prod.skus[0].priceUSD);
+      }
+    }
     switchPdpHero(gallery[0] || prod.skus[0].hero, 1);
   } else if (gallery.length > 0) {
     switchPdpHero(gallery[0], 1);
@@ -1717,6 +1736,20 @@ function selectPdpColor(colorName, heroImg, elem) {
     const mainImg = document.getElementById('pdpMainImg');
     if (mainImg) mainImg.src = heroImg;
   }
+
+  const prod = PRODUCTS_DATA[activePdpProductId];
+  if (prod && prod.skus) {
+    const matched = prod.skus.find(s => s.name === colorName);
+    if (matched && typeof matched.priceUSD === 'number') {
+      const priceVal = document.querySelector('.pdp-price-val');
+      if (priceVal) {
+        priceVal.textContent = formatCurrency(matched.priceUSD);
+        priceVal.setAttribute('data-base-usd', matched.priceUSD);
+      }
+    }
+  }
+
+  updatePdpShippingCalc();
 }
 
 function selectPdpSize(size, elem) {
@@ -1737,11 +1770,20 @@ function addPdpToCart(productId) {
   const prod = PRODUCTS_DATA[productId || activePdpProductId];
   if (!prod) return;
 
+  let unitPriceUSD = prod.priceUSD;
+  if (prod.skus && prod.skus.length > 0) {
+    const matchedSku = prod.skus.find(s => s.name === activePdpColor);
+    if (matchedSku && typeof matchedSku.priceUSD === 'number') {
+      unitPriceUSD = matchedSku.priceUSD;
+    }
+  }
+
   APP_STATE.cartItems.push({
     id: prod.id,
     name: prod.name,
     category: prod.category || 'tee',
-    priceUSD: prod.priceUSD,
+    noDiscount: !!prod.noDiscount,
+    priceUSD: unitPriceUSD,
     qty: activePdpQty,
     size: activePdpSize || 'Standard',
     spec: `${prod.gram} · ${activePdpColor}`,
@@ -2251,26 +2293,32 @@ function openPdpCheckout(productId) {
   const size = activePdpSize || (prod.sizeTable && prod.sizeTable.rows && prod.sizeTable.rows[0] ? prod.sizeTable.rows[0].size : 'L');
   
   let thumb = prod.img;
+  let unitPriceUSD = prod.priceUSD;
   if (prod.skus && prod.skus.length > 0) {
     const matchedSku = prod.skus.find(s => s.name === color);
-    if (matchedSku && matchedSku.thumb) thumb = matchedSku.thumb;
+    if (matchedSku) {
+      if (matchedSku.thumb) thumb = matchedSku.thumb;
+      if (typeof matchedSku.priceUSD === 'number') unitPriceUSD = matchedSku.priceUSD;
+    }
   }
 
-  const subtotalUSD = prod.priceUSD * qty;
+  const subtotalUSD = unitPriceUSD * qty;
   const shippingUSD = calculateProductShipping(prod, qty);
 
   CURRENT_CHECKOUT_CONFIG = {
     isCartCheckout: false,
     productId: prod.id,
+    noDiscount: !!prod.noDiscount,
     titleSummary: `${prod.name} (${color}, ${size})`,
     items: [{
       id: prod.id,
       name: prod.name,
       category: prod.category || 'tee',
+      noDiscount: !!prod.noDiscount,
       color: color,
       size: size,
       qty: qty,
-      priceUSD: prod.priceUSD,
+      priceUSD: unitPriceUSD,
       thumb: thumb
     }],
     subtotalUSD: subtotalUSD,
@@ -2302,6 +2350,7 @@ function openCartCheckout() {
       id: item.id,
       name: item.name,
       category: item.category || (PRODUCTS_DATA[item.id] ? PRODUCTS_DATA[item.id].category : 'tee'),
+      noDiscount: !!item.noDiscount,
       color: item.spec || 'Standard',
       size: item.size || 'L',
       qty: q,
@@ -2311,9 +2360,11 @@ function openCartCheckout() {
   });
 
   const shippingUSD = calculateCartShipping(items);
+  const hasNoDiscount = items.some(it => it.noDiscount);
 
   CURRENT_CHECKOUT_CONFIG = {
     isCartCheckout: true,
+    noDiscount: hasNoDiscount,
     titleSummary: `${items.length} Sample Styles (${totalPieces} pcs)`,
     items: items,
     subtotalUSD: subtotalUSD,
@@ -2367,7 +2418,8 @@ function updateCheckoutModalUI() {
   }
 
   const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
-  const discountedTotalUSD = totalUSD * 0.92;
+  const hasNoDiscount = !!cfg.noDiscount || (cfg.items && cfg.items.some(it => it.noDiscount || it.category === 'fb' || it.id === 'FB01'));
+  const discountedTotalUSD = hasNoDiscount ? totalUSD : (totalUSD * 0.92);
 
   if (subtotalElem) subtotalElem.textContent = `$${cfg.subtotalUSD.toFixed(2)} USD`;
   if (shippingElem) shippingElem.textContent = `$${cfg.shippingUSD.toFixed(2)} USD`;
@@ -2379,11 +2431,42 @@ function updateCheckoutModalUI() {
   const usdtOrig = document.getElementById('usdtOriginalTotalDisplay');
   const usdtDisc = document.getElementById('usdtDiscountTotalDisplay');
 
-  if (wiseOrig) wiseOrig.textContent = `$${totalUSD.toFixed(2)} USD`;
-  if (wiseDisc) wiseDisc.textContent = `$${discountedTotalUSD.toFixed(2)} USD`;
-  if (wfTotal) wfTotal.textContent = `$${totalUSD.toFixed(2)} USD`;
-  if (usdtOrig) usdtOrig.textContent = `$${totalUSD.toFixed(2)} USD`;
-  if (usdtDisc) usdtDisc.textContent = `$${discountedTotalUSD.toFixed(2)} USD`;
+  const wiseBadge = document.getElementById('wiseDiscountBadge');
+  const usdtBadge = document.getElementById('usdtDiscountBadge');
+  const wiseHeaderBadge = document.getElementById('wiseDiscountHeaderBadge');
+  const usdtHeaderBadge = document.getElementById('usdtDiscountHeaderBadge');
+  const wiseStandardCol = document.getElementById('wiseStandardPriceCol');
+  const usdtStandardCol = document.getElementById('usdtStandardPriceCol');
+  const wiseLabel = document.getElementById('wiseDiscountLabel');
+  const usdtLabel = document.getElementById('usdtDiscountLabel');
+
+  if (hasNoDiscount) {
+    if (wiseBadge) wiseBadge.style.display = 'none';
+    if (usdtBadge) usdtBadge.style.display = 'none';
+    if (wiseHeaderBadge) wiseHeaderBadge.textContent = 'STANDARD VIP RATE (NO SURCHARGE)';
+    if (usdtHeaderBadge) usdtHeaderBadge.textContent = 'USDT DIRECT CLEARANCE (STANDARD RATE)';
+    if (wiseStandardCol) wiseStandardCol.style.display = 'none';
+    if (usdtStandardCol) usdtStandardCol.style.display = 'none';
+    if (wiseLabel) wiseLabel.textContent = 'Order Total:';
+    if (usdtLabel) usdtLabel.textContent = 'Crypto Order Total:';
+    if (wiseDisc) wiseDisc.textContent = `$${totalUSD.toFixed(2)} USD`;
+    if (wfTotal) wfTotal.textContent = `$${totalUSD.toFixed(2)} USD`;
+    if (usdtDisc) usdtDisc.textContent = `$${totalUSD.toFixed(2)} USD`;
+  } else {
+    if (wiseBadge) wiseBadge.style.display = 'inline-block';
+    if (usdtBadge) usdtBadge.style.display = 'inline-block';
+    if (wiseHeaderBadge) wiseHeaderBadge.textContent = '🔥 8% OFF DISCOUNT APPLIED';
+    if (usdtHeaderBadge) usdtHeaderBadge.textContent = '🛡️ 8% OFF DISCOUNT APPLIED';
+    if (wiseStandardCol) wiseStandardCol.style.display = 'flex';
+    if (usdtStandardCol) usdtStandardCol.style.display = 'flex';
+    if (wiseLabel) wiseLabel.textContent = 'Discounted Total (8% OFF):';
+    if (usdtLabel) usdtLabel.textContent = 'Crypto Discount Total (8% OFF):';
+    if (wiseOrig) wiseOrig.textContent = `$${totalUSD.toFixed(2)} USD`;
+    if (wiseDisc) wiseDisc.textContent = `$${discountedTotalUSD.toFixed(2)} USD`;
+    if (wfTotal) wfTotal.textContent = `$${totalUSD.toFixed(2)} USD`;
+    if (usdtOrig) usdtOrig.textContent = `$${totalUSD.toFixed(2)} USD`;
+    if (usdtDisc) usdtDisc.textContent = `$${discountedTotalUSD.toFixed(2)} USD`;
+  }
 }
 
 let currentCheckoutPayMethod = 'paypal';
@@ -2439,7 +2522,8 @@ function submitAltPaymentOrder(method, platform) {
 
   const cfg = CURRENT_CHECKOUT_CONFIG;
   const regularTotal = cfg.subtotalUSD + cfg.shippingUSD;
-  const isDiscounted = (method === 'wise' || method === 'usdt');
+  const hasNoDiscount = !!cfg.noDiscount || (cfg.items && cfg.items.some(it => it.noDiscount || it.category === 'fb' || it.id === 'FB01'));
+  const isDiscounted = !hasNoDiscount && (method === 'wise' || method === 'usdt');
   const finalTotalUSD = isDiscounted ? parseFloat((regularTotal * 0.92).toFixed(2)) : regularTotal;
 
   const prefix = method === 'wise' ? 'WISE' : (method === 'worldfirst' ? 'WF' : 'USDT');
@@ -2447,13 +2531,13 @@ function submitAltPaymentOrder(method, platform) {
 
   const fullAddress = `${addr.name}, ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}. Tel: ${addr.phone}, Email: ${addr.email}`;
 
-  let methodLabel = 'Wise / Direct Remittance (8% OFF)';
+  let methodLabel = isDiscounted ? 'Wise / Direct Remittance (8% OFF)' : 'Wise / Direct Remittance (Standard Rate)';
   let gatewayTag = 'Wise / Bank Remittance Pending';
   if (method === 'worldfirst') {
     methodLabel = 'WorldFirst Direct Credit Card Invoice (0% Surcharge)';
     gatewayTag = 'WorldFirst Card Invoice Pending';
   } else if (method === 'usdt') {
-    methodLabel = 'USDT TRC-20 Crypto (8% OFF)';
+    methodLabel = isDiscounted ? 'USDT TRC-20 Crypto (8% OFF)' : 'USDT TRC-20 Crypto (Standard Rate)';
     gatewayTag = 'USDT TRC-20 Pending';
   }
 
