@@ -2324,15 +2324,6 @@ function submitAltPaymentOrder(method, platform) {
 
   const orderRecord = {
     orderId: orderId,
-    date: new Date().toISOString(),
-    itemsSummary: cfg.titleSummary,
-    items: cfg.items,
-    totalUSD: finalTotalUSD,
-    shippingAddress: fullAddress,
-    paypalTxId: gatewayTag,
-    paymentMethod: method.toUpperCase(),
-  const orderRecord = {
-    orderId: orderId,
     paypalTxId: gatewayTag,
     createdAt: new Date().toISOString(),
     payerName: addr.name,
