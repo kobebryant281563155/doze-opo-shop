@@ -708,6 +708,7 @@ function openProductDetail(productId) {
       if (sizePreviewBox) {
         sizePreviewBox.innerHTML = renderTikTokSizeTableHtml(prod.sizeTable, activePdpSize);
         sizePreviewBox.style.display = 'block';
+        sizePreviewBox.querySelectorAll('.tiktok-size-badge').forEach(b => b.remove());
       }
     } else if (prod.sizeChart || prod.sizeRecommend) {
       if (sizeGuideBtn) sizeGuideBtn.style.display = 'inline-flex';
@@ -1898,6 +1899,7 @@ function openSizeGuideModal() {
     if (tableWrap) {
       tableWrap.innerHTML = renderTikTokSizeTableHtml(prod.sizeTable, activePdpSize);
       tableWrap.style.display = 'block';
+      tableWrap.querySelectorAll('.tiktok-size-badge').forEach(b => b.remove());
     }
     if (imgGarment) imgGarment.style.display = 'none';
     if (imgRecommend) imgRecommend.style.display = 'none';
