@@ -1329,10 +1329,10 @@
           
           <div class="pay-method-tabs" id="payMethodTabs">
             <button type="button" class="pay-method-tab active" data-method="paypal" id="payMethodTab_paypal" onclick="switchCheckoutPaymentMethod('paypal')">
-              <span class="pm-icon">🅿️</span>
+              <span class="pm-icon">💳</span>
               <div class="pm-text">
-                <div class="pm-title">PayPal Direct <span class="pm-badge neutral">INSTANT</span></div>
-                <div class="pm-sub">Auto web checkout &amp; Buyer Protection</div>
+                <div class="pm-title">Visa / MasterCard / PayPal <span class="pm-badge neutral">INSTANT CARD PAY</span></div>
+                <div class="pm-sub">Direct Credit Card (Visa, MC, Amex) &amp; PayPal Web Checkout</div>
               </div>
             </button>
 
@@ -1363,14 +1363,23 @@
         </div>
 
         <!-- Payment Content Panels -->
-        <!-- Panel 1: PayPal Direct -->
+        <!-- Panel 1: Visa / MasterCard / PayPal Direct -->
         <div class="payment-panel active" id="payPanel_paypal">
+          <!-- Card Guidance Banner -->
+          <div style="background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(2, 132, 199, 0.25); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <strong style="color: #0369a1; font-size: 13px; display: block;">💳 Instant Online Credit Card &amp; PayPal Checkout</strong>
+              <span style="color: #475569; font-size: 11.5px;">Click the black <strong>[Debit or Credit Card]</strong> button below to enter your Visa, MasterCard, or Amex directly.</span>
+            </div>
+            <span style="font-size: 20px;">🔒</span>
+          </div>
+
           <!-- Trust Badges -->
           <div class="checkout-trust-grid">
             <div class="trust-item">
               <span class="trust-icon">🛡️</span>
               <div>
-                <strong>PayPal Buyer Protection</strong>
+                <strong>Global Buyer Protection</strong>
                 <small>100% Secure &amp; Full Refund Guarantee</small>
               </div>
             </div>
@@ -1383,11 +1392,11 @@
             </div>
           </div>
 
-          <!-- PayPal Buttons Container -->
+          <!-- PayPal & Credit Card Buttons Container -->
           <div class="paypal-buttons-wrapper">
             <div id="paypalButtonsContainer"></div>
             <div id="paypalLoadingPlaceholder" class="paypal-loading-indicator">
-              <span>Loading PayPal Secure Payment...</span>
+              <span>Loading Secure Card Payment...</span>
             </div>
           </div>
         </div>
@@ -1536,7 +1545,10 @@
               </div>
               <div class="api-step-item">
                 <span class="step-num">2</span>
-                <div><strong>Visa / MasterCard Credit Card Option</strong><p>Prefer to pay with Visa/MasterCard card directly? Switch to the PayPal/Card tab above to checkout instantly.</p></div>
+                <div>
+                  <strong>Prefer to Pay with Credit Card Directly?</strong>
+                  <p>Want to type in your Visa / MasterCard card number online? <a href="javascript:void(0)" onclick="switchCheckoutPaymentMethod('paypal')" style="color: #0284c7; font-weight: 700; text-decoration: underline;">👉 Click here to switch to Visa / MasterCard Checkout</a></p>
+                </div>
               </div>
               <div class="api-step-item">
                 <span class="step-num">3</span>
@@ -1673,8 +1685,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=207"></script>
-  <script src="products_data.js?v=207"></script>
-  <script src="app.js?v=207"></script>
+  <script src="prints_data.js?v=208"></script>
+  <script src="products_data.js?v=208"></script>
+  <script src="app.js?v=208"></script>
 </body>
 </html>
