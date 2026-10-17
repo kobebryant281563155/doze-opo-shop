@@ -562,7 +562,6 @@ function renderTikTokSizeTableHtml(tableData, activeSize) {
         <div class="tiktok-size-title-group">
           <span class="tiktok-size-icon">📐</span>
           <span class="tiktok-size-title">Size Guide &amp; Measurements</span>
-          <span class="tiktok-size-badge">TikTok Shop Style</span>
         </div>
         <div class="tiktok-unit-switch" role="group" aria-label="Measurement Unit Switch">
           <button type="button" class="unit-toggle-pill ${unit === 'cm' ? 'active' : ''}" onclick="setGlobalSizeUnit('cm')">cm</button>
