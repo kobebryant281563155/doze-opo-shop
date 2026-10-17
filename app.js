@@ -361,13 +361,28 @@ function renderCatalogList(catFilter) {
   container.innerHTML = '';
   const products = Object.values(PRODUCTS_DATA).filter(p => {
     if (catFilter === 'all') return true;
+    if (catFilter === 'fb') {
+      return p.category === 'fb' || p.isFbCollection === true || p.isFb === true || (p.tags && p.tags.includes('fb'));
+    }
     if (catFilter === 'hoodie' && p.category === 'hoodie') return true;
     if (catFilter === 'jacket' && p.category === 'jacket') return true;
     return p.category === catFilter;
   });
 
   if (products.length === 0) {
-    if (catFilter === 'jeans') {
+    if (catFilter === 'fb') {
+      container.innerHTML = `
+        <div class="empty-catalog-box">
+          <div class="empty-icon">🔥</div>
+          <p class="empty-text">Fb Collection · Viral Campaign Ready</p>
+          <span class="empty-hint">High-converting viral streetwear styles, custom wash drops &amp; fast 1-piece sample proofing. Contact us on WhatsApp for exclusive FB campaign tech packs.</span>
+          <button type="button" class="btn-empty-cart-action" style="margin-top: 14px;" onclick="openB2BModal()">
+            <span>Inquire FB Drops Tech Pack</span>
+            <span class="btn-arrow">➔</span>
+          </button>
+        </div>
+      `;
+    } else if (catFilter === 'jeans') {
       container.innerHTML = `
         <div class="empty-catalog-box">
           <div class="empty-icon">👖</div>
