@@ -1240,65 +1240,135 @@
         <!-- Order Items Preview Container -->
         <div class="checkout-items-preview" id="checkoutItemsPreview"></div>
 
-        <!-- Shipping Destination Address Form -->
+        <!-- Shipping Destination Address Form & Address Book -->
         <div class="checkout-shipping-form-card" id="checkoutShippingForm">
           <div class="csf-header">
-            <span class="csf-tag">DELIVERY INFO</span>
-            <strong>Shipping Destination &amp; Courier Contact</strong>
+            <div>
+              <span class="csf-tag">DELIVERY INFO</span>
+              <strong>Shipping Destination &amp; Courier Contact</strong>
+            </div>
+            <button type="button" class="btn-address-book-toggle" id="btnAddressBookToggle" onclick="toggleAddressBookModal()">
+              <span>📋 Address Book</span>
+              <span class="ab-count-badge" id="addressBookCountBadge">0</span>
+            </button>
           </div>
-          <div class="csf-grid">
-            <div class="csf-field full-width">
-              <label for="shipName">Full Name *</label>
-              <input type="text" id="shipName" placeholder="e.g. Liam Walker" autocomplete="name" onchange="saveCustomerAddress()">
+
+          <!-- Active Saved Address Card View -->
+          <div class="active-address-card" id="activeAddressCard" style="display: none;">
+            <div class="aac-main">
+              <div class="aac-top-row">
+                <span class="aac-name" id="aacName">Liam Walker</span>
+                <span class="aac-phone" id="aacPhone">+1 212-555-0199</span>
+                <span class="aac-default-badge" id="aacDefaultBadge">DEFAULT</span>
+                <span class="aac-tag" id="aacTag">Home</span>
+              </div>
+              <div class="aac-address" id="aacAddress">742 Evergreen Terrace, Springfield, OR 97477, US</div>
+              <div class="aac-email-remark" id="aacEmailRemark">Email: liam@example.com</div>
             </div>
-            <div class="csf-field">
-              <label for="shipEmail">Email Address *</label>
-              <input type="email" id="shipEmail" placeholder="liam@example.com" autocomplete="email" onchange="saveCustomerAddress()">
+            <div class="aac-actions">
+              <button type="button" class="btn-aac-action" onclick="openAddressFormForEdit()">✏️ Edit</button>
+              <button type="button" class="btn-aac-action primary" onclick="toggleAddressBookModal()">⇄ Switch</button>
             </div>
-            <div class="csf-field">
-              <label for="shipPhone">Phone (Courier Requirement) *</label>
-              <input type="tel" id="shipPhone" placeholder="+1 212-555-0199" autocomplete="tel" onchange="saveCustomerAddress()">
+          </div>
+
+          <!-- Address Form Fields (For New or Editing Address) -->
+          <div id="checkoutShippingFormFields">
+            <div class="csf-grid">
+              <div class="csf-field full-width">
+                <label for="shipName">Full Name *</label>
+                <input type="text" id="shipName" placeholder="e.g. Liam Walker" autocomplete="name" oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+              </div>
+              <div class="csf-field">
+                <label for="shipEmail">Email Address *</label>
+                <input type="email" id="shipEmail" placeholder="liam@example.com" autocomplete="email" oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+              </div>
+              <div class="csf-field">
+                <label for="shipPhone">Phone (Courier Requirement) *</label>
+                <input type="tel" id="shipPhone" placeholder="+1 212-555-0199" autocomplete="tel" oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+              </div>
+              <div class="csf-field full-width">
+                <label for="shipAddress">Street Address *</label>
+                <input type="text" id="shipAddress" placeholder="Street address, P.O. box" autocomplete="street-address" oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+              </div>
+              <div class="csf-field full-width">
+                <label for="shipAddress2">Apt, Suite, Unit (Optional)</label>
+                <input type="text" id="shipAddress2" placeholder="Apartment, suite, unit, building, floor" oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+              </div>
+              <div class="csf-field">
+                <label for="shipCity">City *</label>
+                <input type="text" id="shipCity" placeholder="Los Angeles" autocomplete="address-level2" oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+              </div>
+              <div class="csf-field">
+                <label for="shipState">State / Province *</label>
+                <input type="text" id="shipState" placeholder="CA" autocomplete="address-level1" oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+              </div>
+              <div class="csf-field">
+                <label for="shipZip">ZIP / Postal Code *</label>
+                <input type="text" id="shipZip" placeholder="90001" autocomplete="postal-code" oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+              </div>
+              <div class="csf-field">
+                <label for="shipCountry">Country / Region *</label>
+                <select id="shipCountry" autocomplete="country" oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+                  <option value="US" selected>United States (US)</option>
+                  <option value="GB">United Kingdom (UK)</option>
+                  <option value="CA">Canada (CA)</option>
+                  <option value="AU">Australia (AU)</option>
+                  <option value="DE">Germany (DE)</option>
+                  <option value="FR">France (FR)</option>
+                  <option value="NL">Netherlands (NL)</option>
+                  <option value="IT">Italy (IT)</option>
+                  <option value="ES">Spain (ES)</option>
+                  <option value="JP">Japan (JP)</option>
+                  <option value="SG">Singapore (SG)</option>
+                  <option value="GLOBAL">Other Worldwide Country</option>
+                </select>
+              </div>
+              <div class="csf-field">
+                <label for="shipTag">Address Label</label>
+                <select id="shipTag" onchange="onAddressFieldInput()">
+                  <option value="Home" selected>Home</option>
+                  <option value="Office">Office / Studio</option>
+                  <option value="Warehouse">Warehouse / Factory</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="csf-field full-width">
+                <label for="shipRemark">Remark (Optional)</label>
+                <input type="text" id="shipRemark" placeholder="e.g. Special printing note, gate code, delivery remarks, etc." oninput="onAddressFieldInput()" onchange="onAddressFieldInput()">
+              </div>
             </div>
-            <div class="csf-field full-width">
-              <label for="shipAddress">Street Address *</label>
-              <input type="text" id="shipAddress" placeholder="Street address, P.O. box" autocomplete="street-address" onchange="saveCustomerAddress()">
+
+            <!-- Address Persistence Checkbox Preferences -->
+            <div class="csf-checkbox-row">
+              <label class="csf-checkbox-label">
+                <input type="checkbox" id="shipSaveToBook" checked>
+                <span>Save to Address Book for 1-Click future checkouts</span>
+              </label>
+              <label class="csf-checkbox-label">
+                <input type="checkbox" id="shipSetDefault" checked>
+                <span>Set as default shipping destination</span>
+              </label>
             </div>
-            <div class="csf-field full-width">
-              <label for="shipAddress2">Apt, Suite, Unit (Optional)</label>
-              <input type="text" id="shipAddress2" placeholder="Apartment, suite, unit, building, floor" onchange="saveCustomerAddress()">
+
+            <div class="csf-form-buttons" id="csfFormButtons" style="display: none;">
+              <button type="button" class="btn-save-address-action" onclick="saveAddressFromForm()">Save &amp; Use Address</button>
+              <button type="button" class="btn-cancel-address-action" onclick="cancelAddressEdit()">Cancel</button>
             </div>
-            <div class="csf-field">
-              <label for="shipCity">City *</label>
-              <input type="text" id="shipCity" placeholder="Los Angeles" autocomplete="address-level2" onchange="saveCustomerAddress()">
+          </div>
+        </div>
+
+        <!-- Address Book Selection & Management Overlay -->
+        <div class="address-book-modal-overlay" id="addressBookOverlay" style="display: none;">
+          <div class="address-book-card">
+            <div class="ab-modal-header">
+              <h4>Saved Delivery Addresses</h4>
+              <button type="button" class="ab-modal-close-btn" onclick="toggleAddressBookModal()">✕</button>
             </div>
-            <div class="csf-field">
-              <label for="shipState">State / Province *</label>
-              <input type="text" id="shipState" placeholder="CA" autocomplete="address-level1" onchange="saveCustomerAddress()">
-            </div>
-            <div class="csf-field">
-              <label for="shipZip">ZIP / Postal Code *</label>
-              <input type="text" id="shipZip" placeholder="90001" autocomplete="postal-code" onchange="saveCustomerAddress()">
-            </div>
-            <div class="csf-field">
-              <label for="shipCountry">Country / Region *</label>
-              <select id="shipCountry" autocomplete="country" onchange="saveCustomerAddress()">
-                <option value="US" selected>United States (US)</option>
-                <option value="GB">United Kingdom (UK)</option>
-                <option value="CA">Canada (CA)</option>
-                <option value="AU">Australia (AU)</option>
-                <option value="DE">Germany (DE)</option>
-                <option value="FR">France (FR)</option>
-                <option value="NL">Netherlands (NL)</option>
-                <option value="IT">Italy (IT)</option>
-                <option value="ES">Spain (ES)</option>
-                <option value="JP">Japan (JP)</option>
-                <option value="SG">Singapore (SG)</option>
-                <option value="GLOBAL">Other Worldwide Country</option>
-              </select>
-            </div>
-            <div class="csf-field full-width">
-              <label for="shipRemark">Remark (Optional)</label>
-              <input type="text" id="shipRemark" placeholder="e.g. Special printing note, gate code, delivery remarks, etc." onchange="saveCustomerAddress()">
+            <div class="ab-modal-body" id="addressBookListContainer"></div>
+            <div class="ab-modal-footer">
+              <button type="button" class="btn-add-new-address" onclick="openAddressFormForNew()">
+                <span>＋ Add New Delivery Address</span>
+              </button>
             </div>
           </div>
         </div>
@@ -1713,8 +1783,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=209"></script>
-  <script src="products_data.js?v=209"></script>
-  <script src="app.js?v=209"></script>
+  <script src="prints_data.js?v=210"></script>
+  <script src="products_data.js?v=210"></script>
+  <script src="app.js?v=210"></script>
 </body>
 </html>

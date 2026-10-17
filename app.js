@@ -3198,46 +3198,425 @@ function inquireCheckoutViaWhatsApp() {
   window.open(url, '_blank');
 }
 
-// 20. Customer Delivery Address Management & Persistence
-function loadCustomerAddress() {
+// 20. Customer Delivery Address Management, Address Book & Multi-Address Persistence
+let CURRENT_EDITING_ADDRESS_ID = null;
+
+function getSavedAddresses() {
   try {
-    const raw = localStorage.getItem('DOZE_CUSTOMER_ADDRESS');
-    if (!raw) return;
-    const a = JSON.parse(raw);
-    if (a.name && document.getElementById('shipName')) document.getElementById('shipName').value = a.name;
-    if (a.email && document.getElementById('shipEmail')) document.getElementById('shipEmail').value = a.email;
-    if (a.phone && document.getElementById('shipPhone')) document.getElementById('shipPhone').value = a.phone;
-    if (a.address && document.getElementById('shipAddress')) document.getElementById('shipAddress').value = a.address;
-    if (a.address2 && document.getElementById('shipAddress2')) document.getElementById('shipAddress2').value = a.address2;
-    if (a.city && document.getElementById('shipCity')) document.getElementById('shipCity').value = a.city;
-    if (a.state && document.getElementById('shipState')) document.getElementById('shipState').value = a.state;
-    if (a.zip && document.getElementById('shipZip')) document.getElementById('shipZip').value = a.zip;
-    if (a.country && document.getElementById('shipCountry')) document.getElementById('shipCountry').value = a.country;
-    if (a.remark && document.getElementById('shipRemark')) document.getElementById('shipRemark').value = a.remark;
-    if (a.name && document.getElementById('chaseRemitterName')) {
-      const cr = document.getElementById('chaseRemitterName');
-      if (!cr.value) cr.value = a.name;
-    }
+    const raw = localStorage.getItem('DOZE_SAVED_ADDRESSES');
+    if (!raw) return [];
+    const list = JSON.parse(raw);
+    return Array.isArray(list) ? list : [];
   } catch (e) {
-    console.error('Failed to load address', e);
+    console.error('Failed to read saved addresses', e);
+    return [];
+  }
+}
+
+function saveSavedAddressesList(list) {
+  try {
+    localStorage.setItem('DOZE_SAVED_ADDRESSES', JSON.stringify(list));
+    updateAddressBookBadge();
+  } catch (e) {
+    console.error('Failed to save addresses list', e);
+  }
+}
+
+function getActiveAddressId() {
+  return localStorage.getItem('DOZE_ACTIVE_ADDRESS_ID') || null;
+}
+
+function setActiveAddressId(id) {
+  if (id) {
+    localStorage.setItem('DOZE_ACTIVE_ADDRESS_ID', id);
+  } else {
+    localStorage.removeItem('DOZE_ACTIVE_ADDRESS_ID');
+  }
+}
+
+function updateAddressBookBadge() {
+  const badge = document.getElementById('addressBookCountBadge');
+  if (badge) {
+    const list = getSavedAddresses();
+    badge.textContent = list.length.toString();
+  }
+}
+
+function loadCustomerAddress() {
+  updateAddressBookBadge();
+  const list = getSavedAddresses();
+  const activeId = getActiveAddressId();
+
+  let targetAddr = null;
+  if (activeId) {
+    targetAddr = list.find(it => it.id === activeId);
+  }
+  if (!targetAddr && list.length > 0) {
+    targetAddr = list.find(it => it.isDefault) || list[0];
+    if (targetAddr) setActiveAddressId(targetAddr.id);
+  }
+
+  if (targetAddr) {
+    fillFormFieldsWithAddress(targetAddr);
+    renderActiveAddressCard(targetAddr);
+  } else {
+    // No saved addresses yet - try reading draft
+    const card = document.getElementById('activeAddressCard');
+    const formFields = document.getElementById('checkoutShippingFormFields');
+    if (card) card.style.display = 'none';
+    if (formFields) formFields.style.display = 'block';
+
+    try {
+      const raw = localStorage.getItem('DOZE_CUSTOMER_ADDRESS') || localStorage.getItem('DOZE_CUSTOMER_DRAFT_ADDRESS');
+      if (raw) {
+        const a = JSON.parse(raw);
+        fillFormFieldsWithAddress(a);
+      }
+    } catch (e) {
+      console.error('Failed to read draft address', e);
+    }
+  }
+}
+
+function fillFormFieldsWithAddress(a) {
+  if (!a) return;
+  if (a.name && document.getElementById('shipName')) document.getElementById('shipName').value = a.name;
+  if (a.email && document.getElementById('shipEmail')) document.getElementById('shipEmail').value = a.email;
+  if (a.phone && document.getElementById('shipPhone')) document.getElementById('shipPhone').value = a.phone;
+  if (a.address && document.getElementById('shipAddress')) document.getElementById('shipAddress').value = a.address;
+  if (document.getElementById('shipAddress2')) document.getElementById('shipAddress2').value = a.address2 || '';
+  if (a.city && document.getElementById('shipCity')) document.getElementById('shipCity').value = a.city;
+  if (a.state && document.getElementById('shipState')) document.getElementById('shipState').value = a.state;
+  if (a.zip && document.getElementById('shipZip')) document.getElementById('shipZip').value = a.zip;
+  if (a.country && document.getElementById('shipCountry')) document.getElementById('shipCountry').value = a.country;
+  if (document.getElementById('shipRemark')) document.getElementById('shipRemark').value = a.remark || '';
+  if (a.tag && document.getElementById('shipTag')) document.getElementById('shipTag').value = a.tag;
+  if (document.getElementById('shipSetDefault')) document.getElementById('shipSetDefault').checked = !!a.isDefault;
+
+  if (a.name && document.getElementById('chaseRemitterName')) {
+    const cr = document.getElementById('chaseRemitterName');
+    if (!cr.value) cr.value = a.name;
+  }
+}
+
+function renderActiveAddressCard(addr) {
+  const card = document.getElementById('activeAddressCard');
+  const formFields = document.getElementById('checkoutShippingFormFields');
+  if (!card) return;
+
+  const aacName = document.getElementById('aacName');
+  const aacPhone = document.getElementById('aacPhone');
+  const aacDefaultBadge = document.getElementById('aacDefaultBadge');
+  const aacTag = document.getElementById('aacTag');
+  const aacAddress = document.getElementById('aacAddress');
+  const aacEmailRemark = document.getElementById('aacEmailRemark');
+
+  if (aacName) aacName.textContent = addr.name || 'Recipient';
+  if (aacPhone) aacPhone.textContent = addr.phone || '';
+  if (aacDefaultBadge) aacDefaultBadge.style.display = addr.isDefault ? 'inline-block' : 'none';
+  if (aacTag) {
+    aacTag.textContent = addr.tag || 'Home';
+    aacTag.style.display = addr.tag ? 'inline-block' : 'none';
+  }
+
+  const apt = addr.address2 ? ` ${addr.address2},` : '';
+  const fullLoc = `${addr.address},${apt} ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}`;
+  if (aacAddress) aacAddress.textContent = fullLoc;
+
+  const emailPart = addr.email ? `Email: ${addr.email}` : '';
+  const remarkPart = addr.remark ? ` · Note: ${addr.remark}` : '';
+  if (aacEmailRemark) aacEmailRemark.textContent = `${emailPart}${remarkPart}`;
+
+  card.style.display = 'flex';
+  if (formFields) formFields.style.display = 'none';
+}
+
+function onAddressFieldInput() {
+  const curr = getCustomerAddress();
+  curr.tag = document.getElementById('shipTag')?.value || 'Home';
+  curr.isDefault = document.getElementById('shipSetDefault')?.checked || false;
+
+  try {
+    localStorage.setItem('DOZE_CUSTOMER_ADDRESS', JSON.stringify(curr));
+    localStorage.setItem('DOZE_CUSTOMER_DRAFT_ADDRESS', JSON.stringify(curr));
+  } catch (e) {
+    console.error('Failed to auto-save address draft', e);
+  }
+
+  const chaseRemitter = document.getElementById('chaseRemitterName');
+  if (chaseRemitter && !chaseRemitter.value && curr.name) {
+    chaseRemitter.value = curr.name;
+  }
+}
+
+function toggleAddressBookModal() {
+  const overlay = document.getElementById('addressBookOverlay');
+  if (!overlay) return;
+
+  if (overlay.style.display === 'none' || !overlay.style.display) {
+    renderAddressBookList();
+    overlay.style.display = 'flex';
+  } else {
+    overlay.style.display = 'none';
+  }
+}
+
+function renderAddressBookList() {
+  const container = document.getElementById('addressBookListContainer');
+  if (!container) return;
+
+  const list = getSavedAddresses();
+  const activeId = getActiveAddressId();
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 28px 16px; color: #64748b;">
+        <span style="font-size: 32px; display: block; margin-bottom: 8px;">📬</span>
+        <strong style="color: #0f172a; font-size: 15px; display: block; margin-bottom: 4px;">No Saved Addresses Yet</strong>
+        <p style="font-size: 12.5px; margin: 0 0 14px 0;">Add an address once and enjoy 1-click checkouts forever!</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = list.map(addr => {
+    const isSelected = addr.id === activeId;
+    const apt = addr.address2 ? ` ${addr.address2},` : '';
+    const fullLoc = `${addr.address},${apt} ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}`;
+    return `
+      <div class="ab-item-card ${isSelected ? 'selected' : ''}" onclick="selectAddressFromBook('${addr.id}')">
+        <div class="ab-item-top">
+          <div class="ab-item-identity">
+            <span class="ab-item-name">${addr.name}</span>
+            <span class="ab-item-phone">${addr.phone}</span>
+            ${addr.isDefault ? '<span class="aac-default-badge">DEFAULT</span>' : ''}
+            <span class="aac-tag">${addr.tag || 'Home'}</span>
+          </div>
+          ${isSelected ? '<span style="color: #0284c7; font-weight: 800; font-size: 13px;">✓ Selected</span>' : ''}
+        </div>
+        <div class="ab-item-address">${fullLoc}</div>
+        ${addr.email || addr.remark ? `<div class="aac-email-remark" style="margin-bottom: 6px;">${addr.email ? `Email: ${addr.email}` : ''}${addr.remark ? ` · Remark: ${addr.remark}` : ''}</div>` : ''}
+        <div class="ab-item-bottom" onclick="event.stopPropagation()">
+          <button type="button" class="btn-ab-inline" onclick="selectAddressFromBook('${addr.id}')">Use This Address</button>
+          <div class="ab-item-actions">
+            ${!addr.isDefault ? `<button type="button" class="btn-ab-inline" onclick="setDefaultAddressInBook('${addr.id}')">Set Default</button>` : ''}
+            <button type="button" class="btn-ab-inline" onclick="openAddressFormForEdit('${addr.id}')">Edit</button>
+            <button type="button" class="btn-ab-inline danger" onclick="deleteAddressFromBook('${addr.id}')">Delete</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectAddressFromBook(id) {
+  const list = getSavedAddresses();
+  const found = list.find(it => it.id === id);
+  if (!found) return;
+
+  setActiveAddressId(found.id);
+  fillFormFieldsWithAddress(found);
+  renderActiveAddressCard(found);
+
+  try {
+    localStorage.setItem('DOZE_CUSTOMER_ADDRESS', JSON.stringify(found));
+  } catch (e) {
+    console.error(e);
+  }
+
+  const overlay = document.getElementById('addressBookOverlay');
+  if (overlay) overlay.style.display = 'none';
+
+  showToast(`Switched destination to ${found.name}!`);
+}
+
+function setDefaultAddressInBook(id) {
+  const list = getSavedAddresses();
+  list.forEach(it => {
+    it.isDefault = (it.id === id);
+  });
+  saveSavedAddressesList(list);
+
+  const activeId = getActiveAddressId();
+  if (activeId === id) {
+    const found = list.find(it => it.id === id);
+    if (found) renderActiveAddressCard(found);
+  }
+
+  renderAddressBookList();
+  showToast('Set as default delivery address!');
+}
+
+function deleteAddressFromBook(id) {
+  let list = getSavedAddresses();
+  list = list.filter(it => it.id !== id);
+  saveSavedAddressesList(list);
+
+  if (getActiveAddressId() === id) {
+    if (list.length > 0) {
+      const nextDefault = list.find(it => it.isDefault) || list[0];
+      selectAddressFromBook(nextDefault.id);
+    } else {
+      setActiveAddressId(null);
+      const card = document.getElementById('activeAddressCard');
+      const formFields = document.getElementById('checkoutShippingFormFields');
+      if (card) card.style.display = 'none';
+      if (formFields) formFields.style.display = 'block';
+    }
+  }
+
+  renderAddressBookList();
+  showToast('Address removed from book.');
+}
+
+function openAddressFormForNew() {
+  CURRENT_EDITING_ADDRESS_ID = null;
+
+  // Clear fields
+  const fields = ['shipName', 'shipPhone', 'shipAddress', 'shipAddress2', 'shipCity', 'shipState', 'shipZip', 'shipRemark'];
+  fields.forEach(f => {
+    const el = document.getElementById(f);
+    if (el) el.value = '';
+  });
+
+  const list = getSavedAddresses();
+  const setDefaultEl = document.getElementById('shipSetDefault');
+  if (setDefaultEl) setDefaultEl.checked = (list.length === 0);
+
+  const overlay = document.getElementById('addressBookOverlay');
+  if (overlay) overlay.style.display = 'none';
+
+  const card = document.getElementById('activeAddressCard');
+  if (card) card.style.display = 'none';
+
+  const formFields = document.getElementById('checkoutShippingFormFields');
+  if (formFields) formFields.style.display = 'block';
+
+  const buttons = document.getElementById('csfFormButtons');
+  if (buttons) buttons.style.display = 'flex';
+
+  const nameInput = document.getElementById('shipName');
+  if (nameInput) nameInput.focus();
+}
+
+function openAddressFormForEdit(id) {
+  const list = getSavedAddresses();
+  const targetId = id || getActiveAddressId();
+  const found = list.find(it => it.id === targetId);
+
+  CURRENT_EDITING_ADDRESS_ID = targetId || null;
+
+  if (found) {
+    fillFormFieldsWithAddress(found);
+  }
+
+  const overlay = document.getElementById('addressBookOverlay');
+  if (overlay) overlay.style.display = 'none';
+
+  const card = document.getElementById('activeAddressCard');
+  if (card) card.style.display = 'none';
+
+  const formFields = document.getElementById('checkoutShippingFormFields');
+  if (formFields) formFields.style.display = 'block';
+
+  const buttons = document.getElementById('csfFormButtons');
+  if (buttons) buttons.style.display = 'flex';
+}
+
+function saveAddressFromForm() {
+  const a = getCustomerAddress();
+  if (!a.name || !a.phone || !a.address || !a.city) {
+    showToast('Please fill in Name, Phone, Street Address, and City.');
+    return;
+  }
+
+  const isSaveToBook = document.getElementById('shipSaveToBook')?.checked !== false;
+  const isSetDefault = document.getElementById('shipSetDefault')?.checked === true;
+  const tag = document.getElementById('shipTag')?.value || 'Home';
+
+  let list = getSavedAddresses();
+
+  if (isSaveToBook) {
+    if (CURRENT_EDITING_ADDRESS_ID) {
+      // Edit existing
+      const idx = list.findIndex(it => it.id === CURRENT_EDITING_ADDRESS_ID);
+      if (idx !== -1) {
+        list[idx] = {
+          ...list[idx],
+          ...a,
+          tag: tag,
+          isDefault: isSetDefault || (list.length === 1)
+        };
+      }
+    } else {
+      // New address
+      const newAddr = {
+        id: 'addr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+        ...a,
+        tag: tag,
+        isDefault: isSetDefault || (list.length === 0)
+      };
+      CURRENT_EDITING_ADDRESS_ID = newAddr.id;
+      list.push(newAddr);
+    }
+
+    if (isSetDefault) {
+      list.forEach(it => {
+        if (it.id !== CURRENT_EDITING_ADDRESS_ID) it.isDefault = false;
+      });
+    }
+
+    saveSavedAddressesList(list);
+    setActiveAddressId(CURRENT_EDITING_ADDRESS_ID);
+  }
+
+  saveCustomerAddress();
+
+  const activeAddr = list.find(it => it.id === (CURRENT_EDITING_ADDRESS_ID || getActiveAddressId())) || a;
+  renderActiveAddressCard(activeAddr);
+
+  const buttons = document.getElementById('csfFormButtons');
+  if (buttons) buttons.style.display = 'none';
+
+  showToast('Delivery address saved successfully!');
+}
+
+function cancelAddressEdit() {
+  const list = getSavedAddresses();
+  const activeId = getActiveAddressId();
+  const target = list.find(it => it.id === activeId) || list[0];
+
+  const buttons = document.getElementById('csfFormButtons');
+  if (buttons) buttons.style.display = 'none';
+
+  if (target) {
+    fillFormFieldsWithAddress(target);
+    renderActiveAddressCard(target);
   }
 }
 
 function saveCustomerAddress() {
   try {
-    const a = {
-      name: document.getElementById('shipName')?.value.trim() || '',
-      email: document.getElementById('shipEmail')?.value.trim() || '',
-      phone: document.getElementById('shipPhone')?.value.trim() || '',
-      address: document.getElementById('shipAddress')?.value.trim() || '',
-      address2: document.getElementById('shipAddress2')?.value.trim() || '',
-      city: document.getElementById('shipCity')?.value.trim() || '',
-      state: document.getElementById('shipState')?.value.trim() || '',
-      zip: document.getElementById('shipZip')?.value.trim() || '',
-      country: document.getElementById('shipCountry')?.value || 'US',
-      remark: document.getElementById('shipRemark')?.value.trim() || ''
-    };
+    const a = getCustomerAddress();
+    a.tag = document.getElementById('shipTag')?.value || 'Home';
+    a.isDefault = document.getElementById('shipSetDefault')?.checked || false;
+
     localStorage.setItem('DOZE_CUSTOMER_ADDRESS', JSON.stringify(a));
+
+    // Auto-sync into Saved Addresses Book if book is empty
+    if (a.name && a.phone && a.address) {
+      const list = getSavedAddresses();
+      if (list.length === 0) {
+        const firstAddr = {
+          id: 'addr_' + Date.now(),
+          ...a,
+          isDefault: true
+        };
+        list.push(firstAddr);
+        saveSavedAddressesList(list);
+        setActiveAddressId(firstAddr.id);
+      }
+    }
   } catch (e) {
     console.error('Failed to save address', e);
   }
