@@ -16,6 +16,7 @@ const APP_STATE = {
   currentTab: 'home',
   cartItems: [],
   customCalc: {
+    garmentType: 'tee',
     garmentMultiplier: 1.0,
     craftTeePriceUSD: 20.00,
     qty: 1
@@ -214,6 +215,7 @@ function initCustomCalculator() {
     chip.addEventListener('click', () => {
       garmentChips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
+      APP_STATE.customCalc.garmentType = chip.getAttribute('data-type') || 'tee';
       APP_STATE.customCalc.garmentMultiplier = parseFloat(chip.getAttribute('data-multiplier')) || 1.0;
       recalcCustomQuote();
     });
@@ -271,12 +273,12 @@ function initCustomCalculator() {
 }
 
 function recalcCustomQuote() {
-  const { garmentMultiplier, craftTeePriceUSD, qty } = APP_STATE.customCalc;
+  const { garmentType, garmentMultiplier, craftTeePriceUSD, qty } = APP_STATE.customCalc;
 
-  // Formula: Unit Price (TEE Base * Multiplier) * Quantity = Subtotal
+  const isHeavy = isHeavyweightGarment(garmentType || 'tee');
   const finalUnitUSD = (craftTeePriceUSD || 20.00) * (garmentMultiplier || 1.0);
   const finalSubtotalUSD = finalUnitUSD * qty;
-  const shippingUSD = calculateUsShipping(qty);
+  const shippingUSD = calculateProductShipping(garmentType || 'tee', qty);
   const deliveredTotalUSD = finalSubtotalUSD + shippingUSD;
 
   const unitDisplay = document.getElementById('unitPriceDisplay');
@@ -285,6 +287,7 @@ function recalcCustomQuote() {
   const formulaDisplay = document.getElementById('customShipFormula');
   const totalDisplay = document.getElementById('totalPriceDisplay');
   const qtyLabel = document.getElementById('customQtyLabel');
+  const ruleDetailDisplay = document.getElementById('customShipRuleDetail');
 
   if (unitDisplay) unitDisplay.textContent = formatCurrency(finalUnitUSD);
   if (subtotalDisplay) subtotalDisplay.textContent = formatCurrency(finalSubtotalUSD);
@@ -295,11 +298,27 @@ function recalcCustomQuote() {
     qtyLabel.textContent = `${qty} pc${qty > 1 ? 's' : ''}`;
   }
 
-  if (formulaDisplay) {
-    if (qty === 1) {
-      formulaDisplay.textContent = '($8.00 base · 10–15d)';
+  if (ruleDetailDisplay) {
+    if (isHeavy) {
+      ruleDetailDisplay.innerHTML = '1st item: <strong>$9.00</strong> · Add\'l items: <strong>+$1.00 / pc</strong>';
     } else {
-      formulaDisplay.textContent = `($8.00 + ${qty - 1} × $0.50 · 10–15d)`;
+      ruleDetailDisplay.innerHTML = '1st item: <strong>$8.00</strong> · Add\'l items: <strong>+$0.50 / pc</strong>';
+    }
+  }
+
+  if (formulaDisplay) {
+    if (isHeavy) {
+      if (qty === 1) {
+        formulaDisplay.textContent = '($9.00 base · 10–15d)';
+      } else {
+        formulaDisplay.textContent = `($9.00 + ${qty - 1} × $1.00 · 10–15d)`;
+      }
+    } else {
+      if (qty === 1) {
+        formulaDisplay.textContent = '($8.00 base · 10–15d)';
+      } else {
+        formulaDisplay.textContent = `($8.00 + ${qty - 1} × $0.50 · 10–15d)`;
+      }
     }
   }
 }
@@ -417,11 +436,69 @@ let activePdpColor = 'White / Black';
 let activePdpSize = 'XL';
 let activePdpQty = 1;
 
-// US Shipping Rule: $8.00 base for 1st item, +$0.50 for each additional item
-function calculateUsShipping(qty) {
+// ==========================================================================
+// Category-Based US Direct Shipping Calculation Rules:
+// 1. Lightweight Group (Tee, Tank Top, Shorts):
+//    - 1st piece: $8.00 USD
+//    - Each additional piece: +$0.50 USD
+// 2. Heavyweight Group (Crewneck Sweatshirt, Zip Jacket, Hoodie, Pants, Jeans):
+//    - 1st piece: $9.00 USD
+//    - Each additional piece: +$1.00 USD
+// ==========================================================================
+const HEAVYWEIGHT_GARMENT_CATEGORIES = ['crewneck', 'hoodie', 'jacket', 'pants', 'jeans'];
+
+function isHeavyweightGarment(itemOrCategory) {
+  if (!itemOrCategory) return false;
+  let cat = '';
+  if (typeof itemOrCategory === 'string') {
+    const s = itemOrCategory.toLowerCase().trim();
+    if (HEAVYWEIGHT_GARMENT_CATEGORIES.includes(s)) return true;
+    if (window.PRODUCTS_DATA && window.PRODUCTS_DATA[itemOrCategory]) {
+      cat = window.PRODUCTS_DATA[itemOrCategory].category || '';
+    } else {
+      cat = s;
+    }
+  } else if (typeof itemOrCategory === 'object') {
+    cat = itemOrCategory.category || (itemOrCategory.id && window.PRODUCTS_DATA && window.PRODUCTS_DATA[itemOrCategory.id]?.category) || '';
+  }
+  return HEAVYWEIGHT_GARMENT_CATEGORIES.includes((cat || '').toLowerCase().trim());
+}
+
+function calculateProductShipping(productOrCategory, qty) {
   qty = Math.max(0, parseInt(qty) || 0);
   if (qty <= 0) return 0;
-  return 8.00 + (qty - 1) * 0.50;
+  const isHeavy = isHeavyweightGarment(productOrCategory);
+  if (isHeavy) {
+    return 9.00 + (qty - 1) * 1.00;
+  } else {
+    return 8.00 + (qty - 1) * 0.50;
+  }
+}
+
+function calculateCartShipping(cartItems) {
+  if (!cartItems || cartItems.length === 0) return 0;
+  let qtyLight = 0;
+  let qtyHeavy = 0;
+  cartItems.forEach(item => {
+    const q = Math.max(1, parseInt(item.qty) || 1);
+    if (isHeavyweightGarment(item)) {
+      qtyHeavy += q;
+    } else {
+      qtyLight += q;
+    }
+  });
+  if (qtyHeavy + qtyLight === 0) return 0;
+  if (qtyHeavy > 0) {
+    // 1st heavy is $9.00, each additional heavy is +$1.00, each light is +$0.50
+    return 9.00 + (qtyHeavy - 1) * 1.00 + (qtyLight * 0.50);
+  } else {
+    // Only lightweight garments: 1st is $8.00, each additional is +$0.50
+    return 8.00 + (qtyLight - 1) * 0.50;
+  }
+}
+
+function calculateUsShipping(qty, prodOrCat) {
+  return calculateProductShipping(prodOrCat || activePdpProductId, qty);
 }
 
 function changePdpQty(delta) {
@@ -447,9 +524,10 @@ function updatePdpShippingCalc() {
   if (!prod) return;
 
   const qty = activePdpQty;
+  const isHeavy = isHeavyweightGarment(prod.category || prod.id);
   const unitPriceUSD = prod.priceUSD;
   const garmentSubtotalUSD = unitPriceUSD * qty;
-  const shippingFeeUSD = calculateUsShipping(qty);
+  const shippingFeeUSD = calculateProductShipping(prod, qty);
   const deliveredTotalUSD = garmentSubtotalUSD + shippingFeeUSD;
 
   const sym = APP_STATE.currencyRates[APP_STATE.currentCurrency]?.symbol || '$';
@@ -469,12 +547,30 @@ function updatePdpShippingCalc() {
     garmentSubtotalElem.textContent = `${sym}${formatCurrency(garmentSubtotalUSD)}`;
   }
 
+  // Update policy banner text
+  const ruleTextElem = document.getElementById('pdpShipRuleText');
+  if (ruleTextElem) {
+    if (isHeavy) {
+      ruleTextElem.innerHTML = 'First item: <strong>$9.00</strong> · Each additional item: <strong>+$1.00</strong>';
+    } else {
+      ruleTextElem.innerHTML = 'First item: <strong>$8.00</strong> · Each additional item: <strong>+$0.50</strong>';
+    }
+  }
+
   const formulaNoteElem = document.getElementById('pdpShipFormulaNote');
   if (formulaNoteElem) {
-    if (qty === 1) {
-      formulaNoteElem.textContent = '($8.00 base)';
+    if (isHeavy) {
+      if (qty === 1) {
+        formulaNoteElem.textContent = '($9.00 base)';
+      } else {
+        formulaNoteElem.textContent = `($9.00 + ${qty - 1} × $1.00)`;
+      }
     } else {
-      formulaNoteElem.textContent = `($8.00 + ${qty - 1} × $0.50)`;
+      if (qty === 1) {
+        formulaNoteElem.textContent = '($8.00 base)';
+      } else {
+        formulaNoteElem.textContent = `($8.00 + ${qty - 1} × $0.50)`;
+      }
     }
   }
 
@@ -1629,6 +1725,7 @@ function addPdpToCart(productId) {
   APP_STATE.cartItems.push({
     id: prod.id,
     name: prod.name,
+    category: prod.category || 'tee',
     priceUSD: prod.priceUSD,
     qty: activePdpQty,
     size: activePdpSize || 'Standard',
@@ -1657,6 +1754,12 @@ function openProductModal(productId) {
     specList.innerHTML = prod.specs.map(s => `<li>• ${s}</li>`).join('');
   }
 
+  const modalShipBanner = document.getElementById('modalShippingBannerText');
+  if (modalShipBanner) {
+    const isHeavy = isHeavyweightGarment(prod.category || prod.id);
+    modalShipBanner.textContent = isHeavy ? 'US Direct Shipping: $9.00 (+$1.00/add\'l)' : 'US Direct Shipping: $8.00 (+$0.50/add\'l)';
+  }
+
   document.querySelectorAll('.size-chip').forEach(c => {
     c.onclick = () => {
       document.querySelectorAll('.size-chip').forEach(x => x.classList.remove('active'));
@@ -1680,6 +1783,7 @@ function addProductToCart() {
   APP_STATE.cartItems.push({
     id: prod.id,
     name: prod.name,
+    category: prod.category || 'tee',
     priceUSD: prod.priceUSD,
     qty: 1,
     size: activeSize,
@@ -1758,8 +1862,21 @@ function updateCartTotal() {
     }
   }
 
-  const shippingUSD = count > 0 ? calculateUsShipping(totalPieces) : 0;
+  const shippingUSD = count > 0 ? calculateCartShipping(APP_STATE.cartItems) : 0;
   const deliveredTotalUSD = count > 0 ? (subtotalUSD + shippingUSD) : 0;
+
+  const cartNoticeText = document.getElementById('cartShippingNoticeText');
+  if (cartNoticeText) {
+    const hasHeavy = APP_STATE.cartItems.some(i => isHeavyweightGarment(i));
+    const hasLight = APP_STATE.cartItems.some(i => !isHeavyweightGarment(i));
+    if (hasHeavy && hasLight) {
+      cartNoticeText.textContent = 'Mixed Cart: $9.00 base covers heavy item · Heavy +$1.00/pc, Light +$0.50/pc';
+    } else if (hasHeavy) {
+      cartNoticeText.textContent = 'Heavyweight Garments: $9.00 base for 1st item · +$1.00 for each additional item';
+    } else {
+      cartNoticeText.textContent = 'Standard US Direct Shipping: $8.00 base for 1st item · +$0.50 for each additional item';
+    }
+  }
 
   const subtotalDisplay = document.getElementById('cartSubtotalSum');
   if (subtotalDisplay) {
@@ -2125,7 +2242,7 @@ function openPdpCheckout(productId) {
   }
 
   const subtotalUSD = prod.priceUSD * qty;
-  const shippingUSD = calculateUsShipping(qty);
+  const shippingUSD = calculateProductShipping(prod, qty);
 
   CURRENT_CHECKOUT_CONFIG = {
     isCartCheckout: false,
@@ -2134,6 +2251,7 @@ function openPdpCheckout(productId) {
     items: [{
       id: prod.id,
       name: prod.name,
+      category: prod.category || 'tee',
       color: color,
       size: size,
       qty: qty,
@@ -2168,6 +2286,7 @@ function openCartCheckout() {
     return {
       id: item.id,
       name: item.name,
+      category: item.category || (PRODUCTS_DATA[item.id] ? PRODUCTS_DATA[item.id].category : 'tee'),
       color: item.spec || 'Standard',
       size: item.size || 'L',
       qty: q,
@@ -2176,7 +2295,7 @@ function openCartCheckout() {
     };
   });
 
-  const shippingUSD = calculateUsShipping(totalPieces);
+  const shippingUSD = calculateCartShipping(items);
 
   CURRENT_CHECKOUT_CONFIG = {
     isCartCheckout: true,
@@ -2411,7 +2530,7 @@ function modifyCheckoutSingleQty(delta) {
   updatePdpShippingCalc();
 
   CURRENT_CHECKOUT_CONFIG.subtotalUSD = it.priceUSD * newQty;
-  CURRENT_CHECKOUT_CONFIG.shippingUSD = calculateUsShipping(newQty);
+  CURRENT_CHECKOUT_CONFIG.shippingUSD = calculateProductShipping(it, newQty);
 
   updateCheckoutModalUI();
   if (currentCheckoutPayMethod === 'paypal') {

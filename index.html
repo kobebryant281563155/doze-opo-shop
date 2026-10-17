@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=200">
+  <link rel="stylesheet" href="styles.css?v=201">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -482,7 +482,7 @@
               <!-- Shipping Pricing Rule Explanation -->
               <div class="shipping-rule-banner">
                 <div class="rule-tag">US SHIPPING POLICY</div>
-                <div class="rule-text">
+                <div class="rule-text" id="pdpShipRuleText">
                   First item: <strong>$8.00</strong> · Each additional item: <strong>+$0.50</strong>
                 </div>
                 <div class="rule-delivery-note">
@@ -651,9 +651,9 @@
                           <span>⏱️ 10–15 Days</span>
                         </div>
                       </div>
-                      <div class="cship-rule">
+                      <div class="cship-rule" id="customShipRuleText">
                         <span class="cship-rule-tag">US POLICY</span>
-                        <span>1st item: <strong>$8.00</strong> · Add'l items: <strong>+$0.50 / pc</strong></span>
+                        <span id="customShipRuleDetail">1st item: <strong>$8.00</strong> · Add'l items: <strong>+$0.50 / pc</strong></span>
                       </div>
                     </div>
                   </div>
@@ -763,7 +763,7 @@
             <span class="cs-flag">🇺🇸</span>
             <div class="cs-text">
               <strong>US Direct Air Shipping (10–15 Days)</strong>
-              <small>$8.00 base for 1st item · +$0.50 for each additional item</small>
+              <small id="cartShippingNoticeText">Tees/Shorts: $8.00 base (+$0.50/add'l) · Hoodies/Pants: $9.00 base (+$1.00/add'l)</small>
             </div>
           </div>
 
@@ -900,7 +900,7 @@
           <div class="modal-shipping-banner">
             <span class="ms-flag">🇺🇸</span>
             <div class="ms-content">
-              <strong>US Direct Shipping: $8.00 (+$0.50/add'l)</strong>
+              <strong id="modalShippingBannerText">US Direct Shipping: $8.00 (+$0.50/add'l)</strong>
               <span>Estimated delivery within 10–15 days with tracking</span>
             </div>
           </div>
@@ -1598,8 +1598,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=200"></script>
-  <script src="products_data.js?v=200"></script>
-  <script src="app.js?v=200"></script>
+  <script src="prints_data.js?v=201"></script>
+  <script src="products_data.js?v=201"></script>
+  <script src="app.js?v=201"></script>
 </body>
 </html>
