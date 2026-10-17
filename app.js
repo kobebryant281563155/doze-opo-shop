@@ -2395,7 +2395,7 @@ function openPdpCheckout(productId) {
 
   updateCheckoutModalUI();
   loadCustomerAddress();
-  const defaultMethod = hasNoPaypal ? 'wise' : 'paypal';
+  const defaultMethod = 'worldfirst';
   switchCheckoutPaymentMethod(defaultMethod);
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
@@ -2450,7 +2450,7 @@ function openCartCheckout() {
 
   updateCheckoutModalUI();
   loadCustomerAddress();
-  const defaultMethod = hasNoPaypal ? 'wise' : 'paypal';
+  const defaultMethod = 'worldfirst';
   switchCheckoutPaymentMethod(defaultMethod);
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
@@ -2562,6 +2562,14 @@ function updateCheckoutModalUI() {
     if (wfTotal) wfTotal.textContent = `$${totalUSD.toFixed(2)} USD`;
     if (usdtOrig) usdtOrig.textContent = `$${totalUSD.toFixed(2)} USD`;
     if (usdtDisc) usdtDisc.textContent = `$${discountedTotalUSD.toFixed(2)} USD`;
+  }
+
+  const chaseSubmitAmount = document.getElementById('chaseSubmitBtnAmount');
+  if (chaseSubmitAmount) chaseSubmitAmount.textContent = `$${totalUSD.toFixed(2)} USD`;
+  const shipNameVal = document.getElementById('shipName')?.value.trim();
+  const chaseRemitterInput = document.getElementById('chaseRemitterName');
+  if (chaseRemitterInput && !chaseRemitterInput.value && shipNameVal) {
+    chaseRemitterInput.value = shipNameVal;
   }
 }
 
@@ -2689,6 +2697,167 @@ function submitAltPaymentOrder(method, platform) {
     const waUrl = 'https://wa.me/8618520682738?text=' + encodeURIComponent(msgText);
     window.open(waUrl, '_blank');
   }
+}
+
+function submitDirectChaseOrder() {
+  if (!CURRENT_CHECKOUT_CONFIG) {
+    showToast('No active checkout session. Please re-open your cart.');
+    return;
+  }
+
+  saveCustomerAddress();
+  const addr = getCustomerAddress();
+
+  if (!addr.name || !addr.phone || !addr.address) {
+    showToast('Please fill in Name, Phone, and Street Address above.');
+    const formElem = document.getElementById('checkoutShippingForm');
+    if (formElem) {
+      formElem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      formElem.style.outline = '2px solid #ef4444';
+      setTimeout(() => { formElem.style.outline = ''; }, 3000);
+    }
+    return;
+  }
+
+  const remitterNameInput = document.getElementById('chaseRemitterName');
+  const wireRefInput = document.getElementById('chaseWireRef');
+  const remitterName = (remitterNameInput && remitterNameInput.value.trim()) || addr.name;
+  const wireRef = (wireRefInput && wireRefInput.value.trim()) || 'Standard Wire Transfer';
+
+  const cfg = CURRENT_CHECKOUT_CONFIG;
+  const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
+  const orderId = 'DOZE-CHASE-' + Math.floor(100000 + Math.random() * 900000);
+
+  const fullAddress = `${addr.name}, ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}. Tel: ${addr.phone}, Email: ${addr.email}${addr.remark ? ` | Remark: ${addr.remark}` : ''}`;
+
+  const orderRecord = {
+    orderId: orderId,
+    paypalTxId: `Chase US Domestic ACH / Wire (Ref: ${wireRef})`,
+    createdAt: new Date().toISOString(),
+    payerName: remitterName,
+    payerEmail: addr.email || 'N/A',
+    shippingAddress: fullAddress,
+    remark: addr.remark || '',
+    wireReference: wireRef,
+    items: cfg.items,
+    subtotalUSD: cfg.subtotalUSD,
+    shippingUSD: cfg.shippingUSD,
+    totalUSD: totalUSD,
+    paymentMethod: 'JPMorgan Chase US Domestic ACH & Wire (WorldFirst)',
+    status: 'Pending Bank Clearance'
+  };
+
+  try {
+    const saved = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
+    saved.unshift(orderRecord);
+    localStorage.setItem('DOZE_OPO_ORDERS', JSON.stringify(saved));
+  } catch (e) {
+    console.error('Failed to store order', e);
+  }
+
+  if (cfg.isCartCheckout) {
+    APP_STATE.cartItems = [];
+    updateCartTotal();
+  }
+
+  showChaseOrderSuccessVoucher(orderRecord);
+}
+
+function showChaseOrderSuccessVoucher(order) {
+  let overlay = document.getElementById('chaseOrderVoucherOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'chaseOrderVoucherOverlay';
+    overlay.className = 'order-success-voucher-overlay';
+    const modalContent = document.querySelector('.checkout-modal-card');
+    if (modalContent) modalContent.appendChild(overlay);
+    else document.body.appendChild(overlay);
+  }
+
+  const itemsHtml = order.items.map(it => `
+    <div style="display: flex; justify-content: space-between; font-size: 13px; color: #334155; margin-bottom: 6px;">
+      <span>${it.name} (${it.size}, ${it.color}) × ${it.qty}</span>
+      <strong>$${(it.priceUSD * it.qty).toFixed(2)} USD</strong>
+    </div>
+  `).join('');
+
+  overlay.innerHTML = `
+    <div class="order-success-voucher-card">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #ecfdf5; border: 2px solid #10b981; display: inline-flex; align-items: center; justify-content: center; font-size: 24px; color: #10b981; margin-bottom: 8px;">✓</div>
+        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 4px 0;">Remittance Order Submitted!</h3>
+        <p style="font-size: 13px; color: #64748b; margin: 0;">Order Reference: <strong style="color: #0284c7; font-size: 14px;">${order.orderId}</strong></p>
+      </div>
+
+      <div style="background: #f8fafc; border: 1.5px solid #0284c7; border-radius: 12px; padding: 14px 16px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #64748b; margin-bottom: 8px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">
+          <span>Settlement Total Due:</span>
+          <strong style="color: #059669; font-size: 18px;">$${order.totalUSD.toFixed(2)} USD</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+          <span>Bank Name:</span>
+          <strong style="color: #0f172a;">JPMORGAN CHASE BANK, N.A.</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+          <span>Account Number:</span>
+          <strong style="color: #0f172a;">20000044307836 (DOZE OPO)</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+          <span>ACH Routing (Domestic):</span>
+          <strong style="color: #0f172a;">028000024</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+          <span>Wire Routing (Domestic):</span>
+          <strong style="color: #0f172a;">021000021</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569;">
+          <span>SWIFT Code (International):</span>
+          <strong style="color: #0f172a;">CHASUS33</strong>
+        </div>
+      </div>
+
+      <div style="border-top: 1px dashed #cbd5e1; border-bottom: 1px dashed #cbd5e1; padding: 12px 0; margin-bottom: 16px;">
+        <div style="font-size: 12px; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 6px;">Order Summary:</div>
+        ${itemsHtml}
+        <div style="font-size: 12px; color: #64748b; margin-top: 8px; line-height: 1.4;">
+          Delivery to: <strong>${order.shippingAddress}</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <button type="button" class="btn-alt-pay-action btn-wa-theme" style="width: 100%; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px;" onclick="forwardChaseReceiptWhatsApp('${order.orderId}', ${order.totalUSD})">
+          <span>💬 Forward Order Details &amp; Wire Receipt to WhatsApp</span>
+        </button>
+        <button type="button" style="width: 100%; padding: 10px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 700; color: #334155; cursor: pointer;" onclick="closeChaseVoucherModal()">
+          Done &amp; Close Window
+        </button>
+      </div>
+    </div>
+  `;
+  overlay.style.display = 'flex';
+}
+
+function forwardChaseReceiptWhatsApp(orderId, amount) {
+  const addr = getCustomerAddress();
+  const wireRefInput = document.getElementById('chaseWireRef');
+  const wireRef = (wireRefInput && wireRefInput.value.trim()) || 'Standard Wire';
+
+  const msg = `Hello DOZE OPO! I have submitted bank remittance order ${orderId} for $${amount.toFixed(2)} USD to your JPMorgan Chase Bank account (20000044307836).\n\n` +
+    `• Payer / Reference: ${wireRef}\n` +
+    `• Recipient: ${addr.name}\n` +
+    `• Phone: ${addr.phone}\n` +
+    `• Address: ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}\n` +
+    (addr.remark ? `• Remark: ${addr.remark}\n\n` : '\n') +
+    `Attached/pending is my wire transfer receipt. Please verify and confirm priority sample dispatch!`;
+
+  const waUrl = 'https://wa.me/8618520682738?text=' + encodeURIComponent(msg);
+  window.open(waUrl, '_blank');
+}
+
+function closeChaseVoucherModal() {
+  const overlay = document.getElementById('chaseOrderVoucherOverlay');
+  if (overlay) overlay.style.display = 'none';
+  closePaypalCheckoutModal();
 }
 
 function copyPaymentField(text, label) {
@@ -3045,6 +3214,10 @@ function loadCustomerAddress() {
     if (a.zip && document.getElementById('shipZip')) document.getElementById('shipZip').value = a.zip;
     if (a.country && document.getElementById('shipCountry')) document.getElementById('shipCountry').value = a.country;
     if (a.remark && document.getElementById('shipRemark')) document.getElementById('shipRemark').value = a.remark;
+    if (a.name && document.getElementById('chaseRemitterName')) {
+      const cr = document.getElementById('chaseRemitterName');
+      if (!cr.value) cr.value = a.name;
+    }
   } catch (e) {
     console.error('Failed to load address', e);
   }

@@ -1328,7 +1328,15 @@
           </div>
           
           <div class="pay-method-tabs" id="payMethodTabs">
-            <button type="button" class="pay-method-tab active" data-method="paypal" id="payMethodTab_paypal" onclick="switchCheckoutPaymentMethod('paypal')">
+            <button type="button" class="pay-method-tab active" data-method="worldfirst" id="payMethodTab_worldfirst" onclick="switchCheckoutPaymentMethod('worldfirst')">
+              <span class="pm-icon">🏦</span>
+              <div class="pm-text">
+                <div class="pm-title">US Bank ACH / Wire (Chase) <span class="pm-badge b2b">0% FEE · OFFICIAL B2B</span></div>
+                <div class="pm-sub">Direct Settlement to JPMorgan Chase Bank &amp; WorldFirst ACH</div>
+              </div>
+            </button>
+
+            <button type="button" class="pay-method-tab" data-method="paypal" id="payMethodTab_paypal" onclick="switchCheckoutPaymentMethod('paypal')">
               <span class="pm-icon">💳</span>
               <div class="pm-text">
                 <div class="pm-title">Visa / MasterCard / PayPal <span class="pm-badge neutral">INSTANT CARD PAY</span></div>
@@ -1336,7 +1344,7 @@
               </div>
             </button>
 
-            <button type="button" class="pay-method-tab" data-method="wise" onclick="switchCheckoutPaymentMethod('wise')">
+            <button type="button" class="pay-method-tab" data-method="wise" id="payMethodTab_wise" onclick="switchCheckoutPaymentMethod('wise')">
               <span class="pm-icon">💸</span>
               <div class="pm-text">
                 <div class="pm-title">Wise / Bank Direct <span class="pm-badge save" id="wiseDiscountBadge">SAVE 8%</span></div>
@@ -1344,15 +1352,7 @@
               </div>
             </button>
 
-            <button type="button" class="pay-method-tab" data-method="worldfirst" onclick="switchCheckoutPaymentMethod('worldfirst')">
-              <span class="pm-icon">🏦</span>
-              <div class="pm-text">
-                <div class="pm-title">US Bank ACH / Wire (Chase) <span class="pm-badge b2b">0% FEE</span></div>
-                <div class="pm-sub">JPMorgan Chase Bank &amp; WorldFirst ACH</div>
-              </div>
-            </button>
-
-            <button type="button" class="pay-method-tab" data-method="usdt" onclick="switchCheckoutPaymentMethod('usdt')">
+            <button type="button" class="pay-method-tab" data-method="usdt" id="payMethodTab_usdt" onclick="switchCheckoutPaymentMethod('usdt')">
               <span class="pm-icon">🪙</span>
               <div class="pm-text">
                 <div class="pm-title">USDT / Crypto <span class="pm-badge save" id="usdtDiscountBadge">SAVE 8%</span></div>
@@ -1364,7 +1364,7 @@
 
         <!-- Payment Content Panels -->
         <!-- Panel 1: Visa / MasterCard / PayPal Direct -->
-        <div class="payment-panel active" id="payPanel_paypal">
+        <div class="payment-panel" id="payPanel_paypal" style="display: none;">
           <!-- Card Guidance Banner -->
           <div style="background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(2, 132, 199, 0.25); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
             <div>
@@ -1471,7 +1471,7 @@
         </div>
 
         <!-- Panel 3: WorldFirst Direct Invoice & US Bank ACH -->
-        <div class="payment-panel" id="payPanel_worldfirst" style="display: none;">
+        <div class="payment-panel active" id="payPanel_worldfirst">
           <div class="alt-pay-instruction-card">
             <div class="api-badge-row">
               <span class="api-highlight-badge blue-theme">⚡ JPMORGAN CHASE BANK · US DOMESTIC &amp; WIRE</span>
@@ -1538,7 +1538,35 @@
               </div>
             </div>
 
-            <div class="api-steps-list">
+            <!-- Direct Remittance Submission Form -->
+            <div class="remittance-submission-box">
+              <div class="rsb-header">
+                <span class="rsb-badge">OFFICIAL SETTLEMENT ACTION</span>
+                <h4>Confirm &amp; Submit Remittance Order</h4>
+                <p>Transfer USD directly from your banking app (Chase, BoA, Citi, etc.) to the details above, then submit below to lock in sample dispatch.</p>
+              </div>
+
+              <div class="rsb-form-grid">
+                <div class="rsb-field">
+                  <label>Payer / Remitter Full Name <span class="req">*</span></label>
+                  <input type="text" id="chaseRemitterName" placeholder="e.g. John Doe / Studio LLC" class="checkout-input">
+                </div>
+                <div class="rsb-field">
+                  <label>Wire / ACH Reference <small>(Optional)</small></label>
+                  <input type="text" id="chaseWireRef" placeholder="e.g. Confirmation # / Trace ID" class="checkout-input">
+                </div>
+              </div>
+
+              <button type="button" class="btn-submit-remittance" id="btnSubmitChaseRemittance" onclick="submitDirectChaseOrder()">
+                <span>✅ Submit Bank Remittance Order</span>
+                <strong class="bsr-amount" id="chaseSubmitBtnAmount">$0.00 USD</strong>
+              </button>
+              <div class="rsb-trust-note">
+                🔒 Zero Gateway Surcharges · 0% Fee · Direct JPMorgan Chase Settlement
+              </div>
+            </div>
+
+            <div class="api-steps-list" style="margin-top: 14px;">
               <div class="api-step-item">
                 <span class="step-num">1</span>
                 <div><strong>US Domestic ACH / Wire Remittance</strong><p>Transfer USD directly from any US banking app (Chase, BoA, Wells Fargo, Citi) via ACH or wire with 0% fee.</p></div>
@@ -1685,8 +1713,8 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
-  <script src="prints_data.js?v=208"></script>
-  <script src="products_data.js?v=208"></script>
-  <script src="app.js?v=208"></script>
+  <script src="prints_data.js?v=209"></script>
+  <script src="products_data.js?v=209"></script>
+  <script src="app.js?v=209"></script>
 </body>
 </html>
