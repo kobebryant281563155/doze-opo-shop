@@ -2232,7 +2232,7 @@ function updateCheckoutModalUI() {
   }
 
   const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
-  const discountedTotalUSD = totalUSD * 0.90;
+  const discountedTotalUSD = totalUSD * 0.92;
 
   if (subtotalElem) subtotalElem.textContent = `$${cfg.subtotalUSD.toFixed(2)} USD`;
   if (shippingElem) shippingElem.textContent = `$${cfg.shippingUSD.toFixed(2)} USD`;
@@ -2305,20 +2305,20 @@ function submitAltPaymentOrder(method, platform) {
   const cfg = CURRENT_CHECKOUT_CONFIG;
   const regularTotal = cfg.subtotalUSD + cfg.shippingUSD;
   const isDiscounted = (method === 'wise' || method === 'usdt');
-  const finalTotalUSD = isDiscounted ? parseFloat((regularTotal * 0.90).toFixed(2)) : regularTotal;
+  const finalTotalUSD = isDiscounted ? parseFloat((regularTotal * 0.92).toFixed(2)) : regularTotal;
 
   const prefix = method === 'wise' ? 'WISE' : (method === 'worldfirst' ? 'WF' : 'USDT');
   const orderId = 'DOZE-' + prefix + '-' + Math.floor(100000 + Math.random() * 900000);
 
   const fullAddress = `${addr.name}, ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}. Tel: ${addr.phone}, Email: ${addr.email}`;
 
-  let methodLabel = 'Wise / Direct Remittance (10% OFF)';
+  let methodLabel = 'Wise / Direct Remittance (8% OFF)';
   let gatewayTag = 'Wise / Bank Remittance Pending';
   if (method === 'worldfirst') {
     methodLabel = 'WorldFirst Direct Credit Card Invoice (0% Surcharge)';
     gatewayTag = 'WorldFirst Card Invoice Pending';
   } else if (method === 'usdt') {
-    methodLabel = 'USDT TRC-20 Crypto (10% OFF)';
+    methodLabel = 'USDT TRC-20 Crypto (8% OFF)';
     gatewayTag = 'USDT TRC-20 Pending';
   }
 
@@ -2354,7 +2354,7 @@ function submitAltPaymentOrder(method, platform) {
 
   const msgText = `Hello DOZE OPO! I would like to pay for Sample Order ${orderId} via ${methodLabel}.\n\n` +
     `• Items: ${cfg.titleSummary}\n` +
-    `• Delivered Total: $${finalTotalUSD.toFixed(2)} USD ${isDiscounted ? '(10% Discount Applied)' : ''}\n` +
+    `• Delivered Total: $${finalTotalUSD.toFixed(2)} USD ${isDiscounted ? '(8% Discount Applied)' : ''}\n` +
     `• Recipient: ${addr.name}\n` +
     `• Phone: ${addr.phone}\n` +
     `• Address: ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}\n\n` +
