@@ -1615,7 +1615,7 @@ window.PRODUCTS_DATA = {
       "350 GSM Combed Cotton Knit with Cloud-Soft Brushed Thermal Heat-Retention Fleece",
       "Architectural Double-Layer Structured Crossover Hood (No Drawstring Minimalist)",
       "Reinforced Front Kangaroo Hand-Warmer Pocket with Clean Bound Edges",
-      "1x1 High-Density Elastic Ribbed Cuffs & Hem with Supreme Shape Retention",
+      "1x1 High-Density Elastic Ribbed Cuffs & Hem with Superior Shape Retention",
       "Extensive Street Palette · 1-Piece Custom Tech Pack Sample & Bulk OEM Ready"
     ],
     "sizeTable": {
@@ -1927,7 +1927,7 @@ window.PRODUCTS_DATA = {
   },
   "SUP01": {
     "id": "SUP01",
-    "name": "Supreme Box Logo Appliqué Embroidery Heavyweight Fleece Hoodie",
+    "name": "Streetwear Box Appliqué Embroidery Heavyweight Fleece Hoodie",
     "category": "fb",
     "priceUSD": 70.00,
     "noShipping": true,
@@ -1939,9 +1939,9 @@ window.PRODUCTS_DATA = {
     "sizes": ["S", "M", "L", "XL"],
     "specs": [
       "480 GSM Heavyweight Dense Thermal Fleece Knit with Ultra-Soft Brushed Interior",
-      "Iconic Full-Length Vertical Supreme Twill Appliqué Embroidery with Satin-Stitch Border",
+      "Iconic Full-Length Vertical Streetwear Twill Appliqué Embroidery with Satin-Stitch Border",
       "Double-Layer Structured Contoured Hood with Heavy Tonal Drawcords & Metal Aglets",
-      "Wide 1x1 Elastic Ribbed Cuffs & Hem with Supreme Woven Red Flag Side Tab",
+      "Wide 1x1 Elastic Ribbed Cuffs & Hem with Streetwear Woven Red Flag Side Tab",
       "Includes 100% Free Worldwide Priority Air Express Delivery & Tracking"
     ],
     "sizeTable": {

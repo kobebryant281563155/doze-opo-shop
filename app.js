@@ -1436,7 +1436,7 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'WY18') {
     const craftDetails = [
-      { img: 'assets/products/WY18/detail/3.jpg', title: '01 Brushed Thermal Expo Fleece', desc: '355 GSM Brushed Thermal Expo Fleece - Supreme Softness & Warmth' },
+      { img: 'assets/products/WY18/detail/3.jpg', title: '01 Brushed Thermal Expo Fleece', desc: '355 GSM Brushed Thermal Expo Fleece - Maximum Softness & Warmth' },
       { img: 'assets/products/WY18/detail/1.jpg', title: '02 Seamless Double', desc: 'Seamless Double-Stitched Front Kangaroo Pocket for Daily Utility' },
       { img: 'assets/products/WY18/detail/2.jpg', title: '03 Heavyweight Elastic Ribbed Cuf', desc: 'Heavyweight Elastic Ribbed Cuffs & Hem - Anti-Bacon Shape Retention' },
       { img: 'assets/products/WY18/detail/4.jpg', title: '04 Clean Minimalist Double Hood C', desc: 'Clean Minimalist Double Hood Construction with Interior Neck Taping' },
@@ -1721,8 +1721,8 @@ function renderDynamicLookbook(prod) {
     ];
   } else if (prod.id === 'SUP01') {
     const craftDetails = [
-      { img: 'assets/products/SUP01/detail/1.jpg', title: '01 Authentic Woven Label & Hangtag', desc: 'Supreme woven neck label, care instructions tag & branded cardstock hangtag' },
-      { img: 'assets/products/SUP01/detail/2.jpg', title: '02 Supreme Red Flag Tab & Ribbed Cuff', desc: 'Signature Supreme mini red woven side tab with high-elasticity 1x1 shape-retention cuffs' },
+      { img: 'assets/products/SUP01/detail/1.jpg', title: '01 Authentic Woven Label & Hangtag', desc: 'Streetwear woven neck label, care instructions tag & branded cardstock hangtag' },
+      { img: 'assets/products/SUP01/detail/2.jpg', title: '02 Streetwear Red Flag Tab & Ribbed Cuff', desc: 'Signature streetwear mini red woven side tab with high-elasticity 1x1 shape-retention cuffs' },
       { img: 'assets/products/SUP01/detail/3.jpg', title: '03 Precision Twill Appliqué Embroidery', desc: 'Macro view of heavyweight cut-and-sew twill lettering with high-density satin overlock stitch' },
       { img: 'assets/products/SUP01/detail/4.jpg', title: '04 Deep Kangaroo Pocket & Thermal Fleece', desc: 'Twin-needle bar-tacked kangaroo pocket with 480 GSM dense thermal brushed fleece interior' }
     ];
