@@ -571,7 +571,11 @@ function updatePdpShippingCalc() {
   const qtyDisplay = document.getElementById('pdpQtyDisplay');
   if (qtyDisplay) {
     if (isNoShipping) {
-      qtyDisplay.textContent = `${qty} unit${qty > 1 ? 's' : ''} (${sym}${formatCurrency(garmentSubtotalUSD)})`;
+      if (prod.id === 'FB01') {
+        qtyDisplay.textContent = `${qty} unit${qty > 1 ? 's' : ''} (${sym}${formatCurrency(garmentSubtotalUSD)})`;
+      } else {
+        qtyDisplay.textContent = `${qty} pc${qty > 1 ? 's' : ''}${qty === 1 ? ' (Sample)' : ''} · Free Shipping`;
+      }
     } else {
       qtyDisplay.textContent = `${qty} pc${qty > 1 ? 's' : ''}${qty === 1 ? ' (Sample)' : ''}`;
     }
@@ -583,17 +587,22 @@ function updatePdpShippingCalc() {
 
   if (isNoShipping) {
     if (shippingBox) shippingBox.style.display = 'none';
-    if (qtyPresets) qtyPresets.style.display = 'none';
+    if (qtyPresets) qtyPresets.style.display = (prod.id === 'FB01') ? 'none' : 'flex';
     if (customSummary) {
       customSummary.style.display = 'block';
+      const isCustomAgreed = prod.id === 'FB01' || prod.isCustomOrder;
+      const badgeText = isCustomAgreed ? 'CUSTOM AGREED PRICING' : 'FREE WORLDWIDE SHIPPING';
+      const descText = isCustomAgreed
+        ? `Direct VIP checkout calculated at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Units</strong>. Priority air delivery &amp; tracking included.`
+        : `100% Free Priority Air Express Delivery Included. Direct checkout at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Unit${qty > 1 ? 's' : ''}</strong> with door-to-door tracking.`;
       customSummary.innerHTML = `
         <div class="custom-pricing-card">
           <div class="cpc-header">
-            <span class="cpc-badge">CUSTOM AGREED PRICING</span>
+            <span class="cpc-badge">${badgeText}</span>
             <div class="cpc-total-val">${sym}${formatCurrency(deliveredTotalUSD)} USD</div>
           </div>
           <div class="cpc-desc">
-            Direct VIP checkout calculated at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Units</strong>. Priority air delivery &amp; tracking included.
+            ${descText}
           </div>
         </div>
       `;
@@ -655,7 +664,11 @@ function updatePdpShippingCalc() {
   const orderBtnText = document.getElementById('pdpOrderBtnText');
   if (orderBtnText) {
     if (isNoShipping) {
-      orderBtnText.textContent = `Checkout Custom Order (${sym}${formatCurrency(deliveredTotalUSD)})`;
+      if (prod.id === 'FB01') {
+        orderBtnText.textContent = `Checkout Custom Order (${sym}${formatCurrency(deliveredTotalUSD)})`;
+      } else {
+        orderBtnText.textContent = `Order ${qty}-PC (${sym}${formatCurrency(deliveredTotalUSD)} · Free Delivery)`;
+      }
     } else {
       orderBtnText.textContent = `Order ${qty}-PC Sample (${sym}${formatCurrency(deliveredTotalUSD)} Delivered)`;
     }
@@ -840,7 +853,7 @@ function openProductDetail(productId) {
     });
     const colorLabelHeader = document.getElementById('pdpColorSectionLabel');
     if (colorLabelHeader) {
-      colorLabelHeader.textContent = (prod.category === 'fb' || prod.id === 'FB01') ? 'Select VIP Price Tier:' : 'Select Colorway:';
+      colorLabelHeader.textContent = (prod.id === 'FB01') ? 'Select VIP Price Tier:' : 'Select Colorway:';
     }
 
     activePdpColor = prod.skus[0].name;
@@ -1706,6 +1719,45 @@ function renderDynamicLookbook(prod) {
       'assets/products/W439/main/5.jpg',
       'assets/products/W439/main/6.jpg'
     ];
+  } else if (prod.id === 'SUP01') {
+    const craftDetails = [
+      { img: 'assets/products/SUP01/detail/1.jpg', title: '01 Authentic Woven Label & Hangtag', desc: 'Supreme woven neck label, care instructions tag & branded cardstock hangtag' },
+      { img: 'assets/products/SUP01/detail/2.jpg', title: '02 Supreme Red Flag Tab & Ribbed Cuff', desc: 'Signature Supreme mini red woven side tab with high-elasticity 1x1 shape-retention cuffs' },
+      { img: 'assets/products/SUP01/detail/3.jpg', title: '03 Precision Twill Appliqué Embroidery', desc: 'Macro view of heavyweight cut-and-sew twill lettering with high-density satin overlock stitch' },
+      { img: 'assets/products/SUP01/detail/4.jpg', title: '04 Deep Kangaroo Pocket & Thermal Fleece', desc: 'Twin-needle bar-tacked kangaroo pocket with 480 GSM dense thermal brushed fleece interior' }
+    ];
+
+    extraCraftHtml = `
+      <div class="pdp-size-tables-card craft-card-01d">
+        <div class="table-header">
+          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
+          <h4>Product Details &amp; Macro Fabric Craft (4 Core Specs)</h4>
+          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">480 GSM thermal brushed fleece, appliqué embroidery, woven red tab</p>
+        </div>
+        <div class="macro-craft-grid">
+          ${craftDetails.map(c => `
+            <div class="macro-craft-item">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              <div class="macro-craft-caption">
+                <strong>${c.title}</strong>
+                <small>${c.desc}</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    lookbookImages = [
+      'assets/products/SUP01/main/1.jpg',
+      'assets/products/SUP01/main/5.jpg',
+      'assets/products/SUP01/main/6.jpg',
+      'assets/products/SUP01/main/2.jpg',
+      'assets/products/SUP01/main/7.jpg',
+      'assets/products/SUP01/main/8.jpg',
+      'assets/products/SUP01/main/4.jpg',
+      'assets/products/SUP01/main/3.jpg'
+    ];
   } else if (prod.detailImages && prod.detailImages.length > 0) {
     extraCraftHtml = `
       <div class="pdp-size-tables-card craft-card-01d">
@@ -1845,8 +1897,8 @@ function addPdpToCart(productId) {
     noShipping: isNoShipping,
     priceUSD: unitPriceUSD,
     qty: activePdpQty,
-    size: activePdpSize || (prod.category === 'fb' ? 'Custom' : 'Standard'),
-    spec: (prod.category === 'fb' || prod.id === 'FB01') ? 'VIP Custom Pricing ($1.00 USD/Unit)' : `${prod.gram} · ${activePdpColor}`,
+    size: activePdpSize || (prod.id === 'FB01' ? 'Custom' : 'Standard'),
+    spec: (prod.id === 'FB01') ? 'VIP Custom Pricing ($1.00 USD/Unit)' : `${prod.gram} · ${activePdpColor}`,
     img: prod.img
   });
 
@@ -2375,7 +2427,7 @@ function openPdpCheckout(productId) {
     noDiscount: hasNoDiscount,
     noPaypal: hasNoPaypal,
     noShipping: isNoShipping,
-    titleSummary: (prod.category === 'fb' || prod.id === 'FB01') ? `${prod.name} (${qty} Units)` : `${prod.name} (${color}, ${size})`,
+    titleSummary: (prod.id === 'FB01') ? `${prod.name} (${qty} Units)` : `${prod.name} (${color}, ${size})`,
     items: [{
       id: prod.id,
       name: prod.name,
@@ -2480,7 +2532,7 @@ function updateCheckoutModalUI() {
         <div class="checkout-item-info">
           <div class="checkout-item-title">${it.name}</div>
           <div class="checkout-item-meta">
-            ${(it.category === 'fb' || it.id === 'FB01')
+            ${(it.id === 'FB01')
               ? `VIP Custom Pricing ($${it.priceUSD.toFixed(2)} USD / Unit)`
               : `Size: <strong>${it.size}</strong> · Color: <strong>${it.color}</strong>`}
           </div>
@@ -2519,6 +2571,10 @@ function updateCheckoutModalUI() {
   const paypalTab = document.getElementById('payMethodTab_paypal');
   if (paypalTab) {
     paypalTab.style.display = hasNoPaypal ? 'none' : '';
+  }
+  const wfPaypalPrompt = document.getElementById('wfPaypalPromptStep');
+  if (wfPaypalPrompt) {
+    wfPaypalPrompt.style.display = hasNoPaypal ? 'none' : '';
   }
 
   const wiseOrig = document.getElementById('wiseOriginalTotalDisplay');
