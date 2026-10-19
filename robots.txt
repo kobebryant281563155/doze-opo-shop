@@ -1,0 +1,16 @@
+# Robots.txt for DOZE OPO (www.dozeopo.com)
+# Directs search engine crawlers to high-value pages and catalogs
+
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /products_data.js
+Allow: /app.js
+Allow: /styles.css
+
+# Disallow internal tool folders or scratch files if any
+Disallow: /scratch/
+Disallow: /tools/
+
+# Sitemap location
+Sitemap: https://www.dozeopo.com/sitemap.xml
