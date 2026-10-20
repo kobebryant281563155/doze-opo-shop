@@ -57,4 +57,14 @@ For any given product folder (e.g., `01D`, `360`, `T012-240G`, etc.):
 - **1000-Lead Milestone Reminder**:
   - Whenever the agent inspects or runs the workflow and detects that total deduplicated customer leads across desktop Excel files or cumulative touches reach **1000+**, the agent **MUST automatically notify and remind the user** to initiate Phase 2 upgrades (Waterfall Enrichment cross-channel phone/email extraction, Cross-Channel Cadence multi-touch sequencing, and Unified Reply Circuit Breaker).
 
+---
+
+## 7. Dual-Screen (Mobile & PC Desktop) Synchronization Standard
+- **Zero Redundancy**: All product data ([products_data.js](file:///d:/doze-opo-shop/products_data.js)), print data ([prints_data.js](file:///d:/doze-opo-shop/prints_data.js)), and business logic ([app.js](file:///d:/doze-opo-shop/app.js)) remain strictly single-sourced.
+- **Synchronous Dual-Screen Optimization**:
+  - Any new feature, layout modification, component addition, or CSS update **MUST** be styled and validated for both:
+    1. **Mobile Viewport** (`< 768px`): Compact, touch-friendly, mobile navigation, native app feel.
+    2. **PC Desktop Viewport** (`≥ 1024px`): Full-screen wide container (up to 1600px), top sticky navigation, multi-column grids (5-column shelves, single-row 8-category quick nav, dual-column sticky PDP).
+  - Never break or leave either viewport unstyled when introducing changes.
+
 
