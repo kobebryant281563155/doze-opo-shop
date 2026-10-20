@@ -893,7 +893,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=214">
+  <link rel="stylesheet" href="styles.css?v=215">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -904,6 +904,47 @@
   </script>
 </head>
 <body class="theme-light">
+  <!-- Desktop Top Navigation Bar (Hidden on Mobile, Shown on PC >= 1024px) -->
+  <nav class="desktop-top-nav" id="desktopTopNav">
+    <div class="desktop-nav-inner">
+      <a class="desktop-nav-logo" href="#" onclick="switchTab('home'); return false;">DOZE OPO</a>
+      <div class="desktop-nav-links">
+        <a href="#" class="desktop-nav-link active" data-tab="home" onclick="switchTab('home'); return false;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Home
+        </a>
+        <a href="#" class="desktop-nav-link" data-tab="catalog" onclick="switchTab('catalog'); return false;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+          Catalog
+        </a>
+        <a href="#" class="desktop-nav-link desktop-nav-oem" data-tab="custom" onclick="switchTab('custom'); return false;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Custom OEM
+        </a>
+        <a href="#" class="desktop-nav-link" data-tab="cart" onclick="switchTab('cart'); return false;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" x2="21" y1="6" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Cart
+          <span class="desktop-cart-badge" id="desktopCartBadge" style="display: none;">0</span>
+        </a>
+        <a href="#" class="desktop-nav-link" data-tab="profile" onclick="switchTab('profile'); return false;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Orders / B2B
+        </a>
+      </div>
+      <div class="desktop-nav-actions">
+        <button type="button" class="desktop-search-toggle" id="desktopSearchToggle" onclick="document.querySelector('.search-inner input').focus(); switchTab('home');" title="Search Products">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button type="button" class="desktop-orders-btn" onclick="openOrdersTrackingModal()" title="View Orders">
+          📦 Orders
+        </button>
+        <button type="button" class="desktop-contact-btn" onclick="openContactModal()" title="Contact Us">
+          💬 Contact
+        </button>
+      </div>
+    </div>
+  </nav>
+
   <!-- Mobile Viewport Wrapper (Native Fullscreen Mobile View) -->
   <main class="mobile-viewport-wrapper fullscreen-mode" id="viewportWrapper">
     <div class="iphone-bezel" id="iphoneFrame">
@@ -1266,202 +1307,208 @@
             </div>
           </div>
 
-          <!-- Hero Media Swiper -->
-          <div class="pdp-media-swiper">
-            <div class="pdp-hero-img-wrap">
-              <img src="assets/products/01D/main/1.jpg" id="pdpMainImg" alt="01D 230G Crewneck Tee">
-              <span class="pdp-img-counter" id="pdpImgCounter">1 / 6</span>
-              <span class="pdp-badge-moq">⚡ 1 PC Sample Proofing</span>
-            </div>
-            <div class="pdp-thumb-strip" id="pdpThumbStrip">
-              <div class="pdp-thumb active" onclick="switchPdpHero('assets/products/01D/main/1.jpg', 1)"><img src="assets/products/01D/main/1.jpg" alt="Gallery 1"></div>
-              <div class="pdp-thumb" onclick="switchPdpHero('assets/products/01D/main/2.jpg', 2)"><img src="assets/products/01D/main/2.jpg" alt="Gallery 2"></div>
-              <div class="pdp-thumb" onclick="switchPdpHero('assets/products/01D/main/3.jpg', 3)"><img src="assets/products/01D/main/3.jpg" alt="Gallery 3"></div>
-              <div class="pdp-thumb" onclick="switchPdpHero('assets/products/01D/main/4.jpg', 4)"><img src="assets/products/01D/main/4.jpg" alt="Gallery 4"></div>
-            </div>
-          </div>
-
-          <!-- Product Main Meta -->
-          <div class="pdp-meta-card">
-            <div class="pdp-price-row">
-              <div class="pdp-price-box">
-                <span class="currency-symbol">$</span>
-                <strong class="pdp-price-val">4.99</strong>
-                <span class="pdp-price-unit">/ pc</span>
+          <!-- PDP Main Layout (Dual-Column on Desktop >= 1024px) -->
+          <div class="pdp-desktop-columns">
+            <!-- Left: Hero Media Swiper -->
+            <div class="pdp-media-swiper">
+              <div class="pdp-hero-img-wrap">
+                <img src="assets/products/01D/main/1.jpg" id="pdpMainImg" alt="01D 230G Crewneck Tee">
+                <span class="pdp-img-counter" id="pdpImgCounter">1 / 6</span>
+                <span class="pdp-badge-moq">⚡ 1 PC Sample Proofing</span>
               </div>
-              <span class="pdp-sample-tag">1 PC Sample Proofing Ready</span>
-            </div>
-            <h2 class="pdp-title">01D 230G 20S Compact Siro-Spun Combed Cotton Crewneck Tee</h2>
-            <p class="pdp-desc">230 GSM 100% Combed Cotton · 20S Compact Siro-Spun Clean Face Knit · 18 Streetwear Colorways</p>
-            <div class="pdp-feature-tags">
-              <span class="pdp-ftag">230 GSM Combed Cotton</span>
-              <span class="pdp-ftag">Pre-Shrunk &lt; 2%</span>
-              <span class="pdp-ftag">Taped Bound Neck</span>
-              <span class="pdp-ftag">Flexible OEM Printing</span>
-            </div>
-          </div>
-
-          <!-- Color Swatch Selector (8 Colorways) -->
-          <div class="pdp-section-card" id="pdpColorSection">
-            <div class="pdp-section-title">
-              <span id="pdpColorSectionLabel">Select Colorway:</span>
-              <strong id="pdpActiveColorName">White / Black</strong>
-            </div>
-            <div class="pdp-color-grid" id="pdpColorGrid">
-              <!-- Rendered dynamically via JS -->
-            </div>
-          </div>
-
-          <!-- Size Selector -->
-          <div class="pdp-section-card" id="pdpSizeSection">
-            <div class="pdp-section-title pdp-size-header-title">
-              <div class="pdp-size-title-left">
-                <span>Select Size:</span>
-                <strong id="pdpActiveSizeName">XL (Oversized Street Fit)</strong>
-              </div>
-              <button type="button" class="pdp-size-guide-btn" id="pdpSizeGuideBtn" onclick="openSizeGuideModal()">
-                <span class="guide-icon">📏</span>
-                <span>Size Chart &amp; Fit Guide</span>
-              </button>
-            </div>
-            <div class="pdp-size-row" id="pdpSizeRow">
-              <button type="button" class="pdp-size-btn" onclick="selectPdpSize('S', this)">S</button>
-              <button type="button" class="pdp-size-btn" onclick="selectPdpSize('M', this)">M</button>
-              <button type="button" class="pdp-size-btn" onclick="selectPdpSize('L', this)">L</button>
-              <button type="button" class="pdp-size-btn active" onclick="selectPdpSize('XL', this)">XL</button>
-              <button type="button" class="pdp-size-btn" onclick="selectPdpSize('2XL', this)">2XL</button>
-            </div>
-            <!-- In-place Quick Size Chart Visual Preview -->
-            <div class="pdp-size-preview-card" id="pdpSizePreviewBox">
-              <!-- Dynamically populated via JS -->
-            </div>
-          </div>
-
-          <!-- Quantity & US Shipping Rate Section -->
-          <div class="pdp-section-card pdp-shipping-card">
-            <!-- Quantity Row -->
-            <div class="pdp-qty-row">
-              <div class="pdp-section-title">
-                <span>Quantity:</span>
-                <strong id="pdpQtyDisplay">1 pc (Sample)</strong>
-              </div>
-              <div class="pdp-qty-stepper">
-                <button type="button" class="pdp-qty-btn" onclick="changePdpQty(-1)">-</button>
-                <input type="number" id="pdpQtyInput" value="1" min="1" max="99999" oninput="setPdpQty(this.value)" onchange="setPdpQty(this.value)">
-                <button type="button" class="pdp-qty-btn" onclick="changePdpQty(1)">+</button>
+              <div class="pdp-thumb-strip" id="pdpThumbStrip">
+                <div class="pdp-thumb active" onclick="switchPdpHero('assets/products/01D/main/1.jpg', 1)"><img src="assets/products/01D/main/1.jpg" alt="Gallery 1"></div>
+                <div class="pdp-thumb" onclick="switchPdpHero('assets/products/01D/main/2.jpg', 2)"><img src="assets/products/01D/main/2.jpg" alt="Gallery 2"></div>
+                <div class="pdp-thumb" onclick="switchPdpHero('assets/products/01D/main/3.jpg', 3)"><img src="assets/products/01D/main/3.jpg" alt="Gallery 3"></div>
+                <div class="pdp-thumb" onclick="switchPdpHero('assets/products/01D/main/4.jpg', 4)"><img src="assets/products/01D/main/4.jpg" alt="Gallery 4"></div>
               </div>
             </div>
 
-            <!-- Quick Qty Presets -->
-            <div class="pdp-qty-presets" id="pdpQtyPresets">
-              <button type="button" class="pdp-qpreset active" onclick="setPdpQty(1)">1 PC (Sample)</button>
-              <button type="button" class="pdp-qpreset" onclick="setPdpQty(2)">2 PCS</button>
-              <button type="button" class="pdp-qpreset" onclick="setPdpQty(3)">3 PCS</button>
-              <button type="button" class="pdp-qpreset" onclick="setPdpQty(5)">5 PCS</button>
-              <button type="button" class="pdp-qpreset" onclick="setPdpQty(10)">10 PCS</button>
-            </div>
+            <!-- Right: Product Purchasing & Specification Column -->
+            <div class="pdp-info-column">
+              <!-- Product Main Meta -->
+              <div class="pdp-meta-card">
+                <div class="pdp-price-row">
+                  <div class="pdp-price-box">
+                    <span class="currency-symbol">$</span>
+                    <strong class="pdp-price-val">4.99</strong>
+                    <span class="pdp-price-unit">/ pc</span>
+                  </div>
+                  <span class="pdp-sample-tag">1 PC Sample Proofing Ready</span>
+                </div>
+                <h2 class="pdp-title">01D 230G 20S Compact Siro-Spun Combed Cotton Crewneck Tee</h2>
+                <p class="pdp-desc">230 GSM 100% Combed Cotton · 20S Compact Siro-Spun Clean Face Knit · 18 Streetwear Colorways</p>
+                <div class="pdp-feature-tags">
+                  <span class="pdp-ftag">230 GSM Combed Cotton</span>
+                  <span class="pdp-ftag">Pre-Shrunk &lt; 2%</span>
+                  <span class="pdp-ftag">Taped Bound Neck</span>
+                  <span class="pdp-ftag">Flexible OEM Printing</span>
+                </div>
+              </div>
 
-            <!-- VIP Custom Agreed Pricing Summary (Shown when shipping template is omitted) -->
-            <div id="pdpCustomPriceSummary" style="display: none;"></div>
+              <!-- Color Swatch Selector (8 Colorways) -->
+              <div class="pdp-section-card" id="pdpColorSection">
+                <div class="pdp-section-title">
+                  <span id="pdpColorSectionLabel">Select Colorway:</span>
+                  <strong id="pdpActiveColorName">White / Black</strong>
+                </div>
+                <div class="pdp-color-grid" id="pdpColorGrid">
+                  <!-- Rendered dynamically via JS -->
+                </div>
+              </div>
 
-            <!-- US Shipping Details Box -->
-            <div class="pdp-shipping-box" id="pdpShippingBox">
-              <div class="shipping-header">
-                <div class="shipping-dest">
-                  <span class="flag-icon">🇺🇸</span>
-                  <div>
-                    <strong class="dest-title">Ship to United States</strong>
-                    <span class="dest-sub">USPS / DHL Direct Express</span>
+              <!-- Size Selector -->
+              <div class="pdp-section-card" id="pdpSizeSection">
+                <div class="pdp-section-title pdp-size-header-title">
+                  <div class="pdp-size-title-left">
+                    <span>Select Size:</span>
+                    <strong id="pdpActiveSizeName">XL (Oversized Street Fit)</strong>
+                  </div>
+                  <button type="button" class="pdp-size-guide-btn" id="pdpSizeGuideBtn" onclick="openSizeGuideModal()">
+                    <span class="guide-icon">📏</span>
+                    <span>Size Chart &amp; Fit Guide</span>
+                  </button>
+                </div>
+                <div class="pdp-size-row" id="pdpSizeRow">
+                  <button type="button" class="pdp-size-btn" onclick="selectPdpSize('S', this)">S</button>
+                  <button type="button" class="pdp-size-btn" onclick="selectPdpSize('M', this)">M</button>
+                  <button type="button" class="pdp-size-btn" onclick="selectPdpSize('L', this)">L</button>
+                  <button type="button" class="pdp-size-btn active" onclick="selectPdpSize('XL', this)">XL</button>
+                  <button type="button" class="pdp-size-btn" onclick="selectPdpSize('2XL', this)">2XL</button>
+                </div>
+                <!-- In-place Quick Size Chart Visual Preview -->
+                <div class="pdp-size-preview-card" id="pdpSizePreviewBox">
+                  <!-- Dynamically populated via JS -->
+                </div>
+              </div>
+
+              <!-- Quantity & US Shipping Rate Section -->
+              <div class="pdp-section-card pdp-shipping-card">
+                <!-- Quantity Row -->
+                <div class="pdp-qty-row">
+                  <div class="pdp-section-title">
+                    <span>Quantity:</span>
+                    <strong id="pdpQtyDisplay">1 pc (Sample)</strong>
+                  </div>
+                  <div class="pdp-qty-stepper">
+                    <button type="button" class="pdp-qty-btn" onclick="changePdpQty(-1)">-</button>
+                    <input type="number" id="pdpQtyInput" value="1" min="1" max="99999" oninput="setPdpQty(this.value)" onchange="setPdpQty(this.value)">
+                    <button type="button" class="pdp-qty-btn" onclick="changePdpQty(1)">+</button>
                   </div>
                 </div>
-                <div class="shipping-eta-badge">
-                  <span class="eta-icon">⏱️</span>
-                  <span>10–15 Days</span>
+
+                <!-- Quick Qty Presets -->
+                <div class="pdp-qty-presets" id="pdpQtyPresets">
+                  <button type="button" class="pdp-qpreset active" onclick="setPdpQty(1)">1 PC (Sample)</button>
+                  <button type="button" class="pdp-qpreset" onclick="setPdpQty(2)">2 PCS</button>
+                  <button type="button" class="pdp-qpreset" onclick="setPdpQty(3)">3 PCS</button>
+                  <button type="button" class="pdp-qpreset" onclick="setPdpQty(5)">5 PCS</button>
+                  <button type="button" class="pdp-qpreset" onclick="setPdpQty(10)">10 PCS</button>
+                </div>
+
+                <!-- VIP Custom Agreed Pricing Summary (Shown when shipping template is omitted) -->
+                <div id="pdpCustomPriceSummary" style="display: none;"></div>
+
+                <!-- US Shipping Details Box -->
+                <div class="pdp-shipping-box" id="pdpShippingBox">
+                  <div class="shipping-header">
+                    <div class="shipping-dest">
+                      <span class="flag-icon">🇺🇸</span>
+                      <div>
+                        <strong class="dest-title">Ship to United States</strong>
+                        <span class="dest-sub">USPS / DHL Direct Express</span>
+                      </div>
+                    </div>
+                    <div class="shipping-eta-badge">
+                      <span class="eta-icon">⏱️</span>
+                      <span>10–15 Days</span>
+                    </div>
+                  </div>
+
+                  <!-- Shipping Pricing Rule Explanation -->
+                  <div class="shipping-rule-banner">
+                    <div class="rule-tag">US SHIPPING POLICY</div>
+                    <div class="rule-text" id="pdpShipRuleText">
+                      First item: <strong>$8.00</strong> · Each additional item: <strong>+$0.50</strong>
+                    </div>
+                    <div class="rule-delivery-note">
+                      📦 Estimated delivery within <strong>10–15 days</strong> with real-time tracking.
+                    </div>
+                  </div>
+
+                  <!-- Calculation Breakdown Panel -->
+                  <div class="shipping-calc-breakdown">
+                    <div class="calc-line">
+                      <span class="line-label">Garment Subtotal (<span id="pdpCalcQtyText">1 pc</span>)</span>
+                      <span class="line-val" id="pdpGarmentSubtotal">$15.00</span>
+                    </div>
+                    <div class="calc-line">
+                      <span class="line-label">
+                        US Direct Shipping 
+                        <small id="pdpShipFormulaNote">($8.00 base)</small>
+                      </span>
+                      <span class="line-val shipping-fee" id="pdpShippingFee">$8.00</span>
+                    </div>
+                    <div class="calc-divider"></div>
+                    <div class="calc-line total-line">
+                      <span class="line-label">Estimated Total (Delivered)</span>
+                      <span class="line-val total-price" id="pdpDeliveredTotal">$23.00</span>
+                    </div>
+                  </div>
+
+                  <!-- Delivery Trust Points -->
+                  <div class="shipping-trust-points">
+                    <span>✓ 10–15 Days Arrival</span>
+                    <span>✓ Real-Time Tracking</span>
+                    <span>✓ All 50 US States</span>
+                  </div>
                 </div>
               </div>
 
-              <!-- Shipping Pricing Rule Explanation -->
-              <div class="shipping-rule-banner">
-                <div class="rule-tag">US SHIPPING POLICY</div>
-                <div class="rule-text" id="pdpShipRuleText">
-                  First item: <strong>$8.00</strong> · Each additional item: <strong>+$0.50</strong>
+              <!-- Cross-Border & OEM Fast Perks -->
+              <div class="pdp-oem-benefits">
+                <div class="oem-perk">
+                  <span class="perk-icon">⚡</span>
+                  <div>
+                    <strong>1 PC Sample Proofing</strong>
+                    <small>48h Rapid Dispatch</small>
+                  </div>
                 </div>
-                <div class="rule-delivery-note">
-                  📦 Estimated delivery within <strong>10–15 days</strong> with real-time tracking.
+                <div class="oem-perk">
+                  <span class="perk-icon">🏷️</span>
+                  <div>
+                    <strong>Custom Woven Tags</strong>
+                    <small>Full Private Labeling</small>
+                  </div>
                 </div>
-              </div>
-
-              <!-- Calculation Breakdown Panel -->
-              <div class="shipping-calc-breakdown">
-                <div class="calc-line">
-                  <span class="line-label">Garment Subtotal (<span id="pdpCalcQtyText">1 pc</span>)</span>
-                  <span class="line-val" id="pdpGarmentSubtotal">$15.00</span>
-                </div>
-                <div class="calc-line">
-                  <span class="line-label">
-                    US Direct Shipping 
-                    <small id="pdpShipFormulaNote">($8.00 base)</small>
-                  </span>
-                  <span class="line-val shipping-fee" id="pdpShippingFee">$8.00</span>
-                </div>
-                <div class="calc-divider"></div>
-                <div class="calc-line total-line">
-                  <span class="line-label">Estimated Total (Delivered)</span>
-                  <span class="line-val total-price" id="pdpDeliveredTotal">$23.00</span>
+                <div class="oem-perk">
+                  <span class="perk-icon">🎨</span>
+                  <div>
+                    <strong>Screen / Puff / DTG</strong>
+                    <small>All Print Crafts</small>
+                  </div>
                 </div>
               </div>
 
-              <!-- Delivery Trust Points -->
-              <div class="shipping-trust-points">
-                <span>✓ 10–15 Days Arrival</span>
-                <span>✓ Real-Time Tracking</span>
-                <span>✓ All 50 US States</span>
+              <!-- Action Footer (Buttons) -->
+              <div class="pdp-sticky-footer">
+                <button type="button" class="btn-pdp-wa" onclick="openWhatsAppModal()" title="WhatsApp Chat">
+                  <span>💬</span>
+                  <small>WhatsApp</small>
+                </button>
+                <button type="button" class="btn-pdp-techpack" onclick="addPdpToCart()" title="Add to Sample Cart">
+                  <span>🛒</span>
+                  <small>Add Bag</small>
+                </button>
+                <button type="button" class="btn-pdp-order" id="pdpOrderBtn" onclick="openPdpCheckout()">
+                  <span id="pdpOrderBtnText">Order 1-PC Sample ($4.99)</span>
+                </button>
               </div>
             </div>
           </div>
 
-          <!-- Cross-Border & OEM Fast Perks -->
-          <div class="pdp-oem-benefits">
-            <div class="oem-perk">
-              <span class="perk-icon">⚡</span>
-              <div>
-                <strong>1 PC Sample Proofing</strong>
-                <small>48h Rapid Dispatch</small>
-              </div>
-            </div>
-            <div class="oem-perk">
-              <span class="perk-icon">🏷️</span>
-              <div>
-                <strong>Custom Woven Tags</strong>
-                <small>Full Private Labeling</small>
-              </div>
-            </div>
-            <div class="oem-perk">
-              <span class="perk-icon">🎨</span>
-              <div>
-                <strong>Screen / Puff / DTG</strong>
-                <small>All Print Crafts</small>
-              </div>
-            </div>
-          </div>
-
-          <!-- Dynamic Lookbook Section for Catalog Products -->
+          <!-- Dynamic Lookbook Section for Catalog Products (Full Width Below) -->
           <div id="pdpDynamicLookbook"></div>
-
-          <!-- Sticky Bottom Action Footer for PDP -->
-          <div class="pdp-sticky-footer">
-            <button type="button" class="btn-pdp-wa" onclick="openWhatsAppModal()" title="WhatsApp Chat">
-              <span>💬</span>
-              <small>WhatsApp</small>
-            </button>
-            <button type="button" class="btn-pdp-techpack" onclick="addPdpToCart()" title="Add to Sample Cart">
-              <span>🛒</span>
-              <small>Add Bag</small>
-            </button>
-            <button type="button" class="btn-pdp-order" id="pdpOrderBtn" onclick="openPdpCheckout()">
-              <span id="pdpOrderBtnText">Order 1-PC Sample ($4.99)</span>
-            </button>
-          </div>
         </div>
 
         <!-- Tab 3: Dedicated Custom OEM Lab Page (Now accessed directly via Custom OEM Tab) -->
@@ -2667,9 +2714,9 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=214"></script>
-  <script src="products_data.js?v=214"></script>
-  <script src="app.js?v=214"></script>
+  <script src="prints_data.js?v=215"></script>
+  <script src="products_data.js?v=215"></script>
+  <script src="app.js?v=215"></script>
   <script defer src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
 </body>
 </html>

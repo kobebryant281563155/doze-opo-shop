@@ -42,3 +42,19 @@ For any given product folder (e.g., `01D`, `360`, `T012-240G`, etc.):
 5. **Git Push & Verification**:
    - Push to `origin/main`.
    - Run `scratch/check_build.ps1` to verify GitHub Pages build completes (`status: "built"`).
+
+---
+
+## 5. Private Workflow Sync & Strict Privacy Rule
+- **Mandatory Auto-Sync**:
+  - Whenever any tool, workflow step, scraper, sender, or shortcut is modified or added in `tools/`, the agent must execute `tools/sync_workflow_to_github.py` or run `d:\doze-opo-workflow-backup` git push to sync modifications to the private repository.
+  - Always verify that the destination repository visibility remains `private` before pushing.
+
+---
+
+## 6. SDR Workflow Strategic Roadmap & 1000-Lead Milestone Trigger
+- **Strategy & Blueprint Reference**: Detailed multi-phase SDR upgrades and cadence rules are maintained in `tools/STRATEGY_ROADMAP.md`.
+- **1000-Lead Milestone Reminder**:
+  - Whenever the agent inspects or runs the workflow and detects that total deduplicated customer leads across desktop Excel files or cumulative touches reach **1000+**, the agent **MUST automatically notify and remind the user** to initiate Phase 2 upgrades (Waterfall Enrichment cross-channel phone/email extraction, Cross-Channel Cadence multi-touch sequencing, and Unified Reply Circuit Breaker).
+
+

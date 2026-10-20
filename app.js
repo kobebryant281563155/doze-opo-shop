@@ -349,8 +349,20 @@ function switchTab(tabName) {
     activeBtn.classList.add('active');
   }
 
+  // Sync desktop top navigation bar active state
+  document.querySelectorAll('.desktop-nav-link').forEach(link => link.classList.remove('active'));
+  const desktopActiveLink = document.querySelector(`.desktop-nav-link[data-tab="${tabName}"]`);
+  if (desktopActiveLink) {
+    desktopActiveLink.classList.add('active');
+  }
+
   const container = document.getElementById('appScrollContainer');
   if (container) container.scrollTop = 0;
+
+  // On desktop, also scroll the window to top
+  if (window.innerWidth >= 1024) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 
 // 12. Catalog Page Rendering
@@ -1971,12 +1983,17 @@ function updateCartTotal() {
   const floatBadge = document.getElementById('floatBadgeCount');
   const cartTitle = document.getElementById('cartCountTitle');
   const cartTabBadge = document.getElementById('cartTabBadge');
+  const desktopCartBadge = document.getElementById('desktopCartBadge');
 
   if (floatBadge) floatBadge.textContent = count;
   if (cartTitle) cartTitle.textContent = count;
   if (cartTabBadge) {
     cartTabBadge.textContent = count;
     cartTabBadge.style.display = count > 0 ? 'inline-block' : 'none';
+  }
+  if (desktopCartBadge) {
+    desktopCartBadge.textContent = count;
+    desktopCartBadge.style.display = count > 0 ? 'inline-block' : 'none';
   }
 
   let subtotalUSD = 0;

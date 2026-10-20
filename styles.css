@@ -6500,3 +6500,1041 @@ body {
 }
 
 
+/* ==========================================================================
+   DESKTOP RESPONSIVE ADAPTATION (>= 1024px)
+   All rules below override mobile-first defaults for PC screens.
+   Zero impact on mobile: everything is wrapped in @media queries.
+   ========================================================================== */
+
+/* ---------- Desktop Top Navigation Bar ---------- */
+.desktop-top-nav {
+  display: none;
+}
+
+.pdp-desktop-columns,
+.pdp-info-column {
+  display: contents;
+}
+
+@media (min-width: 1024px) {
+
+  /* ── 0. Desktop Top Navigation Bar ── */
+  .desktop-top-nav {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .desktop-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 64px;
+  }
+
+  .desktop-nav-logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #111827;
+    text-decoration: none;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .desktop-nav-logo:hover {
+    opacity: 0.8;
+  }
+
+  .desktop-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .desktop-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #6b7280;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .desktop-nav-link:hover {
+    color: #111827;
+    background: #f3f4f6;
+  }
+
+  .desktop-nav-link.active {
+    color: #111827;
+    background: #f3f4f6;
+    font-weight: 800;
+  }
+
+  .desktop-nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 2.5px;
+    background: #111827;
+    border-radius: 2px;
+  }
+
+  .desktop-nav-link svg {
+    flex-shrink: 0;
+  }
+
+  .desktop-nav-oem {
+    color: #b45309;
+  }
+
+  .desktop-nav-oem.active,
+  .desktop-nav-oem:hover {
+    color: #92400e;
+    background: #fef3c7;
+  }
+
+  .desktop-nav-oem.active::after {
+    background: #b45309;
+  }
+
+  .desktop-cart-badge {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    background: #ef4444;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    padding: 0 5px;
+    margin-left: 4px;
+  }
+
+  .desktop-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .desktop-search-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    color: #374151;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+
+  .desktop-search-toggle:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    transform: translateY(-1px);
+  }
+
+  .desktop-orders-btn,
+  .desktop-contact-btn {
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .desktop-orders-btn:hover,
+  .desktop-contact-btn:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    transform: translateY(-1px);
+  }
+
+  .desktop-contact-btn {
+    background: #111827;
+    color: #ffffff;
+    border-color: #111827;
+  }
+
+  .desktop-contact-btn:hover {
+    background: #1f2937;
+    border-color: #1f2937;
+  }
+
+  /* ── 1. Release Container from Mobile Frame ── */
+  .mobile-viewport-wrapper,
+  .mobile-viewport-wrapper.fullscreen-mode {
+    padding: 0;
+    width: 100%;
+  }
+
+  .iphone-bezel,
+  .mobile-viewport-wrapper.fullscreen-mode .iphone-bezel {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - 64px);
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  .app-screen-container {
+    height: auto;
+    min-height: calc(100vh - 64px);
+    overflow-y: visible;
+    overflow-x: hidden;
+    padding-bottom: 0;
+  }
+
+  /* ── 2. Hide Mobile-Only UI ── */
+  .dynamic-island,
+  .status-bar,
+  .ios-home-indicator,
+  .bottom-tab-bar,
+  .mobile-viewport-wrapper.fullscreen-mode .bottom-tab-bar,
+  .mobile-viewport-wrapper.fullscreen-mode .ios-home-indicator {
+    display: none !important;
+  }
+
+  /* ── 3. App Header (Simplified for Desktop) ── */
+  .app-header {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 14px 32px 12px;
+    position: relative;
+    top: auto;
+    z-index: 30;
+  }
+
+  .header-right-space {
+    display: none;
+  }
+
+  .brand-title {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #6b7280;
+  }
+
+  /* ── 4. Search Bar ── */
+  .search-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4px 32px 12px;
+  }
+
+  .search-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 10px 18px;
+    border-radius: 24px;
+  }
+
+  .search-inner input {
+    font-size: 14px;
+  }
+
+  /* ── 5. Hero Banner – Full Width Cinematic ── */
+  .hero-banner-section {
+    max-width: 100%;
+  }
+
+  .banner-slide {
+    height: 480px;
+  }
+
+  .watermark-logo {
+    font-size: 36px;
+  }
+
+  .watermark-sub {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+  }
+
+  .banner-brand-watermark {
+    top: 28px;
+    left: 40px;
+  }
+
+  .banner-tagline-box {
+    bottom: 36px;
+    left: 40px;
+    right: 300px;
+  }
+
+  .banner-tagline-box .sub-label {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .banner-tagline-box .main-title {
+    font-size: 32px;
+    letter-spacing: 1px;
+  }
+
+  .banner-tagline-box .desc {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .fabric-highlight-circles {
+    bottom: 36px;
+    right: 40px;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .circle-item {
+    padding: 4px 12px 4px 4px;
+  }
+
+  .circle-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  .circle-item span {
+    font-size: 11px;
+  }
+
+  /* ── 6. Category Quick Nav (Gold Bar Grid) ── */
+  .category-quick-nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 32px;
+  }
+
+  .quick-nav-row.nav-row-1,
+  .quick-nav-row.nav-row-2 {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 12px;
+  }
+
+  .nav-thumb-box {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+  }
+
+  .nav-title {
+    font-size: 11.5px;
+    max-width: 100px;
+  }
+
+  .nav-en {
+    font-size: 9.5px;
+  }
+
+  .quick-nav-fb-pill {
+    max-width: 520px;
+  }
+
+  /* ── 7. Trust Benefits Bar ── */
+  .trust-benefits-bar {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 32px;
+  }
+
+  .benefit-text strong {
+    font-size: 12px;
+  }
+
+  .benefit-text small {
+    font-size: 10px;
+  }
+
+  /* ── 8. Product Shelf Grid – 4-5 Columns ── */
+  .product-shelf-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 32px 20px;
+  }
+
+  .shelf-title {
+    font-size: 22px;
+  }
+
+  .shelf-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  .product-card {
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-card:hover .card-media img {
+    transform: scale(1.06);
+  }
+
+  .card-name {
+    font-size: 12.5px;
+  }
+
+  .card-subdesc {
+    font-size: 10px;
+  }
+
+  .card-price-row .price-val {
+    font-size: 15px;
+  }
+
+  .card-info {
+    padding: 8px 8px 10px;
+  }
+
+  /* ── 9. OEM Custom Lab Section ── */
+  .custom-lab-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 32px;
+  }
+
+  .lab-card {
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  .calc-box {
+    max-width: 700px;
+  }
+
+  /* ── 10. Factory Capabilities Banner ── */
+  .factory-capabilities-banner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 32px;
+  }
+
+  .factory-capabilities-banner ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+
+  /* ── 11. Footer – Multi-Column ── */
+  .app-footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 32px 48px;
+  }
+
+  .footer-logo {
+    font-size: 20px;
+  }
+
+  .payment-badges {
+    gap: 8px;
+  }
+
+  .pay-chip {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  /* ── 12. Floating Contact Panel ── */
+  .floating-contact-panel,
+  .mobile-viewport-wrapper.fullscreen-mode .floating-contact-panel {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    z-index: 195;
+  }
+
+  .floating-bubble-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(248, 182, 45, 0.45);
+  }
+
+  .floating-bubble-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(248, 182, 45, 0.55);
+  }
+
+  /* ── 13. Catalog Page – Grid & Sidebar ── */
+  .catalog-page-header {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 32px 14px;
+  }
+
+  .catalog-page-header h3 {
+    font-size: 22px;
+  }
+
+  .catalog-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .catalog-sidebar {
+    width: 180px;
+    padding: 14px 0;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+  }
+
+  .cat-nav-item {
+    padding: 14px 16px;
+    font-size: 12.5px;
+    text-align: left;
+  }
+
+  .catalog-content-list {
+    padding: 16px 24px 60px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    align-content: start;
+  }
+
+  .catalog-card {
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .catalog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .catalog-thumb-box {
+    width: 110px;
+    height: 150px;
+    border-radius: 10px;
+  }
+
+  .catalog-item-title {
+    font-size: 14px;
+  }
+
+  .catalog-item-price {
+    font-size: 16px;
+  }
+
+  /* ── 14. Product Detail Page – Dual Column Layout ── */
+  #productDetailPage {
+    padding-bottom: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .pdp-top-header {
+    position: sticky;
+    top: 64px;
+    padding: 14px 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+  }
+
+  .pdp-back-btn {
+    font-size: 14px;
+  }
+
+  /* Dual Column Grid */
+  .pdp-desktop-columns {
+    display: grid;
+    grid-template-columns: 52% 48%;
+    gap: 36px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 32px 32px;
+    box-sizing: border-box;
+  }
+
+  /* Left Column: Sticky Gallery */
+  .pdp-media-swiper {
+    position: sticky;
+    top: 130px;
+    width: 100%;
+    float: none;
+    padding: 0;
+    border-bottom: none;
+    border-right: none;
+    min-height: auto;
+    box-sizing: border-box;
+  }
+
+  .pdp-hero-img-wrap {
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .pdp-thumb-strip {
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .pdp-thumb {
+    width: 76px;
+    height: 76px;
+    border-radius: 12px;
+  }
+
+  /* Right Column: Purchasing & Specifications */
+  .pdp-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .pdp-meta-card {
+    margin: 0;
+    padding: 24px 28px;
+    border-top: none;
+    border-radius: 16px;
+    background: #f9fafb;
+    border: 1px solid #f3f4f6;
+  }
+
+  .pdp-title {
+    font-size: 24px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .pdp-desc {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .pdp-price-val {
+    font-size: 30px;
+  }
+
+  .pdp-price-box .currency-symbol {
+    font-size: 20px;
+  }
+
+  .pdp-feature-tags {
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .pdp-ftag {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  /* Color Swatches */
+  .pdp-section-card {
+    margin: 0;
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+  }
+
+  .pdp-section-title {
+    font-size: 13.5px;
+    margin-bottom: 14px;
+  }
+
+  .pdp-color-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+
+  .pdp-color-item img,
+  .pdp-color-swatch img,
+  .swatch-img-box img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .pdp-color-item span,
+  .pdp-color-swatch span,
+  .swatch-name {
+    font-size: 10px;
+  }
+
+  .pdp-size-btn {
+    padding: 12px 0;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  /* Shipping Card */
+  .pdp-shipping-card {
+    margin: 0;
+    padding: 20px 24px;
+  }
+
+  /* OEM Benefits */
+  .pdp-oem-benefits {
+    margin: 0;
+    padding: 16px 24px;
+    border-radius: 14px;
+    background: #fdfaf6;
+    border: 1px solid #fed7aa;
+  }
+
+  /* PDP Action Buttons / Sticky Footer in Right Column */
+  .pdp-sticky-footer {
+    margin: 0;
+    position: sticky;
+    bottom: 16px;
+    width: 100%;
+    left: auto;
+    right: auto;
+    padding: 12px 18px;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 14px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    z-index: 50;
+    box-sizing: border-box;
+  }
+
+  .btn-pdp-wa,
+  .btn-pdp-techpack {
+    width: 56px;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .btn-pdp-order {
+    height: 50px;
+    font-size: 15px;
+    font-weight: 800;
+    border-radius: 10px;
+  }
+
+  .btn-pdp-order:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(17, 24, 39, 0.35);
+  }
+
+  /* Lookbook Section (Full Width Below Columns) */
+  #pdpDynamicLookbook {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 32px 48px;
+    box-sizing: border-box;
+  }
+
+  /* ── 15. Modals – Centered on Desktop ── */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-drawer {
+    width: auto;
+    min-width: 420px;
+    max-width: 560px;
+    border-radius: 20px;
+    padding: 24px 28px 32px;
+    transform: scale(0.95) translateY(20px);
+    max-height: 85vh;
+  }
+
+  .modal-backdrop.open .modal-drawer {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-header h4 {
+    font-size: 16px;
+  }
+
+  .modal-media-wrap {
+    height: 240px;
+    border-radius: 12px;
+  }
+
+  /* Size Guide Modal */
+  .size-modal-drawer {
+    max-width: 680px;
+    width: 85%;
+    max-height: 85vh;
+    padding: 20px 24px 28px;
+  }
+
+  /* ── 16. Home Collection Showcase ── */
+  .home-collection-showcase {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px 32px;
+  }
+
+  .showcase-card {
+    padding: 20px 24px;
+    border-radius: 16px;
+  }
+
+  .showcase-card h3 {
+    font-size: 16px;
+  }
+
+  .contact-channels-box {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .contact-pill-link {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  /* ── 17. Custom OEM Page ── */
+  .custom-page-header {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 32px 16px;
+  }
+
+  .custom-workshop-banner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ── 18. Print Gallery ── */
+  .print-gallery-sticky-header {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 14px 32px;
+  }
+
+  .print-gallery-hero {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 32px;
+  }
+
+  /* ── 19. TikTok Size Table Scaling ── */
+  .tiktok-size-card {
+    border-radius: 14px;
+  }
+
+  .tiktok-size-header {
+    padding: 12px 18px;
+  }
+
+  .tiktok-size-title {
+    font-size: 13px;
+  }
+
+  /* ── 20. Checkout & Orders ── */
+  .checkout-modal-body {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ── 21. General Spacing & Typography ── */
+  body {
+    align-items: stretch;
+  }
+
+  /* Ensure all full-width sections have consistent horizontal padding */
+  .product-shelf-section + .product-shelf-section {
+    border-bottom-width: 1px;
+  }
+
+  /* ── 22. Cart Page ── */
+  #cartPage {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px 60px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .cart-page-header {
+    max-width: 100%;
+    padding: 24px 0 16px;
+  }
+
+  .cart-page-header h3 {
+    font-size: 24px;
+  }
+
+  .cart-checkout-bar {
+    max-width: 960px;
+    margin: 20px auto 0;
+    position: sticky;
+    bottom: 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+  }
+
+  /* ── 23. B2B / Profile Page ── */
+  #profilePage {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 28px 32px 60px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .b2b-header-card {
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .b2b-menu-list {
+    border-radius: 16px;
+  }
+
+  /* ── 24. Toast Notifications ── */
+  .app-toast {
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    bottom: 40px;
+  }
+
+  /* ── 25. Address Book Modal ── */
+  .ab-modal-body {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+}
+
+/* ==========================================================================
+   TABLET / SMALL DESKTOP TRANSITIONAL (768px – 1023px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  /* Release the mobile frame */
+  .iphone-bezel,
+  .mobile-viewport-wrapper.fullscreen-mode .iphone-bezel {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  .app-screen-container {
+    height: auto;
+    overflow-y: visible;
+  }
+
+  /* Hide some mobile chrome */
+  .dynamic-island,
+  .status-bar,
+  .ios-home-indicator {
+    display: none !important;
+  }
+
+  /* Product grid: 4 columns */
+  .shelf-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  /* Hero banner taller */
+  .banner-slide {
+    height: 380px;
+  }
+
+  .banner-tagline-box .main-title {
+    font-size: 24px;
+  }
+
+  /* Category nav: 8 columns */
+  .quick-nav-row.nav-row-1,
+  .quick-nav-row.nav-row-2 {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  /* Catalog grid: 2-col */
+  .catalog-content-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .catalog-sidebar {
+    width: 130px;
+  }
+
+  /* PDP color grid wider */
+  .pdp-color-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  /* Modals centered */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-drawer {
+    width: auto;
+    min-width: 380px;
+    max-width: 520px;
+    border-radius: 20px;
+    transform: scale(0.95) translateY(20px);
+  }
+
+  .modal-backdrop.open .modal-drawer {
+    transform: scale(1) translateY(0);
+  }
+}
+
