@@ -6829,17 +6829,20 @@ body {
     font-weight: 700;
   }
 
-  /* ── 6. Category Quick Nav (Gold Bar Grid) ── */
+  /* ── 6. Category Quick Nav (Single Row of 8 on Desktop) ── */
   .category-quick-nav {
     max-width: 1600px;
     margin: 28px auto 20px;
     padding: 0 40px;
+    display: grid !important;
+    grid-template-columns: repeat(8, 1fr) !important;
+    gap: 18px !important;
+    align-items: start;
   }
 
   .quick-nav-row.nav-row-1,
   .quick-nav-row.nav-row-2 {
-    grid-template-columns: repeat(8, 1fr);
-    gap: 18px;
+    display: contents !important;
   }
 
   .nav-thumb-box {
@@ -6859,6 +6862,7 @@ body {
   }
 
   .quick-nav-fb-pill {
+    grid-column: 1 / -1;
     max-width: 600px;
     margin: 16px auto 0;
   }
@@ -7500,9 +7504,19 @@ body {
   }
 
   /* Category nav: 8 columns */
+  .category-quick-nav {
+    display: grid !important;
+    grid-template-columns: repeat(8, 1fr) !important;
+    gap: 12px;
+  }
+
   .quick-nav-row.nav-row-1,
   .quick-nav-row.nav-row-2 {
-    grid-template-columns: repeat(8, 1fr);
+    display: contents !important;
+  }
+
+  .quick-nav-fb-pill {
+    grid-column: 1 / -1;
   }
 
   /* Catalog grid: 2-col */
