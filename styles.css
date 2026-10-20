@@ -6691,215 +6691,219 @@ body {
     border-color: #1f2937;
   }
 
-  /* ── 1. Release Container from Mobile Frame ── */
+  /* ── 1. Release Container from Mobile Frame & Fill Screen ── */
+  body {
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   .mobile-viewport-wrapper,
   .mobile-viewport-wrapper.fullscreen-mode {
-    padding: 0;
-    width: 100%;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    display: block !important;
   }
 
   .iphone-bezel,
   .mobile-viewport-wrapper.fullscreen-mode .iphone-bezel {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    min-height: calc(100vh - 64px);
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: calc(100vh - 64px) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
   }
 
   .app-screen-container {
-    height: auto;
-    min-height: calc(100vh - 64px);
-    overflow-y: visible;
-    overflow-x: hidden;
-    padding-bottom: 0;
+    height: auto !important;
+    min-height: calc(100vh - 64px) !important;
+    overflow-y: visible !important;
+    overflow-x: hidden !important;
+    padding-bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
-  /* ── 2. Hide Mobile-Only UI ── */
+  /* ── 2. Hide Mobile-Only UI & Redundant Mobile Header ── */
   .dynamic-island,
   .status-bar,
   .ios-home-indicator,
   .bottom-tab-bar,
   .mobile-viewport-wrapper.fullscreen-mode .bottom-tab-bar,
-  .mobile-viewport-wrapper.fullscreen-mode .ios-home-indicator {
-    display: none !important;
-  }
-
-  /* ── 3. App Header (Simplified for Desktop) ── */
+  .mobile-viewport-wrapper.fullscreen-mode .ios-home-indicator,
   .app-header {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 14px 32px 12px;
-    position: relative;
-    top: auto;
-    z-index: 30;
-  }
-
-  .header-right-space {
-    display: none;
-  }
-
-  .brand-title {
-    font-size: 14px;
-    letter-spacing: 2px;
-    color: #6b7280;
+    display: none !important;
   }
 
   /* ── 4. Search Bar ── */
   .search-wrapper {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 4px 32px 12px;
+    padding: 8px 40px 16px;
   }
 
   .search-inner {
-    max-width: 560px;
+    max-width: 640px;
     margin: 0 auto;
-    padding: 10px 18px;
-    border-radius: 24px;
+    padding: 12px 22px;
+    border-radius: 28px;
   }
 
   .search-inner input {
-    font-size: 14px;
+    font-size: 14.5px;
   }
 
-  /* ── 5. Hero Banner – Full Width Cinematic ── */
+  /* ── 5. Hero Banner – Full Width Cinematic PC Banner ── */
   .hero-banner-section {
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
   }
 
   .banner-slide {
-    height: 480px;
+    height: 560px;
   }
 
   .watermark-logo {
-    font-size: 36px;
+    font-size: 42px;
   }
 
   .watermark-sub {
-    font-size: 11px;
-    letter-spacing: 2.5px;
+    font-size: 13px;
+    letter-spacing: 3px;
   }
 
   .banner-brand-watermark {
-    top: 28px;
-    left: 40px;
+    top: 40px;
+    left: 64px;
   }
 
   .banner-tagline-box {
-    bottom: 36px;
-    left: 40px;
-    right: 300px;
+    bottom: 50px;
+    left: 64px;
+    right: auto;
+    max-width: 760px;
   }
 
   .banner-tagline-box .sub-label {
-    font-size: 11px;
-    padding: 4px 10px;
+    font-size: 12.5px;
+    padding: 6px 14px;
+    letter-spacing: 1.5px;
   }
 
   .banner-tagline-box .main-title {
-    font-size: 32px;
-    letter-spacing: 1px;
+    font-size: 44px;
+    letter-spacing: 1.5px;
+    line-height: 1.15;
+    margin-top: 10px;
   }
 
   .banner-tagline-box .desc {
-    font-size: 14px;
-    margin-top: 6px;
+    font-size: 16px;
+    margin-top: 10px;
   }
 
   .fabric-highlight-circles {
-    bottom: 36px;
-    right: 40px;
+    bottom: 50px;
+    right: 64px;
     flex-direction: row;
-    gap: 10px;
+    gap: 16px;
   }
 
   .circle-item {
-    padding: 4px 12px 4px 4px;
+    padding: 6px 16px 6px 6px;
   }
 
   .circle-thumb {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
   }
 
   .circle-item span {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 700;
   }
 
   /* ── 6. Category Quick Nav (Gold Bar Grid) ── */
   .category-quick-nav {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px 32px;
+    max-width: 1600px;
+    margin: 28px auto 20px;
+    padding: 0 40px;
   }
 
   .quick-nav-row.nav-row-1,
   .quick-nav-row.nav-row-2 {
     grid-template-columns: repeat(8, 1fr);
-    gap: 12px;
+    gap: 18px;
   }
 
   .nav-thumb-box {
-    width: 64px;
-    height: 64px;
-    border-radius: 12px;
+    width: 76px;
+    height: 76px;
+    border-radius: 16px;
   }
 
   .nav-title {
-    font-size: 11.5px;
-    max-width: 100px;
+    font-size: 13px;
+    max-width: 130px;
+    margin-top: 8px;
   }
 
   .nav-en {
-    font-size: 9.5px;
+    font-size: 10.5px;
   }
 
   .quick-nav-fb-pill {
-    max-width: 520px;
+    max-width: 600px;
+    margin: 16px auto 0;
   }
 
   /* ── 7. Trust Benefits Bar ── */
   .trust-benefits-bar {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 12px 32px;
+    padding: 16px 40px;
   }
 
   .benefit-text strong {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .benefit-text small {
-    font-size: 10px;
+    font-size: 11px;
   }
 
-  /* ── 8. Product Shelf Grid – 4-5 Columns ── */
+  /* ── 8. Product Shelf Grid – 5 Columns Wide ── */
   .product-shelf-section {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 24px 32px 20px;
+    padding: 32px 40px 24px;
   }
 
   .shelf-title {
-    font-size: 22px;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
   }
 
   .shelf-grid {
     grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
+    gap: 24px;
   }
 
   .product-card {
-    border-radius: var(--radius-md);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 14px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
 
   .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   }
 
   .product-card:hover .card-media img {
@@ -6907,19 +6911,20 @@ body {
   }
 
   .card-name {
-    font-size: 12.5px;
+    font-size: 13.5px;
+    line-height: 1.4;
   }
 
   .card-subdesc {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .card-price-row .price-val {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .card-info {
-    padding: 8px 8px 10px;
+    padding: 12px 10px 14px;
   }
 
   /* ── 9. OEM Custom Lab Section ── */
