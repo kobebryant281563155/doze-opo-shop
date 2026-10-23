@@ -2764,7 +2764,7 @@ function submitAltPaymentOrder(method, platform) {
     `Please send me your ${method === 'worldfirst' ? 'WorldFirst direct credit card checkout link' : (method === 'wise' ? 'Alipay / Bank remittance info' : 'USDT TRC-20 wallet address')} so I can complete payment!`;
 
   if (platform === 'telegram') {
-    const tgUrl = 'https://t.me/jack65651130?text=' + encodeURIComponent(msgText);
+    const tgUrl = 'https://t.me/dozeopo?text=' + encodeURIComponent(msgText);
     window.open(tgUrl, '_blank');
   } else {
     const waUrl = 'https://wa.me/8618520682738?text=' + encodeURIComponent(msgText);
