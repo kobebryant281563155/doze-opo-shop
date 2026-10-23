@@ -68,5 +68,5 @@ Then visit [http://localhost:8088/](http://localhost:8088/) in your browser.
 ## 📞 Contact & OEM Inquiries
 
 - **WhatsApp**: [+86 18520682738](https://wa.me/8618520682738)
-- **Email**: [kobebryant281563155@gmail.com](mailto:kobebryant281563155@gmail.com)
+- **Email**: [jackie@dozeopo.com](mailto:jackie@dozeopo.com)
 - **Factory Address**: Guangzhou High-Density Streetwear Industrial Park, Guangdong, China
