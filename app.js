@@ -1731,45 +1731,6 @@ function renderDynamicLookbook(prod) {
       'assets/products/W439/main/5.jpg',
       'assets/products/W439/main/6.jpg'
     ];
-  } else if (prod.id === 'SUP01') {
-    const craftDetails = [
-      { img: 'assets/products/SUP01/detail/1.jpg', title: '01 Authentic Woven Label & Hangtag', desc: 'Streetwear woven neck label, care instructions tag & branded cardstock hangtag' },
-      { img: 'assets/products/SUP01/detail/2.jpg', title: '02 Streetwear Red Flag Tab & Ribbed Cuff', desc: 'Signature streetwear mini red woven side tab with high-elasticity 1x1 shape-retention cuffs' },
-      { img: 'assets/products/SUP01/detail/3.jpg', title: '03 Precision Twill Appliqué Embroidery', desc: 'Macro view of heavyweight cut-and-sew twill lettering with high-density satin overlock stitch' },
-      { img: 'assets/products/SUP01/detail/4.jpg', title: '04 Deep Kangaroo Pocket & Thermal Fleece', desc: 'Twin-needle bar-tacked kangaroo pocket with 480 GSM dense thermal brushed fleece interior' }
-    ];
-
-    extraCraftHtml = `
-      <div class="pdp-size-tables-card craft-card-01d">
-        <div class="table-header">
-          <span class="table-tag">FACTORY CRAFTSMANSHIP</span>
-          <h4>Product Details &amp; Macro Fabric Craft (4 Core Specs)</h4>
-          <p style="font-size: 11px; color: #64748b; margin-top: 3px;">480 GSM thermal brushed fleece, appliqué embroidery, woven red tab</p>
-        </div>
-        <div class="macro-craft-grid">
-          ${craftDetails.map(c => `
-            <div class="macro-craft-item">
-              <img src="${c.img}" alt="${c.title}" loading="lazy">
-              <div class="macro-craft-caption">
-                <strong>${c.title}</strong>
-                <small>${c.desc}</small>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
-
-    lookbookImages = [
-      'assets/products/SUP01/main/1.jpg',
-      'assets/products/SUP01/main/5.jpg',
-      'assets/products/SUP01/main/6.jpg',
-      'assets/products/SUP01/main/2.jpg',
-      'assets/products/SUP01/main/7.jpg',
-      'assets/products/SUP01/main/8.jpg',
-      'assets/products/SUP01/main/4.jpg',
-      'assets/products/SUP01/main/3.jpg'
-    ];
   } else if (prod.detailImages && prod.detailImages.length > 0) {
     extraCraftHtml = `
       <div class="pdp-size-tables-card craft-card-01d">
