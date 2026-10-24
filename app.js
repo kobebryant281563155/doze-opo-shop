@@ -3237,7 +3237,8 @@ function closeOrdersTrackingModal() {
   if (modal) modal.classList.remove('open');
 }
 
-// Secret Admin Mode Trigger for Merchant
+// Secret Admin Mode Trigger with Merchant Security Passkey
+const DOZE_ADMIN_PASSKEYS = ['doze8888', '18520682738', 'doze2026'];
 let LOGO_SECRET_TAP_COUNT = 0;
 let LOGO_SECRET_TAP_TIMER = null;
 
@@ -3250,33 +3251,90 @@ function handleLogoSecretTap() {
 
   if (LOGO_SECRET_TAP_COUNT >= 5) {
     LOGO_SECRET_TAP_COUNT = 0;
+    promptAdminPasskey();
+  }
+}
+
+function promptAdminPasskey() {
+  let isAuth = false;
+  try {
+    isAuth = localStorage.getItem('DOZE_ADMIN_AUTH') === 'true';
+  } catch (e) {}
+
+  if (isAuth) {
     activateAdminMode(true);
+    openOrdersTrackingModal();
+    return;
+  }
+
+  const modal = document.getElementById('adminPasskeyModal');
+  const input = document.getElementById('adminPasskeyInput');
+  const err = document.getElementById('adminPasskeyError');
+  if (err) err.style.display = 'none';
+  if (input) {
+    input.value = '';
+    input.style.borderColor = '#cbd5e1';
+  }
+  if (modal) modal.classList.add('open');
+  setTimeout(() => { if (input) input.focus(); }, 150);
+}
+
+function closeAdminPasskeyModal() {
+  const modal = document.getElementById('adminPasskeyModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function verifyAdminPasskey() {
+  const input = document.getElementById('adminPasskeyInput');
+  const err = document.getElementById('adminPasskeyError');
+  const val = (input ? input.value : '').trim();
+
+  if (DOZE_ADMIN_PASSKEYS.includes(val)) {
+    try {
+      localStorage.setItem('DOZE_ADMIN_AUTH', 'true');
+    } catch (e) {}
+    closeAdminPasskeyModal();
+    activateAdminMode(true);
+    openOrdersTrackingModal();
+    if (window.location.hash === '#admin' || window.location.hash === '#erp') {
+      try {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      } catch (e) {}
+    }
+  } else {
+    if (err) err.style.display = 'block';
+    if (input) {
+      input.style.borderColor = '#ef4444';
+      input.focus();
+    }
   }
 }
 
 function activateAdminMode(showFeedback) {
-  try {
-    localStorage.setItem('DOZE_ADMIN_MODE', 'true');
-  } catch (e) {}
-
   const exportBtn = document.getElementById('btnExportZiyuansu');
   if (exportBtn) {
     exportBtn.style.display = 'inline-flex';
   }
   if (showFeedback) {
-    showToast('Admin Mode Enabled: ERP Export Unlocked');
+    showToast('Merchant Verified: ERP Export Unlocked');
   }
 }
 
 function checkAdminMode() {
-  const hash = (window.location.hash || '').toLowerCase();
-  const isAdminHash = hash === '#admin' || hash === '#erp';
-  let isAdminStored = false;
+  let isAuth = false;
   try {
-    isAdminStored = localStorage.getItem('DOZE_ADMIN_MODE') === 'true';
+    isAuth = localStorage.getItem('DOZE_ADMIN_AUTH') === 'true';
   } catch (e) {}
 
-  if (isAdminHash || isAdminStored) {
+  const hash = (window.location.hash || '').toLowerCase();
+  const isAdminHash = hash === '#admin' || hash === '#erp';
+
+  if (isAdminHash) {
+    promptAdminPasskey();
+    return;
+  }
+
+  if (isAuth) {
     activateAdminMode(false);
   }
 }
