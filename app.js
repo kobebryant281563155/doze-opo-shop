@@ -3324,30 +3324,9 @@ function exportZiyuansuExcel() {
   const rows = [];
 
   if (orders.length === 0) {
-    showToast("No live orders yet. Generating sample Ziyuansu export...");
-    const sampleRow = [
-      "DOZE-" + Math.floor(100000 + Math.random() * 900000),
-      "DOZE-SUB-101",
-      "01D 230G 20S Compact Siro-Spun Combed Cotton Crewneck Tee",
-      "01D-WASHED-BLACK-L",
-      1,
-      "https://www.dozeopo.com/assets/products/01D/main/1.jpg",
-      "Miller",
-      "Marcus",
-      "+1 (310) 555-0198",
-      "90012",
-      "United States",
-      "California",
-      "Los Angeles",
-      "",
-      "742 Evergreen Terrace, Suite 102",
-      "01D",
-      "01D-WASHED-BLACK",
-      "Color: Washed Black, Size: L",
-      "\u5426"
-    ];
-    rows.push(sampleRow);
-  } else {
+    showToast("No paid orders to export yet. New buyer orders will appear here automatically.");
+    return;
+  }
     orders.forEach((ord) => {
       const addr = ord.customerAddress || {};
       let lastName = "";
@@ -3400,7 +3379,6 @@ function exportZiyuansuExcel() {
         ]);
       });
     });
-  }
 
   if (typeof XLSX === "undefined") {
     showToast("Excel engine initializing, please click again in 1 second...");
