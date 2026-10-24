@@ -879,7 +879,7 @@
   <!-- Desktop Top Navigation Bar (Hidden on Mobile, Shown on PC >= 1024px) -->
   <nav class="desktop-top-nav" id="desktopTopNav">
     <div class="desktop-nav-inner">
-      <a class="desktop-nav-logo" href="#" onclick="switchTab('home'); return false;">DOZE OPO</a>
+      <a class="desktop-nav-logo" href="#" onclick="switchTab('home'); handleLogoSecretTap(); return false;" title="DOZE OPO">DOZE OPO</a>
       <div class="desktop-nav-links">
         <a href="#" class="desktop-nav-link active" data-tab="home" onclick="switchTab('home'); return false;">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -928,7 +928,7 @@
           <div class="header-left">
             <span class="header-market-pill">GLOBAL B2B/B2C</span>
           </div>
-          <div class="brand-title">DOZE OPO</div>
+          <div class="brand-title" onclick="handleLogoSecretTap()" style="cursor: pointer;">DOZE OPO</div>
           <div class="header-right-space">
             <button type="button" class="header-orders-btn" onclick="openOrdersTrackingModal()" title="View Orders &amp; Delivery Tracking">
               <span>📦 Orders</span>
@@ -1659,6 +1659,11 @@
           <footer class="app-footer">
             <div class="footer-logo">DOZE OPO</div>
             <p class="footer-slogan">HEAVYWEIGHT OVERSIZED STREETWEAR &amp; FLEXIBLE OEM</p>
+            <div style="margin: 8px 0; font-size: 11px;">
+              <a href="track-order.html" style="color: #64748b; text-decoration: none; margin: 0 6px;">Track Order</a>
+              <span>·</span>
+              <a href="return-policy.html" style="color: #64748b; text-decoration: none; margin: 0 6px;">Return Policy</a>
+            </div>
             <p class="copyright">© 2026 DOZE OPO. All Rights Reserved.</p>
           </footer>
         </div>
@@ -2676,13 +2681,28 @@
       <div class="modal-header">
         <h4>Sample Orders &amp; Tracking</h4>
         <div style="display: flex; align-items: center; gap: 8px;">
-          <button type="button" class="btn-export-erp" id="btnExportZiyuansu" onclick="exportZiyuansuExcel()" title="Export orders in Ziyuansu ERP Excel format">
+          <button type="button" class="btn-export-erp" id="btnExportZiyuansu" onclick="exportZiyuansuExcel()" title="Export orders in Ziyuansu ERP Excel format" style="display: none;">
             <span>📥 Export for ERP</span>
           </button>
           <button type="button" class="modal-close-btn" onclick="closeOrdersTrackingModal()">✕</button>
         </div>
       </div>
       <div class="modal-body">
+        <!-- Air Express & 17TRACK Search Bar -->
+        <div class="tracking-search-bar" style="margin-bottom: 14px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 12.5px; font-weight: 700; color: #0f172a; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+            <span>✈️ Air Express &amp; Logistics Tracking</span>
+            <span style="font-size: 11px; font-weight: 600; color: #0284c7;">17TRACK Live</span>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="trackAirExpressInput" placeholder="Enter Express Tracking No. (USPS / FedEx / DHL)" style="flex: 1; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12.5px; outline: none; background: #ffffff;">
+            <button type="button" class="btn-track-express" onclick="trackGlobalExpress()" style="background: #0f172a; color: #ffffff; border: none; padding: 8px 14px; border-radius: 6px; font-size: 12.5px; font-weight: 700; cursor: pointer; white-space: nowrap;">Track</button>
+          </div>
+          <div style="font-size: 11px; color: #64748b; margin-top: 6px; display: flex; justify-content: space-between; align-items: center;">
+            <span>Supports 1,500+ global air carriers</span>
+            <a href="track-order.html" target="_blank" style="color: #0284c7; text-decoration: none; font-weight: 600;">Dedicated Page ➔</a>
+          </div>
+        </div>
         <div id="ordersTrackingList" class="orders-tracking-list"></div>
       </div>
     </div>
@@ -2692,9 +2712,9 @@
   <div class="app-toast" id="appToast">Notification</div>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script src="prints_data.js?v=221"></script>
-  <script src="products_data.js?v=221"></script>
-  <script src="app.js?v=221"></script>
+  <script src="prints_data.js?v=223"></script>
+  <script src="products_data.js?v=223"></script>
+  <script src="app.js?v=223"></script>
   <script defer src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
 </body>
 </html>

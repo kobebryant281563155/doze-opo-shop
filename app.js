@@ -64,6 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (container) container.scrollTop = parseInt(urlParams.get('scroll'));
     }, 150);
   }
+
+  // Admin Mode check (for ERP export button visibility)
+  checkAdminMode();
+  window.addEventListener('hashchange', checkAdminMode);
 });
 
 // 4. Mobile System Clock
@@ -3178,6 +3182,8 @@ function openOrdersTrackingModal() {
     orders = [];
   }
 
+  checkAdminMode();
+
   if (orders.length === 0) {
     container.innerHTML = `
       <div style="text-align: center; padding: 30px 10px; color: #64748b;">
@@ -3204,11 +3210,19 @@ function openOrdersTrackingModal() {
           <div style="font-size: 11.5px; color: #0f172a; margin: 4px 0;"><strong>Items:</strong> ${itemsDesc}</div>
           <div style="font-size: 11px; color: #475569;"><strong>Deliver To:</strong> ${ord.shippingAddress}</div>
           ${ord.remark ? `<div style="font-size: 11px; color: #475569; margin-top: 2px;"><strong>Remark:</strong> ${ord.remark}</div>` : ''}
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #e2e8f0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #e2e8f0; flex-wrap: wrap; gap: 8px;">
             <strong style="color: #c2410c;">Total: $${parseFloat(ord.totalUSD).toFixed(2)} USD</strong>
-            <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" style="font-size: 11px; font-weight: 700; color: #0284c7; text-decoration: none;">
-              💬 Inquire Tracking ➔
-            </a>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              ${ord.trackingNumber ? `
+                <a href="https://t.17track.net/en#nums=${encodeURIComponent(ord.trackingNumber)}" target="_blank" style="font-size: 11px; font-weight: 700; color: #16a34a; text-decoration: none;">
+                  ✈️ Track Express (${ord.trackingNumber})
+                </a>
+              ` : `
+                <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" style="font-size: 11px; font-weight: 700; color: #0284c7; text-decoration: none;">
+                  💬 Inquire Tracking ➔
+                </a>
+              `}
+            </div>
           </div>
         </div>
       `;
@@ -3221,6 +3235,60 @@ function openOrdersTrackingModal() {
 function closeOrdersTrackingModal() {
   const modal = document.getElementById('ordersTrackingModal');
   if (modal) modal.classList.remove('open');
+}
+
+// Secret Admin Mode Trigger for Merchant
+let LOGO_SECRET_TAP_COUNT = 0;
+let LOGO_SECRET_TAP_TIMER = null;
+
+function handleLogoSecretTap() {
+  LOGO_SECRET_TAP_COUNT++;
+  clearTimeout(LOGO_SECRET_TAP_TIMER);
+  LOGO_SECRET_TAP_TIMER = setTimeout(() => {
+    LOGO_SECRET_TAP_COUNT = 0;
+  }, 3000);
+
+  if (LOGO_SECRET_TAP_COUNT >= 5) {
+    LOGO_SECRET_TAP_COUNT = 0;
+    activateAdminMode(true);
+  }
+}
+
+function activateAdminMode(showFeedback) {
+  try {
+    localStorage.setItem('DOZE_ADMIN_MODE', 'true');
+  } catch (e) {}
+
+  const exportBtn = document.getElementById('btnExportZiyuansu');
+  if (exportBtn) {
+    exportBtn.style.display = 'inline-flex';
+  }
+  if (showFeedback) {
+    showToast('Admin Mode Enabled: ERP Export Unlocked');
+  }
+}
+
+function checkAdminMode() {
+  const hash = (window.location.hash || '').toLowerCase();
+  const isAdminHash = hash === '#admin' || hash === '#erp';
+  let isAdminStored = false;
+  try {
+    isAdminStored = localStorage.getItem('DOZE_ADMIN_MODE') === 'true';
+  } catch (e) {}
+
+  if (isAdminHash || isAdminStored) {
+    activateAdminMode(false);
+  }
+}
+
+function trackGlobalExpress(num) {
+  const input = document.getElementById('trackAirExpressInput');
+  const trackNum = (num || (input ? input.value : '')).trim();
+  if (!trackNum) {
+    showToast('Please enter an express tracking number');
+    return;
+  }
+  window.open(`https://t.17track.net/en#nums=${encodeURIComponent(trackNum)}`, '_blank');
 }
 
 function exportZiyuansuExcel() {

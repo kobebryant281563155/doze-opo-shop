@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Track Your Order & Air Express | DOZE OPO</title>
+  <meta name="description" content="Track your DOZE OPO streetwear sample orders and global air express shipments in real-time across 1,500+ carriers including USPS, FedEx, and DHL.">
+  <link rel="canonical" href="https://www.dozeopo.com/track-order.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      line-height: 1.6;
+      padding: 0 0 60px 0;
+    }
+    .top-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .top-header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-logo span {
+      background: #0f172a;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .nav-btn {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover {
+      color: #0f172a;
+      background: #f1f5f9;
+    }
+    .nav-btn-primary {
+      background: #0f172a;
+      color: #ffffff;
+    }
+    .nav-btn-primary:hover {
+      background: #1e293b;
+      color: #ffffff;
+    }
+    .main-container {
+      max-width: 840px;
+      margin: 40px auto 0 auto;
+      padding: 0 20px;
+    }
+    .hero-section {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: #e0f2fe;
+      color: #0284c7;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .hero-section h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .hero-section p {
+      font-size: 15px;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .tracking-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 32px;
+    }
+    .tracking-input-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .tracking-input {
+      flex: 1;
+      padding: 14px 18px;
+      font-size: 15px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .tracking-input:focus {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+    .btn-track {
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      padding: 0 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-track:hover {
+      background: #1e293b;
+    }
+    .carriers-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: #64748b;
+    }
+    .carrier-tag {
+      background: #f1f5f9;
+      color: #334155;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .order-lookup-result {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px dashed #e2e8f0;
+      display: none;
+    }
+    .ol-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .ol-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .ol-status {
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      background: #dcfce7;
+      color: #15803d;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .info-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #e2e8f0;
+    }
+    .info-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-card p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    .timeline-table-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 28px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 32px;
+    }
+    .timeline-table-card h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .timeline-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: #f8fafc;
+      color: #475569;
+      font-weight: 700;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .timeline-table td {
+      padding: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #1e293b;
+    }
+    .support-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+    .support-box h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .support-box p {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+    .support-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-support {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-wa {
+      background: #16a34a;
+      color: #ffffff;
+    }
+    .btn-wa:hover {
+      background: #15803d;
+    }
+    .btn-tg {
+      background: #0284c7;
+      color: #ffffff;
+    }
+    .btn-tg:hover {
+      background: #0369a1;
+    }
+    .page-footer {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 24px;
+    }
+    .page-footer a {
+      color: #64748b;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .page-footer a:hover {
+      color: #0f172a;
+    }
+    @media (max-width: 640px) {
+      .tracking-input-box {
+        flex-direction: column;
+      }
+      .btn-track {
+        padding: 14px;
+        width: 100%;
+      }
+      .hero-section h1 {
+        font-size: 24px;
+      }
+      .tracking-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-header">
+    <div class="top-header-inner">
+      <a href="https://www.dozeopo.com/" class="header-logo">
+        DOZE OPO
+        <span>TRACKING</span>
+      </a>
+      <div class="header-actions">
+        <a href="https://www.dozeopo.com/" class="nav-btn">Home</a>
+        <a href="https://www.dozeopo.com/?tab=catalog" class="nav-btn nav-btn-primary">Shop Blanks</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    
+    <!-- Hero Header -->
+    <section class="hero-section">
+      <div class="hero-badge">⚡ Real-Time Global Delivery Status</div>
+      <h1>Track Your Order &amp; Air Express</h1>
+      <p>Enter your 17TRACK / USPS / FedEx / DHL express tracking number or DOZE OPO order ID to view shipment updates.</p>
+    </section>
+
+    <!-- Tracking Card -->
+    <section class="tracking-card">
+      <div class="tracking-input-box">
+        <input type="text" id="trackQueryInput" class="tracking-input" placeholder="Enter Express Tracking Number or Order ID (e.g. 9400..., DOZE-102401)" autocomplete="off">
+        <button type="button" class="btn-track" onclick="handleTrackSearch()">Track Package</button>
+      </div>
+      <div class="carriers-row">
+        <span>Supported Carriers:</span>
+        <span class="carrier-tag">USPS</span>
+        <span class="carrier-tag">FedEx</span>
+        <span class="carrier-tag">DHL Express</span>
+        <span class="carrier-tag">YunExpress</span>
+        <span class="carrier-tag">UPS</span>
+        <span class="carrier-tag">4PX</span>
+        <span>+ 1,500 more</span>
+      </div>
+
+      <!-- Local Order Result Container -->
+      <div id="localOrderResult" class="order-lookup-result"></div>
+    </section>
+
+    <!-- Delivery Timelines & SLAs -->
+    <section class="timeline-table-card">
+      <h3>Estimated Delivery Timelines</h3>
+      <table class="timeline-table">
+        <thead>
+          <tr>
+            <th>Destination Market</th>
+            <th>Shipping Method</th>
+            <th>Estimated Transit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>United States</strong></td>
+            <td>USPS Direct Air / FedEx Ground</td>
+            <td>5 – 8 Business Days</td>
+          </tr>
+          <tr>
+            <td><strong>United Kingdom &amp; Canada</strong></td>
+            <td>Royal Mail / Canada Post Priority</td>
+            <td>6 – 10 Business Days</td>
+          </tr>
+          <tr>
+            <td><strong>European Union &amp; Australia</strong></td>
+            <td>Direct Air Line / Local Express</td>
+            <td>7 – 12 Business Days</td>
+          </tr>
+          <tr>
+            <td><strong>Rest of World</strong></td>
+            <td>Global Registered Air Express</td>
+            <td>8 – 15 Business Days</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Logistics Highlights Grid -->
+    <section class="info-grid">
+      <div class="info-card">
+        <h3>📦 24–48h Dispatch</h3>
+        <p>In-stock blank garment samples are inspected, packed, and dispatched within 24 to 48 hours from our factory facilities.</p>
+      </div>
+      <div class="info-card">
+        <h3>✈️ End-to-End Tracking</h3>
+        <p>Door-to-door tracking numbers are automatically generated once your package clears airport customs outbound.</p>
+      </div>
+      <div class="info-card">
+        <h3>🛡️ Full Transit Protection</h3>
+        <p>All sample orders and freight shipments are insured against loss or damage in transit.</p>
+      </div>
+    </section>
+
+    <!-- Concierge Support Box -->
+    <section class="support-box">
+      <h3>Need Help With Your Shipment?</h3>
+      <p>Our factory concierge is available 16 hours a day to look up internal manifest numbers, custom proofing schedules, and invoice details.</p>
+      <div class="support-links">
+        <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO,%20I%20would%20like%20to%20inquire%20about%20my%20order%20status." target="_blank" class="btn-support btn-wa">
+          💬 WhatsApp Concierge (+86 18520682738)
+        </a>
+        <a href="https://t.me/dozeopo" target="_blank" class="btn-support btn-tg">
+          ✈️ Telegram Support (@dozeopo)
+        </a>
+      </div>
+    </section>
+
+    <!-- Page Footer -->
+    <footer class="page-footer">
+      <div>
+        <a href="https://www.dozeopo.com/">Home</a>
+        <span>·</span>
+        <a href="https://www.dozeopo.com/?tab=catalog">Catalog</a>
+        <span>·</span>
+        <a href="return-policy.html">Return &amp; Exchange Policy</a>
+        <span>·</span>
+        <a href="https://wa.me/8618520682738" target="_blank">Contact Support</a>
+      </div>
+      <p style="margin-top: 12px;">© 2026 DOZE OPO. Heavyweight Streetwear &amp; OEM Garments.</p>
+    </footer>
+
+  </main>
+
+  <script>
+    function handleTrackSearch() {
+      const input = document.getElementById('trackQueryInput');
+      const val = (input ? input.value : '').trim();
+      if (!val) {
+        alert('Please enter a tracking number or DOZE order ID');
+        if (input) input.focus();
+        return;
+      }
+
+      const resBox = document.getElementById('localOrderResult');
+
+      // Check if user entered a DOZE Order ID
+      if (val.toUpperCase().startsWith('DOZE-')) {
+        let orders = [];
+        try {
+          orders = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
+        } catch (e) {
+          orders = [];
+        }
+
+        const match = orders.find(o => (o.orderId && o.orderId.toUpperCase() === val.toUpperCase()) || (o.paypalTxId && o.paypalTxId.toUpperCase() === val.toUpperCase()));
+        if (match) {
+          const itemsDesc = (match.items || []).map(i => `${i.qty}× ${i.name} (${i.size}, ${i.color})`).join(', ');
+          resBox.style.display = 'block';
+          resBox.innerHTML = `
+            <div class="ol-header">
+              <span class="ol-title">Order Found: ${match.orderId}</span>
+              <span class="ol-status">${match.status}</span>
+            </div>
+            <div style="font-size: 13px; color: #475569; margin-bottom: 8px;"><strong>Items:</strong> ${itemsDesc}</div>
+            <div style="font-size: 13px; color: #475569; margin-bottom: 12px;"><strong>Deliver To:</strong> ${match.shippingAddress}</div>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              ${match.trackingNumber ? `
+                <button type="button" onclick="open17Track('${match.trackingNumber}')" style="background: #16a34a; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 700; cursor: pointer;">
+                  Track Express Package (${match.trackingNumber})
+                </button>
+              ` : `
+                <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO,%20inquiry%20for%20order%20${match.orderId}" target="_blank" style="background: #0284c7; color: #fff; padding: 8px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 700;">
+                  💬 Inquire Express Tracking via WhatsApp
+                </a>
+              `}
+            </div>
+          `;
+          return;
+        }
+      }
+
+      // Default: Direct 17TRACK global carrier lookup
+      open17Track(val);
+    }
+
+    function open17Track(num) {
+      window.open(`https://t.17track.net/en#nums=${encodeURIComponent(num)}`, '_blank');
+    }
+
+    // Auto-search if URL query has ?track=XXX or ?nums=XXX
+    document.addEventListener('DOMContentLoaded', () => {
+      const p = new URLSearchParams(window.location.search);
+      const q = p.get('track') || p.get('nums') || p.get('order');
+      if (q) {
+        const inp = document.getElementById('trackQueryInput');
+        if (inp) {
+          inp.value = q;
+          handleTrackSearch();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
