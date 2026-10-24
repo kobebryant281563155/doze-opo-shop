@@ -64,10 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (container) container.scrollTop = parseInt(urlParams.get('scroll'));
     }, 150);
   }
-
-  // Admin Mode check (for ERP export button visibility)
-  checkAdminMode();
-  window.addEventListener('hashchange', checkAdminMode);
 });
 
 // 4. Mobile System Clock
@@ -3182,112 +3178,62 @@ function openOrdersTrackingModal() {
     orders = [];
   }
 
-  checkAdminMode();
-  let isAdmin = false;
-  try {
-    isAdmin = localStorage.getItem('DOZE_ADMIN_AUTH') === 'true';
-  } catch (e) {}
-
   if (orders.length === 0) {
     container.innerHTML = `
-      <div style="text-align: center; padding: 26px 10px; color: #64748b;">
+      <div style="text-align: center; padding: 30px 10px; color: #64748b;">
         <div style="font-size: 32px; margin-bottom: 8px;">📦</div>
         <h4 style="color: #0f172a; margin-bottom: 4px;">No Orders Placed Yet</h4>
         <p style="font-size: 12px; margin-bottom: 16px;">When you place sample orders via PayPal, your tracking details and receipts will appear here.</p>
-        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-          <button type="button" class="btn-wa-direct" onclick="closeOrdersTrackingModal(); switchTab('catalog');">
-            Browse Garment Catalog
-          </button>
-          ${isAdmin ? `
-            <button type="button" onclick="createMerchantTestOrder()" style="background: #0f172a; color: #ffffff; border: none; padding: 8px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer;">
-              🧪 Generate Test Order
-            </button>
-          ` : ''}
-        </div>
+        <button type="button" class="btn-wa-direct" onclick="closeOrdersTrackingModal(); switchTab('catalog');">
+          Browse Garment Catalog
+        </button>
       </div>
     `;
   } else {
-    container.innerHTML = `
-      ${isAdmin ? `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 6px 10px; background: #f1f5f9; border-radius: 6px; font-size: 11px;">
-          <span style="font-weight: 700; color: #1e293b;">👑 Owner Mode: ${orders.length} Order(s) Loaded</span>
-          <div style="display: flex; gap: 6px;">
-            <button type="button" onclick="createMerchantTestOrder()" style="background: #0f172a; color: #fff; border: none; padding: 3px 8px; border-radius: 4px; font-size: 10.5px; font-weight: 700; cursor: pointer;">+ Test Order</button>
-            <button type="button" onclick="clearAllOrders()" style="background: #ef4444; color: #fff; border: none; padding: 3px 8px; border-radius: 4px; font-size: 10.5px; font-weight: 700; cursor: pointer;">Clear All</button>
+    container.innerHTML = orders.map(ord => {
+      const dateStr = new Date(ord.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const itemsDesc = (ord.items || []).map(i => `${i.qty}× ${i.name} (${i.size}, ${i.color})`).join('; ');
+      const waTrackMsg = encodeURIComponent(`Hello DOZE OPO, I would like to check the express tracking status for Order ${ord.orderId} (PayPal: ${ord.paypalTxId}).`);
+      const isShipped = ord.status === 'Shipped' || !!ord.trackingNumber;
+      const statusBadgeStyle = isShipped 
+        ? 'background: #dcfce7; color: #15803d; border: 1px solid #86efac;' 
+        : 'background: #fef3c7; color: #b45309; border: 1px solid #fde68a;';
+      const statusLabel = isShipped ? 'Shipped · In Transit' : 'Processing · Awaiting Dispatch';
+
+      return `
+        <div class="order-track-card" style="margin-bottom: 12px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; background: #ffffff;">
+          <div class="order-track-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <strong style="font-size: 14px; color: #0f172a;">${ord.orderId}</strong>
+            <span class="order-track-badge" style="padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; ${statusBadgeStyle}">${statusLabel}</span>
           </div>
-        </div>
-      ` : ''}
-      ${orders.map(ord => {
-        const dateStr = new Date(ord.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        const itemsDesc = (ord.items || []).map(i => `${i.qty}× ${i.name} (${i.size}, ${i.color})`).join('; ');
-        const waTrackMsg = encodeURIComponent(`Hello DOZE OPO, I would like to check the express tracking status for Order ${ord.orderId} (PayPal: ${ord.paypalTxId}).`);
-        const isShipped = ord.status === 'Shipped' || !!ord.trackingNumber;
-        const statusBadgeStyle = isShipped 
-          ? 'background: #dcfce7; color: #15803d; border: 1px solid #86efac;' 
-          : 'background: #fef3c7; color: #b45309; border: 1px solid #fde68a;';
-        const statusLabel = isShipped ? 'Shipped · In Transit' : 'Processing · Awaiting Dispatch';
+          <div style="font-size: 11px; color: #64748b;">Date: ${dateStr} · Ref: ${ord.paypalTxId || 'Direct'}</div>
+          <div style="font-size: 12px; color: #0f172a; margin: 6px 0;"><strong>Items:</strong> ${itemsDesc}</div>
+          <div style="font-size: 11px; color: #475569;"><strong>Deliver To:</strong> ${ord.shippingAddress}</div>
+          ${ord.remark ? `<div style="font-size: 11px; color: #475569; margin-top: 2px;"><strong>Remark:</strong> ${ord.remark}</div>` : ''}
 
-        return `
-          <div class="order-track-card" style="margin-bottom: 12px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; background: #ffffff;">
-            <div class="order-track-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <strong style="font-size: 14px; color: #0f172a;">${ord.orderId}</strong>
-              <span class="order-track-badge" style="padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; ${statusBadgeStyle}">${statusLabel}</span>
-            </div>
-            <div style="font-size: 11px; color: #64748b;">Date: ${dateStr} · Ref: ${ord.paypalTxId || 'Direct'}</div>
-            <div style="font-size: 12px; color: #0f172a; margin: 6px 0;"><strong>Items:</strong> ${itemsDesc}</div>
-            <div style="font-size: 11px; color: #475569;"><strong>Deliver To:</strong> ${ord.shippingAddress}</div>
-            ${ord.remark ? `<div style="font-size: 11px; color: #475569; margin-top: 2px;"><strong>Remark:</strong> ${ord.remark}</div>` : ''}
-
-            <!-- Shipped Tracking Info Box -->
-            ${ord.trackingNumber ? `
-              <div style="margin-top: 8px; padding: 10px; background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;">
-                <div style="font-size: 11.5px; font-weight: 700; color: #166534; display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span>✈️ Air Express Tracking: <strong>${ord.trackingNumber}</strong></span>
-                  <span style="font-size: 10px; background: #dcfce7; color: #15803d; padding: 1px 6px; border-radius: 4px;">Live Global Carrier</span>
-                </div>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                  <a href="https://t.17track.net/en#nums=${encodeURIComponent(ord.trackingNumber)}" target="_blank" style="display: inline-block; background: #16a34a; color: #ffffff; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-size: 11px; font-weight: 700;">
-                    Track on 17TRACK ➔
-                  </a>
-                  <button type="button" onclick="copyBuyerShipNotification('${ord.orderId}', '${ord.trackingNumber}', '${(ord.payerName || 'Valued Customer').replace(/'/g, "\\'")}')" style="background: #ffffff; color: #15803d; border: 1px solid #86efac; padding: 5px 10px; border-radius: 5px; font-size: 11px; font-weight: 700; cursor: pointer;">
-                    📋 Copy Shipping Notice
-                  </button>
-                  ${isAdmin ? `
-                    <button type="button" onclick="editOrderTracking('${ord.orderId}')" style="background: transparent; border: none; color: #64748b; font-size: 10.5px; cursor: pointer; text-decoration: underline; margin-left: auto;">
-                      ✏️ Edit No.
-                    </button>
-                  ` : ''}
-                </div>
+          <!-- Shipped Tracking Info Box -->
+          ${ord.trackingNumber ? `
+            <div style="margin-top: 8px; padding: 10px; background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;">
+              <div style="font-size: 11.5px; font-weight: 700; color: #166534; display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span>✈️ Air Express Tracking: <strong>${ord.trackingNumber}</strong></span>
+                <span style="font-size: 10px; background: #dcfce7; color: #15803d; padding: 1px 6px; border-radius: 4px;">Live Global Carrier</span>
               </div>
-            ` : ''}
-
-            <!-- Admin Fulfillment Input Dock (Shown to store owner if order is awaiting dispatch) -->
-            ${(isAdmin && !ord.trackingNumber) ? `
-              <div style="margin-top: 10px; padding: 10px; background: #f8fafc; border-radius: 8px; border: 1px solid #cbd5e1;">
-                <div style="font-size: 11.5px; font-weight: 700; color: #0f172a; margin-bottom: 6px; display: flex; justify-content: space-between;">
-                  <span>⚡ Ziyuansu Express Fulfillment</span>
-                  <span style="font-size: 10.5px; color: #64748b;">Step 2: Paste tracking number</span>
-                </div>
-                <div style="display: flex; gap: 6px;">
-                  <input type="text" id="trackInput_${ord.orderId}" placeholder="Enter Tracking No. (e.g. 9400..., YT26...)" style="flex: 1; padding: 6px 10px; font-size: 12px; border: 1px solid #94a3b8; border-radius: 6px; outline: none; background: #ffffff;">
-                  <button type="button" onclick="markOrderDispatched('${ord.orderId}')" style="background: #059669; color: #ffffff; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap;">
-                    Mark Shipped
-                  </button>
-                </div>
-              </div>
-            ` : ''}
-
-            <!-- Order Total and Action Footer -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #e2e8f0; flex-wrap: wrap; gap: 8px;">
-              <strong style="color: #c2410c; font-size: 13px;">Total: $${parseFloat(ord.totalUSD || 0).toFixed(2)} USD</strong>
-              <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" style="font-size: 11px; font-weight: 700; color: #0284c7; text-decoration: none;">
-                💬 WhatsApp Factory Support ➔
+              <a href="https://t.17track.net/en#nums=${encodeURIComponent(ord.trackingNumber)}" target="_blank" style="display: inline-block; background: #16a34a; color: #ffffff; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-size: 11px; font-weight: 700;">
+                Track on 17TRACK ➔
               </a>
             </div>
+          ` : ''}
+
+          <!-- Order Total and Action Footer -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #e2e8f0; flex-wrap: wrap; gap: 8px;">
+            <strong style="color: #c2410c; font-size: 13px;">Total: $${parseFloat(ord.totalUSD || 0).toFixed(2)} USD</strong>
+            <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" style="font-size: 11px; font-weight: 700; color: #0284c7; text-decoration: none;">
+              💬 WhatsApp Factory Support ➔
+            </a>
           </div>
-        `;
-      }).join('')}
-    `;
+        </div>
+      `;
+    }).join('');
   }
 
   modal.classList.add('open');
@@ -3298,108 +3244,6 @@ function closeOrdersTrackingModal() {
   if (modal) modal.classList.remove('open');
 }
 
-// Secret Admin Mode Trigger with Merchant Security Passkey
-const DOZE_ADMIN_PASSKEYS = ['doze8888', '18520682738', 'doze2026'];
-let LOGO_SECRET_TAP_COUNT = 0;
-let LOGO_SECRET_TAP_TIMER = null;
-
-function handleLogoSecretTap() {
-  LOGO_SECRET_TAP_COUNT++;
-  clearTimeout(LOGO_SECRET_TAP_TIMER);
-  LOGO_SECRET_TAP_TIMER = setTimeout(() => {
-    LOGO_SECRET_TAP_COUNT = 0;
-  }, 3000);
-
-  if (LOGO_SECRET_TAP_COUNT >= 5) {
-    LOGO_SECRET_TAP_COUNT = 0;
-    promptAdminPasskey();
-  }
-}
-
-function promptAdminPasskey() {
-  let isAuth = false;
-  try {
-    isAuth = localStorage.getItem('DOZE_ADMIN_AUTH') === 'true';
-  } catch (e) {}
-
-  if (isAuth) {
-    activateAdminMode(true);
-    openOrdersTrackingModal();
-    return;
-  }
-
-  const modal = document.getElementById('adminPasskeyModal');
-  const input = document.getElementById('adminPasskeyInput');
-  const err = document.getElementById('adminPasskeyError');
-  if (err) err.style.display = 'none';
-  if (input) {
-    input.value = '';
-    input.style.borderColor = '#cbd5e1';
-  }
-  if (modal) modal.classList.add('open');
-  setTimeout(() => { if (input) input.focus(); }, 150);
-}
-
-function closeAdminPasskeyModal() {
-  const modal = document.getElementById('adminPasskeyModal');
-  if (modal) modal.classList.remove('open');
-}
-
-function verifyAdminPasskey() {
-  const input = document.getElementById('adminPasskeyInput');
-  const err = document.getElementById('adminPasskeyError');
-  const val = (input ? input.value : '').trim();
-
-  if (DOZE_ADMIN_PASSKEYS.includes(val)) {
-    try {
-      localStorage.setItem('DOZE_ADMIN_AUTH', 'true');
-    } catch (e) {}
-    closeAdminPasskeyModal();
-    activateAdminMode(true);
-    openOrdersTrackingModal();
-    if (window.location.hash === '#admin' || window.location.hash === '#erp') {
-      try {
-        history.replaceState(null, '', window.location.pathname + window.location.search);
-      } catch (e) {}
-    }
-  } else {
-    if (err) err.style.display = 'block';
-    if (input) {
-      input.style.borderColor = '#ef4444';
-      input.focus();
-    }
-  }
-}
-
-function activateAdminMode(showFeedback) {
-  const exportBtn = document.getElementById('btnExportZiyuansu');
-  if (exportBtn) {
-    exportBtn.style.display = 'inline-flex';
-  }
-  if (showFeedback) {
-    showToast('Merchant Verified: ERP Export Unlocked');
-  }
-}
-
-function checkAdminMode() {
-  let isAuth = false;
-  try {
-    isAuth = localStorage.getItem('DOZE_ADMIN_AUTH') === 'true';
-  } catch (e) {}
-
-  const hash = (window.location.hash || '').toLowerCase();
-  const isAdminHash = hash === '#admin' || hash === '#erp';
-
-  if (isAdminHash) {
-    promptAdminPasskey();
-    return;
-  }
-
-  if (isAuth) {
-    activateAdminMode(false);
-  }
-}
-
 function trackGlobalExpress(num) {
   const input = document.getElementById('trackAirExpressInput');
   const trackNum = (num || (input ? input.value : '')).trim();
@@ -3408,233 +3252,6 @@ function trackGlobalExpress(num) {
     return;
   }
   window.open(`https://t.17track.net/en#nums=${encodeURIComponent(trackNum)}`, '_blank');
-}
-
-function markOrderDispatched(orderId) {
-  const input = document.getElementById(`trackInput_${orderId}`);
-  const trackNum = (input ? input.value : '').trim();
-  if (!trackNum) {
-    showToast('Please enter an express tracking number');
-    if (input) input.focus();
-    return;
-  }
-
-  let orders = [];
-  try {
-    orders = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
-  } catch (e) {
-    orders = [];
-  }
-
-  const idx = orders.findIndex(o => o.orderId === orderId);
-  if (idx !== -1) {
-    orders[idx].trackingNumber = trackNum;
-    orders[idx].status = 'Shipped';
-    orders[idx].shippedAt = new Date().toISOString();
-    localStorage.setItem('DOZE_OPO_ORDERS', JSON.stringify(orders));
-    openOrdersTrackingModal();
-    showToast(`Order ${orderId} marked as Shipped!`);
-
-    const name = orders[idx].payerName || 'Valued Customer';
-    copyBuyerShipNotification(orderId, trackNum, name);
-  }
-}
-
-function copyBuyerShipNotification(orderId, trackNum, payerName) {
-  const msg = `Hello ${payerName}, your DOZE OPO order ${orderId} has been dispatched! Track your air express package in real-time here: https://www.dozeopo.com/track-order.html?track=${trackNum}`;
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(msg).then(() => {
-      showToast('Buyer shipping message copied to clipboard!');
-    }).catch(() => {
-      prompt('Copy this shipping notice for your customer:', msg);
-    });
-  } else {
-    prompt('Copy this shipping notice for your customer:', msg);
-  }
-}
-
-function editOrderTracking(orderId) {
-  let orders = [];
-  try {
-    orders = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
-  } catch (e) {
-    orders = [];
-  }
-  const ord = orders.find(o => o.orderId === orderId);
-  if (!ord) return;
-
-  const newNum = prompt(`Enter new tracking number for Order ${orderId}:`, ord.trackingNumber || '');
-  if (newNum !== null) {
-    ord.trackingNumber = newNum.trim();
-    if (!ord.trackingNumber) {
-      ord.status = 'Processing';
-    } else {
-      ord.status = 'Shipped';
-    }
-    localStorage.setItem('DOZE_OPO_ORDERS', JSON.stringify(orders));
-    openOrdersTrackingModal();
-    showToast(`Order ${orderId} tracking updated!`);
-  }
-}
-
-function createMerchantTestOrder() {
-  let orders = [];
-  try {
-    orders = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
-  } catch (e) {
-    orders = [];
-  }
-
-  const testId = 'DOZE-' + Math.floor(100000 + Math.random() * 900000);
-  const newOrder = {
-    orderId: testId,
-    paypalTxId: 'PAYPAL-TEST-' + Math.floor(10000 + Math.random() * 90000),
-    status: 'Processing',
-    createdAt: new Date().toISOString(),
-    payerName: 'Marcus Miller',
-    payerEmail: 'marcus.miller@example.com',
-    shippingAddress: '742 Evergreen Terrace, Los Angeles, CA 90012, US',
-    customerAddress: {
-      name: 'Marcus Miller',
-      phone: '+1 (310) 555-0198',
-      address: '742 Evergreen Terrace',
-      address2: 'Suite 102',
-      city: 'Los Angeles',
-      state: 'CA',
-      zip: '90012',
-      country: 'US',
-      email: 'marcus.miller@example.com'
-    },
-    items: [
-      {
-        id: '01D',
-        name: '01D 230G Compact Siro-Spun Combed Cotton Crewneck Tee',
-        color: 'Washed Black',
-        size: 'L',
-        qty: 1,
-        priceUSD: 18.00,
-        thumb: 'assets/products/01D/main/1.jpg'
-      }
-    ],
-    subtotalUSD: 18.00,
-    shippingUSD: 8.00,
-    totalUSD: 26.00
-  };
-
-  orders.unshift(newOrder);
-  localStorage.setItem('DOZE_OPO_ORDERS', JSON.stringify(orders));
-  openOrdersTrackingModal();
-  showToast(`Test order ${testId} created! Paste tracking to test.`);
-}
-
-function clearAllOrders() {
-  if (confirm('Are you sure you want to clear test orders in this browser?')) {
-    localStorage.removeItem('DOZE_OPO_ORDERS');
-    openOrdersTrackingModal();
-    showToast('Orders list cleared.');
-  }
-}
-
-function exportZiyuansuExcel() {
-  let orders = [];
-  try {
-    orders = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
-  } catch (e) {
-    orders = [];
-  }
-
-  const headers = [
-    "\u7b2c\u4e09\u65b9\u8ba2\u5355\u53f7",
-    "\u5b50\u8ba2\u5355\u53f7",
-    "\u4ea7\u54c1\u540d\u79f0",
-    "\u4ea7\u54c1SKU",
-    "\u6570\u91cf",
-    "\u4ea7\u54c1\u56fe\u7247",
-    "\u6536\u8d27\u4eba\u59d3",
-    "\u6536\u8d27\u4eba\u540d",
-    "\u8054\u7cfb\u7535\u8bdd",
-    "\u90ae\u653f\u7f16\u7801",
-    "\u56fd\u5bb6\u5730\u533a",
-    "\u5dde\u7701",
-    "\u57ce\u5e02",
-    "\u533a\u53bf",
-    "\u8be6\u7ec6\u5730\u5740",
-    "\u4ea7\u54c1SPU",
-    "\u4ea7\u54c1SKC",
-    "\u4ea7\u54c1\u89c4\u683c",
-    "\u662f\u5426Y2\u8ba2\u5355"
-  ];
-
-  const rows = [];
-
-  if (orders.length === 0) {
-    showToast("No paid orders to export yet. New buyer orders will appear here automatically.");
-    return;
-  }
-    orders.forEach((ord) => {
-      const addr = ord.customerAddress || {};
-      let lastName = "";
-      let firstName = ord.payerName || "Customer";
-      if (firstName.includes(" ")) {
-        const parts = firstName.trim().split(/\s+/);
-        firstName = parts[0];
-        lastName = parts.slice(1).join(" ");
-      }
-
-      const items = (ord.items && ord.items.length > 0) ? ord.items : [{
-        id: "01D",
-        name: "DOZE OPO Garment Sample",
-        color: "Default",
-        size: "L",
-        qty: 1,
-        thumb: "https://www.dozeopo.com/assets/products/01D/main/1.jpg"
-      }];
-
-      items.forEach((it, iIdx) => {
-        const subId = `${ord.orderId}-${iIdx + 1}`;
-        const colorName = it.color || "Default";
-        const sizeName = it.size || "L";
-        const skuCode = `${it.id}-${colorName.toUpperCase().replace(/\s+/g, '-')}-${sizeName}`;
-        const spuCode = it.id || "DOZE";
-        const skcCode = `${it.id}-${colorName.toUpperCase().replace(/\s+/g, '-')}`;
-        const imgUrl = it.thumb ? (it.thumb.startsWith('http') ? it.thumb : 'https://www.dozeopo.com/' + it.thumb.replace(/^\//, '')) : '';
-        const streetAddr = [addr.address, addr.address2].filter(Boolean).join(" ") || ord.shippingAddress || "742 Evergreen Terrace";
-
-        rows.push([
-          ord.orderId,
-          subId,
-          it.name || "DOZE OPO Garment",
-          skuCode,
-          parseInt(it.qty) || 1,
-          imgUrl,
-          lastName || "Client",
-          firstName,
-          addr.phone || "N/A",
-          addr.zip || "90001",
-          addr.country || "United States",
-          addr.state || "CA",
-          addr.city || "Los Angeles",
-          "",
-          streetAddr,
-          spuCode,
-          skcCode,
-          `Color: ${colorName}, Size: ${sizeName}`,
-          "\u5426"
-        ]);
-      });
-    });
-
-  if (typeof XLSX === "undefined") {
-    showToast("Excel engine initializing, please click again in 1 second...");
-    return;
-  }
-
-  const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-  const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-  XLSX.writeFile(wb, `DOZE-OPO_Ziyuansu_Orders_${dateStr}.xlsx`);
-  showToast("Ziyuansu ERP Excel downloaded successfully!");
 }
 
 function inquireCheckoutViaWhatsApp() {

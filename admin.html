@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Merchant Order & ERP Console | DOZE OPO</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #0f172a;
+      color: #0f172a;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* Login Screen */
+    .login-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+    }
+    .login-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 36px 32px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+    .login-badge {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .login-card h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .login-card p {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+    .login-input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.2s;
+      font-family: inherit;
+      margin-bottom: 8px;
+    }
+    .login-input:focus {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+    .login-err {
+      color: #ef4444;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: none;
+      text-align: left;
+    }
+    .btn-login {
+      width: 100%;
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-login:hover {
+      background: #1e293b;
+    }
+
+    /* Dashboard Screen */
+    .dashboard-wrapper {
+      display: none;
+      background: #f8fafc;
+      min-height: 100vh;
+      color: #0f172a;
+    }
+    .dash-header {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .dash-header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .dash-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dash-logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+    .dash-pill {
+      background: #059669;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+    .dash-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-dash {
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-export-green {
+      background: #059669;
+      color: #ffffff;
+    }
+    .btn-export-green:hover {
+      background: #047857;
+      transform: translateY(-1px);
+    }
+    .btn-test-order {
+      background: #334155;
+      color: #ffffff;
+    }
+    .btn-test-order:hover {
+      background: #475569;
+    }
+    .btn-clear-red {
+      background: #dc2626;
+      color: #ffffff;
+    }
+    .btn-clear-red:hover {
+      background: #b91c1c;
+    }
+    .btn-logout {
+      background: transparent;
+      color: #94a3b8;
+      border: 1px solid #334155;
+    }
+    .btn-logout:hover {
+      color: #ffffff;
+      border-color: #64748b;
+    }
+
+    .dash-main {
+      max-width: 1400px;
+      margin: 28px auto;
+      padding: 0 20px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+    .stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+    .stat-val {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    /* Orders Section */
+    .orders-section {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      padding: 24px;
+    }
+    .section-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .section-title-row h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .orders-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .order-row-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px;
+      transition: all 0.2s;
+    }
+    .order-row-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+    .orc-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .orc-id-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .orc-id {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .orc-status-badge {
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .orc-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      font-size: 12.5px;
+      color: #475569;
+      margin-bottom: 14px;
+      background: #f8fafc;
+      padding: 14px;
+      border-radius: 8px;
+    }
+    .orc-meta-item strong {
+      color: #0f172a;
+    }
+    .orc-items-list {
+      margin-bottom: 14px;
+    }
+    .orc-item-entry {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px dashed #f1f5f9;
+      font-size: 13px;
+    }
+    .orc-item-thumb {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+    .orc-fulfillment-bar {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: #f1f5f9;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .orc-track-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 8px 12px;
+      font-size: 13px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 6px;
+      outline: none;
+      background: #ffffff;
+      font-family: inherit;
+    }
+    .btn-mark-ship {
+      background: #059669;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-mark-ship:hover {
+      background: #047857;
+    }
+    .shipped-success-bar {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .shipped-success-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #166534;
+    }
+    .shipped-success-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-track-17 {
+      background: #16a34a;
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-copy-notice {
+      background: #ffffff;
+      color: #15803d;
+      border: 1px solid #86efac;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-edit-num {
+      background: transparent;
+      border: none;
+      color: #64748b;
+      font-size: 11px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Toast */
+    .admin-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen 1: Master Merchant Login -->
+  <div class="login-wrapper" id="loginWrapper">
+    <div class="login-card">
+      <span class="login-badge">DOZE OPO · STORE OWNER CONSOLE</span>
+      <h1>Merchant Admin Login</h1>
+      <p>Enter your master security passkey to access ERP exports and order fulfillment.</p>
+      <input type="password" id="passkeyInput" class="login-input" placeholder="Enter Master Passkey" onkeydown="if(event.key === 'Enter') handleAdminLogin()">
+      <div id="loginErr" class="login-err">Incorrect passkey. Access denied.</div>
+      <button type="button" class="btn-login" onclick="handleAdminLogin()">Unlock Merchant Console</button>
+    </div>
+  </div>
+
+  <!-- Screen 2: Master Merchant Dashboard -->
+  <div class="dashboard-wrapper" id="dashboardWrapper">
+    <header class="dash-header">
+      <div class="dash-header-inner">
+        <div class="dash-brand">
+          <span class="dash-logo">DOZE OPO</span>
+          <span class="dash-pill">MERCHANT CONSOLE</span>
+        </div>
+        <div class="dash-actions">
+          <button type="button" class="btn-dash btn-export-green" onclick="exportZiyuansuExcel()">
+            📥 Export for Ziyuansu ERP (.xlsx)
+          </button>
+          <button type="button" class="btn-dash btn-test-order" onclick="createMerchantTestOrder()">
+            🧪 + Test Order
+          </button>
+          <button type="button" class="btn-dash btn-clear-red" onclick="clearAllOrders()">
+            🗑️ Clear All
+          </button>
+          <a href="https://www.dozeopo.com/" target="_blank" class="btn-dash btn-logout">
+            🌐 View Public Store
+          </a>
+          <button type="button" class="btn-dash btn-logout" onclick="handleLogout()">
+            🚪 Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <!-- Top Stats Cards -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Store Orders</div>
+          <div class="stat-val" id="statTotalOrders">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Awaiting Fulfillment (Processing)</div>
+          <div class="stat-val" id="statPendingOrders" style="color: #b45309;">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Dispatched (Shipped)</div>
+          <div class="stat-val" id="statShippedOrders" style="color: #15803d;">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Cumulative Gross Sales</div>
+          <div class="stat-val" id="statTotalRevenue" style="color: #0284c7;">$0.00</div>
+        </div>
+      </section>
+
+      <!-- Orders Section -->
+      <section class="orders-section">
+        <div class="section-title-row">
+          <h2>All Customer Orders &amp; Ziyuansu Shipments</h2>
+          <span style="font-size: 13px; color: #64748b;" id="ordersCounterText">Loaded 0 order(s)</span>
+        </div>
+        <div class="orders-grid" id="adminOrdersContainer"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="admin-toast" id="adminToast">Notification</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script>
+    const MASTER_PASSKEY = "jack65651130";
+
+    function showToast(msg) {
+      const toast = document.getElementById('adminToast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+
+    function checkAuth() {
+      const isAuth = sessionStorage.getItem('DOZE_MERCHANT_LOGGED_IN') === 'true';
+      if (isAuth) {
+        document.getElementById('loginWrapper').style.display = 'none';
+        document.getElementById('dashboardWrapper').style.display = 'block';
+        renderAdminDashboard();
+      } else {
+        document.getElementById('loginWrapper').style.display = 'flex';
+        document.getElementById('dashboardWrapper').style.display = 'none';
+        setTimeout(() => {
+          const inp = document.getElementById('passkeyInput');
+          if (inp) inp.focus();
+        }, 100);
+      }
+    }
+
+    function handleAdminLogin() {
+      const inp = document.getElementById('passkeyInput');
+      const err = document.getElementById('loginErr');
+      const val = (inp ? inp.value : '').trim();
+
+      if (val === MASTER_PASSKEY) {
+        sessionStorage.setItem('DOZE_MERCHANT_LOGGED_IN', 'true');
+        err.style.display = 'none';
+        checkAuth();
+        showToast('Logged in as store owner');
+      } else {
+        err.style.display = 'block';
+        if (inp) {
+          inp.style.borderColor = '#ef4444';
+          inp.focus();
+        }
+      }
+    }
+
+    function handleLogout() {
+      sessionStorage.removeItem('DOZE_MERCHANT_LOGGED_IN');
+      checkAuth();
+      showToast('Logged out');
+    }
+
+    function getOrders() {
+      try {
+        return JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveOrders(orders) {
+      localStorage.setItem('DOZE_OPO_ORDERS', JSON.stringify(orders));
+      renderAdminDashboard();
+    }
+
+    function renderAdminDashboard() {
+      const orders = getOrders();
+      const container = document.getElementById('adminOrdersContainer');
+
+      // Update Stats
+      let pendingCount = 0;
+      let shippedCount = 0;
+      let totalRev = 0;
+
+      orders.forEach(o => {
+        const isShipped = o.status === 'Shipped' || !!o.trackingNumber;
+        if (isShipped) shippedCount++; else pendingCount++;
+        totalRev += parseFloat(o.totalUSD || 0);
+      });
+
+      document.getElementById('statTotalOrders').textContent = orders.length;
+      document.getElementById('statPendingOrders').textContent = pendingCount;
+      document.getElementById('statShippedOrders').textContent = shippedCount;
+      document.getElementById('statTotalRevenue').textContent = '$' + totalRev.toFixed(2);
+      document.getElementById('ordersCounterText').textContent = `Total ${orders.length} order(s) in database`;
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 50px 20px; color: #64748b;">
+            <div style="font-size: 40px; margin-bottom: 12px;">📦</div>
+            <h3 style="color: #0f172a; margin-bottom: 6px;">No Customer Orders Recorded Yet</h3>
+            <p style="font-size: 13px; margin-bottom: 20px;">When overseas buyers pay on www.dozeopo.com, their orders will appear here ready for Ziyuansu ERP export.</p>
+            <button type="button" class="btn-dash btn-test-order" onclick="createMerchantTestOrder()">
+              🧪 Generate Test Order to Preview ERP Flow
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = orders.map((ord, idx) => {
+        const isShipped = ord.status === 'Shipped' || !!ord.trackingNumber;
+        const statusBadge = isShipped 
+          ? `<span class="orc-status-badge" style="background: #dcfce7; color: #15803d; border: 1px solid #86efac;">Shipped · In Transit</span>`
+          : `<span class="orc-status-badge" style="background: #fef3c7; color: #b45309; border: 1px solid #fde68a;">Processing · Awaiting Dispatch</span>`;
+
+        const dateStr = new Date(ord.createdAt).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        const addr = ord.customerAddress || {};
+        const fullAddr = [addr.address, addr.address2, addr.city, addr.state, addr.zip, addr.country].filter(Boolean).join(', ') || ord.shippingAddress || 'N/A';
+
+        const itemsHtml = (ord.items || []).map(i => `
+          <div class="orc-item-entry">
+            <img src="${i.thumb}" class="orc-item-thumb" alt="Item">
+            <div style="flex: 1;">
+              <strong>${i.name}</strong>
+              <div style="font-size: 11.5px; color: #64748b;">SKU Code: ${i.id}-${(i.color || 'DEFAULT').toUpperCase()}-${i.size || 'L'} · Qty: <strong>${i.qty}</strong> · Size: ${i.size} · Color: ${i.color}</div>
+            </div>
+            <div style="font-weight: 700; color: #0f172a;">$${((i.priceUSD || 0) * (i.qty || 1)).toFixed(2)} USD</div>
+          </div>
+        `).join('');
+
+        return `
+          <div class="order-row-card">
+            <div class="orc-top">
+              <div class="orc-id-box">
+                <span class="orc-id">${ord.orderId}</span>
+                ${statusBadge}
+                <span style="font-size: 12px; color: #64748b;">${dateStr}</span>
+              </div>
+              <strong style="color: #c2410c; font-size: 16px;">Total: $${parseFloat(ord.totalUSD || 0).toFixed(2)} USD</strong>
+            </div>
+
+            <div class="orc-meta-grid">
+              <div class="orc-meta-item">
+                <span style="color: #64748b;">Customer:</span> <strong>${ord.payerName || 'N/A'}</strong> (${ord.payerEmail || addr.email || 'N/A'})
+              </div>
+              <div class="orc-meta-item">
+                <span style="color: #64748b;">Phone:</span> <strong>${addr.phone || 'N/A'}</strong>
+              </div>
+              <div class="orc-meta-item" style="grid-column: 1 / -1;">
+                <span style="color: #64748b;">Shipping Address:</span> <strong>${fullAddr}</strong>
+              </div>
+            </div>
+
+            <div class="orc-items-list">${itemsHtml}</div>
+
+            ${!isShipped ? `
+              <div class="orc-fulfillment-bar">
+                <span style="font-size: 12.5px; font-weight: 700; color: #0f172a;">⚡ Ziyuansu Express Dispatch:</span>
+                <input type="text" id="trackInput_${ord.orderId}" class="orc-track-input" placeholder="Paste Ziyuansu tracking number (e.g. 9400..., YT26...)">
+                <button type="button" class="btn-mark-ship" onclick="markOrderDispatched('${ord.orderId}')">Mark as Shipped</button>
+              </div>
+            ` : `
+              <div class="shipped-success-bar">
+                <div class="shipped-success-left">
+                  <span>✈️ Tracking Number: <strong>${ord.trackingNumber}</strong></span>
+                  <button type="button" class="btn-edit-num" onclick="editOrderTracking('${ord.orderId}')">Edit No.</button>
+                </div>
+                <div class="shipped-success-actions">
+                  <a href="https://t.17track.net/en#nums=${encodeURIComponent(ord.trackingNumber)}" target="_blank" class="btn-track-17">
+                    Track Live on 17TRACK ➔
+                  </a>
+                  <button type="button" class="btn-copy-notice" onclick="copyBuyerNotice('${ord.orderId}', '${ord.trackingNumber}', '${(ord.payerName || 'Valued Customer').replace(/'/g, "\\'")}')">
+                    📋 Copy Shipping Notice for Customer
+                  </button>
+                </div>
+              </div>
+            `}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function markOrderDispatched(orderId) {
+      const input = document.getElementById(`trackInput_${orderId}`);
+      const trackNum = (input ? input.value : '').trim();
+      if (!trackNum) {
+        alert('Please enter an express tracking number');
+        if (input) input.focus();
+        return;
+      }
+
+      const orders = getOrders();
+      const idx = orders.findIndex(o => o.orderId === orderId);
+      if (idx !== -1) {
+        orders[idx].trackingNumber = trackNum;
+        orders[idx].status = 'Shipped';
+        orders[idx].shippedAt = new Date().toISOString();
+        saveOrders(orders);
+        showToast(`Order ${orderId} marked as Shipped!`);
+
+        const name = orders[idx].payerName || 'Valued Customer';
+        copyBuyerNotice(orderId, trackNum, name);
+      }
+    }
+
+    function copyBuyerNotice(orderId, trackNum, payerName) {
+      const msg = `Hello ${payerName}, your DOZE OPO order ${orderId} has been dispatched! Track your air express package live here: https://www.dozeopo.com/track-order.html?track=${trackNum}`;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(msg).then(() => {
+          showToast('Customer shipping message copied to clipboard!');
+        }).catch(() => {
+          prompt('Customer shipping message:', msg);
+        });
+      } else {
+        prompt('Customer shipping message:', msg);
+      }
+    }
+
+    function editOrderTracking(orderId) {
+      const orders = getOrders();
+      const ord = orders.find(o => o.orderId === orderId);
+      if (!ord) return;
+
+      const newNum = prompt(`Enter new tracking number for Order ${orderId}:`, ord.trackingNumber || '');
+      if (newNum !== null) {
+        ord.trackingNumber = newNum.trim();
+        ord.status = ord.trackingNumber ? 'Shipped' : 'Processing';
+        saveOrders(orders);
+        showToast('Tracking number updated');
+      }
+    }
+
+    function createMerchantTestOrder() {
+      const orders = getOrders();
+      const testId = 'DOZE-' + Math.floor(100000 + Math.random() * 900000);
+      const newOrder = {
+        orderId: testId,
+        paypalTxId: 'PAYPAL-TEST-' + Math.floor(10000 + Math.random() * 90000),
+        status: 'Processing',
+        createdAt: new Date().toISOString(),
+        payerName: 'Marcus Miller',
+        payerEmail: 'marcus.miller@example.com',
+        shippingAddress: '742 Evergreen Terrace, Los Angeles, CA 90012, US',
+        customerAddress: {
+          name: 'Marcus Miller',
+          phone: '+1 (310) 555-0198',
+          address: '742 Evergreen Terrace',
+          address2: 'Suite 102',
+          city: 'Los Angeles',
+          state: 'CA',
+          zip: '90012',
+          country: 'US',
+          email: 'marcus.miller@example.com'
+        },
+        items: [
+          {
+            id: '01D',
+            name: '01D 230G Compact Siro-Spun Combed Cotton Crewneck Tee',
+            color: 'Washed Black',
+            size: 'L',
+            qty: 1,
+            priceUSD: 18.00,
+            thumb: 'assets/products/01D/main/1.jpg'
+          }
+        ],
+        subtotalUSD: 18.00,
+        shippingUSD: 8.00,
+        totalUSD: 26.00
+      };
+
+      orders.unshift(newOrder);
+      saveOrders(orders);
+      showToast(`Test order ${testId} created!`);
+    }
+
+    function clearAllOrders() {
+      if (confirm('Are you sure you want to clear orders from this database?')) {
+        localStorage.removeItem('DOZE_OPO_ORDERS');
+        renderAdminDashboard();
+        showToast('All orders cleared');
+      }
+    }
+
+    function exportZiyuansuExcel() {
+      const orders = getOrders();
+      if (orders.length === 0) {
+        alert('No orders in database to export. Create a test order or wait for customer checkout.');
+        return;
+      }
+
+      const headers = [
+        "\u7b2c\u4e09\u65b9\u8ba2\u5355\u53f7",
+        "\u5b50\u8ba2\u5355\u53f7",
+        "\u4ea7\u54c1\u540d\u79f0",
+        "\u4ea7\u54c1SKU",
+        "\u6570\u91cf",
+        "\u4ea7\u54c1\u56fe\u7247",
+        "\u6536\u8d27\u4eba\u59d3",
+        "\u6536\u8d27\u4eba\u540d",
+        "\u8054\u7cfb\u7535\u8bdd",
+        "\u90ae\u653f\u7f16\u7801",
+        "\u56fd\u5bb6\u5730\u533a",
+        "\u5dde\u7701",
+        "\u57ce\u5e02",
+        "\u533a\u53bf",
+        "\u8be6\u7ec6\u5730\u5740",
+        "\u4ea7\u54c1SPU",
+        "\u4ea7\u54c1SKC",
+        "\u4ea7\u54c1\u89c4\u683c",
+        "\u662f\u5426Y2\u8ba2\u5355"
+      ];
+
+      const rows = [];
+      orders.forEach((ord) => {
+        const addr = ord.customerAddress || {};
+        let lastName = "";
+        let firstName = ord.payerName || "Customer";
+        if (firstName.includes(" ")) {
+          const parts = firstName.trim().split(/\s+/);
+          firstName = parts[0];
+          lastName = parts.slice(1).join(" ");
+        }
+
+        const items = (ord.items && ord.items.length > 0) ? ord.items : [{
+          id: "01D",
+          name: "DOZE OPO Garment Sample",
+          color: "Default",
+          size: "L",
+          qty: 1,
+          thumb: "https://www.dozeopo.com/assets/products/01D/main/1.jpg"
+        }];
+
+        items.forEach((it, iIdx) => {
+          const subId = `${ord.orderId}-${iIdx + 1}`;
+          const colorName = it.color || "Default";
+          const sizeName = it.size || "L";
+          const skuCode = `${it.id}-${colorName.toUpperCase().replace(/\s+/g, '-')}-${sizeName}`;
+          const spuCode = it.id || "DOZE";
+          const skcCode = `${it.id}-${colorName.toUpperCase().replace(/\s+/g, '-')}`;
+          const imgUrl = it.thumb ? (it.thumb.startsWith('http') ? it.thumb : 'https://www.dozeopo.com/' + it.thumb.replace(/^\//, '')) : '';
+          const streetAddr = [addr.address, addr.address2].filter(Boolean).join(" ") || ord.shippingAddress || "742 Evergreen Terrace";
+
+          rows.push([
+            ord.orderId,
+            subId,
+            it.name || "DOZE OPO Garment",
+            skuCode,
+            parseInt(it.qty) || 1,
+            imgUrl,
+            lastName || "Client",
+            firstName,
+            addr.phone || "N/A",
+            addr.zip || "90001",
+            addr.country || "United States",
+            addr.state || "CA",
+            addr.city || "Los Angeles",
+            "",
+            streetAddr,
+            spuCode,
+            skcCode,
+            `Color: ${colorName}, Size: ${sizeName}`,
+            "\u5426"
+          ]);
+        });
+      });
+
+      if (typeof XLSX === "undefined") {
+        alert("Excel export engine loading, please try again in 1 second.");
+        return;
+      }
+
+      const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+      const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+      XLSX.writeFile(wb, `DOZE-OPO_Ziyuansu_Orders_${dateStr}.xlsx`);
+      showToast("Ziyuansu ERP Excel downloaded!");
+    }
+
+    document.addEventListener('DOMContentLoaded', checkAuth);
+  </script>
+</body>
+</html>
