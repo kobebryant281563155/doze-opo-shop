@@ -2675,7 +2675,12 @@
     <div class="modal-drawer">
       <div class="modal-header">
         <h4>Sample Orders &amp; Tracking</h4>
-        <button type="button" class="modal-close-btn" onclick="closeOrdersTrackingModal()">✕</button>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="btn-export-erp" id="btnExportZiyuansu" onclick="exportZiyuansuExcel()" title="Export orders in Ziyuansu ERP Excel format">
+            <span>📥 Export for ERP</span>
+          </button>
+          <button type="button" class="modal-close-btn" onclick="closeOrdersTrackingModal()">✕</button>
+        </div>
       </div>
       <div class="modal-body">
         <div id="ordersTrackingList" class="orders-tracking-list"></div>
@@ -2686,9 +2691,10 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=220"></script>
-  <script src="products_data.js?v=220"></script>
-  <script src="app.js?v=220"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="prints_data.js?v=221"></script>
+  <script src="products_data.js?v=221"></script>
+  <script src="app.js?v=221"></script>
   <script defer src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
 </body>
 </html>

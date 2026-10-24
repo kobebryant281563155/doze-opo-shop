@@ -2691,6 +2691,7 @@ function submitAltPaymentOrder(method, platform) {
     payerName: addr.name,
     payerEmail: addr.email || 'N/A',
     shippingAddress: fullAddress,
+    customerAddress: addr,
     remark: addr.remark || '',
     items: cfg.items,
     subtotalUSD: cfg.subtotalUSD,
@@ -3082,6 +3083,7 @@ function handleOrderSuccess(details, cfg) {
     payerName: payerName,
     payerEmail: payerEmail,
     shippingAddress: shippingAddr,
+    customerAddress: addr,
     remark: addr.remark || '',
     items: cfg.items,
     subtotalUSD: cfg.subtotalUSD,
@@ -3219,6 +3221,130 @@ function openOrdersTrackingModal() {
 function closeOrdersTrackingModal() {
   const modal = document.getElementById('ordersTrackingModal');
   if (modal) modal.classList.remove('open');
+}
+
+function exportZiyuansuExcel() {
+  let orders = [];
+  try {
+    orders = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
+  } catch (e) {
+    orders = [];
+  }
+
+  const headers = [
+    "\u7b2c\u4e09\u65b9\u8ba2\u5355\u53f7",
+    "\u5b50\u8ba2\u5355\u53f7",
+    "\u4ea7\u54c1\u540d\u79f0",
+    "\u4ea7\u54c1SKU",
+    "\u6570\u91cf",
+    "\u4ea7\u54c1\u56fe\u7247",
+    "\u6536\u8d27\u4eba\u59d3",
+    "\u6536\u8d27\u4eba\u540d",
+    "\u8054\u7cfb\u7535\u8bdd",
+    "\u90ae\u653f\u7f16\u7801",
+    "\u56fd\u5bb6\u5730\u533a",
+    "\u5dde\u7701",
+    "\u57ce\u5e02",
+    "\u533a\u53bf",
+    "\u8be6\u7ec6\u5730\u5740",
+    "\u4ea7\u54c1SPU",
+    "\u4ea7\u54c1SKC",
+    "\u4ea7\u54c1\u89c4\u683c",
+    "\u662f\u5426Y2\u8ba2\u5355"
+  ];
+
+  const rows = [];
+
+  if (orders.length === 0) {
+    showToast("No live orders yet. Generating sample Ziyuansu export...");
+    const sampleRow = [
+      "DOZE-" + Math.floor(100000 + Math.random() * 900000),
+      "DOZE-SUB-101",
+      "01D 230G 20S Compact Siro-Spun Combed Cotton Crewneck Tee",
+      "01D-WASHED-BLACK-L",
+      1,
+      "https://www.dozeopo.com/assets/products/01D/main/1.jpg",
+      "Miller",
+      "Marcus",
+      "+1 (310) 555-0198",
+      "90012",
+      "United States",
+      "California",
+      "Los Angeles",
+      "",
+      "742 Evergreen Terrace, Suite 102",
+      "01D",
+      "01D-WASHED-BLACK",
+      "Color: Washed Black, Size: L",
+      "\u5426"
+    ];
+    rows.push(sampleRow);
+  } else {
+    orders.forEach((ord) => {
+      const addr = ord.customerAddress || {};
+      let lastName = "";
+      let firstName = ord.payerName || "Customer";
+      if (firstName.includes(" ")) {
+        const parts = firstName.trim().split(/\s+/);
+        firstName = parts[0];
+        lastName = parts.slice(1).join(" ");
+      }
+
+      const items = (ord.items && ord.items.length > 0) ? ord.items : [{
+        id: "01D",
+        name: "DOZE OPO Garment Sample",
+        color: "Default",
+        size: "L",
+        qty: 1,
+        thumb: "https://www.dozeopo.com/assets/products/01D/main/1.jpg"
+      }];
+
+      items.forEach((it, iIdx) => {
+        const subId = `${ord.orderId}-${iIdx + 1}`;
+        const colorName = it.color || "Default";
+        const sizeName = it.size || "L";
+        const skuCode = `${it.id}-${colorName.toUpperCase().replace(/\s+/g, '-')}-${sizeName}`;
+        const spuCode = it.id || "DOZE";
+        const skcCode = `${it.id}-${colorName.toUpperCase().replace(/\s+/g, '-')}`;
+        const imgUrl = it.thumb ? (it.thumb.startsWith('http') ? it.thumb : 'https://www.dozeopo.com/' + it.thumb.replace(/^\//, '')) : '';
+        const streetAddr = [addr.address, addr.address2].filter(Boolean).join(" ") || ord.shippingAddress || "742 Evergreen Terrace";
+
+        rows.push([
+          ord.orderId,
+          subId,
+          it.name || "DOZE OPO Garment",
+          skuCode,
+          parseInt(it.qty) || 1,
+          imgUrl,
+          lastName || "Client",
+          firstName,
+          addr.phone || "N/A",
+          addr.zip || "90001",
+          addr.country || "United States",
+          addr.state || "CA",
+          addr.city || "Los Angeles",
+          "",
+          streetAddr,
+          spuCode,
+          skcCode,
+          `Color: ${colorName}, Size: ${sizeName}`,
+          "\u5426"
+        ]);
+      });
+    });
+  }
+
+  if (typeof XLSX === "undefined") {
+    showToast("Excel engine initializing, please click again in 1 second...");
+    return;
+  }
+
+  const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+  const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+  XLSX.writeFile(wb, `DOZE-OPO_Ziyuansu_Orders_${dateStr}.xlsx`);
+  showToast("Ziyuansu ERP Excel downloaded successfully!");
 }
 
 function inquireCheckoutViaWhatsApp() {
