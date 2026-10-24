@@ -14,6 +14,19 @@
   <meta name="format-detection" content="telephone=no">
 
   <!-- Open Graph / Facebook / LinkedIn / WhatsApp Metadata -->
+  <script>
+    (function() {
+      function checkAdminRedirect() {
+        var h = (window.location.hash || '').toLowerCase();
+        var q = (window.location.search || '').toLowerCase();
+        if (h === '#admin' || h === '#erp' || q.indexOf('admin') !== -1) {
+          window.location.replace('admin.html');
+        }
+      }
+      checkAdminRedirect();
+      window.addEventListener('hashchange', checkAdminRedirect);
+    })();
+  </script>
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
   <meta property="og:title" content="DOZE OPO | Heavyweight Streetwear Blanks &amp; Custom OEM Garment Manufacturer">
@@ -2680,7 +2693,12 @@
     <div class="modal-drawer">
       <div class="modal-header">
         <h4>Sample Orders &amp; Tracking</h4>
-        <button type="button" class="modal-close-btn" onclick="closeOrdersTrackingModal()">✕</button>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <a href="admin.html" class="btn-export-erp" style="text-decoration: none;" title="Go to Merchant Admin &amp; ERP Console">
+            <span>Admin &amp; ERP</span>
+          </a>
+          <button type="button" class="modal-close-btn" onclick="closeOrdersTrackingModal()">✕</button>
+        </div>
       </div>
       <div class="modal-body">
         <!-- Air Express & 17TRACK Search Bar -->
@@ -2706,9 +2724,9 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=227"></script>
-  <script src="products_data.js?v=227"></script>
-  <script src="app.js?v=227"></script>
+  <script src="prints_data.js?v=228"></script>
+  <script src="products_data.js?v=228"></script>
+  <script src="app.js?v=228"></script>
   <script defer src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
 </body>
 </html>

@@ -3187,6 +3187,11 @@ function openOrdersTrackingModal() {
         <button type="button" class="btn-wa-direct" onclick="closeOrdersTrackingModal(); switchTab('catalog');">
           Browse Garment Catalog
         </button>
+        <div style="margin-top: 16px; padding-top: 14px; border-top: 1px dashed #e2e8f0;">
+          <a href="admin.html" style="font-size: 12px; color: #0284c7; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+            <span>Merchant Admin &amp; ERP Fulfillment Console ➔</span>
+          </a>
+        </div>
       </div>
     `;
   } else {

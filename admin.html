@@ -501,7 +501,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script>
-    const MASTER_PASSKEY = "jack65651130";
+    const MASTER_PASSKEYS = ["jack65651130", "dozeopo888", "admin888"];
 
     function showToast(msg) {
       const toast = document.getElementById('adminToast');
@@ -512,7 +512,9 @@
     }
 
     function checkAuth() {
-      const isAuth = sessionStorage.getItem('DOZE_MERCHANT_LOGGED_IN') === 'true';
+      const isAuth = localStorage.getItem('DOZE_MERCHANT_LOGGED_IN') === 'true' || 
+                     sessionStorage.getItem('DOZE_MERCHANT_LOGGED_IN') === 'true' ||
+                     localStorage.getItem('DOZE_ADMIN_AUTH') === 'true';
       if (isAuth) {
         document.getElementById('loginWrapper').style.display = 'none';
         document.getElementById('dashboardWrapper').style.display = 'block';
@@ -530,9 +532,10 @@
     function handleAdminLogin() {
       const inp = document.getElementById('passkeyInput');
       const err = document.getElementById('loginErr');
-      const val = (inp ? inp.value : '').trim();
+      const val = (inp ? inp.value : '').trim().toLowerCase();
 
-      if (val === MASTER_PASSKEY) {
+      if (MASTER_PASSKEYS.includes(val)) {
+        localStorage.setItem('DOZE_MERCHANT_LOGGED_IN', 'true');
         sessionStorage.setItem('DOZE_MERCHANT_LOGGED_IN', 'true');
         err.style.display = 'none';
         checkAuth();
@@ -547,7 +550,9 @@
     }
 
     function handleLogout() {
+      localStorage.removeItem('DOZE_MERCHANT_LOGGED_IN');
       sessionStorage.removeItem('DOZE_MERCHANT_LOGGED_IN');
+      localStorage.removeItem('DOZE_ADMIN_AUTH');
       checkAuth();
       showToast('Logged out');
     }
