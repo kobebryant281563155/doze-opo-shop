@@ -2320,7 +2320,7 @@
           </div>
           
           <div class="pay-method-tabs" id="payMethodTabs">
-            <button type="button" class="pay-method-tab active" data-method="worldfirst" id="payMethodTab_worldfirst" onclick="switchCheckoutPaymentMethod('worldfirst')">
+            <button type="button" class="pay-method-tab" data-method="worldfirst" id="payMethodTab_worldfirst" onclick="switchCheckoutPaymentMethod('worldfirst')">
               <span class="pm-icon">🏦</span>
               <div class="pm-text">
                 <div class="pm-title">US Bank ACH / Wire (Chase) <span class="pm-badge b2b">0% FEE · OFFICIAL B2B</span></div>
@@ -2328,7 +2328,7 @@
               </div>
             </button>
 
-            <button type="button" class="pay-method-tab" data-method="paypal" id="payMethodTab_paypal" onclick="switchCheckoutPaymentMethod('paypal')">
+            <button type="button" class="pay-method-tab active" data-method="paypal" id="payMethodTab_paypal" onclick="switchCheckoutPaymentMethod('paypal')">
               <span class="pm-icon">💳</span>
               <div class="pm-text">
                 <div class="pm-title">Visa / MasterCard / PayPal <span class="pm-badge neutral">INSTANT CARD PAY</span></div>
@@ -2356,7 +2356,7 @@
 
         <!-- Payment Content Panels -->
         <!-- Panel 1: Visa / MasterCard / PayPal Direct -->
-        <div class="payment-panel" id="payPanel_paypal" style="display: none;">
+        <div class="payment-panel active" id="payPanel_paypal">
           <!-- Card Guidance Banner -->
           <div style="background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(2, 132, 199, 0.25); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
             <div>
@@ -2463,7 +2463,7 @@
         </div>
 
         <!-- Panel 3: WorldFirst Direct Invoice & US Bank ACH -->
-        <div class="payment-panel active" id="payPanel_worldfirst">
+        <div class="payment-panel" id="payPanel_worldfirst" style="display: none;">
           <div class="alt-pay-instruction-card">
             <div class="api-badge-row">
               <span class="api-highlight-badge blue-theme">⚡ JPMORGAN CHASE BANK · US DOMESTIC &amp; WIRE</span>
@@ -2724,9 +2724,9 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=228"></script>
-  <script src="products_data.js?v=228"></script>
-  <script src="app.js?v=228"></script>
+  <script src="prints_data.js?v=229"></script>
+  <script src="products_data.js?v=229"></script>
+  <script src="app.js?v=229"></script>
   <script defer src="https://www.paypal.com/sdk/js?client-id=AY5iUZZj4s26sZOO7Nl1TMStCmHr4fAni1GPScUnVd25LqPEMCJYalX0WWV81lTkFT-J4F3YG2gBl_Dx&currency=USD&locale=en_US"></script>
 </body>
 </html>

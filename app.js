@@ -2425,7 +2425,7 @@ function openPdpCheckout(productId) {
 
   updateCheckoutModalUI();
   loadCustomerAddress();
-  const defaultMethod = 'worldfirst';
+  const defaultMethod = 'paypal';
   switchCheckoutPaymentMethod(defaultMethod);
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
@@ -2480,7 +2480,7 @@ function openCartCheckout() {
 
   updateCheckoutModalUI();
   loadCustomerAddress();
-  const defaultMethod = 'worldfirst';
+  const defaultMethod = 'paypal';
   switchCheckoutPaymentMethod(defaultMethod);
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
