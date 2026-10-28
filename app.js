@@ -2708,6 +2708,26 @@ function submitAltPaymentOrder(method, platform) {
     console.error('Failed to store order', e);
   }
 
+  if (typeof gtag === 'function') {
+    try {
+      gtag('event', 'purchase', {
+        transaction_id: orderId,
+        value: totalUSD,
+        currency: 'USD',
+        items: (cfg.items || []).map(function(it) {
+          return {
+            item_id: it.id,
+            item_name: it.name,
+            price: it.priceUSD,
+            quantity: it.qty
+          };
+        })
+      });
+    } catch (e) {
+      console.warn('Google tag purchase tracking error', e);
+    }
+  }
+
   if (cfg.isCartCheckout) {
     APP_STATE.cartItems = [];
     updateCartTotal();
@@ -2788,6 +2808,26 @@ function submitDirectChaseOrder() {
     localStorage.setItem('DOZE_OPO_ORDERS', JSON.stringify(saved));
   } catch (e) {
     console.error('Failed to store order', e);
+  }
+
+  if (typeof gtag === 'function') {
+    try {
+      gtag('event', 'purchase', {
+        transaction_id: orderId,
+        value: totalUSD,
+        currency: 'USD',
+        items: (cfg.items || []).map(function(it) {
+          return {
+            item_id: it.id,
+            item_name: it.name,
+            price: it.priceUSD,
+            quantity: it.qty
+          };
+        })
+      });
+    } catch (e) {
+      console.warn('Google tag purchase tracking error', e);
+    }
   }
 
   if (cfg.isCartCheckout) {
@@ -3098,6 +3138,26 @@ function handleOrderSuccess(details, cfg) {
     localStorage.setItem('DOZE_OPO_ORDERS', JSON.stringify(saved));
   } catch (e) {
     console.error('Failed to save order to localStorage', e);
+  }
+
+  if (typeof gtag === 'function') {
+    try {
+      gtag('event', 'purchase', {
+        transaction_id: orderId,
+        value: totalUSD,
+        currency: 'USD',
+        items: (cfg.items || []).map(function(it) {
+          return {
+            item_id: it.id,
+            item_name: it.name,
+            price: it.priceUSD,
+            quantity: it.qty
+          };
+        })
+      });
+    } catch (e) {
+      console.warn('Google tag purchase tracking error', e);
+    }
   }
 
   if (cfg.isCartCheckout) {
