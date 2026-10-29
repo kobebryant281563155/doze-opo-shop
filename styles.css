@@ -586,35 +586,35 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin: 10px auto 4px;
-  width: calc(100% - 24px);
-  max-width: 580px;
-  padding: 12px 18px;
-  background: linear-gradient(135deg, #0a0f1d 0%, #131d31 50%, #0f172a 100%);
-  border-radius: 9999px;
+  margin: 12px 0 4px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #090e1a 0%, #121c2e 50%, #0f172a 100%);
+  border-radius: 16px;
   color: #ffffff;
   cursor: pointer;
-  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.35), 0 0 0 1.5px rgba(56, 189, 248, 0.4);
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 6px 20px -2px rgba(15, 23, 42, 0.4), 0 0 0 1.5px rgba(56, 189, 248, 0.45);
+  border: 1px solid rgba(56, 189, 248, 0.4);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background 0.2s ease;
   user-select: none;
 }
 
 .quick-nav-fb-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -2px rgba(15, 23, 42, 0.45), 0 0 20px -2px rgba(56, 189, 248, 0.5);
-  border-color: rgba(56, 189, 248, 0.7);
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #172554 100%);
+  box-shadow: 0 10px 28px -2px rgba(15, 23, 42, 0.5), 0 0 24px -2px rgba(56, 189, 248, 0.55);
+  border-color: rgba(56, 189, 248, 0.75);
+  background: linear-gradient(135deg, #0e1526 0%, #18253d 50%, #111d33 100%);
 }
 
 .quick-nav-fb-pill:active {
   transform: scale(0.985);
 }
 
-.fb-pill-left {
+.fb-pill-main-content {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex: 1;
   min-width: 0;
 }
@@ -627,7 +627,7 @@ body {
   color: #ffffff;
   font-size: 10px;
   font-weight: 800;
-  padding: 3px 9px;
+  padding: 4px 9px;
   border-radius: 9999px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -636,55 +636,80 @@ body {
   flex-shrink: 0;
 }
 
+.fb-pill-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
 .fb-pill-title {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.1px;
   color: #ffffff;
-  line-height: 1.3;
-}
-
-.fb-pill-right {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #94a3b8;
-  font-weight: 600;
-  white-space: nowrap;
-  flex-shrink: 0;
+  line-height: 1.25;
 }
 
 .fb-pill-desc {
+  font-size: 11px;
   color: #38bdf8;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.fb-pill-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.fb-pill-action-text {
+  display: none;
+  font-size: 12px;
   font-weight: 700;
+  color: #94a3b8;
 }
 
 .fb-pill-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
   color: #38bdf8;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
-  transition: transform 0.18s ease;
+  transition: transform 0.18s ease, background 0.18s ease;
 }
 
 .quick-nav-fb-pill:hover .fb-pill-arrow {
-  transform: translateX(4px);
+  transform: translateX(3px);
+  background: rgba(56, 189, 248, 0.28);
 }
 
 @media (max-width: 480px) {
   .quick-nav-fb-pill {
-    padding: 10px 14px;
+    padding: 14px 14px;
     gap: 8px;
   }
+  .fb-pill-main-content {
+    gap: 10px;
+  }
   .fb-pill-title {
-    font-size: 12.5px;
+    font-size: 13px;
+  }
+  .fb-pill-desc {
+    font-size: 10.5px;
   }
   .fb-pill-badge {
     font-size: 9px;
-    padding: 2px 7px;
-  }
-  .fb-pill-desc {
-    display: none;
+    padding: 3px 7px;
   }
 }
 
@@ -6916,52 +6941,63 @@ body {
 
   .quick-nav-fb-pill {
     grid-column: 1 / -1;
-    width: 100%;
-    max-width: 1520px;
-    margin: 22px auto 4px;
-    padding: 16px 36px;
-    border-radius: 9999px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 26px 0 6px;
+    padding: 22px 42px;
+    border-radius: 20px;
     background: linear-gradient(135deg, #090e1a 0%, #121c2e 45%, #0f172a 100%);
     border: 1.5px solid rgba(56, 189, 248, 0.45);
-    box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.4), 0 0 24px -2px rgba(56, 189, 248, 0.25);
+    box-shadow: 0 12px 36px -4px rgba(15, 23, 42, 0.45), 0 0 28px -2px rgba(56, 189, 248, 0.3);
   }
 
   .quick-nav-fb-pill:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 38px -4px rgba(15, 23, 42, 0.5), 0 0 32px -2px rgba(56, 189, 248, 0.45);
-    border-color: rgba(56, 189, 248, 0.75);
+    box-shadow: 0 16px 42px -4px rgba(15, 23, 42, 0.55), 0 0 36px -2px rgba(56, 189, 248, 0.5);
+    border-color: rgba(56, 189, 248, 0.8);
   }
 
-  .quick-nav-fb-pill .fb-pill-left {
-    gap: 14px;
+  .quick-nav-fb-pill .fb-pill-main-content {
+    gap: 18px;
   }
 
   .quick-nav-fb-pill .fb-pill-badge {
-    font-size: 11.5px;
-    padding: 4px 13px;
+    font-size: 12px;
+    padding: 6px 15px;
     box-shadow: 0 3px 12px rgba(239, 68, 68, 0.5);
   }
 
+  .quick-nav-fb-pill .fb-pill-text-col {
+    gap: 5px;
+  }
+
   .quick-nav-fb-pill .fb-pill-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 800;
     letter-spacing: 0.2px;
   }
 
-  .quick-nav-fb-pill .fb-pill-right {
-    font-size: 13.5px;
-    gap: 8px;
+  .quick-nav-fb-pill .fb-pill-desc {
+    font-size: 14px;
+    color: #38bdf8;
+    font-weight: 600;
   }
 
-  .quick-nav-fb-pill .fb-pill-desc {
-    display: inline-block !important;
+  .quick-nav-fb-pill .fb-pill-action {
+    gap: 12px;
+  }
+
+  .quick-nav-fb-pill .fb-pill-action-text {
+    display: inline-block;
+    font-size: 14px;
     color: #94a3b8;
-    font-size: 13px;
+    font-weight: 700;
   }
 
   .quick-nav-fb-pill .fb-pill-arrow {
+    width: 38px;
+    height: 38px;
     font-size: 16px;
-    color: #38bdf8;
   }
 
   /* ── 7. Trust Benefits Bar ── */
@@ -7614,16 +7650,21 @@ body {
 
   .quick-nav-fb-pill {
     grid-column: 1 / -1;
-    width: 100%;
-    max-width: 960px;
-    margin: 16px auto 0;
-    padding: 14px 26px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 18px 0 0;
+    padding: 18px 28px;
+    border-radius: 18px;
   }
   .quick-nav-fb-pill .fb-pill-title {
-    font-size: 15px;
+    font-size: 16px;
   }
   .quick-nav-fb-pill .fb-pill-desc {
+    font-size: 12.5px;
     display: inline-block !important;
+  }
+  .quick-nav-fb-pill .fb-pill-action-text {
+    display: inline-block;
   }
 
   /* Catalog grid: 2-col */
