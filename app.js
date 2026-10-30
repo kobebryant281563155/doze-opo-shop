@@ -605,7 +605,7 @@ function updatePdpShippingCalc() {
       const isCustomAgreed = prod.id === 'FB01' || prod.isCustomOrder;
       const badgeText = isCustomAgreed ? 'CUSTOM AGREED PRICING' : 'FREE WORLDWIDE SHIPPING';
       const descText = isCustomAgreed
-        ? `Direct VIP checkout calculated at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Units</strong>. Priority air delivery &amp; tracking included.`
+        ? `Direct VIP checkout calculated at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Units</strong>. Priority air delivery &amp; tracking included.<div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(255, 255, 255, 0.2); font-size: 12px; color: #38bdf8; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;"><span>💳 <strong>PayPal &amp; Credit Card Supported</strong> (Instant Checkout)</span><span>🔒 180-Day Buyer Protection</span></div>`
         : `100% Free Priority Air Express Delivery Included. Direct checkout at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Unit${qty > 1 ? 's' : ''}</strong> with door-to-door tracking.`;
       customSummary.innerHTML = `
         <div class="custom-pricing-card">
@@ -677,7 +677,7 @@ function updatePdpShippingCalc() {
   if (orderBtnText) {
     if (isNoShipping) {
       if (prod.id === 'FB01') {
-        orderBtnText.textContent = `Checkout Custom Order (${sym}${formatCurrency(deliveredTotalUSD)})`;
+        orderBtnText.textContent = `Pay with PayPal / Card (${sym}${formatCurrency(deliveredTotalUSD)})`;
       } else {
         orderBtnText.textContent = `Order ${qty}-PC (${sym}${formatCurrency(deliveredTotalUSD)} · Free Delivery)`;
       }
@@ -3042,7 +3042,7 @@ function renderPaypalButtons() {
             }
           },
           items: cfg.items.map(it => ({
-            name: `${it.name} (${it.size}, ${it.color})`.substring(0, 127),
+            name: (it.id === 'FB01' ? `DOZE OPO VIP Custom Agreed Order (${it.qty} Units)` : `${it.name} (${it.size}, ${it.color})`).substring(0, 127),
             unit_amount: {
               currency_code: 'USD',
               value: parseFloat(it.priceUSD).toFixed(2)

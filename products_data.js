@@ -1911,8 +1911,9 @@ window.PRODUCTS_DATA = {
       "FB Exclusive VIP Custom Order Link - Dedicated Private Checkout for Live Stream & VIP Clients",
       "Direct Unit Pricing ($1.00 USD / Unit) - Input Your Agreed Order Total into Quantity Field",
       "For Example: Input Quantity 50 for a $50.00 USD Order, 120 for a $120.00 USD Order",
-      "Direct Priority Air Delivery with Full Tracking Number & Expedited Customs Clearance Included",
-      "Fixed Agreed Settlement Rate - Direct Clearance via Wise, Direct Bank Transfer, Card or Crypto"
+      "Instant Payment Supported: PayPal, Visa, MasterCard, US Bank ACH Wire, Wise & USDT",
+      "100% Protected by PayPal 180-Day Global Buyer Protection Guarantee",
+      "Direct Priority Air Delivery with Full Tracking Number & Expedited Customs Clearance Included"
     ],
     "gallery": [
       "assets/products/FB01/main/1.jpg",
