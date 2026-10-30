@@ -887,7 +887,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=233">
+  <link rel="stylesheet" href="styles.css?v=235">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -962,39 +962,125 @@
         <div class="tab-page-content" id="homePage">
 
           <!-- Hero Banner Section (Single Page, High-End Western Lookbook) -->
-          <section class="hero-banner-section">
-            <div class="banner-slide">
-              <img src="assets/hero_street_crew.jpg?v=20" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img">
-              <div class="banner-overlay-gradient"></div>
+          <section class="hero-banner-section" id="heroBannerSection">
+            <div class="hero-carousel-track" id="heroCarouselTrack">
               
-              <!-- Brand Watermark in Lookbook -->
-              <div class="banner-brand-watermark">
-                <div class="watermark-logo">DOZE OPO</div>
-                <div class="watermark-sub">A/W LOOKBOOK · STREETWEAR COLLECTION</div>
+              <!-- Slide 1: Original Streetwear Lookbook Crew -->
+              <div class="banner-slide active" data-slide-index="0">
+                <img src="assets/hero_street_crew.jpg?v=20" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img">
+                <div class="banner-overlay-gradient"></div>
+                
+                <!-- Brand Watermark in Lookbook -->
+                <div class="banner-brand-watermark">
+                  <div class="watermark-logo">DOZE OPO</div>
+                  <div class="watermark-sub">A/W LOOKBOOK &bull; STREETWEAR COLLECTION</div>
+                </div>
+
+                <!-- Main Tagline Box -->
+                <div class="banner-tagline-box">
+                  <span class="sub-label">2026 A/W STREETWEAR DROP</span>
+                  <h2 class="main-title">THE OVERSIZED REVOLUTION</h2>
+                  <p class="desc">Heavy Cotton &bull; Drop Shoulder &bull; Flexible OEM &bull; Custom Print</p>
+                </div>
+
+                <!-- Fabric & Craftsmanship Detail Circles -->
+                <div class="fabric-highlight-circles">
+                  <div class="circle-item" data-tooltip="Reinforced bound neck and shoulder taping">
+                    <div class="circle-thumb fabric-pattern-1"></div>
+                    <span>Taped Seams</span>
+                  </div>
+                  <div class="circle-item" data-tooltip="Durable twin needle reinforced stitching">
+                    <div class="circle-thumb fabric-pattern-2"></div>
+                    <span>Twin Stitch</span>
+                  </div>
+                  <div class="circle-item" data-tooltip="Vintage acid wash and mineral dye finishing">
+                    <div class="circle-thumb fabric-pattern-3"></div>
+                    <span>Acid Wash</span>
+                  </div>
+                </div>
               </div>
 
-              <!-- Main Tagline Box -->
-              <div class="banner-tagline-box">
-                <span class="sub-label">2026 A/W STREETWEAR DROP</span>
-                <h2 class="main-title">THE OVERSIZED REVOLUTION</h2>
-                <p class="desc">Heavy Cotton · Drop Shoulder · Flexible OEM · Custom Print</p>
+              <!-- Slide 2: Garment Manufacturing Factory -->
+              <div class="banner-slide" data-slide-index="1">
+                <img src="assets/hero_factory_production.jpg?v=1" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img">
+                <div class="banner-overlay-gradient"></div>
+                
+                <!-- Brand Watermark -->
+                <div class="banner-brand-watermark">
+                  <div class="watermark-logo">DOZE OPO</div>
+                  <div class="watermark-sub">CERTIFIED GARMENT FACTORY &bull; DIRECT MANUFACTURING</div>
+                </div>
+
+                <!-- Main Tagline Box -->
+                <div class="banner-tagline-box">
+                  <span class="sub-label">DIRECT APPAREL FACTORY</span>
+                  <h2 class="main-title">HEAVYWEIGHT CRAFTSMANSHIP</h2>
+                  <p class="desc">Heavy Cotton Jersey &bull; Industrial Stitching &bull; 1-PC Custom Proofing</p>
+                </div>
+
+                <!-- Highlight Chips -->
+                <div class="fabric-highlight-circles">
+                  <div class="circle-item" data-tooltip="Industrial stitch precision">
+                    <div class="circle-thumb fabric-pattern-2"></div>
+                    <span>Clean Seams</span>
+                  </div>
+                  <div class="circle-item" data-tooltip="High-density twin needle rib">
+                    <div class="circle-thumb fabric-pattern-1"></div>
+                    <span>Twin Needle</span>
+                  </div>
+                  <div class="circle-item" data-tooltip="Pre-shrunk treatment under 2%">
+                    <div class="circle-thumb fabric-pattern-3"></div>
+                    <span>Pre-Shrunk</span>
+                  </div>
+                </div>
               </div>
 
-              <!-- Fabric & Craftsmanship Detail Circles -->
-              <div class="fabric-highlight-circles">
-                <div class="circle-item" data-tooltip="Reinforced bound neck and shoulder taping">
-                  <div class="circle-thumb fabric-pattern-1"></div>
-                  <span>Taped Seams</span>
+              <!-- Slide 3: Warehouse Packaging & Air Dispatch -->
+              <div class="banner-slide" data-slide-index="2">
+                <img src="assets/hero_warehouse_dispatch.jpg?v=1" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img">
+                <div class="banner-overlay-gradient"></div>
+                
+                <!-- Brand Watermark -->
+                <div class="banner-brand-watermark">
+                  <div class="watermark-logo">DOZE OPO</div>
+                  <div class="watermark-sub">GLOBAL FULFILLMENT &bull; AIR EXPRESS LOGISTICS</div>
                 </div>
-                <div class="circle-item" data-tooltip="Durable twin needle reinforced stitching">
-                  <div class="circle-thumb fabric-pattern-2"></div>
-                  <span>Twin Stitch</span>
+
+                <!-- Main Tagline Box -->
+                <div class="banner-tagline-box">
+                  <span class="sub-label">WORLDWIDE AIR EXPRESS</span>
+                  <h2 class="main-title">PRIORITY AIR DISPATCH</h2>
+                  <p class="desc">24&ndash;48h Sampling &bull; Export Quality Cartons &bull; Door-to-Door Tracking</p>
                 </div>
-                <div class="circle-item" data-tooltip="Vintage acid wash and mineral dye finishing">
-                  <div class="circle-thumb fabric-pattern-3"></div>
-                  <span>Acid Wash</span>
+
+                <!-- Highlight Chips -->
+                <div class="fabric-highlight-circles">
+                  <div class="circle-item" data-tooltip="Direct air express delivery">
+                    <div class="circle-thumb fabric-pattern-1"></div>
+                    <span>Air Express</span>
+                  </div>
+                  <div class="circle-item" data-tooltip="Full live FedEx / DHL tracking">
+                    <div class="circle-thumb fabric-pattern-2"></div>
+                    <span>Live Tracking</span>
+                  </div>
+                  <div class="circle-item" data-tooltip="Reinforced multi-wall export boxes">
+                    <div class="circle-thumb fabric-pattern-3"></div>
+                    <span>Export Pack</span>
+                  </div>
                 </div>
               </div>
+
+            </div>
+
+            <!-- Carousel Nav Controls -->
+            <button type="button" class="hero-carousel-arrow prev" onclick="navigateHeroSlide(-1)" aria-label="Previous Slide">&#10094;</button>
+            <button type="button" class="hero-carousel-arrow next" onclick="navigateHeroSlide(1)" aria-label="Next Slide">&#10095;</button>
+
+            <!-- Carousel Pagination Dots -->
+            <div class="hero-carousel-dots" id="heroCarouselDots">
+              <span class="hero-dot active" onclick="goToHeroSlide(0)"></span>
+              <span class="hero-dot" onclick="goToHeroSlide(1)"></span>
+              <span class="hero-dot" onclick="goToHeroSlide(2)"></span>
             </div>
           </section>
 
@@ -2736,9 +2822,9 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=234"></script>
-  <script src="products_data.js?v=234"></script>
-  <script src="app.js?v=234"></script>
+  <script src="prints_data.js?v=235"></script>
+  <script src="products_data.js?v=235"></script>
+  <script src="app.js?v=235"></script>
   <script defer src="https://www.paypal.com/sdk/js?client-id=BAAz3g5fsKGU3_ojp5zistPNIdgrqKOuUMnEBgQLVjxx-oYRpUtnSkalIS0Ot6bYA-Eh_Jn11NzBj6tn3k&currency=USD&locale=en_US"></script>
 </body>
 </html>

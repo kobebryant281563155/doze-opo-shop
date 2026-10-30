@@ -134,15 +134,91 @@ function updateAllPrices() {
   }
 }
 
-// 7. Banner Pagination
-function initBannerPagination() {
-  const dots = document.querySelectorAll('.banner-pagination .dot');
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      dots.forEach(d => d.classList.remove('active'));
-      dot.classList.add('active');
-    });
+// 7. Hero Banner Multi-Slide Carousel Controller
+let heroSlideIndex = 0;
+let heroSlideTimer = null;
+const HERO_SLIDE_INTERVAL = 5500;
+
+function initHeroCarousel() {
+  const section = document.getElementById('heroBannerSection');
+  if (!section) return;
+
+  startHeroSlideTimer();
+
+  section.addEventListener('mouseenter', pauseHeroSlideTimer);
+  section.addEventListener('mouseleave', startHeroSlideTimer);
+
+  // Mobile Touch Swipe Handling
+  let touchStartX = 0;
+  let touchEndX = 0;
+  section.addEventListener('touchstart', (e) => {
+    pauseHeroSlideTimer();
+    if (e.changedTouches && e.changedTouches[0]) {
+      touchStartX = e.changedTouches[0].screenX;
+    }
+  }, { passive: true });
+
+  section.addEventListener('touchend', (e) => {
+    if (e.changedTouches && e.changedTouches[0]) {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          navigateHeroSlide(1);
+        } else {
+          navigateHeroSlide(-1);
+        }
+      }
+    }
+    startHeroSlideTimer();
+  }, { passive: true });
+}
+
+function startHeroSlideTimer() {
+  pauseHeroSlideTimer();
+  heroSlideTimer = setInterval(() => {
+    navigateHeroSlide(1);
+  }, HERO_SLIDE_INTERVAL);
+}
+
+function pauseHeroSlideTimer() {
+  if (heroSlideTimer) {
+    clearInterval(heroSlideTimer);
+    heroSlideTimer = null;
+  }
+}
+
+function goToHeroSlide(index) {
+  const slides = document.querySelectorAll('.hero-carousel-track .banner-slide');
+  const dots = document.querySelectorAll('.hero-carousel-dots .hero-dot');
+  if (!slides || slides.length === 0) return;
+
+  heroSlideIndex = (index + slides.length) % slides.length;
+
+  slides.forEach((slide, i) => {
+    if (i === heroSlideIndex) {
+      slide.classList.add('active');
+    } else {
+      slide.classList.remove('active');
+    }
   });
+
+  dots.forEach((dot, i) => {
+    if (i === heroSlideIndex) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
+    }
+  });
+}
+
+function navigateHeroSlide(direction) {
+  goToHeroSlide(heroSlideIndex + direction);
+}
+
+// Legacy alias for compatibility
+function initBannerPagination() {
+  initHeroCarousel();
 }
 
 // 8. Quick Navigation & Smooth Scroll
