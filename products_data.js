@@ -1990,7 +1990,8 @@ window.PRODUCTS_DATA = {
     "skus": [],
     "detailImages": [
       "assets/products/FB01/detail/1.jpg",
-      "assets/products/FB01/detail/2.jpg"
+      "assets/products/FB01/detail/2.jpg",
+      "assets/products/FB01/detail/3.jpg"
     ]
   }
 };
