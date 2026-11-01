@@ -1,5 +1,72 @@
 // Generated Products Data Dictionary for DOZE OPO
 window.PRODUCTS_DATA = {
+  "04C": {
+    "id": "04C",
+    "name": "04C 230G 20S Compact Siro Combed Cotton Long Sleeve Crewneck Tee",
+    "category": "tee",
+    "priceUSD": 5.99,
+    "gram": "230 GSM 20s Compact Siro-Spun Combed Cotton",
+    "img": "assets/products/04C/main/1.jpg",
+    "color": "11 Streetwear Colorways",
+    "sizes": ["S", "M", "L", "XL", "2XL", "3XL"],
+    "specs": [
+      "230 GSM 100% Combed Cotton | 20S Compact Siro-Spun Clean Face Knit",
+      "High Anti-Pilling Resistance (Grade 4+) with Low Surface Fuzzing & Smooth Print Face",
+      "Extended Long Sleeve Silhouette with Ribbed Elastic Cuffs & Double-Stitched Hem",
+      "2.8cm High-Density Bound Collar-to-Shoulder Taping (< 2% Industrial Shrinkage)",
+      "11 Streetwear Colorways | 1-Piece Custom Tech Pack Sample & Bulk OEM Ready"
+    ],
+    "sizeTable": {
+      "columns": [
+        { "key": "size", "label": "Size", "isSize": true },
+        { "key": "length", "label": "Length", "unit": true },
+        { "key": "chest", "label": "Bust (Flat)", "unit": true },
+        { "key": "shoulder", "label": "Shoulder", "unit": true },
+        { "key": "sleeve", "label": "Sleeve", "unit": true },
+        { "key": "height", "label": "Rec. Height", "unit": false },
+        { "key": "weight", "label": "Rec. Weight", "unit": false }
+      ],
+      "rows": [
+        { "size": "S", "length": 64, "chest": 46, "shoulder": 40, "sleeve": 59, "height": "4'11\"-5'5\" (150-165cm)", "weight": "88-110 lbs (40-50kg)" },
+        { "size": "M", "length": 66, "chest": 48, "shoulder": 42, "sleeve": 60, "height": "5'3\"-5'7\" (160-170cm)", "weight": "99-132 lbs (45-60kg)" },
+        { "size": "L", "length": 68, "chest": 50, "shoulder": 44, "sleeve": 60, "height": "5'7\"-5'11\" (170-180cm)", "weight": "132-154 lbs (60-70kg)" },
+        { "size": "XL", "length": 70, "chest": 52, "shoulder": 46, "sleeve": 62, "height": "5'9\"-5'11\" (175-180cm)", "weight": "154-176 lbs (70-80kg)" },
+        { "size": "2XL", "length": 72, "chest": 54, "shoulder": 48, "sleeve": 62, "height": "5'9\"-6'1\" (175-185cm)", "weight": "176-198 lbs (80-90kg)" },
+        { "size": "3XL", "length": 74, "chest": 56, "shoulder": 50, "sleeve": 63, "height": "5'11\"-6'3\" (180-190cm)", "weight": "198-220 lbs (90-100kg)" }
+      ]
+    },
+    "gallery": [
+      "assets/products/04C/main/1.jpg",
+      "assets/products/04C/main/2.jpg",
+      "assets/products/04C/main/3.jpg",
+      "assets/products/04C/main/4.jpg",
+      "assets/products/04C/main/5.jpg"
+    ],
+    "skus": [
+      { "name": "Pure Black", "thumb": "assets/products/04C/sku/black.jpg", "hero": "assets/products/04C/sku/black.jpg" },
+      { "name": "Breeze Green", "thumb": "assets/products/04C/sku/breeze_green.jpg", "hero": "assets/products/04C/sku/breeze_green.jpg" },
+      { "name": "Burgundy", "thumb": "assets/products/04C/sku/burgundy.jpg", "hero": "assets/products/04C/sku/burgundy.jpg" },
+      { "name": "Cream Apricot", "thumb": "assets/products/04C/sku/cream_apricot.jpg", "hero": "assets/products/04C/sku/cream_apricot.jpg" },
+      { "name": "Haze Blue", "thumb": "assets/products/04C/sku/haze_blue.jpg", "hero": "assets/products/04C/sku/haze_blue.jpg" },
+      { "name": "Iron Grey", "thumb": "assets/products/04C/sku/iron_grey.jpg", "hero": "assets/products/04C/sku/iron_grey.jpg" },
+      { "name": "Navy Blue", "thumb": "assets/products/04C/sku/navy.jpg", "hero": "assets/products/04C/sku/navy.jpg" },
+      { "name": "Rose Red", "thumb": "assets/products/04C/sku/rose_red.jpg", "hero": "assets/products/04C/sku/rose_red.jpg" },
+      { "name": "Sakura Pink", "thumb": "assets/products/04C/sku/sakura_pink.jpg", "hero": "assets/products/04C/sku/sakura_pink.jpg" },
+      { "name": "Sand Khaki", "thumb": "assets/products/04C/sku/sand_khaki.jpg", "hero": "assets/products/04C/sku/sand_khaki.jpg" },
+      { "name": "Clean White", "thumb": "assets/products/04C/sku/white.jpg", "hero": "assets/products/04C/sku/white.jpg" }
+    ],
+    "detailImages": [
+      "assets/products/04C/detail/1.jpg",
+      "assets/products/04C/detail/2.jpg",
+      "assets/products/04C/detail/3.jpg",
+      "assets/products/04C/detail/4.jpg",
+      "assets/products/04C/detail/5.jpg",
+      "assets/products/04C/detail/6.jpg",
+      "assets/products/04C/detail/7.jpg",
+      "assets/products/04C/detail/8.jpg",
+      "assets/products/04C/detail/9.jpg"
+    ]
+  },
   "01D": {
     "id": "01D",
     "name": "01D 230G 20S Compact Siro-Spun Combed Cotton Crewneck Tee",
