@@ -1971,7 +1971,7 @@ window.PRODUCTS_DATA = {
     "noDiscount": true,
     "noShipping": true,
     "gram": "VIP Custom Pricing ($1.00 USD / Unit)",
-    "img": "assets/products/FB01/main/1.jpg",
+    "img": "assets/products/FB01/main/blindbox_1.jpg",
     "color": "Custom Agreed Order",
     "sizes": [],
     "specs": [
@@ -1983,15 +1983,15 @@ window.PRODUCTS_DATA = {
       "Direct Priority Air Delivery with Full Tracking Number & Expedited Customs Clearance Included"
     ],
     "gallery": [
-      "assets/products/FB01/main/1.jpg",
-      "assets/products/FB01/main/2.jpg",
-      "assets/products/FB01/main/3.jpg"
+      "assets/products/FB01/main/blindbox_1.jpg",
+      "assets/products/FB01/main/blindbox_2.jpg",
+      "assets/products/FB01/main/blindbox_3.jpg"
     ],
     "skus": [],
     "detailImages": [
-      "assets/products/FB01/detail/1.jpg",
-      "assets/products/FB01/detail/2.jpg",
-      "assets/products/FB01/detail/3.jpg"
+      "assets/products/FB01/detail/blindbox_1.jpg",
+      "assets/products/FB01/detail/blindbox_2.jpg",
+      "assets/products/FB01/detail/blindbox_3.jpg"
     ]
   }
 };
