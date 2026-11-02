@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    DOZE OPO 手机端跨境独立站核心样式表
    Design Style: Modern Streetwear & Clean Commercial Luxury
    ========================================================================== */
@@ -7814,3 +7814,62 @@ body {
   }
 }
 
+
+
+/* Bank Region Toggle (Europe SEPA vs US Chase) */
+.bank-region-toggle-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.btn-bank-region {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+.btn-bank-region:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.btn-bank-region.active {
+  border-color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+}
+.btn-bank-region .flag {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.btn-bank-region .bank-toggle-text {
+  min-width: 0;
+}
+.btn-bank-region .bank-toggle-text strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.btn-bank-region .bank-toggle-text small {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 640px) {
+  .bank-region-toggle-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

@@ -2449,8 +2449,8 @@
             <button type="button" class="pay-method-tab" data-method="worldfirst" id="payMethodTab_worldfirst" onclick="switchCheckoutPaymentMethod('worldfirst')">
               <span class="pm-icon">🏦</span>
               <div class="pm-text">
-                <div class="pm-title">US Bank ACH / Wire (Chase) <span class="pm-badge b2b">0% FEE · OFFICIAL B2B</span></div>
-                <div class="pm-sub">Direct Settlement to JPMorgan Chase Bank &amp; WorldFirst ACH</div>
+                <div class="pm-title">Europe &amp; US Bank Transfer <span class="pm-badge b2b">0% FEE · OFFICIAL B2B</span></div>
+                <div class="pm-sub">Europe SEPA (Citibank EUR) &amp; US ACH (Chase USD)</div>
               </div>
             </button>
 
@@ -2588,22 +2588,85 @@
           </div>
         </div>
 
-        <!-- Panel 3: WorldFirst Direct Invoice & US Bank ACH -->
+        <!-- Panel 3: WorldFirst Direct Invoice & US/Europe Bank Transfer -->
         <div class="payment-panel" id="payPanel_worldfirst" style="display: none;">
           <div class="alt-pay-instruction-card">
-            <div class="api-badge-row">
-              <span class="api-highlight-badge blue-theme">⚡ JPMORGAN CHASE BANK · US DOMESTIC &amp; WIRE</span>
-              <span class="api-status-badge">ACH / WIRE / WORLDFIRST</span>
+            <!-- Bank Region Selector (Europe SEPA vs US Chase) -->
+            <div class="bank-region-toggle-row">
+              <button type="button" class="btn-bank-region active" id="btnBank_eu" onclick="switchBankRegion('eu')">
+                <span class="flag">🇪🇺</span>
+                <div class="bank-toggle-text">
+                  <strong>Europe SEPA (Citibank EUR)</strong>
+                  <small>Direct IBAN · 0% Surcharge · Eurozone</small>
+                </div>
+              </button>
+              <button type="button" class="btn-bank-region" id="btnBank_us" onclick="switchBankRegion('us')">
+                <span class="flag">🇺🇸</span>
+                <div class="bank-toggle-text">
+                  <strong>US Domestic ACH (Chase USD)</strong>
+                  <small>ACH / Wire · 0% Surcharge · United States</small>
+                </div>
+              </button>
             </div>
+
             <div class="api-discount-pricing">
               <div class="api-price-col highlight">
-                <small>Direct Settlement Amount:</small>
-                <strong id="worldfirstTotalDisplay">$0.00 USD</strong>
+                <small id="bankPricingLabel">Direct Settlement Amount (EUR):</small>
+                <strong id="worldfirstTotalDisplay">€0.00 EUR</strong>
+                <span id="bankEquivalentSubDisplay" style="font-size: 11px; color: #64748b; margin-top: 2px;">(Order Total: $0.00 USD)</span>
               </div>
             </div>
 
-            <!-- Official Beneficiary Remittance Credentials -->
-            <div class="pay-credentials-card">
+            <!-- Card 1: Official Europe Citibank Credentials -->
+            <div class="pay-credentials-card" id="bankCredentials_eu">
+              <div class="pcc-header">
+                <strong>Official European Union Bank Credentials (Citibank Europe)</strong>
+                <span class="pcc-tag" style="background: #0284c7;">SEPA INSTANT · EUR</span>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Beneficiary / Account Name:</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">DOZE OPO</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('DOZE OPO', 'Beneficiary Name')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">IBAN (Euro Account):</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val" style="color: #0284c7; letter-spacing: 0.5px;">NL44CITI7004252860</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('NL44CITI7004252860', 'IBAN')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">SWIFT / BIC Code:</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">CITINL2X</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('CITINL2X', 'SWIFT / BIC Code')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Bank Name:</span>
+                <div class="pcc-val-box">
+                  <strong class="pcc-val">CITIBANK EUROPE PLC NETHERLANDS BRANCH</strong>
+                  <button type="button" class="btn-copy-pcc" onclick="copyPaymentField('CITIBANK EUROPE PLC NETHERLANDS BRANCH', 'Bank Name')">Copy</button>
+                </div>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Bank Address:</span>
+                <span class="pcc-sub-info">Schiphol Boulevard 257, 1118 BH Schiphol, Netherlands</span>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Bank Country / Zone:</span>
+                <span class="pcc-sub-info">Netherlands (NL) · SEPA (Single Euro Payments Area)</span>
+              </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Settlement Currency:</span>
+                <span class="pcc-sub-info" style="color: #059669; font-weight: 700;">EUR (€) · Direct Eurozone Clearance (0% Gateway Fee)</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Official US Chase Credentials -->
+            <div class="pay-credentials-card" id="bankCredentials_us" style="display: none;">
               <div class="pcc-header">
                 <strong>Official US Bank Remittance Credentials (Chase)</strong>
                 <span class="pcc-tag">VERIFIED B2B</span>
@@ -2654,40 +2717,47 @@
                 <span class="pcc-label">Bank Address:</span>
                 <span class="pcc-sub-info">383 Madison Avenue, New York, NY 10179, USA</span>
               </div>
+              <div class="pcc-row">
+                <span class="pcc-label">Settlement Currency:</span>
+                <span class="pcc-sub-info" style="color: #059669; font-weight: 700;">USD ($) · US Domestic ACH &amp; Wire (0% Gateway Fee)</span>
+              </div>
             </div>
 
             <!-- Direct Remittance Submission Form -->
             <div class="remittance-submission-box">
               <div class="rsb-header">
                 <span class="rsb-badge">OFFICIAL SETTLEMENT ACTION</span>
-                <h4>Confirm &amp; Submit Remittance Order</h4>
-                <p>Transfer USD directly from your banking app (Chase, BoA, Citi, etc.) to the details above, then submit below to lock in sample dispatch.</p>
+                <h4>Confirm &amp; Submit Bank Remittance Order</h4>
+                <p id="bankRemittanceIntroText">Transfer EUR directly via SEPA / bank transfer to the Citibank credentials above, then submit below to lock in sample dispatch.</p>
               </div>
 
               <div class="rsb-form-grid">
                 <div class="rsb-field">
                   <label>Payer / Remitter Full Name <span class="req">*</span></label>
-                  <input type="text" id="chaseRemitterName" placeholder="e.g. John Doe / Studio LLC" class="checkout-input">
+                  <input type="text" id="chaseRemitterName" placeholder="e.g. John Doe / Studio LLC / Brand SRL" class="checkout-input">
                 </div>
                 <div class="rsb-field">
-                  <label>Wire / ACH Reference <small>(Optional)</small></label>
-                  <input type="text" id="chaseWireRef" placeholder="e.g. Confirmation # / Trace ID" class="checkout-input">
+                  <label id="bankRefInputLabel">IBAN / Wire Reference <small>(Optional)</small></label>
+                  <input type="text" id="chaseWireRef" placeholder="e.g. Remittance Reference / Trace ID" class="checkout-input">
                 </div>
               </div>
 
               <button type="button" class="btn-submit-remittance" id="btnSubmitChaseRemittance" onclick="submitDirectChaseOrder()">
-                <span>✅ Submit Bank Remittance Order</span>
-                <strong class="bsr-amount" id="chaseSubmitBtnAmount">$0.00 USD</strong>
+                <span>✓ Submit Bank Remittance Order</span>
+                <strong class="bsr-amount" id="chaseSubmitBtnAmount">€0.00 EUR</strong>
               </button>
-              <div class="rsb-trust-note">
-                🔒 Zero Gateway Surcharges · 0% Fee · Direct JPMorgan Chase Settlement
+              <div class="rsb-trust-note" id="bankTrustNote">
+                🔒 Zero Gateway Surcharges · 0% Fee · Direct Citibank Europe SEPA Clearance
               </div>
             </div>
 
             <div class="api-steps-list" style="margin-top: 14px;">
               <div class="api-step-item">
                 <span class="step-num">1</span>
-                <div><strong>US Domestic ACH / Wire Remittance</strong><p>Transfer USD directly from any US banking app (Chase, BoA, Wells Fargo, Citi) via ACH or wire with 0% fee.</p></div>
+                <div>
+                  <strong id="bankStep1Title">Eurozone SEPA / US Bank Transfer</strong>
+                  <p id="bankStep1Desc">Transfer EUR via SEPA Instant from any European banking app (Revolut, N26, BNP, Sparkasse, etc.) or USD via Chase with 0% fee.</p>
+                </div>
               </div>
               <div class="api-step-item" id="wfPaypalPromptStep">
                 <span class="step-num">2</span>
@@ -2703,10 +2773,10 @@
             </div>
             <div class="alt-pay-btns">
               <button type="button" class="btn-alt-pay-action btn-wa-theme" onclick="submitAltPaymentOrder('worldfirst', 'whatsapp')">
-                <span>💬 Complete US Bank Order on WhatsApp</span>
+                <span>💬 Complete Bank Order on WhatsApp</span>
               </button>
               <button type="button" class="btn-alt-pay-action btn-tg-theme" onclick="submitAltPaymentOrder('worldfirst', 'telegram')">
-                <span>✈️ Complete US Bank Order on Telegram</span>
+                <span>✈️ Complete Bank Order on Telegram</span>
               </button>
             </div>
           </div>
@@ -2850,9 +2920,9 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=240"></script>
-  <script src="products_data.js?v=240"></script>
-  <script src="app.js?v=240"></script>
+  <script src="prints_data.js?v=241"></script>
+  <script src="products_data.js?v=241"></script>
+  <script src="app.js?v=241"></script>
   <script defer src="https://www.paypal.com/sdk/js?client-id=BAAz3g5fsKGU3_ojp5zistPNIdgrqKOuUMnEBgQLVjxx-oYRpUtnSkalIS0Ot6bYA-Eh_Jn11NzBj6tn3k&currency=USD&locale=en_US"></script>
 </body>
 </html>

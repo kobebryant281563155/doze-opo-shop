@@ -2681,6 +2681,69 @@ function updateCheckoutModalUI() {
   if (chaseRemitterInput && !chaseRemitterInput.value && shipNameVal) {
     chaseRemitterInput.value = shipNameVal;
   }
+
+  // Ensure bank region pricing displays accurately
+  switchBankRegion(currentBankRegion);
+}
+
+let currentBankRegion = 'eu';
+
+function switchBankRegion(region) {
+  currentBankRegion = region || 'eu';
+  const btnEu = document.getElementById('btnBank_eu');
+  const btnUs = document.getElementById('btnBank_us');
+  const cardEu = document.getElementById('bankCredentials_eu');
+  const cardUs = document.getElementById('bankCredentials_us');
+  const labelElem = document.getElementById('bankPricingLabel');
+  const totalElem = document.getElementById('worldfirstTotalDisplay');
+  const equivElem = document.getElementById('bankEquivalentSubDisplay');
+  const btnAmount = document.getElementById('chaseSubmitBtnAmount');
+  const trustNote = document.getElementById('bankTrustNote');
+  const refLabel = document.getElementById('bankRefInputLabel');
+  const introText = document.getElementById('bankRemittanceIntroText');
+  const step1Title = document.getElementById('bankStep1Title');
+  const step1Desc = document.getElementById('bankStep1Desc');
+
+  if (btnEu && btnUs) {
+    if (currentBankRegion === 'eu') {
+      btnEu.classList.add('active');
+      btnUs.classList.remove('active');
+    } else {
+      btnUs.classList.add('active');
+      btnEu.classList.remove('active');
+    }
+  }
+
+  if (cardEu && cardUs) {
+    cardEu.style.display = (currentBankRegion === 'eu') ? 'block' : 'none';
+    cardUs.style.display = (currentBankRegion === 'us') ? 'block' : 'none';
+  }
+
+  const cfg = CURRENT_CHECKOUT_CONFIG;
+  const totalUSD = cfg ? (cfg.subtotalUSD + cfg.shippingUSD) : 0;
+  const totalEUR = parseFloat((totalUSD * 0.92).toFixed(2));
+
+  if (currentBankRegion === 'eu') {
+    if (labelElem) labelElem.textContent = 'Direct Settlement Amount (EUR):';
+    if (totalElem) totalElem.textContent = `€${totalEUR.toFixed(2)} EUR`;
+    if (equivElem) equivElem.textContent = `(Order Total: $${totalUSD.toFixed(2)} USD · 0% Surcharge)`;
+    if (btnAmount) btnAmount.textContent = `€${totalEUR.toFixed(2)} EUR`;
+    if (trustNote) trustNote.textContent = '🔒 Zero Gateway Surcharges · 0% Fee · Direct Citibank Europe SEPA Clearance';
+    if (refLabel) refLabel.innerHTML = 'IBAN / Wire Reference <small>(Optional)</small>';
+    if (introText) introText.textContent = 'Transfer EUR directly via SEPA / bank transfer to the Citibank credentials above, then submit below to lock in sample dispatch.';
+    if (step1Title) step1Title.textContent = 'Eurozone SEPA Instant Remittance';
+    if (step1Desc) step1Desc.textContent = 'Transfer EUR via SEPA Instant from any European banking app (Revolut, N26, BNP, Sparkasse, etc.) with 0% fee.';
+  } else {
+    if (labelElem) labelElem.textContent = 'Direct Settlement Amount (USD):';
+    if (totalElem) totalElem.textContent = `$${totalUSD.toFixed(2)} USD`;
+    if (equivElem) equivElem.textContent = `(US Domestic ACH / Wire · 0% Surcharge)`;
+    if (btnAmount) btnAmount.textContent = `$${totalUSD.toFixed(2)} USD`;
+    if (trustNote) trustNote.textContent = '🔒 Zero Gateway Surcharges · 0% Fee · Direct JPMorgan Chase Settlement';
+    if (refLabel) refLabel.innerHTML = 'ACH / Wire Reference <small>(Optional)</small>';
+    if (introText) introText.textContent = 'Transfer USD directly via ACH or domestic wire to the JPMorgan Chase credentials above, then submit below.';
+    if (step1Title) step1Title.textContent = 'US Domestic ACH / Wire Remittance';
+    if (step1Desc) step1Desc.textContent = 'Transfer USD directly from any US banking app (Chase, BoA, Wells Fargo, Citi) via ACH or wire with 0% fee.';
+  }
 }
 
 let currentCheckoutPayMethod = 'paypal';
@@ -2753,8 +2816,13 @@ function submitAltPaymentOrder(method, platform) {
   let methodLabel = isDiscounted ? 'Wise / Direct Remittance (8% OFF)' : 'Wise / Direct Remittance (Standard Rate)';
   let gatewayTag = 'Wise / Bank Remittance Pending';
   if (method === 'worldfirst') {
-    methodLabel = 'WorldFirst Direct Credit Card Invoice (0% Surcharge)';
-    gatewayTag = 'WorldFirst Card Invoice Pending';
+    if (currentBankRegion === 'eu') {
+      methodLabel = 'Citibank Europe SEPA EUR Remittance (0% Surcharge)';
+      gatewayTag = 'Citibank Europe SEPA Pending';
+    } else {
+      methodLabel = 'JPMorgan Chase US Domestic ACH & Wire (0% Surcharge)';
+      gatewayTag = 'Chase US Bank Remittance Pending';
+    }
   } else if (method === 'usdt') {
     methodLabel = isDiscounted ? 'USDT TRC-20 Crypto (8% OFF)' : 'USDT TRC-20 Crypto (Standard Rate)';
     gatewayTag = 'USDT TRC-20 Pending';
@@ -2819,7 +2887,7 @@ function submitAltPaymentOrder(method, platform) {
     `• Phone: ${addr.phone}\n` +
     `• Address: ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}\n` +
     (addr.remark ? `• Remark: ${addr.remark}\n\n` : '\n') +
-    `Please send me your ${method === 'worldfirst' ? 'WorldFirst direct credit card checkout link' : (method === 'wise' ? 'Alipay / Bank remittance info' : 'USDT TRC-20 wallet address')} so I can complete payment!`;
+    `Please send me your ${method === 'worldfirst' ? (currentBankRegion === 'eu' ? 'Citibank Europe SEPA EUR bank confirmation' : 'JPMorgan Chase ACH / Wire confirmation') : (method === 'wise' ? 'Alipay / Bank remittance info' : 'USDT TRC-20 wallet address')} so I can complete payment!`;
 
   if (platform === 'telegram') {
     const tgUrl = 'https://t.me/dozeopo?text=' + encodeURIComponent(msgText);
@@ -2853,28 +2921,38 @@ function submitDirectChaseOrder() {
   const remitterNameInput = document.getElementById('chaseRemitterName');
   const wireRefInput = document.getElementById('chaseWireRef');
   const remitterName = (remitterNameInput && remitterNameInput.value.trim()) || addr.name;
-  const wireRef = (wireRefInput && wireRefInput.value.trim()) || 'Standard Wire Transfer';
+  const wireRef = (wireRefInput && wireRefInput.value.trim()) || 'Standard Bank Remittance';
 
   const cfg = CURRENT_CHECKOUT_CONFIG;
   const totalUSD = cfg.subtotalUSD + cfg.shippingUSD;
-  const orderId = 'DOZE-CHASE-' + Math.floor(100000 + Math.random() * 900000);
+  const totalEUR = parseFloat((totalUSD * 0.92).toFixed(2));
+  const isEU = (currentBankRegion === 'eu');
+  const orderId = isEU 
+    ? ('DOZE-SEPA-' + Math.floor(100000 + Math.random() * 900000))
+    : ('DOZE-CHASE-' + Math.floor(100000 + Math.random() * 900000));
 
   const fullAddress = `${addr.name}, ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}. Tel: ${addr.phone}, Email: ${addr.email}${addr.remark ? ` | Remark: ${addr.remark}` : ''}`;
 
   const orderRecord = {
     orderId: orderId,
-    paypalTxId: `Chase US Domestic ACH / Wire (Ref: ${wireRef})`,
+    paypalTxId: isEU
+      ? `Citibank Europe SEPA EUR (IBAN: NL44CITI7004252860, Ref: ${wireRef})`
+      : `Chase US Domestic ACH / Wire (Ref: ${wireRef})`,
     createdAt: new Date().toISOString(),
     payerName: remitterName,
     payerEmail: addr.email || 'N/A',
     shippingAddress: fullAddress,
     remark: addr.remark || '',
     wireReference: wireRef,
+    bankRegion: currentBankRegion,
     items: cfg.items,
     subtotalUSD: cfg.subtotalUSD,
     shippingUSD: cfg.shippingUSD,
     totalUSD: totalUSD,
-    paymentMethod: 'JPMorgan Chase US Domestic ACH & Wire (WorldFirst)',
+    totalEUR: totalEUR,
+    paymentMethod: isEU 
+      ? 'Citibank Europe SEPA EUR Transfer (WorldFirst)'
+      : 'JPMorgan Chase US Domestic ACH & Wire (WorldFirst)',
     status: 'Pending Bank Clearance'
   };
 
@@ -2925,6 +3003,9 @@ function showChaseOrderSuccessVoucher(order) {
     else document.body.appendChild(overlay);
   }
 
+  const isEU = (order.bankRegion === 'eu' || (order.orderId && order.orderId.indexOf('SEPA') !== -1));
+  const eurVal = (order.totalEUR || (order.totalUSD * 0.92)).toFixed(2);
+
   const itemsHtml = order.items.map(it => `
     <div style="display: flex; justify-content: space-between; font-size: 13px; color: #334155; margin-bottom: 6px;">
       <span>${it.name} (${it.size}, ${it.color}) × ${it.qty}</span>
@@ -2936,35 +3017,58 @@ function showChaseOrderSuccessVoucher(order) {
     <div class="order-success-voucher-card">
       <div style="text-align: center; margin-bottom: 16px;">
         <div style="width: 52px; height: 52px; border-radius: 50%; background: #ecfdf5; border: 2px solid #10b981; display: inline-flex; align-items: center; justify-content: center; font-size: 24px; color: #10b981; margin-bottom: 8px;">✓</div>
-        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 4px 0;">Remittance Order Submitted!</h3>
+        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 4px 0;">${isEU ? 'Eurozone SEPA Order Submitted!' : 'Remittance Order Submitted!'}</h3>
         <p style="font-size: 13px; color: #64748b; margin: 0;">Order Reference: <strong style="color: #0284c7; font-size: 14px;">${order.orderId}</strong></p>
       </div>
 
       <div style="background: #f8fafc; border: 1.5px solid #0284c7; border-radius: 12px; padding: 14px 16px; margin-bottom: 16px;">
         <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #64748b; margin-bottom: 8px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">
           <span>Settlement Total Due:</span>
-          <strong style="color: #059669; font-size: 18px;">$${order.totalUSD.toFixed(2)} USD</strong>
+          <strong style="color: #059669; font-size: 18px;">${isEU ? `€${eurVal} EUR` : `$${order.totalUSD.toFixed(2)} USD`}</strong>
         </div>
-        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
-          <span>Bank Name:</span>
-          <strong style="color: #0f172a;">JPMORGAN CHASE BANK, N.A.</strong>
-        </div>
-        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
-          <span>Account Number:</span>
-          <strong style="color: #0f172a;">20000044307836 (DOZE OPO)</strong>
-        </div>
-        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
-          <span>ACH Routing (Domestic):</span>
-          <strong style="color: #0f172a;">028000024</strong>
-        </div>
-        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
-          <span>Wire Routing (Domestic):</span>
-          <strong style="color: #0f172a;">021000021</strong>
-        </div>
-        <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569;">
-          <span>SWIFT Code (International):</span>
-          <strong style="color: #0f172a;">CHASUS33</strong>
-        </div>
+        ${isEU ? `
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+            <span>Bank Name:</span>
+            <strong style="color: #0f172a;">CITIBANK EUROPE PLC NETHERLANDS</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+            <span>IBAN (Euro):</span>
+            <strong style="color: #0284c7; letter-spacing: 0.5px;">NL44CITI7004252860</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+            <span>SWIFT / BIC:</span>
+            <strong style="color: #0f172a;">CITINL2X</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+            <span>Account Name:</span>
+            <strong style="color: #0f172a;">DOZE OPO</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569;">
+            <span>Bank Address:</span>
+            <span style="color: #64748b; font-size: 11px;">Schiphol, Netherlands (NL)</span>
+          </div>
+        ` : `
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+            <span>Bank Name:</span>
+            <strong style="color: #0f172a;">JPMORGAN CHASE BANK, N.A.</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+            <span>Account Number:</span>
+            <strong style="color: #0f172a;">20000044307836 (DOZE OPO)</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+            <span>ACH Routing (Domestic):</span>
+            <strong style="color: #0f172a;">028000024</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569; margin-bottom: 4px;">
+            <span>Wire Routing (Domestic):</span>
+            <strong style="color: #0f172a;">021000021</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #475569;">
+            <span>SWIFT Code (International):</span>
+            <strong style="color: #0f172a;">CHASUS33</strong>
+          </div>
+        `}
       </div>
 
       <div style="border-top: 1px dashed #cbd5e1; border-bottom: 1px dashed #cbd5e1; padding: 12px 0; margin-bottom: 16px;">
@@ -2976,8 +3080,8 @@ function showChaseOrderSuccessVoucher(order) {
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 8px;">
-        <button type="button" class="btn-alt-pay-action btn-wa-theme" style="width: 100%; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px;" onclick="forwardChaseReceiptWhatsApp('${order.orderId}', ${order.totalUSD})">
-          <span>💬 Forward Order Details &amp; Wire Receipt to WhatsApp</span>
+        <button type="button" class="btn-alt-pay-action btn-wa-theme" style="width: 100%; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px;" onclick="forwardChaseReceiptWhatsApp('${order.orderId}', ${order.totalUSD}, '${isEU ? 'eu' : 'us'}')">
+          <span>💬 Forward Order Details &amp; ${isEU ? 'SEPA Transfer Receipt' : 'Wire Receipt'} to WhatsApp</span>
         </button>
         <button type="button" style="width: 100%; padding: 10px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 700; color: #334155; cursor: pointer;" onclick="closeChaseVoucherModal()">
           Done &amp; Close Window
@@ -2988,18 +3092,30 @@ function showChaseOrderSuccessVoucher(order) {
   overlay.style.display = 'flex';
 }
 
-function forwardChaseReceiptWhatsApp(orderId, amount) {
+function forwardChaseReceiptWhatsApp(orderId, amount, region) {
   const addr = getCustomerAddress();
   const wireRefInput = document.getElementById('chaseWireRef');
-  const wireRef = (wireRefInput && wireRefInput.value.trim()) || 'Standard Wire';
+  const wireRef = (wireRefInput && wireRefInput.value.trim()) || 'Standard Bank Wire';
+  const isEU = (region === 'eu' || (orderId && orderId.indexOf('SEPA') !== -1));
+  const eurVal = (amount * 0.92).toFixed(2);
 
-  const msg = `Hello DOZE OPO! I have submitted bank remittance order ${orderId} for $${amount.toFixed(2)} USD to your JPMorgan Chase Bank account (20000044307836).\n\n` +
+  const msg = isEU ? (
+    `Hello DOZE OPO! I have submitted European SEPA bank remittance order ${orderId} for €${eurVal} EUR ($${amount.toFixed(2)} USD) to your Citibank Europe account (IBAN: NL44CITI7004252860).\n\n` +
     `• Payer / Reference: ${wireRef}\n` +
     `• Recipient: ${addr.name}\n` +
     `• Phone: ${addr.phone}\n` +
     `• Address: ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}\n` +
     (addr.remark ? `• Remark: ${addr.remark}\n\n` : '\n') +
-    `Attached/pending is my wire transfer receipt. Please verify and confirm priority sample dispatch!`;
+    `Attached/pending is my SEPA payment receipt. Please verify and confirm priority sample dispatch!`
+  ) : (
+    `Hello DOZE OPO! I have submitted bank remittance order ${orderId} for $${amount.toFixed(2)} USD to your JPMorgan Chase Bank account (20000044307836).\n\n` +
+    `• Payer / Reference: ${wireRef}\n` +
+    `• Recipient: ${addr.name}\n` +
+    `• Phone: ${addr.phone}\n` +
+    `• Address: ${addr.address} ${addr.address2 || ''}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}\n` +
+    (addr.remark ? `• Remark: ${addr.remark}\n\n` : '\n') +
+    `Attached/pending is my wire transfer receipt. Please verify and confirm priority sample dispatch!`
+  );
 
   const waUrl = 'https://wa.me/8618520682738?text=' + encodeURIComponent(msg);
   window.open(waUrl, '_blank');
