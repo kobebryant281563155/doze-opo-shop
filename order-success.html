@@ -201,7 +201,7 @@
 
       <div class="btn-row">
         <a href="index.html" class="btn-primary">&larr; Return to Store</a>
-        <a href="track-order.html" class="btn-secondary">Check Order Tracking</a>
+        <a href="track-order.html" class="btn-secondary" id="trackOrderBtn">Check Order Tracking</a>
       </div>
     </div>
   </main>
@@ -212,6 +212,8 @@
       if (orders.length > 0 && orders[0].orderId) {
         var el = document.getElementById('orderRefDisplay');
         if (el) el.textContent = orders[0].orderId;
+        var btn = document.getElementById('trackOrderBtn');
+        if (btn) btn.href = 'track-order.html?order=' + encodeURIComponent(orders[0].orderId);
         if (typeof gtag === 'function' && !sessionStorage.getItem('gtag_order_' + orders[0].orderId)) {
           sessionStorage.setItem('gtag_order_' + orders[0].orderId, '1');
           gtag('event', 'purchase', {

@@ -3483,7 +3483,7 @@ function openOrdersTrackingModal() {
 
           <!-- Order Total and Action Footer -->
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #e2e8f0; flex-wrap: wrap; gap: 8px;">
-            <strong style="color: #c2410c; font-size: 13px;">Total: $${parseFloat(ord.totalUSD || 0).toFixed(2)} USD</strong>
+            <strong style="color: #c2410c; font-size: 13px;">Total: $${parseFloat(ord.totalUSD || 0).toFixed(2)} USD${ord.totalEUR ? ` (€${parseFloat(ord.totalEUR).toFixed(2)} EUR)` : ''}</strong>
             <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" style="font-size: 11px; font-weight: 700; color: #0284c7; text-decoration: none;">
               💬 WhatsApp Factory Support ➔
             </a>
