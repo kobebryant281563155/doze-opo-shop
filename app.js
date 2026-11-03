@@ -131,6 +131,17 @@ function updateAllPrices() {
   updateCartTotal();
   if (typeof updatePdpShippingCalc === 'function') {
     updatePdpShippingCalc();
+  renderPdpReviews(productId);
+  if (typeof gtag === 'function' && prod) {
+    try {
+      gtag('event', 'view_item', {
+        currency: 'USD',
+        value: prod.priceUSD,
+        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
+      });
+    } catch(e) {}
+  }
+  setTimeout(updatePdpStickyBuyBar, 100);
   }
 }
 
@@ -632,6 +643,17 @@ function setPdpQty(val) {
   });
 
   updatePdpShippingCalc();
+  renderPdpReviews(productId);
+  if (typeof gtag === 'function' && prod) {
+    try {
+      gtag('event', 'view_item', {
+        currency: 'USD',
+        value: prod.priceUSD,
+        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
+      });
+    } catch(e) {}
+  }
+  setTimeout(updatePdpStickyBuyBar, 100);
 }
 
 function updatePdpShippingCalc() {
@@ -867,6 +889,17 @@ function openProductDetail(productId) {
     p.classList.toggle('active', pQty === 1);
   });
   updatePdpShippingCalc();
+  renderPdpReviews(productId);
+  if (typeof gtag === 'function' && prod) {
+    try {
+      gtag('event', 'view_item', {
+        currency: 'USD',
+        value: prod.priceUSD,
+        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
+      });
+    } catch(e) {}
+  }
+  setTimeout(updatePdpStickyBuyBar, 100);
 
   document.querySelectorAll('.tab-page-content').forEach(p => p.style.display = 'none');
   const pdp = document.getElementById('productDetailPage');
@@ -1042,6 +1075,17 @@ function openProductDetail(productId) {
     orderBtn.onclick = () => openPdpCheckout(productId);
   }
   updatePdpShippingCalc();
+  renderPdpReviews(productId);
+  if (typeof gtag === 'function' && prod) {
+    try {
+      gtag('event', 'view_item', {
+        currency: 'USD',
+        value: prod.priceUSD,
+        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
+      });
+    } catch(e) {}
+  }
+  setTimeout(updatePdpStickyBuyBar, 100);
 }
 
 function renderDynamicLookbook(prod) {
@@ -1905,6 +1949,17 @@ function selectPdpColor(colorName, heroImg, elem) {
   }
 
   updatePdpShippingCalc();
+  renderPdpReviews(productId);
+  if (typeof gtag === 'function' && prod) {
+    try {
+      gtag('event', 'view_item', {
+        currency: 'USD',
+        value: prod.priceUSD,
+        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
+      });
+    } catch(e) {}
+  }
+  setTimeout(updatePdpStickyBuyBar, 100);
 }
 
 function selectPdpSize(size, elem) {
@@ -2500,6 +2555,15 @@ function openPdpCheckout(productId) {
   };
 
   updateCheckoutModalUI();
+  if (typeof gtag === 'function' && cfg) {
+    try {
+      gtag('event', 'begin_checkout', {
+        currency: 'USD',
+        value: cfg.subtotalUSD + cfg.shippingUSD,
+        items: (cfg.items || []).map(it => ({ item_id: it.id, item_name: it.name, price: it.priceUSD, quantity: it.qty }))
+      });
+    } catch(e) {}
+  }
   loadCustomerAddress();
   const defaultMethod = 'paypal';
   switchCheckoutPaymentMethod(defaultMethod);
@@ -2555,6 +2619,15 @@ function openCartCheckout() {
   };
 
   updateCheckoutModalUI();
+  if (typeof gtag === 'function' && cfg) {
+    try {
+      gtag('event', 'begin_checkout', {
+        currency: 'USD',
+        value: cfg.subtotalUSD + cfg.shippingUSD,
+        items: (cfg.items || []).map(it => ({ item_id: it.id, item_name: it.name, price: it.priceUSD, quantity: it.qty }))
+      });
+    } catch(e) {}
+  }
   loadCustomerAddress();
   const defaultMethod = 'paypal';
   switchCheckoutPaymentMethod(defaultMethod);
@@ -3166,11 +3239,31 @@ function modifyCheckoutSingleQty(delta) {
   it.qty = newQty;
   activePdpQty = newQty;
   updatePdpShippingCalc();
+  renderPdpReviews(productId);
+  if (typeof gtag === 'function' && prod) {
+    try {
+      gtag('event', 'view_item', {
+        currency: 'USD',
+        value: prod.priceUSD,
+        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
+      });
+    } catch(e) {}
+  }
+  setTimeout(updatePdpStickyBuyBar, 100);
 
   CURRENT_CHECKOUT_CONFIG.subtotalUSD = it.priceUSD * newQty;
   CURRENT_CHECKOUT_CONFIG.shippingUSD = calculateProductShipping(it, newQty);
 
   updateCheckoutModalUI();
+  if (typeof gtag === 'function' && cfg) {
+    try {
+      gtag('event', 'begin_checkout', {
+        currency: 'USD',
+        value: cfg.subtotalUSD + cfg.shippingUSD,
+        items: (cfg.items || []).map(it => ({ item_id: it.id, item_name: it.name, price: it.priceUSD, quantity: it.qty }))
+      });
+    } catch(e) {}
+  }
   if (currentCheckoutPayMethod === 'paypal') {
     renderPaypalButtons();
   }
@@ -3962,6 +4055,147 @@ function getCustomerAddress() {
 }
 
 // ==========================================================================
+
+// ==========================================================================
+// Verified B2B Brand Owner Reviews Renderer (Phase 1 P0)
+// ==========================================================================
+function renderPdpReviews(productId) {
+  const container = document.getElementById('pdpReviewsSection');
+  if (!container) return;
+
+  if (!window.REVIEWS_DATA || !window.REVIEWS_DATA.reviews) {
+    container.innerHTML = '';
+    return;
+  }
+
+  const allReviews = window.REVIEWS_DATA.reviews;
+  const summary = window.REVIEWS_DATA.summary;
+  
+  // Filter for matching style reviews, then fallback to high-value factory reviews
+  let matched = allReviews.filter(r => r.styleId === productId);
+  let otherFactoryReviews = allReviews.filter(r => r.styleId !== productId);
+  let displayReviews = matched.concat(otherFactoryReviews).slice(0, 6);
+
+  const aspectsHtml = summary.aspects.map(asp => `
+    <div class="pdp-aspect-item">
+      <span class="pdp-aspect-name">${asp.label}</span>
+      <span class="pdp-aspect-score">${asp.score}</span>
+    </div>
+  `).join('');
+
+  const reviewsHtml = displayReviews.map(r => `
+    <div class="pdp-review-card">
+      <div>
+        <div class="pdp-rc-top">
+          <div class="pdp-rc-author-info">
+            <strong>${r.author}</strong>
+            <div class="pdp-rc-author-role">${r.role}, ${r.company} · ${r.location}</div>
+          </div>
+          <span class="pdp-rc-badge">✓ ${r.verifiedBadge}</span>
+        </div>
+        <div class="pdp-rc-rating-row">
+          <span class="pdp-rc-stars">★★★★★</span>
+          <span class="pdp-rc-date">${r.date}</span>
+        </div>
+        <div class="pdp-rc-specs-pill">${r.styleName} (${r.sizeColor})</div>
+        <h4 class="pdp-rc-title">${r.title}</h4>
+        <p class="pdp-rc-body">"${r.content}"</p>
+      </div>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="pdp-reviews-summary-card">
+      <div class="pdp-reviews-header-row">
+        <div class="pdp-reviews-title-box">
+          <h3>
+            <span>Verified Brand Reviews &amp; Factory Proofing</span>
+            <span style="font-size: 13px; color: #10b981; font-weight: 700; background: #ecfdf5; padding: 2px 8px; border-radius: 999px;">100% Authentic B2B</span>
+          </h3>
+          <p>Real evaluation feedback from streetwear brand directors, print shops, and creators across US, UK &amp; Europe.</p>
+        </div>
+        <div class="pdp-rating-overview">
+          <span class="pdp-big-score">${summary.averageRating}</span>
+          <div class="pdp-stars-col">
+            <span class="pdp-stars-row">★★★★★</span>
+            <span class="pdp-stars-meta">${summary.totalReviews} Brand Evaluations · ${summary.recommendRate}% Reorder Rate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pdp-aspects-grid">
+        ${aspectsHtml}
+      </div>
+    </div>
+
+    <div class="pdp-reviews-filter-bar">
+      <button type="button" class="btn-review-filter active">All Verified Reviews (${summary.totalReviews})</button>
+      <button type="button" class="btn-review-filter">5-Star Proofing (${summary.breakdown[5]})</button>
+      <button type="button" class="btn-review-filter">USA &amp; UK Brands</button>
+      <button type="button" class="btn-review-filter">Wash &amp; Print Tests</button>
+    </div>
+
+    <div class="pdp-reviews-grid">
+      ${reviewsHtml}
+    </div>
+  `;
+}
+
+// ==========================================================================
+// PDP Global Sticky Buy Bar Controller
+// ==========================================================================
+function updatePdpStickyBuyBar() {
+  const bar = document.getElementById('pdpGlobalStickyBar');
+  const pdp = document.getElementById('productDetailPage');
+  if (!bar || !pdp) return;
+
+  // Only show if PDP page is active
+  if (pdp.style.display === 'none') {
+    bar.classList.remove('active');
+    bar.style.display = 'none';
+    return;
+  }
+
+  bar.style.display = 'block';
+
+  // Check scroll position
+  const scrollContainer = document.getElementById('appScrollContainer');
+  const scrollTop = scrollContainer ? scrollContainer.scrollTop : window.pageYOffset;
+
+  // Show bar when scrolled past 350px (past top hero buy buttons)
+  if (scrollTop > 350) {
+    bar.classList.add('active');
+  } else {
+    bar.classList.remove('active');
+  }
+
+  // Sync data from active product
+  if (activePdpProductId && window.PRODUCTS_DATA && window.PRODUCTS_DATA[activePdpProductId]) {
+    const prod = window.PRODUCTS_DATA[activePdpProductId];
+    const thumbElem = document.getElementById('pdpStickyThumb');
+    const titleElem = document.getElementById('pdpStickyTitle');
+    const variantElem = document.getElementById('pdpStickyVariantBadge');
+    const priceElem = document.getElementById('pdpStickyDeliveredPrice');
+
+    if (thumbElem) thumbElem.src = prod.img || 'assets/products/01D/main/1.jpg';
+    if (titleElem) titleElem.textContent = prod.name;
+    if (variantElem) variantElem.textContent = `Size: ${activePdpSize || 'XL'} · ${activePdpColor || 'Standard'}`;
+    
+    const deliveredElem = document.getElementById('pdpDeliveredTotal');
+    if (priceElem && deliveredElem) {
+      priceElem.textContent = `${deliveredElem.textContent} Delivered`;
+    }
+  }
+}
+
+function initPdpStickyScrollWatcher() {
+  const scrollContainer = document.getElementById('appScrollContainer');
+  if (scrollContainer) {
+    scrollContainer.addEventListener('scroll', updatePdpStickyBuyBar, { passive: true });
+  }
+  window.addEventListener('scroll', updatePdpStickyBuyBar, { passive: true });
+}
+
 // Safe Interactive Drain & Global Exposure (Clarity Zero-Error Assurance)
 // ==========================================================================
 (function() {
