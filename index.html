@@ -1,6 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Force HTTPS Redirect for SSL Security -->
+  <script>
+    if (location.protocol === 'http:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+      location.replace('https://' + location.hostname + location.pathname + location.search + location.hash);
+    }
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=GT-PHW3C52M"></script>
   <script>
@@ -887,7 +893,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=236">
+  <link rel="stylesheet" href="styles.css?v=243">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -895,6 +901,42 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yx2hz06zjl");
+  </script>
+  <!-- Resource Preloading for Faster First Contentful Paint & Low LCP -->
+  <link rel="preload" as="image" href="assets/hero_street_crew.jpg?v=20" fetchpriority="high">
+  <link rel="preload" href="prints_data.js?v=243" as="script">
+  <link rel="preload" href="products_data.js?v=243" as="script">
+  <link rel="preload" href="app.js?v=243" as="script">
+
+  <!-- Safe Early Interactive Stubs & Action Queue (Prevents Dead Clicks & Clarity JS Errors) -->
+  <script>
+    window._earlyQueue = [];
+    window._isAppReady = false;
+    function _createSafeStub(name) {
+      return function() {
+        var args = Array.prototype.slice.call(arguments);
+        if (window._isAppReady && typeof window[name + '_real'] === 'function') {
+          return window[name + '_real'].apply(this, args);
+        }
+        window._earlyQueue.push({ fn: name, args: args, ctx: this });
+      };
+    }
+    
+    var earlyFns = [
+      'switchTab', 'handleCategoryFilter', 'navigateHeroSlide',
+      'openProductDetail', 'closeProductDetail', 'openCartDrawer', 'closeCartDrawer',
+      'openOrdersTrackingModal', 'closeOrdersTrackingModal', 'openContactConciergeModal',
+      'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
+      'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
+      'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
+      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion'
+    ];
+    
+    earlyFns.forEach(function(fn) {
+      var stub = _createSafeStub(fn);
+      window[fn] = stub;
+      window[fn.toLowerCase()] = stub;
+    });
   </script>
 </head>
 <body class="theme-light">
@@ -967,7 +1009,7 @@
               
               <!-- Slide 1: Original Streetwear Lookbook Crew -->
               <div class="banner-slide active" data-slide-index="0">
-                <img src="assets/hero_street_crew.jpg?v=20" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img">
+                <img src="assets/hero_street_crew.jpg?v=20" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark in Lookbook -->
@@ -2920,9 +2962,9 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="prints_data.js?v=242"></script>
-  <script src="products_data.js?v=242"></script>
-  <script src="app.js?v=242"></script>
+  <script src="prints_data.js?v=243"></script>
+  <script src="products_data.js?v=243"></script>
+  <script src="app.js?v=243"></script>
   <script defer src="https://www.paypal.com/sdk/js?client-id=BAAz3g5fsKGU3_ojp5zistPNIdgrqKOuUMnEBgQLVjxx-oYRpUtnSkalIS0Ot6bYA-Eh_Jn11NzBj6tn3k&currency=USD&locale=en_US"></script>
 </body>
 </html>

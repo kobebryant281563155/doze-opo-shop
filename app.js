@@ -3960,3 +3960,65 @@ function getCustomerAddress() {
     remark: document.getElementById('shipRemark')?.value.trim() || ''
   };
 }
+
+// ==========================================================================
+// Safe Interactive Drain & Global Exposure (Clarity Zero-Error Assurance)
+// ==========================================================================
+(function() {
+  window._isAppReady = true;
+  var earlyFns = [
+    'switchTab', 'handleCategoryFilter', 'navigateHeroSlide',
+    'openProductDetail', 'closeProductDetail', 'openCartDrawer', 'closeCartDrawer',
+    'openOrdersTrackingModal', 'closeOrdersTrackingModal', 'openContactConciergeModal',
+    'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
+    'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
+    'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
+    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion'
+  ];
+
+  earlyFns.forEach(function(fn) {
+    if (typeof window[fn] === 'function') {
+      window[fn + '_real'] = window[fn];
+    }
+  });
+
+  // Assign direct global references
+  if (typeof switchTab === 'function') { window.switchTab = switchTab; window.switchtab = switchTab; }
+  if (typeof handleCategoryFilter === 'function') { window.handleCategoryFilter = handleCategoryFilter; window.handlecategoryfilter = handleCategoryFilter; }
+  if (typeof navigateHeroSlide === 'function') { window.navigateHeroSlide = navigateHeroSlide; window.navigateheroslide = navigateHeroSlide; }
+  if (typeof openProductDetail === 'function') window.openProductDetail = openProductDetail;
+  if (typeof closeProductDetail === 'function') window.closeProductDetail = closeProductDetail;
+  if (typeof openCartDrawer === 'function') window.openCartDrawer = openCartDrawer;
+  if (typeof closeCartDrawer === 'function') window.closeCartDrawer = closeCartDrawer;
+  if (typeof openOrdersTrackingModal === 'function') window.openOrdersTrackingModal = openOrdersTrackingModal;
+  if (typeof closeOrdersTrackingModal === 'function') window.closeOrdersTrackingModal = closeOrdersTrackingModal;
+  if (typeof openContactConciergeModal === 'function') window.openContactConciergeModal = openContactConciergeModal;
+  if (typeof closeContactConciergeModal === 'function') window.closeContactConciergeModal = closeContactConciergeModal;
+  if (typeof openContactModal === 'function') window.openContactModal = openContactModal;
+  if (typeof closeContactModal === 'function') window.closeContactModal = closeContactModal;
+  if (typeof openSizeGuideModal === 'function') window.openSizeGuideModal = openSizeGuideModal;
+  if (typeof closeSizeGuideModal === 'function') window.closeSizeGuideModal = closeSizeGuideModal;
+  if (typeof openPdpCustomUpload === 'function') window.openPdpCustomUpload = openPdpCustomUpload;
+  if (typeof openPdpPrintGallery === 'function') window.openPdpPrintGallery = openPdpPrintGallery;
+  if (typeof openPrintShowcaseModal === 'function') window.openPrintShowcaseModal = openPrintShowcaseModal;
+  if (typeof quickOrderBlindBox === 'function') window.quickOrderBlindBox = quickOrderBlindBox;
+  if (typeof inquireCheckoutViaWhatsApp === 'function') window.inquireCheckoutViaWhatsApp = inquireCheckoutViaWhatsApp;
+  if (typeof switchCheckoutPaymentMethod === 'function') window.switchCheckoutPaymentMethod = switchCheckoutPaymentMethod;
+  if (typeof switchBankRegion === 'function') window.switchBankRegion = switchBankRegion;
+
+  // Drain any actions that were clicked while app.js was loading
+  if (window._earlyQueue && window._earlyQueue.length > 0) {
+    var q = window._earlyQueue.slice();
+    window._earlyQueue = [];
+    q.forEach(function(item) {
+      var targetFn = window[item.fn];
+      if (typeof targetFn === 'function') {
+        try {
+          targetFn.apply(item.ctx, item.args);
+        } catch (e) {
+          console.warn('Error running queued action:', item.fn, e);
+        }
+      }
+    });
+  }
+})();
