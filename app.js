@@ -131,17 +131,6 @@ function updateAllPrices() {
   updateCartTotal();
   if (typeof updatePdpShippingCalc === 'function') {
     updatePdpShippingCalc();
-  renderPdpReviews(productId);
-  if (typeof gtag === 'function' && prod) {
-    try {
-      gtag('event', 'view_item', {
-        currency: 'USD',
-        value: prod.priceUSD,
-        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
-      });
-    } catch(e) {}
-  }
-  setTimeout(updatePdpStickyBuyBar, 100);
   }
 }
 
@@ -643,16 +632,6 @@ function setPdpQty(val) {
   });
 
   updatePdpShippingCalc();
-  renderPdpReviews(productId);
-  if (typeof gtag === 'function' && prod) {
-    try {
-      gtag('event', 'view_item', {
-        currency: 'USD',
-        value: prod.priceUSD,
-        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
-      });
-    } catch(e) {}
-  }
   setTimeout(updatePdpStickyBuyBar, 100);
 }
 
@@ -889,17 +868,6 @@ function openProductDetail(productId) {
     p.classList.toggle('active', pQty === 1);
   });
   updatePdpShippingCalc();
-  renderPdpReviews(productId);
-  if (typeof gtag === 'function' && prod) {
-    try {
-      gtag('event', 'view_item', {
-        currency: 'USD',
-        value: prod.priceUSD,
-        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
-      });
-    } catch(e) {}
-  }
-  setTimeout(updatePdpStickyBuyBar, 100);
 
   document.querySelectorAll('.tab-page-content').forEach(p => p.style.display = 'none');
   const pdp = document.getElementById('productDetailPage');
@@ -1949,16 +1917,6 @@ function selectPdpColor(colorName, heroImg, elem) {
   }
 
   updatePdpShippingCalc();
-  renderPdpReviews(productId);
-  if (typeof gtag === 'function' && prod) {
-    try {
-      gtag('event', 'view_item', {
-        currency: 'USD',
-        value: prod.priceUSD,
-        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
-      });
-    } catch(e) {}
-  }
   setTimeout(updatePdpStickyBuyBar, 100);
 }
 
@@ -2555,6 +2513,7 @@ function openPdpCheckout(productId) {
   };
 
   updateCheckoutModalUI();
+  const cfg = CURRENT_CHECKOUT_CONFIG;
   if (typeof gtag === 'function' && cfg) {
     try {
       gtag('event', 'begin_checkout', {
@@ -2619,6 +2578,7 @@ function openCartCheckout() {
   };
 
   updateCheckoutModalUI();
+  const cfg = CURRENT_CHECKOUT_CONFIG;
   if (typeof gtag === 'function' && cfg) {
     try {
       gtag('event', 'begin_checkout', {
@@ -3239,31 +3199,12 @@ function modifyCheckoutSingleQty(delta) {
   it.qty = newQty;
   activePdpQty = newQty;
   updatePdpShippingCalc();
-  renderPdpReviews(productId);
-  if (typeof gtag === 'function' && prod) {
-    try {
-      gtag('event', 'view_item', {
-        currency: 'USD',
-        value: prod.priceUSD,
-        items: [{ item_id: prod.id, item_name: prod.name, price: prod.priceUSD, quantity: 1 }]
-      });
-    } catch(e) {}
-  }
   setTimeout(updatePdpStickyBuyBar, 100);
 
   CURRENT_CHECKOUT_CONFIG.subtotalUSD = it.priceUSD * newQty;
   CURRENT_CHECKOUT_CONFIG.shippingUSD = calculateProductShipping(it, newQty);
 
   updateCheckoutModalUI();
-  if (typeof gtag === 'function' && cfg) {
-    try {
-      gtag('event', 'begin_checkout', {
-        currency: 'USD',
-        value: cfg.subtotalUSD + cfg.shippingUSD,
-        items: (cfg.items || []).map(it => ({ item_id: it.id, item_name: it.name, price: it.priceUSD, quantity: it.qty }))
-      });
-    } catch(e) {}
-  }
   if (currentCheckoutPayMethod === 'paypal') {
     renderPaypalButtons();
   }
@@ -4129,16 +4070,65 @@ function renderPdpReviews(productId) {
     </div>
 
     <div class="pdp-reviews-filter-bar">
-      <button type="button" class="btn-review-filter active">All Verified Reviews (${summary.totalReviews})</button>
-      <button type="button" class="btn-review-filter">5-Star Proofing (${summary.breakdown[5]})</button>
-      <button type="button" class="btn-review-filter">USA &amp; UK Brands</button>
-      <button type="button" class="btn-review-filter">Wash &amp; Print Tests</button>
+      <button type="button" class="btn-review-filter active" onclick="filterPdpReviews('all', this)">All Verified Reviews (${summary.totalReviews})</button>
+      <button type="button" class="btn-review-filter" onclick="filterPdpReviews('5star', this)">5-Star Proofing (${summary.breakdown[5]})</button>
+      <button type="button" class="btn-review-filter" onclick="filterPdpReviews('us-uk', this)">USA &amp; UK Brands</button>
+      <button type="button" class="btn-review-filter" onclick="filterPdpReviews('tests', this)">Wash &amp; Print Tests</button>
     </div>
 
     <div class="pdp-reviews-grid">
       ${reviewsHtml}
     </div>
   `;
+}
+
+function filterPdpReviews(type, btn) {
+  document.querySelectorAll('.btn-review-filter').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const container = document.querySelector('.pdp-reviews-grid');
+  if (!container || !window.REVIEWS_DATA || !window.REVIEWS_DATA.reviews) return;
+
+  const allReviews = window.REVIEWS_DATA.reviews;
+  let filtered = allReviews;
+
+  if (type === '5star') {
+    filtered = allReviews.filter(r => r.rating === 5);
+  } else if (type === 'us-uk') {
+    filtered = allReviews.filter(r => (r.location && (r.location.includes('USA') || r.location.includes('UK') || r.location.includes('United States') || r.location.includes('Miami') || r.location.includes('LA') || r.location.includes('London') || r.location.includes('New York') || r.location.includes('Austin'))));
+  } else if (type === 'tests') {
+    filtered = allReviews.filter(r => (r.content && (/wash|print|puff|shrink|fade/i).test(r.content)));
+  }
+
+  const reviewsHtml = filtered.slice(0, 8).map(r => `
+    <div class="pdp-review-card">
+      <div>
+        <div class="pdp-rc-top">
+          <div class="pdp-rc-author-info">
+            <strong>${r.author}</strong>
+            <div class="pdp-rc-author-role">${r.role}, ${r.company} · ${r.location}</div>
+          </div>
+          <span class="pdp-rc-badge">✓ ${r.verifiedBadge}</span>
+        </div>
+        <div class="pdp-rc-rating-row">
+          <span class="pdp-rc-stars">★★★★★</span>
+          <span class="pdp-rc-date">${r.date}</span>
+        </div>
+        <div class="pdp-rc-specs-pill">${r.styleName} (${r.sizeColor})</div>
+        <h4 class="pdp-rc-title">${r.title}</h4>
+        <p class="pdp-rc-body">"${r.content}"</p>
+      </div>
+    </div>
+  `).join('');
+
+  container.innerHTML = reviewsHtml;
+}
+
+function scrollToPdpReviews() {
+  const el = document.getElementById('pdpReviewsSection');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 // ==========================================================================
@@ -4207,7 +4197,7 @@ function initPdpStickyScrollWatcher() {
     'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
     'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
     'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion'
+    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews'
   ];
 
   earlyFns.forEach(function(fn) {
@@ -4239,6 +4229,8 @@ function initPdpStickyScrollWatcher() {
   if (typeof inquireCheckoutViaWhatsApp === 'function') window.inquireCheckoutViaWhatsApp = inquireCheckoutViaWhatsApp;
   if (typeof switchCheckoutPaymentMethod === 'function') window.switchCheckoutPaymentMethod = switchCheckoutPaymentMethod;
   if (typeof switchBankRegion === 'function') window.switchBankRegion = switchBankRegion;
+  if (typeof scrollToPdpReviews === 'function') window.scrollToPdpReviews = scrollToPdpReviews;
+  if (typeof filterPdpReviews === 'function') window.filterPdpReviews = filterPdpReviews;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {
