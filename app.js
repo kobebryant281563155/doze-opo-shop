@@ -4363,6 +4363,36 @@ function handleTechPackLeadSubmit(event) {
     }
   });
 
+
+// 1-Piece Sample Pack Modal Handlers
+function openSamplePackModal() {
+  const modal = document.getElementById('samplePackModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.classList.add('modal-open');
+    if (typeof gtag === 'function') {
+      gtag('event', 'view_sample_pack_modal', {
+        event_category: 'B2B Lead',
+        event_label: '1-Piece Sample Pack'
+      });
+    }
+  }
+}
+
+function closeSamplePackModal() {
+  const modal = document.getElementById('samplePackModal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
+}
+
+function handleSampleModalBackdrop(e) {
+  if (e && e.target && e.target.id === 'samplePackModal') {
+    closeSamplePackModal();
+  }
+}
+
   // Assign direct global references
   if (typeof switchTab === 'function') { window.switchTab = switchTab; window.switchtab = switchTab; }
   if (typeof handleCategoryFilter === 'function') { window.handleCategoryFilter = handleCategoryFilter; window.handlecategoryfilter = handleCategoryFilter; }
@@ -4391,6 +4421,9 @@ function handleTechPackLeadSubmit(event) {
   if (typeof openTechPackDrawer === 'function') window.openTechPackDrawer = openTechPackDrawer;
   if (typeof closeTechPackDrawer === 'function') window.closeTechPackDrawer = closeTechPackDrawer;
   if (typeof handleTechPackLeadSubmit === 'function') window.handleTechPackLeadSubmit = handleTechPackLeadSubmit;
+  if (typeof openSamplePackModal === 'function') window.openSamplePackModal = openSamplePackModal;
+  if (typeof closeSamplePackModal === 'function') window.closeSamplePackModal = closeSamplePackModal;
+  if (typeof handleSampleModalBackdrop === 'function') window.handleSampleModalBackdrop = handleSampleModalBackdrop;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {

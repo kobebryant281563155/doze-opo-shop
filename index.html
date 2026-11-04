@@ -893,7 +893,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=248">
+  <link rel="stylesheet" href="styles.css?v=249">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -903,11 +903,11 @@
     })(window, document, "clarity", "script", "yx2hz06zjl");
   </script>
   <!-- Resource Preloading for Faster First Contentful Paint & Low LCP -->
-  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=248" fetchpriority="high">
-  <link rel="preload" href="reviews_data.js?v=248" as="script">
-  <link rel="preload" href="prints_data.js?v=248" as="script">
-  <link rel="preload" href="products_data.js?v=248" as="script">
-  <link rel="preload" href="app.js?v=248" as="script">
+  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=249" fetchpriority="high">
+  <link rel="preload" href="reviews_data.js?v=249" as="script">
+  <link rel="preload" href="prints_data.js?v=249" as="script">
+  <link rel="preload" href="products_data.js?v=249" as="script">
+  <link rel="preload" href="app.js?v=249" as="script">
 
   <!-- Safe Early Interactive Stubs & Action Queue (Prevents Dead Clicks & Clarity JS Errors) -->
   <script>
@@ -930,7 +930,7 @@
       'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
       'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
       'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit'
+      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'openSamplePackModal', 'closeSamplePackModal', 'handleSampleModalBackdrop', 'handleTechPackLeadSubmit'
     ];
     
     earlyFns.forEach(function(fn) {
@@ -1016,7 +1016,7 @@
               
               <!-- Slide 1: Original Streetwear Lookbook Crew -->
               <div class="banner-slide active" data-slide-index="0">
-                <img src="assets/hero_street_crew.webp?v=248" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
+                <img src="assets/hero_street_crew.webp?v=249" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark in Lookbook -->
@@ -1051,7 +1051,7 @@
 
               <!-- Slide 2: Garment Manufacturing Factory -->
               <div class="banner-slide" data-slide-index="1">
-                <img src="assets/hero_factory_production.webp?v=248" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img" loading="lazy" decoding="async">
+                <img src="assets/hero_factory_production.webp?v=249" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1086,7 +1086,7 @@
 
               <!-- Slide 3: Warehouse Packaging & Air Dispatch -->
               <div class="banner-slide" data-slide-index="2">
-                <img src="assets/hero_warehouse_dispatch.webp?v=248" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img" loading="lazy" decoding="async">
+                <img src="assets/hero_warehouse_dispatch.webp?v=249" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1131,6 +1131,24 @@
               <span class="hero-dot" onclick="goToHeroSlide(1)"></span>
               <span class="hero-dot" onclick="goToHeroSlide(2)"></span>
             </div>
+
+            <!-- Hero Floating 1-Piece Sample Pack Guarantee Strip -->
+            <div class="hero-sample-pack-banner" onclick="openSamplePackModal()" title="Order 1-Piece Sample Pack ($4.99~$13.99)">
+              <div class="sample-pack-banner-inner">
+                <div class="sample-pack-tag-col">
+                  <span class="sample-pulse-dot"></span>
+                  <span class="sample-pill-tag">1-PIECE SAMPLE PACK</span>
+                </div>
+                <div class="sample-pack-msg-col">
+                  <span class="sample-pack-headline">Worldwide Air Express &bull; <strong>Sample Fee 100% Refundable on Bulk Order</strong></span>
+                  <span class="sample-pack-subtext">Direct Factory Blanks &bull; 230G–510G Heavyweight Cotton &bull; 3–5 Days Door Delivery</span>
+                </div>
+                <div class="sample-pack-cta-btn">
+                  <span>Order Sample ($4.99+)</span>
+                  <span class="sample-cta-arrow">&rarr;</span>
+                </div>
+              </div>
+            </div>
           </section>
 
           <!-- Quick Category Navigation (Two Balanced Rows: 4 Tops / 3 Outerwear & Bottoms) -->
@@ -1138,28 +1156,28 @@
             <div class="quick-nav-row nav-row-1">
               <div class="quick-nav-item" onclick="handleCategoryFilter('tee')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tee_item.webp?v=248" alt="Heavy Tees">
+                  <img src="assets/tee_item.webp?v=249" alt="Heavy Tees">
                 </div>
                 <span class="nav-title">Heavy Tees</span>
                 <span class="nav-en">Boxy Fit</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('tank')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tank_item.webp?v=248" alt="Tank Tops">
+                  <img src="assets/tank_item.webp?v=249" alt="Tank Tops">
                 </div>
                 <span class="nav-title">Tank Tops</span>
                 <span class="nav-en">Raw Cut / Vest</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('crewneck')">
                 <div class="nav-thumb-box">
-                  <img src="assets/crewneck_item.webp?v=248" alt="Crewneck Sweatshirt">
+                  <img src="assets/crewneck_item.webp?v=249" alt="Crewneck Sweatshirt">
                 </div>
                 <span class="nav-title">Crewneck Sweatshirt</span>
                 <span class="nav-en">Classic Cut</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('hoodie')">
                 <div class="nav-thumb-box">
-                  <img src="assets/hoodie_item.webp?v=248" alt="Heavy Hoodies">
+                  <img src="assets/hoodie_item.webp?v=249" alt="Heavy Hoodies">
                 </div>
                 <span class="nav-title">Heavy Hoodies</span>
                 <span class="nav-en">Oversize Cut</span>
@@ -1169,45 +1187,45 @@
             <div class="quick-nav-row nav-row-2">
               <div class="quick-nav-item" onclick="handleCategoryFilter('jacket')">
                 <div class="nav-thumb-box">
-                  <img src="assets/zip_hoodie.webp?v=248" alt="Zip Jackets">
+                  <img src="assets/zip_hoodie.webp?v=249" alt="Zip Jackets">
                 </div>
                 <span class="nav-title">Zip Jackets</span>
                 <span class="nav-en">Metal Zippers</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('pants')">
                 <div class="nav-thumb-box">
-                  <img src="assets/casual_pants_item.webp?v=248" alt="Pants">
+                  <img src="assets/casual_pants_item.webp?v=249" alt="Pants">
                 </div>
                 <span class="nav-title">Pants</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('jeans')">
                 <div class="nav-thumb-box">
-                  <img src="assets/jeans_item.webp?v=248" alt="Jeans">
+                  <img src="assets/jeans_item.webp?v=249" alt="Jeans">
                 </div>
                 <span class="nav-title">Jeans</span>
                 <span class="nav-en">Denim &amp; Washed</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('shorts')">
                 <div class="nav-thumb-box">
-                  <img src="assets/shorts_item.webp?v=248" alt="Street Shorts">
+                  <img src="assets/shorts_item.webp?v=249" alt="Street Shorts">
                 </div>
                 <span class="nav-title">Street Shorts</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
               </div>
             </div>
 
-            <!-- Fb Collection Featured Category Pill -->
-            <div class="quick-nav-fb-pill" onclick="handleCategoryFilter('all')" title="Order 1-Piece Sample Pack (only $15~$35)">
+            <!-- 1-Piece Sample Pack Featured Banner Pill -->
+            <div class="quick-nav-fb-pill" onclick="openSamplePackModal()" title="Order 1-Piece Sample Pack ($4.99~$13.99)">
               <div class="fb-pill-main-content">
                 <span class="fb-pill-badge">SAMPLE PACK</span>
                 <div class="fb-pill-text-col">
-                  <span class="fb-pill-title">Order 1-Piece Sample Pack (only $15~$35)</span>
-                  <span class="fb-pill-desc">Fast Air Express &bull; 100% Refundable on Bulk</span>
+                  <span class="fb-pill-title">Order 1-Piece Sample Pack ($4.99~$13.99)</span>
+                  <span class="fb-pill-desc">Worldwide Air Express &bull; Sample Fee 100% Refundable on Bulk Order</span>
                 </div>
               </div>
               <div class="fb-pill-action">
-                <span class="fb-pill-action-text">Buy Sample</span>
+                <span class="fb-pill-action-text">Get Samples</span>
                 <span class="fb-pill-arrow">&rarr;</span>
               </div>
             </div>
@@ -1668,6 +1686,11 @@
                   <span id="pdpOrderBtnText">Order 1-PC Sample ($4.99)</span>
                 </button>
               </div>
+              <!-- Sample Order Trust Guarantee Strip -->
+              <div class="pdp-sample-guarantee-strip">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#38bdf8" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                <span>Worldwide Air Express &bull; <strong>Sample Fee 100% Refundable on Bulk Order</strong></span>
+              </div>
             </div>
           </div>
 
@@ -2034,7 +2057,7 @@
       </div>
       <div class="modal-body">
         <div class="modal-media-wrap">
-          <img id="modalProdImg" src="assets/hoodie_item.webp?v=248" alt="Product Image">
+          <img id="modalProdImg" src="assets/hoodie_item.webp?v=249" alt="Product Image">
         </div>
         <div class="modal-price-strip">
           <div class="mp-price">
@@ -3003,10 +3026,10 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="reviews_data.js?v=248"></script>
-  <script src="prints_data.js?v=248"></script>
-  <script src="products_data.js?v=248"></script>
-  <script src="app.js?v=248"></script>
+  <script src="reviews_data.js?v=249"></script>
+  <script src="prints_data.js?v=249"></script>
+  <script src="products_data.js?v=249"></script>
+  <script src="app.js?v=249"></script>
 
   <!-- B2B Tech Pack & Wholesale Tier Pricing Slide-in Drawer -->
   <aside id="b2bTechPackDrawer" class="b2b-lead-drawer" style="display: none;" aria-label="B2B Tech Pack Download">
@@ -3028,6 +3051,112 @@
     </div>
     <div class="lead-drawer-meta">🔒 Direct factory resource for streetwear brand owners and creators.</div>
   </aside>
+
+
+  <!-- 1-Piece Sample Pack Interactive Modal -->
+  <div id="samplePackModal" class="sample-pack-modal-backdrop" style="display: none;" onclick="handleSampleModalBackdrop(event)">
+    <div class="sample-pack-modal-content">
+      <div class="sample-pack-modal-header">
+        <div class="sample-modal-title-col">
+          <span class="sample-modal-badge">FACTORY SAMPLING PROGRAM</span>
+          <h3 class="sample-modal-title">1-Piece Sample Pack (Air Express)</h3>
+          <p class="sample-modal-desc">Inspect premium cotton handfeel, drape weight, and twin-needle collar rib before placing bulk production.</p>
+        </div>
+        <button type="button" class="sample-modal-close" onclick="closeSamplePackModal()" title="Close">&times;</button>
+      </div>
+
+      <!-- Core Guarantee Callout Box -->
+      <div class="sample-guarantee-card">
+        <div class="guarantee-card-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#38bdf8" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div class="guarantee-card-text">
+          <h4 class="guarantee-card-title">Worldwide Air Express &bull; 100% Refundable on Bulk</h4>
+          <p class="guarantee-card-sub">Order 1 piece of any flagship blank. When you place your first production run (50+ pcs), your sample costs are <strong>100% credited back</strong> onto your bulk invoice.</p>
+        </div>
+      </div>
+
+      <!-- Flagship Sample Blanks Selector Grid -->
+      <div class="sample-blanks-section">
+        <h4 class="sample-section-label">Select a Flagship Sample Blank:</h4>
+        <div class="sample-blanks-grid">
+          <!-- Item 1: 01D -->
+          <div class="sample-blank-card" onclick="openProductDetail('01D'); closeSamplePackModal();">
+            <div class="sample-blank-thumb">
+              <img src="assets/products/01D/main/1.jpg" alt="01D 230G Boxy Tee" loading="lazy">
+              <span class="sample-blank-tag">BESTSELLER TEE</span>
+            </div>
+            <div class="sample-blank-info">
+              <strong class="sample-blank-name">01D 230G Boxy Tee</strong>
+              <span class="sample-blank-specs">230GSM &bull; 100% Combed Cotton &bull; Bound Collar</span>
+              <div class="sample-blank-pricing">
+                <span class="sample-blank-price">$4.99</span>
+                <span class="sample-blank-action">Select Sample &rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: 04C -->
+          <div class="sample-blank-card" onclick="openProductDetail('04C'); closeSamplePackModal();">
+            <div class="sample-blank-thumb">
+              <img src="assets/products/04C/main/1.jpg" alt="04C 280G Heavy Wash Tee" loading="lazy">
+              <span class="sample-blank-tag">ACID WASH</span>
+            </div>
+            <div class="sample-blank-info">
+              <strong class="sample-blank-name">04C 280G Vintage Washed Tee</strong>
+              <span class="sample-blank-specs">280GSM &bull; Vintage Enzyme Wash &bull; Drop Shoulder</span>
+              <div class="sample-blank-pricing">
+                <span class="sample-blank-price">$7.99</span>
+                <span class="sample-blank-action">Select Sample &rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: 360 -->
+          <div class="sample-blank-card" onclick="openProductDetail('360'); closeSamplePackModal();">
+            <div class="sample-blank-thumb">
+              <img src="assets/products/360/main/1.jpg" alt="360 360G French Terry Hoodie" loading="lazy">
+              <span class="sample-blank-tag">HEAVY HOODIE</span>
+            </div>
+            <div class="sample-blank-info">
+              <strong class="sample-blank-name">360 360G French Terry Hoodie</strong>
+              <span class="sample-blank-specs">360GSM &bull; 100% Cotton Loopback &bull; Double Hood</span>
+              <div class="sample-blank-pricing">
+                <span class="sample-blank-price">$13.99</span>
+                <span class="sample-blank-action">Select Sample &rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: K350106 -->
+          <div class="sample-blank-card" onclick="openProductDetail('K350106'); closeSamplePackModal();">
+            <div class="sample-blank-thumb">
+              <img src="assets/products/K350106/main/1.jpg" alt="K350106 350G Heavy Sweatpants" loading="lazy">
+              <span class="sample-blank-tag">STREET PANTS</span>
+            </div>
+            <div class="sample-blank-info">
+              <strong class="sample-blank-name">K350106 350G Heavy Sweatpants</strong>
+              <span class="sample-blank-specs">350GSM &bull; Deep Zipper Pockets &bull; Straight Cut</span>
+              <div class="sample-blank-pricing">
+                <span class="sample-blank-price">$12.99</span>
+                <span class="sample-blank-action">Select Sample &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Print / Tech Pack VIP Callout -->
+      <div class="sample-modal-footer">
+        <div class="sample-footer-text">
+          <span>Need custom logo printing, custom wash color, or embroidery on your 1-piece sample?</span>
+        </div>
+        <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO%2C%20I%20would%20like%20to%20order%20a%20custom%201-piece%20sample%20pack%20with%20my%20logo.%20Please%20advise%20pricing%20and%20air%20express%20shipping." target="_blank" rel="noopener noreferrer" class="sample-whatsapp-btn">
+          💬 Chat with Factory Master (+86 185 2068 2738)
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script defer src="https://www.paypal.com/sdk/js?client-id=BAAz3g5fsKGU3_ojp5zistPNIdgrqKOuUMnEBgQLVjxx-oYRpUtnSkalIS0Ot6bYA-Eh_Jn11NzBj6tn3k&currency=USD&locale=en_US"></script>
   <!-- PDP Global Sticky Buy Bar (Appears when scrolled past hero CTA) -->
