@@ -893,7 +893,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=245">
+  <link rel="stylesheet" href="styles.css?v=246">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -903,11 +903,11 @@
     })(window, document, "clarity", "script", "yx2hz06zjl");
   </script>
   <!-- Resource Preloading for Faster First Contentful Paint & Low LCP -->
-  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=245" fetchpriority="high">
-  <link rel="preload" href="reviews_data.js?v=245" as="script">
-  <link rel="preload" href="prints_data.js?v=245" as="script">
-  <link rel="preload" href="products_data.js?v=245" as="script">
-  <link rel="preload" href="app.js?v=245" as="script">
+  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=246" fetchpriority="high">
+  <link rel="preload" href="reviews_data.js?v=246" as="script">
+  <link rel="preload" href="prints_data.js?v=246" as="script">
+  <link rel="preload" href="products_data.js?v=246" as="script">
+  <link rel="preload" href="app.js?v=246" as="script">
 
   <!-- Safe Early Interactive Stubs & Action Queue (Prevents Dead Clicks & Clarity JS Errors) -->
   <script>
@@ -930,7 +930,7 @@
       'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
       'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
       'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews'
+      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit'
     ];
     
     earlyFns.forEach(function(fn) {
@@ -969,6 +969,12 @@
         </a>
       </div>
       <div class="desktop-nav-actions">
+        <a href="https://www.instagram.com/dozeopo" target="_blank" rel="noopener noreferrer" class="desktop-social-icon-btn" title="Follow DOZE OPO on Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@dozeopo" target="_blank" rel="noopener noreferrer" class="desktop-social-icon-btn" title="Follow DOZE OPO on TikTok" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </a>
         <button type="button" class="desktop-search-toggle" id="desktopSearchToggle" onclick="document.querySelector('.search-inner input').focus(); switchTab('home');" title="Search Products">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </button>
@@ -1010,7 +1016,7 @@
               
               <!-- Slide 1: Original Streetwear Lookbook Crew -->
               <div class="banner-slide active" data-slide-index="0">
-                <img src="assets/hero_street_crew.webp?v=245" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
+                <img src="assets/hero_street_crew.webp?v=246" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark in Lookbook -->
@@ -1045,7 +1051,7 @@
 
               <!-- Slide 2: Garment Manufacturing Factory -->
               <div class="banner-slide" data-slide-index="1">
-                <img src="assets/hero_factory_production.webp?v=245" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img">
+                <img src="assets/hero_factory_production.webp?v=246" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1080,7 +1086,7 @@
 
               <!-- Slide 3: Warehouse Packaging & Air Dispatch -->
               <div class="banner-slide" data-slide-index="2">
-                <img src="assets/hero_warehouse_dispatch.webp?v=245" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img">
+                <img src="assets/hero_warehouse_dispatch.webp?v=246" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1132,28 +1138,28 @@
             <div class="quick-nav-row nav-row-1">
               <div class="quick-nav-item" onclick="handleCategoryFilter('tee')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tee_item.webp?v=245" alt="Heavy Tees">
+                  <img src="assets/tee_item.webp?v=246" alt="Heavy Tees">
                 </div>
                 <span class="nav-title">Heavy Tees</span>
                 <span class="nav-en">Boxy Fit</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('tank')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tank_item.webp?v=245" alt="Tank Tops">
+                  <img src="assets/tank_item.webp?v=246" alt="Tank Tops">
                 </div>
                 <span class="nav-title">Tank Tops</span>
                 <span class="nav-en">Raw Cut / Vest</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('crewneck')">
                 <div class="nav-thumb-box">
-                  <img src="assets/crewneck_item.webp?v=245" alt="Crewneck Sweatshirt">
+                  <img src="assets/crewneck_item.webp?v=246" alt="Crewneck Sweatshirt">
                 </div>
                 <span class="nav-title">Crewneck Sweatshirt</span>
                 <span class="nav-en">Classic Cut</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('hoodie')">
                 <div class="nav-thumb-box">
-                  <img src="assets/hoodie_item.webp?v=245" alt="Heavy Hoodies">
+                  <img src="assets/hoodie_item.webp?v=246" alt="Heavy Hoodies">
                 </div>
                 <span class="nav-title">Heavy Hoodies</span>
                 <span class="nav-en">Oversize Cut</span>
@@ -1163,28 +1169,28 @@
             <div class="quick-nav-row nav-row-2">
               <div class="quick-nav-item" onclick="handleCategoryFilter('jacket')">
                 <div class="nav-thumb-box">
-                  <img src="assets/zip_hoodie.webp?v=245" alt="Zip Jackets">
+                  <img src="assets/zip_hoodie.webp?v=246" alt="Zip Jackets">
                 </div>
                 <span class="nav-title">Zip Jackets</span>
                 <span class="nav-en">Metal Zippers</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('pants')">
                 <div class="nav-thumb-box">
-                  <img src="assets/casual_pants_item.webp?v=245" alt="Pants">
+                  <img src="assets/casual_pants_item.webp?v=246" alt="Pants">
                 </div>
                 <span class="nav-title">Pants</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('jeans')">
                 <div class="nav-thumb-box">
-                  <img src="assets/jeans_item.webp?v=245" alt="Jeans">
+                  <img src="assets/jeans_item.webp?v=246" alt="Jeans">
                 </div>
                 <span class="nav-title">Jeans</span>
                 <span class="nav-en">Denim &amp; Washed</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('shorts')">
                 <div class="nav-thumb-box">
-                  <img src="assets/shorts_item.webp?v=245" alt="Street Shorts">
+                  <img src="assets/shorts_item.webp?v=246" alt="Street Shorts">
                 </div>
                 <span class="nav-title">Street Shorts</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
@@ -1340,6 +1346,19 @@
               <a href="terms-of-service.html" style="color: #64748b; text-decoration: none;">Terms of Service</a>
               <span style="color: #cbd5e1;">&bull;</span>
               <a href="contact-us.html" style="color: #64748b; text-decoration: none;">Contact Us</a>
+            </div>
+            <div class="footer-social-strip">
+              <span class="social-strip-label">Official Factory Studio &amp; Proofing Drops:</span>
+              <div class="social-strip-links">
+                <a href="https://www.instagram.com/dozeopo" target="_blank" rel="noopener noreferrer" class="social-strip-btn" title="Follow @dozeopo on Instagram">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  <span>Instagram @dozeopo</span>
+                </a>
+                <a href="https://www.tiktok.com/@dozeopo" target="_blank" rel="noopener noreferrer" class="social-strip-btn" title="Follow @dozeopo on TikTok">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                  <span>TikTok @dozeopo</span>
+                </a>
+              </div>
             </div>
             <div class="payment-badges">
               <span class="pay-chip">WorldFirst</span>
@@ -1847,6 +1866,19 @@
               <span style="color: #cbd5e1;">&bull;</span>
               <a href="contact-us.html" style="color: #64748b; text-decoration: none;">Contact Us</a>
             </div>
+            <div class="footer-social-strip">
+              <span class="social-strip-label">Official Factory Studio &amp; Proofing Drops:</span>
+              <div class="social-strip-links">
+                <a href="https://www.instagram.com/dozeopo" target="_blank" rel="noopener noreferrer" class="social-strip-btn" title="Follow @dozeopo on Instagram">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  <span>Instagram @dozeopo</span>
+                </a>
+                <a href="https://www.tiktok.com/@dozeopo" target="_blank" rel="noopener noreferrer" class="social-strip-btn" title="Follow @dozeopo on TikTok">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                  <span>TikTok @dozeopo</span>
+                </a>
+              </div>
+            </div>
             <div class="payment-badges">
               <span class="pay-chip">WorldFirst</span>
               <span class="pay-chip">Payoneer</span>
@@ -2002,7 +2034,7 @@
       </div>
       <div class="modal-body">
         <div class="modal-media-wrap">
-          <img id="modalProdImg" src="assets/hoodie_item.webp?v=245" alt="Product Image">
+          <img id="modalProdImg" src="assets/hoodie_item.webp?v=246" alt="Product Image">
         </div>
         <div class="modal-price-strip">
           <div class="mp-price">
@@ -2971,10 +3003,32 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="reviews_data.js?v=245"></script>
-  <script src="prints_data.js?v=245"></script>
-  <script src="products_data.js?v=245"></script>
-  <script src="app.js?v=245"></script>
+  <script src="reviews_data.js?v=246"></script>
+  <script src="prints_data.js?v=246"></script>
+  <script src="products_data.js?v=246"></script>
+  <script src="app.js?v=246"></script>
+
+  <!-- B2B Tech Pack & Wholesale Tier Pricing Slide-in Drawer -->
+  <aside id="b2bTechPackDrawer" class="b2b-lead-drawer" style="display: none;" aria-label="B2B Tech Pack Download">
+    <button type="button" class="lead-drawer-close" onclick="closeTechPackDrawer()" title="Close">&times;</button>
+    <div class="lead-drawer-badge">⚡ VIP B2B RESOURCE</div>
+    <h4 class="lead-drawer-title">2026 Streetwear Tech Pack &amp; Wholesale Price Sheet</h4>
+    <p class="lead-drawer-desc">Download complete fabric swatch specs (230G–510G), colorfast wash test reports, and bulk volume discount tiers (Free PDF).</p>
+    <form id="techPackLeadForm" onsubmit="handleTechPackLeadSubmit(event)">
+      <div class="lead-input-row">
+        <input type="email" id="techPackEmailInput" class="lead-input-field" placeholder="Enter business or brand email" required autocomplete="email">
+        <button type="submit" class="lead-submit-btn" id="techPackSubmitBtn">Download PDF</button>
+      </div>
+    </form>
+    <div id="techPackLeadSuccess" class="lead-success-msg" style="display: none;">
+      <span class="lead-success-txt">✓ Tech Pack guide queued! Check your email or chat with our factory directly:</span>
+      <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO%2C%20I%20requested%20the%202026%20Tech%20Pack%20and%20Wholesale%20Price%20Sheet.%20Please%20send%20the%20PDF%20here." target="_blank" rel="noopener noreferrer" class="lead-whatsapp-btn">
+        💬 Chat on WhatsApp (+86 185 2068 2738)
+      </a>
+    </div>
+    <div class="lead-drawer-meta">🔒 Direct factory resource for streetwear brand owners and creators.</div>
+  </aside>
+
   <script defer src="https://www.paypal.com/sdk/js?client-id=BAAz3g5fsKGU3_ojp5zistPNIdgrqKOuUMnEBgQLVjxx-oYRpUtnSkalIS0Ot6bYA-Eh_Jn11NzBj6tn3k&currency=USD&locale=en_US"></script>
   <!-- PDP Global Sticky Buy Bar (Appears when scrolled past hero CTA) -->
   <aside class="pdp-global-sticky-bar" id="pdpGlobalStickyBar" style="display: none;">

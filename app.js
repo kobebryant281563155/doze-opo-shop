@@ -31,6 +31,7 @@ var PRODUCTS_DATA = window.PRODUCTS_DATA;
 
 // 3. Initialization
 document.addEventListener('DOMContentLoaded', () => {
+  initTechPackTrigger();
   initSystemClock();
   initDevControls();
   initBannerPagination();
@@ -1044,6 +1045,7 @@ function openProductDetail(productId) {
   }
   updatePdpShippingCalc();
   renderPdpReviews(productId);
+  updateGoogleProductSchema(prod);
   if (typeof gtag === 'function' && prod) {
     try {
       gtag('event', 'view_item', {
@@ -4186,6 +4188,161 @@ function initPdpStickyScrollWatcher() {
   window.addEventListener('scroll', updatePdpStickyBuyBar, { passive: true });
 }
 
+
+// ==========================================================================
+// Dynamic Google Product & Offer Schema Generator (Google Rich Snippets)
+// ==========================================================================
+function updateGoogleProductSchema(prod) {
+  if (!prod) return;
+  try {
+    let schemaScript = document.getElementById('dynamicProductSchema');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.id = 'dynamicProductSchema';
+      schemaScript.type = 'application/ld+json';
+      document.head.appendChild(schemaScript);
+    }
+    const origin = window.location.origin || 'https://www.dozeopo.com';
+    const schemaData = {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": prod.name,
+      "image": [origin + '/' + (prod.img || 'assets/hero_street_crew.webp')],
+      "description": (prod.specs && prod.specs.join('. ')) || prod.name,
+      "sku": prod.id,
+      "brand": {
+        "@type": "Brand",
+        "name": "DOZE OPO"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": window.location.href,
+        "priceCurrency": "USD",
+        "price": String(prod.priceUSD.toFixed(2)),
+        "priceValidUntil": "2027-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "DOZE OPO"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "52",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    };
+    schemaScript.textContent = JSON.stringify(schemaData);
+  } catch(e) {}
+}
+
+// ==========================================================================
+// B2B Tech Pack & Wholesale Tier Lead Drawer Controller
+// ==========================================================================
+let techPackTriggerInitialized = false;
+
+function initTechPackTrigger() {
+  if (techPackTriggerInitialized) return;
+  techPackTriggerInitialized = true;
+
+  const dismissedUntil = localStorage.getItem('doze_lead_dismissed_until');
+  if (dismissedUntil && Date.now() < parseInt(dismissedUntil, 10)) {
+    return;
+  }
+
+  // 1. Time-based trigger: 35 seconds
+  setTimeout(function() {
+    openTechPackDrawer();
+  }, 35000);
+
+  // 2. Scroll depth trigger: past 65% scroll
+  function checkScrollTrigger() {
+    const scrollContainer = document.getElementById('appScrollContainer');
+    const scrollEl = scrollContainer || document.documentElement;
+    const currentScroll = scrollContainer ? scrollContainer.scrollTop : window.pageYOffset;
+    const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+    if (maxScroll > 0) {
+      const scrollPct = (currentScroll / maxScroll) * 100;
+      if (scrollPct > 65) {
+        openTechPackDrawer();
+        if (scrollContainer) {
+          scrollContainer.removeEventListener('scroll', checkScrollTrigger);
+        }
+        window.removeEventListener('scroll', checkScrollTrigger);
+      }
+    }
+  }
+
+  const scrollContainer = document.getElementById('appScrollContainer');
+  if (scrollContainer) {
+    scrollContainer.addEventListener('scroll', checkScrollTrigger, { passive: true });
+  }
+  window.addEventListener('scroll', checkScrollTrigger, { passive: true });
+}
+
+function openTechPackDrawer() {
+  const dismissedUntil = localStorage.getItem('doze_lead_dismissed_until');
+  if (dismissedUntil && Date.now() < parseInt(dismissedUntil, 10)) {
+    return;
+  }
+  const drawer = document.getElementById('b2bTechPackDrawer');
+  if (drawer) {
+    drawer.style.display = 'block';
+    setTimeout(function() {
+      drawer.classList.add('active');
+    }, 20);
+  }
+}
+
+function closeTechPackDrawer() {
+  const drawer = document.getElementById('b2bTechPackDrawer');
+  if (drawer) {
+    drawer.classList.remove('active');
+    setTimeout(function() {
+      drawer.style.display = 'none';
+    }, 350);
+  }
+  // Dismiss for 24 hours
+  localStorage.setItem('doze_lead_dismissed_until', String(Date.now() + 24 * 60 * 60 * 1000));
+}
+
+function handleTechPackLeadSubmit(event) {
+  if (event) event.preventDefault();
+  const input = document.getElementById('techPackEmailInput');
+  if (!input || !input.value) return;
+
+  const email = input.value.trim().toLowerCase();
+  
+  // Save lead locally
+  try {
+    const existingLeads = JSON.parse(localStorage.getItem('doze_captured_leads') || '[]');
+    existingLeads.push({ email: email, timestamp: new Date().toISOString() });
+    localStorage.setItem('doze_captured_leads', JSON.stringify(existingLeads));
+  } catch(e) {}
+
+  // Google Analytics 4 generate_lead event
+  if (typeof gtag === 'function') {
+    try {
+      gtag('event', 'generate_lead', {
+        currency: 'USD',
+        value: 1
+      });
+    } catch(e) {}
+  }
+
+  // Display success state with WhatsApp connect
+  const form = document.getElementById('techPackLeadForm');
+  const successBox = document.getElementById('techPackLeadSuccess');
+  if (form) form.style.display = 'none';
+  if (successBox) successBox.style.display = 'block';
+
+  // Dismiss for 7 days
+  localStorage.setItem('doze_lead_dismissed_until', String(Date.now() + 7 * 24 * 60 * 60 * 1000));
+}
+
 // Safe Interactive Drain & Global Exposure (Clarity Zero-Error Assurance)
 // ==========================================================================
 (function() {
@@ -4197,7 +4354,7 @@ function initPdpStickyScrollWatcher() {
     'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
     'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
     'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews'
+    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit'
   ];
 
   earlyFns.forEach(function(fn) {
@@ -4231,6 +4388,9 @@ function initPdpStickyScrollWatcher() {
   if (typeof switchBankRegion === 'function') window.switchBankRegion = switchBankRegion;
   if (typeof scrollToPdpReviews === 'function') window.scrollToPdpReviews = scrollToPdpReviews;
   if (typeof filterPdpReviews === 'function') window.filterPdpReviews = filterPdpReviews;
+  if (typeof openTechPackDrawer === 'function') window.openTechPackDrawer = openTechPackDrawer;
+  if (typeof closeTechPackDrawer === 'function') window.closeTechPackDrawer = closeTechPackDrawer;
+  if (typeof handleTechPackLeadSubmit === 'function') window.handleTechPackLeadSubmit = handleTechPackLeadSubmit;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {

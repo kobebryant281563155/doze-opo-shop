@@ -8326,3 +8326,211 @@ body {
   border-radius: 4px;
   border: 1px solid #a7f3d0;
 }
+
+/* Desktop Top Nav Social Icon Buttons */
+.desktop-social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #475569;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.desktop-social-icon-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+/* Footer Social Strip */
+.footer-social-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 12px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+.social-strip-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+}
+.social-strip-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.social-strip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  color: #1e293b;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: all 0.2s ease;
+}
+.social-strip-btn:hover {
+  border-color: #0f172a;
+  background: #0f172a;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* B2B Tech Pack & Wholesale Tier Pricing Slide-in Drawer */
+.b2b-lead-drawer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  max-width: 400px;
+  width: calc(100% - 32px);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18), 0 4px 12px rgba(0,0,0,0.06);
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.b2b-lead-drawer.active {
+  display: block !important;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.lead-drawer-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.15s ease;
+}
+.lead-drawer-close:hover {
+  color: #0f172a;
+}
+.lead-drawer-badge {
+  display: inline-block;
+  background: #fef3c7;
+  color: #b45309;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.lead-drawer-title {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+  padding-right: 20px;
+}
+.lead-drawer-desc {
+  margin: 0 0 14px 0;
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.45;
+}
+.lead-input-row {
+  display: flex;
+  gap: 8px;
+}
+.lead-input-field {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.lead-input-field:focus {
+  border-color: #0f172a;
+}
+.lead-submit-btn {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+.lead-submit-btn:hover {
+  background: #1e293b;
+}
+.lead-success-msg {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 4px;
+}
+.lead-success-txt {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #065f46;
+  margin-bottom: 8px;
+}
+.lead-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #10b981;
+  color: #ffffff;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.lead-whatsapp-btn:hover {
+  background: #059669;
+}
+.lead-drawer-meta {
+  margin-top: 10px;
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+@media (max-width: 640px) {
+  .b2b-lead-drawer {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    padding: 16px;
+  }
+}
