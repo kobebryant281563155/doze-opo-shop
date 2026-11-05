@@ -893,7 +893,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=250">
+  <link rel="stylesheet" href="styles.css?v=251">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -903,11 +903,11 @@
     })(window, document, "clarity", "script", "yx2hz06zjl");
   </script>
   <!-- Resource Preloading for Faster First Contentful Paint & Low LCP -->
-  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=250" fetchpriority="high">
-  <link rel="preload" href="reviews_data.js?v=250" as="script">
-  <link rel="preload" href="prints_data.js?v=250" as="script">
-  <link rel="preload" href="products_data.js?v=250" as="script">
-  <link rel="preload" href="app.js?v=250" as="script">
+  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=251" fetchpriority="high">
+  <link rel="preload" href="reviews_data.js?v=251" as="script">
+  <link rel="preload" href="prints_data.js?v=251" as="script">
+  <link rel="preload" href="products_data.js?v=251" as="script">
+  <link rel="preload" href="app.js?v=251" as="script">
 
   <!-- Safe Early Interactive Stubs & Action Queue (Prevents Dead Clicks & Clarity JS Errors) -->
   <script>
@@ -930,7 +930,7 @@
       'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
       'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
       'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'openSamplePackModal', 'closeSamplePackModal', 'handleSampleModalBackdrop', 'handleTechPackLeadSubmit'
+      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'openSamplePackModal', 'closeSamplePackModal', 'openQuickRfqModal', 'closeQuickRfqModal', 'handleQuickRfqBackdrop', 'handleSampleModalBackdrop', 'handleTechPackLeadSubmit'
     ];
     
     earlyFns.forEach(function(fn) {
@@ -978,6 +978,10 @@
         <button type="button" class="desktop-search-toggle" id="desktopSearchToggle" onclick="document.querySelector('.search-inner input').focus(); switchTab('home');" title="Search Products">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </button>
+        <button type="button" class="desktop-rfq-nav-btn" onclick="openQuickRfqModal()" title="Instant 3D Mockup &amp; RFQ">
+          <span class="nav-rfq-pulse"></span>
+          ⚡ Quick RFQ (3D Mockup)
+        </button>
         <button type="button" class="desktop-orders-btn" onclick="openOrdersTrackingModal()" title="View Orders">
           📦 Orders
         </button>
@@ -1016,7 +1020,7 @@
               
               <!-- Slide 1: Original Streetwear Lookbook Crew -->
               <div class="banner-slide active" data-slide-index="0">
-                <img src="assets/hero_street_crew.webp?v=250" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
+                <img src="assets/hero_street_crew.webp?v=251" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark in Lookbook -->
@@ -1051,7 +1055,7 @@
 
               <!-- Slide 2: Garment Manufacturing Factory -->
               <div class="banner-slide" data-slide-index="1">
-                <img src="assets/hero_factory_production.webp?v=250" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img" loading="lazy" decoding="async">
+                <img src="assets/hero_factory_production.webp?v=251" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1086,7 +1090,7 @@
 
               <!-- Slide 3: Warehouse Packaging & Air Dispatch -->
               <div class="banner-slide" data-slide-index="2">
-                <img src="assets/hero_warehouse_dispatch.webp?v=250" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img" loading="lazy" decoding="async">
+                <img src="assets/hero_warehouse_dispatch.webp?v=251" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1156,28 +1160,28 @@
             <div class="quick-nav-row nav-row-1">
               <div class="quick-nav-item" onclick="handleCategoryFilter('tee')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tee_item.webp?v=250" alt="Heavy Tees">
+                  <img src="assets/tee_item.webp?v=251" alt="Heavy Tees">
                 </div>
                 <span class="nav-title">Heavy Tees</span>
                 <span class="nav-en">Boxy Fit</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('tank')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tank_item.webp?v=250" alt="Tank Tops">
+                  <img src="assets/tank_item.webp?v=251" alt="Tank Tops">
                 </div>
                 <span class="nav-title">Tank Tops</span>
                 <span class="nav-en">Raw Cut / Vest</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('crewneck')">
                 <div class="nav-thumb-box">
-                  <img src="assets/crewneck_item.webp?v=250" alt="Crewneck Sweatshirt">
+                  <img src="assets/crewneck_item.webp?v=251" alt="Crewneck Sweatshirt">
                 </div>
                 <span class="nav-title">Crewneck Sweatshirt</span>
                 <span class="nav-en">Classic Cut</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('hoodie')">
                 <div class="nav-thumb-box">
-                  <img src="assets/hoodie_item.webp?v=250" alt="Heavy Hoodies">
+                  <img src="assets/hoodie_item.webp?v=251" alt="Heavy Hoodies">
                 </div>
                 <span class="nav-title">Heavy Hoodies</span>
                 <span class="nav-en">Oversize Cut</span>
@@ -1187,28 +1191,28 @@
             <div class="quick-nav-row nav-row-2">
               <div class="quick-nav-item" onclick="handleCategoryFilter('jacket')">
                 <div class="nav-thumb-box">
-                  <img src="assets/zip_hoodie.webp?v=250" alt="Zip Jackets">
+                  <img src="assets/zip_hoodie.webp?v=251" alt="Zip Jackets">
                 </div>
                 <span class="nav-title">Zip Jackets</span>
                 <span class="nav-en">Metal Zippers</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('pants')">
                 <div class="nav-thumb-box">
-                  <img src="assets/casual_pants_item.webp?v=250" alt="Pants">
+                  <img src="assets/casual_pants_item.webp?v=251" alt="Pants">
                 </div>
                 <span class="nav-title">Pants</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('jeans')">
                 <div class="nav-thumb-box">
-                  <img src="assets/jeans_item.webp?v=250" alt="Jeans">
+                  <img src="assets/jeans_item.webp?v=251" alt="Jeans">
                 </div>
                 <span class="nav-title">Jeans</span>
                 <span class="nav-en">Denim &amp; Washed</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('shorts')">
                 <div class="nav-thumb-box">
-                  <img src="assets/shorts_item.webp?v=250" alt="Street Shorts">
+                  <img src="assets/shorts_item.webp?v=251" alt="Street Shorts">
                 </div>
                 <span class="nav-title">Street Shorts</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
@@ -2083,7 +2087,7 @@
       </div>
       <div class="modal-body">
         <div class="modal-media-wrap">
-          <img id="modalProdImg" src="assets/hoodie_item.webp?v=250" alt="Product Image">
+          <img id="modalProdImg" src="assets/hoodie_item.webp?v=251" alt="Product Image">
         </div>
         <div class="modal-price-strip">
           <div class="mp-price">
@@ -3052,10 +3056,10 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="reviews_data.js?v=250"></script>
-  <script src="prints_data.js?v=250"></script>
-  <script src="products_data.js?v=250"></script>
-  <script src="app.js?v=250"></script>
+  <script src="reviews_data.js?v=251"></script>
+  <script src="prints_data.js?v=251"></script>
+  <script src="products_data.js?v=251"></script>
+  <script src="app.js?v=251"></script>
 
   <!-- B2B Tech Pack & Wholesale Tier Pricing Slide-in Drawer -->
   <aside id="b2bTechPackDrawer" class="b2b-lead-drawer" style="display: none;" aria-label="B2B Tech Pack Download">
@@ -3180,6 +3184,189 @@
         <a href="https://wa.me/8618520682738?text=Hello%20DOZE%20OPO%2C%20I%20would%20like%20to%20order%20a%20custom%201-piece%20sample%20pack%20with%20my%20logo.%20Please%20advise%20pricing%20and%20air%20express%20shipping." target="_blank" rel="noopener noreferrer" class="sample-whatsapp-btn">
           💬 Chat with Factory Master (+86 185 2068 2738)
         </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- PC Desktop Quick RFQ Floating Widget -->
+  <div class="desktop-rfq-floating-widget" id="desktopRfqWidget" onclick="openQuickRfqModal()" title="Drop Logo for Free 3D Proofing Mockup &amp; Wholesale Quotation">
+    <div class="rfq-widget-inner">
+      <div class="rfq-widget-icon-box">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        <span class="rfq-widget-dot"></span>
+      </div>
+      <div class="rfq-widget-text">
+        <div class="rfq-widget-tag-row">
+          <span class="rfq-mini-badge">FREE MOCKUP</span>
+          <strong class="rfq-widget-title">30s Quick RFQ</strong>
+        </div>
+        <span class="rfq-widget-sub">Drop Logo &bull; 2h Fast Turnaround</span>
+      </div>
+      <div class="rfq-widget-arrow">&rarr;</div>
+    </div>
+  </div>
+
+  <!-- Quick RFQ & 3D Mockup Modal -->
+  <div id="quickRfqModal" class="quick-rfq-modal-backdrop" style="display: none;" onclick="handleQuickRfqBackdrop(event)">
+    <div class="quick-rfq-modal-content">
+      <div class="quick-rfq-modal-header">
+        <div class="rfq-header-title-col">
+          <span class="rfq-header-badge">⚡ 30-SECOND B2B FACTORY RFQ</span>
+          <h3 class="rfq-modal-title">Get Free 3D Mockup &amp; Wholesale Tier Quote</h3>
+          <p class="rfq-modal-desc">Upload your artwork or brand logo. Our engineering team creates a digital 3D proofing mockup and tier price breakdown within 2–4 hours.</p>
+        </div>
+        <button type="button" class="rfq-modal-close" onclick="closeQuickRfqModal()" title="Close">&times;</button>
+      </div>
+
+      <!-- Trust Pillars Banner -->
+      <div class="rfq-trust-strip">
+        <div class="rfq-trust-item">
+          <span class="rfq-trust-icon">🎨</span>
+          <span>Free 3D Digital Proofing</span>
+        </div>
+        <div class="rfq-trust-item">
+          <span class="rfq-trust-icon">🛡️</span>
+          <span>Sample Fee 100% Refundable</span>
+        </div>
+        <div class="rfq-trust-item">
+          <span class="rfq-trust-icon">✈️</span>
+          <span>3–5 Days Air Express</span>
+        </div>
+      </div>
+
+      <!-- Main Form -->
+      <form id="quickRfqForm" onsubmit="handleQuickRfqSubmit(event)">
+        <!-- Step 1: File Upload / Drag & Drop -->
+        <div class="rfq-form-group">
+          <label class="rfq-form-label">
+            <span>1. Upload Logo / Graphic File:</span>
+            <small class="rfq-label-hint">PNG, JPG, SVG, AI, PDF, or ZIP (Max 50MB)</small>
+          </label>
+          <div class="rfq-dropzone" id="rfqDropzone" onclick="document.getElementById('rfqFileInput').click()">
+            <input type="file" id="rfqFileInput" style="display: none;" accept=".png,.jpg,.jpeg,.svg,.ai,.pdf,.psd,.zip" onchange="handleRfqFileSelect(this)">
+            <div class="dropzone-inner" id="rfqDropzonePrompt">
+              <div class="dropzone-icon-box">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#38bdf8" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+              </div>
+              <strong class="dropzone-text">Click or Drag &amp; Drop Logo File Here</strong>
+              <span class="dropzone-sub">Our graphic artists will position your logo to scale on the 3D blank</span>
+            </div>
+            <div class="dropzone-file-selected" id="rfqFileSelected" style="display: none;">
+              <span class="file-icon">📁</span>
+              <div class="file-meta">
+                <strong id="rfqFileName">logo.png</strong>
+                <span id="rfqFileSize">1.2 MB</span>
+              </div>
+              <button type="button" class="file-remove-btn" onclick="removeRfqFile(event)">Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Select Garment Blank -->
+        <div class="rfq-form-group">
+          <label class="rfq-form-label">
+            <span>2. Select Streetwear Blank Silhouette:</span>
+          </label>
+          <div class="rfq-blank-chips" id="rfqBlankChips">
+            <button type="button" class="rfq-chip active" onclick="selectRfqBlank('01D 230G Boxy Tee', this)">01D 230G Boxy Tee</button>
+            <button type="button" class="rfq-chip" onclick="selectRfqBlank('04C 280G Heavy Wash Tee', this)">04C 280G Heavy Wash Tee</button>
+            <button type="button" class="rfq-chip" onclick="selectRfqBlank('360 360G French Terry Hoodie', this)">360 360G Heavy Hoodie</button>
+            <button type="button" class="rfq-chip" onclick="selectRfqBlank('K350106 350G Heavy Sweatpants', this)">K350106 Heavy Sweatpants</button>
+            <button type="button" class="rfq-chip" onclick="selectRfqBlank('Custom Silhouette / Full Catalog', this)">Custom / Other Silhouette</button>
+          </div>
+          <input type="hidden" id="rfqSelectedBlank" value="01D 230G Boxy Tee">
+        </div>
+
+        <!-- Step 3: Target Volume Tier -->
+        <div class="rfq-form-group">
+          <label class="rfq-form-label">
+            <span>3. Target Production Volume:</span>
+          </label>
+          <div class="rfq-volume-grid">
+            <label class="rfq-vol-card">
+              <input type="radio" name="rfqVolume" value="1 PC Sample Proofing" checked>
+              <div class="vol-card-body">
+                <strong>1 PC Sample</strong>
+                <span>Proofing &bull; 100% Refundable</span>
+              </div>
+            </label>
+            <label class="rfq-vol-card">
+              <input type="radio" name="rfqVolume" value="50–99 pcs Starter Batch">
+              <div class="vol-card-body">
+                <strong>50–99 pcs</strong>
+                <span>Starter Batch &bull; OEM MOQ</span>
+              </div>
+            </label>
+            <label class="rfq-vol-card">
+              <input type="radio" name="rfqVolume" value="100–299 pcs Brand Standard">
+              <div class="vol-card-body">
+                <strong>100–299 pcs</strong>
+                <span>Brand Drop &bull; Free Tags</span>
+              </div>
+            </label>
+            <label class="rfq-vol-card">
+              <input type="radio" name="rfqVolume" value="300+ pcs Factory VIP">
+              <div class="vol-card-body">
+                <strong>300+ pcs</strong>
+                <span>Factory VIP &bull; Max Savings</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 4: Contact & Customization Notes -->
+        <div class="rfq-form-row">
+          <div class="rfq-form-col">
+            <label class="rfq-form-label" for="rfqEmailInput">
+              <span>Business Email:</span> <small>(Required)</small>
+            </label>
+            <input type="email" id="rfqEmailInput" class="rfq-input" placeholder="designer@brand.com" required autocomplete="email">
+          </div>
+          <div class="rfq-form-col">
+            <label class="rfq-form-label" for="rfqPhoneInput">
+              <span>WhatsApp / Instagram / Phone:</span> <small>(Optional)</small>
+            </label>
+            <input type="text" id="rfqPhoneInput" class="rfq-input" placeholder="+1 (555) 000-0000 or @brand_ig">
+          </div>
+        </div>
+
+        <div class="rfq-form-group">
+          <label class="rfq-form-label" for="rfqNotesInput">
+            <span>Craft &amp; Print Technique Details:</span> <small>(Puff, Screen print, DTG, Embroidery, etc.)</small>
+          </label>
+          <input type="text" id="rfqNotesInput" class="rfq-input" placeholder="e.g., Puff print on front chest (28cm), screen print on back neck, vintage charcoal wash">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="rfq-action-row">
+          <button type="submit" class="rfq-submit-btn" id="rfqSubmitBtn">
+            <span>🚀 Request Free 3D Mockup &amp; Wholesale Quote</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Success Screen -->
+      <div id="rfqSuccessCard" class="rfq-success-container" style="display: none;">
+        <div class="success-icon-badge">✓</div>
+        <h4 class="success-title">3D Mockup &amp; RFQ Received!</h4>
+        <p class="success-desc">Our factory engineering team is reviewing your silhouette and artwork specs. A 3D digital rendering and wholesale tier quote will be sent to your email within <strong>2–4 business hours</strong>.</p>
+        
+        <div class="success-whatsapp-cta">
+          <span>Need real-time fast response or want to send additional vector files?</span>
+          <a id="rfqDirectWaLink" href="https://wa.me/8618520682738" target="_blank" rel="noopener noreferrer" class="rfq-wa-btn">
+            💬 Open WhatsApp Direct Chat (+86 185 2068 2738)
+          </a>
+        </div>
+        <button type="button" class="rfq-reset-btn" onclick="resetRfqForm()">Submit Another Inquiry</button>
       </div>
     </div>
   </div>

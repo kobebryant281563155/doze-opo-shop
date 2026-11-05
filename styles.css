@@ -9219,3 +9219,598 @@ body {
     font-size: 12px;
   }
 }
+
+
+/* ==========================================================================
+   PC DESKTOP QUICK RFQ WIDGET & 3D MOCKUP MODAL (DUAL-SCREEN OPTIMIZED)
+   ========================================================================== */
+
+/* Top Nav RFQ Button on Desktop */
+.desktop-rfq-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.desktop-rfq-nav-btn:hover {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.5);
+  border-color: rgba(56, 189, 248, 0.8);
+}
+
+.nav-rfq-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: pulse-dot 1.8s infinite;
+}
+
+/* Floating RFQ Widget (PC Desktop Bottom-Right) */
+.desktop-rfq-floating-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  background: linear-gradient(135deg, #090e1a 0%, #111a2e 50%, #0f172a 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
+  border-radius: 16px;
+  padding: 12px 18px;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 12px 36px -4px rgba(15, 23, 42, 0.6), 0 0 24px -2px rgba(56, 189, 248, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  max-width: 320px;
+}
+
+.desktop-rfq-floating-widget:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.9);
+  box-shadow: 0 16px 42px -4px rgba(15, 23, 42, 0.7), 0 0 32px -2px rgba(56, 189, 248, 0.5);
+}
+
+.rfq-widget-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rfq-widget-icon-box {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+.rfq-widget-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.rfq-widget-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.rfq-widget-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rfq-mini-badge {
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.rfq-widget-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.rfq-widget-sub {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.rfq-widget-arrow {
+  font-size: 15px;
+  color: #38bdf8;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.desktop-rfq-floating-widget:hover .rfq-widget-arrow {
+  transform: translateX(3px);
+}
+
+/* Quick RFQ Modal Backdrop & Content */
+.quick-rfq-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.quick-rfq-modal-content {
+  background: linear-gradient(135deg, #0b1120 0%, #111a2e 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  border-radius: 22px;
+  width: 100%;
+  max-width: 660px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 65px -10px rgba(0, 0, 0, 0.75), 0 0 35px -2px rgba(56, 189, 248, 0.25);
+  padding: 24px 28px;
+  color: #ffffff;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.quick-rfq-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.rfq-header-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.rfq-modal-title {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.3px;
+}
+
+.rfq-modal-desc {
+  margin: 0;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.rfq-modal-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.rfq-modal-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  color: #ffffff;
+}
+
+/* Trust Strip */
+.rfq-trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+}
+
+.rfq-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+/* Form Styles */
+.rfq-form-group {
+  margin-bottom: 16px;
+}
+
+.rfq-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.rfq-form-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 7px;
+}
+
+.rfq-label-hint {
+  font-size: 10.5px;
+  font-weight: 400;
+  color: #94a3b8;
+}
+
+.rfq-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rfq-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+/* Dropzone */
+.rfq-dropzone {
+  background: rgba(15, 23, 42, 0.6);
+  border: 2px dashed rgba(56, 189, 248, 0.4);
+  border-radius: 14px;
+  padding: 18px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rfq-dropzone:hover {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.dropzone-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropzone-icon-box {
+  margin-bottom: 2px;
+}
+
+.dropzone-text {
+  font-size: 13px;
+  color: #f1f5f9;
+}
+
+.dropzone-sub {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.dropzone-file-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+
+.file-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  flex: 1;
+}
+
+.file-meta strong {
+  font-size: 12.5px;
+  color: #f8fafc;
+}
+
+.file-meta span {
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+.file-remove-btn {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Blank Chips */
+.rfq-blank-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rfq-chip {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rfq-chip:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #ffffff;
+}
+
+.rfq-chip.active {
+  background: rgba(56, 189, 248, 0.16);
+  border-color: #38bdf8;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+/* Volume Grid */
+.rfq-volume-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.rfq-vol-card {
+  position: relative;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s ease;
+}
+
+.rfq-vol-card input {
+  accent-color: #38bdf8;
+}
+
+.vol-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vol-card-body strong {
+  font-size: 12.5px;
+  color: #f1f5f9;
+}
+
+.vol-card-body span {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.rfq-vol-card:has(input:checked) {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+}
+
+/* Action Submit */
+.rfq-action-row {
+  margin-top: 18px;
+}
+
+.rfq-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.5);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 14px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px -2px rgba(2, 132, 199, 0.45);
+  transition: all 0.2s ease;
+}
+
+.rfq-submit-btn:hover {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px -2px rgba(2, 132, 199, 0.6);
+}
+
+/* Success Card */
+.rfq-success-container {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.success-icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.15);
+  border: 2px solid #22c55e;
+  color: #22c55e;
+  font-size: 26px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.success-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.success-desc {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.5;
+  max-width: 480px;
+  margin: 0 auto 20px;
+}
+
+.success-desc strong {
+  color: #38bdf8;
+}
+
+.success-whatsapp-cta {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1.5px solid rgba(34, 197, 94, 0.3);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.success-whatsapp-cta span {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.rfq-wa-btn {
+  background: #22c55e;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
+  transition: all 0.15s ease;
+}
+
+.rfq-wa-btn:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+.rfq-reset-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rfq-reset-btn:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 767px) {
+  .desktop-rfq-floating-widget {
+    bottom: 74px;
+    right: 14px;
+    padding: 8px 12px;
+    max-width: 220px;
+  }
+
+  .rfq-widget-icon-box {
+    width: 32px;
+    height: 32px;
+  }
+
+  .rfq-widget-title {
+    font-size: 11.5px;
+  }
+
+  .rfq-widget-sub {
+    font-size: 9.5px;
+  }
+
+  .rfq-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .rfq-volume-grid {
+    grid-template-columns: 1fr;
+  }
+}

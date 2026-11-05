@@ -4516,6 +4516,144 @@ function handleSampleModalBackdrop(e) {
   }
 }
 
+
+// ==========================================================================
+// Quick RFQ & 3D Mockup Upload Controller
+// ==========================================================================
+let currentRfqSelectedFile = null;
+
+function openQuickRfqModal() {
+  const modal = document.getElementById('quickRfqModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.classList.add('modal-open');
+    if (typeof gtag === 'function') {
+      gtag('event', 'open_quick_rfq_modal', {
+        event_category: 'B2B RFQ',
+        event_label: 'Quick RFQ Widget'
+      });
+    }
+  }
+}
+
+function closeQuickRfqModal() {
+  const modal = document.getElementById('quickRfqModal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
+}
+
+function handleQuickRfqBackdrop(e) {
+  if (e && e.target && e.target.id === 'quickRfqModal') {
+    closeQuickRfqModal();
+  }
+}
+
+function selectRfqBlank(blankName, btnElem) {
+  const input = document.getElementById('rfqSelectedBlank');
+  if (input) input.value = blankName;
+  document.querySelectorAll('#rfqBlankChips .rfq-chip').forEach(btn => btn.classList.remove('active'));
+  if (btnElem) btnElem.classList.add('active');
+}
+
+function handleRfqFileSelect(inputElem) {
+  if (inputElem && inputElem.files && inputElem.files[0]) {
+    const file = inputElem.files[0];
+    currentRfqSelectedFile = file;
+    const prompt = document.getElementById('rfqDropzonePrompt');
+    const selected = document.getElementById('rfqFileSelected');
+    const nameEl = document.getElementById('rfqFileName');
+    const sizeEl = document.getElementById('rfqFileSize');
+
+    if (prompt) prompt.style.display = 'none';
+    if (selected) selected.style.display = 'flex';
+    if (nameEl) nameEl.textContent = file.name;
+    if (sizeEl) sizeEl.textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+  }
+}
+
+function removeRfqFile(e) {
+  if (e) e.stopPropagation();
+  currentRfqSelectedFile = null;
+  const input = document.getElementById('rfqFileInput');
+  if (input) input.value = '';
+  const prompt = document.getElementById('rfqDropzonePrompt');
+  const selected = document.getElementById('rfqFileSelected');
+  if (prompt) prompt.style.display = 'flex';
+  if (selected) selected.style.display = 'none';
+}
+
+function handleQuickRfqSubmit(e) {
+  e.preventDefault();
+  const email = (document.getElementById('rfqEmailInput').value || '').trim();
+  const phone = (document.getElementById('rfqPhoneInput').value || '').trim();
+  const blank = (document.getElementById('rfqSelectedBlank').value || '01D 230G Boxy Tee');
+  const volumeEl = document.querySelector('input[name="rfqVolume"]:checked');
+  const volume = volumeEl ? volumeEl.value : '1 PC Sample Proofing';
+  const notes = (document.getElementById('rfqNotesInput').value || '').trim();
+  const fileName = currentRfqSelectedFile ? currentRfqSelectedFile.name : 'No file attached';
+
+  const rfqRecord = {
+    id: 'RFQ-' + Date.now(),
+    date: new Date().toISOString(),
+    email: email,
+    phone: phone,
+    blank: blank,
+    volume: volume,
+    notes: notes,
+    fileName: fileName
+  };
+
+  // Local storage lead capture
+  try {
+    const existing = JSON.parse(localStorage.getItem('DOZE_OPO_RFQ_LEADS') || '[]');
+    existing.unshift(rfqRecord);
+    localStorage.setItem('DOZE_OPO_RFQ_LEADS', JSON.stringify(existing.slice(0, 50)));
+  } catch (err) {
+    console.warn('Could not save RFQ to localStorage:', err);
+  }
+
+  // Pre-fill WhatsApp Link
+  const waMsg = `Hello DOZE OPO Factory Engineering Team,\n` +
+                `I submitted a 30s Quick RFQ on www.dozeopo.com:\n` +
+                `• Blank Silhouette: ${blank}\n` +
+                `• Target Volume: ${volume}\n` +
+                `• Business Email: ${email}\n` +
+                `• Contact/IG: ${phone || 'N/A'}\n` +
+                `• Craft Details: ${notes || 'Standard tech pack'}\n` +
+                `• Artwork File: ${fileName}\n` +
+                `Please send the free 3D digital mockup and wholesale quotation.`;
+  const waUrl = 'https://wa.me/8618520682738?text=' + encodeURIComponent(waMsg);
+  const waLink = document.getElementById('rfqDirectWaLink');
+  if (waLink) waLink.href = waUrl;
+
+  // Show Success Card
+  const form = document.getElementById('quickRfqForm');
+  const successCard = document.getElementById('rfqSuccessCard');
+  if (form) form.style.display = 'none';
+  if (successCard) successCard.style.display = 'block';
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'submit_quick_rfq', {
+      event_category: 'B2B RFQ',
+      event_label: blank,
+      value: 1
+    });
+  }
+}
+
+function resetRfqForm() {
+  const form = document.getElementById('quickRfqForm');
+  const successCard = document.getElementById('rfqSuccessCard');
+  if (form) {
+    form.reset();
+    form.style.display = 'block';
+  }
+  if (successCard) successCard.style.display = 'none';
+  removeRfqFile(null);
+}
+
   // Assign direct global references
   if (typeof switchTab === 'function') { window.switchTab = switchTab; window.switchtab = switchTab; }
   if (typeof handleCategoryFilter === 'function') { window.handleCategoryFilter = handleCategoryFilter; window.handlecategoryfilter = handleCategoryFilter; }
@@ -4549,6 +4687,14 @@ function handleSampleModalBackdrop(e) {
   if (typeof handleSampleModalBackdrop === 'function') window.handleSampleModalBackdrop = handleSampleModalBackdrop;
   if (typeof renderPdpWholesaleTiers === 'function') window.renderPdpWholesaleTiers = renderPdpWholesaleTiers;
   if (typeof selectWholesaleTier === 'function') window.selectWholesaleTier = selectWholesaleTier;
+  if (typeof openQuickRfqModal === 'function') window.openQuickRfqModal = openQuickRfqModal;
+  if (typeof closeQuickRfqModal === 'function') window.closeQuickRfqModal = closeQuickRfqModal;
+  if (typeof handleQuickRfqBackdrop === 'function') window.handleQuickRfqBackdrop = handleQuickRfqBackdrop;
+  if (typeof selectRfqBlank === 'function') window.selectRfqBlank = selectRfqBlank;
+  if (typeof handleRfqFileSelect === 'function') window.handleRfqFileSelect = handleRfqFileSelect;
+  if (typeof removeRfqFile === 'function') window.removeRfqFile = removeRfqFile;
+  if (typeof handleQuickRfqSubmit === 'function') window.handleQuickRfqSubmit = handleQuickRfqSubmit;
+  if (typeof resetRfqForm === 'function') window.resetRfqForm = resetRfqForm;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {
