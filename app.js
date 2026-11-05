@@ -855,6 +855,127 @@ function renderTikTokSizeTableHtml(tableData, activeSize) {
   `;
 }
 
+
+// ==========================================================================
+// B2B Wholesale Tier Pricing Matrix Controller
+// ==========================================================================
+let activeWholesaleTierIndex = 0; // Default to 0 (1-PC Sample)
+
+function renderPdpWholesaleTiers(prod, customPrice) {
+  const container = document.getElementById('pdpTierGrid');
+  if (!container || !prod) return;
+
+  const basePrice = (typeof customPrice === 'number' && customPrice > 0) ? customPrice : (prod.priceUSD || 4.99);
+  
+  // Calculate standard garment factory wholesale pricing tiers
+  const tiers = [
+    {
+      qtyLabel: '1 PC Sample',
+      tierName: 'Proofing Blank',
+      price: basePrice,
+      perk: '100% Refundable',
+      tag: 'SAMPLE',
+      isSample: true
+    },
+    {
+      qtyLabel: '50–99 pcs',
+      tierName: 'Starter Batch',
+      price: Math.max(2.5, Math.round(basePrice * 0.88 * 100) / 100),
+      perk: 'Save 12% + Custom Print',
+      tag: 'OEM MOQ'
+    },
+    {
+      qtyLabel: '100–299 pcs',
+      tierName: 'Brand Standard',
+      price: Math.max(2.2, Math.round(basePrice * 0.78 * 100) / 100),
+      perk: 'Save 22% + Free Tags',
+      tag: 'MOST POPULAR',
+      isPopular: true
+    },
+    {
+      qtyLabel: '300+ pcs',
+      tierName: 'Factory VIP',
+      price: Math.max(1.9, Math.round(basePrice * 0.68 * 100) / 100),
+      perk: 'Save 32% + Priority Line',
+      tag: 'BEST VALUE'
+    }
+  ];
+
+  window._CURRENT_PDP_TIERS = tiers;
+
+  container.innerHTML = tiers.map((tier, idx) => `
+    <div class="wholesale-tier-card ${idx === activeWholesaleTierIndex ? 'active' : ''} ${tier.isPopular ? 'popular' : ''}" 
+         onclick="selectWholesaleTier(${idx})"
+         data-tier-index="${idx}">
+      ${tier.tag ? `<span class="tier-card-badge ${tier.isPopular ? 'badge-popular' : ''}">${tier.tag}</span>` : ''}
+      <div class="tier-card-qty">${tier.qtyLabel}</div>
+      <div class="tier-card-price">
+        <span class="tier-price-dollar">$</span>
+        <strong class="tier-price-val">${tier.price.toFixed(2)}</strong>
+        <span class="tier-price-unit">/pc</span>
+      </div>
+      <div class="tier-card-name">${tier.tierName}</div>
+      <div class="tier-card-perk">${tier.perk}</div>
+    </div>
+  `).join('');
+}
+
+function selectWholesaleTier(tierIndex) {
+  activeWholesaleTierIndex = tierIndex;
+  const tiers = window._CURRENT_PDP_TIERS;
+  if (!tiers || !tiers[tierIndex]) return;
+
+  const selectedTier = tiers[tierIndex];
+  const prod = PRODUCTS_DATA[activePdpProductId];
+  if (!prod) return;
+
+  // Update card active classes
+  document.querySelectorAll('.wholesale-tier-card').forEach((card, idx) => {
+    card.classList.toggle('active', idx === tierIndex);
+  });
+
+  const orderBtn = document.getElementById('pdpOrderBtn');
+  const orderBtnText = document.getElementById('pdpOrderBtnText');
+
+  if (selectedTier.isSample) {
+    // 1-PC Sample mode
+    activePdpQty = 1;
+    const input = document.getElementById('pdpQtyInput');
+    if (input) input.value = 1;
+    if (orderBtnText) {
+      orderBtnText.textContent = `Order 1-PC Sample ($${selectedTier.price.toFixed(2)})`;
+    }
+    if (orderBtn) {
+      orderBtn.onclick = () => openPdpCheckout(activePdpProductId);
+    }
+  } else {
+    // Bulk Order RFQ Mode
+    const minQty = tierIndex === 1 ? 50 : (tierIndex === 2 ? 100 : 300);
+    activePdpQty = minQty;
+    const input = document.getElementById('pdpQtyInput');
+    if (input) input.value = minQty;
+
+    if (orderBtnText) {
+      orderBtnText.textContent = `Inquire Bulk Order (${selectedTier.qtyLabel} @ $${selectedTier.price.toFixed(2)}/pc) →`;
+    }
+    if (orderBtn) {
+      orderBtn.onclick = () => {
+        const prodName = prod.name;
+        const msg = `Hello DOZE OPO, I am interested in bulk production for ${prodName}.\n` +
+                    `• Selected Wholesale Tier: ${selectedTier.qtyLabel} (@ $${selectedTier.price.toFixed(2)} USD / pc)\n` +
+                    `• Target Quantity: ${minQty} pcs\n` +
+                    `• Colorway: ${activePdpColor || 'Standard'}\n` +
+                    `• Size: ${activePdpSize || 'XL'}\n` +
+                    `Please provide a formal bulk quotation, tech pack review, and factory turnaround timeline.`;
+        window.open('https://wa.me/8618520682738?text=' + encodeURIComponent(msg), '_blank');
+      };
+    }
+  }
+
+  updatePdpShippingCalc();
+  setTimeout(updatePdpStickyBuyBar, 100);
+}
+
 function openProductDetail(productId) {
   const prod = PRODUCTS_DATA[productId];
   if (!prod) return;
@@ -1043,6 +1164,8 @@ function openProductDetail(productId) {
   if (orderBtn) {
     orderBtn.onclick = () => openPdpCheckout(productId);
   }
+  activeWholesaleTierIndex = 0;
+  renderPdpWholesaleTiers(prod);
   updatePdpShippingCalc();
   renderPdpReviews(productId);
   updateGoogleProductSchema(prod);
@@ -4424,6 +4547,8 @@ function handleSampleModalBackdrop(e) {
   if (typeof openSamplePackModal === 'function') window.openSamplePackModal = openSamplePackModal;
   if (typeof closeSamplePackModal === 'function') window.closeSamplePackModal = closeSamplePackModal;
   if (typeof handleSampleModalBackdrop === 'function') window.handleSampleModalBackdrop = handleSampleModalBackdrop;
+  if (typeof renderPdpWholesaleTiers === 'function') window.renderPdpWholesaleTiers = renderPdpWholesaleTiers;
+  if (typeof selectWholesaleTier === 'function') window.selectWholesaleTier = selectWholesaleTier;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {
