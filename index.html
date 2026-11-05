@@ -893,7 +893,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=251">
+  <link rel="stylesheet" href="styles.css?v=252">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -903,11 +903,11 @@
     })(window, document, "clarity", "script", "yx2hz06zjl");
   </script>
   <!-- Resource Preloading for Faster First Contentful Paint & Low LCP -->
-  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=251" fetchpriority="high">
-  <link rel="preload" href="reviews_data.js?v=251" as="script">
-  <link rel="preload" href="prints_data.js?v=251" as="script">
-  <link rel="preload" href="products_data.js?v=251" as="script">
-  <link rel="preload" href="app.js?v=251" as="script">
+  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=252" fetchpriority="high">
+  <link rel="preload" href="reviews_data.js?v=252" as="script">
+  <link rel="preload" href="prints_data.js?v=252" as="script">
+  <link rel="preload" href="products_data.js?v=252" as="script">
+  <link rel="preload" href="app.js?v=252" as="script">
 
   <!-- Safe Early Interactive Stubs & Action Queue (Prevents Dead Clicks & Clarity JS Errors) -->
   <script>
@@ -941,6 +941,23 @@
   </script>
 </head>
 <body class="theme-light">
+    <!-- Global Top Announcement Bar: 1-Piece Sample Pack (PC Desktop >= 1024px) -->
+  <aside class="desktop-announcement-bar" onclick="openSamplePackModal()" title="Worldwide Air Express &bull; 100% Sample Fee Refundable on Bulk Order">
+    <div class="announcement-inner">
+      <span class="announcement-pill">
+        <span class="announcement-pulse-dot"></span>
+        FACTORY SAMPLING PROGRAM
+      </span>
+      <span class="announcement-text">
+        ✈️ <strong>Worldwide Air Express (3–5 Days Doorstep)</strong> &bull; 1-Piece Sample Pack Ready ($4.99+) &bull; <span class="highlight-refund">100% Sample Fee Refundable on Bulk Order</span>
+      </span>
+      <span class="announcement-cta">
+        <span>Claim Sample</span>
+        <span class="cta-arrow">&rarr;</span>
+      </span>
+    </div>
+  </aside>
+
   <!-- Desktop Top Navigation Bar (Hidden on Mobile, Shown on PC >= 1024px) -->
   <nav class="desktop-top-nav" id="desktopTopNav">
     <div class="desktop-nav-inner">
@@ -998,6 +1015,13 @@
       <!-- Scrollable Mobile App Container -->
       <div class="app-screen-container" id="appScrollContainer">
 
+                <!-- Mobile Top Announcement Bar (< 1024px) -->
+        <div class="mobile-announcement-bar" onclick="openSamplePackModal()" title="1-Piece Sample Pack Ready - 100% Refundable on Bulk Order">
+          <span class="mobile-anno-pulse"></span>
+          <span class="mobile-anno-text">✈️ 1-PC Sample Pack ($4.99+) &bull; <strong>100% Refundable on Bulk</strong></span>
+          <span class="mobile-anno-arrow">&rarr;</span>
+        </div>
+
         <!-- Top Header: Brand Name & Market Pill -->
         <div class="app-header">
           <div class="header-left">
@@ -1020,7 +1044,7 @@
               
               <!-- Slide 1: Original Streetwear Lookbook Crew -->
               <div class="banner-slide active" data-slide-index="0">
-                <img src="assets/hero_street_crew.webp?v=251" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
+                <img src="assets/hero_street_crew.webp?v=252" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark in Lookbook -->
@@ -1033,7 +1057,17 @@
                 <div class="banner-tagline-box">
                   <span class="sub-label">2026 A/W STREETWEAR DROP</span>
                   <h2 class="main-title">THE OVERSIZED REVOLUTION</h2>
-                  <p class="desc">Heavy Cotton &bull; Drop Shoulder &bull; Flexible OEM &bull; Custom Print</p>
+                                    <p class="desc">Heavy Cotton &bull; Drop Shoulder &bull; Flexible OEM &bull; Custom Print</p>
+                  <div class="banner-cta-group">
+                    <button type="button" class="hero-sample-cta-btn" onclick="openSamplePackModal()" title="Order 1-Piece Sample Pack ($4.99+) - 100% Refundable on Bulk">
+                      <span class="hero-cta-pulse"></span>
+                      <span class="hero-cta-label">📦 Order 1-PC Sample ($4.99+)</span>
+                      <span class="hero-cta-badge">100% Refundable</span>
+                    </button>
+                    <button type="button" class="hero-rfq-cta-btn" onclick="openQuickRfqModal()" title="Instant 3D Mockup &amp; RFQ">
+                      <span>⚡ Quick RFQ</span>
+                    </button>
+                  </div>
                 </div>
 
                 <!-- Fabric & Craftsmanship Detail Circles -->
@@ -1055,7 +1089,7 @@
 
               <!-- Slide 2: Garment Manufacturing Factory -->
               <div class="banner-slide" data-slide-index="1">
-                <img src="assets/hero_factory_production.webp?v=251" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img" loading="lazy" decoding="async">
+                <img src="assets/hero_factory_production.webp?v=252" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1090,7 +1124,7 @@
 
               <!-- Slide 3: Warehouse Packaging & Air Dispatch -->
               <div class="banner-slide" data-slide-index="2">
-                <img src="assets/hero_warehouse_dispatch.webp?v=251" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img" loading="lazy" decoding="async">
+                <img src="assets/hero_warehouse_dispatch.webp?v=252" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1160,28 +1194,28 @@
             <div class="quick-nav-row nav-row-1">
               <div class="quick-nav-item" onclick="handleCategoryFilter('tee')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tee_item.webp?v=251" alt="Heavy Tees">
+                  <img src="assets/tee_item.webp?v=252" alt="Heavy Tees">
                 </div>
                 <span class="nav-title">Heavy Tees</span>
                 <span class="nav-en">Boxy Fit</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('tank')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tank_item.webp?v=251" alt="Tank Tops">
+                  <img src="assets/tank_item.webp?v=252" alt="Tank Tops">
                 </div>
                 <span class="nav-title">Tank Tops</span>
                 <span class="nav-en">Raw Cut / Vest</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('crewneck')">
                 <div class="nav-thumb-box">
-                  <img src="assets/crewneck_item.webp?v=251" alt="Crewneck Sweatshirt">
+                  <img src="assets/crewneck_item.webp?v=252" alt="Crewneck Sweatshirt">
                 </div>
                 <span class="nav-title">Crewneck Sweatshirt</span>
                 <span class="nav-en">Classic Cut</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('hoodie')">
                 <div class="nav-thumb-box">
-                  <img src="assets/hoodie_item.webp?v=251" alt="Heavy Hoodies">
+                  <img src="assets/hoodie_item.webp?v=252" alt="Heavy Hoodies">
                 </div>
                 <span class="nav-title">Heavy Hoodies</span>
                 <span class="nav-en">Oversize Cut</span>
@@ -1191,28 +1225,28 @@
             <div class="quick-nav-row nav-row-2">
               <div class="quick-nav-item" onclick="handleCategoryFilter('jacket')">
                 <div class="nav-thumb-box">
-                  <img src="assets/zip_hoodie.webp?v=251" alt="Zip Jackets">
+                  <img src="assets/zip_hoodie.webp?v=252" alt="Zip Jackets">
                 </div>
                 <span class="nav-title">Zip Jackets</span>
                 <span class="nav-en">Metal Zippers</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('pants')">
                 <div class="nav-thumb-box">
-                  <img src="assets/casual_pants_item.webp?v=251" alt="Pants">
+                  <img src="assets/casual_pants_item.webp?v=252" alt="Pants">
                 </div>
                 <span class="nav-title">Pants</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('jeans')">
                 <div class="nav-thumb-box">
-                  <img src="assets/jeans_item.webp?v=251" alt="Jeans">
+                  <img src="assets/jeans_item.webp?v=252" alt="Jeans">
                 </div>
                 <span class="nav-title">Jeans</span>
                 <span class="nav-en">Denim &amp; Washed</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('shorts')">
                 <div class="nav-thumb-box">
-                  <img src="assets/shorts_item.webp?v=251" alt="Street Shorts">
+                  <img src="assets/shorts_item.webp?v=252" alt="Street Shorts">
                 </div>
                 <span class="nav-title">Street Shorts</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
@@ -1307,6 +1341,121 @@
               <div class="benefit-text">
                 <strong>Worldwide Express</strong>
                 <small>FedEx / DHL Direct</small>
+              </div>
+            </div>
+          </section>
+
+          <!-- Dedicated 1-Piece Studio Sample Pack Showcase Section -->
+          <section class="home-sample-showcase" id="homeSampleShowcase">
+            <div class="sample-showcase-header">
+              <div class="sample-showcase-badge-wrap">
+                <span class="sample-showcase-pill">1-PIECE STUDIO SAMPLING</span>
+                <span class="sample-showcase-subpill">WORLDWIDE AIR EXPRESS</span>
+              </div>
+              <h3 class="sample-showcase-title">Touch &amp; Feel the Heavyweight Quality Before Bulk Production</h3>
+              <p class="sample-showcase-desc">
+                Air express delivery to your studio in 3–5 days. Inspect 230G–510G cotton handfeel, collar rib tension, and wash finishing.
+                <strong>Sample fees are 100% credited back onto your first bulk order (50+ pcs).</strong>
+              </p>
+            </div>
+
+            <div class="sample-showcase-cards">
+              <div class="sample-sc-card" onclick="openProductDetail('01D')">
+                <div class="sample-sc-thumb">
+                  <img src="assets/products/01D/main/1.jpg" alt="01D 230G Boxy Tee" loading="lazy">
+                  <span class="sample-sc-tag">Flagship Blank</span>
+                </div>
+                <div class="sample-sc-info">
+                  <strong class="sample-sc-name">01D 230G Boxy Tee</strong>
+                  <span class="sample-sc-spec">20S Compact Siro Combed Cotton &bull; Bound Collar</span>
+                  <div class="sample-sc-bottom">
+                    <div class="sample-sc-price-col">
+                      <span class="sample-sc-price">$4.99</span>
+                      <span class="sample-sc-refund-tag">100% Refundable</span>
+                    </div>
+                    <button type="button" class="sample-sc-btn">Order Sample &rarr;</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sample-sc-card" onclick="openProductDetail('04C')">
+                <div class="sample-sc-thumb">
+                  <img src="assets/products/04C/main/1.jpg" alt="04C 280G Heavy Washed Tee" loading="lazy">
+                  <span class="sample-sc-tag">Vintage Washed</span>
+                </div>
+                <div class="sample-sc-info">
+                  <strong class="sample-sc-name">04C 280G Washed Tee</strong>
+                  <span class="sample-sc-spec">Vintage Enzyme Wash &bull; Drop Shoulder</span>
+                  <div class="sample-sc-bottom">
+                    <div class="sample-sc-price-col">
+                      <span class="sample-sc-price">$7.99</span>
+                      <span class="sample-sc-refund-tag">100% Refundable</span>
+                    </div>
+                    <button type="button" class="sample-sc-btn">Order Sample &rarr;</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sample-sc-card" onclick="openProductDetail('360')">
+                <div class="sample-sc-thumb">
+                  <img src="assets/products/360/main/1.jpg" alt="360 360G French Terry Hoodie" loading="lazy">
+                  <span class="sample-sc-tag">Heavy Hoodie</span>
+                </div>
+                <div class="sample-sc-info">
+                  <strong class="sample-sc-name">360 360G Terry Hoodie</strong>
+                  <span class="sample-sc-spec">Dense Loopback Cotton &bull; Double Hood</span>
+                  <div class="sample-sc-bottom">
+                    <div class="sample-sc-price-col">
+                      <span class="sample-sc-price">$13.99</span>
+                      <span class="sample-sc-refund-tag">100% Refundable</span>
+                    </div>
+                    <button type="button" class="sample-sc-btn">Order Sample &rarr;</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sample-sc-card" onclick="openProductDetail('K350106')">
+                <div class="sample-sc-thumb">
+                  <img src="assets/products/K350106/main/1.jpg" alt="K350106 350G Sweatpants" loading="lazy">
+                  <span class="sample-sc-tag">Street Pants</span>
+                </div>
+                <div class="sample-sc-info">
+                  <strong class="sample-sc-name">K350106 350G Sweatpants</strong>
+                  <span class="sample-sc-spec">Brushed Fleece &bull; Zipper Pockets</span>
+                  <div class="sample-sc-bottom">
+                    <div class="sample-sc-price-col">
+                      <span class="sample-sc-price">$12.99</span>
+                      <span class="sample-sc-refund-tag">100% Refundable</span>
+                    </div>
+                    <button type="button" class="sample-sc-btn">Order Sample &rarr;</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sample-showcase-trust-strip">
+              <div class="sc-trust-item">
+                <span class="sc-trust-icon">✈️</span>
+                <div class="sc-trust-txt">
+                  <strong>Worldwide Air Express</strong>
+                  <small>3–5 Days Doorstep via DHL / FedEx</small>
+                </div>
+              </div>
+              <div class="sc-trust-divider"></div>
+              <div class="sc-trust-item">
+                <span class="sc-trust-icon">🛡️</span>
+                <div class="sc-trust-txt">
+                  <strong>100% Refundable Guarantee</strong>
+                  <small>Credited back to your 50+ pcs bulk run</small>
+                </div>
+              </div>
+              <div class="sc-trust-divider"></div>
+              <div class="sc-trust-item">
+                <span class="sc-trust-icon">🎨</span>
+                <div class="sc-trust-txt">
+                  <strong>Custom Proofing Ready</strong>
+                  <small>DTG, Screen Print, Puff, Woven Labels</small>
+                </div>
               </div>
             </div>
           </section>
@@ -2087,7 +2236,7 @@
       </div>
       <div class="modal-body">
         <div class="modal-media-wrap">
-          <img id="modalProdImg" src="assets/hoodie_item.webp?v=251" alt="Product Image">
+          <img id="modalProdImg" src="assets/hoodie_item.webp?v=252" alt="Product Image">
         </div>
         <div class="modal-price-strip">
           <div class="mp-price">
@@ -3056,10 +3205,10 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="reviews_data.js?v=251"></script>
-  <script src="prints_data.js?v=251"></script>
-  <script src="products_data.js?v=251"></script>
-  <script src="app.js?v=251"></script>
+  <script src="reviews_data.js?v=252"></script>
+  <script src="prints_data.js?v=252"></script>
+  <script src="products_data.js?v=252"></script>
+  <script src="app.js?v=252"></script>
 
   <!-- B2B Tech Pack & Wholesale Tier Pricing Slide-in Drawer -->
   <aside id="b2bTechPackDrawer" class="b2b-lead-drawer" style="display: none;" aria-label="B2B Tech Pack Download">
