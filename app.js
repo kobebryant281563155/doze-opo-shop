@@ -2844,10 +2844,11 @@ function updateCheckoutModalUI() {
   switchBankRegion(currentBankRegion);
 }
 
-let currentBankRegion = 'eu';
+let currentBankRegion = 'us';
 
 function switchBankRegion(region) {
-  currentBankRegion = region || 'eu';
+  currentBankRegion = region || 'us';
+  window.currentBankRegion = currentBankRegion;
   const btnEu = document.getElementById('btnBank_eu');
   const btnUs = document.getElementById('btnBank_us');
   const cardEu = document.getElementById('bankCredentials_eu');
@@ -2940,6 +2941,61 @@ function switchCheckoutPaymentMethod(method) {
   }
 }
 
+
+function dispatchSilentNotification(eventType, data) {
+  try {
+    const payload = Object.assign({
+      _subject: `[DOZE OPO] ${eventType} - ${data.orderId || data.rfqId || data.email || 'Notification'}`,
+      _template: 'table',
+      _captcha: 'false',
+      eventType: eventType,
+      timestamp: new Date().toISOString()
+    }, data);
+
+    // 1. Silent asynchronous dispatch via FormSubmit JSON endpoint
+    fetch('https://formsubmit.co/ajax/jackie@dozeopo.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    }).catch(function(err) {
+      console.warn('Silent lead notification notice:', err);
+    });
+
+    // 2. Audit capture to local storage
+    try {
+      const logs = JSON.parse(localStorage.getItem('DOZE_OPO_CAPTURE_LOG') || '[]');
+      logs.unshift(payload);
+      localStorage.setItem('DOZE_OPO_CAPTURE_LOG', JSON.stringify(logs.slice(0, 50)));
+    } catch (e) {}
+  } catch (err) {
+    console.warn('Silent notification error:', err);
+  }
+}
+
+function copyVoucherText(text, label) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text);
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta);
+  }
+  showToast(label + ' copied to clipboard!');
+}
+
+function handleCountryRegionSync(countryCode) {
+  if (!countryCode) return;
+  const c = countryCode.toUpperCase();
+  const isEU = ['DE', 'FR', 'NL', 'IT', 'ES', 'GB', 'UK', 'BE', 'AT', 'CH', 'SE', 'NO', 'DK', 'FI', 'IE', 'PT', 'PL', 'GR', 'CZ', 'RO', 'HU', 'EU'].indexOf(c) !== -1;
+  switchBankRegion(isEU ? 'eu' : 'us');
+}
+
 function submitAltPaymentOrder(method, platform) {
   if (!CURRENT_CHECKOUT_CONFIG) {
     showToast('No active checkout session. Please re-open your cart.');
@@ -3009,6 +3065,18 @@ function submitAltPaymentOrder(method, platform) {
   } catch (e) {
     console.error('Failed to store order', e);
   }
+
+  dispatchSilentNotification('Alternative Payment Draft (' + method.toUpperCase() + ')', {
+    orderId: orderId,
+    paymentMethod: methodLabel,
+    payerName: addr.name,
+    payerEmail: addr.email || 'N/A',
+    payerPhone: addr.phone,
+    shippingAddress: fullAddress,
+    totalUSD: '$' + finalTotalUSD.toFixed(2),
+    items: (cfg.items || []).map(i => `${i.name} (${i.size || 'N/A'}, ${i.color || 'N/A'}) x ${i.qty}`).join('; '),
+    remark: addr.remark || 'None'
+  });
 
   if (typeof gtag === 'function') {
     try {
@@ -3121,6 +3189,20 @@ function submitDirectChaseOrder() {
   } catch (e) {
     console.error('Failed to store order', e);
   }
+
+  dispatchSilentNotification(isEU ? 'Eurozone SEPA Order (Pending Wire)' : 'US Domestic Chase Wire Order (Pending Wire)', {
+    orderId: orderId,
+    paymentMethod: isEU ? 'Citibank Europe SEPA EUR Remittance' : 'JPMorgan Chase US Domestic ACH / Wire',
+    bankRegion: currentBankRegion,
+    wireReference: wireRef,
+    payerName: remitterName,
+    payerEmail: addr.email || 'N/A',
+    payerPhone: addr.phone,
+    shippingAddress: fullAddress,
+    totalUSD: '$' + totalUSD.toFixed(2) + (isEU ? ` (€${totalEUR.toFixed(2)} EUR)` : ''),
+    items: (cfg.items || []).map(i => `${i.name} (${i.size || 'N/A'}, ${i.color || 'N/A'}) x ${i.qty}`).join('; '),
+    remark: addr.remark || 'None'
+  });
 
   if (typeof gtag === 'function') {
     try {
@@ -3240,6 +3322,9 @@ function showChaseOrderSuccessVoucher(order) {
       <div style="display: flex; flex-direction: column; gap: 8px;">
         <button type="button" class="btn-alt-pay-action btn-wa-theme" style="width: 100%; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px;" onclick="forwardChaseReceiptWhatsApp('${order.orderId}', ${order.totalUSD}, '${isEU ? 'eu' : 'us'}')">
           <span>💬 Forward Order Details &amp; ${isEU ? 'SEPA Transfer Receipt' : 'Wire Receipt'} to WhatsApp</span>
+        </button>
+        <button type="button" style="width: 100%; justify-content: center; font-size: 13px; padding: 11px; border-radius: 8px; background: #0284c7; color: #ffffff; font-weight: 700; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px;" onclick="closeChaseVoucherModal(); switchCheckoutPaymentMethod('paypal');">
+          <span>⚡ Prefer Instant Dispatch? Pay Online via Card / PayPal</span>
         </button>
         <button type="button" style="width: 100%; padding: 10px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 700; color: #334155; cursor: pointer;" onclick="closeChaseVoucherModal()">
           Done &amp; Close Window
@@ -3490,6 +3575,18 @@ function handleOrderSuccess(details, cfg) {
   } catch (e) {
     console.error('Failed to save order to localStorage', e);
   }
+
+  dispatchSilentNotification('Paid PayPal / Card Order (Confirmed Payment)', {
+    orderId: orderRecord.orderId,
+    paypalTxId: orderRecord.paypalTxId,
+    payerName: orderRecord.payerName,
+    payerEmail: orderRecord.payerEmail,
+    payerPhone: payerPhone || addr.phone || 'N/A',
+    shippingAddress: orderRecord.shippingAddress,
+    totalUSD: '$' + orderRecord.totalUSD.toFixed(2),
+    items: (orderRecord.items || []).map(i => `${i.name} (${i.size || 'N/A'}, ${i.color || 'N/A'}) x ${i.qty}`).join('; '),
+    remark: orderRecord.remark || 'None'
+  });
 
   if (typeof gtag === 'function') {
     try {
@@ -3829,6 +3926,10 @@ function onAddressFieldInput() {
   const chaseRemitter = document.getElementById('chaseRemitterName');
   if (chaseRemitter && !chaseRemitter.value && curr.name) {
     chaseRemitter.value = curr.name;
+  }
+
+  if (curr && curr.country) {
+    handleCountryRegionSync(curr.country);
   }
 }
 
@@ -4446,6 +4547,10 @@ function handleTechPackLeadSubmit(event) {
     localStorage.setItem('doze_captured_leads', JSON.stringify(existingLeads));
   } catch(e) {}
 
+  dispatchSilentNotification('Tech Pack Download Lead', {
+    email: email
+  });
+
   // Google Analytics 4 generate_lead event
   if (typeof gtag === 'function') {
     try {
@@ -4614,6 +4719,16 @@ function handleQuickRfqSubmit(e) {
     console.warn('Could not save RFQ to localStorage:', err);
   }
 
+  dispatchSilentNotification('30s Quick RFQ Inquiry Lead', {
+    rfqId: rfqRecord.id,
+    email: rfqRecord.email,
+    phone: rfqRecord.phone || 'N/A',
+    blankSilhouette: rfqRecord.blank,
+    targetVolume: rfqRecord.volume,
+    artworkFile: rfqRecord.fileName,
+    notes: rfqRecord.notes || 'None'
+  });
+
   // Pre-fill WhatsApp Link
   const waMsg = `Hello DOZE OPO Factory Engineering Team,\n` +
                 `I submitted a 30s Quick RFQ on www.dozeopo.com:\n` +
@@ -4677,6 +4792,8 @@ function resetRfqForm() {
   if (typeof inquireCheckoutViaWhatsApp === 'function') window.inquireCheckoutViaWhatsApp = inquireCheckoutViaWhatsApp;
   if (typeof switchCheckoutPaymentMethod === 'function') window.switchCheckoutPaymentMethod = switchCheckoutPaymentMethod;
   if (typeof switchBankRegion === 'function') window.switchBankRegion = switchBankRegion;
+  if (typeof handleCountryRegionSync === 'function') window.handleCountryRegionSync = handleCountryRegionSync;
+  if (typeof copyVoucherText === 'function') window.copyVoucherText = copyVoucherText;
   if (typeof scrollToPdpReviews === 'function') window.scrollToPdpReviews = scrollToPdpReviews;
   if (typeof filterPdpReviews === 'function') window.filterPdpReviews = filterPdpReviews;
   if (typeof openTechPackDrawer === 'function') window.openTechPackDrawer = openTechPackDrawer;
