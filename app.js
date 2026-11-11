@@ -246,7 +246,13 @@ function scrollToSection(id) {
   }, 100);
 }
 
-// 9. Search Filter
+// 9. Search Filter & Dual-Screen Search Modal
+function escapeSearchHtml(str) {
+  return String(str || '').replace(/[&<>"']/g, function(ch) {
+    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch];
+  });
+}
+
 function initSearch() {
   const searchInput = document.getElementById('mainSearchInput');
   const clearBtn = document.getElementById('searchClearBtn');
@@ -263,14 +269,175 @@ function initSearch() {
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
       clearBtn.style.display = 'none';
-      document.querySelectorAll('.product-card').forEach(card => card.style.display = 'flex');
+      document.querySelectorAll('.catalog-card, .product-card').forEach(card => card.style.display = 'flex');
     });
   }
+
+  const modalInput = document.getElementById('modalSearchInput');
+  const modalClearBtn = document.getElementById('modalSearchClearBtn');
+  if (modalInput) {
+    modalInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (modalClearBtn) {
+        modalClearBtn.style.display = val.trim().length > 0 ? 'inline-flex' : 'none';
+      }
+      renderSearchModalResults(val);
+    });
+    modalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSearchModal();
+      } else if (e.key === 'Enter') {
+        const firstCard = document.querySelector('#modalSearchResults .search-result-card');
+        if (firstCard) firstCard.click();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('productSearchModal');
+    if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+      closeSearchModal();
+      return;
+    }
+    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList && e.target.classList.contains('circle-item') && e.target.classList.contains('clickable')) {
+      e.preventDefault();
+      e.target.click();
+    }
+  });
+}
+
+function getSearchableCatalogProducts(rawKeyword) {
+  const query = (rawKeyword || '').trim().toLowerCase();
+  const includePrivateVip = query.includes('fb01') || query.includes('vip');
+  const allProducts = Object.values(PRODUCTS_DATA || {}).filter(p => {
+    if (!p || !p.id) return false;
+    if (!includePrivateVip && p.id === 'FB01') return false;
+    return true;
+  });
+
+  if (!query) {
+    return allProducts.slice(0, 8);
+  }
+
+  const tokens = query.split(/\s+/).filter(Boolean);
+  return allProducts.filter(p => {
+    const haystack = [
+      p.id,
+      p.name,
+      p.category,
+      p.gram,
+      p.color,
+      Array.isArray(p.specs) ? p.specs.join(' ') : ''
+    ].join(' ').toLowerCase();
+    return tokens.every(token => haystack.includes(token));
+  });
+}
+
+function renderSearchModalResults(rawKeyword) {
+  const container = document.getElementById('modalSearchResults');
+  const countEl = document.getElementById('modalSearchCount');
+  if (!container) return;
+
+  const trimmed = (rawKeyword || '').trim();
+  const matches = getSearchableCatalogProducts(trimmed);
+
+  if (countEl) {
+    countEl.textContent = trimmed
+      ? `${matches.length} matching item${matches.length === 1 ? '' : 's'}`
+      : 'Featured Factory Blanks';
+  }
+
+  if (matches.length === 0) {
+    container.innerHTML = `
+      <div class="search-modal-empty">
+        <p>No matching blank found for "<strong>${escapeSearchHtml(trimmed)}</strong>".</p>
+        <span>Request a custom GSM weight or silhouette tech pack directly:</span>
+        <div class="search-empty-actions">
+          <button type="button" class="search-empty-rfq-btn" onclick="closeSearchModal(); openQuickRfqModal();">⚡ Open 30s Quick RFQ</button>
+          <a href="https://wa.me/8618520682738?text=${encodeURIComponent('Hello DOZE OPO, I am looking for: ' + trimmed)}" target="_blank" rel="noopener noreferrer" class="search-empty-wa-btn">💬 Ask on WhatsApp</a>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const curSymbol = (APP_STATE.currencyRates[APP_STATE.currentCurrency] || { symbol: '$' }).symbol;
+  container.innerHTML = matches.map(p => {
+    const safeId = escapeSearchHtml(p.id);
+    const safeName = escapeSearchHtml(p.name);
+    const safeGram = escapeSearchHtml(p.gram || '');
+    const safeImg = escapeSearchHtml(p.img || '');
+    const priceStr = formatCurrency(p.priceUSD || 0);
+    return `
+      <button type="button" class="search-result-card" onclick="closeSearchModal(); openProductDetail('${safeId}');">
+        <img src="${safeImg}" alt="${safeName}" class="search-result-thumb" loading="lazy">
+        <div class="search-result-info">
+          <div class="search-result-title">${safeName}</div>
+          <div class="search-result-meta">${safeGram}</div>
+          <div class="search-result-bottom">
+            <span class="search-result-price">${curSymbol}${priceStr}</span>
+            <span class="search-result-moq">1 PC Sample &rarr;</span>
+          </div>
+        </div>
+      </button>
+    `;
+  }).join('');
+}
+
+function openSearchModal(initialQuery) {
+  const modal = document.getElementById('productSearchModal');
+  if (!modal) return;
+  modal.style.display = 'flex';
+
+  const input = document.getElementById('modalSearchInput');
+  const clearBtn = document.getElementById('modalSearchClearBtn');
+  if (typeof initialQuery === 'string' && input) {
+    input.value = initialQuery;
+  }
+  const currentVal = input ? input.value : '';
+  if (clearBtn) {
+    clearBtn.style.display = currentVal.trim().length > 0 ? 'inline-flex' : 'none';
+  }
+  renderSearchModalResults(currentVal);
+
+  setTimeout(() => {
+    if (input && typeof input.focus === 'function') {
+      input.focus();
+    }
+  }, 40);
+}
+
+function closeSearchModal() {
+  const modal = document.getElementById('productSearchModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function handleSearchBackdrop(event) {
+  if (event && event.target && event.target.id === 'productSearchModal') {
+    closeSearchModal();
+  }
+}
+
+function applyQuickSearchTag(keyword) {
+  const input = document.getElementById('modalSearchInput');
+  const clearBtn = document.getElementById('modalSearchClearBtn');
+  if (input) {
+    input.value = keyword || '';
+    if (typeof input.focus === 'function') input.focus();
+  }
+  if (clearBtn) {
+    clearBtn.style.display = keyword ? 'inline-flex' : 'none';
+  }
+  renderSearchModalResults(keyword);
+}
+
+function clearSearchModal() {
+  applyQuickSearchTag('');
 }
 
 function filterProductsOnSearch(keyword) {
   let matchCount = 0;
-  document.querySelectorAll('.product-card').forEach(card => {
+  document.querySelectorAll('.catalog-card, .product-card').forEach(card => {
     const text = card.textContent.toLowerCase();
     if (text.includes(keyword)) {
       card.style.display = 'flex';
@@ -493,6 +660,7 @@ function renderCatalogList(catFilter) {
       `;
     }
   } else {
+    const frag = document.createDocumentFragment();
     products.forEach(p => {
       const item = document.createElement('div');
       item.className = 'catalog-card';
@@ -512,8 +680,9 @@ function renderCatalogList(catFilter) {
           </div>
         </div>
       `;
-      container.appendChild(item);
+      frag.appendChild(item);
     });
+    container.appendChild(frag);
   }
 
   document.querySelectorAll('.cat-nav-item').forEach(item => {
@@ -1032,6 +1201,7 @@ function openProductDetail(productId) {
 
   if (thumbStrip) {
     thumbStrip.innerHTML = '';
+    const thumbFrag = document.createDocumentFragment();
     galleryItems.forEach((item, idx) => {
       const tDiv = document.createElement('div');
       tDiv.className = `pdp-thumb ${idx === 0 ? 'active' : ''}`;
@@ -1040,8 +1210,9 @@ function openProductDetail(productId) {
         <img src="${item.src}" alt="Gallery ${idx + 1}">
         ${item.isChart ? `<span class="pdp-thumb-size-badge">${item.label}</span>` : ''}
       `;
-      thumbStrip.appendChild(tDiv);
+      thumbFrag.appendChild(tDiv);
     });
+    thumbStrip.appendChild(thumbFrag);
   }
 
   // Render SKU color grid
@@ -1050,6 +1221,7 @@ function openProductDetail(productId) {
   if (colorGrid && prod.skus && prod.skus.length > 0) {
     if (colorSection) colorSection.style.display = 'block';
     colorGrid.innerHTML = '';
+    const colorFrag = document.createDocumentFragment();
     prod.skus.forEach((sku, idx) => {
       const swatch = document.createElement('div');
       swatch.className = `pdp-color-swatch ${idx === 0 ? 'active' : ''}`;
@@ -1060,8 +1232,9 @@ function openProductDetail(productId) {
         </div>
         <span class="swatch-name">${sku.name}</span>
       `;
-      colorGrid.appendChild(swatch);
+      colorFrag.appendChild(swatch);
     });
+    colorGrid.appendChild(colorFrag);
     const colorLabelHeader = document.getElementById('pdpColorSectionLabel');
     if (colorLabelHeader) {
       colorLabelHeader.textContent = (prod.id === 'FB01') ? 'Select VIP Price Tier:' : 'Select Colorway:';
@@ -1096,6 +1269,7 @@ function openProductDetail(productId) {
     if (sizeRow) {
       const availableSizes = prod.sizes;
       sizeRow.innerHTML = '';
+      const sizeFrag = document.createDocumentFragment();
       availableSizes.forEach(s => {
         const btn = document.createElement('button');
         btn.type = 'button';
@@ -1103,8 +1277,9 @@ function openProductDetail(productId) {
         btn.className = `pdp-size-btn ${isDefault ? 'active' : ''}`;
         btn.textContent = s;
         btn.onclick = () => selectPdpSize(s, btn);
-        sizeRow.appendChild(btn);
+        sizeFrag.appendChild(btn);
       });
+      sizeRow.appendChild(sizeFrag);
       activePdpSize = availableSizes.includes('XL') ? 'XL' : availableSizes[0];
       const activeSizeLabel = document.getElementById('pdpActiveSizeName');
       if (activeSizeLabel) activeSizeLabel.textContent = `${activePdpSize} (Oversized Street Fit)`;
@@ -1167,8 +1342,12 @@ function openProductDetail(productId) {
   activeWholesaleTierIndex = 0;
   renderPdpWholesaleTiers(prod);
   updatePdpShippingCalc();
-  renderPdpReviews(productId);
-  updateGoogleProductSchema(prod);
+  // Defer below-the-fold reviews & dynamic JSON-LD update to keep interaction paint (INP) fast
+  setTimeout(function() {
+    renderPdpReviews(productId);
+    updateGoogleProductSchema(prod);
+    updatePdpStickyBuyBar();
+  }, 0);
   if (typeof gtag === 'function' && prod) {
     try {
       gtag('event', 'view_item', {
@@ -1178,7 +1357,6 @@ function openProductDetail(productId) {
       });
     } catch(e) {}
   }
-  setTimeout(updatePdpStickyBuyBar, 100);
 }
 
 function renderDynamicLookbook(prod) {
@@ -2467,8 +2645,6 @@ function renderPrintGallery() {
     ? window.PRINTS_ARCHIVE_DATA
     : [];
 
-  grid.innerHTML = '';
-
   const countBadge = document.getElementById('printTotalCountBadge');
   if (countBadge) countBadge.textContent = `${archive.length} Production Styles`;
   const filterAll = document.getElementById('printFilterAllTag');
@@ -2478,6 +2654,12 @@ function renderPrintGallery() {
   const ctaDesc = document.getElementById('printGalleryCtaDesc');
   if (ctaDesc) ctaDesc.textContent = `Select any of our ${archive.length} studio graphics or upload your custom vector files. 1-piece physical sample proofing ready in 48 hours.`;
 
+  if (grid.dataset.renderedCount === String(archive.length) && grid.childElementCount === archive.length) {
+    return;
+  }
+
+  grid.innerHTML = '';
+  const frag = document.createDocumentFragment();
   archive.forEach(p => {
     const card = document.createElement('div');
     card.className = 'print-card-item';
@@ -2498,8 +2680,10 @@ function renderPrintGallery() {
       </div>
     `;
 
-    grid.appendChild(card);
+    frag.appendChild(card);
   });
+  grid.appendChild(frag);
+  grid.dataset.renderedCount = String(archive.length);
 }
 
 function openPrintDetail(printId) {
@@ -4812,6 +4996,11 @@ function resetRfqForm() {
   if (typeof removeRfqFile === 'function') window.removeRfqFile = removeRfqFile;
   if (typeof handleQuickRfqSubmit === 'function') window.handleQuickRfqSubmit = handleQuickRfqSubmit;
   if (typeof resetRfqForm === 'function') window.resetRfqForm = resetRfqForm;
+  if (typeof openSearchModal === 'function') window.openSearchModal = openSearchModal;
+  if (typeof closeSearchModal === 'function') window.closeSearchModal = closeSearchModal;
+  if (typeof handleSearchBackdrop === 'function') window.handleSearchBackdrop = handleSearchBackdrop;
+  if (typeof applyQuickSearchTag === 'function') window.applyQuickSearchTag = applyQuickSearchTag;
+  if (typeof clearSearchModal === 'function') window.clearSearchModal = clearSearchModal;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {

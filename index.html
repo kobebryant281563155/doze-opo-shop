@@ -108,7 +108,7 @@
   "@type": "ItemList",
   "name": "DOZE OPO Heavyweight Streetwear Blanks & OEM Collection",
   "description": "Wholesale catalog of heavyweight blank tees, hoodies, and streetwear essentials for apparel brands.",
-  "numberOfItems": 29,
+  "numberOfItems": 27,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -1054,41 +1054,6 @@
           }
         }
       }
-    },
-    {
-      "@type": "ListItem",
-      "position": 28,
-      "item": {
-        "@type": "Product",
-        "name": "FB VIP Exclusive Custom Order Link - Private Checkout",
-        "image": "https://www.dozeopo.com/assets/products/FB01/main/blindbox_1.jpg",
-        "description": "FB Exclusive VIP Custom Order Link - Dedicated Private Checkout for Live Stream & VIP Clients; Direct Unit Pricing ($1.00 USD / Unit) - Input Your Agreed Order Total into Quantity Field; For Example: Input Quantity 50 for a $50.00 USD Order, 120 for a $120.00 USD Order",
-        "sku": "FB01",
-        "brand": {
-          "@type": "Brand",
-          "name": "DOZE OPO"
-        },
-                "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "52",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "offers": {
-          "@type": "Offer",
-          "url": "https://www.dozeopo.com/#product-FB01",
-          "priceCurrency": "USD",
-          "price": "1.0",
-          "priceValidUntil": "2027-12-31",
-          "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock",
-          "seller": {
-            "@type": "Organization",
-            "name": "DOZE OPO"
-          }
-        }
-      }
     }
   ]
 }
@@ -1096,7 +1061,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=256">
+  <link rel="stylesheet" href="styles.css?v=257">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1106,11 +1071,11 @@
     })(window, document, "clarity", "script", "yx2hz06zjl");
   </script>
   <!-- Resource Preloading for Faster First Contentful Paint & Low LCP -->
-  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=256" fetchpriority="high">
-  <link rel="preload" href="reviews_data.js?v=256" as="script">
-  <link rel="preload" href="prints_data.js?v=256" as="script">
-  <link rel="preload" href="products_data.js?v=256" as="script">
-  <link rel="preload" href="app.js?v=256" as="script">
+  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=257" fetchpriority="high">
+  <link rel="preload" href="reviews_data.js?v=257" as="script">
+  <link rel="preload" href="prints_data.js?v=257" as="script">
+  <link rel="preload" href="products_data.js?v=257" as="script">
+  <link rel="preload" href="app.js?v=257" as="script">
 
   <!-- Safe Early Interactive Stubs & Action Queue (Prevents Dead Clicks & Clarity JS Errors) -->
   <script>
@@ -1133,7 +1098,7 @@
       'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
       'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
       'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'openSamplePackModal', 'closeSamplePackModal', 'openQuickRfqModal', 'closeQuickRfqModal', 'handleQuickRfqBackdrop', 'handleSampleModalBackdrop', 'handleTechPackLeadSubmit', 'handleCountryRegionSync', 'copyVoucherText'
+      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'openSamplePackModal', 'closeSamplePackModal', 'openQuickRfqModal', 'closeQuickRfqModal', 'handleQuickRfqBackdrop', 'handleSampleModalBackdrop', 'handleTechPackLeadSubmit', 'handleCountryRegionSync', 'copyVoucherText', 'openSearchModal', 'closeSearchModal', 'handleSearchBackdrop', 'applyQuickSearchTag', 'clearSearchModal'
     ];
     
     earlyFns.forEach(function(fn) {
@@ -1195,7 +1160,7 @@
         <a href="https://www.tiktok.com/@dozeopo" target="_blank" rel="noopener noreferrer" class="desktop-social-icon-btn" title="Follow DOZE OPO on TikTok" aria-label="TikTok">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
         </a>
-        <button type="button" class="desktop-search-toggle" id="desktopSearchToggle" onclick="document.querySelector('.search-inner input').focus(); switchTab('home');" title="Search Products">
+        <button type="button" class="desktop-search-toggle" id="desktopSearchToggle" onclick="openSearchModal()" title="Search Products (SKU / GSM / Style)" aria-label="Search Products">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </button>
         <button type="button" class="desktop-rfq-nav-btn" onclick="openQuickRfqModal()" title="Instant 3D Mockup &amp; RFQ">
@@ -1232,6 +1197,9 @@
           </div>
           <div class="brand-title">DOZE OPO</div>
           <div class="header-right-space">
+            <button type="button" class="header-search-btn" onclick="openSearchModal()" title="Search Products" aria-label="Search Products">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
             <button type="button" class="header-orders-btn" onclick="openOrdersTrackingModal()" title="View Orders &amp; Delivery Tracking">
               <span>📦 Orders</span>
             </button>
@@ -1247,7 +1215,7 @@
               
               <!-- Slide 1: Original Streetwear Lookbook Crew -->
               <div class="banner-slide active" data-slide-index="0">
-                <img src="assets/hero_street_crew.webp?v=256" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
+                <img src="assets/hero_street_crew.webp?v=257" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark in Lookbook -->
@@ -1258,11 +1226,11 @@
 
                 <!-- Interactive Lookbook Garment Hotspots (Shop The Look) -->
                 <div class="lookbook-hotspots-layer">
-                  <button type="button" class="lookbook-hotspot hotspot-hoodie" onclick="openProductDetail('360')" title="View 360 Heavyweight French Terry Hoodie ($14.90)">
+                  <button type="button" class="lookbook-hotspot hotspot-hoodie" onclick="openProductDetail('W430302')" title="View W430302 430G Heavyweight French Terry Pullover Hoodie ($25.99)">
                     <span class="hotspot-pulse"></span>
                     <span class="hotspot-pill">
-                      <span class="hotspot-tag">360 Hoodie</span>
-                      <span class="hotspot-meta">460G &bull; $14.90</span>
+                      <span class="hotspot-tag">W430302 Hoodie</span>
+                      <span class="hotspot-meta">430G &bull; $25.99</span>
                     </span>
                   </button>
                   <button type="button" class="lookbook-hotspot hotspot-tee" onclick="openProductDetail('01D')" title="View 01D Boxy Combed Cotton Tee ($4.99)">
@@ -1294,11 +1262,11 @@
                     <div class="circle-thumb fabric-pattern-1"></div>
                     <span>Taped Seams</span>
                   </div>
-                  <div class="circle-item clickable" data-tooltip="Durable twin needle reinforced stitching" onclick="openProductDetail('360')" role="button" tabindex="0">
+                  <div class="circle-item clickable" data-tooltip="Durable twin needle reinforced stitching" onclick="openProductDetail('W430302')" role="button" tabindex="0">
                     <div class="circle-thumb fabric-pattern-2"></div>
                     <span>Twin Stitch</span>
                   </div>
-                  <div class="circle-item clickable" data-tooltip="Vintage acid wash and mineral dye finishing" onclick="handleCategoryFilter('vintage')" role="button" tabindex="0">
+                  <div class="circle-item clickable" data-tooltip="Vintage acid wash and mineral dye finishing" onclick="openSearchModal('wash')" role="button" tabindex="0">
                     <div class="circle-thumb fabric-pattern-3"></div>
                     <span>Acid Wash</span>
                   </div>
@@ -1307,7 +1275,7 @@
 
               <!-- Slide 2: Garment Manufacturing Factory -->
               <div class="banner-slide" data-slide-index="1">
-                <img src="assets/hero_factory_production.webp?v=256" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img" loading="lazy" decoding="async">
+                <img src="assets/hero_factory_production.webp?v=257" alt="DOZE OPO Garment Manufacturing Workshop" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1325,15 +1293,15 @@
 
                 <!-- Highlight Chips -->
                 <div class="fabric-highlight-circles">
-                  <div class="circle-item" data-tooltip="Industrial stitch precision">
+                  <div class="circle-item clickable" data-tooltip="Industrial stitch precision" onclick="openProductDetail('01D')" role="button" tabindex="0">
                     <div class="circle-thumb fabric-pattern-2"></div>
                     <span>Clean Seams</span>
                   </div>
-                  <div class="circle-item" data-tooltip="High-density twin needle rib">
+                  <div class="circle-item clickable" data-tooltip="High-density twin needle rib" onclick="openProductDetail('W430302')" role="button" tabindex="0">
                     <div class="circle-thumb fabric-pattern-1"></div>
                     <span>Twin Needle</span>
                   </div>
-                  <div class="circle-item" data-tooltip="Pre-shrunk treatment under 2%">
+                  <div class="circle-item clickable" data-tooltip="Pre-shrunk treatment under 2%" onclick="openSamplePackModal()" role="button" tabindex="0">
                     <div class="circle-thumb fabric-pattern-3"></div>
                     <span>Pre-Shrunk</span>
                   </div>
@@ -1342,7 +1310,7 @@
 
               <!-- Slide 3: Warehouse Packaging & Air Dispatch -->
               <div class="banner-slide" data-slide-index="2">
-                <img src="assets/hero_warehouse_dispatch.webp?v=256" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img" loading="lazy" decoding="async">
+                <img src="assets/hero_warehouse_dispatch.webp?v=257" alt="DOZE OPO Warehouse Packaging and Priority Air Express" class="banner-img" loading="lazy" decoding="async">
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark -->
@@ -1360,15 +1328,15 @@
 
                 <!-- Highlight Chips -->
                 <div class="fabric-highlight-circles">
-                  <div class="circle-item" data-tooltip="Direct air express delivery">
+                  <div class="circle-item clickable" data-tooltip="Direct air express delivery" onclick="openSamplePackModal()" role="button" tabindex="0">
                     <div class="circle-thumb fabric-pattern-1"></div>
                     <span>Air Express</span>
                   </div>
-                  <div class="circle-item" data-tooltip="Full live FedEx / DHL tracking">
+                  <div class="circle-item clickable" data-tooltip="Full live FedEx / DHL tracking" onclick="openOrdersTrackingModal()" role="button" tabindex="0">
                     <div class="circle-thumb fabric-pattern-2"></div>
                     <span>Live Tracking</span>
                   </div>
-                  <div class="circle-item" data-tooltip="Reinforced multi-wall export boxes">
+                  <div class="circle-item clickable" data-tooltip="Reinforced multi-wall export boxes" onclick="openQuickRfqModal()" role="button" tabindex="0">
                     <div class="circle-thumb fabric-pattern-3"></div>
                     <span>Export Pack</span>
                   </div>
@@ -1395,28 +1363,28 @@
             <div class="quick-nav-row nav-row-1">
               <div class="quick-nav-item" onclick="handleCategoryFilter('tee')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tee_item.webp?v=256" alt="Heavy Tees">
+                  <img src="assets/tee_item.webp?v=257" alt="Heavy Tees">
                 </div>
                 <span class="nav-title">Heavy Tees</span>
                 <span class="nav-en">Boxy Fit</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('tank')">
                 <div class="nav-thumb-box">
-                  <img src="assets/tank_item.webp?v=256" alt="Tank Tops">
+                  <img src="assets/tank_item.webp?v=257" alt="Tank Tops">
                 </div>
                 <span class="nav-title">Tank Tops</span>
                 <span class="nav-en">Raw Cut / Vest</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('crewneck')">
                 <div class="nav-thumb-box">
-                  <img src="assets/crewneck_item.webp?v=256" alt="Crewneck Sweatshirt">
+                  <img src="assets/crewneck_item.webp?v=257" alt="Crewneck Sweatshirt">
                 </div>
                 <span class="nav-title">Crewneck Sweatshirt</span>
                 <span class="nav-en">Classic Cut</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('hoodie')">
                 <div class="nav-thumb-box">
-                  <img src="assets/hoodie_item.webp?v=256" alt="Heavy Hoodies">
+                  <img src="assets/hoodie_item.webp?v=257" alt="Heavy Hoodies">
                 </div>
                 <span class="nav-title">Heavy Hoodies</span>
                 <span class="nav-en">Oversize Cut</span>
@@ -1426,28 +1394,28 @@
             <div class="quick-nav-row nav-row-2">
               <div class="quick-nav-item" onclick="handleCategoryFilter('jacket')">
                 <div class="nav-thumb-box">
-                  <img src="assets/zip_hoodie.webp?v=256" alt="Zip Jackets">
+                  <img src="assets/zip_hoodie.webp?v=257" alt="Zip Jackets">
                 </div>
                 <span class="nav-title">Zip Jackets</span>
                 <span class="nav-en">Metal Zippers</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('pants')">
                 <div class="nav-thumb-box">
-                  <img src="assets/casual_pants_item.webp?v=256" alt="Pants">
+                  <img src="assets/casual_pants_item.webp?v=257" alt="Pants">
                 </div>
                 <span class="nav-title">Pants</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('jeans')">
                 <div class="nav-thumb-box">
-                  <img src="assets/jeans_item.webp?v=256" alt="Jeans">
+                  <img src="assets/jeans_item.webp?v=257" alt="Jeans">
                 </div>
                 <span class="nav-title">Jeans</span>
                 <span class="nav-en">Denim &amp; Washed</span>
               </div>
               <div class="quick-nav-item" onclick="handleCategoryFilter('shorts')">
                 <div class="nav-thumb-box">
-                  <img src="assets/shorts_item.webp?v=256" alt="Street Shorts">
+                  <img src="assets/shorts_item.webp?v=257" alt="Street Shorts">
                 </div>
                 <span class="nav-title">Street Shorts</span>
                 <span class="nav-en">Sweat &amp; Cargo</span>
@@ -2423,7 +2391,7 @@
       </div>
       <div class="modal-body">
         <div class="modal-media-wrap">
-          <img id="modalProdImg" src="assets/hoodie_item.webp?v=256" alt="Product Image">
+          <img id="modalProdImg" src="assets/hoodie_item.webp?v=257" alt="Product Image">
         </div>
         <div class="modal-price-strip">
           <div class="mp-price">
@@ -3401,10 +3369,10 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="reviews_data.js?v=256"></script>
-  <script src="prints_data.js?v=256"></script>
-  <script src="products_data.js?v=256"></script>
-  <script src="app.js?v=256"></script>
+  <script src="reviews_data.js?v=257"></script>
+  <script src="prints_data.js?v=257"></script>
+  <script src="products_data.js?v=257"></script>
+  <script src="app.js?v=257"></script>
 
   <!-- B2B Tech Pack & Wholesale Tier Pricing Slide-in Drawer -->
   <aside id="b2bTechPackDrawer" class="b2b-lead-drawer" style="display: none;" aria-label="B2B Tech Pack Download">
@@ -3713,6 +3681,34 @@
         </div>
         <button type="button" class="rfq-reset-btn" onclick="resetRfqForm()">Submit Another Inquiry</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Quick Product Search Modal (PC & Mobile Dual-Screen Sync) -->
+  <div id="productSearchModal" class="search-modal-backdrop" style="display: none;" onclick="handleSearchBackdrop(event)" role="dialog" aria-modal="true" aria-labelledby="searchModalHeading">
+    <div class="search-modal-dialog">
+      <div class="search-modal-top">
+        <span id="searchModalHeading" class="search-modal-kicker">INSTANT CATALOG SEARCH</span>
+        <button type="button" class="search-modal-close" onclick="closeSearchModal()" aria-label="Close Search">&times;</button>
+      </div>
+      <div class="search-modal-bar">
+        <svg class="search-modal-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="modalSearchInput" class="search-modal-input" placeholder="Search SKU (01D, W510602), GSM (230G, 430G), hoodie, tee, acid wash..." autocomplete="off">
+        <button type="button" id="modalSearchClearBtn" class="search-modal-clear" onclick="clearSearchModal()" style="display: none;" aria-label="Clear search">&times;</button>
+      </div>
+      <div class="search-modal-chips">
+        <button type="button" class="search-chip" onclick="applyQuickSearchTag('tee')">Heavy Tees</button>
+        <button type="button" class="search-chip" onclick="applyQuickSearchTag('hoodie')">430G–510G Hoodies</button>
+        <button type="button" class="search-chip" onclick="applyQuickSearchTag('wash')">Acid Wash</button>
+        <button type="button" class="search-chip" onclick="applyQuickSearchTag('zip')">Zip Jackets</button>
+        <button type="button" class="search-chip" onclick="applyQuickSearchTag('shorts')">Shorts</button>
+        <button type="button" class="search-chip" onclick="applyQuickSearchTag('pants')">Sweatpants</button>
+      </div>
+      <div class="search-modal-meta">
+        <span id="modalSearchCount">Featured Factory Blanks</span>
+        <span class="search-modal-hint">1-PC Sample &bull; Bulk OEM Ready</span>
+      </div>
+      <div id="modalSearchResults" class="search-modal-grid"></div>
     </div>
   </div>
 
