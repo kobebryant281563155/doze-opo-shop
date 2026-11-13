@@ -601,12 +601,14 @@ function switchTab(tabName) {
   }
 
   const container = document.getElementById('appScrollContainer');
-  if (container) container.scrollTop = 0;
-
-  // On desktop, also scroll the window to top
-  if (window.innerWidth >= 1024) {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (container) {
+    container.scrollTop = 0;
   }
+
+  // Scroll window & document body to top across both mobile and PC desktop
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (document.documentElement) document.documentElement.scrollTop = 0;
+  if (document.body) document.body.scrollTop = 0;
 }
 
 // 12. Catalog Page Rendering
@@ -3125,6 +3127,27 @@ function switchCheckoutPaymentMethod(method) {
   }
 }
 
+function focusPaypalCardSection() {
+  if (currentCheckoutPayMethod !== 'paypal') {
+    switchCheckoutPaymentMethod('paypal');
+  }
+  const wrapper = document.querySelector('.paypal-buttons-wrapper');
+  const container = document.getElementById('paypalButtonsContainer');
+  if (wrapper) {
+    wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    wrapper.style.transition = 'box-shadow 0.3s ease, border-color 0.3s ease';
+    wrapper.style.borderColor = '#0284c7';
+    wrapper.style.boxShadow = '0 0 0 3px rgba(2, 132, 199, 0.35)';
+    setTimeout(() => {
+      wrapper.style.borderColor = '';
+      wrapper.style.boxShadow = '';
+    }, 1500);
+  }
+  if (!container || !container.children.length) {
+    renderPaypalButtons();
+  }
+}
+
 
 function dispatchSilentNotification(eventType, data) {
   try {
@@ -3898,9 +3921,12 @@ function openOrdersTrackingModal() {
       const statusLabel = isShipped ? 'Shipped · In Transit' : 'Processing · Awaiting Dispatch';
 
       return `
-        <div class="order-track-card" style="margin-bottom: 12px; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; background: #ffffff;">
+        <div class="order-track-card interactive-order-card" onclick="openOrderDetailReceiptModal('${ord.orderId}')" role="button" tabindex="0" style="margin-bottom: 12px; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 14px; background: #ffffff; cursor: pointer; transition: all 0.2s ease;">
           <div class="order-track-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <strong style="font-size: 14px; color: #0f172a;">${ord.orderId}</strong>
+            <strong style="font-size: 14px; color: #0f172a; display: flex; align-items: center; gap: 6px;">
+              <span>${ord.orderId}</span>
+              <span style="font-size: 10px; color: #0284c7; background: rgba(2, 132, 199, 0.1); padding: 1px 6px; border-radius: 4px; font-weight: 600;">Tap for Receipt</span>
+            </strong>
             <span class="order-track-badge" style="padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; ${statusBadgeStyle}">${statusLabel}</span>
           </div>
           <div style="font-size: 11px; color: #64748b;">Date: ${dateStr} · Ref: ${ord.paypalTxId || 'Direct'}</div>
@@ -3915,7 +3941,7 @@ function openOrdersTrackingModal() {
                 <span>✈️ Air Express Tracking: <strong>${ord.trackingNumber}</strong></span>
                 <span style="font-size: 10px; background: #dcfce7; color: #15803d; padding: 1px 6px; border-radius: 4px;">Live Global Carrier</span>
               </div>
-              <a href="https://t.17track.net/en#nums=${encodeURIComponent(ord.trackingNumber)}" target="_blank" style="display: inline-block; background: #16a34a; color: #ffffff; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-size: 11px; font-weight: 700;">
+              <a href="https://t.17track.net/en#nums=${encodeURIComponent(ord.trackingNumber)}" target="_blank" onclick="event.stopPropagation();" style="display: inline-block; background: #16a34a; color: #ffffff; text-decoration: none; padding: 5px 12px; border-radius: 5px; font-size: 11px; font-weight: 700;">
                 Track on 17TRACK ➔
               </a>
             </div>
@@ -3924,9 +3950,14 @@ function openOrdersTrackingModal() {
           <!-- Order Total and Action Footer -->
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #e2e8f0; flex-wrap: wrap; gap: 8px;">
             <strong style="color: #c2410c; font-size: 13px;">Total: $${parseFloat(ord.totalUSD || 0).toFixed(2)} USD${ord.totalEUR ? ` (€${parseFloat(ord.totalEUR).toFixed(2)} EUR)` : ''}</strong>
-            <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" style="font-size: 11px; font-weight: 700; color: #0284c7; text-decoration: none;">
-              💬 WhatsApp Factory Support ➔
-            </a>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <button type="button" class="btn-receipt-pill" onclick="event.stopPropagation(); openOrderDetailReceiptModal('${ord.orderId}')" style="background: rgba(2, 132, 199, 0.08); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.25); border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 700; cursor: pointer;">
+                Receipt &amp; Specs ➔
+              </button>
+              <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" onclick="event.stopPropagation();" style="font-size: 11px; font-weight: 700; color: #0284c7; text-decoration: none;">
+                💬 WhatsApp ➔
+              </a>
+            </div>
           </div>
         </div>
       `;
@@ -3938,6 +3969,152 @@ function openOrdersTrackingModal() {
 
 function closeOrdersTrackingModal() {
   const modal = document.getElementById('ordersTrackingModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function openOrderDetailReceiptModal(orderId) {
+  const modal = document.getElementById('orderDetailReceiptModal');
+  const body = document.getElementById('orderDetailReceiptBody');
+  const title = document.getElementById('orderDetailReceiptTitle');
+  if (!modal || !body) return;
+
+  let orders = [];
+  try {
+    orders = JSON.parse(localStorage.getItem('DOZE_OPO_ORDERS') || '[]');
+  } catch (e) {
+    orders = [];
+  }
+
+  const ord = orders.find(o => o.orderId === orderId) || (orders.length > 0 ? orders[0] : null);
+  if (!ord) {
+    showToast('Order details not found');
+    return;
+  }
+
+  if (title) title.innerText = `Order ${ord.orderId}`;
+
+  const dateStr = new Date(ord.createdAt || Date.now()).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'
+  });
+  const isShipped = ord.status === 'Shipped' || !!ord.trackingNumber;
+  const statusBadgeStyle = isShipped 
+    ? 'background: #dcfce7; color: #15803d; border: 1px solid #86efac;' 
+    : 'background: #fef3c7; color: #b45309; border: 1px solid #fde68a;';
+  const statusLabel = isShipped ? 'Shipped · In Transit' : 'Processing · In Factory Queue';
+
+  const waTrackMsg = encodeURIComponent(
+    `Hello DOZE OPO Concierge, I am inquiring about my Order ${ord.orderId}.\nItems: ${(ord.items || []).map(i => `${i.qty}x ${i.name}`).join(', ')}\nDelivery To: ${ord.shippingAddress || 'N/A'}\nCould you share the current production status or flight schedule?`
+  );
+
+  const receiptPlainText = `DOZE OPO FACTORY PROOFING RECEIPT\nOrder ID: ${ord.orderId}\nDate: ${dateStr}\nPayment Ref: ${ord.paypalTxId || 'Direct'}\nStatus: ${statusLabel}\nItems:\n${(ord.items || []).map(i => `- ${i.qty}x ${i.name} (${i.size}, ${i.color}) @ $${parseFloat(i.priceUSD).toFixed(2)}`).join('\n')}\nTotal Delivered: $${parseFloat(ord.totalUSD || 0).toFixed(2)} USD\nDeliver To: ${ord.shippingAddress || 'N/A'}`;
+
+  body.innerHTML = `
+    <!-- Top Summary Card -->
+    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+        <div>
+          <span style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">Tracking Ref</span>
+          <h4 style="margin: 2px 0 0; color: #0f172a; font-size: 16px;">${ord.orderId}</h4>
+        </div>
+        <span style="padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; ${statusBadgeStyle}">${statusLabel}</span>
+      </div>
+      <div style="font-size: 11.5px; color: #64748b; display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+        <div><strong>Date:</strong> ${dateStr}</div>
+        <div><strong>Gateway:</strong> ${ord.paymentMethod || 'PayPal / Card'}</div>
+        <div style="grid-column: 1 / -1;"><strong>Payment Ref:</strong> <code style="font-size: 11px; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">${ord.paypalTxId || 'Direct Settlement'}</code></div>
+      </div>
+    </div>
+
+    <!-- 5-Stage Live Production & Logistics Tracker -->
+    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+      <strong style="font-size: 12.5px; color: #0f172a; display: block; margin-bottom: 10px;">🏭 OEM Production &amp; Express Stepper</strong>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: #16a34a; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">✓</span>
+          <div style="flex: 1;">
+            <strong style="font-size: 12px; color: #0f172a; display: block;">1. Order &amp; Payment Cleared</strong>
+            <small style="color: #64748b; font-size: 11px;">Payment verified, garment specification locked into ERP.</small>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: #0284c7; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">2</span>
+          <div style="flex: 1;">
+            <strong style="font-size: 12px; color: #0f172a; display: block;">2. Blank Fabric Inspection &amp; Cutting</strong>
+            <small style="color: #64748b; font-size: 11px;">Raw heavyweight cotton roll pulled from factory reserve.</small>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: ${isShipped ? '#16a34a' : '#cbd5e1'}; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">${isShipped ? '✓' : '3'}</span>
+          <div style="flex: 1;">
+            <strong style="font-size: 12px; color: ${isShipped ? '#0f172a' : '#64748b'}; display: block;">3. Proofing / Custom Wash Treatment</strong>
+            <small style="color: #64748b; font-size: 11px;">Cut, sew, enzyme vintage stonewash or print curing.</small>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: ${isShipped ? '#16a34a' : '#cbd5e1'}; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">${isShipped ? '✓' : '4'}</span>
+          <div style="flex: 1;">
+            <strong style="font-size: 12px; color: ${isShipped ? '#0f172a' : '#64748b'}; display: block;">4. Precision QC &amp; Steaming Pack</strong>
+            <small style="color: #64748b; font-size: 11px;">Tolerances measured against tech pack before packaging.</small>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+          <span style="width: 22px; height: 22px; border-radius: 50%; background: ${isShipped ? '#16a34a' : '#cbd5e1'}; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">${isShipped ? '✈️' : '5'}</span>
+          <div style="flex: 1;">
+            <strong style="font-size: 12px; color: ${isShipped ? '#0f172a' : '#64748b'}; display: block;">5. Direct Global Air Express Dispatch</strong>
+            <small style="color: #64748b; font-size: 11px;">${isShipped ? `Dispatched via air courier (Tracking: ${ord.trackingNumber})` : 'Dispatched via DHL / FedEx / USPS priority door-to-door.'}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Itemized List Table -->
+    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+      <strong style="font-size: 12.5px; color: #0f172a; display: block; margin-bottom: 8px;">📋 Garment Specifications &amp; Quantities</strong>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        ${(ord.items || []).map(it => `
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px dashed #f1f5f9; font-size: 12px;">
+            <div>
+              <div style="font-weight: 700; color: #0f172a;">${it.name}</div>
+              <div style="color: #64748b; font-size: 11px;">Size: <strong>${it.size}</strong> · Color: <strong>${it.color}</strong> · Qty: <strong>${it.qty}</strong></div>
+            </div>
+            <strong style="color: #0f172a;">$${(parseFloat(it.priceUSD) * parseInt(it.qty, 10)).toFixed(2)} USD</strong>
+          </div>
+        `).join('')}
+      </div>
+      <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 12px; color: #64748b;">Total Delivered (Air Freight Included):</span>
+        <strong style="font-size: 15px; color: #c2410c;">$${parseFloat(ord.totalUSD || 0).toFixed(2)} USD</strong>
+      </div>
+    </div>
+
+    <!-- Delivery Destination Details -->
+    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+      <strong style="font-size: 12.5px; color: #0f172a; display: block; margin-bottom: 6px;">📍 Shipping Destination</strong>
+      <div style="font-size: 12px; color: #334155; line-height: 1.5;">${ord.shippingAddress}</div>
+      ${ord.remark ? `<div style="margin-top: 6px; font-size: 11.5px; color: #64748b;"><strong>Remark:</strong> ${ord.remark}</div>` : ''}
+    </div>
+
+    <!-- Actions -->
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <a href="https://wa.me/8618520682738?text=${waTrackMsg}" target="_blank" class="btn-wa-direct" style="text-align: center; text-decoration: none; display: block;">
+        💬 Live WhatsApp Factory Inquiries ➔
+      </a>
+      <button type="button" class="btn-copy-wa" onclick="navigator.clipboard.writeText(${JSON.stringify(receiptPlainText)}).then(() => showToast('Official receipt copied to clipboard!'))" style="width: 100%;">
+        📋 Copy Plain-Text Receipt
+      </button>
+      ${ord.trackingNumber ? `
+        <a href="https://t.17track.net/en#nums=${encodeURIComponent(ord.trackingNumber)}" target="_blank" style="text-align: center; display: block; background: #16a34a; color: #fff; padding: 10px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 12.5px;">
+          ✈️ Live Carrier Tracking on 17TRACK ➔
+        </a>
+      ` : ''}
+    </div>
+  `;
+
+  modal.classList.add('open');
+}
+
+function closeOrderDetailReceiptModal() {
+  const modal = document.getElementById('orderDetailReceiptModal');
   if (modal) modal.classList.remove('open');
 }
 
@@ -4766,7 +4943,7 @@ function handleTechPackLeadSubmit(event) {
     'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
     'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
     'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit'
+    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'focusPaypalCardSection', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit', 'openOrderDetailReceiptModal', 'closeOrderDetailReceiptModal'
   ];
 
   earlyFns.forEach(function(fn) {
@@ -5001,6 +5178,9 @@ function resetRfqForm() {
   if (typeof handleSearchBackdrop === 'function') window.handleSearchBackdrop = handleSearchBackdrop;
   if (typeof applyQuickSearchTag === 'function') window.applyQuickSearchTag = applyQuickSearchTag;
   if (typeof clearSearchModal === 'function') window.clearSearchModal = clearSearchModal;
+  if (typeof focusPaypalCardSection === 'function') window.focusPaypalCardSection = focusPaypalCardSection;
+  if (typeof openOrderDetailReceiptModal === 'function') window.openOrderDetailReceiptModal = openOrderDetailReceiptModal;
+  if (typeof closeOrderDetailReceiptModal === 'function') window.closeOrderDetailReceiptModal = closeOrderDetailReceiptModal;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {
