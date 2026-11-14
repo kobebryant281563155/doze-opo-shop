@@ -544,24 +544,24 @@ function recalcCustomQuote() {
 
   if (ruleDetailDisplay) {
     if (isHeavy) {
-      ruleDetailDisplay.innerHTML = '1st item: <strong>$9.00</strong> · Add\'l items: <strong>+$1.00 / pc</strong>';
+      ruleDetailDisplay.innerHTML = '1st item: <strong>$14.00</strong> · Add\'l items: <strong>+$10.00 / pc</strong>';
     } else {
-      ruleDetailDisplay.innerHTML = '1st item: <strong>$8.00</strong> · Add\'l items: <strong>+$0.50 / pc</strong>';
+      ruleDetailDisplay.innerHTML = '1st item: <strong>$8.00</strong> · Add\'l items: <strong>+$5.00 / pc</strong>';
     }
   }
 
   if (formulaDisplay) {
     if (isHeavy) {
       if (qty === 1) {
-        formulaDisplay.textContent = '($9.00 base · 10–15d)';
+        formulaDisplay.textContent = '($14.00 base · 6–10d)';
       } else {
-        formulaDisplay.textContent = `($9.00 + ${qty - 1} × $1.00 · 10–15d)`;
+        formulaDisplay.textContent = `($14.00 + ${qty - 1} × $10.00 · 6–10d)`;
       }
     } else {
       if (qty === 1) {
-        formulaDisplay.textContent = '($8.00 base · 10–15d)';
+        formulaDisplay.textContent = '($8.00 base · 6–10d)';
       } else {
-        formulaDisplay.textContent = `($8.00 + ${qty - 1} × $0.50 · 10–15d)`;
+        formulaDisplay.textContent = `($8.00 + ${qty - 1} × $5.00 · 6–10d)`;
       }
     }
   }
@@ -712,13 +712,13 @@ let activePdpSize = 'XL';
 let activePdpQty = 1;
 
 // ==========================================================================
-// Category-Based US Direct Shipping Calculation Rules:
-// 1. Lightweight Group (Tee, Tank Top, Shorts):
+// Category-Based US Direct Shipping Calculation Rules (Aligned with YunExpress Rate Card):
+// 1. Lightweight Group (Tee, Tank Top, Shorts - up to ~300g):
 //    - 1st piece: $8.00 USD
-//    - Each additional piece: +$0.50 USD
-// 2. Heavyweight Group (Crewneck Sweatshirt, Zip Jacket, Hoodie, Pants, Jeans):
-//    - 1st piece: $9.00 USD
-//    - Each additional piece: +$1.00 USD
+//    - Each additional piece: +$5.00 USD
+// 2. Heavyweight Group (Crewneck Sweatshirt, Zip Jacket, Hoodie, Pants, Jeans - up to ~750g):
+//    - 1st piece: $14.00 USD
+//    - Each additional piece: +$10.00 USD
 // ==========================================================================
 const HEAVYWEIGHT_GARMENT_CATEGORIES = ['crewneck', 'hoodie', 'jacket', 'pants', 'jeans'];
 
@@ -753,9 +753,9 @@ function calculateProductShipping(productOrCategory, qty) {
   }
   const isHeavy = isHeavyweightGarment(productOrCategory);
   if (isHeavy) {
-    return 9.00 + (qty - 1) * 1.00;
+    return 14.00 + (qty - 1) * 10.00;
   } else {
-    return 8.00 + (qty - 1) * 0.50;
+    return 8.00 + (qty - 1) * 5.00;
   }
 }
 
@@ -774,11 +774,11 @@ function calculateCartShipping(cartItems) {
   });
   if (qtyHeavy + qtyLight === 0) return 0;
   if (qtyHeavy > 0) {
-    // 1st heavy is $9.00, each additional heavy is +$1.00, each light is +$0.50
-    return 9.00 + (qtyHeavy - 1) * 1.00 + (qtyLight * 0.50);
+    // 1st heavy is $14.00, each additional heavy is +$10.00, each light is +$5.00
+    return 14.00 + (qtyHeavy - 1) * 10.00 + (qtyLight * 5.00);
   } else {
-    // Only lightweight garments: 1st is $8.00, each additional is +$0.50
-    return 8.00 + (qtyLight - 1) * 0.50;
+    // Only lightweight garments: 1st is $8.00, each additional is +$5.00
+    return 8.00 + (qtyLight - 1) * 5.00;
   }
 }
 
@@ -887,9 +887,9 @@ function updatePdpShippingCalc() {
     const ruleTextElem = document.getElementById('pdpShipRuleText');
     if (ruleTextElem) {
       if (isHeavy) {
-        ruleTextElem.innerHTML = 'First item: <strong>$9.00</strong> · Each additional item: <strong>+$1.00</strong>';
+        ruleTextElem.innerHTML = 'First item: <strong>$14.00</strong> · Each additional item: <strong>+$10.00</strong>';
       } else {
-        ruleTextElem.innerHTML = 'First item: <strong>$8.00</strong> · Each additional item: <strong>+$0.50</strong>';
+        ruleTextElem.innerHTML = 'First item: <strong>$8.00</strong> · Each additional item: <strong>+$5.00</strong>';
       }
     }
 
@@ -897,15 +897,15 @@ function updatePdpShippingCalc() {
     if (formulaNoteElem) {
       if (isHeavy) {
         if (qty === 1) {
-          formulaNoteElem.textContent = '($9.00 base)';
+          formulaNoteElem.textContent = '($14.00 base)';
         } else {
-          formulaNoteElem.textContent = `($9.00 + ${qty - 1} × $1.00)`;
+          formulaNoteElem.textContent = `($14.00 + ${qty - 1} × $10.00)`;
         }
       } else {
         if (qty === 1) {
           formulaNoteElem.textContent = '($8.00 base)';
         } else {
-          formulaNoteElem.textContent = `($8.00 + ${qty - 1} × $0.50)`;
+          formulaNoteElem.textContent = `($8.00 + ${qty - 1} × $5.00)`;
         }
       }
     }
@@ -2321,7 +2321,7 @@ function openProductModal(productId) {
   const modalShipBanner = document.getElementById('modalShippingBannerText');
   if (modalShipBanner) {
     const isHeavy = isHeavyweightGarment(prod.category || prod.id);
-    modalShipBanner.textContent = isHeavy ? 'US Direct Shipping: $9.00 (+$1.00/add\'l)' : 'US Direct Shipping: $8.00 (+$0.50/add\'l)';
+    modalShipBanner.textContent = isHeavy ? 'US Direct Shipping: $14.00 (+$10.00/add\'l)' : 'US Direct Shipping: $8.00 (+$5.00/add\'l)';
   }
 
   document.querySelectorAll('.size-chip').forEach(c => {
@@ -2439,11 +2439,11 @@ function updateCartTotal() {
     const hasHeavy = APP_STATE.cartItems.some(i => isHeavyweightGarment(i));
     const hasLight = APP_STATE.cartItems.some(i => !isHeavyweightGarment(i));
     if (hasHeavy && hasLight) {
-      cartNoticeText.textContent = 'Mixed Cart: $9.00 base covers heavy item · Heavy +$1.00/pc, Light +$0.50/pc';
+      cartNoticeText.textContent = 'Mixed Cart: $14.00 base covers heavy item · Heavy +$10.00/pc, Light +$5.00/pc';
     } else if (hasHeavy) {
-      cartNoticeText.textContent = 'Heavyweight Garments: $9.00 base for 1st item · +$1.00 for each additional item';
+      cartNoticeText.textContent = 'Heavyweight Garments: $14.00 base for 1st item · +$10.00 for each additional item';
     } else {
-      cartNoticeText.textContent = 'Standard US Direct Shipping: $8.00 base for 1st item · +$0.50 for each additional item';
+      cartNoticeText.textContent = 'Standard US Direct Shipping: $8.00 base for 1st item · +$5.00 for each additional item';
     }
   }
 
