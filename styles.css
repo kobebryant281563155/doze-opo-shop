@@ -9598,22 +9598,12 @@ body {
   animation: pulse-dot 1.8s infinite;
 }
 
-/* Floating RFQ Widget (PC Desktop Bottom-Right) */
+/* Floating RFQ Widget (Disabled & Removed per user request) */
 .desktop-rfq-floating-widget {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 9999;
-  background: linear-gradient(135deg, #090e1a 0%, #111a2e 50%, #0f172a 100%);
-  border: 1.5px solid rgba(56, 189, 248, 0.45);
-  border-radius: 16px;
-  padding: 12px 18px;
-  color: #ffffff;
-  cursor: pointer;
-  box-shadow: 0 12px 36px -4px rgba(15, 23, 42, 0.6), 0 0 24px -2px rgba(56, 189, 248, 0.3);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  user-select: none;
-  max-width: 320px;
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 body.modal-open .desktop-rfq-floating-widget,
@@ -10134,10 +10124,7 @@ body.modal-open .desktop-rfq-floating-widget,
 /* Mobile Adjustments */
 @media (max-width: 767px) {
   .desktop-rfq-floating-widget {
-    bottom: 74px;
-    right: 14px;
-    padding: 8px 12px;
-    max-width: 220px;
+    display: none !important;
   }
 
   .rfq-widget-icon-box {
