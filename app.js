@@ -2196,6 +2196,34 @@ function switchPdpHero(imgSrc, index) {
   });
 }
 
+function advancePdpNextHero() {
+  const prod = PRODUCTS_DATA[activePdpProductId];
+  if (!prod) return;
+  const gallery = (prod.gallery && prod.gallery.length > 0) ? prod.gallery : [prod.img];
+  const counter = document.getElementById('pdpImgCounter');
+  let currentIdx = 1;
+  if (counter && counter.textContent) {
+    const parts = counter.textContent.split('/');
+    if (parts.length > 0) {
+      currentIdx = parseInt(parts[0].trim(), 10) || 1;
+    }
+  }
+  const nextIdx = (currentIdx % gallery.length) + 1;
+  const nextImgSrc = gallery[nextIdx - 1];
+
+  const mainImg = document.getElementById('pdpMainImg');
+  if (mainImg) {
+    mainImg.style.transition = 'opacity 0.15s ease';
+    mainImg.style.opacity = '0.5';
+    setTimeout(() => {
+      switchPdpHero(nextImgSrc, nextIdx);
+      mainImg.style.opacity = '1';
+    }, 150);
+  } else {
+    switchPdpHero(nextImgSrc, nextIdx);
+  }
+}
+
 function selectPdpColor(colorName, heroImg, elem) {
   activePdpColor = colorName;
   const label = document.getElementById('pdpActiveColorName');
@@ -4139,6 +4167,20 @@ function inquireCheckoutViaWhatsApp() {
   window.open(url, '_blank');
 }
 
+function inquirePdpViaWhatsApp() {
+  const prod = PRODUCTS_DATA[activePdpProductId];
+  if (!prod) {
+    openWhatsAppModal();
+    return;
+  }
+  const color = activePdpColor || 'Default';
+  const size = activePdpSize || 'Standard';
+  const price = prod.priceUSD ? `$${parseFloat(prod.priceUSD).toFixed(2)} USD` : 'Sample Price';
+  const text = `Hello DOZE OPO, I am interested in a custom 1-piece sample proofing for: ${prod.name} (Style: ${prod.id}, Color: ${color}, Size: ${size}, Base: ${price}). Could you please share the current proofing timeline and air express dispatch options?`;
+  const url = 'https://wa.me/8618520682738?text=' + encodeURIComponent(text);
+  window.open(url, '_blank');
+}
+
 // 20. Customer Delivery Address Management, Address Book & Multi-Address Persistence
 let CURRENT_EDITING_ADDRESS_ID = null;
 
@@ -4943,7 +4985,7 @@ function handleTechPackLeadSubmit(event) {
     'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
     'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
     'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'focusPaypalCardSection', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit', 'openOrderDetailReceiptModal', 'closeOrderDetailReceiptModal'
+    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'focusPaypalCardSection', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit', 'openOrderDetailReceiptModal', 'closeOrderDetailReceiptModal', 'advancePdpNextHero', 'inquirePdpViaWhatsApp'
   ];
 
   earlyFns.forEach(function(fn) {
@@ -5181,6 +5223,8 @@ function resetRfqForm() {
   if (typeof focusPaypalCardSection === 'function') window.focusPaypalCardSection = focusPaypalCardSection;
   if (typeof openOrderDetailReceiptModal === 'function') window.openOrderDetailReceiptModal = openOrderDetailReceiptModal;
   if (typeof closeOrderDetailReceiptModal === 'function') window.closeOrderDetailReceiptModal = closeOrderDetailReceiptModal;
+  if (typeof advancePdpNextHero === 'function') window.advancePdpNextHero = advancePdpNextHero;
+  if (typeof inquirePdpViaWhatsApp === 'function') window.inquirePdpViaWhatsApp = inquirePdpViaWhatsApp;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {

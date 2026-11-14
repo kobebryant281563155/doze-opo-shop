@@ -1061,7 +1061,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=258">
+  <link rel="stylesheet" href="styles.css?v=259">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1098,7 +1098,7 @@
       'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
       'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
       'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'focusPaypalCardSection', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'openSamplePackModal', 'closeSamplePackModal', 'openQuickRfqModal', 'closeQuickRfqModal', 'handleQuickRfqBackdrop', 'handleSampleModalBackdrop', 'handleTechPackLeadSubmit', 'handleCountryRegionSync', 'copyVoucherText', 'openSearchModal', 'closeSearchModal', 'handleSearchBackdrop', 'applyQuickSearchTag', 'clearSearchModal', 'openOrderDetailReceiptModal', 'closeOrderDetailReceiptModal'
+      'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'focusPaypalCardSection', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'openSamplePackModal', 'closeSamplePackModal', 'openQuickRfqModal', 'closeQuickRfqModal', 'handleQuickRfqBackdrop', 'handleSampleModalBackdrop', 'handleTechPackLeadSubmit', 'handleCountryRegionSync', 'copyVoucherText', 'openSearchModal', 'closeSearchModal', 'handleSearchBackdrop', 'applyQuickSearchTag', 'clearSearchModal', 'openOrderDetailReceiptModal', 'closeOrderDetailReceiptModal', 'advancePdpNextHero', 'inquirePdpViaWhatsApp'
     ];
     
     earlyFns.forEach(function(fn) {
@@ -1796,9 +1796,9 @@
             <!-- Left: Hero Media Swiper -->
             <div class="pdp-media-swiper">
               <div class="pdp-hero-img-wrap">
-                <img src="assets/products/01D/main/1.jpg" id="pdpMainImg" alt="01D 230G Crewneck Tee">
+                <img src="assets/products/01D/main/1.jpg" id="pdpMainImg" alt="01D 230G Crewneck Tee" onclick="advancePdpNextHero()" style="cursor: pointer;" title="Tap to view next photo">
                 <span class="pdp-img-counter" id="pdpImgCounter">1 / 6</span>
-                <span class="pdp-badge-moq">⚡ 1 PC Sample Proofing</span>
+                <span class="pdp-badge-moq" onclick="openSamplePackModal()" style="cursor: pointer;" title="Click to view 1-Piece Sample Pack &amp; Refund Policy">⚡ 1 PC Sample Proofing</span>
               </div>
               <div class="pdp-thumb-strip" id="pdpThumbStrip">
                 <div class="pdp-thumb active" onclick="switchPdpHero('assets/products/01D/main/1.jpg', 1)"><img src="assets/products/01D/main/1.jpg" alt="Gallery 1"></div>
@@ -1818,7 +1818,7 @@
                     <strong class="pdp-price-val">4.99</strong>
                     <span class="pdp-price-unit">/ pc</span>
                   </div>
-                  <span class="pdp-sample-tag">1 PC Sample Proofing Ready</span>
+                  <span class="pdp-sample-tag" onclick="openSamplePackModal()" style="cursor: pointer;" title="Click to view 1-Piece Sample Pack &amp; Refund Policy">1 PC Sample Proofing Ready</span>
                 </div>
                 <h2 class="pdp-title">01D 230G 20S Compact Siro-Spun Combed Cotton Crewneck Tee</h2>
                 <div class="pdp-rating-badge-top" onclick="scrollToPdpReviews()" title="Click to view verified brand reviews">
@@ -2008,7 +2008,7 @@
 
               <!-- Action Footer (Buttons) -->
               <div class="pdp-sticky-footer">
-                <button type="button" class="btn-pdp-wa" onclick="openWhatsAppModal()" title="WhatsApp Chat">
+                <button type="button" class="btn-pdp-wa" onclick="inquirePdpViaWhatsApp()" title="Direct WhatsApp Inquiries for This Garment">
                   <span>💬</span>
                   <small>WhatsApp</small>
                 </button>
@@ -3388,10 +3388,10 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="reviews_data.js?v=258"></script>
-  <script src="prints_data.js?v=258"></script>
-  <script src="products_data.js?v=258"></script>
-  <script src="app.js?v=258"></script>
+  <script src="reviews_data.js?v=259"></script>
+  <script src="prints_data.js?v=259"></script>
+  <script src="products_data.js?v=259"></script>
+  <script src="app.js?v=259"></script>
 
   <!-- B2B Tech Pack & Wholesale Tier Pricing Slide-in Drawer -->
   <aside id="b2bTechPackDrawer" class="b2b-lead-drawer" style="display: none;" aria-label="B2B Tech Pack Download">
