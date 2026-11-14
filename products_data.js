@@ -1,5 +1,51 @@
 // Generated Products Data Dictionary for DOZE OPO
 window.PRODUCTS_DATA = {
+  "SWATCH01": {
+    "id": "SWATCH01",
+    "name": "DOZE OPO Master Heavyweight Fabric Swatch Book & Pantone Colorway Box",
+    "category": "tee",
+    "priceUSD": 19.00,
+    "noShipping": true,
+    "gram": "Complete 210G-510G Heavyweight Cotton & French Terry Swatches",
+    "img": "assets/products/01D/detail/1.jpg",
+    "color": "18+ Pantone Streetwear Shades",
+    "sizes": ["Master Box"],
+    "specs": [
+      "Physical 10cm x 10cm fabric cuttings across all 8 flagship streetwear fabrications",
+      "Includes: 230G/240G Compact Siro Cotton, 275G Raw Cotton, 350G/430G/510G Luxury French Terry & Heavy Fleece",
+      "Includes vintage stonewash, enzyme wash, mineral acid wash & raw unwashed comparison cuttings",
+      "Complete physical Pantone color ring (18+ classic & viral streetwear shades)",
+      "100% Full Refund / Credit ($19.00 USD deducted from your first bulk order of 50+ pcs)",
+      "Direct worldwide door-to-door air express dispatch in 48 hours"
+    ],
+    "sizeTable": {
+      "columns": [
+        { "key": "size", "label": "Item", "isSize": true },
+        { "key": "length", "label": "Swatches", "unit": false },
+        { "key": "chest", "label": "Colors", "unit": false },
+        { "key": "shoulder", "label": "Wash Types", "unit": false },
+        { "key": "sleeve", "label": "Credit Value", "unit": false },
+        { "key": "height", "label": "Dispatch", "unit": false },
+        { "key": "weight", "label": "Express Air", "unit": false }
+      ],
+      "rows": [
+        { "size": "Master Box", "length": "8 Fabric Grades", "chest": "18+ Colors", "shoulder": "4 Wash Types", "sleeve": "$19 Credit", "height": "48h Ready", "weight": "FedEx / DHL" }
+      ]
+    },
+    "gallery": [
+      "assets/products/01D/detail/1.jpg",
+      "assets/products/W430302/detail/1.jpg",
+      "assets/products/T275500/detail/1.jpg",
+      "assets/hero_factory_production.webp"
+    ],
+    "skus": [
+      { "name": "Master Swatch Box", "thumb": "assets/products/01D/detail/1.jpg", "hero": "assets/products/01D/detail/1.jpg", "priceUSD": 19.00 }
+    ],
+    "detailImages": [
+      "assets/products/01D/detail/1.jpg",
+      "assets/products/W430302/detail/1.jpg"
+    ]
+  },
   "04C": {
     "id": "04C",
     "name": "04C 230G 20S Compact Siro Combed Cotton Long Sleeve Crewneck Tee",

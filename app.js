@@ -4985,7 +4985,8 @@ function handleTechPackLeadSubmit(event) {
     'closeContactConciergeModal', 'openContactModal', 'closeContactModal',
     'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
     'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
-    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'focusPaypalCardSection', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit', 'openOrderDetailReceiptModal', 'closeOrderDetailReceiptModal', 'advancePdpNextHero', 'inquirePdpViaWhatsApp'
+    'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'focusPaypalCardSection', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit', 'openOrderDetailReceiptModal', 'closeOrderDetailReceiptModal', 'advancePdpNextHero', 'inquirePdpViaWhatsApp',
+    'openVectorMockupModal', 'closeVectorMockupModal', 'handleVectorMockupBackdrop', 'handleVectorMockupSubmit'
   ];
 
   earlyFns.forEach(function(fn) {
@@ -5021,6 +5022,138 @@ function closeSamplePackModal() {
 function handleSampleModalBackdrop(e) {
   if (e && e.target && e.target.id === 'samplePackModal') {
     closeSamplePackModal();
+  }
+}
+
+// ==========================================================================
+// Free Vector Blank Mockup Pack & Tech Pack Modal Controller
+// ==========================================================================
+function openVectorMockupModal() {
+  const modal = document.getElementById('vectorMockupModal');
+  if (modal) {
+    modal.classList.add('open');
+    document.body.classList.add('modal-open');
+    if (typeof gtag === 'function') {
+      try {
+        gtag('event', 'open_vector_mockup_modal', {
+          event_category: 'B2B Asset Pack',
+          event_label: 'Vector Mockup Modal'
+        });
+      } catch(e) {}
+    }
+  }
+}
+
+function closeVectorMockupModal() {
+  const modal = document.getElementById('vectorMockupModal');
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+}
+
+function handleVectorMockupBackdrop(e) {
+  if (e && e.target && e.target.id === 'vectorMockupModal') {
+    closeVectorMockupModal();
+  }
+}
+
+function handleVectorMockupSubmit(event) {
+  if (event) event.preventDefault();
+  const contactInput = document.getElementById('vmContactInput');
+  const brandInput = document.getElementById('vmBrandInput');
+  const contact = (contactInput ? contactInput.value : '').trim();
+  const brand = (brandInput ? brandInput.value : '').trim();
+
+  if (!contact) {
+    if (typeof showToast === 'function') showToast('Please enter your email or WhatsApp number.');
+    return;
+  }
+
+  // Save lead locally
+  try {
+    const existing = JSON.parse(localStorage.getItem('doze_vector_mockup_leads') || '[]');
+    existing.push({ contact: contact, brand: brand, timestamp: new Date().toISOString() });
+    localStorage.setItem('doze_vector_mockup_leads', JSON.stringify(existing));
+  } catch(e) {}
+
+  // Dispatch silent notification
+  if (typeof dispatchSilentNotification === 'function') {
+    dispatchSilentNotification('Vector Mockup & Tech Pack Download Lead', {
+      contact: contact,
+      brand: brand || 'Independent Designer / Creator',
+      timestamp: new Date().toISOString()
+    });
+  }
+
+  // Google Analytics 4 generate_lead event
+  if (typeof gtag === 'function') {
+    try {
+      gtag('event', 'generate_lead', {
+        event_category: 'B2B Asset Pack',
+        event_label: 'Free Vector Pack & Tech Pack',
+        currency: 'USD',
+        value: 1
+      });
+    } catch(e) {}
+  }
+
+  // Trigger instant direct download of Specification & Cloud Mirror Guide
+  try {
+    const guideText = "DOZE OPO DIRECT FACTORY ASSET PACK\n" +
+      "====================================================\n" +
+      "Resource: Free Streetwear Vector Blank Mockups (.AI / .PSD) & Tech Pack Specification Sheets\n" +
+      "Commercial License: 100% Free for Brand Building, Merchandising & Commercial Production\n" +
+      "Timestamp: " + new Date().toISOString() + "\n" +
+      "Issued to: " + contact + (brand ? " (" + brand + ")" : "") + "\n\n" +
+      "DIRECT CLOUD REPOSITORY & VECTOR DRIVE ACCESS:\n" +
+      "----------------------------------------------------\n" +
+      "Master Drive Mirror: https://www.dozeopo.com/assets/DOZE_OPO_Vector_TechPack_Pack.zip\n" +
+      "Official Design Concierge (WhatsApp): https://wa.me/8618520682738\n\n" +
+      "INCLUDED FLAGSHIP STREETWEAR BLANKS IN THIS ARCHIVE:\n" +
+      "1. 01D 230G 21S Siro Combed Cotton Boxy Streetwear Tee (Front/Back/Side 1:1 Vector .AI & Layered .PSD)\n" +
+      "2. 360 275G 16S Raw Heavyweight Drop-Shoulder Tee (Front/Back 1:1 Vector .AI & Layered .PSD)\n" +
+      "3. 04C 230G Long Sleeve Crewneck Heavy Tee (Front/Back/Sleeve 1:1 Vector .AI & Layered .PSD)\n" +
+      "4. T012 240G Relaxed Boxy Minimalist Tee (Front/Back 1:1 Vector .AI & Layered .PSD)\n" +
+      "5. W430302 430G Vintage Mineral Acid Wash Streetwear Hoodie (Front/Back/Hood/Pouch 1:1 Vector .AI & Layered .PSD)\n" +
+      "6. Standard Apparel Tech Pack Spec Sheet Template (.XLSX & .PDF) with Point of Measure (POM) Grading\n\n" +
+      "FABRIC & CUSTOM OEM MANUFACTURING CAPABILITIES:\n" +
+      "- 15,000+ Pcs Daily Output Across 12 Modern Sewing Lines\n" +
+      "- Fabric Weights: 210G to 510G Heavyweight Cotton, Terry & Fleece\n" +
+      "- Specialty Printing: High-Density 3D Puff Print, Plastisol Screen Print, Discharge, Vintage Crack, DTG\n" +
+      "- Custom Trims: Jacquard Damask Neck Woven Labels, Silicon Badges, Custom Zippers, Barcoded Frosted Polybags\n" +
+      "- 48-Hour Sample Proofing with Air Express Global Doorstep Delivery (3-5 Days)\n\n" +
+      "FACTORY DIRECT CONTACT:\n" +
+      "WhatsApp: +86 185 2068 2738\n" +
+      "Email: contact@dozeopo.com\n" +
+      "Showroom & Catalog: https://www.dozeopo.com\n";
+
+    const blob = new Blob([guideText], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'DOZE_OPO_Streetwear_Vector_TechPack_Guide.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch(err) {
+    console.warn('Vector guide download trigger error:', err);
+  }
+
+  // Update success UI state
+  const form = document.getElementById('vectorMockupForm');
+  const successBox = document.getElementById('vmDownloadSuccessBox');
+  if (form) form.style.display = 'none';
+  if (successBox) {
+    successBox.style.display = 'block';
+    const waLink = successBox.querySelector('a');
+    if (waLink) {
+      const waMsg = "Hello DOZE OPO, my contact is " + contact + (brand ? " (" + brand + ")" : "") + ". I requested the Free Vector Mockup Pack and Tech Pack Templates. Please send the editable AI/PSD Drive folder link.";
+      waLink.href = "https://wa.me/8618520682738?text=" + encodeURIComponent(waMsg);
+    }
+  }
+
+  if (typeof showToast === 'function') {
+    showToast('Vector asset pack queued! Check your browser downloads.');
   }
 }
 
@@ -5225,6 +5358,10 @@ function resetRfqForm() {
   if (typeof closeOrderDetailReceiptModal === 'function') window.closeOrderDetailReceiptModal = closeOrderDetailReceiptModal;
   if (typeof advancePdpNextHero === 'function') window.advancePdpNextHero = advancePdpNextHero;
   if (typeof inquirePdpViaWhatsApp === 'function') window.inquirePdpViaWhatsApp = inquirePdpViaWhatsApp;
+  if (typeof openVectorMockupModal === 'function') window.openVectorMockupModal = openVectorMockupModal;
+  if (typeof closeVectorMockupModal === 'function') window.closeVectorMockupModal = closeVectorMockupModal;
+  if (typeof handleVectorMockupBackdrop === 'function') window.handleVectorMockupBackdrop = handleVectorMockupBackdrop;
+  if (typeof handleVectorMockupSubmit === 'function') window.handleVectorMockupSubmit = handleVectorMockupSubmit;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {
