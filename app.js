@@ -855,7 +855,7 @@ function updatePdpShippingCalc() {
       const badgeText = isCustomAgreed ? 'CUSTOM AGREED PRICING' : 'FREE WORLDWIDE SHIPPING';
       const descText = isCustomAgreed
         ? `Direct VIP checkout calculated at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Units</strong>. Priority air delivery &amp; tracking included.<div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(255, 255, 255, 0.2); font-size: 12px; color: #38bdf8; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;"><span>💳 <strong>PayPal &amp; Credit Card Supported</strong> (Instant Checkout)</span><span>🔒 180-Day Buyer Protection</span></div>`
-        : `100% Free Priority Air Express Delivery Included. Direct checkout at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Unit${qty > 1 ? 's' : ''}</strong> with door-to-door tracking.`;
+        : `100% Free Priority Direct Line Delivery Included. Direct checkout at <strong>$${unitPriceUSD.toFixed(2)} USD × ${qty} Unit${qty > 1 ? 's' : ''}</strong> with door-to-door tracking.`;
       customSummary.innerHTML = `
         <div class="custom-pricing-card">
           <div class="cpc-header">
@@ -4088,8 +4088,8 @@ function openOrderDetailReceiptModal(orderId) {
         <div style="display: flex; align-items: flex-start; gap: 10px;">
           <span style="width: 22px; height: 22px; border-radius: 50%; background: ${isShipped ? '#16a34a' : '#cbd5e1'}; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">${isShipped ? '✈️' : '5'}</span>
           <div style="flex: 1;">
-            <strong style="font-size: 12px; color: ${isShipped ? '#0f172a' : '#64748b'}; display: block;">5. Direct Global Air Express Dispatch</strong>
-            <small style="color: #64748b; font-size: 11px;">${isShipped ? `Dispatched via air courier (Tracking: ${ord.trackingNumber})` : 'Dispatched via DHL / FedEx / USPS priority door-to-door.'}</small>
+            <strong style="font-size: 12px; color: ${isShipped ? '#0f172a' : '#64748b'}; display: block;">5. Direct Global Dedicated Line Dispatch</strong>
+            <small style="color: #64748b; font-size: 11px;">${isShipped ? `Dispatched via air courier (Tracking: ${ord.trackingNumber})` : 'Dispatched via YunExpress / USPS / Royal Mail priority direct line.'}</small>
           </div>
         </div>
       </div>
@@ -5122,7 +5122,7 @@ function handleVectorMockupSubmit(event) {
       "- Fabric Weights: 210G to 510G Heavyweight Cotton, Terry & Fleece\n" +
       "- Specialty Printing: High-Density 3D Puff Print, Plastisol Screen Print, Discharge, Vintage Crack, DTG\n" +
       "- Custom Trims: Jacquard Damask Neck Woven Labels, Silicon Badges, Custom Zippers, Barcoded Frosted Polybags\n" +
-      "- 48-Hour Sample Proofing with Air Express Global Doorstep Delivery (3-5 Days)\n\n" +
+      "- 48-Hour Sample Proofing with Global Direct Line Doorstep Delivery (6-10 Business Days)\n\n" +
       "FACTORY DIRECT CONTACT:\n" +
       "WhatsApp: +86 185 2068 2738\n" +
       "Email: contact@dozeopo.com\n" +

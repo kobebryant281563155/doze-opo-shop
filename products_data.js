@@ -16,7 +16,7 @@ window.PRODUCTS_DATA = {
       "Includes vintage stonewash, enzyme wash, mineral acid wash & raw unwashed comparison cuttings",
       "Complete physical Pantone color ring (18+ classic & viral streetwear shades)",
       "100% Full Refund / Credit ($19.00 USD deducted from your first bulk order of 50+ pcs)",
-      "Direct worldwide door-to-door air express dispatch in 48 hours"
+      "Direct worldwide door-to-door direct line dispatch in 48 hours (6–10 business days)"
     ],
     "sizeTable": {
       "columns": [
@@ -26,10 +26,10 @@ window.PRODUCTS_DATA = {
         { "key": "shoulder", "label": "Wash Types", "unit": false },
         { "key": "sleeve", "label": "Credit Value", "unit": false },
         { "key": "height", "label": "Dispatch", "unit": false },
-        { "key": "weight", "label": "Express Air", "unit": false }
+        { "key": "weight", "label": "Direct Line", "unit": false }
       ],
       "rows": [
-        { "size": "Master Box", "length": "8 Fabric Grades", "chest": "18+ Colors", "shoulder": "4 Wash Types", "sleeve": "$19 Credit", "height": "48h Ready", "weight": "FedEx / DHL" }
+        { "size": "Master Box", "length": "8 Fabric Grades", "chest": "18+ Colors", "shoulder": "4 Wash Types", "sleeve": "$19 Credit", "height": "48h Ready", "weight": "USPS / Royal Mail" }
       ]
     },
     "gallery": [
