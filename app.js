@@ -2867,9 +2867,6 @@ function openPdpCheckout(productId) {
   switchCheckoutPaymentMethod(defaultMethod);
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
-  if (defaultMethod === 'paypal') {
-    renderPaypalButtons();
-  }
 }
 
 function openCartCheckout() {
@@ -2932,9 +2929,6 @@ function openCartCheckout() {
   switchCheckoutPaymentMethod(defaultMethod);
   const modal = document.getElementById('paypalCheckoutModal');
   if (modal) modal.classList.add('open');
-  if (defaultMethod === 'paypal') {
-    renderPaypalButtons();
-  }
 }
 
 function updateCheckoutModalUI() {
@@ -3660,10 +3654,15 @@ function closePaypalCheckoutModal() {
   if (modal) modal.classList.remove('open');
 }
 
+let isPaypalRendering = false;
+
 function renderPaypalButtons() {
   const container = document.getElementById('paypalButtonsContainer');
   const loading = document.getElementById('paypalLoadingPlaceholder');
   if (!container) return;
+
+  if (isPaypalRendering) return;
+  isPaypalRendering = true;
 
   container.innerHTML = '';
   if (loading) {
@@ -3672,6 +3671,7 @@ function renderPaypalButtons() {
   }
 
   if (typeof paypal === 'undefined' || !paypal.Buttons) {
+    isPaypalRendering = false;
     if (loading) {
       loading.innerHTML = '<span>PayPal SDK connecting... If blocked, please check your network or WhatsApp us directly.</span>';
     }
@@ -3751,12 +3751,15 @@ function renderPaypalButtons() {
         showToast('Payment processing was cancelled or encountered an error. Please try again.');
       }
     }).render('#paypalButtonsContainer').then(function() {
+      isPaypalRendering = false;
       if (loading) loading.style.display = 'none';
     }).catch(function(err) {
+      isPaypalRendering = false;
       console.error('PayPal render error:', err);
       if (loading) loading.innerHTML = '<span>Failed to render PayPal buttons. Please try again or WhatsApp us.</span>';
     });
   } catch (err) {
+    isPaypalRendering = false;
     console.error('PayPal error:', err);
     if (loading) loading.innerHTML = '<span>Error initializing PayPal buttons.</span>';
   }
