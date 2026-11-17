@@ -8678,6 +8678,35 @@ body {
   flex-shrink: 0;
 }
 
+.btn-pdp-sticky-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #25d366;
+  border: 1.5px solid #22c55e;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.25);
+}
+
+.btn-pdp-sticky-wa:hover {
+  background: #1eb857;
+  border-color: #1eb857;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(37, 211, 102, 0.35);
+}
+
+.btn-pdp-sticky-wa:active {
+  transform: scale(0.96);
+}
+
 .btn-pdp-sticky-cart {
   padding: 10px 14px;
   background: #f8fafc;
@@ -8730,6 +8759,11 @@ body {
   }
   .pdp-sticky-price-col {
     display: none;
+  }
+  .btn-pdp-sticky-wa {
+    padding: 8px 10px;
+    font-size: 12px;
+    gap: 4px;
   }
   .btn-pdp-sticky-cart {
     padding: 8px 10px;

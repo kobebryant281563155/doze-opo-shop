@@ -29,6 +29,71 @@ if (typeof window.PRODUCTS_DATA === 'undefined') {
 }
 var PRODUCTS_DATA = window.PRODUCTS_DATA;
 
+// SPA URL Hash & Virtual Pageview Synchronization
+let _isPopStateNavigating = false;
+
+function syncUrlHash(targetHash, options = {}) {
+  if (_isPopStateNavigating) return;
+  const clean = (targetHash || '').replace(/^#/, '');
+  const current = (window.location.hash || '').replace(/^#/, '');
+  if (clean === current) return;
+  
+  const targetUrl = clean ? '#' + clean : (window.location.pathname + window.location.search);
+  if (options.replace) {
+    history.replaceState({ hash: clean }, '', targetUrl);
+  } else {
+    history.pushState({ hash: clean }, '', targetUrl);
+  }
+
+  // Virtual pageview tracking for Clarity & Google Analytics
+  if (typeof clarity === 'function') {
+    try { clarity('set', 'page_path', '/' + (clean || '')); } catch (e) {}
+  }
+  if (typeof gtag === 'function') {
+    try {
+      gtag('event', 'page_view', {
+        page_title: document.title,
+        page_path: '/' + (clean || ''),
+        page_location: window.location.href
+      });
+    } catch (e) {}
+  }
+}
+
+window.addEventListener('popstate', function() {
+  _isPopStateNavigating = true;
+  try {
+    const rawHash = (window.location.hash || '').replace(/^#/, '');
+    const pdpPage = document.getElementById('productDetailPage');
+    const isPdpVisible = pdpPage && pdpPage.style.display !== 'none';
+
+    if (rawHash.startsWith('pdp-') || rawHash.startsWith('product-')) {
+      const pid = rawHash.replace(/^(pdp-|product-)/, '');
+      if (PRODUCTS_DATA && PRODUCTS_DATA[pid]) {
+        openProductDetail(pid, false);
+      }
+    } else {
+      if (isPdpVisible && pdpPage) {
+        pdpPage.style.display = 'none';
+        document.title = 'DOZE OPO | Heavyweight Streetwear Blanks & Custom OEM Garment Manufacturer';
+      }
+      if (rawHash === 'catalog') {
+        switchTab('catalog', false);
+      } else if (rawHash === 'custom' || rawHash === 'custom-oem') {
+        switchTab('custom', false);
+      } else if (rawHash === 'cart') {
+        switchTab('cart', false);
+      } else if (rawHash === 'orders' || rawHash === 'profile') {
+        switchTab('profile', false);
+      } else if (!rawHash || rawHash === 'home') {
+        switchTab('home', false);
+      }
+    }
+  } finally {
+    _isPopStateNavigating = false;
+  }
+});
+
 // 3. Initialization
 document.addEventListener('DOMContentLoaded', () => {
   initTechPackTrigger();
@@ -45,24 +110,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const homeCount = document.getElementById('homePrintCountTag');
   if (homeCount && archive.length > 0) homeCount.textContent = `${archive.length} EXCLUSIVE STYLES`;
 
-  // Support deep links (e.g. ?tab=catalog, ?cat=tee, ?pdp=T012, or #catalog)
+  // Support deep links (e.g. ?tab=catalog, ?cat=tee, ?pdp=T012, or #catalog, #pdp-01D)
   const urlParams = new URLSearchParams(window.location.search);
-  const hash = window.location.hash.replace('#', '');
-  if (urlParams.get('tab')) {
-    switchTab(urlParams.get('tab'));
-  } else if (hash === 'catalog') {
-    switchTab('catalog');
+  const rawHash = (window.location.hash || '').replace(/^#/, '');
+
+  if (urlParams.get('pdp')) {
+    openProductDetail(urlParams.get('pdp'), false);
+  } else if (rawHash.startsWith('pdp-') || rawHash.startsWith('product-')) {
+    const pid = rawHash.replace(/^(pdp-|product-)/, '');
+    if (PRODUCTS_DATA && PRODUCTS_DATA[pid]) {
+      openProductDetail(pid, false);
+    }
+  } else if (urlParams.get('tab')) {
+    switchTab(urlParams.get('tab'), false);
+  } else if (rawHash === 'catalog') {
+    switchTab('catalog', false);
+  } else if (rawHash === 'custom' || rawHash === 'custom-oem') {
+    switchTab('custom', false);
+  } else if (rawHash === 'cart') {
+    switchTab('cart', false);
+  } else if (rawHash === 'orders' || rawHash === 'profile') {
+    switchTab('profile', false);
   }
+
   if (urlParams.get('cat')) {
     handleCategoryFilter(urlParams.get('cat'));
-  }
-  if (urlParams.get('pdp')) {
-    openProductDetail(urlParams.get('pdp'));
   }
   if (urlParams.get('scroll')) {
     setTimeout(() => {
       const container = document.getElementById('appScrollContainer');
-      if (container) container.scrollTop = parseInt(urlParams.get('scroll'));
+      if (container) container.scrollTop = parseInt(urlParams.get('scroll'), 10);
     }, 150);
   }
 });
@@ -568,7 +645,7 @@ function recalcCustomQuote() {
 }
 
 // 11. Bottom Tab Navigation
-function switchTab(tabName) {
+function switchTab(tabName, shouldSyncHash = true) {
   APP_STATE.currentTab = tabName;
 
   document.querySelectorAll('.tab-page-content').forEach(p => p.style.display = 'none');
@@ -609,6 +686,18 @@ function switchTab(tabName) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (document.documentElement) document.documentElement.scrollTop = 0;
   if (document.body) document.body.scrollTop = 0;
+
+  // SPA Hash Deep-Link Synchronization
+  if (shouldSyncHash) {
+    const hashMap = {
+      'home': '',
+      'catalog': 'catalog',
+      'custom': 'custom-oem',
+      'cart': 'cart',
+      'profile': 'orders'
+    };
+    syncUrlHash(hashMap[tabName] !== undefined ? hashMap[tabName] : tabName);
+  }
 }
 
 // 12. Catalog Page Rendering
@@ -1147,7 +1236,7 @@ function selectWholesaleTier(tierIndex) {
   setTimeout(updatePdpStickyBuyBar, 100);
 }
 
-function openProductDetail(productId) {
+function openProductDetail(productId, shouldSyncHash = true) {
   const prod = PRODUCTS_DATA[productId];
   if (!prod) return;
 
@@ -1172,6 +1261,12 @@ function openProductDetail(productId) {
   // Update Title & Meta
   const titleElem = document.querySelector('.pdp-title');
   if (titleElem) titleElem.textContent = prod.name;
+  if (prod.name) {
+    document.title = `${prod.name} | DOZE OPO Streetwear Blanks`;
+  }
+  if (shouldSyncHash) {
+    syncUrlHash('pdp-' + productId);
+  }
   
   const priceVal = document.querySelector('.pdp-price-val');
   if (priceVal) {
@@ -2177,10 +2272,23 @@ function renderDynamicLookbook(prod) {
   `;
 }
 
-function closeProductDetail() {
+function closeProductDetail(shouldSyncHash = true) {
   const pdp = document.getElementById('productDetailPage');
   if (pdp) pdp.style.display = 'none';
-  switchTab('catalog');
+  document.title = 'DOZE OPO | Heavyweight Streetwear Blanks & Custom OEM Garment Manufacturer';
+  if (shouldSyncHash) {
+    const rawHash = (window.location.hash || '').replace(/^#/, '');
+    if (rawHash.startsWith('pdp-') || rawHash.startsWith('product-')) {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        syncUrlHash('catalog', { replace: true });
+      }
+    } else {
+      syncUrlHash('catalog');
+    }
+  }
+  switchTab('catalog', false);
 }
 
 function switchPdpHero(imgSrc, index) {
