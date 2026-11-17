@@ -451,6 +451,12 @@ body {
   transform: translateY(-50%) scale(1.08);
 }
 
+.banner-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .banner-img {
   width: 100%;
   height: 100%;
@@ -1450,13 +1456,19 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 10px 12px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+  user-select: none;
 }
 
 .ft-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(56, 189, 248, 0.5);
   transform: translateY(-1px);
+}
+
+.ft-card:active {
+  transform: scale(0.99);
 }
 
 .ft-icon {
@@ -1468,7 +1480,29 @@ body {
 .ft-content {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
+  width: 100%;
+}
+
+.ft-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+}
+
+.ft-tap-pill {
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 1px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
 }
 
 .ft-content strong {
@@ -1543,10 +1577,101 @@ body {
   font-size: 8.5px;
   font-weight: 700;
   background: #f3f4f6;
-  padding: 2.5px 6px;
+  padding: 2.5px 7px;
   border-radius: 4px;
   color: #4b5563;
   white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+}
+
+.pay-chip:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.pay-chip:active {
+  transform: scale(0.96);
+}
+
+/* Factory Pillar & Payment Trust Modals */
+.pillar-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 0 10px;
+}
+
+.pillar-highlight-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pillar-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 11.5px;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.pillar-point-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+  font-weight: 800;
+  flex-shrink: 0;
+  font-size: 11px;
+  margin-top: 1px;
+}
+
+.pillar-point-item strong {
+  color: #0f172a;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.pillar-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+  text-decoration: none;
+}
+
+.pillar-action-btn:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+.pillar-action-btn:active {
+  transform: scale(0.98);
 }
 
 .copyright {
@@ -2283,10 +2408,11 @@ body {
    15. 模态弹窗组件 (Modals)
    ========================================================================== */
 .modal-backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 10010;
   display: flex;
   align-items: flex-end;
@@ -8866,7 +8992,7 @@ body {
 
 @media (max-width: 640px) {
   .b2b-lead-drawer {
-    bottom: 16px;
+    bottom: 68px;
     right: 16px;
     left: 16px;
     width: auto;

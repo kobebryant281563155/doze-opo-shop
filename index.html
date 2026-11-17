@@ -1061,7 +1061,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=264">
+  <link rel="stylesheet" href="styles.css?v=265">
   <!-- Microsoft Clarity Analytics -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1070,12 +1070,13 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yx2hz06zjl");
   </script>
-  <!-- Resource Preloading for Faster First Contentful Paint & Low LCP -->
-  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=264" fetchpriority="high">
-  <link rel="preload" href="reviews_data.js?v=264" as="script">
-  <link rel="preload" href="prints_data.js?v=264" as="script">
-  <link rel="preload" href="products_data.js?v=264" as="script">
-  <link rel="preload" href="app.js?v=264" as="script">
+  <!-- Resource Preloading for Minimal Mobile LCP & Fast FCP -->
+  <link rel="preload" as="image" href="assets/hero_street_crew_mobile.webp?v=265" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero_street_crew.webp?v=265" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" href="reviews_data.js?v=265" as="script">
+  <link rel="preload" href="prints_data.js?v=265" as="script">
+  <link rel="preload" href="products_data.js?v=265" as="script">
+  <link rel="preload" href="app.js?v=265" as="script">
 
   <!-- Safe Early Interactive Stubs & Action Queue (Prevents Dead Clicks & Clarity JS Errors) -->
   <script>
@@ -1099,7 +1100,8 @@
       'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
       'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
       'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'focusPaypalCardSection', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'openSamplePackModal', 'closeSamplePackModal', 'openQuickRfqModal', 'closeQuickRfqModal', 'handleQuickRfqBackdrop', 'handleSampleModalBackdrop', 'handleTechPackLeadSubmit', 'handleCountryRegionSync', 'copyVoucherText', 'openSearchModal', 'closeSearchModal', 'handleSearchBackdrop', 'applyQuickSearchTag', 'clearSearchModal', 'openOrderDetailReceiptModal', 'closeOrderDetailReceiptModal', 'advancePdpNextHero', 'inquirePdpViaWhatsApp',
-      'openVectorMockupModal', 'closeVectorMockupModal', 'handleVectorMockupBackdrop', 'handleVectorMockupSubmit'
+      'openVectorMockupModal', 'closeVectorMockupModal', 'handleVectorMockupBackdrop', 'handleVectorMockupSubmit',
+      'openFactoryPillarModal', 'closeFactoryPillarModal', 'openPaymentTrustModal', 'closePaymentTrustModal', 'handlePillarModalAction'
     ];
     
     earlyFns.forEach(function(fn) {
@@ -1216,7 +1218,11 @@
               
               <!-- Slide 1: Original Streetwear Lookbook Crew -->
               <div class="banner-slide active" data-slide-index="0">
-                <img src="assets/hero_street_crew.webp?v=257" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
+                <picture class="banner-picture">
+                  <source media="(max-width: 767px)" srcset="assets/hero_street_crew_mobile.webp?v=265" type="image/webp">
+                  <source media="(min-width: 768px)" srcset="assets/hero_street_crew.webp?v=265" type="image/webp">
+                  <img src="assets/hero_street_crew.webp?v=265" width="1264" height="848" alt="DOZE OPO 2026 Streetwear Lookbook" class="banner-img" fetchpriority="high" loading="eager">
+                </picture>
                 <div class="banner-overlay-gradient"></div>
                 
                 <!-- Brand Watermark in Lookbook -->
@@ -1669,31 +1675,43 @@
                 <p class="factory-sub">Guangzhou &amp; Shenzhen Direct Supply Chain &bull; 15,000+ Pcs Daily Output &bull; 48-Hour Sample Proofing &bull; Zero Middlemen Markups</p>
 
                 <div class="factory-trust-grid">
-                  <div class="ft-card">
+                  <div class="ft-card" onclick="openFactoryPillarModal('output')" role="button" tabindex="0" title="Tap to view factory automation &amp; capacity specs">
                     <div class="ft-icon">🏭</div>
                     <div class="ft-content">
-                      <strong>15,000+ Pcs Daily Output</strong>
+                      <div class="ft-title-row">
+                        <strong>15,000+ Pcs Daily Output</strong>
+                        <span class="ft-tap-pill">Specs ›</span>
+                      </div>
                       <small>Automated circular knitting, CNC laser cutting beds, and 12 flexible sewing lines.</small>
                     </div>
                   </div>
-                  <div class="ft-card">
+                  <div class="ft-card" onclick="openFactoryPillarModal('proofing')" role="button" tabindex="0" title="Tap to view 1-piece custom proofing capabilities">
                     <div class="ft-icon">⚡</div>
                     <div class="ft-content">
-                      <strong>48H Rapid Sample Proofing</strong>
+                      <div class="ft-title-row">
+                        <strong>48H Rapid Sample Proofing</strong>
+                        <span class="ft-tap-pill">Specs ›</span>
+                      </div>
                       <small>1-Piece custom proofing with 3D puff print, screen print, acid wash &amp; custom woven tags.</small>
                     </div>
                   </div>
-                  <div class="ft-card">
+                  <div class="ft-card" onclick="openFactoryPillarModal('dyeing')" role="button" tabindex="0" title="Tap to view OEKO-TEX eco-dye &amp; wash specs">
                     <div class="ft-icon">🌱</div>
                     <div class="ft-content">
-                      <strong>OEKO-TEX® Standard 100 Eco-Dyes</strong>
+                      <div class="ft-title-row">
+                        <strong>OEKO-TEX® Standard 100 Eco-Dyes</strong>
+                        <span class="ft-tap-pill">Specs ›</span>
+                      </div>
                       <small>Certified non-toxic reactive dyeing, zero carcinogenic residues &amp; skin-friendly finish.</small>
                     </div>
                   </div>
-                  <div class="ft-card">
+                  <div class="ft-card" onclick="openFactoryPillarModal('inspection')" role="button" tabindex="0" title="Tap to view AQL 2.5 inspection standards">
                     <div class="ft-icon">🔍</div>
                     <div class="ft-content">
-                      <strong>100% AQL 2.5 Strict Inspection</strong>
+                      <div class="ft-title-row">
+                        <strong>100% AQL 2.5 Strict Inspection</strong>
+                        <span class="ft-tap-pill">Specs ›</span>
+                      </div>
                       <small>Every garment measured against tech pack grading tolerances, thread-trimmed &amp; steamed.</small>
                     </div>
                   </div>
@@ -1739,11 +1757,11 @@
               </div>
             </div>
             <div class="payment-badges">
-              <span class="pay-chip">WorldFirst</span>
-              <span class="pay-chip">Payoneer</span>
-              <span class="pay-chip">PayPal</span>
-              <span class="pay-chip">AliPay</span>
-              <span class="pay-chip">WeChat Pay</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('worldfirst')" role="button" tabindex="0" title="Tap to view WorldFirst bank wire &amp; ACH details">WorldFirst ℹ️</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('payoneer')" role="button" tabindex="0" title="Tap to view Payoneer commercial billing">Payoneer ℹ️</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('paypal')" role="button" tabindex="0" title="Tap to view PayPal buyer protection">PayPal ℹ️</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('alipay')" role="button" tabindex="0" title="Tap to view AliPay settlement">AliPay ℹ️</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('wechat')" role="button" tabindex="0" title="Tap to view WeChat Pay settlement">WeChat Pay ℹ️</span>
             </div>
             <p class="copyright">&copy; 2026 DOZE OPO. All Rights Reserved. Guangzhou Trendy Men's and Women's Clothing Co., Ltd.</p>
           </footer>
@@ -2250,31 +2268,43 @@
                 <p class="factory-sub">Guangzhou &amp; Shenzhen Direct Supply Chain &bull; 15,000+ Pcs Daily Output &bull; 48-Hour Sample Proofing &bull; Zero Middlemen Markups</p>
 
                 <div class="factory-trust-grid">
-                  <div class="ft-card">
+                  <div class="ft-card" onclick="openFactoryPillarModal('output')" role="button" tabindex="0" title="Tap to view factory automation &amp; capacity specs">
                     <div class="ft-icon">🏭</div>
                     <div class="ft-content">
-                      <strong>15,000+ Pcs Daily Output</strong>
+                      <div class="ft-title-row">
+                        <strong>15,000+ Pcs Daily Output</strong>
+                        <span class="ft-tap-pill">Specs ›</span>
+                      </div>
                       <small>Automated circular knitting, CNC laser cutting beds, and 12 flexible sewing lines.</small>
                     </div>
                   </div>
-                  <div class="ft-card">
+                  <div class="ft-card" onclick="openFactoryPillarModal('proofing')" role="button" tabindex="0" title="Tap to view 1-piece custom proofing capabilities">
                     <div class="ft-icon">⚡</div>
                     <div class="ft-content">
-                      <strong>48H Rapid Sample Proofing</strong>
+                      <div class="ft-title-row">
+                        <strong>48H Rapid Sample Proofing</strong>
+                        <span class="ft-tap-pill">Specs ›</span>
+                      </div>
                       <small>1-Piece custom proofing with 3D puff print, screen print, acid wash &amp; custom woven tags.</small>
                     </div>
                   </div>
-                  <div class="ft-card">
+                  <div class="ft-card" onclick="openFactoryPillarModal('dyeing')" role="button" tabindex="0" title="Tap to view OEKO-TEX eco-dye &amp; wash specs">
                     <div class="ft-icon">🌱</div>
                     <div class="ft-content">
-                      <strong>OEKO-TEX® Standard 100 Eco-Dyes</strong>
+                      <div class="ft-title-row">
+                        <strong>OEKO-TEX® Standard 100 Eco-Dyes</strong>
+                        <span class="ft-tap-pill">Specs ›</span>
+                      </div>
                       <small>Certified non-toxic reactive dyeing, zero carcinogenic residues &amp; skin-friendly finish.</small>
                     </div>
                   </div>
-                  <div class="ft-card">
+                  <div class="ft-card" onclick="openFactoryPillarModal('inspection')" role="button" tabindex="0" title="Tap to view AQL 2.5 inspection standards">
                     <div class="ft-icon">🔍</div>
                     <div class="ft-content">
-                      <strong>100% AQL 2.5 Strict Inspection</strong>
+                      <div class="ft-title-row">
+                        <strong>100% AQL 2.5 Strict Inspection</strong>
+                        <span class="ft-tap-pill">Specs ›</span>
+                      </div>
                       <small>Every garment measured against tech pack grading tolerances, thread-trimmed &amp; steamed.</small>
                     </div>
                   </div>
@@ -2349,11 +2379,11 @@
               </div>
             </div>
             <div class="payment-badges">
-              <span class="pay-chip">WorldFirst</span>
-              <span class="pay-chip">Payoneer</span>
-              <span class="pay-chip">PayPal</span>
-              <span class="pay-chip">AliPay</span>
-              <span class="pay-chip">WeChat Pay</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('worldfirst')" role="button" tabindex="0" title="Tap to view WorldFirst bank wire &amp; ACH details">WorldFirst ℹ️</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('payoneer')" role="button" tabindex="0" title="Tap to view Payoneer commercial billing">Payoneer ℹ️</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('paypal')" role="button" tabindex="0" title="Tap to view PayPal buyer protection">PayPal ℹ️</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('alipay')" role="button" tabindex="0" title="Tap to view AliPay settlement">AliPay ℹ️</span>
+              <span class="pay-chip" onclick="openPaymentTrustModal('wechat')" role="button" tabindex="0" title="Tap to view WeChat Pay settlement">WeChat Pay ℹ️</span>
             </div>
             <p class="copyright">&copy; 2026 DOZE OPO. All Rights Reserved. Guangzhou Trendy Men's and Women's Clothing Co., Ltd.</p>
           </footer>
@@ -2627,6 +2657,34 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal: Factory Pillar Specs & Craftsmanship Modal -->
+  <div class="modal-backdrop" id="factoryPillarModal" onclick="if(event.target === this) closeFactoryPillarModal()">
+    <div class="modal-drawer">
+      <div class="modal-header">
+        <div>
+          <span class="super-tag" id="factoryPillarTag">FACTORY WORKSHOP &amp; OEM AUDIT</span>
+          <h4 id="factoryPillarTitle" style="margin-top: 4px; font-size: 15px; font-weight: 800; color: #0f172a;">15,000+ Pcs Daily Output</h4>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeFactoryPillarModal()" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body" id="factoryPillarBody"></div>
+    </div>
+  </div>
+
+  <!-- Modal: Payment Trust & Security Modal -->
+  <div class="modal-backdrop" id="paymentTrustModal" onclick="if(event.target === this) closePaymentTrustModal()">
+    <div class="modal-drawer">
+      <div class="modal-header">
+        <div>
+          <span class="super-tag" id="paymentTrustTag">VERIFIED B2B SETTLEMENT</span>
+          <h4 id="paymentTrustTitle" style="margin-top: 4px; font-size: 15px; font-weight: 800; color: #0f172a;">WorldFirst Direct Wire &amp; Bank Transfer</h4>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closePaymentTrustModal()" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body" id="paymentTrustBody"></div>
     </div>
   </div>
 
@@ -3553,10 +3611,10 @@
   <!-- Floating Toast Notification -->
   <div class="app-toast" id="appToast">Notification</div>
 
-  <script src="reviews_data.js?v=264"></script>
-  <script src="prints_data.js?v=264"></script>
-  <script src="products_data.js?v=264"></script>
-  <script src="app.js?v=264"></script>
+  <script src="reviews_data.js?v=265"></script>
+  <script src="prints_data.js?v=265"></script>
+  <script src="products_data.js?v=265"></script>
+  <script src="app.js?v=265"></script>
 
   <!-- B2B Tech Pack & Wholesale Tier Pricing Slide-in Drawer -->
   <aside id="b2bTechPackDrawer" class="b2b-lead-drawer" style="display: none;" aria-label="B2B Tech Pack Download">

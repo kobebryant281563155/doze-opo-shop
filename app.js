@@ -2529,6 +2529,213 @@ function closeB2BModal() {
   document.getElementById('b2bModal').classList.remove('open');
 }
 
+const FACTORY_PILLARS_DATA = {
+  output: {
+    tag: 'AUTOMATED KNITTING & CUT-SEW LINES',
+    title: '15,000+ Pcs Daily Manufacturing Output',
+    icon: '🏭',
+    points: [
+      { label: 'Automated Workshop Infrastructure', text: '12 dedicated flexible sewing lines equipped with 4-needle overlock and automated coverstitch stations for clean seam construction.' },
+      { label: 'CNC Laser Precision Cutting', text: 'Dual automated CNC fabric spreaders and laser cutting beds ensuring precision ±0.5cm tech pack sizing tolerances.' },
+      { label: 'Bulk Production Scalability', text: 'Daily output exceeding 15,000 garments. Bulk orders (50 to 5,000+ pieces) finished and dispatched within 7–12 business days.' }
+    ],
+    actionText: '💬 Inquire Line Capacity via WhatsApp',
+    actionType: 'whatsapp',
+    actionPayload: 'Hello DOZE OPO, I would like to check factory production capacity and bulk lead time for my apparel line.'
+  },
+  proofing: {
+    tag: 'STREETWEAR TECH PACK PROOFING',
+    title: '48-Hour Rapid 1-Piece Sample Proofing',
+    icon: '⚡',
+    points: [
+      { label: '1-Piece Prototype Service', text: 'Test luxury fabrics, tailored silhouettes, and custom graphics before bulk production without expensive mold fees.' },
+      { label: 'Specialty Print Craftsmanship', text: 'In-house high-density 3D puff print, vintage cracked screen print, discharge printing, DTG, and precision embroidery.' },
+      { label: 'Complete Private Labeling', text: 'Custom jacquard woven neck labels, silicone chest badges, vintage mineral washes, and branded zip-lock polybags.' }
+    ],
+    actionText: '🎨 Start Sample Proofing / Submit Tech Pack',
+    actionType: 'oem_tab'
+  },
+  dyeing: {
+    tag: 'NON-TOXIC & HYPOALLERGENIC FABRICS',
+    title: 'OEKO-TEX® Standard 100 Eco-Dyes',
+    icon: '🌱',
+    points: [
+      { label: 'Certified Safe Chemistry', text: '100% compliant with OEKO-TEX Standard 100 Class 1 (baby-grade apparel standard). Free of carcinogenic dyes, formaldehyde, and toxic residues.' },
+      { label: 'Grade 4.0+ High Colorfastness', text: 'Certified eco-friendly reactive dyeing locks deep colors into siro-spun cotton fibers, resisting fade through 50+ commercial wash cycles.' },
+      { label: 'Vintage Washes & Shrinkage Control', text: 'Mineral acid wash, enzyme distress, and pre-shrunk tumbling keep post-wash dimensional shrinkage strictly under 3%.' }
+    ],
+    actionText: '👕 Browse Heavyweight Blank Catalog',
+    actionType: 'catalog_tab'
+  },
+  inspection: {
+    tag: 'GARMENT-BY-GARMENT EXPORT AUDIT',
+    title: '100% AQL 2.5 Strict Quality Inspection',
+    icon: '🔍',
+    points: [
+      { label: 'Full-Piece Metric Audit', text: 'Every garment is hand-measured across 8 key dimension points (chest width, body length, shoulder drop, sleeve opening, collar rib width).' },
+      { label: 'Triple-Stage Clean Finishing', text: 'Meticulous manual thread trimming, high-pressure tunnel steam shaping, and automated needle-detector metal safety inspection.' },
+      { label: 'Zero-Risk Export Guarantee', text: 'Defect rate maintained strictly below 0.3%. 100% free replacement or refund guarantee on craftsmanship defects.' }
+    ],
+    actionText: '💬 Contact Quality Assurance Team',
+    actionType: 'whatsapp',
+    actionPayload: 'Hello DOZE OPO, I have questions regarding your AQL 2.5 quality inspection and garment tolerances.'
+  }
+};
+
+const PAYMENT_TRUST_DATA = {
+  worldfirst: {
+    tag: 'LICENSED GLOBAL B2B SETTLEMENT',
+    title: 'WorldFirst Global B2B Bank Transfer',
+    icon: '🏛️',
+    points: [
+      { label: 'Zero Foreign Transaction Surcharges', text: 'Pay directly via US domestic ACH / Wire (JPMorgan Chase) or European SEPA (Citibank Europe) with 0% extra credit card fees.' },
+      { label: 'Official Commercial Invoice', text: 'Every transfer comes with a formal commercial invoice and payment confirmation for corporate tax deductions and bookkeeping.' },
+      { label: 'Ant International Security', text: 'Licensed and regulated by major global monetary authorities (FinCEN, FCA, HKMA) for cross-border commercial transactions.' }
+    ],
+    actionText: '💳 View Bank Wire / ACH Details',
+    actionType: 'checkout_worldfirst'
+  },
+  paypal: {
+    tag: 'COMMERCIAL BUYER PROTECTION',
+    title: 'PayPal & Card Purchase Protection',
+    icon: '🛡️',
+    points: [
+      { label: '100% Purchase Protection', text: 'Full coverage under PayPal Buyer Protection against non-delivery or merchandise discrepancies.' },
+      { label: 'Direct Card Checkout', text: 'Accepts all major cards (Visa, MasterCard, American Express, UnionPay) without requiring a PayPal account.' },
+      { label: 'End-to-End Encryption', text: 'Payment data is processed directly inside PayPal secure vaults. No sensitive banking details are ever stored on DOZE OPO servers.' }
+    ],
+    actionText: '🛍️ Express Checkout with PayPal / Card',
+    actionType: 'checkout_paypal'
+  },
+  payoneer: {
+    tag: 'CORPORATE BILLING & MULTI-CURRENCY',
+    title: 'Payoneer International Commercial Billing',
+    icon: '🌐',
+    points: [
+      { label: 'Global Currency Support', text: 'Direct corporate settlement in USD, EUR, GBP, CAD, and AUD with competitive commercial exchange rates.' },
+      { label: 'Brand Purchase Orders', text: 'Built for overseas streetwear brands and apparel distributors processing volume wholesale purchase orders.' }
+    ],
+    actionText: '💬 Request Payoneer Invoice via WhatsApp',
+    actionType: 'whatsapp',
+    actionPayload: 'Hello DOZE OPO, I would like to request a formal Payoneer commercial invoice for my order.'
+  },
+  alipay: {
+    tag: 'ASIA-PACIFIC DIRECT CLEARANCE',
+    title: 'AliPay Cross-Border Settlement',
+    icon: '⚡',
+    points: [
+      { label: 'Instant RMB Clearance', text: 'Instant payment settlement at real-time official exchange rates for freight forwarders and Asia-Pacific clients.' },
+      { label: 'Seamless Remittance', text: 'Zero intermediary bank transfer delays with immediate digital receipt generation.' }
+    ],
+    actionText: '💬 Inquire Domestic / AliPay Remittance',
+    actionType: 'whatsapp',
+    actionPayload: 'Hello DOZE OPO, please send me your AliPay / cross-border RMB payment details.'
+  },
+  wechat: {
+    tag: 'ASIA-PACIFIC DIRECT CLEARANCE',
+    title: 'WeChat Pay Commercial Settlement',
+    icon: '💬',
+    points: [
+      { label: 'Direct Mobile Pay', text: 'Instant mobile QR settlement for clients and forwarders in the Greater China and Southeast Asian regions.' },
+      { label: 'Fast Order Processing', text: 'Real-time payment confirmation enables immediate fabric cutting and production queueing.' }
+    ],
+    actionText: '💬 Inquire WeChat Pay Remittance',
+    actionType: 'whatsapp',
+    actionPayload: 'Hello DOZE OPO, please send me your WeChat Pay remittance QR code.'
+  }
+};
+
+function openFactoryPillarModal(key) {
+  const data = FACTORY_PILLARS_DATA[key];
+  if (!data) return;
+  const tagEl = document.getElementById('factoryPillarTag');
+  const titleEl = document.getElementById('factoryPillarTitle');
+  const bodyEl = document.getElementById('factoryPillarBody');
+  if (tagEl) tagEl.textContent = data.tag;
+  if (titleEl) titleEl.innerHTML = `${data.icon} ${data.title}`;
+  if (bodyEl) {
+    let pointsHtml = data.points.map(p => `
+      <div class="pillar-point-item">
+        <span class="pillar-point-icon">✓</span>
+        <div>
+          <strong>${p.label}</strong>
+          <span>${p.text}</span>
+        </div>
+      </div>
+    `).join('');
+    bodyEl.innerHTML = `
+      <div class="pillar-modal-content">
+        <div class="pillar-highlight-box">${pointsHtml}</div>
+        <button type="button" class="pillar-action-btn" onclick="handlePillarModalAction('${data.actionType}', '${(data.actionPayload || '').replace(/'/g, "\\'")}')">
+          ${data.actionText}
+        </button>
+      </div>
+    `;
+  }
+  const modal = document.getElementById('factoryPillarModal');
+  if (modal) modal.classList.add('open');
+}
+
+function closeFactoryPillarModal() {
+  const modal = document.getElementById('factoryPillarModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function openPaymentTrustModal(key) {
+  const data = PAYMENT_TRUST_DATA[key];
+  if (!data) return;
+  const tagEl = document.getElementById('paymentTrustTag');
+  const titleEl = document.getElementById('paymentTrustTitle');
+  const bodyEl = document.getElementById('paymentTrustBody');
+  if (tagEl) tagEl.textContent = data.tag;
+  if (titleEl) titleEl.innerHTML = `${data.icon} ${data.title}`;
+  if (bodyEl) {
+    let pointsHtml = data.points.map(p => `
+      <div class="pillar-point-item">
+        <span class="pillar-point-icon">✓</span>
+        <div>
+          <strong>${p.label}</strong>
+          <span>${p.text}</span>
+        </div>
+      </div>
+    `).join('');
+    bodyEl.innerHTML = `
+      <div class="pillar-modal-content">
+        <div class="pillar-highlight-box">${pointsHtml}</div>
+        <button type="button" class="pillar-action-btn" onclick="handlePillarModalAction('${data.actionType}', '${(data.actionPayload || '').replace(/'/g, "\\'")}')">
+          ${data.actionText}
+        </button>
+      </div>
+    `;
+  }
+  const modal = document.getElementById('paymentTrustModal');
+  if (modal) modal.classList.add('open');
+}
+
+function closePaymentTrustModal() {
+  const modal = document.getElementById('paymentTrustModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function handlePillarModalAction(actionType, payload) {
+  closeFactoryPillarModal();
+  closePaymentTrustModal();
+  if (actionType === 'whatsapp') {
+    const text = encodeURIComponent(payload || 'Hello DOZE OPO, I would like to inquire about your streetwear apparel manufacturing.');
+    window.open(`https://wa.me/8618520682738?text=${text}`, '_blank');
+  } else if (actionType === 'oem_tab') {
+    if (typeof switchTab === 'function') switchTab('custom');
+  } else if (actionType === 'catalog_tab') {
+    if (typeof switchTab === 'function') switchTab('catalog');
+  } else if (actionType === 'checkout_worldfirst') {
+    if (typeof openPdpCheckout === 'function') openPdpCheckout(null, 'worldfirst');
+    else if (typeof openCartCheckout === 'function') openCartCheckout('worldfirst');
+  } else if (actionType === 'checkout_paypal') {
+    if (typeof openPdpCheckout === 'function') openPdpCheckout(null, 'paypal');
+    else if (typeof openCartCheckout === 'function') openCartCheckout('paypal');
+  }
+}
+
 function copyContactText(text) {
   navigator.clipboard.writeText(text).then(() => {
     showToast(`Copied to clipboard: ${text}`);
@@ -4989,7 +5196,8 @@ function handleTechPackLeadSubmit(event) {
     'openSizeGuideModal', 'closeSizeGuideModal', 'openPdpCustomUpload',
     'openPdpPrintGallery', 'openPrintShowcaseModal', 'quickOrderBlindBox',
     'inquireCheckoutViaWhatsApp', 'switchCheckoutPaymentMethod', 'focusPaypalCardSection', 'switchBankRegion', 'scrollToPdpReviews', 'filterPdpReviews', 'openTechPackDrawer', 'closeTechPackDrawer', 'handleTechPackLeadSubmit', 'openOrderDetailReceiptModal', 'closeOrderDetailReceiptModal', 'advancePdpNextHero', 'inquirePdpViaWhatsApp',
-    'openVectorMockupModal', 'closeVectorMockupModal', 'handleVectorMockupBackdrop', 'handleVectorMockupSubmit'
+    'openVectorMockupModal', 'closeVectorMockupModal', 'handleVectorMockupBackdrop', 'handleVectorMockupSubmit',
+    'openFactoryPillarModal', 'closeFactoryPillarModal', 'openPaymentTrustModal', 'closePaymentTrustModal', 'handlePillarModalAction'
   ];
 
   earlyFns.forEach(function(fn) {
@@ -5365,6 +5573,11 @@ function resetRfqForm() {
   if (typeof closeVectorMockupModal === 'function') window.closeVectorMockupModal = closeVectorMockupModal;
   if (typeof handleVectorMockupBackdrop === 'function') window.handleVectorMockupBackdrop = handleVectorMockupBackdrop;
   if (typeof handleVectorMockupSubmit === 'function') window.handleVectorMockupSubmit = handleVectorMockupSubmit;
+  if (typeof openFactoryPillarModal === 'function') window.openFactoryPillarModal = openFactoryPillarModal;
+  if (typeof closeFactoryPillarModal === 'function') window.closeFactoryPillarModal = closeFactoryPillarModal;
+  if (typeof openPaymentTrustModal === 'function') window.openPaymentTrustModal = openPaymentTrustModal;
+  if (typeof closePaymentTrustModal === 'function') window.closePaymentTrustModal = closePaymentTrustModal;
+  if (typeof handlePillarModalAction === 'function') window.handlePillarModalAction = handlePillarModalAction;
 
   // Drain any actions that were clicked while app.js was loading
   if (window._earlyQueue && window._earlyQueue.length > 0) {
